@@ -1,0 +1,429 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/T2B.pdf
+
+identifiers:
+  doi: 10.1186/s12859-025-06310-1
+  pmid: '41254502'
+citation:
+  title: 'Talk2Biomodels: AI agent-based open-source  LLM initiative for kinetic biological models'
+  year: '2025'
+  journal: BMC Bioinformatics
+  volume: '26'
+  publisher: Springer Science and Business Media LLC
+  authors: Lilija Wehling, Gurdeep Singh, Ahmad Wisnu Mulyadi, Rakesh Hadne Sreenath, Henning Hermjakob, Tung V. N. Nguyen,
+    Thomas Rückle, Mohammed H. Mosa, Henrik Cordes, Tommaso Andreani, Thomas Klabunde, Rahuman S. Malik Sheriff, Douglas McCloskey
+content:
+  sections: "[\n  {\n    \"name\": \"SOFTWARE\",\n    \"text\": \"Open Access\\n\\u00a9 The Author(s) 2025. Open Access  This\
+    \ article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International\\nLicense, which\
+    \ permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give\
+    \ appropriate\\ncredit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate\
+    \ if you modified the licensed material.\\nYou do not have permission under this licence to share adapted material derived\
+    \ from this article or parts of it. The images or other third party\\nmaterial in this article are included in the article\\\
+    u2019s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material\\nis not included\
+    \ in the article\\u2019s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds\
+    \ the permitted\\nuse, you will need to obtain permission directly from the copyright holder. To view a copy of this licence,\
+    \ visit \\u200bh\\u200bt\\u200bt\\u200bp\\u200b:\\u200b/\\u200b/\\u200bc\\u200br\\u200be\\u200ba\\u200bt\\u200bi\\u200bv\\\
+    u200be\\u200bc\\u200bo\\u200bm\\u200bm\\u200bo\\u200bn\\u200bs\\u200b.\\u200bo\\u200br\\u200bg\\u200b/\\u200bl\\u200bi\\\
+    u200bc\\u200be\\u200bn\\u200bs\\u200b\\ne\\u200bs\\u200b/\\u200bb\\u200by\\u200b-\\u200bn\\u200bc\\u200b-\\u200bn\\u200bd\\\
+    u200b/\\u200b4\\u200b.\\u200b0\\u200b/.\\nWehling et al. BMC Bioinformatics          (2025) 26:276\\nhttps://doi.org/10.1186/s12859-025-06310-1\\\
+    n\\u2020Lilija Wehling and Gurdeep\\nSingh have contributed\\nequally to this work.\\n*Correspondence:\\nLilija Wehling\\\
+    nwehling@bmedx.com\\nDouglas McCloskey\\ndouglas.mccloskey@biom8er.com\\n1BioMed X Institute, Heidelberg,\\nGermany\\\
+    n2SRH University Heidelberg,\\nHeidelberg, Germany\\n3European Molecular Biology\\nLaboratory, European\\nBioinformatics\
+    \ Institute (EMBL-EBI),\\nCambridge, UK\\n4Therapeutic Area Type 1/17\\nImmunology & Inflammation,\\nSanofi R&D, Frankfurt\
+    \ am Main,\\nGermany\\n5Translational Medicine Unit (TMU)\\n- Research Pharmacometrics, Sanofi\\nR&D, Frankfurt am Main,\
+    \ Germany\\n6Translational Medicine Unit (TMU)\\n- Disease Modeling, Sanofi R&D,\\nFrankfurt am Main, Germany\\n7At the\
+    \ Time of Study: BioMed X\\nInstitute, Heidelberg, Germany\\n8Present address: Biom8er, Santa\\nAna, CA, USA\\nTalk2Biomodels:\
+    \ AI agent-based open-source\\nLLM initiative for kinetic biological models\\nLilija\\u00a0Wehling1*\\u2020, Gurdeep\\\
+    u00a0Singh1\\u2020, Ahmad Wisnu\\u00a0Mulyadi1, Rakesh Hadne\\u00a0Sreenath1,2, Henning\\u00a0Hermjakob3,\\nTung V. N.\\\
+    u00a0Nguyen3, Thomas\\u00a0R\\u00fcckle1, Mohammed H.\\u00a0Mosa4, Henrik\\u00a0Cordes5, Tommaso\\u00a0Andreani6,\\nThomas\\\
+    u00a0Klabunde6, Rahuman S.\\u00a0Malik Sheriff3 and Douglas\\u00a0McCloskey7,8*\\nBMC Bioinformatics\"\n  },\n  {\n  \
+    \  \"name\": \"Background\\u2002 Quantitative kinetic models of biological regulatory processes play an\",\n    \"text\"\
+    : \"important role in understanding disease mechanisms. However, their simulation and\\nanalysis require specialized domain\
+    \ expertise.\"\n  },\n  {\n    \"name\": \"Results\\u2002 In this study, we present Talk2Biomodels (T2B), an open-source,\
+    \ user-friendly,\",\n    \"text\": \"large language model-based agentic AI platform designed to facilitate access to\\\
+    ncomputational models of biological systems and promote the FAIRification (Findability,\\nAccessibility, Interoperability,\
+    \ and Reusability) principles in systems biology. T2B allows\\nusers to interact with and analyse mathematical models\
+    \ of biological systems through\\nconversations in natural language, thereby lowering the barrier to entry for model\\\
+    ninterpretation and hypothesis-driven exploration. The platform natively supports\\nmodels encoded in the Systems Biology\
+    \ Markup Language, a widely adopted standard\\nin the computational biology community. T2B is integrated with the BioModels\\\
+    ndatabase (https://www.ebi.ac.uk/biomodels/), enabling retrieval, simulation, and\\nanalysis of curated systems biology\
+    \ models. We illustrate the platform\\u2019s capabilities\\nthrough use cases in precision medicine, infectious disease\
+    \ epidemiology, and the\\nstudy of emergent network-level properties in cellular systems \\u2014 demonstrating how\\nboth\
+    \ computational experts and domain scientists without formal modelling training\\ncan derive actionable insights from\
+    \ complex biological models. Talk2Biomodels is\\navailable at \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\\
+    u200b/\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\u200bb\\u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200bV\\u200bi\\u200br\\\
+    u200bt\\u200bu\\u200ba\\u200bl\\u200bP\\u200ba\\u200bt\\u200bi\\u200be\\u200bn\\u200bt\\u200bE\\u200bn\\u200bg\\u200bi\\\
+    u200bn\\u200be\\u200b/\\u200bA\\u200bI\\u200bA\\u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\u200ba\\\
+    u200br\\u200bm\\u200ba. Detailed\\ndocumentation and use cases are available at \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\\
+    u200b:\\u200b/\\u200b/\\u200bv\\u200bi\\u200br\\u200bt\\u200bu\\u200ba\\u200bl\\u200bp\\u200ba\\u200bt\\u200bi\\u200be\\\
+    u200bn\\u200bt\\u200be\\u200bn\\u200bg\\u200bi\\u200bn\\u200be\\u200b.\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\u200bb\\\
+    u200b.\\u200bi\\u200bo\\u200b/\\u200bA\\u200bI\\u200b\\nA\\u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\\
+    u200ba\\u200br\\u200bm\\u200ba\\u200b/\\u200bt\\u200ba\\u200bl\\u200bk\\u200b2\\u200bb\\u200bi\\u200bo\\u200bm\\u200bo\\\
+    u200bd\\u200be\\u200bl\\u200bs\\u200b/\\u200bi\\u200bn\\u200bt\\u200br\\u200bo\\u200b/.\"\n  },\n  {\n    \"name\": \"\
+    Conclusions\\u2002 In summary, T2B lowers the barrier for non-experts to engage with and\",\n    \"text\": \"extract insights\
+    \ from computational models of biological systems, while simultaneously\\nproviding experts with a streamlined interface\
+    \ for analysing models and overall\\ncontributes to the FAIRification of models.\\nKeywords\\u2002 Agentic AI, Systems\
+    \ biology, Foundational models, Ordinary differential\\nequation models\\n\\nPage 2 of 9\\nWehling et al. BMC Bioinformatics\
+    \          (2025) 26:276\"\n  },\n  {\n    \"name\": \"Background\",\n    \"text\": \"Recent developments in generative\
+    \ artificial intelligence (AI), particularly in large lan\\u00ad\\nguage models (LLMs), have demonstrated substantial\
+    \ progress. Noteworthy advances\\nin both algorithmic innovation and data-driven biomedical discovery are showcased by\\\
+    nthe advent of foundational learning models for protein structure, single cell omics and\\ngenomic data across species,\
+    \ such as, AlphaFold, scGPT, and Evo 2, to name a few [2, 4,\\n10]. While LLMs' role is currently confined to narrow,\
+    \ task-specific applications, efforts\\nare underway to enable open-source LLM-driven agentic workflows in biomedical\
+    \ dis\\u00ad\\ncovery [15]. Collaborative AI agents, with their task orchestration, reflective learning\\nand sophisticated\
+    \ reasoning capabilities, have the potential to revolutionize biomedical\\nresearch and patient treatment [6].\\nQuantitative\
+    \ mathematical models have become a crucial component in enhancing\\nour understanding of biological systems. Besides\
+    \ encapsulating the qualitative knowl\\u00ad\\nedge of biological interactions, they serve as analytical tools to test\
+    \ the theoretical under\\u00ad\\nstanding of the dynamics within biological systems [21].The most common frameworks\\\
+    nin systems biology modeling include kinetic, constraint-based, logic, and agent-based\\nmodeling. The present study specifically\
+    \ focuses on ordinary differential equation (ODE)\\nmodels, a subset of kinetic models, due to their widespread application\
+    \ and significance\\nin the field. ODE models represent the most popular modeling approach, with approxi\\u00ad\\nmately\
+    \ 1662 models1 currently deposited in the BioModels database [16] and a multi\\u00ad\\ntude of models in scientific literature.\
+    \ These models cover a wide range of domains, as\\ndemonstrated by their use cases in precision medicine (e.g., inflammatory\
+    \ bowel disease\\ntreatment) [5], COVID-19 pandemic studies [23], and theoretical analysis of dynamic\\nsystems [18].\
+    \ Furthermore, ODEs are a standard tool in pharmaceutical research, partic\\u00ad\\nularly in the development of physiologically\
+    \ based pharmacokinetic/pharmacodynamic\\n(PBPK/PD) and quantitative systems pharmacology and toxicology (QSP/QST) models\\\
+    n[3, 13].\\nTo interact with mathematical models of biological systems, several popular graphical\\nuser interface (GUI)-based\
+    \ ODE modelling frameworks exist. These include proprietary\\nsoftware such as the MATLAB toolbox SimBiology [24] and\
+    \ Berkley Madonna [17], as\\nwell as open-source alternatives like COPASI [8], the Open Systems Pharmacology Suite\\n[13]\
+    \ and RunBioSimulations [22]. However, both proprietary and open-source solutions\\ntypically require software installation,\
+    \ specialized training, and domain knowledge for\\neffective simulation and analysis of models.\\nTo overcome the barriers\
+    \ of existing modelling frameworks, we propose Talk2Bio\\u00ad\\nmodels (T2B), an easily accessible chatbot-based ODE\
+    \ modelling platform built using\\nagentic AI (Fig.\\u00a01). The T2B platform supports the import of models encoded in\
+    \ SBML\\n[12] and ensures cross-platform interoperability. T2B also provides access to the Bio\\u00ad\\nModels database,\
+    \ which hosts the largest collection of curated quantitative mathemati\\u00ad\\ncal models [16].\\nBesides the conventional\
+    \ model analysis functionality, such as simulation, param\\u00ad\\neter scanning, and steady state analysis, T2B can (i)\
+    \ retrieve and display model anno\\u00ad\\ntations using standardized names and identifiers, and (ii) perform retrieval-augmented\"\
+    \n  },\n  {\n    \"name\": \"Viewed on 24.02.2025\",\n    \"text\": \"Page 3 of 9\\nWehling et al. BMC Bioinformatics\
+    \          (2025) 26:276\\ngeneration (RAG) over PDF documents to extract additional insights that inform model\\ninterpretation\
+    \ and analysis.\\nBy facilitating the sharing and simulation of mathematical models, T2B contributes\\nto the FAIR principles\
+    \ of data exchange. Furthermore, T2B helps non-experts to inter\\u00ad\\nact with ODE models and pose simulation-related\
+    \ questions directly in natural language\\nthus offering an engaging environment for teaching and exploring diversity\
+    \ of models.\\nImplementation\\nWe developed the T2B application using the LangGraph library (v0.3.2),2 which provides\\\
+    na framework for constructing stateful computational graphs. In this architecture, each\\nnode represents a discrete computational\
+    \ step, while the edges define the relationships\\nbetween these steps. The application maintains a global state\\u2014a\
+    \ snapshot of the applica\\u00ad\\ntion\\u2014which is propagated and updated throughout the execution process (Fig.\\\
+    u00a01).\\n2\\u2009https://github.com/langchain-ai/langgraph\\nFig.\\u00a01\\u2002 Architecture diagram and user interface\
+    \ of Talk2Biomodels. A Users can prompt the T2B agent to invoke\\nvarious tools for model search, simulation and plotting,\
+    \ stability analysis, annotation extraction and retrieval-aug\\u00ad\\nmented generation (RAG) on uploaded scientific\
+    \ articles. B The T2B GUI supports both open and closed-source\\nLLMs, enables users to upload mathematical models in\
+    \ SBML-format and scientific articles as PDFs (a). T2B allows\\nnatural language prompts via the chat box interface (b).\
+    \ The GUI features a chat history window (c) displaying\\nquestion-and-answer conversations (d, e). Additionally, T2B\\\
+    u2019s GUI allows dynamic user feedback through upvote\\nand downvote buttons. (f). Here, we exemplify search models tool\
+    \ for keyword-based searches in the BioModels\\ndatabase (e)\\n\\n\\nPage 4 of 9\\nWehling et al. BMC Bioinformatics \
+    \         (2025) 26:276\\nIn the case of T2B, the computational nodes consist of a prebuilt reasoning and action\\n(ReAct)-based\
+    \ agent, implemented following the ReAct paradigm [27], and a suite of\\ntools available to the agent (Fig.\\u00a0 1).\
+    \ Each tool is annotated with metadata describing\\nits capabilities and input/output schema. Upon receiving a user query\
+    \ in natural lan\\u00ad\\nguage, the LLM interprets the intent, selects the appropriate tool(s), and dynamically\\nconstructs\
+    \ a sequence of calls to fulfill the request. These agentic AI tools interactively\\nengage with external resources, including\
+    \ BioModels, Ontology Lookup Service (OLS)\\nand UniProt databases [11, 25]. T2B maintains the global state of the agent\
+    \ throughout\\nthe chat history. BioModel search, simulations, annotation extraction and stability anal\\u00ad\\nysis\
+    \ are carried out using the BASICO library (v0.78) [1]. Directed edges in the graph\\nstructure facilitate interactions\
+    \ between the agent and these tools. The agent autono\\u00ad\\nmously selects and executes tool invocations based on user\
+    \ input, dynamically updating\\nthe global state during execution. The state management mechanism tracks key-value\\npairs\
+    \ storing messages, analysis outputs, and intermediate results, ensuring contextual\\ncoherence throughout the workflow.\
+    \ Upon computation completion, the last updated\\nstate is parsed to extract relevant information and render it for the\
+    \ user.\\nFor configuring agent-based text generation tasks, users can select between two\\nLLMs: OpenAI\\u2019s GPT-4o-mini\
+    \ [19] and NVIDIA NIM-optimized Meta/Llama-3.3-\\n70B-Instruct.3 For text-to-embedding transformations, the application\
+    \ supports two\\nembedding models: OpenAI\\u2019s text-embedding-ada-002 and NVIDIA NIM-optimized\\nLlama-3.2-NV-EmbedQA-1B-V2.4\
+    \ The backend of T2B is implemented in Python 3.12,\\nwhile the front end was developed using Streamlit5 (v1.39.0) and\
+    \ Plotly6 (v5.24.1) for an\\ninteractive and user-friendly interface.\\nTo evaluate the performance of T2B, we designed\
+    \ a benchmarking strategy utilizing\\nthe Task Completion metrics from DeepEval [9], which captures the overall effective\\\
+    u00ad\\nness of the agent in solving user queries, using LLM-as-a-judge to account for semantic\\naccuracy of responses.\
+    \ To generate evaluation data, we created two synthetic datasets,\\ncontaining 312 question\\u2013answer (Q&A) pairs covering\
+    \ tools search_models, simulate_\\nmodel, ask_question, steady_state, custom_plotter and get_modelinfo (Table S2). Both\\\
+    ndatasets were designed with textual answers as expected outputs, capturing the hetero\\u00ad\\ngeneous nature of tool\
+    \ responses in real-world use cases. For each question, we obtained\\nthe agent\\u2019s ground-truth outputs using BASICO\
+    \ library [1] and assessed performance\\nusing the DeepEval library [9], which allowed us to compute the metrics consistently\\\
+    nacross all datasets.\\nT2B provides optional integration with LangSmith to enable detailed tracing, debug\\u00ad\\nging,\
+    \ and performance evaluation of agentic workflows. Users can provide feedback in\\nthe chat interface through thumbs-up\
+    \ and thumbs-down buttons directly connected to\\nLangSmith, allowing for real-time capture of user satisfaction and facilitating\
+    \ continuous\\nimprovement of the agent\\u2019s performance and reliability. T2B is hosted on GitHub, facili\\u00ad\\\
+    ntating open-source contributions and discussions, and is linked to BioModels repository.\\n3\\u2009\\u200bh\\u200bt\\\
+    u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bb\\u200bu\\u200bi\\u200bl\\u200bd\\u200b.\\u200bn\\u200bv\\u200bi\\\
+    u200bd\\u200bi\\u200ba\\u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200bm\\u200be\\u200bt\\u200ba\\u200b/\\u200bl\\u200bl\\\
+    u200ba\\u200bm\\u200ba\\u200b-\\u200b3\\u200b_\\u200b3\\u200b-\\u200b7\\u200b0\\u200bb\\u200b-\\u200bi\\u200bn\\u200bs\\\
+    u200bt\\u200br\\u200bu\\u200bc\\u200bt\\u200b/\\u200bm\\u200bo\\u200bd\\u200be\\u200bl\\u200bc\\u200ba\\u200br\\u200bd\\\
+    n4\\u2009\\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bb\\u200bu\\u200bi\\u200bl\\u200bd\\u200b.\\\
+    u200bn\\u200bv\\u200bi\\u200bd\\u200bi\\u200ba\\u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200bn\\u200bv\\u200bi\\u200bd\\\
+    u200bi\\u200ba\\u200b/\\u200bl\\u200bl\\u200ba\\u200bm\\u200ba\\u200b-\\u200b3\\u200b_\\u200b2\\u200b-\\u200bn\\u200bv\\\
+    u200b-\\u200be\\u200bm\\u200bb\\u200be\\u200bd\\u200bq\\u200ba\\u200b-\\u200b1\\u200bb\\u200b-\\u200bv\\u200b2\\n5\\u2009https://streamlit.io/\\\
+    n6\\u2009\\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bp\\u200bl\\u200bo\\u200bt\\u200bl\\u200by\\\
+    u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200bc\\u200bh\\u200ba\\u200br\\u200bt\\u200b-\\u200bs\\u200bt\\u200bu\\u200bd\\\
+    u200bi\\u200bo\\u200b-\\u200bh\\u200be\\u200bl\\u200bp\\u200b/\\u200bc\\u200bi\\u200bt\\u200ba\\u200bt\\u200bi\\u200bo\\\
+    u200bn\\u200bs\\u200b/\\n\\nPage 5 of 9\\nWehling et al. BMC Bioinformatics          (2025) 26:276\"\n  },\n  {\n    \"\
+    name\": \"Results and discussion\",\n    \"text\": \"T2B offers a comprehensive suite of functions for biological and\
+    \ translational ODE\\nmodels. T2B reduces the risk of inexact responses and hallucinations arising from mis\\u00ad\\ninterpreting\
+    \ user-defined simulation requirements through model simulation-specific\\ntool calling and visual representation of the\
+    \ simulation results. Users can upload ODE\\nmodels in SBML format or retrieve curated models from the BioModels database\
+    \ using\\nthe search models tool (Fig.\\u00a01). The get model information tool extracts model details,\\nincluding species,\
+    \ parameters, and model abstract. Concurrently, the get annotations\\ntool retrieves and displays model species\\u2019\
+    \ identifiers by dynamically accessing Ontology\\nLookup Service (OLS) and UniProt data bases [11, 25]. This capability\
+    \ enables research\\u00ad\\ners to thoroughly explore and interpret the specific nomenclature of the model.\\nIn T2B,\
+    \ SBML models can be directly accessed, simulated, and analyzed. The platform\\nsupports time-course simulations with\
+    \ adjustable time steps, initial concentrations and\\ndurations (simulate model tool), presenting results in dynamic tables\
+    \ and graphs that\\ncan be interactively modified (custom plotter tool). Additionally, users can interrogate\\nmodel description\
+    \ and simulation results (ask questions tool) and alter model param\\u00ad\\neters using natural language.\\nMoreover,\
+    \ T2B offers several tools for model analysis: the steady state tool computes\\nwhether a model reaches equilibrium, while\
+    \ the parameter scan tool performs multi\\u00ad\\nple simulations by systematically varying model initial conditions or\
+    \ parameter values\\nwithin user-specified range and intervals (Fig.\\u00a0 2). In addition, the query article tool\\\
+    nleverages retrieval-augmented generation (RAG) framework [14] to extract supple\\u00ad\\nmentary information from user-uploaded\
+    \ research articles. Finally, the save model tool\\nallows users to save the model they are working with to disk for later\
+    \ modification and\\nreference.\\nOverall, this suite of agentic AI-driven tools offers a unique platform for working\\\
+    nwith ODE models, combining user-friendliness and interactive features. In addition, the\\nversatility of agentic-AI framework\
+    \ enables integration of T2B with additional agents,\\npotentially facilitating coordination with tools such as literature\
+    \ search platforms\\nFig.\\u00a02\\u2002 Parameter scan of a precision medicine model within T2B GUI [5]. A parameter\
+    \ \\u2018kIL6Unbind\\u2019 is varied in steps\\nof 40 units from 2 to 242 to simulate an unbinding event of an antibody\
+    \ from its target interleukin 6 receptor (IL6R).\\nEach curve represents CRP levels in serum during a separate simulation\
+    \ of this model.\\n\\n\\nPage 6 of 9\\nWehling et al. BMC Bioinformatics          (2025) 26:276\\n(Talk2Scholars) and\
+    \ knowledge graphs (Talk2KnowledgeGraphs), thereby enhancing the\\nmodeling process and providing modelers with relevant\
+    \ background information.7\\nUse-cases\\nWe present use cases in precision medicine (Table S1), epidemiology, and emergent\
+    \ sys\\u00ad\\ntems properties of biological networks and make them available on GitHub. With these\\nuse cases we demonstrate\
+    \ broad applicability of T2B across different biological domains\\nand how experts and non-experts in computational biology\
+    \ can benefit from T2B. All\\nthree examples illustrate the processes of loading, simulating, interactively plotting,\\\
+    nand editing models, as well as how LLMs assist in drawing conclusions from the model\\nsimulations.\\nTypically, when\
+    \ a user downloads and simulates a model, they may lack contextual\\nknowledge regarding the simulation duration or the\
+    \ intended objectives of the model.\\nBy uploading the associated PDF documentation, such as publication associated with\\\
+    nthis model, users can enhance their understanding of the simulations of this model. In\\nthis context, employing a RAG\
+    \ system on the uploaded PDF assists users in extracting\\nrelevant information and identifying key aspects of the model.\\\
+    nMoreover, T2B enables efficient translation of model annotations identifiers to a stan\\u00ad\\ndard names of the species\
+    \ by communicating with external databases, such as UniProt\\nand EMBL-EBI Ontology Lookup Service over API calls [11,\
+    \ 25]. For instance, get_\\nannotations tool could identify the species as a complex or specific isoform (e.g., soluble\\\
+    nor not soluble isoform of a cytokine), which could define the scope of the model and\\nhave implications in downstream\
+    \ experimental validation tasks.\\nPrecision medicine\\nThis example is based on a published study of a multiscale model\
+    \ of interleukin 6 (IL-\\n6) mediated immune regulation in Crohn's disease to examine drug-disease interaction\\nmechanisms\
+    \ and tocilizumab, an anti-interleukin 6 receptor monoclonal antibody drug,\\ntreatment prediction [5].\\nHere we show\
+    \ how users can simulate and analyze this model via natural language\\nprompting.8 Within the RAG framework, T2B determines\
+    \ the model\\u2019s specified simula\\u00ad\\ntion time of 2016\\u00a0h as reported in the publication. In addition, the\
+    \ LLM assists users in\\nidentifying parameters related to the drug dosing regimen by querying species names\\nand providing\
+    \ description of model species. Also, T2B optimizes retrieval of model\\nannotations, facilitated drug dose adjustment\
+    \ and streamline model simulation. With\\nT2B users can simulate drug administration at intervals of either 2 or 4\\u00a0weeks\
+    \ and view\\nthe value of the clinical readout parameter (CRP in serum) at any given time point. Addi\\u00ad\\ntionally,\
+    \ users can determine the time required for the depletion of serum anti-IL6R\\u03b1\\nconcentration by replicating the\
+    \ published figure [5]. The effect on CRP suppression can\\nalso be compared by simulating different antibodies with varying\
+    \ dissociation affinities,\\nthereby performing in silico tests for potential antibodies (Fig.\\u00a02).\\n7\\u2009\\\
+    u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\u200bb\\u200b.\\\
+    u200bc\\u200bo\\u200bm\\u200b/\\u200bV\\u200bi\\u200br\\u200bt\\u200bu\\u200ba\\u200bl\\u200bP\\u200ba\\u200bt\\u200bi\\\
+    u200be\\u200bn\\u200bt\\u200bE\\u200bn\\u200bg\\u200bi\\u200bn\\u200be\\u200b/\\u200bA\\u200bI\\u200bA\\u200bg\\u200be\\\
+    u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\u200ba\\u200br\\u200bm\\u200ba\\n8\\u2009Detailed prompts are available\
+    \ at Table S1 and at \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bv\\u200bi\\u200br\\u200bt\\\
+    u200bu\\u200ba\\u200bl\\u200bp\\u200ba\\u200bt\\u200bi\\u200be\\u200bn\\u200bt\\u200be\\u200bn\\u200bg\\u200bi\\u200bn\\\
+    u200be\\u200b.\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\u200bb\\u200b.\\u200bi\\u200bo\\u200b/\\u200bA\\u200bI\\u200bA\\\
+    u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\u200ba\\u200br\\u200bm\\u200ba\\u200b/\\u200bt\\u200ba\\\
+    u200bl\\u200bk\\u200b2\\u200bb\\u200bi\\u200bo\\u200b\\nm\\u200bo\\u200bd\\u200be\\u200bl\\u200bs\\u200b/\\u200bc\\u200ba\\\
+    u200bs\\u200be\\u200bs\\u200b/\\u200bC\\u200ba\\u200bs\\u200be\\u200b_\\u200b1\\u200b/.\\n\\nPage 7 of 9\\nWehling et\
+    \ al. BMC Bioinformatics          (2025) 26:276\\nEpidemiology\\nThis example utilizes an epidemiological model to predict\
+    \ the spread of COVID-19[23].9\\nT2B enables users to evaluate the effectiveness of quarantine as a COVID-19 contain\\\
+    u00ad\\nment measure by simulating its impact on the number of infected cases over time,\\nthereby reproducing published\
+    \ findings [23]. Here, specifically, T2B offers a concise rep\\u00ad\\nresentation of model elements and translates parameter\
+    \ names into a user-friendly rep\\u00ad\\nresentation, thereby facilitating understanding of the model dynamics.\\nEmergent\
+    \ properties of biological networks\\nThis example10 explores intracellular signaling of the MAP kinase pathway [18] to\
+    \ illus\\u00ad\\ntrate emergent behaviors such as hysteresis induced by covalent modifications of pro\\u00ad\\nteins,\
+    \ which serve as widespread regulatory mechanisms in living systems. T2B can\\nfacilitate understanding of the description\
+    \ of model components and demonstrate hys\\u00ad\\nteresis by performing steady-state analysis for two different stable\
+    \ states. In this case\\nstudy, depending on the initial parameters of two simulation runs, the system can reach\\ntwo\
+    \ distinct steady states. This observation provides an intuitive, hands-on way to dem\\u00ad\\nonstrate complex system-level\
+    \ behaviors.\\nWhile T2B is a significant step in providing access to systems biology models, there\\nare several limitations\
+    \ that would have to be addressed in the future releases. Although,\\nT2B framework facilitates rapid reuse of ODE models\
+    \ by querying models on BioModels\\ndatabase or by directly uploading any ODE model in SBML format, it currently lacks\\\
+    nfunctionality for expanding these models. The initial release of T2B is primarily designed\\nfor model screening and\
+    \ executing functional models.\\nOur benchmarking results revealed good Task Completion metrics score, averaging\\n0.7\
+    \ across both sets of questions (Table S3). Here, a score of 0 represents failing the task,\\nwhile a score of 1 indicates\
+    \ perfect accordance with the expected output. The slightly\\nlower average reflects cases where minor variations in the\
+    \ phrasing of a prompt or rep\\u00ad\\nresentation of species\\u2019 name affected the results. To achieve optimal performance,\
+    \ we\\nrecommend the users to adjust their prompts based on guidelines provided on our doc\\u00ad\\numentation page. For\
+    \ future work, we plan to expand the benchmarking suite to also\\nevaluate tool and argument correctness for a more comprehensive\
+    \ evaluation of T2B\\u2019s\\nperformance. We also plan to apply approaches commonly used to train AI agents, such\\nas\
+    \ reinforcement learning, supervised fine-tuning, and LoRA, to improve T2B\\u2019s task\\ncompletion and tool-selection\
+    \ capabilities [7], [20].\"\n  },\n  {\n    \"name\": \"Conclusions\",\n    \"text\": \"T2B is an open-source, user-friendly\
+    \ agentic AI platform designed to facilitate access\\nto computational models of biological systems. By providing a natural\
+    \ language inter\\u00ad\\nface, supporting open-source community standards, and integrating with BioModels\\ndata base,\
+    \ T2B reduces the barrier for non-experts to benefit from computational biol\\u00ad\\nogy models and overall contributes\
+    \ to the FAIRification of models [26]. Furthermore,\\nT2B supports computational modelers by simplifying testing and validation\
+    \ during\\n9\\u2009Detailed prompts and their description are available at \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\\
+    u200b:\\u200b/\\u200b/\\u200bv\\u200bi\\u200br\\u200bt\\u200bu\\u200ba\\u200bl\\u200bp\\u200ba\\u200bt\\u200bi\\u200be\\\
+    u200bn\\u200bt\\u200be\\u200bn\\u200bg\\u200bi\\u200bn\\u200be\\u200b.\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\u200bb\\\
+    u200b.\\u200bi\\u200bo\\u200b/\\u200bA\\u200bI\\u200bA\\u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\\
+    u200ba\\u200br\\u200bm\\u200ba\\u200b/\\u200bt\\u200ba\\u200bl\\u200b\\nk\\u200b2\\u200bb\\u200bi\\u200bo\\u200bm\\u200bo\\\
+    u200bd\\u200be\\u200bl\\u200bs\\u200b/\\u200bc\\u200ba\\u200bs\\u200be\\u200bs\\u200b/\\u200bC\\u200ba\\u200bs\\u200be\\\
+    u200b_\\u200b2\\u200b/.\\n10\\u2009Detailed prompts and their description are available at \\u200bh\\u200bt\\u200bt\\\
+    u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bv\\u200bi\\u200br\\u200bt\\u200bu\\u200ba\\u200bl\\u200bp\\u200ba\\u200bt\\\
+    u200bi\\u200be\\u200bn\\u200bt\\u200be\\u200bn\\u200bg\\u200bi\\u200bn\\u200be\\u200b.\\u200bg\\u200bi\\u200bt\\u200bh\\\
+    u200bu\\u200bb\\u200b.\\u200bi\\u200bo\\u200b/\\u200bA\\u200bI\\u200bA\\u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\\
+    u200bP\\u200bh\\u200ba\\u200br\\u200bm\\u200ba\\u200b/\\u200bt\\u200ba\\u200bl\\u200b\\nk\\u200b2\\u200bb\\u200bi\\u200bo\\\
+    u200bm\\u200bo\\u200bd\\u200be\\u200bl\\u200bs\\u200b/\\u200bc\\u200ba\\u200bs\\u200be\\u200bs\\u200b/\\u200bC\\u200ba\\\
+    u200bs\\u200be\\u200b_\\u200b3\\u200b/.\\n\\nPage 8 of 9\\nWehling et al. BMC Bioinformatics          (2025) 26:276\\\
+    nmodel development phase and encouraging model sharing in community-wide stan\\u00ad\\ndardized format. In addition, when\
+    \ hosted on a web server, T2B also offers reviewers\\nand researchers an installation-free way to evaluate models for\
+    \ correctness, validity, and\\nreproducibility\\u2014areas that remain challenging in practice.\\nIn this paper, we presented\
+    \ use cases in precision medicine, epidemiology, and the\\nexploration of emergent system properties to demonstrate the\
+    \ ease at which T2B users\\ncan reproduce and explore mathematical modelling results.\\nWe encourage contributions to\
+    \ our open-source project from the community.\\nAvailability and requirements\\nProject name: Talk2Biomodels.\\nProject\
+    \ home page: \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bg\\u200bi\\u200bt\\u200bh\\u200bu\\\
+    u200bb\\u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200bV\\u200bi\\u200br\\u200bt\\u200bu\\u200ba\\u200bl\\u200bP\\u200ba\\\
+    u200bt\\u200bi\\u200be\\u200bn\\u200bt\\u200bE\\u200bn\\u200bg\\u200bi\\u200bn\\u200be\\u200b/\\u200bA\\u200bI\\u200bA\\\
+    u200bg\\u200be\\u200bn\\u200bt\\u200bs\\u200b4\\u200bP\\u200bh\\u200ba\\u200br\\u200bm\\u200ba\\nOperating system(s):\
+    \ Platform independent.\\nProgramming language: Python.\\nOther requirements: All the dependencies are listed in the project\
+    \ GitHub repository.\\nLicense: MIT.\\nAny restrictions to use by non-academics: not applicable.\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Information\",\n    \"text\": \"The online version contains supplementary material available at\
+    \ https://doi.org/10.1186/s12859-025-06310-1.\"\n  },\n  {\n    \"name\": \"Supplementary Material 1\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"We acknowledge the contributions of Anil Kumar\
+    \ Kanasani and Maryam Najafian during the \\u201cAI Agents for Life\\nSciences\\u201d hackathon on October 14-15 2024.\
+    \ We acknowledge Ansh Kumar for technical support while running the T2B\\nbenchmark analysis. We acknowledge the technical\
+    \ support from Dror Hilman, Jake Valsamis, Conor Mohan, and Ben\\nEvan Tsur, gracious donations of computing resources\
+    \ during our hackathon from Shahar Frunkin, and Daniel Koster,\\nand an going support and facilitation from Simon Adar\
+    \ (CodeOcean https://codeocean.com/). We acknowledge funding\\nsupport for our Hackathon from the AI Health Innovation\
+    \ Cluster (https://www.aih-cluster.ai/) and particular the help\\nreceived from Daniela Beyer and the rest of the AIH\
+    \ Coordination Team. We thank Ornella Kossi, Ann-Kristin Mueller, and\\nStefanie Schimmel from BioLabs Heidelberg, (https://www.biolabs.io/heidelberg),\
+    \ for hosting our hackathons. We thank\\nIsabel Wilkinson, Uwe Samer, Nick Venanzi, and David Ruau from NVIDIA for assisting\
+    \ with our integration of NVIDIA NIMs\\nfor chat and embedding inference and graciously providing free credits for use\
+    \ with T2B. We thank Vultr \\u200b(\\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bw\\u200bw\\\
+    u200bw\\u200b.\\u200bv\\u200bu\\u200bl\\u200b\\nt\\u200br\\u200b.\\u200bc\\u200bo\\u200bm\\u200b/\\u200b) for graciously\
+    \ providing free credits for deploying T2B.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"LW,\
+    \ GS and DM conceptualized the study. LW prototyped T2B functions. GS developed the agentic AI framework and the\\nagentic\
+    \ AI tools for T2B. AWM contributed to the development of the agentic AI framework and created the figures and\\nicons.\
+    \ RHS implemented get annotations tool. GS and AWM developed T2B\\u2019s user interface. HH and TN crosslinked T2B\\nin\
+    \ BioModels repository. DM, RSMS, and LW conceptualized use cases. LW designed use cases. LW wrote the manuscript\\nand\
+    \ documentation of the use cases. DM supervised the writing of the manuscript and the development of the agentic\\nAI\
+    \ framework. All authors contributed to testing T2B and reviewing the manuscript.\"\n  },\n  {\n    \"name\": \"Funding\"\
+    ,\n    \"text\": \"This study was funded by BioMed X Germany GmbH and Sanofi-Aventis Deutschland.\"\n  },\n  {\n    \"\
+    name\": \"Data availability and materials\",\n    \"text\": \"The datasets analysed during the current study are available\
+    \ in the BioModels repository, \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bw\\u200bw\\u200bw\\\
+    u200b.\\u200be\\u200bb\\u200bi\\u200b.\\u200ba\\u200bc\\u200b.\\u200bu\\u200bk\\u200b/\\u200bb\\u200bi\\u200bo\\u200bm\\\
+    u200bo\\u200bd\\u200b\\ne\\u200bl\\u200bs\\u200b/\\u200b.\\u200b\\nDeclarations\"\n  },\n  {\n    \"name\": \"Ethics approval\
+    \ and consent to participate\",\n    \"text\": \"Not applicable.\\nConsent for publication\\nNot applicable.\"\n  },\n\
+    \  {\n    \"name\": \"Competing interests\",\n    \"text\": \"MHM, HC, TA and TK are Sanofi employees and may hold shares\
+    \ and/or stock options in the company. No other conflicts\\nof interest are declared.\\n\\nPage 9 of 9\\nWehling et al.\
+    \ BMC Bioinformatics          (2025) 26:276\\nReceived: 8 July 2025 / Accepted: 22 October 2025\"\n  },\n  {\n    \"name\"\
+    : \"References\",\n    \"text\": \"1.\\nBergmann FT. Basico: a simplified Python interface to COPASI. J Open Sour Softw.\
+    \ 2023;8(90):5553. \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bd\\u200bo\\u200bi\\u200b.\\\
+    u200bo\\u200br\\u200bg\\u200b/\\u200b1\\u200b0\\u200b.\\u200b2\\u200b1\\u200b1\\u200b0\\u200b\\n5\\u200b/\\u200bj\\u200bo\\\
+    u200bs\\u200bs\\u200b.\\u200b0\\u200b5\\u200b5\\u200b5\\u200b3\\u200b.\\u200b\\n2.\\nBrixi G, Durrant MG, Ku J, et al.\
+    \ \\u2018Genome modeling and design across all domains of life with Evo 2\\u2019. Preprint, bioRxiv 2025\\nFebruary 21.\
+    \ https://doi.org/10.1101/2025.02.18.638918.\\n3.\\nChan JR, Allen R, Boras B, et al. Current practices for QSP model\
+    \ assessment: an IQ consortium survey. J Pharmacokinet\\nPharmacodyn. 2024;51(5):543\\u201355. https://doi.org/10.1007/s10928-022-09811-1.\\\
+    n4.\\nCui H, Wang C, Maan H, et al. ScGPT: toward building a foundation model for single-cell multi-omics using generative\
+    \ AI.\\nNat Methods. 2024;21(8):1470\\u201380. https://doi.org/10.1038/s41592-024-02201-0.\\n5.\\nDwivedi G, Fitz L, Hegen\
+    \ M, et al. A multiscale model of Interleukin-6\\u2013mediated immune regulation in Crohn\\u2019s disease and\\nits application\
+    \ in drug discovery and development. CPT Pharmacometrics Syst Pharmacol. 2014;3(1):1\\u20139. \\u200bh\\u200bt\\u200bt\\\
+    u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bd\\u200bo\\u200bi\\u200b.\\u200bo\\u200br\\u200bg\\u200b/\\u200b1\\u200b\\\
+    n0\\u200b.\\u200b1\\u200b0\\u200b3\\u200b8\\u200b/\\u200bp\\u200bs\\u200bp\\u200b.\\u200b2\\u200b0\\u200b1\\u200b3\\u200b.\\\
+    u200b6\\u200b4\\u200b.\\u200b\\n6.\\nGao S, Fang A, Huang Y, et al. Empowering biomedical discovery with AI agents. Cell.\
+    \ 2024;187(22):6125\\u201351. \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bd\\u200bo\\u200bi\\\
+    u200b.\\u200bo\\u200br\\u200b\\ng\\u200b/\\u200b1\\u200b0\\u200b.\\u200b1\\u200b0\\u200b1\\u200b6\\u200b/\\u200bj\\u200b.\\\
+    u200bc\\u200be\\u200bl\\u200bl\\u200b.\\u200b2\\u200b0\\u200b2\\u200b4\\u200b.\\u200b0\\u200b9\\u200b.\\u200b0\\u200b2\\\
+    u200b2\\u200b.\\u200b\\n7.\\nGao S, Zhu R, Kong Z, et al. \\u2018TxAgent: an AI agent for therapeutic reasoning across\
+    \ a universe of tools\\u2019. arXiv:2503.10970.\\nPreprint, arXiv 2025 March 14. https://doi.org/10.48550/arXiv.2503.10970.\\\
+    n8.\\nHoops S, Sahle S, Gauges R, et al. COPASI\\u2014a COmplex PAthway SImulator. Bioinformatics. 2006;22(24):3067\\\
+    u201374. \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bd\\u200bo\\u200bi\\u200b\\n.\\u200bo\\\
+    u200br\\u200bg\\u200b/\\u200b1\\u200b0\\u200b.\\u200b1\\u200b0\\u200b9\\u200b3\\u200b/\\u200bb\\u200bi\\u200bo\\u200bi\\\
+    u200bn\\u200bf\\u200bo\\u200br\\u200bm\\u200ba\\u200bt\\u200bi\\u200bc\\u200bs\\u200b/\\u200bb\\u200bt\\u200bl\\u200b4\\\
+    u200b8\\u200b5.\\n9.\\nIp, Jeffrey, and Kritin Vongthongsri. 2025. Deepeval. V. 3.5.9. Released August 25. https://github.com/confident-ai/deepeval.\\\
+    n10.\\t Jumper J, Evans R, Pritzel A, et al. Highly accurate protein structure prediction with AlphaFold. Nature. 2021;596(7873):583\\\
+    u2013\\n9. https://doi.org/10.1038/s41586-021-03819-2.\\n11.\\t Jupp S, Tony Burdett, Leroy C, and Parkinson H. \\u2018A\
+    \ new ontology lookup service at EMBL-EBI\\u2019. Paper presented at Workshop\\non Semantic Web Applications and Tools\
+    \ for Life Sciences. (2015) \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bw\\u200bw\\u200bw\\\
+    u200b.\\u200bs\\u200be\\u200bm\\u200ba\\u200bn\\u200bt\\u200bi\\u200bc\\u200bs\\u200bc\\u200bh\\u200bo\\u200bl\\u200ba\\\
+    u200br\\u200b.\\u200bo\\u200br\\u200bg\\u200b/\\u200bp\\u200ba\\u200bp\\u200be\\u200br\\u200b/\\u200bA\\u200b-\\u200bn\\\
+    u200be\\u200bw\\u200b-\\u200bO\\u200bn\\u200bt\\u200bo\\u200bl\\u200bo\\u200bg\\u200b\\ny\\u200b-\\u200bL\\u200bo\\u200bo\\\
+    u200bk\\u200bu\\u200bp\\u200b-\\u200bS\\u200be\\u200br\\u200bv\\u200bi\\u200bc\\u200be\\u200b-\\u200ba\\u200bt\\u200b-\\\
+    u200bE\\u200bM\\u200bB\\u200bL\\u200b-\\u200bE\\u200bB\\u200bI\\u200b-\\u200bJ\\u200bu\\u200bp\\u200bp\\u200b-\\u200bB\\\
+    u200bu\\u200br\\u200bd\\u200be\\u200bt\\u200bt\\u200b/\\u200bb\\u200b8\\u200b3\\u200bb\\u200bf\\u200bb\\u200bf\\u200bc\\\
+    u200b1\\u200bf\\u200b2\\u200bf\\u200b0\\u200b8\\u200be\\u200b5\\u200bb\\u200b8\\u200b8\\u200ba\\u200bf\\u200b5\\u200be\\\
+    u200bf\\u200b6\\u200b5\\u200be\\u200bf\\u200b2\\u200ba\\u200b8\\u200b6\\u200b8\\u200b7\\u200ba\\u200bc\\u200b4\\u200b1\\\
+    u200b1\\u200b2.\\n12.\\t Keating SM, Waltemath D, K\\u00f6nig M, et al. SBML level 3: an extensible format for the exchange\
+    \ and reuse of biological\\nmodels. Mol Syst Biol. 2020;16(8):e9110. https://doi.org/10.15252/msb.20199110.\\n13.\\t Kuepfer\
+    \ L, Niederalt C, Wendl T, et al. Applied concepts in PBPK modeling: how to build a PBPK/PD model. CPT Pharmaco\\u00ad\\\
+    nmetrics Syst Pharmacol. 2016;5(10):516\\u201331. https://doi.org/10.1002/psp4.12134.\\n14.\\t Lewis P, Perez E, Piktus\
+    \ A, et al. \\u2018Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks\\u2019. ArXiv 2020 May 22. \\u200bh\\\
+    u200bt\\u200b\\nt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\u200bw\\u200bw\\u200bw\\u200b.\\u200bs\\u200be\\u200bm\\u200ba\\\
+    u200bn\\u200bt\\u200bi\\u200bc\\u200bs\\u200bc\\u200bh\\u200bo\\u200bl\\u200ba\\u200br\\u200b.\\u200bo\\u200br\\u200bg\\\
+    u200b/\\u200bp\\u200ba\\u200bp\\u200be\\u200br\\u200b/\\u200bR\\u200be\\u200bt\\u200br\\u200bi\\u200be\\u200bv\\u200ba\\\
+    u200bl\\u200b-\\u200bA\\u200bu\\u200bg\\u200bm\\u200be\\u200bn\\u200bt\\u200be\\u200bd\\u200b-\\u200bG\\u200be\\u200bn\\\
+    u200be\\u200br\\u200ba\\u200bt\\u200bi\\u200bo\\u200bn\\u200b-\\u200bf\\u200bo\\u200br\\u200b-\\u200bN\\u200bL\\u200bP\\\
+    u200b-\\u200bT\\u200ba\\u200bs\\u200bk\\u200bs\\u200b-\\u200bL\\u200be\\u200bw\\u200bi\\u200bs\\u200b-\\u200bP\\u200be\\\
+    u200br\\u200be\\u200bz\\u200b/\\u200b6\\u200b5\\u200b9\\u200bb\\u200bf\\u200b9\\u200bc\\u200be\\u200b7\\u200b1\\u200b7\\\
+    u200b5\\u200be\\u200b1\\u200be\\u200bc\\u200b2\\u200b6\\u200b\\n6\\u200bf\\u200bf\\u200b5\\u200b4\\u200b3\\u200b5\\u200b9\\\
+    u200be\\u200b2\\u200bb\\u200bd\\u200b7\\u200b6\\u200be\\u200b0\\u200bb\\u200b7\\u200bf\\u200bf\\u200b3\\u200b1.\\n15.\\\
+    t Lobentanzer S, Feng S, Bruderer N, et al. A platform for the biomedical application of large language models. Nat Biotech\\\
+    u00ad\\nnol. 2025;43(2):166\\u20139. https://doi.org/10.1038/s41587-024-02534-3.\\n16.\\t Malik-Sheriff RS, Glont M, Nguyen\
+    \ TVN, et al. BioModels-15 years of sharing computational models in life science. Nucleic\\nAcids Res. 2020;48(D1):D407\\\
+    u201315. https://doi.org/10.1093/nar/gkz1055.\\n17.\\t Marcoline FV, Furth J, Nayak S, Grabe M, Macey RI. Berkeley Madonna\
+    \ version 10\\u2013a simulation package for solving math\\u00ad\\nematical models. CPT Pharmacometrics Syst Pharmacol.\
+    \ 2022;11(3):290\\u2013301. https://doi.org/10.1002/psp4.12757.\\n18.\\t Markevich NI, Hoek JB, Kholodenko BN. Signaling\
+    \ switches and bistability arising from multisite phosphorylation in protein\\nkinase cascades. J Cell Biol. 2004;164(3):353\\\
+    u20139. https://doi.org/10.1083/jcb.200308060.\\n19.\\t OpenAI, Josh Achiam, Steven Adler, et al. \\u2018GPT-4 Technical\
+    \ Report\\u2019. arXiv:2303.08774. Preprint, arXiv 2024 March 4. \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\\
+    u200b/\\u200bd\\u200b\\no\\u200bi\\u200b.\\u200bo\\u200br\\u200bg\\u200b/\\u200b1\\u200b0\\u200b.\\u200b4\\u200b8\\u200b5\\\
+    u200b5\\u200b0\\u200b/\\u200ba\\u200br\\u200bX\\u200bi\\u200bv\\u200b.\\u200b2\\u200b3\\u200b0\\u200b3\\u200b.\\u200b0\\\
+    u200b8\\u200b7\\u200b7\\u200b4\\u200b.\\u200b\\n20.\\t Ryan Li, Kexin Huang, Shiyi Cao, Yuanhao Qu, and Jure Leskovec.\
+    \ 2025. \\u2018Biomni-R0: Using RL to Hill-Climb Biomedical\\nReasoning Agents to Expert-Level\\u2019. September.\\n21.\\\
+    t Saez-Rodriguez J, Bl\\u00fcthgen N. Personalized signaling models for personalized treatments. Mol Syst Biol. 2020;16(1):e9042.\\\
+    nhttps://doi.org/10.15252/msb.20199042.\\n22.\\t Shaikh B, Marupilla G, Wilson M, Blinov ML, Moraru II, Karr JR. RunBioSimulations:\
+    \ an extensible web application\\nthat simulates a wide range of computational modeling frameworks, algorithms, and formats.\
+    \ Nucleic Acids Res.\\n2021;49(W1):W597-602. https://doi.org/10.1093/nar/gkab411.\\n23.\\t Tang B, Wang X, Li Q, et al.\
+    \ Estimation of the transmission risk of the 2019-nCoV and its implication for public health inter\\u00ad\\nventions.\
+    \ J Clin Med. 2020;9(2):462. https://doi.org/10.3390/jcm9020462.\\n24.\\t The MathWorks Inc. 2024. SimBiology Toolbox\
+    \ Version: 24.2 (R2024b). The MathWorks Inc., released. \\u200bh\\u200bt\\u200bt\\u200bp\\u200bs\\u200b:\\u200b/\\u200b/\\\
+    u200bw\\u200bw\\u200bw\\u200b.\\u200bm\\u200ba\\u200bt\\u200bh\\u200bw\\u200bo\\u200br\\u200bk\\u200bs\\u200b.\\u200b\\\
+    nc\\u200bo\\u200bm\\u200b.\\u200b\\n25.\\t The UniProt Consortium. UniProt: the universal protein knowledgebase in 2025.\
+    \ Nucleic Acids Res. 2025;53(D1):D609\\u201317.\\nhttps://doi.org/10.1093/nar/gkae1010.\\n26.\\t Wilkinson MD, Dumontier\
+    \ M, Aalbersberg IJ, et al. The FAIR guiding principles for scientific data management and stew\\u00ad\\nardship. Sci\
+    \ Data. 2016;3(1):160018. https://doi.org/10.1038/sdata.2016.18.\\n27.\\t Yao S, Zhao J, Yu D, et al. \\u2018ReAct: synergizing\
+    \ reasoning and acting in language models\\u2019. 2023 arXiv:2210.03629. Preprint,\\narXiv, March 10. https://doi.org/10.48550/arXiv.2210.03629.\\\
+    nPublisher's Note\\nSpringer Nature remains neutral with regard to jurisdictional claims in published maps and institutional\
+    \ affiliations.\"\n  }\n]"
+  acknowledgments: 'We acknowledge the contributions of Anil Kumar Kanasani and Maryam Najafian during the “AI Agents for
+    Life
+
+    Sciences” hackathon on October 14-15 2024. We acknowledge Ansh Kumar for technical support while running the T2B
+
+    benchmark analysis. We acknowledge the technical support from Dror Hilman, Jake Valsamis, Conor Mohan, and Ben
+
+    Evan Tsur, gracious donations of computing resources during our hackathon from Shahar Frunkin, and Daniel Koster,
+
+    and an going support and facilitation from Simon Adar (CodeOcean https://codeocean.com/). We acknowledge funding
+
+    support for our Hackathon from the AI Health Innovation Cluster (https://www.aih-cluster.ai/) and particular the help
+
+    received from Daniela Beyer and the rest of the AIH Coordination Team. We thank Ornella Kossi, Ann-Kristin Mueller, and
+
+    Stefanie Schimmel from BioLabs Heidelberg, (https://www.biolabs.io/heidelberg), for hosting our hackathons. We thank
+
+    Isabel Wilkinson, Uwe Samer, Nick Venanzi, and David Ruau from NVIDIA for assisting with our integration of NVIDIA NIMs
+
+    for chat and embedding inference and graciously providing free credits for use with T2B. We thank Vultr ​(​h​t​t​p​s​:​/​/​w​w​w​.​v​u​l​
+
+    t​r​.​c​o​m​/​) for graciously providing free credits for deploying T2B.'
+  author_contributions: 'LW, GS and DM conceptualized the study. LW prototyped T2B functions. GS developed the agentic AI
+    framework and the
+
+    agentic AI tools for T2B. AWM contributed to the development of the agentic AI framework and created the figures and
+
+    icons. RHS implemented get annotations tool. GS and AWM developed T2B’s user interface. HH and TN crosslinked T2B
+
+    in BioModels repository. DM, RSMS, and LW conceptualized use cases. LW designed use cases. LW wrote the manuscript
+
+    and documentation of the use cases. DM supervised the writing of the manuscript and the development of the agentic
+
+    AI framework. All authors contributed to testing T2B and reviewing the manuscript.'
+  funding: This study was funded by BioMed X Germany GmbH and Sanofi-Aventis Deutschland.
+  competing_interests: 'MHM, HC, TA and TK are Sanofi employees and may hold shares and/or stock options in the company. No
+    other conflicts
+
+    of interest are declared.
+
+
+    Page 9 of 9
+
+    Wehling et al. BMC Bioinformatics          (2025) 26:276
+
+    Received: 8 July 2025 / Accepted: 22 October 2025'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n   \
+    \ \"page\": 3\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\",\n\
+    \    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  }\n]"
+references:
+  reference_count: 19

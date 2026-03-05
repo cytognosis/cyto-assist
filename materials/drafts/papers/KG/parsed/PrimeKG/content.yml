@@ -1,0 +1,824 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/PrimeKG.pdf
+
+identifiers:
+  doi: 10.1038/s41597-023-01960-3
+  pmid: '36732524'
+citation:
+  title: Building a knowledge graph   to enable precision medicine
+  year: '2023'
+  journal: Scientific Data
+  volume: '10'
+  publisher: Springer Science and Business Media LLC
+  authors: Payal Chandak, Kexin Huang, Marinka Zitnik
+content:
+  abstract: "s \nService Registry (CAS) identifiers from the vocabulary retrieved from DrugBank. Once all features were mapped,\
+    \ \ntext processing removed all tokens referenced in DrugBank (for example, “[L64839]”) with the help of regular \nexpressions.\
+    \ We nullified locations where the text mentioned that no data was available for the half-life feature. \nFinally, we\
+    \ converted numerical features into textual descriptions in order to standardize the feature set.\nWe select the drug\
+    \ Prednisolone as an example to illustrate the depth of clinical information available in \nthese features. The ‘[…]’\
+    \ is used to compress text sections for brevity. Prednisolone is a glucocorticoid simi-\nlar to cortisol used for its\
+    \ anti-inflammatory, immunosuppressive, anti-neoplastic, and vasoconstrictive effects. \nPrednisolone has a plasma half-life\
+    \ of 2.1–3.5 hours. Prednisolone is indicated to treat endocrine, rheumatic, \nand hematologic disorders; […] and other\
+    \ conditions like tuberculous meningitis. Corticosteroids binding to \nthe glucocorticoid receptor mediates changes in\
+    \ gene expression that lead to […]. Prednisolone’s protein binding \nis highly variable […]. Corticosteroids bind to the\
+    \ glucocorticoid receptor, inhibiting pro-inflammatory signals \nand promoting […]. Prednisolone is solid. Prednisolone\
+    \ is part of Adrenal Cortex Hormones; Adrenals; […] \nPrednisolone is approved, and vet approved. Prednisolone uses Prednisone\
+    \ Action Pathway […] The molecular \nweight is 360.45. Prednisolone has a topological polar surface area of 94.83. The\
+    \ log p value of Prednisolone is \n1.42.\nE. Supplementing disease nodes with clinical information. \nWe extracted textual\
+    \ features for diseases \nnodes in the knowledge graph from the MONDO Disease Ontology44, Orphanet48, Mayo Clinic55, and\
+    \ UMLS \nknowledgebase46 (Fig. 2d). Features from all these sources were mapped to the ‘node_id’ field of disease nodes,\
+    \ \nwhich was defined using the MONDO Disease Ontology. Since disease nodes were grouped as described in \nthe Technical\
+    \ Validation section, many diseases defined in the MONDO Disease Ontology (i.e., many ‘node_id’ \nvalues) were collapsed\
+    \ into a single node (i.e., unique ‘node_index’ values). Since disease features are mapped to"
+  sections: "[\n  {\n    \"name\": \"Background & Summary\",\n    \"text\": \"Precision medicine takes an approach to disease\
+    \ diagnosis and treatment that accounts for the variability in\\ngenetics, environment, and lifestyle across individuals1.\
+    \ To be precise, medicine must revolve around data and\\nlearn from biomedical knowledge and health information2. Nevertheless,\
+    \ many barriers to efficiently exploiting\\ninformation across biological scales slow down the research and development\
+    \ of individualized care2. While\\nmany have acknowledged the difficulties in linking biomedical knowledge to patient-level\
+    \ health informa-\\ntion2\\u20135, few realize that biomedical knowledge is itself fragmented. Biomedical knowledge about\
+    \ complex dis-\\neases comes from different organizational scales, including genomics, transcriptomics, proteomics, molecular\\\
+    nfunctions, intra- and inter-cellular pathways, phenotypes, therapeutics, and environmental effects. For any given\\ndisease,\
+    \ information from these organizational scales is scattered across publications, non-standardized data\\nrepositories,\
+    \ evolving ontologies, and clinical guidelines. Developing networked relationships between these\\nsources can support\
+    \ research in precision medicine.\\nA resource that comprehensively describes the relationships of diseases to biomedical\
+    \ entities would enable\\nsystematic study of human disease. Understanding the connections between diseases, drugs, phenotypes,\
+    \ and\\nother entities could open the doors for many types of research, including but not limited to the study of phe-\\\
+    nnotyping6\\u20138, disease etiology9, disease similarity10, diagnosis11\\u201313, treatments14, drug-disease relationships15\\\
+    u201317,\\nmechanisms of drug action18 and resistance3, drug repurposing19\\u201321, drug discovery22,23, adverse events24,25,\
+    \ and\\ncombination therapies26. Knowledge graphs developed for individual diseases have yielded insights into respec-\\\
+    ntive disease areas27\\u201342. Nevertheless, the costs and extended timelines of these individual efforts point to a\
+    \ need\\nfor a resource that would unify biomedical knowledge and enable the investigation of diseases at scale.\\nWhile\
+    \ many primary data resources contain information about diseases, consolidating them into a com-\\nprehensive, disease-rich,\
+    \ and functional knowledge graph presents three challenges. First, existing approaches\\nto network analysis of diseases\
+    \ require expert review and curation of data in the knowledge graph29,30,43. While\\nincredibly detailed, such efforts\
+    \ require substantial manual labor and expensive expert input, making them\\ndifficult to scale. Second, there lacks a\
+    \ consistent representation of diseases across biomedical datasets and\\n1Harvard-MIT Program in Health Sciences and Technology,\
+    \ Cambridge, MA, 02139, USA. 2Department of Computer\\nScience, Stanford University, Stanford, CA, 94305, USA. 3Department\
+    \ of Biomedical Informatics, Harvard Medical\\nSchool, Harvard University, Boston, MA, 02115, USA. 4Broad Institute of\
+    \ MIT and Harvard, Cambridge, MA, 02142,\\nUSA. 5Harvard Data Science Initiative, Cambridge, MA, 02138, USA. 6These authors\
+    \ contributed equally: Payal\\nChandak, Kexin Huang. \\u2709e-mail: marinka@hms.harvard.edu\\nData Descriptor\"\n  },\n\
+    \  {\n    \"name\": \"OPEN\",\n    \"text\": \"2\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nclinical guidelines. Rather than have a standardized\
+    \ disease ontology, database developers select the ontology\\nthat best suits their function from a multitude of biorepositories44\\\
+    u201354. Because each set of disease vocabulary\\nwas tailored for some to serve a unique purpose, their disease encodings\
+    \ overlap unsystematically and are\\noften in conflict. For instance, International Classification of Diseases (ICD) codes50\
+    \ are optimized for med-\\nical billing whereas MedGen53, PhenoDB51, and Orphanet48 focus on rare and genetic diseases.\
+    \ Moreover,\\nexpertly curated disease descriptions in medical repositories do not follow any naming conventions48,55.\
+    \ The\\nlack of standardized disease representations and the multimodal nature of the datasets makes it challenging\\\
+    nto harmonize biomedical knowledge at scale. Third, the definition of diseases as discrete and distinct units\\nof analysis\
+    \ remains medically and scientifically ambiguous. For instance, while autism spectrum disorder is\\nconsidered a medical\
+    \ diagnosis, the condition has many subtypes linked to clinically divergent manifesta-\\ntions56,57. Clinically studied\
+    \ disease subtypes often do not correlate clearly with those defined in disease ontol-\\nogies. Although only three subtypes\
+    \ of autism have been clinically identified57, the Unified Medical Language\\nSystem (UMLS)46 describes 192 subtypes,\
+    \ the Monarch Disease Ontology (MONDO)44 describes 37 subtypes,\\nand finally, Orphanet48 contains 6 disease entries for\
+    \ autism. The challenge in reconciling disease entities is\\nonly exacerbated by the variety of synonyms and abbreviations\
+    \ available for any particular disease58 and the\\ndifficulty in linking structured disease entities to unstructured names\
+    \ in text59. Meaningful disease entity res-\\nolution across multimodal, non-standardized datasets is critical for developing\
+    \ resources useful for precision\\nmedicine tasks.\\nWhile drug repurposing remains the focus of knowledge graph development33,37,39,42,60\\\
+    u201362, considerable effort\\nhas been devoted to building knowledge graphs from biomedical literature28,31,40 and clinical\
+    \ records29,30,34,63.\\nAs early efforts to investigate the connection between clinical manifestations of diseases and\
+    \ their underlying\\nmolecular interactions, the Human diseases network (HDN) and Human symptoms-disease network (HSDN)\\\
+    nhave been influential in demonstrating the relevance of disease-centric knowledge graphs64,65. Scalable Precision\\nMedicine\
+    \ Open Knowledge Engine (SPOKE) network is a seminal effort that linked many heterogeneous bio-\\nmedical databases to\
+    \ build a knowledge graph focused on diseases38. Although SPOKE is limited to 137 diseases\\nand lacks multimodal connections\
+    \ between textual clinical guidelines and tabular molecular data, it has enabled\\nmany precision medicine efforts, including\
+    \ overlaying individual patient information onto the SPOKE\\u2019s graph35.\\nAnother knowledge graph focused exclusively\
+    \ on rare diseases, Genetic and Rare Diseases Information Center\\n(GARD)34, has advanced understanding of unmet medical\
+    \ needs and evidence-based studies for patients with\\nunder-diagnosed diseases66,67. Most recently, a White House initiative\
+    \ led the development of the COVID-19\\nOpen Research Dataset (CORD-19)68. CORD-19 is designed to empower data-driven\
+    \ medicine during the pan-\\ndemic by powering neural search engines for healthcare workers69,70 and providing insights\
+    \ into drug repur-\\nposing opportunities71. Collectively, biomedical knowledge graphs have lent themselves to a variety\
+    \ of scientific\\ndiscoveries72,73, methodological innovations74\\u201376 and coordinated initiatives for model evaluation\
+    \ and bench-\\nmarking32,36,77. Further, knowledge graphs facilitated research across various problems faced by the biomedical\\\
+    ncommunity. Nevertheless, due to the medical heterogeneity of diseases, the multimodal nature of disease infor-\\nmation,\
+    \ and the incompatibility of existing disease repositories, knowledge graphs focused on diseases have not\\nyet achieved\
+    \ the scale or impact of biomedical efforts.\\nPrecision Medicine Knowledge Graph (PrimeKG) is a knowledge graph providing\
+    \ a holistic and multimodal\\nview of diseases. We integrate 20 high-quality resources, biorepositories, and ontologies\
+    \ to curate this knowledge\\ngraph. Across 129,375 nodes and 4,050,249 relationships, PrimeKG captures information on\
+    \ ten major biolog-\\nical scales, including disease-associated perturbations in the proteome, biological processes, molecular\
+    \ path-\\nways, anatomical and phenotypic scales, environmental exposures, and the range of approved and experimental\\\
+    ndrugs together with their therapeutic action (Fig.\\u00a01a,b). We demonstrate that PrimeKG improves on coverage of\\\
+    ndiseases, both rare and common, by one-to-two orders of magnitude compared to existing knowledge graphs.\\nMoreover,\
+    \ disease nodes in PrimeKG are densely connected to many other node types, including phenotypes,\\nexposures, and drugs.\
+    \ We tune PrimeKG specifically to support artificial intelligence analyses to understand\\nhow drugs target disease-associated\
+    \ molecular perturbations by including an abundance of \\u2018indications\\u2019, \\u2018contra-\\ndictions\\u2019, and\
+    \ \\u2018off-label use\\u2019 drug-disease edges, which are usually missing or sparse in other knowledge graphs.\\nWe\
+    \ supplement PrimeKG\\u2019s graph structure with textual descriptions of clinical guidelines for drug and disease\\nnodes\
+    \ to enable multimodal analyses (Fig.\\u00a01c). Finally, we address the disease entity resolution challenge by\\nimproving\
+    \ the correspondence between diseases in PrimeKG and disease subtypes found in the clinic to enable\\nPrimeKG-powered\
+    \ analyses in precision medicine.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"We proceed with a detailed\
+    \ description of the 20 primary data resources used to build PrimeKG. Table\\u00a01 lists\\nprimary data resources organized\
+    \ by node types in PrimeKG. Since many resources contain information about\\nmultiple types of nodes in PrimeKG, we ordered\
+    \ these resources alphabetically in the following description.\\nA. Overview of primary data resources.\\nTo develop a\
+    \ comprehensive knowledge graph to study diseases,\\nwe considered 20 primary resources and a number of additional repositories\
+    \ of biological and clinical informa-\\ntion. Figure\\u00a02a provides an overview of all 20 resources. The data resources\
+    \ provide widespread coverage of bio-\\nmedical entities, including proteins, genes, drugs, diseases, anatomy, biological\
+    \ processes, cellular components,\\nmolecular functions, exposures, disease phenotypes and drug side effects. These were\
+    \ high-quality datasets, either\\nexpertly curated annotations such as the Disease Gene Network (DisGeNet) of gene-disease\
+    \ associations78 and\\nthe Mayo Clinic knowledgebase55, widely-used standardized ontologies such as the MONDO Disease\
+    \ Ontology44,\\nor direct readouts of experimental measurements such as Bgee gene expression knowledgebase79 and DrugBank80.\\\
+    nA complete list of primary resources and the processing steps are listed in the Methods section.\\n\\n3\\nScientific\
+    \ Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nBgee gene expression knowledge base in animals.\\u2003 Bgee79 contains gene expression patterns across multiple\\nanimal\
+    \ species. We retrieved gene expression data for humans from ftp://ftp.bgee.org/current/download/calls/\\nexpr_calls/Homo_sapiens_expr_advanced.tsv.gz\
+    \ on 31 May 2021. First, we ensured that all anatomical entities\\nwere coded using the UBERON ontology. Then, we filtered\
+    \ the dataset to retain gold quality calls with a false\\ndiscovery rate corrected p-value of\\u2009\\u2264\\u20090.01.\
+    \ Finally, we filtered the expression rank column to extract highly\\nexpressed genes. Based on the range and distribution\
+    \ of the expression rank, we retained all data with an expres-\\nsion rank less than 25,000. After processing, we had\
+    \ 1,786,311 anatomy-protein associations where gene expres-\\nsion was found to be present or absent.\\nComparative toxicogenomics\
+    \ database.\\u2003 The Comparative Toxicogenomics Database (CTD)81 is focused on the\\nimpact of environmental exposures\
+    \ on human health. We retrieved information about exposures (05/21 version)\\nfrom http://ctdbase.org/reports/CTD_exposure_events.csv.gz\
+    \ on 9 Jun 2021. Processing involved removing\\nheader comments from the raw file. After processing, our data contained\
+    \ 180,976 associations of exposures with\\nexposures, proteins, diseases, biological processes, molecular functions, and\
+    \ cellular components.\\nDisGeNET knowledgebase of gene-disease associations.\\u2003 DisGeNET78 is a resource about the\
+    \ relationships\\nbetween genes and human disease that has been curated by experts. We retrieved curated disease-gene\
+    \ associa-\\ntions (version 7.0) from https://www.disgenet.org/static/disgenet_ap1/files/downloads/curated_gene_disease_\\\
+    nassociations.tsv.gz on 31 May 2021. The raw data file, \\u2018curated_gene_disease_associations.tsv\\u2019 was not processed\\\
+    nfurther and contained 84,038 associations of genes with diseases and phenotypes.\\nDisease ontology.\\u2003 Disease Ontology47\
+    \ groups diseases in many meaningful clusters using clinically relevant\\ncharacteristics. For instance, diseases are\
+    \ grouped by the anatomical entity. We retrieved the ontology from\\nhttps://raw.githubusercontent.com/DiseaseOntology/HumanDiseaseOntology/main/src/ontology/HumanDO.\\\
+    nobo on 29 Jun 2021. The raw data \\u2018HumanDO.obo\\u2019 is mapped to disease nodes in PrimeKG. As the MONDO\\nFig.\
+    \ 1\\u2002 Overview of PrimeKG multimodal knowledge graph. (a) Shown is a schematic overview of the various\\ntypes of\
+    \ nodes in PrimeKG and the relationships they have with other nodes in the graph. (b) All disease nodes\\nin PrimeKG shown\
+    \ in a circular layout together with disease-associated information. All relationships between\\ndisease nodes and any\
+    \ other node type are depicted here. Disease nodes are densely connected to four other\\nnode types in PrimeKG through\
+    \ seven types of relations. (c) Shown is an example of paths in PrimeKG between\\nthe disease node \\u2018Autism\\u2019\
+    \ and the drug node \\u2018Risperidone\\u2019. Intermediate nodes are colored by their node type\\nfrom panel a. We also\
+    \ display snippets of text features for both nodes to demonstrate the multimodality of\\nPrimeKG. Abbreviations - MF:\
+    \ molecular function, BP: biological process, CC: cellular component, APZ:\\nApiprazole, EPI: epilepsy, ABP: abdominal\
+    \ pain, +/\\u2212 associations: positive and negative associations.\\n\\n4\\nScientific Data |           (2023) 10:67\
+    \  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nDisease\
+    \ Ontology is not organized anatomically or by clinical specialty, the include of Disease Ontology in\\nPrimeKG allows\
+    \ users of PrimeKG to explore disease nodes in a medically meaningful format.\\nDrugBank.\\u2003 DrugBank80 is a resource\
+    \ that contains pharmaceutical knowledge. We retrieved the knowledge-\\nbase (version 5.1.8) from https://go.drugbank.com/releases/5-1-8/downloads/all-full-database\
+    \ on 31 May 2021.\\nProcessing involved using the Beautiful Soup package82 to extract synergistic drug interactions. The\
+    \ processed\\ndata contains 2,682,157 associations. We also extracted drug features from the raw data. For over 14,000\
+    \ drugs,\\nwe construct 12 drug features, including group, state, description, mechanism of action, Anatomical Therapeutic\\\
+    nChemical (ATC) code, pharmacodynamics, half-life, target protein binding information, and pathways.\\nWe also retrieved\
+    \ information about drug targets from https://go.drugbank.com/releases/5-1-8/downloads/\\ntarget-all-polypeptide-ids,\
+    \ about drug enzymes from https://go.drugbank.com/releases/5-1-8/downloads/\\nenzyme-all-polypeptide-ids, about drug carriers\
+    \ from https://go.drugbank.com/releases/5-1-8/downloads/\\ncarrier-all-polypeptide-ids, about drug transporters from https://go.drugbank.com/releases/5-1-8/downloads/\\\
+    ntransporter-all-polypeptide-ids all on 31 May 2021. Processing involved combining all four resources and map-\\nping\
+    \ gene names from UniProt IDs to the National Center for Biotechnology Information (NCBI) gene IDs\\nusing vocabulary\
+    \ retrieved from Human Gene Nomenclature (HGNC) gene names https://www.genenames.org.\\nThe processed data contains 26,118\
+    \ drug-protein interactions.\\nDrug central.\\u2003 Drug Central83 is a resource that curates information about drug-disease\
+    \ interactions. We\\nretrieved the Drug Central SQL database from https://drugcentral.org/ActiveDownload on 1 Jun 2021.\
+    \ The\\ndatabase was loaded into Postgres SQL, and drug-disease relationships were extracted. The processed data con-\\\
+    ntains 26,698 indication edges, 8,642 contraindication edges, and 1,917 off-label use edges. We also extracted drug\\\
+    nfeatures from the Drug Central SQL database from the \\u2018structures\\u2019 and \\u2018structure_type\\u2019 tables.\
+    \ We extracted fea-\\ntures for over 4,500 drugs, representing each drug with features including topological polar surface\
+    \ area (TPSA),\\nmolecular weight, and cLogP, which is the logarithm of a compound\\u2019s partition coefficient between\
+    \ n-octanol\\nand water, and is a well established measure of the compound\\u2019s hydrophilicity. For example, the features\
+    \ for\\nAtorvastatin are organic structure, the molecular weight of 558.65, TPSA of 111.79 and the cLogP value of 4.46.\\\
+    nEntrez gene.\\u2003 Entrez Gene84 is a resource maintained by the NCBI that contains vast amounts of gene-specific\\\
+    ninformation. We retrieved data about relations between genes and Gene Ontology terms from https://ftp.ncbi.\\nnlm.nih.gov/gene/DATA/gene2go.gz\
+    \ on 31 May 2021. Processing involved using the GOATOOLS package85 to\\nextract relations between genes and Gene Ontology\
+    \ terms. The processed data contains 297,917 associations of\\ngenes with biological processes, molecular functions, and\
+    \ cellular components.\\nGene ontology.\\u2003 The Gene Ontology86 describes molecular functions, cellular components,\
+    \ and biological\\nprocesses. We retrieved the ontology from http://purl.obolibrary.org/obo/go/go-basic.obo on 31 May\
+    \ 2021.\\nProcessing involved using the GOATOOLS package85 to extract information for Gene Ontology terms and\\nrelations\
+    \ between GO terms. The processed data contains 71,305 hierarchical associations between biological\\nprocesses, molecular\
+    \ functions, and cellular components.\\nHuman phenotype ontology.\\u2003 The Human Phenotype Ontology45 (version hpo-obo@2021-04-13)\
+    \ provides\\ninformation on phenotypic abnormalities found in diseases. We retrieved the ontology from http://purl.oboli-\\\
+    nbrary.org/obo/hp.obo on 31 May 2021. Processing involved parsing the ontology file to extract phenotype terms\\nin the\
+    \ ontology, parent-child relationships, and cross-references to other ontologies. The processed data contains\\ndisease-phenotype,\
+    \ protein-phenotype, and phenotype-phenotype edges. We also retrieved expertly curated\\nannotations from http://purl.obolibrary.org/obo/hp/hpoa/phenotype.hpoa\
+    \ on 31 May 2021. From this curated\\nsource, we extracted 218,128 positive and negative associations between diseases\
+    \ and phenotypes.\\nNode Type\\nCount\\nPercent (%)\\nData Sources\\nBiological process\\n28,642\\n22.1\\nCTD, Entrez\
+    \ Gene, Gene Ontology\\nProtein\\n27,671\\n21.4\\nBgee, CTD, DisGeNET, DrugBank, Entrez Gene, Human Phenotype Ontology,\
+    \ Human PPI\\nNetwork, Reactome, UMLS\\nDisease\\n17,080\\n13.2\\nCTD, DisGeNET, Disease Ontology, Drug Central, Human\
+    \ Phenotype Ontology, Mayo\\nClinic, MONDO Disease Ontology, Orphanet\\nPhenotype\\n15,311\\n11.8\\nDisGeNET, Human Phenotype\
+    \ Ontology, SIDER\\nAnatomy\\n14,035\\n10.8\\nBgee, UBERON\\nMolecular function\\n11,169\\n8.6\\nCTD, Entrez Gene, Gene\
+    \ Ontology\\nDrug\\n7,957\\n6.2\\nDrugBank, Drug Central, SIDER\\nCellular component\\n4,176\\n3.2\\nCTD, Entrez Gene,\
+    \ Gene Ontology\\nPathway\\n2,516\\n1.9\\nReactome\\nExposure\\n818\\n0.6\\nCTD\\nTotal\\n129,375\\n100.0\\n20 primary\
+    \ data sources\\nTable 1.\\u2002 Information about nodes and node types in PrimeKG.\\n\\n5\\nScientific Data |       \
+    \    (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nMayo clinic.\\u2003 Mayo Clinic is a nonprofit academic medical center and biomedical research institution care55.\\\
+    nIt maintains a knowledgebase, https://www.mayoclinic.org/diseases-conditions, with information about symp-\\ntoms, causes,\
+    \ risk factors, complications, and prevention of 2,227 diseases and conditions. We web-scraped the\\nknowledgebase and\
+    \ extracted descriptions for these diseases and conditions using the mayo.py and diseases.py\\nscripts on 28 March 2021.\
+    \ The raw data is available at \\u2018mayo.csv\\u2019 in the PrimeKG repository.\\nFor example, we illustrate the extracted\
+    \ features for atrial fibrillation from Mayo Clinic. \\u2018Some people with\\natrial fibrillation have no symptoms [\\\
+    u2026] others may experience signs and symptoms such as Palpitations,\\nWeakness, [\\u2026] and Chest Pain. The disease\
+    \ occurs when \\u2018the two upper chambers of your heart experience\\nchaotic electrical signals [\\u2026] As a result,\
+    \ they quiver. The AV node is bombarded with impulses to get through\\nto the ventricles. Certain factors may increase\
+    \ your risk of developing atrial fibrillation, including age, heart\\ndisease, [\\u2026] and obesity. Complications include:\
+    \ \\u2018the chaotic rhythm causing blood to pool in your atria and\\nform clots [\\u2026] leading to a stroke. [\\u2026]\
+    \ Atrial fibrillation, especially if not controlled, may weaken the heart and\\nlead to heart failure. To prevent atrial\
+    \ fibrillation, it\\u2019s important to live a heart-healthy lifestyle [\\u2026] which may\\ninclude increasing your physical\
+    \ activity [\\u2026]. These snippets represent only an overview of over three pages of\\ndescriptive features available\
+    \ on atrial fibrillation.\\nMONDO disease ontology.\\u2003 Since the MONDO Disease Ontology44 harmonizes diseases from\
+    \ a wide range of\\nontologies, including the Online Mendelian Inheritance in Man (OMIM)49, SNOMED Clinical Terms (CT),\\\
+    nFig. 2\\u2002 Building PrimeKG. The panels sequentially illustrate the process of developing the Precision Medicine\\\
+    nKnowledge Graph. (a) Shown are 20 primary data resources curated to develop PrimeKG. The colors highlight\\nwhich data\
+    \ records are used to uniquely identify each node type. For example, GO is colored by biological\\nprocesses, cellular\
+    \ components, and molecular functions because GO terms are the unique identifiers used to\\ndefine nodes for these three\
+    \ node types. (b) Primary resources are colored by each node type for which they\\npossess information. For example, GO\
+    \ provides links from biological processes, cellular components, and\\nmolecular functions to genes. As a result, we add\
+    \ the fourth color to represent the gene/protein class. (c) Illustrated\\nis the process of harmonizing these primary\
+    \ data records to extract relationships between node types. (d) The\\nleft side illustrates PrimeKG, and the right side\
+    \ shows all the textual sources of clinical information on drugs\\nand diseases. The node type legend is consistent across\
+    \ the figure. Abbreviations - MF: molecular function, BP:\\nbiological process, CC: cellular component, PPI: protein-protein\
+    \ interactions, DO: disease ontology, MONDO:\\nMONDO disease ontology, Entrez: Entrez gene, GO: gene ontology, UMLS: unified\
+    \ medical language system,\\nHPO: human phenotype ontology, CTD: comparative toxicogenomics database, SIDER: side effect\
+    \ resource.\\n\\n6\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nInternational Classification of Diseases (ICD), and Medical Dictionary for Regulatory\
+    \ Activities (MedDRA),\\nit was our preferred ontology for defining diseases. We retrieved the ontology from http://purl.obolibrary.org/\\\
+    nobo/MONDO.obo on 31 May 2021. Processing involved parsing the ontology file to extract disease terms in the\\nontology,\
+    \ parent-child relationships, subsets of diseases, cross references to other ontologies, and definitions of\\ndisease\
+    \ terms. The processed data contains 64,388 disease-disease edges.\\nOrphanet.\\u2003 Orphanet48 is a database that focuses\
+    \ on gathering knowledge about rare diseases. The Orphanet\\nresource at https://www.orpha.net/consor/cgi-bin/Disease_Search_List.php?lng=EN\
+    \ has curated information\\nabout definitions, prevalence, management and treatment, epidemiology, and clinical description\
+    \ for 9,348 rare\\ndiseases. We retrieved the resource data and extracted disease features on 10 May 2021 using the orpha.py\
+    \ script\\navailable in the PrimeKG repository.\\nLet us illustrate features in PrimeKG for rare Hurler syndrome with\
+    \ the Orphanet ID 93473. Hurler syndrome\\nis the most severe form of mucopolysaccharidosis type 1, a rare lysosomal storage\
+    \ disease characterized by skel-\\netal abnormalities, cognitive impairment, heart disease, [\\u2026] and reduced life\
+    \ expectancy. The prevalence of the\\nHurler subtype of MPS1 is estimated at 1/200,000 in Europe and one in a million\
+    \ in general. The clinical mani-\\nfestation of the disease includes \\u2018 musculoskeletal alterations, cardiomyopathy,\
+    \ [\\u2026] and neurosensorial hearing\\nloss within the first year of life. Management of the disease is multidisciplinary:\
+    \ \\u2018Hematopoietic stem cell trans-\\nplantation is the treatment of choice as it can prolong survival. [\\u2026]\
+    \ Enzyme replacement therapy (ERT) with\\nlaronidase [\\u2026] is a lifelong therapy which alleviates nonneurological\
+    \ symptoms.\\u2019. These descriptions represent\\na brief snapshot of expertly curated knowledge incorporated in PrimeKG.\\\
+    nFour sources of physical protein-protein interactions.\\u2003 Protein-protein interactions (PPIs) are composed of\\nexperimentally-verified\
+    \ interactions between proteins. The interactions we consider are diverse in nature and\\ninclude signaling, regulatory,\
+    \ metabolic-pathway, kinase-substrate and protein complex interactions, which are\\nconsidered unweighted and undirected.\
+    \ We use the human PPI network compiled by Menche et al.87 as the start-\\ning resource. This resource integrates several\
+    \ protein-protein interaction databases, including TRANSFAC for\\nregulatory interactions88, MINT and IntAct for yeast\
+    \ to hybrid binary interactions89,90, and CORUM for protein\\ncomplex interactions91. Additionally, we retrieve protein-protein\
+    \ interaction information from from BioGRID92\\nand STRING93 databases. We also consider the human reference interactome\
+    \ (HuRI) generated by Luck et al.94,\\nspecifically, we use the high throughput investigation (HI) union, a combination\
+    \ of HuRI and several related\\nefforts to systematically screen for protein-protein interactions. The processed data\
+    \ contains 642,150 edges.\\nReactome pathway database.\\u2003 Reactome95 is an open-source, curated database for pathways.\
+    \ We retrieved informa-\\ntion about pathways from https://reactome.org/download/current/ReactomePathways.txt, relationships\
+    \ between\\npathways from https://reactome.org/download/current/ReactomePathwaysRelation.txt and pathway-protein\\nrelations\
+    \ from https://reactome.org/download/current/NCBI2Reactome.txt on 31 May 2021. Processing involved\\nextracting ontology\
+    \ information such as hierarchical relationships and extracting pathway-protein interactions.\\nThe processed data contains\
+    \ 5,070 pathway-pathway and 85,292 protein-pathway edges.\\nSide effect knowledgebases.\\u2003 The Side Effect Resource\
+    \ (SIDER)96 contains data about adverse drug reactions.\\nWe retrieved side-effect data (SIDER 4.1 version) from http://sideeffects.embl.de/media/download/meddra_\\\
+    nall_se.tsv.gz and SIDER\\u2019s drug to Anatomical Therapeutic Chemical (ATC) classification mapping from http://\\nsideeffects.embl.de/media/download/drug_atc.tsv\
+    \ on 31 May 2021. Processing involved extracting all side\\neffects where the MedDRA term was coded at the preferred term\
+    \ level and then mapping drugs from STITCH\\nidentifiers97 to ATC identifiers. The processed data 202,736 contains drug-phenotype\
+    \ associations.\\nUberon multi-species anatomy ontology.\\u2003 Uberon98 is an ontology that contains information about\
+    \ the human anat-\\nomy. We retrieved the ontology from http://purl.obolibrary.org/obo/uberon/ext.obo on 31 May 2021.\
+    \ Processing\\ninvolved extracting information about anatomy nodes and the relationships between them. The processed\\\
+    ndata contains 28,064 hierarchical relationships between anatomy nodes.\\nUMLS knowledgebase.\\u2003 The Unified Medical\
+    \ Language System (UMLS) Knowledge Source46 contains infor-\\nmation about biomedical and health-related concepts. We\
+    \ retrieved the complete UMLS Metathesauras from\\nhttps://download.nlm.nih.gov/umls/kss/2021AA/umls-2021AA-metathesaurus.zip\
+    \ on 31 May 2021 in \\u2018.RRF\\u2019\\nformat. To map UMLS CUI terms to the MONDO Disease Ontology, we used the \\u2018MRCONSO.RRF\\\
+    u2019 to extract\\nUMLS Concept Unique Identifier (CUI) terms in English. We mapped UMLS CUI terms to MONDO terms\\nin\
+    \ two ways. Firstly, we directly extracted cross-references between the two from the MONDO ontology. We\\nindirectly mapped\
+    \ UMLS to MONDO using OMIM, National Cancer Institute Thesaurus (NCIT), MESH,\\nMedDRA, ICD 10, and SNOMED CT as intermediate\
+    \ ontologies.\\nFurther, we used \\u2018MRSTY.RRF\\u2019 and \\u2018MRDEF.RRF\\u2019 files to extract definitions for\
+    \ UMLS terms. Of the 127\\nsemantic types in the \\u2018MRSTY.RRF\\u2019 file, we selected 11 that belonged to the Disorder\
+    \ semantic group in a man-\\nner consistent with prior work99. These semantic types were congenital abnormality, acquired\
+    \ abnormality, Injury\\nor poisoning, pathologic function, disease or syndrome, mental or behavioral dysfunction, cell\
+    \ or molecular dys-\\nfunction, experimental model of disease, signs and symptoms, anatomical abnormality, and neoplastic\
+    \ process.\\nWe then used the \\u2018MRDEF.RRF\\u2019 file to extract definitions for CUI terms from sources that were\
+    \ in English.\\nAdditional vocabularies.\\u2003 We retrieved gene names and mappings between NCBI Entrez IDs and UniProt\\\
+    nIDs from https://www.genenames.org/download/custom/ on 31 May 2021. We retrieved the DrugBank drug\\n\\n7\\nScientific\
+    \ Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nvocabulary from https://go.drugbank.com/releases/5-1-8/downloads/all-drugbank-vocabulary on 31 May 2021.\\nThese were\
+    \ used to map nodes in PrimeKG to consistent ontologies.\\nB. Standardizing and harmonizing data resources.\\nTo harmonize\
+    \ these primary resources into\\nPrimeKG, we selected ontologies for each node type, harmonized datasets into a standardized\
+    \ format, and\\nresolved overlap across ontologies. The process of defining node types and selecting common ontologies\
+    \ is illus-\\ntrated in Fig.\\u00a02a where primary data records are colored if they are used to define unique identifiers\
+    \ for a node\\ntype. In the remainder of this study, we interchangeably refer to \\u2018gene/protein\\u2019 nodes as proteins\
+    \ and \\u2018effect/\\nphenotype\\u2019 nodes as phenotypes. We mapped the aforementioned processed resources to ensure\
+    \ that all nodes\\nwere defined using unique identifiers from their respective ontologies and databases. Next, we identified\
+    \ sources\\nof information across different primary resources for each node type to maximize the number of relationships\
+    \ in\\nPrimeKG (Fig.\\u00a02b).\\nResolving overlap between phenotype and disease nodes.\\u2003 Since both the MONDO Disease\
+    \ Ontology44 and\\nHuman Phenotype Ontology45 were developed by the Monarch Initiative, there exists a considerable overlap\\\
+    nbetween phenotype nodes and disease nodes across the various datasets. Overlapping nodes were defined as\\neffect/phenotype\
+    \ nodes in HPO that (i) had the same ID number as disease nodes in MONDO and (ii) could\\nbe mapped from HPO to MONDO\
+    \ using cross-references found in MONDO. These overlapping phenotype\\nnodes were converted to disease nodes by manipulating\
+    \ edges in various datasets to avoid duplicate nodes. Let\\nus define the set of overlapping phenotype nodes as P. Phenotype-phenotype\
+    \ edges extracted from HPO were\\nconverted to phenotype-disease edges if one phenotype node was in P and to disease-disease\
+    \ edges if both phe-\\nnotype nodes were in P. Protein-phenotype edges extracted from DisGeNet78 were converted to protein-disease\\\
+    nrelations if the phenotype node was in P and removed from the group of protein-phenotype edges. Finally, for\\ndisease-phenotype\
+    \ and drug-phenotype relations, we dropped any edges where the phenotype was in P. Adding\\nthese edges to drug-disease\
+    \ relations would only introduce unnecessary noise to the indication, contraindica-\\ntion, and off-label use edges.\\\
+    nC. Building precision medicine knowledge graph (PrimeKG).\\nTo create PrimeKG\\u2019s graph, we merged\\nthe harmonized\
+    \ primary data resources into a graph and extracted its largest connected component as shown in\\nFig.\\u00a02c. We integrated\
+    \ the various processed, curated datasets and cleaned the graph by dropping NaN and dupli-\\ncate edges, adding reverse\
+    \ edges, dropping duplicates again, and removing self-loops. This version of the knowl-\\nedge graph is available in PrimeKG\\\
+    u2019s repository as \\u2018kg_raw.csv\\u2019. To ensure that PrimeKG is well-connected and\\nhas no isolated pockets,\
+    \ we extracted its largest connected component using the iGraph package100. Intuitively,\\nextracting the largest connected\
+    \ component of the knowledge graph excludes nodes without edges connecting\\nthem to the rest of the graph. This giant\
+    \ component retained 99.998% of the edges that were present in the origi-\\nnal graph. The largest connected component\
+    \ is available in PrimeKG\\u2019s repository as \\u2018kg_giant.csv\\u2019.\\nD. Supplementing drug nodes with clinical\
+    \ information.\\nWe extracted both textual and numerical\\nfeatures for drug nodes in the knowledge graph from DrugBank80\
+    \ and Drug Central83 (Fig.\\u00a02d). Features from\\nDrugBank mapped directly to the knowledge graph since drugs were\
+    \ coded using DrugBank identifiers. Some\\nfeatures had unique attributes for each drug, such as \\u2018state\\u2019,\
+    \ \\u2018indication\\u2019, and \\u2018mechanism of action\\u2019, and others had\\nnumerous attributes for each drug,\
+    \ such as \\u2018group\\u2019 and \\u2018Anatomical Therapeutic Chemical (ATC) classification\\nlevel\\u2019. The latter\
+    \ set of features was converted to single text descriptions by joining features using conjunctions\\nsuch as \\u2018;\\\
+    u2019 and \\u2018and\\u2019. Features in Drug Central were mapped to DrugBank IDs using their Chemical Abstracts\\nService\
+    \ Registry (CAS) identifiers from the vocabulary retrieved from DrugBank. Once all features were mapped,\\ntext processing\
+    \ removed all tokens referenced in DrugBank (for example, \\u201c[L64839]\\u201d) with the help of regular\\nexpressions.\
+    \ We nullified locations where the text mentioned that no data was available for the half-life feature.\\nFinally, we\
+    \ converted numerical features into textual descriptions in order to standardize the feature set.\\nWe select the drug\
+    \ Prednisolone as an example to illustrate the depth of clinical information available in\\nthese features. The \\u2018[\\\
+    u2026]\\u2019 is used to compress text sections for brevity. Prednisolone is a glucocorticoid simi-\\nlar to cortisol\
+    \ used for its anti-inflammatory, immunosuppressive, anti-neoplastic, and vasoconstrictive effects.\\nPrednisolone has\
+    \ a plasma half-life of 2.1\\u20133.5\\u2009hours. Prednisolone is indicated to treat endocrine, rheumatic,\\nand hematologic\
+    \ disorders; [\\u2026] and other conditions like tuberculous meningitis. Corticosteroids binding to\\nthe glucocorticoid\
+    \ receptor mediates changes in gene expression that lead to [\\u2026]. Prednisolone\\u2019s protein binding\\nis highly\
+    \ variable [\\u2026]. Corticosteroids bind to the glucocorticoid receptor, inhibiting pro-inflammatory signals\\nand promoting\
+    \ [\\u2026]. Prednisolone is solid. Prednisolone is part of Adrenal Cortex Hormones; Adrenals; [\\u2026]\\nPrednisolone\
+    \ is approved, and vet approved. Prednisolone uses Prednisone Action Pathway [\\u2026] The molecular\\nweight is 360.45.\
+    \ Prednisolone has a topological polar surface area of 94.83. The log p value of Prednisolone is\\n1.42.\\nE. Supplementing\
+    \ disease nodes with clinical information.\\nWe extracted textual features for diseases\\nnodes in the knowledge graph\
+    \ from the MONDO Disease Ontology44, Orphanet48, Mayo Clinic55, and UMLS\\nknowledgebase46 (Fig.\\u00a02d). Features from\
+    \ all these sources were mapped to the \\u2018node_id\\u2019 field of disease nodes,\\nwhich was defined using the MONDO\
+    \ Disease Ontology. Since disease nodes were grouped as described in\\nthe Technical Validation section, many diseases\
+    \ defined in the MONDO Disease Ontology (i.e., many \\u2018node_id\\u2019\\nvalues) were collapsed into a single node\
+    \ (i.e., unique \\u2018node_index\\u2019 values). Since disease features are mapped to\\nMONDO identifiers or the \\u2018node_id\\\
+    u2019 field, it is possible for a single disease node in the knowledge graph, defined\\nby a unique \\u2018node_index\\\
+    u2019, to have multiple feature values for a given feature. PrimeKG provides these features in\\ntheir entirety.\\n\\\
+    n8\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nDisease definitions from the MONDO Disease Ontology were directly extracted from the\
+    \ ontology file and\\nunique for each \\u2018node_id\\u2019. Disease descriptions extracted from UMLS were mapped from\
+    \ Concept Unique\\nIdentifier (CUI) terms to MONDO and, as a result, numerous for each \\u2018node_id\\u2019. Using regular\
+    \ expressions, we\\nremoved tokens that were references and URLs from UMLS disease descriptions. From Orphanet, we extracted\\\
+    ndefinitions, prevalence, epidemiology, clinical description, and management and treatment. We mapped the\\nfeatures from\
+    \ Orphanet IDs to MONDO, and as a result, there were multiple for each \\u2018node_id\\u2019. We used regular\\nexpressions\
+    \ to fix formatting errors in the prevalence and epidemiology features.\\nWe extracted the following disease features\
+    \ from the Mayo Clinic\\u2019s knowledgebase: symptoms, causes, risk\\nfactors, complications, and prevention. Since the\
+    \ Mayo Clinic web-scrapping did not provide a unique iden-\\ntifier in any ontology, we mapped disease names in Mayo Clinic\
+    \ to those in the MONDO Disease Ontology.\\nTo develop this mapping, we used a strategy for grouping disease names described\
+    \ in detail in the Technical\\nValidation section. Briefly, we conducted automated string matching followed by manual\
+    \ approval of all disease\\nname mappings based on their Bidirectional Encoder Representations from Transformers (BERT)\
+    \ model101\\nembedding similarity. Automated string matching involved approving exact matches and encapsulating\\nmatches,\
+    \ where the name in Mayo was completely present in the name in MONDO. During processing the\\nsymptoms feature, we used\
+    \ regular expressions to extract the end of the text description that explained when to\\nsee the doctor as a new and\
+    \ separate feature. Finally, we fixed formatting errors in the text.\\nTo illustrate the depth and breadth of information\
+    \ covered by the disease features, we select Hepatic\\nPorphyria. The \\u2018[\\u2026]\\u2019 notation is used to compress\
+    \ sections of text for brevity. Per the MONDO Disease\\nOntology, Hepatic Porphyria is a group of metabolic diseases due\
+    \ to deficiency of one of a number of liver\\nenzymes in the biosynthetic pathway of heme. They are characterized by [\\\
+    u2026]. Clinical features include [\\u2026].\\nThe UMLS has a very similar disease description. According to Orphanet,\
+    \ it\\u2019s a rare sub-group of porphyrias\\ncharacterized by neuro-visceral attacks with [\\u2026]. In most European\
+    \ countries, the prevalence of acute hepatic\\nporphyrias is around 1/75000. In 80% of cases, the patients are female.\
+    \ All acute hepatic porphyrias can be\\naccompanied by neuro-visceral attacks that appear as [\\u2026]. The attacks are\
+    \ most commonly triggered by [\\u2026].\\nWhen an acute attack is confirmed, urgent treatment with an injection of [\\\
+    u2026]. According to Mayo Clinic, signs\\nand symptoms of acute porphyria may include severe abdominal pain, [\\u2026],\
+    \ and seizures. All types of porphyria\\ninvolve a problem in producing heme [\\u2026], and a shortage of a specific enzyme\
+    \ determines the type of porphyria.\\nIn addition to genetic risks, environmental factors may trigger the development\
+    \ of [\\u2026]. Examples of triggers\\ninclude exposure to sunlight, [\\u2026]. Possible complications depend on [\\u2026]\
+    \ During an attack, you may experience\\n[\\u2026] Although there\\u2019s no way to prevent porphyria if you have the\
+    \ disease, avoid [\\u2026]. When to see a doctor, [\\u2026].\\nData Record\\nThe Precision Medicine Knowledge Graph (PrimeKG)\
+    \ is available at Harvard Dataverse102. To develop PrimeKG,\\nwe retrieved and collated 20 data resources (detailed in\
+    \ the Methods section) as visualized in Fig.\\u00a02a, identified\\nrelations across these resources as shown in Fig.\\\
+    u00a02b,c, harmonized them into a heterogeneous network illustrated\\nin Fig.\\u00a02c, and augmented the drug and disease\
+    \ nodes in the network with clinical features depicted in Fig.\\u00a02d.\\nLanguage descriptions of drugs and clinical\
+    \ characteristics of diseases give the features of drug or disease nodes.\\nPrimeKG is a multimodal knowledge graph with\
+    \ 10 types of nodes, 30 types of undirected edges, and nat-\\nural language descriptions for disease and drug nodes. PrimeKG\
+    \ contains 129,375 nodes and 4,050,249 edges.\\nFigure\\u00a01a shows a schematic overview of the graph structure. We\
+    \ provide a breakdown of the number of nodes\\nby node type and the number of edges by edge type in Tables\\u00a01, 2,\
+    \ respectively.\\nTables\\u00a03, 4 show statistics on the number of features available for drug and disease nodes. Disease\
+    \ features\\ninclude the disease prevalence information, symptoms, causes, risk factors, epidemiology, clinical description,\\\
+    nmanagement and treatment, complications, prevention, and when to see a doctor. Drug features include molec-\\nular weight\
+    \ of chemical compounds, indications, mechanisms of action, pharmacodynamics, protein binding\\nevents, and pathway information.\
+    \ Figure\\u00a01c provides an example of the supporting information available across\\nthese features.\\nThe PrimeKG knowledge\
+    \ graph has nodes of 10 types and uses the following terminologies and ontologies\\nto describe the nodes. The node types\
+    \ \\u2018drug\\u2019, \\u2018disease\\u2019, \\u2018anatomy\\u2019 and \\u2018pathway\\u2019 are respectively encoded\
+    \ as terms\\nin DrugBank80, MONDO44, UBERON multi-species anatomy ontology98, and Reactome pathway database95.\\nGenes\
+    \ and proteins are treated as a single node type, \\u2018gene/protein\\u2019, and identified by Entrez Gene IDs84. The\\\
+    nnode types \\u2018biological process\\u2019, \\u2018molecular function\\u2019, and \\u2018cellular component\\u2019 are\
+    \ defined using Gene Ontology\\n(GO) terms86. Disease phenotypes extracted from Human Phenotype Ontology (HPO)45 and drug\
+    \ side effects\\nextracted from Side Effect Knowledgebase (SIDER)96 are collapsed into a single node type, \\u2018effect/phenotype,\\\
+    u2019\\nthat is encoded using HPO IDs. Finally, \\u2018exposure\\u2019 nodes are defined using the ExposureStressorID\
+    \ field, which\\ncontains Medical Subject Headings (MeSH) provided by the Comparative Toxicogenomics Database (CTD)81.\\\
+    nThe datasets in PrimeKG are structured to follow a standardized format. In the following, quotations indicate\\ncolumn\
+    \ names used to define PrimeKG. For each node in the knowledge graph, we provide \\u2018node_index\\u2019, which\\nis\
+    \ a unique index to identify the node in PrimeKG; \\u2018node_id\\u2019, which indicates the identifier of the node from\
+    \ its\\nontology; \\u2018node_type\\u2019, which indicates the node type (Table\\u00a01); \\u2018node_name\\u2019 which\
+    \ indicates the name of the\\nnode as provided by the ontology; and \\u2018node_source\\u2019 which indicates the ontology\
+    \ from which \\u2018node_id\\u2019 and\\n\\u2018node_name\\u2019 fields were extracted. For each edge in PrimeKG, we provide\
+    \ \\u2018relation\\u2019, which is the name of the\\nedge type that connects the two nodes (Table\\u00a02); \\u2018x_index\\\
+    u2019, which links to the \\u2018node_index\\u2019 field; and \\u2018y_index\\u2019,\\nwhich also links to \\u2018node_index\\\
+    u2019.\\n\\n9\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nRelation type\\nCount\\nPercent (%)\\nAnatomy - Protein (present)\\n3,036,406\\n37.5\\\
+    nDrug - Drug\\n2,672,628\\n33.0\\nProtein - Protein\\n642,150\\n7.9\\nDisease - Phenotype (positive)\\n300,634\\n3.7\\\
+    nBiological process - Protein\\n289,610\\n3.6\\nCellular component - Protein\\n166,804\\n2.1\\nDisease - Protein\\n160,822\\\
+    n2.0\\nMolecular function - Protein\\n139,060\\n1.7\\nDrug - Phenotype\\n129,568\\n1.6\\nBiological process - Biological\
+    \ process\\n105,772\\n1.3\\nPathway - Protein\\n85,292\\n1.1\\nDisease - Disease\\n64,388\\n0.8\\nDrug - Disease (contraindication)\\\
+    n61,350\\n0.8\\nDrug - Protein\\n51,306\\n0.6\\nAnatomy - Protein (absent)\\n39,774\\n0.5\\nPhenotype - Phenotype\\n37,472\\\
+    n0.5\\nAnatomy - Anatomy\\n28,064\\n0.3\\nMolecular function - Molecular function\\n27,148\\n0.3\\nDrug - Disease (indication)\\\
+    n18,776\\n0.2\\nCellular component - Cellular\\ncomponent\\n9,690\\n0.1\\nPhenotype - Protein\\n6,660\\n0.1\\nDrug - Disease\
+    \ (off-label use)\\n5,136\\n0.1\\nPathway - Pathway\\n5,070\\n0.1\\nExposure - Disease\\n4,608\\n0.1\\nExposure - Exposure\\\
+    n4,140\\n0.1\\nExposure - Biological process\\n3,250\\n<0.1\\nExposure - Protein\\n2,424\\n<0.1\\nDisease - Phenotype\
+    \ (negative)\\n2,386\\n<0.1\\nExposure - Molecular function\\n90\\n<0.1\\nExposure - Cellular component\\n20\\n<0.1\\\
+    nTotal\\n8,100,498\\n100.0\\nTable 2.\\u2002 Statistics on edges in PrimeKG. Listed are the numbers of directed edges\
+    \ in PrimeKG.\\nSource\\nType of feature\\nCount\\nUnique\\nPercent (%)\\nDrug Central83\\nMolecular weight\\n2,797\\\
+    n2,308\\n35.2\"\n  },\n  {\n    \"name\": \"TPSA\",\n    \"text\": \"2,718\\n2,718\\n34.2\\ncLogP\\n2,574\\n980\\n32.3\\\
+    nDrugBank80\\nGroup\\n7,957\\n7,903\\n100.0\\nState\\n6,517\\n6,463\\n81.9\\nCategory\\n5,431\\n5,431\\n68.3\\nDescription\\\
+    n4,591\\n4,565\\n57.7\\nIndication\\n3,393\\n3,076\\n42.6\\nMechanism of action\\n3,242\\n3,161\\n40.7\"\n  },\n  {\n\
+    \    \"name\": \"ATC 4\",\n    \"text\": \"2,818\\n1,040\\n35.4\"\n  },\n  {\n    \"name\": \"ATC 3\",\n    \"text\":\
+    \ \"2,818\\n2,818\\n35.4\"\n  },\n  {\n    \"name\": \"ATC 2\",\n    \"text\": \"2,818\\n2,818\\n35.4\"\n  },\n  {\n \
+    \   \"name\": \"ATC 1\",\n    \"text\": \"2,818\\n2,818\\n35.4\\nPharmacodynamics\\n2,659\\n2,617\\n33.4\\nHalf life\\\
+    n2,063\\n1,893\\n25.9\\nProtein binding\\n1,669\\n1,487\\n21.0\\nPathway\\n598\\n598\\n7.5\\nTable 3.\\u2002 Statistics\
+    \ on drug features in PrimeKG. The count column refers to the number of features including\\nduplicates, and the Unique\
+    \ column refers to the number of unique features.\\n\\n10\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nTechnical Validation\\nAs part of the technical validation,\
+    \ we explore the structure and connectivity of PrimeKG.\\nDistinguishing properties of PrimeKG.\\nHere, we highlight four\
+    \ distinguishing properties of PrimeKG.\\nWe provide evidence and statistical support for these claims about PrimeKG in\
+    \ juxtaposition with three seminal\\nbiomedical knowledge graphs SPOKE38, HSDN65, and GARD34. Firstly, PrimeKG provides\
+    \ coverage for an exten-\\nsive range of diseases. Our knowledge graph comprises 22,236 disease terms that are then grouped\
+    \ into 17,080\\nclinically meaningful diseases. Compared to existing graphs such as SPOKE, HSDN, and GARD, PrimeKG pro-\\\
+    nvides an improvement in disease coverage by one to two orders of magnitude. Next, while these existing resources\\nprimarily\
+    \ contain \\u201ctreats\\u201d or indication edges between drugs and diseases, PrimeKG provides more intricate\\nrelationships\
+    \ with indication, contraindication, and off-label use edges.\\nMoreover, PrimeKG provides incredible coverage of rare\
+    \ diseases while remaining integrated with the entire\\nrange of diseases. Orphanet48 is considered the definitive authority\
+    \ on rare diseases. Of 9,348 rare diseases in\\nOrphanet, 90.8% are present in PrimeKG as disease nodes. Previously, knowledge\
+    \ graphs have either scarce\\ncoverage of rare diseases (e.g., SPOKE, HSDN) or an exclusive focus on them (e.g., GARD).\
+    \ PrimeKG embraces\\nthe entire range of conditions from rare to prevalent across its 22,236 disease terms. Finally, PrimeKG\
+    \ is multi-\\nmodal and contains clinical features for drugs and diseases. Traditionally, knowledge graphs have been defined\\\
+    nsolely as relationships between their nodes. These graph relationships tend to encode biological and molecular\\ninformation\
+    \ but lack medically relevant descriptions. PrimeKG integrates clinically meaningful text descrip-\\ntions for drug and\
+    \ disease nodes. This multimodality of PrimeKG enables the fusion of medical and molecular\\nknowledge.\\nPrimeKG is easy\
+    \ to use and update.\\nPrimeKG is available as a single set of triplets of source nodes,\\nrelations, and target nodes.\
+    \ This data structure is agnostic to computing preferences and can be read using any\\nprogramming language. We use Harvard\
+    \ Dataverse102 to make PrimeKG available in a single user-friendly CSV\\nfile so that there is no need for the user to\
+    \ connect to any external databases. Although PrimeKG has millions of\\nedges, it can be loaded into memory using a standard\
+    \ CPU in less than 5.18\\u2009seconds\\u2009\\u00b1\\u200951.9\\u2009milliseconds. Queries\\non the knowledge graph generally\
+    \ take less than 1\\u2009second. Once loaded, PrimeKG can be converted into a graph\\nstructure through various commonly\
+    \ used libraries (such as iGraph or NetworkX for Python). We also provide\\ntutorials for getting started and links to\
+    \ community data loaders on our GitHub repository.\\nThe provenance of PrimeKG can be easily tracked on Harvard Dataverse102.\
+    \ All our data curation and pro-\\ncessing approaches are transparent, fully reproducible, and can be continually adapted\
+    \ as data resources evolve\\nand new data become available. We have provided detailed instructions on \\u201cBuilding\
+    \ an updated PrimeKG\\u201d\\non our PrimeKG GitHub repository. Complete information is given here for (a) downloading\
+    \ primary data\\nrecords, (b) processing data for each primary record along with script names and expected outputs, and\
+    \ (c) a\\nready-to-run Jupyter notebook to build an updated PrimeKG. After building an initial version of PrimeKG,\\nusers\
+    \ can update individual resources as necessary.\\nA case study to evaluate the relevance of PrimeKG to the clinical presentation\
+    \ of autism.\\nFor\\ndownstream inferences made using PrimeKG to be conducive to studying human disease, disease nodes\
+    \ in\\nPrimeKG would need to be medically relevant. To this end, we next analyze if PrimeKG\\u2019s representation of\\\
+    nSource\\nType of feature\\nUnprocessed KG\\nProcessed KG\\nCount\\nUnique\\nCount\\nUnique\\nCombined\\nCombined\\n40,068\\\
+    n18,152\\n39,800\\n14,252\\nMONDO Disease Ontology44\\nDefinition\\n15,238\\n15,238\\n15,238\\n12,001\"\n  },\n  {\n \
+    \   \"name\": \"UMLS46\",\n    \"text\": \"Description\\n28,468\\n8,689\\n25,374\\n6,964\\nOrphanet48\\nDefinition\\n6,564\\\
+    n6,548\\n6,562\\n5,645\\nPrevalence\\n3,989\\n3,989\\n3,500\\n3,430\\nEpidemiology\\n2,350\\n2,348\\n2,335\\n2,026\\nClinical\
+    \ description\\n2,294\\n2,292\\n2,293\\n1,972\\nManagement and treatment\\n1,732\\n1,731\\n1,722\\n1,553\\nMayo Clinic55\\\
+    nSymptoms\\n6,642\\n5,789\\n5,140\\n4,470\\nCauses\\n6,629\\n5,776\\n5,128\\n4,459\\nRisk factors\\n6,284\\n5,501\\n4,898\\\
+    n4,299\\nComplications\\n5,011\\n4,455\\n3,792\\n3,396\\nPrevention\\n2,529\\n2,273\\n1,907\\n1,776\\nWhen to see a doctor\\\
+    n5,862\\n5,234\\n4,531\\n4,058\\nTable 4.\\u2002 Statistics on disease features in PrimeKG. Unprocessed KG refers to the\
+    \ initial knowledge graph\\nassembled from datasets. Processed KG refers to the fully processed PrimeKG, and includes\
+    \ disease groupings.\\nThe count column refers to the number of features including duplicates, and the Unique column refers\
+    \ to the\\nnumber of unique features. Note that the \\u2018Combined\\u2019 row has counts greater than the total number\
+    \ of diseases\\nin the knowledge graph. This is not a discrepancy but rather reflects the complexity of the data involving\\\
+    nmissingness for some diseases and multiple descriptors for other diseases.\\n\\n11\\nScientific Data |           (2023)\
+    \ 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    ndiseases strongly relates to their clinical presentation by carrying out a case study on autism spectrum disorder.\\\
+    nWe were motivated to investigate autism because it not only has incredible clinical heterogeneity103\\u2013105 but this\\\
+    nheterogeneity has also been studied to identify clinically meaningful subtypes56,57. We gauged the relevance of\\ndisease\
+    \ nodes related to autism in PrimeKG in two steps: first, by performing the entity resolution for autism\\nconcepts across\
+    \ all relevant primary data resources (see Data Record), and second, by examining the relationship\\nbetween these autism\
+    \ concepts and clinical subtypes of autism.\\nWe start by exploring whether autism disease nodes in PrimeKG reconciled\
+    \ the variation in autism concepts\\nacross databases and ontologies. For example, as demonstrated in Fig.\\u00a03a, MONDO\
+    \ disease ontology has 37\\ndisease concepts related to autism, whereas the UMLS has 192 autism-associated concepts, and\
+    \ Orphanet has\\n6 autism-associated concepts. Although it is not immediately clear how these concepts relate to each\
+    \ other, we\\ncannot develop a coherent knowledge graph without establishing connections between them. To this end, we\\\
+    novercome this challenge by defining all nodes using the MONDO disease ontology and mapping all other vocab-\\nularies\
+    \ to diseases in MONDO as outlined in Fig.\\u00a03a.\\nFinally, before using MONDO disease concepts as disease nodes in\
+    \ PrimeKG, we need to assess whether\\nautism disease concepts in MONDO correlate with clinical subtypes of autism. Autism\
+    \ has been shown to man-\\nifest as three clinical subgroups characterized primarily by seizures, multisystem and gastrointestinal\
+    \ disorders,\\nand psychiatric disorders57. However, it was unclear how MONDO\\u2019s 37 autism disease concepts (Fig.\\\
+    u00a03a) relate\\nto the three clinically defined subtypes. In addition, there were many disease concepts in autism, such\
+    \ as \\u2018Autism,\\nsusceptibility to, 1\\u2019, \\u2018Autism, susceptibility to, 2\\u2019, \\u2018Autism, susceptibility\
+    \ to, x-linked\\u2019, etc., with no apparent clinical\\nmeaning, suggesting that disease nodes in MONDO do not correspond\
+    \ one-to-one to clinical manifestation of\\nautism. For this reason, we developed a strategy to group diseases from MONDO\
+    \ into medically relevant and\\ncoherent nodes in PrimeKG. We proceed with describing and evaluating that strategy.\\\
+    nComputational approaches to grouping disease nodes.\\nAs demonstrated in our case study of autism,\\ndisease concepts\
+    \ in MONDO may not correlate well with medical subtypes. MONDO contains many repetitive\\ndisease entities with no apparent\
+    \ clinical correlation. For this reason, we were motivated to group diseases in\\nMONDO into medically relevant entities.\
+    \ Ideally, we would have preferred leveraging expertise across various\\ndisease areas when grouping these concepts. However,\
+    \ this approach was time-consuming, expensive, and chal-\\nlenging to execute at scale. Further, disease sub-phenotyping\
+    \ is a relatively new paradigm, so we anticipated low\\nconsensus among medical experts on what constitutes a unique disease.\\\
+    nSince manually grouping diseases with expert supervision was not feasible, we took a semi-automated unsu-\\npervised\
+    \ approach to group disease concepts in PrimeKG. Advances in natural language processing, specifically\\nthe Bidirectional\
+    \ Encoder Representations from Transformers (BERT) model101, allowed us to study the similar-\\nity between disease concept\
+    \ names. We grouped disease concepts with nearly identical names into a single node\\nwith string matching and BERT embedding\
+    \ similarity101,106\\u2013109.\\nWe identified disease groups using a string-matching strategy across disease names110.\
+    \ In this strategy, we\\nselected a disease that ended with a number, a roman numeral, or any alphanumeric phrase with\
+    \ a length of\\nless than 2, or \\u2018type\\u2019 as the second-last word. Once such a disease was selected, we extracted\
+    \ the primary disease\\nphrase by dropping the ending and used this phrase to find matches. Matches included diseases\
+    \ with the same\\ninitial phrase and those containing all phrase words with no other words, regardless of word order.\
+    \ The words\\n\\u2018type\\u2019 and \\u2018(disease)\\u2019 were ignored for the latter matching criteria. In this manner,\
+    \ we grouped disease concepts\\nin MONDO with string matching.\\nWe further tightened groupings identified using string\
+    \ matching by exploring word embedding similarities\\nbetween disease names, which is visualized in Fig.\\u00a03b. In\
+    \ natural language processing, word embeddings have\\nbeen widely and successfully used to resolve conflicting and redundant\
+    \ entities in an unsupervised manner110\\u2013112,\\nand deep language models such as BERT101 can produce semantically\
+    \ meaningful word embeddings. Specifically,\\nClinicalBERT113 is a BERT language model that encodes medical notions of\
+    \ semantics because it has been\\npre-trained on biomedical knowledge from PubMed114 and discharge summaries from MIMIC-III115.\
+    \ We used\\nClinicalBERT to extract word embeddings for disease group names identified during string matching. We also\\\
+    ndefined the similarity between two disease names as the cosine distance between their ClinicalBERT embeddings.\\nThen,\
+    \ after applying an empirically chosen cutoff of similarity \\u22650.98, we manually approved the suggested disease\\\
+    nmatches and assigned names to the new groups. Finally, these groupings were applied to the knowledge graph.\\nFinally,\
+    \ 22,205 disease concepts in MONDO were collapsed into 17,080 grouped diseases, which has resulted\\nin a higher average\
+    \ edge density across diseases and more clinically relevant disease nodes. We anticipate that\\nPrimeKG is a powerful\
+    \ dataset with this grouping because disease representations are dense and robust.\\nSystematic evaluation of PrimeKG.\\\
+    nGiven the substantial investment and time required to develop a\\nnovel drug, network analysis has long been used to\
+    \ identify opportunities for expanding the use of already avail-\\nable drugs116. We demonstrate that PrimeKG can help\
+    \ detect drug repurposing opportunities. For this validation,\\nwe systematically retrieved 40 novel therapies approved\
+    \ by the FDA since June 2021. PrimeKG contains informa-\\ntion up to 1 June 2021, limiting data leakage from PrimeKG to\
+    \ these therapies.\\nOf these 40 recent FDA-approved therapies, we identified 11 repurposed drugs in PrimeKG as listed\
+    \ in\\nTable\\u00a05 and the remaining were novel compounds. We identified the disease corresponding to the indication\
+    \ for\\neach drug and conducted network proximity calculations between relevant drug-disease pairs. As a first step,\\\
+    nwe would expect that only a few drug-disease pairs would have direct indication edges between them. However,\\nas shown\
+    \ in Table\\u00a05, only one pair has such an edge, confirming that there has been no temporal data leakage.\\nWe conducted\
+    \ network analysis on these pairs by studying the shortest path distance between the repurposed\\ndrug and indicated disease.\
+    \ For each drug, we conducted permutation analysis by sampling 1000 non-indicated\\ndiseases and calculating the mean\
+    \ randomized shortest path distance with 95% confidence intervals between these\\n\\n12\\nScientific Data |          \
+    \ (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    npairs. Further, we applied a non-parametric statistical analysis that tested the number of times the indicated short-\\\
+    nest path distance was greater than the random shortest path distance and applied a Bonferroni correction to obtain\\\
+    nthe significance. At a threshold of P\\u2009\\u2264\\u20090.05, relevant drugs are much closer to the indicated diseases\
+    \ than expected\\nby random chance in 8 out of 10 cases (Table\\u00a05). For example, in the case of familial hypercholesterolemia,\
+    \ one\\nwould need to parse through only 3.4% of drugs in PrimeKG to find a positive hit. This analysis demonstrates the\\\
+    nutility of PrimeKG for drug repurposing and provides additional evidence that PrimeKG is a high-quality dataset.\\nThe\
+    \ potential uses of PrimeKG are vast. PrimeKG describes drug features on a deeper biological level and\\ndisease features\
+    \ on a deeper clinical level, which can be used to explain genotype-phenotype associations in\\nterms of genes, pathways,\
+    \ or any other nodes in an extensive knowledge graph, like PrimeKG. Consequently,\\nPrimeKG can be paired with deep graph\
+    \ neural networks117 to help identify disease biomarkers, characterize\\ndisease processes, hone disease classification,\
+    \ identify phenotypic traits, and repurpose drugs. With the imple-\\nmentation of machine learning functionality, we anticipate\
+    \ that PrimeKG and similar knowledge graphs will\\nbecome critical tools in advancing precision medicine.\\na\\nb\\nStandardized\
+    \ ontologies and databases\\nMedical literature\\nClinical subtypes\\nof autism\\nMONDO [37 terms]\\nUMLS [92 terms]\\\
+    nOrphanet [6 terms]\\nSeizures and epilepsy\\nMultisystem and\\nGI disorders\\nPsychiatric\\ndisorders\\nAutism spectrum\
+    \ disorder\\nAutism, susceptibility to\\nRare disease with autism\\n...\\n...\\n...\\nAutism (disease)\\nDevelop. delay\
+    \ with autism\\nAtypical autism\\nAutism sp. disorder - epilepsy\\nAutism, susceptib. to, x linked\\nAutism spectrum disorder\\\
+    nAutism, susceptibility to\\nRare disease with autism\\n...\\n...\\n...\\nAutism (disease)\\nDevelop. delay with autism\\\
+    nAtypical autism\\nAutism sp. disorder - epilepsy\\nAutism, susceptib. to, x linked\\nMONDO [37 terms]\\nLanguage\\nmodel\\\
+    nEmbedding\\nsimilarity\\nEmbedding\\nspace\\nDevelopmental\\ndisorders cluster\\nAutism\\nsusceptibility cluster\\nAtypical\
+    \ autism\\nDevelopmental delay\\n...\\n...\\nRare disease w/ autism\\nGRIN2B-related autism\\nAkinetic autism\\nInfantile\
+    \ autism\\nEarly infantile autism\\nFragile x syndrome\\n...\\nSuspected autism\\nFamily history; autism\\nAutism; psychopathy\\\
+    nGroupings [16 terms]\\nAutism spectrum disorder\\nGait instability in autism\\nRare disease with autism\\nADND related\
+    \ congenital abn.\\nGRIN2B related autism\\n...\\nAutism, susceptibility to\\nAutism (disease)\\nDevelop. delay with autism\\\
+    nAtypical autism\\nAutism spec. dis. - epilepsy\\nClinical subtypes\\nof autism\\nUMLS [92 terms]\\nOrphanet [6 terms]\\\
+    nGroupings [16 terms]\\nFig. 3\\u2002 Reconciling autism disease nodes into clinically relevant entities. (a) The left\
+    \ side shows three clinically\\ndetermined subtypes of autism. The right side shows autism-related disease terms across\
+    \ three ontologies:\\nMONDO, UMLS, and Orphanet. While we can identify mappings across the ontologies, it is unclear how\\\
+    nthe terms in any ontology connect to clinical subtypes. (b) Illustration on how we use a language model,\\nClinicalBERT,\
+    \ to map terms from MONDO into a latent embedding space. Because the language model can\\ngroup synonyms in the embedding\
+    \ space, we can cluster MONDO terms with similar semantic and medical\\nmeanings by calculating cosine similarity between\
+    \ embeddings of disease concepts. These clusters are created\\nto develop disease groupings, as shown on the right in\
+    \ panel b. Abbreviations - MONDO: MONDO\\u00a0disease\\nontology, UMLS: unified medical language system.\\n\\n13\\nScientific\
+    \ Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\"\
+    \n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"The PrimeKG\\u2019s project website is at https://zitniklab.hms.harvard.edu/projects/PrimeKG.\
+    \ The code to reproduce\"\n  },\n  {\n    \"name\": \"results, together with documentation and tutorials, is available\
+    \ in PrimeKG\\u2019s GitHub repository at https://github\",\n    \"text\": \"com/mims-harvard/PrimeKG. In addition, the\
+    \ repository contains information and Python scripts to build\\nnew versions of PrimeKG as the underlying primary resources\
+    \ get updated and new data become available.\\nPrimeKG data resource is hosted on Harvard Dataverse under a persistent\
+    \ identifier https://doi.org/10.7910/\\nDVN/IXA7BM102. We have deposited the knowledge graph and all relevant intermediate\
+    \ files at this repository.\\nReceived: 13 May 2022; Accepted: 11 January 2023;\\nPublished: xx xx xxxx\"\n  },\n  {\n\
+    \    \"name\": \"References\",\n    \"text\": \"1.\\t Adams, S. A. & Petersen, C. Precision medicine: opportunities, possibilities,\
+    \ and challenges for patients and providers. Journal of\\nthe American Medical Informatics Association: JAMIA 23, 787\\\
+    u2013790 (2016).\\n2.\\t Prosperi, M., Min, J. S., Bian, J. & Modave, F. Big data hurdles in precision medicine and precision\
+    \ public health. BMC Medical\\nInformatics and Decision Making 18, 139 (2018).\\n3.\\t Gogleva, A. et al. Knowledge graph-based\
+    \ recommendation framework identifies drivers of resistance in EGFR mutant non-small\\ncell lung cancer. Nature Communications\
+    \ 13, 1\\u201314 (2022).\\n4.\\t Hulsen, T. et al. From big data to precision medicine. Frontiers in Medicine 6 (2019).\\\
+    n5.\\t Ping, P., Watson, K., Han, J. & Bui, A. Individualized knowledge graph: a viable informatics path to precision\
+    \ medicine. Circulation\\nResearch 120, 1078\\u20131080 (2017).\\n6.\\t Lussier, Y. A. & Liu, Y. Computational approaches\
+    \ to phenotyping: high-throughput phenomics. Proceedings of the American\\nThoracic Society 4, 18\\u201325 (2007).\\n7.\\\
+    t Che, Z. & Liu, Y. Deep learning solutions to computational phenotyping in health care. In 2017 IEEE International Conference\
+    \ on\\nData Mining Workshops (ICDMW), 1100\\u20131109 (2017).\\n8.\\t Che, Z., Kale, D., Li, W., Bahadori, M. T. & Liu,\
+    \ Y. Deep computational phenotyping. In Proceedings of the 21th ACM SIGKDD\\nInternational Conference on Knowledge Discovery\
+    \ and Data Mining, 507\\u2013516 (2015).\\n9.\\t Kann, M. G. Protein interactions and disease: computational approaches\
+    \ to uncover the etiology of diseases. Briefings in\\nBioinformatics 8, 333\\u2013346 (2007).\\n10.\\t Cheng, L. et al.\
+    \ Computational methods for identifying similar diseases. Molecular Therapy - Nucleic Acids 18, 590\\u2013604 (2019).\\\
+    n11.\\t Jabbar, M. A., Deekshatulu, B. L. & Chandra, P. Computational intelligence technique for early diagnosis of heart\
+    \ disease. In 2015\\nIEEE International Conference on Engineering and Technology (ICETECH), 1\\u20136 (2015).\\n12.\\\
+    t Nahar, J., Imam, T., Tickle, K. S. & Chen, Y.-P. P. Computational intelligence for heart disease diagnosis: a medical\
+    \ knowledge\\ndriven approach. Expert Systems with Applications 40, 96\\u2013104 (2013).\\n13.\\t Zemojtel, T. et al.\
+    \ Effective diagnosis of genetic disease by computational phenotype analysis of the disease-associated genome.\\nScience\
+    \ Translational Medicine 6, 252ra123\\u2013252ra123 (2014).\\n14.\\t Mac Gabhann, F., Ji, J. W. & Popel, A. S. Multi-scale\
+    \ computational models of pro-angiogenic treatments in peripheral arterial\\ndisease. Annals of Biomedical Engineering\
+    \ 35, 982\\u2013994 (2007).\\n15.\\t Lu, L. & Yu, H. DR2DI: a powerful computational tool for predicting novel drug-disease\
+    \ associations. Journal of Computer-Aided\\nMolecular Design 32, 633\\u2013642 (2018).\\n16.\\t Mart\\u00ednez, V., Navarro,\
+    \ C., Cano, C., Fajardo, W. & Blanco, A. DrugNet: Network-based drug\\u2013disease prioritization by integrating\\nheterogeneous\
+    \ data. Artificial Intelligence in Medicine 63, 41\\u201349 (2015).\\n17.\\t Zhou, R. et al. NEDD: a network embedding\
+    \ based method for predicting drug-disease associations. BMC Bioinformatics 21, 387\\n(2020).\\n18.\\t Roberts, P. D.,\
+    \ Spiros, A. & Geerts, H. Simulations of symptomatic treatments for alzheimer\\u2019s disease: computational analysis\
+    \ of\\npathology and mechanisms of drug action. Alzheimer\\u2019s Research & Therapy 4, 50 (2012).\\nDrug\\nDisease\\\
+    nShortest distance\\nRandomized distance (95% CI)\\nAdjusted P value\\nRopeginterferon alfa-2b-njft\\nAcquired polycythemia\
+    \ vera\\n1\\n\\u2014\\n\\u2014\\nTirzepatide\\nType 2 diabetes mellitus\\n2\\n3.45 (3.40\\u20133.49)\\n<0.01\\nTezepelumab-ekko\\\
+    nAsthma\\n2\\n3.68 (3.63\\u20133.73)\\n<0.01\\nTapinarof\\nPsoriasis\\n2\\n3.98 (3.93\\u20134.02)\\n<0.01\\nFaricimab-svoa\\\
+    nMacular degeneration\\n2\\n4.21 (4.17\\u20134.26)\\n<0.01\\nInclisiran\\nFamilial hypercholesterolemia\\n2\\n4.61 (4.56\\\
+    u20134.66)\\n<0.01\\nMaribavir\\nCytomegalovirus infection\\n3\\n4.40 (4.36\\u20134.45)\\n<0.01\\nBelzutifan\\nVon Hippel-Lindau\\\
+    n3\\n4.55 (4.50\\u20134.59)\\n0.01\\nGanaxolone\\nCDKL5 disorder\\n3\\n4.32 (4.27\\u20134.37)\\n0.03\\nPacritinib\\nMyelofibrosis\\\
+    n3\\n3.83 (3.78\\u20133.89)\\n0.08\\nTralokinumab-ldrm\\nAtopic dermatitis\\n3\\n3.69 (3.65\\u20133.74)\\n0.19\\nTable\
+    \ 5.\\u2002 PrimeKG can identify drug repurposing opportunities. We retrieved 11 drugs with new indications\\napproved\
+    \ by the FDA in the year after PrimeKG was assembled. We conducted a network proximity analysis\\nbetween the repurposed\
+    \ drug and its indicated disease. Only 1 of 11 pairs already has an indication edge in\\nPrimeKG, confirming that there\
+    \ is no temporal data leakage. We computer the shortest path distances between\\nrepurposed drug and (i). indicated disease;\
+    \ and (ii). a sample of 1000 non-indicated diseases. For the later, we\\nhave reported the mean randomized shortest path\
+    \ distance with 95% confidence intervals. We applied a non-\\nparametric statistical analysis to assess how often the\
+    \ indicated shortest path distance is greater than the random\\nshortest path distance and applied a Bonferroni correction\
+    \ to obtain the significance. At a threshold of P\\u2009\\u2264\\u20090.05,\\nrelevant drugs are much closer to the indicated\
+    \ diseases than expected by random chance in 8 out of 10 cases.\\nThis analysis demonstrates the utility of PrimeKG for\
+    \ drug repurposing.\\n\\n14\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n19.\\t Wu, C., Gudivada, R. C., Aronow, B. J. & Jegga,\
+    \ A. G. Computational drug repositioning through heterogeneous network\\nclustering. BMC Systems Biology 7, S6 (2013).\\\
+    n20.\\t Dudley, J. T., Deshpande, T. & Butte, A. J. Exploiting drug-disease relationships for computational drug repositioning.\
+    \ Briefings in\\nBioinformatics 12, 303\\u2013311 (2011).\\n21.\\t Xu, R. & Wang, Q. Large-scale extraction of accurate\
+    \ drug-disease treatment pairs from biomedical literature for drug repurposing.\\nBMC Bioinformatics 14, 181 (2013).\\\
+    n22.\\t Lin, X., Li, X. & Lin, X. A review on applications of computational methods in drug screening and design. Molecules\
+    \ 25, 1375\\n(2020).\\n23.\\t Dai, Y.-F. & Zhao, X.-M. A survey on the computational approaches to identify drug targets\
+    \ in the postgenomic era. BioMed\\nResearch International 2015, 1\\u20139 (2015).\\n24.\\t Tatonetti, N. P., Ye, P. P.,\
+    \ Daneshjou, R. & Altman, R. B. Data-driven prediction of drug effects and interactions. Science\\nTranslational Medicine\
+    \ 4, 125ra31\\u2013125ra31 (2012).\\n25.\\t Chandak, P. & Tatonetti, N. P. Using machine learning to identify adverse\
+    \ drug effects posing increased risk to women. Patterns 1,\\n100108 (2020).\\n26.\\t Gayvert, K. M. et al. A computational\
+    \ approach for identifying synergistic drug combinations. PLOS Computational Biology 13,\\ne1005308 (2017).\\n27.\\t Shenoi,\
+    \ S. J., Ly, V., Soni, S. & Roberts, K. Developing a search engine for precision medicine. AMIA Summits on Translational\\\
+    nScience Proceedings 2020, 579\\u2013588 (2020).\\n28.\\t Xu, J. et al. Building a PubMed knowledge graph. Scientific\
+    \ Data 7, 205 (2020).\\n29.\\t Hasan, S. et al. Knowledge graph-enabled cancer data analytics. IEEE Journal of Biomedical\
+    \ and Health Informatics 24, 1952\\u20131967\\n(2020).\\n30.\\t Wang, L. et al. Construction of a knowledge graph for\
+    \ diabetes complications from expert-reviewed clinical evidences. Computer\\nAssisted Surgery 25, 29\\u201335 (2020).\\\
+    n31.\\t Rossanez, A., dos Reis, J. C., Torres, R. D. S. & de Ribaupierre, H. KGen: a knowledge graph generator from biomedical\
+    \ scientific\\nliterature. BMC Medical Informatics and Decision Making 20, 314 (2020).\\n32.\\t Zheng, S. et al. PharmKG:\
+    \ a dedicated knowledge graph benchmark for bomedical data mining. Briefings in Bioinformatics 22,\\nbbaa344 (2021).\\\
+    n33.\\t Zhu, Y. et al. Knowledge-driven drug repurposing using a comprehensive drug knowledge graph. Health Informatics\
+    \ Journal 26,\\n2737\\u20132750 (2020).\\n34.\\t Zhu, Q. et al. An integrative knowledge graph for rare diseases, derived\
+    \ from the genetic and rare diseases information center\\n(GARD). Journal of Biomedical Semantics 11, 13 (2020).\\n35.\\\
+    t Nelson, C. A., Butte, A. J. & Baranzini, S. E. Integrating biomedical research and electronic health records to create\
+    \ knowledge-\\nbased biologically meaningful machine-readable embeddings. Nature Communications 10, 3045 (2019).\\n36.\\\
+    t Huang, K. et al. Therapeutics data commons: Machine learning datasets and tasks for drug discovery and development.\
+    \ Proceedings\\nof Neural Information Processing Systems, NeurIPS Datasets and Benchmarks (2021).\\n37.\\t Zhou, Y., Wang,\
+    \ F., Tang, J., Nussinov, R. & Cheng, F. Artificial intelligence in COVID-19 drug repurposing. The Lancet Digital\\nHealth\
+    \ 2, e667\\u2013e676 (2020).\\n38.\\t Himmelstein, D. S. et al. Systematic integration of biomedical knowledge prioritizes\
+    \ drugs for repurposing. eLife 6, e26726 (2017).\\n39.\\t Morselli Gysi, D. et al. Network medicine framework for identifying\
+    \ drug-repurposing opportunities for COVID-19. Proceedings\\nof the National Academy of Sciences 118, e2025581118 (2021).\\\
+    n40.\\t Percha, B. & Altman, R. B. A global network of biomedical relationships derived from text. Bioinformatics 34,\
+    \ 2614\\u20132624 (2018).\\n41.\\t Nadkarni, R. et al. Scientific language models for biomedical knowledge base completion:\
+    \ an empirical study. Proceedings of\\nAutomated Knowledge Base Construction (2021).\\n42.\\t Hu, W. et al. Open Graph\
+    \ Benchmark: Datasets for machine learning on graphs. Advances in Neural Information Processing Systems\\n33, 22118\\\
+    u201322133 (2020).\\n43.\\t Li, N. et al. KGHC: a knowledge graph for hepatocellular carcinoma. BMC Medical Informatics\
+    \ and Decision Making 20, 135 (2020).\\n44.\\t Shefchek, K. A. et al. The Monarch Initiative in 2019: an integrative data\
+    \ and analytic platform connecting phenotypes to genotypes\\nacross species. Nucleic Acids Research 48, D704\\u2013D715\
+    \ (2020).\\n45.\\t K\\u00f6hler, S. et al. The Human Phenotype Ontology in 2017. Nucleic Acids Research 45, D865\\u2013D876\
+    \ (2017).\\n46.\\t Bodenreider, O. The Unified Medical Language System (UMLS): integrating biomedical terminology. Nucleic\
+    \ Acids Research 32,\"\n  },\n  {\n    \"name\": \"D\\u2013270 (2004)\",\n    \"text\": \"47.\\t Schriml, L. M. et al.\
+    \ Human Disease Ontology 2018 update: classification, content and workflow expansion. Nucleic Acids Research\"\n  },\n\
+    \  {\n    \"name\": \", D955\\u2013D962 (2019)\",\n    \"text\": \"48.\\t Weinreich, S., Mangon, R., Sikkens, J. & Teeuw,\
+    \ M. E. e. & Cornel, M. Orphanet: a european database for rare diseases. Nederlands\\ntijdschrift voor geneeskunde 152,\
+    \ 518\\u2013519 (2008).\\n49.\\t Amberger, J. S., Bocchini, C. A., Scott, A. F. & Hamosh, A. OMIM.org: leveraging knowledge\
+    \ across phenotype\\u2013gene relationships.\\nNucleic Acids Research 47, D1038\\u2013D1043 (2019).\\n50.\\t WHO (ed.)\
+    \ International statistical classification of diseases and related health problems, 10th revision, 2nd edition edn (World\\\
+    nHealth Organization, Geneva, 2004).\\n51.\\t Cheung, K.-H. et al. PhenoDB: an integrated client/server database for linkage\
+    \ and population genetics. Computers and Biomedical\\nResearch 29, 327\\u2013337 (1996).\\n52.\\t Jaasu, N. M., Kamaraj,\
+    \ R. & Seetharaman, R. MedDRA (medical dictionary for regulatory activities). Research Journal of Pharmacy\\nand Technology\
+    \ 11, 4751\\u20134754 (2018).\\n53.\\t Louden, D. N. MedGen: NCBI\\u2019s portal to information on medical conditions\
+    \ with a genetic component. Medical Reference Services\\nQuarterly 39, 183\\u2013191 (2020).\\n54.\\t Vasant, D. et al.\
+    \ ORDO: an ontology connecting rare disease, epidemiology and genetic data. In Proceedings of ISMB, vol. 30\\n(2014).\\\
+    n55.\\t Mayo foundation for medical education and research. Mayo Clinic, Mayo Medical Laboratories (2020).\\n56.\\t Luo,\
+    \ Y. et al. A multidimensional precision medicine approach identifies an autism subtype characterized by dyslipidemia.\
+    \ Nature\\nMedicine 26, 1375\\u20131379 (2020).\\n57.\\t Doshi-Velez, F., Ge, Y. & Kohane, I. Comorbidity clusters in\
+    \ autism spectrum disorders: an electronic health record time-series\\nanalysis. Pediatrics 133, e54\\u2013e63 (2014).\\\
+    n58.\\t Davis, A. P., Wiegers, T. C., Rosenstein, M. C. & Mattingly, C. J. MEDIC: a practical disease vocabulary used\
+    \ at the Comparative\\nToxicogenomics. Database. Database 2012, bar065\\u2013bar065 (2012).\\n59.\\t Karadeniz, \\u012e.\
+    \ & \\u00d6zg\\u00fcr, A. Linking entities through an ontology using word embeddings and syntactic re-ranking. BMC\\nBioinformatics\
+    \ 20, 156 (2019).\\n60.\\t Ioannidis, V. N. et al. Drkg - drug repurposing knowledge graph for covid-19. https://github.com/gnn4dr/DRKG/\
+    \ (2020).\\n61.\\t Zhang, R. et al. Drug repurposing for covid-19 via knowledge graph completion. Journal of Biomedical\
+    \ Informatics 115, 103696\\n(2021).\\n62.\\t Richardson, P. et al. Baricitinib as potential treatment for 2019-nCoV acute\
+    \ respiratory disease. The Lancet 395, e30\\u2013e31 (2020).\\n\\n15\\nScientific Data |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n63.\\t Hong, C. et al. Clinical knowledge extraction\
+    \ via sparse embedding regression (KESER) with multi-center large scale electronic\\nhealth record data. NPJ Digital Medicine\
+    \ 4, 151 (2021).\\n64.\\t Goh, K.-I. et al. The human disease network. Proceedings of the National Academy of Sciences\
+    \ (2007).\\n65.\\t Zhou, X., Menche, J., Barab\\u00e1si, A.-L. & Sharma, A. Human symptoms\\u2013disease network. Nature\
+    \ Communications (2014).\\n66.\\t Tisdale, A. et al. The IDeaS initiative: pilot study to assess the impact of rare diseases\
+    \ on patients and healthcare systems. Orphanet\\nJournal of Rare Diseases 16, 429 (2021).\\n67.\\t Zhu, Q. et al. Scientific\
+    \ evidence based rare disease research discovery with research funding data in knowledge graph. Orphanet\\nJournal of\
+    \ Rare Diseases 16, 483 (2021).\\n68.\\t Wang, L. L. et al. CORD-19: The COVID-19 Open Research Dataset. ACL NLP-COVID\
+    \ Workshop (2020).\\n69.\\t Bhatia, P. et al. AWS CORD-19 search: A neural search engine for COVID-19 literature. Studies\
+    \ in Computational Intelligence 1013,\\n131\\u2013145 (2022).\\n70.\\t Zhang, E. et al. Covidex: Neural Ranking Models\
+    \ and Keyword Search Infrastructure for the COVID-19 Open Research Dataset.\\nConference on Empirical Methods in Natural\
+    \ Language Processing (EMNLP) (2020).\\n71.\\t Li, X. et al. Network bioinformatics analysis provides insight into drug\
+    \ repurposing for COVID-19. Medicine in Drug Discovery 10,\\n100090 (2021).\\n72.\\t Mohamed, S. K., Nounu, A. & Nov\\\
+    u00e1\\u010dek, V. Drug target discovery using knowledge graph embeddings. In Proceedings of the 34th\\nACM/SIGAPP Symposium\
+    \ on Applied Computing, 11\\u201318 (2019).\\n73.\\t Mohamed, S. K., Nov\\u00e1\\u010dek, V. & Nounu, A. Discovering protein\
+    \ drug targets using knowledge graph embeddings. Bioinformatics\\nbtz600 (2019).\\n74.\\t Sosa, D. N. et al. A literature-based\
+    \ knowledge graph embedding method for identifying drug repurposing opportunities in rare\\ndiseases. Pacific Symposium\
+    \ on Biocomputing (2020).\\n75.\\t Crichton, G., Guo, Y., Pyysalo, S. & Korhonen, A. Neural networks for link prediction\
+    \ in realistic biomedical graphs: a multi-\\ndimensional evaluation of graph embedding-based approaches. BMC Bioinformatics\
+    \ 19, 176 (2018).\\n76.\\t Long, Y. et al. Pre-training graph neural networks for link prediction in biomedical networks.\
+    \ Bioinformatics 38, 2254\\u20132262 (2022).\\n77.\\t Breit, A., Ott, S., Agibetov, A. & Samwald, M. OpenBioLink: a benchmarking\
+    \ framework for large-scale biomedical link prediction.\\nBioinformatics 36, 4097\\u20134098 (2020).\\n78.\\t Pi\\u00f1ero,\
+    \ J. et al. The DisGeNET knowledge platform for disease genomics: 2019 update. Nucleic Acids Research (2019).\\n79.\\\
+    t Bastian, F. B. et al. The Bgee suite: integrated curated expression atlas and comparative transcriptomics in animals.\
+    \ Nucleic Acids\\nResearch 49, D831\\u2013D847 (2021).\\n80.\\t Wishart, D. S. et al. DrugBank 5.0: a major update to\
+    \ the DrugBank database for 2018. Nucleic Acids Research 46, D1074\\u2013D1082\\n(2018).\\n81.\\t Davis, A. P. et al.\
+    \ Comparative Toxicogenomics Database (CTD): update 2021. Nucleic Acids Research 49, D1138\\u2013D1143 (2021).\"\n  },\n\
+    \  {\n    \"name\": \"Richardson, L. Beautiful soup documentation. April (2007)\",\n    \"text\": \"83.\\t Avram, S. et\
+    \ al. DrugCentral 2021 supports drug discovery and repositioning. Nucleic Acids Research 49, D1160\\u2013D1169 (2021).\\\
+    n84.\\t Maglott, D., Ostell, J., Pruitt, K. D. & Tatusova, T. Entrez Gene: gene-centered information at NCBI. Nucleic\
+    \ Acids Research 39,\"\n  },\n  {\n    \"name\": \"D52\\u2013D57 (2011)\",\n    \"text\": \"85.\\t Klopfenstein, D. V.\
+    \ et al. GOATOOLS: A python library for gene ontology analyses. Scientific Reports 8, 10872 (2018).\\n86.\\t The Gene\
+    \ Ontology Consortium. et al. The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Research 49,\"\n  },\n\
+    \  {\n    \"name\": \"D325\\u2013D334 (2021)\",\n    \"text\": \"87.\\t Menche, J. et al. Uncovering disease-disease relationships\
+    \ through the incomplete interactome. Science 347, 1257601 (2015).\\n88.\\t Matys, V. et al. TRANSFAC: transcriptional\
+    \ regulation, from patterns to profiles. Nucleic Acids Research 31, 374\\u2013378 (2003).\\n89.\\t Ceol, A. et al. MINT,\
+    \ the molecular interaction database: 2009 update. Nucleic Acids Research 38, D532\\u2013D539 (2010).\\n90.\\t Aranda,\
+    \ B. et al. The IntAct molecular interaction database in 2010. Nucleic Acids Research 38, D525\\u2013D531 (2010).\\n91.\\\
+    t Giurgiu, M. et al. Corum: the comprehensive resource of mammalian protein complexes\\u20142019. Nucleic Acids Research\
+    \ 47,\"\n  },\n  {\n    \"name\": \"D559\\u2013D563 (2019)\",\n    \"text\": \"92.\\t Oughtred, R. et al. The BioGRID\
+    \ database: A comprehensive biomedical resource of curated protein, genetic, and chemical\\ninteractions. Protein Science\
+    \ 30, 187\\u2013200 (2021).\\n93.\\t Szklarczyk, D. et al. The string database in 2021: customizable protein\\u2013protein\
+    \ networks, and functional characterization of user-\\nuploaded gene/measurement sets. Nucleic Acids Research 49, D605\\\
+    u2013D612 (2021).\\n94.\\t Luck, K. et al. A reference map of the human binary protein interactome. Nature 580, 402\\\
+    u2013408 (2020).\\n95.\\t Jassal, B. et al. The Reactome pathway knowledgebase. Nucleic Acids Research (2019).\\n96.\\\
+    t Kuhn, M., Letunic, I., Jensen, L. J. & Bork, P. The SIDER database of drugs and side effects. Nucleic Acids Research\
+    \ 44, D1075\\u2013D1079\\n(2016).\\n97.\\t Szklarczyk, D. et al. STITCH 5: augmenting protein\\u2013chemical interaction\
+    \ networks with tissue and affinity data. Nucleic Acids\\nResearch 44, D380\\u2013D384 (2016).\\n98.\\t Mungall, C. J.,\
+    \ Torniai, C., Gkoutos, G. V., Lewis, S. E. & Haendel, M. A. Uberon, an integrative multi-species anatomy ontology.\\\
+    nGenome Biology 13, R5 (2012).\\n99.\\t Leaman, R., Khare, R. & Lu, Z. Challenges in clinical natural language processing\
+    \ for automated disorder normalization. Journal of\\nBiomedical Informatics 57, 28\\u201337 (2015).\\n100.\\t Csardi,\
+    \ G. & Nepusz, T. The igraph software package for complex network research. InterJournal Complex Systems, 1695 (2006).\\\
+    n101.\\t Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: Pre-training of deep bidirectional transformers for language\\\
+    nunderstanding. Conference of the North American Chapter of the Association for Computational Linguistics (NAACL) 1, 4171\\\
+    u20134186\\n(2019).\\n102.\\t Chandak, P., Huang, K. & Zitnik, M. Building a knowledge graph to enable precision medicine.\
+    \ Harvard Dataverse https://doi.\\norg/10.7910/DVN/IXA7BM (2022).\\n103.\\t Georgiades, S., Szatmari, P. & Boyle, M. Importance\
+    \ of studying heterogeneity in autism. Neuropsychiatry 3, 123 (2013).\\n104.\\t Jeste, S. S. & Geschwind, D. H. Disentangling\
+    \ the heterogeneity of autism spectrum disorder through genetic findings. Nature\\nReviews Neurology 10, 74\\u201381 (2014).\\\
+    n105.\\t Lenroot, R. K. & Yeung, P. K. Heterogeneity within autism spectrum disorders: What have we learned from neuroimaging\
+    \ studies?\\nFrontiers in Human Neuroscience 7 (2013).\\n106.\\t Bosselut, A. et al. COMET: Commonsense transformers for\
+    \ automatic knowledge graph construction. Proceedings of the 57th\\nAnnual Meeting of the Association for Computational\
+    \ Linguistics 4762\\u20134779 (2019).\\n107.\\t Celikyilmaz, A., Bosselut, A., He, X. & Choi, Y. Deep communicating agents\
+    \ for abstractive summarization. Conference of the North\\nAmerican Chapter of the Association for Computational Linguistics\
+    \ (NAACL) 1662\\u20131675 (2018).\\n108.\\t Malaviya, C., Bhagavatula, C., Bosselut, A. & Choi, Y. Commonsense knowledge\
+    \ base completion with structural and semantic\\ncontext. Proceedings of the AAAI Conference on Artificial Intelligence\
+    \ 34, 2925\\u20132933 (2020).\\n109.\\t Bosselut, A. et al. Discourse-aware neural rewards for coherent text generation.\
+    \ Conference of the North American Chapter of the\\nAssociation for Computational Linguistics (NAACL) 173\\u2013184 (2018).\\\
+    n110.\\t Passos, A., Kumar, V. & McCallum, A. Lexicon infused phrase embeddings for named entity resolution. Proceedings\
+    \ of the\\nEighteenth Conference on Computational Natural Language Learning 78\\u201386 (2014).\\n\\n16\\nScientific Data\
+    \ |           (2023) 10:67  | https://doi.org/10.1038/s41597-023-01960-3\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    n111.\\t Souza, L. & Ferreira, A. An entity resolution approach based on word embeddings and knowledge bases for microblog\
+    \ texts. In\\nXVII Brazilian Symposium on Information Systems, 1\\u20138 (2021).\\n112.\\t Ebraheem, M., Thirumuruganathan,\
+    \ S., Joty, S., Ouzzani, M. & Tang, N. DeepER \\u2013 deep entity resolution. Proceedings of the VLDB\\nEndowment 11,\
+    \ 1454\\u20131467 (2018).\\n113.\\t Alsentzer, E. et al. Publicly available clinical BERT embeddings. Proceedings of the\
+    \ 2nd Clinical Natural Language Processing\\nWorkshop 72\\u201378 (2019).\\n114.\\t Lee, J. et al. BioBERT: a pre-trained\
+    \ biomedical language representation model for biomedical text mining. Bioinformatics 36,\\n1234\\u20131240 (2020).\\\
+    n115.\\t Johnson, A. E. et al. MIMIC-III, a freely accessible critical care database. Scientific Data 3, 160035 (2016).\\\
+    n116.\\t Pushpakom, S. et al. Drug repurposing: progress, challenges and recommendations. Nature reviews Drug discovery\
+    \ 18, 41\\u201358\\n(2019).\\n117.\\t Li, M. M., Huang, K. & Zitnik, M. Graph representation learning in biomedicine and\
+    \ healthcare. Nature Biomedical Engineering 6,\\n1353\\u20131369 (2022).\"\n  },\n  {\n    \"name\": \"Acknowledgements\"\
+    ,\n    \"text\": \"We want to thank Bino John, Chris Penland, Nigel Greene, Dominic Williams, and Anna Gogleva for the\
+    \ broad\"\n  },\n  {\n    \"name\": \"discussion on data integration and knowledge graph creation. We also want to thank\
+    \ Jingyi Liu for help with\",\n    \"text\": \"retrieving and processing primary data resources and Michelle M. Li and\
+    \ Emily Alsentzer for helpful discussion\\non ensuring the high quality of PrimeKG. P.C. was supported, in part, by Harvard\
+    \ Summer Institute in Biomedical\\nInformatics. M.Z. and K.H. gratefully acknowledge the support by NSF under Nos. IIS-2030459\
+    \ and IIS-2033384,\\nUS Air Force Contract No. FA8702-15-D-0001, Harvard Data Science Initiative, and awards from Amazon\\\
+    nResearch, Bayer Early Excellence in Science, AstraZeneca Research, and Roche Alliance with Distinguished\\nScientists.\
+    \ Any opinions, findings, conclusions or recommendations expressed in this material are those of the\\nauthors and do\
+    \ not necessarily reflect the views of the funders.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\"\
+    : \"P.C., K.H. and M.Z. contributed new analytic tools and wrote the manuscript. P.C. retrieved, processed, and\\nharmonized\
+    \ datasets. P.C. analyzed the resulting knowledge graph. M.Z. designed the study.\"\n  },\n  {\n    \"name\": \"Competing\
+    \ interests\",\n    \"text\": \"The authors declare no competing interests.\\nAdditional information\\nCorrespondence\
+    \ and requests for materials should be addressed to M.Z.\\nReprints and permissions information is available at www.nature.com/reprints.\\\
+    nPublisher\\u2019s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and\\ninstitutional\
+    \ affiliations.\\nOpen Access This article is licensed under a Creative Commons Attribution 4.0 International\\nLicense,\
+    \ which permits use, sharing, adaptation, distribution and reproduction in any medium or\\nformat, as long as you give\
+    \ appropriate credit to the original author(s) and the source, provide a link to the Cre-\\native Commons license, and\
+    \ indicate if changes were made. The images or other third party material in this\\narticle are included in the article\\\
+    u2019s Creative Commons license, unless indicated otherwise in a credit line to the\\nmaterial. If material is not included\
+    \ in the article\\u2019s Creative Commons license and your intended use is not per-\\nmitted by statutory regulation or\
+    \ exceeds the permitted use, you will need to obtain permission directly from the\\ncopyright holder. To view a copy of\
+    \ this license, visit http://creativecommons.org/licenses/by/4.0/.\\n\\n\\u00a9 The Author(s) 2023\"\n  }\n]"
+  acknowledgments: We want to thank Bino John, Chris Penland, Nigel Greene, Dominic Williams, and Anna Gogleva for the broad
+  author_contributions: 'P.C., K.H. and M.Z. contributed new analytic tools and wrote the manuscript. P.C. retrieved, processed,
+    and
+
+    harmonized datasets. P.C. analyzed the resulting knowledge graph. M.Z. designed the study.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information
+
+    Correspondence and requests for materials should be addressed to M.Z.
+
+    Reprints and permissions information is available at www.nature.com/reprints.
+
+    Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+
+    institutional affiliations.
+
+    Open Access This article is licensed under a Creative Commons Attribution 4.0 International
+
+    License, which permits use, sharing, adaptation, distribution and reproduction in any medium or
+
+    format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Cre-
+
+    ative Commons license, and indicate if changes were made. The images or other third party material in this
+
+    article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the
+
+    material. If material is not included in the article’s Creative Commons license and your intended use is not per-
+
+    mitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the
+
+    copyright holder. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+
+
+    © The Author(s) 2023'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\",\n    \"\
+    page\": 5\n  },\n  {\n    \"id\": \"fig_p13_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_1.png\",\n \
+    \   \"page\": 13\n  }\n]"
+references:
+  reference_count: 47

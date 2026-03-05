@@ -1,0 +1,152 @@
+# QB3 Early-Stage Mentoring Application — Template Specification
+#
+# This file defines the structure, field types, and constraints
+# for the QB3 Early-Stage Mentoring Application Form.
+#
+# Schema Version: 1.0
+# Source: https://qb3.org/early-stage-mentoring/
+
+template:
+  name: "QB3 Early-Stage Mentoring Application"
+  version: "2026-winter"
+  source: "https://qb3.org/early-stage-mentoring/"
+  output_formats: [html, pdf, docx]
+  footer: "We'll get back to you within one week on the status of your application."
+
+sections:
+  # ─── Section 1: Elevator Pitch ───────────────────────────────────────────
+  - id: elevator_pitch
+    title: "Elevator Pitch"
+    fields:
+      - id: five_words
+        label: "What are you doing, in five words or less?"
+        type: text
+        required: true
+        constraints:
+          maxWords: 5
+
+      - id: pitch
+        label: "We're in the elevator for 30 seconds. Give us your pitch."
+        type: textarea
+        required: true
+
+  # ─── Section 2: Contact Information ──────────────────────────────────────
+  - id: contact
+    title: "Contact Information"
+    fields:
+      - id: name
+        label: "Your Name"
+        type: name
+        required: true
+        subfields:
+          - { id: first, label: "First Name", type: text, required: true }
+          - { id: last, label: "Last Name", type: text, required: true }
+
+      - id: email
+        label: "Your Email Address"
+        type: email
+        required: true
+        placeholder: "example@example.com"
+
+      - id: phone
+        label: "Your Mobile Phone Number"
+        type: phone
+        required: true
+        placeholder: "(000) 000-0000"
+        hint: "Please enter a valid phone number. We will not share your data."
+
+  # ─── Section 3: Company / Team ──────────────────────────────────────────
+  - id: company
+    title: "Company / Team"
+    fields:
+      - id: company_name
+        label: "Company Name"
+        type: text
+        required: false
+        hint: "if applicable"
+
+      - id: location
+        label: "Company Location"
+        type: address
+        required: true
+        subfields:
+          - { id: city, label: "City", type: text, required: true }
+          - { id: state, label: "State / Province", type: text, required: true }
+
+      - id: incorporated
+        label: "Are you incorporated?"
+        type: choice
+        required: true
+        options: ["Yes", "No"]
+        hint: "This does not affect your eligibility for this program."
+
+      - id: team_description
+        label: "Please briefly describe yourself and, if applicable, your team."
+        type: textarea
+        required: true
+        hint: 'E.g. "I am a Berkeley associate professor of chemistry with a postdoc who is working on this project."'
+
+  # ─── Section 4: Technology ──────────────────────────────────────────────
+  - id: technology
+    title: "Technology"
+    note: "Please only enter non-confidential information. If you are connected to mentors, they will sign NDAs."
+    fields:
+      - id: problem
+        label: "What is the problem you are solving or the need you are meeting?"
+        type: textarea
+        required: true
+
+      - id: customer
+        label: "Who is your customer? How do you know they need your technology?"
+        type: textarea
+        required: true
+
+      - id: solution
+        label: "What is your solution?"
+        type: textarea
+        required: true
+
+      - id: has_data
+        label: "Can you provide data that would give us confidence that this is worth pursuing?"
+        type: choice
+        required: true
+        options: ["Yes", "No"]
+
+      - id: differentiator
+        label: "What differentiates your solution from others in the field?"
+        type: textarea
+        required: true
+
+      - id: ip_situation
+        label: "What is your IP situation? Any patents filed, provisional or nonprovisional? Plans to license?"
+        type: textarea
+        required: true
+
+      - id: deck
+        label: "If you have a non-confidential deck or executive summary, please upload it."
+        type: file
+        required: false
+        constraints:
+          maxSizeMB: 25
+
+  # ─── Section 5: Your Needs ──────────────────────────────────────────────
+  - id: needs
+    title: "Your Needs"
+    fields:
+      - id: mentor_needs
+        label: "Let us know what you are looking to get from your mentors."
+        type: textarea
+        required: true
+
+      - id: referral_source
+        label: "How did you hear about this program?"
+        type: choice
+        required: true
+        options:
+          - "Media Story"
+          - "Newsletter"
+          - "Departmental Email"
+          - "Social Media"
+          - "Web Search"
+          - "Word of Mouth"
+          - "Other"

@@ -1,0 +1,86 @@
+# Emergent Ventures Proposal — Template Specification
+#
+# Mercatus Center fellowship and grant program.
+# Source: Grant_writing_frameworks.md + mercatus.org/emergent-ventures
+#
+# Schema Version: 1.0
+
+template:
+  name: "Emergent Ventures Proposal"
+  version: "1.0"
+  source: "https://www.mercatus.org/emergent-ventures"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Personal Story ─────────────────────────────────────────────────────
+  - id: personal
+    title: "Personal Story"
+    note: "The first part of the proposal should be about you."
+    fields:
+      - id: personal_story
+        label: "Tell us your personal story and how it relates to what you wish to do. We probably don't care much about your formal education, credentials, or awards."
+        type: section
+        required: true
+
+  # ─── Consensus View ─────────────────────────────────────────────────────
+  - id: consensus
+    title: "Consensus View"
+    note: "This is their version of a 'trick' question, reversing the now-fashionable contrarianism."
+    fields:
+      - id: consensus_view
+        label: "What is one mainstream or 'consensus' view that you absolutely agree with?"
+        type: section
+        required: true
+
+  # ─── The Idea ───────────────────────────────────────────────────────────
+  - id: idea
+    title: "The Idea"
+    fields:
+      - id: idea_pitch
+        label: "Convince us that this is a great idea worth investing in, and tell us what is new or unusual in your vision and understanding. What's the problem you intend to solve?"
+        type: section
+        required: true
+
+  # ─── Budget & Logistics ─────────────────────────────────────────────────
+  - id: logistics
+    title: "Budget & Logistics"
+    fields:
+      - id: budget
+        label: "If you have a ballpark budget (with revenue sources and expenses), let us know the bare basics. There is NO typical grant range or average award amount."
+        type: textarea
+        required: false
+
+      - id: duration
+        label: "How long have you been working on this project or idea?"
+        type: textarea
+        required: false
+
+      - id: commitment
+        label: "Will you be working on it full-time or part-time?"
+        type: choice
+        required: false
+        options:
+          - "Full-time"
+          - "Part-time"
+
+      - id: partnerships
+        label: "Any existing formal or informal partnerships or supporters?"
+        type: textarea
+        required: false
+
+      - id: team
+        label: "If applying with a partner, cofounder, or team, list names and emails."
+        type: textarea
+        required: false
+
+  # ─── Constraints ────────────────────────────────────────────────────────
+  - id: constraints
+    title: "Submission Constraints"
+    note: "The proposal should be no longer than 1500 words."
+    fields:
+      - id: total_proposal
+        label: "Complete proposal text"
+        type: section
+        required: true
+        constraints:
+          maxWords: 1500

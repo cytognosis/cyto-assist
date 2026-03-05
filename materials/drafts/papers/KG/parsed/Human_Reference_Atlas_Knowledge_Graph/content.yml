@@ -1,0 +1,930 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Human Reference Atlas Knowledge Graph.pdf
+
+identifiers:
+  doi: 10.1038/s41597-025-05183-6
+  pmid: '40592888'
+citation:
+  title: Construction, Deployment, and  Usage of the Human Reference  Atlas Knowledge Graph
+  year: '2025'
+  journal: Scientific Data
+  volume: '12'
+  publisher: Springer Science and Business Media LLC
+  authors: Andreas Bueckle, Bruce W. Herr, Josef Hardi, Ellen M. Quardokus, Mark A. Musen, Katy Börner
+content:
+  sections: "[\n  {\n    \"name\": \"Background & Summary\",\n    \"text\": \"The multimodal, three-dimensional (3D) Human\
+    \ Reference Atlas (HRA)1,2 aims to map the healthy, adult human\\nbody across scales\\u2014from the whole body to the\
+    \ single cell and biomarker levels. Data from different sources (organs,\\ntechnologies, and labs), analyzed and used\
+    \ following standard operating procedures (SOPs, humanatlas.io/\\nstandard-operating-procedures), need to be integrated\\\
+    u00a0so they can be explored across scales. The HRA Knowledge\\nGraph (KG) defines and provides the core data structures\
+    \ that are used to store, link, query, and explore HRA data.\\nKGs are widely used to store and\\u00a0interlink data about\
+    \ relevant entities within a specific domain or task. The\\nGoogle Knowledge Graph3 supports Google Search with its billions\
+    \ of searches processed daily. Major online\\nshopping retailers such as Amazon4 use KGs to organize products, searches,\
+    \ and media items5. KGs across\\ndomains are structured using vocabularies, e.g., Friend of a Friend6, Simple Knowledge\
+    \ Organization System\\n(SKOS)7, and Music Ontology8,9. Plus, there exist collaborative efforts for publishing structured\
+    \ data on the\\nweb.\\u00a0A major, widely used, light-weight data format for KGs to provide structured data on the web\
+    \ is JavaScript\\nObject Notation for Linked Data (JSON-LD, json-ld.org). Many biomedical ontologies and metadata standards\\\
+    nare provided in JSON-LD, such as in the Open Biological and Biomedical Ontologies (OBO) Foundry10,11 and\\nNational Center\
+    \ for Biomedical Ontology (NCBO) BioPortal12, and tools exist to convert ontologies to JSON-LD,\\nsuch as Prot\\u00e9g\\\
+    u00e9 (protege.stanford.edu)13, ROBOT14, and rdflib (rdflib.readthedocs.io/en/stable). Spearheaded\\nby major industry\
+    \ companies, including Google and Microsoft, metadata schemas on schema.org promote the\\nstructured representation for\
+    \ data on the web and provide shared vocabulary in various encodings, including\\nResource Description Framework (RDF,\
+    \ see Box 1) and JSON-LD. They describe entities and relationships in the\\nsemantic web and other structured data efforts.\
+    \ An overview of other commonly used vocabularies is available on\\nwww.w3.org/wiki/TaskForces/CommunityProjects/LinkingOpenData/CommonVocabularies.\\\
+    nThis paper\\u00a0presents the HRA KG v2.2, which uses 10 ontologies (see\\u00a0Other Ontologies in Methods) to\\ninterlink\
+    \ 33 anatomical structures (ASs), cell types (CTs), plus biomarkers (B) tables (see Box\\u00a01), 71 3D reference\\nobjects\
+    \ for organs, 22 Functional Tissue Units (FTUs)15, 11,698 single-cell (sc) datasets, and other HRA Digital\\nObjects (DOs).\
+    \ The HRA KG is accessible via (1) dynamic queries through its\\u00a0SPARQL (see Box 1) endpoint\\n1Department of Intelligent\
+    \ Systems Engineering, Luddy School of Informatics, Computing, and Engineering, Indiana\\nUniversity, Bloomington, IN,\
+    \ USA. 2Stanford Center for Biomedical Informatics Research, Stanford University,\\nStanford, CA, USA. \\u2709e-mail:\
+    \ abueckle@iu.edu; bherr@iu.edu; katy@iu.edu\\nData Descriptor\"\n  },\n  {\n    \"name\": \"OPEN\",\n    \"text\": \"\
+    2\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nat\\u00a0lod.humanatlas.io/sparql, (2) the Representational State Transfer (REST)-ful\
+    \ HRA\\u00a0application programming\\ninterface (API) with clients available in JavaScript, TypeScript, Angular 17+\\\
+    u2009, and Python 3.6+\\u2009(humanatlas.io/api),\\nand (3) several interactive user interfaces (UIs). This work presents\
+    \ open code and infrastructure to construct\\nthe HRA KG out of disparate data across tabular/non-tabular and nested/flat\
+    \ HRA DOs while ensuring pro-\\ncessed data conforms to 5-star Linked Open Data (LOD)16 principles\\u00a0(see Box 1).\
+    \ The HRA KG data can also\\u00a0be\\naccessed via content negotiation from lod.humanatlas.io. Any version of any HRA\
+    \ DO can be obtained in the\\nsupported RDF format hosted by the HRA KG.\\nBox 1\\t Key terminology used for constructing,\
+    \ deploying, and using the HRA KG.\\n\\u2022 \\u00073D reference objects: Mesh-based 3D models describing organs in the\
+    \ male and female body of the HRA.\\nThey are used in HRA applications to register and explore tissue blocks as well as\
+    \ associated datasets55. All\\n71 3D reference objects of HRA v2.2 have crosswalks that link their 1,224 3D ASs to ontology\
+    \ terms in\\nUberon18 or Foundational Model of Anatomy (FMA)53,54.\\n\\u2022 \\u0007Anatomical structures, cell types,\
+    \ plus biomarkers tables (ASCT+B): ASCT+B tables are authored by\\nmultiple experts across many consortia. They capture\
+    \ the relationship between ASs (and the ASs located in\\nthem), CTs found inside these ASs, and the Bs (genes, proteins)\
+    \ used to characterize the CTs, see details in\\nrelated publications1,2.\\n\\u2022 \\u0007Cell Type Annotation (CTann):\
+    \ Azimuth49, CellTypist50,51, and popV52 are used to assign CTs to cells from\\nsingle-cell/single-nucleus (sc/sn)\\u00a0RNA-seq\
+    \ studies. Crosswalks\\u00a0compiled by experts are used to assign on-\\ntology IDs to CTann CTs, see details in a related\
+    \ publication2.\\n\\u2022 \\u0007Common Coordinate Framework (CCF) Ontology: The CCF Ontology23 provides the main vocabulary\\\
+    nfor constructing atlases of the human body, including the HRA. Critically, the CCF provides a framework\\nfor constructing\
+    \ atlases, but is not an atlas itself. It includes concepts and properties needed to describe the\\nhuman body, from organs\
+    \ down to CTs and Bs, for organizing spatial data, and for capturing donor, sample\\nand dataset metadata published in\
+    \ the HRA\\u00a0KG.\\n\\u2022 \\u0007Content negotiation: This mechanism is used by Hypertext Transfer Protocol (HTTP)\
+    \ servers to deliver\\ndifferent versions of a resource at the same Uniform Resource Identifier (URI) based on the parameters\\\
+    ngiven in the HTTP request (developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation). HTTP\\nrequests can specify\
+    \ headers which provide additional information for the server to act on. Using the Accept\\nheader, an agent can specify\
+    \ what format (or a ranked list of acceptable formats) they would like the response\\nreturned in. A web browser will\
+    \ typically request text/html, but machines or programmers may request other\\nformats like application/json or any of\
+    \ the RDF formats supported by the HRA KG.\\n\\u2022 \\u0007Crosswalks: A matching of terms in HRA DOs to ontology terms\
+    \ in the ASCT+B tables1. Crosswalks can\\nlink, e.g., 2/3D reference objects of organs to ASs and CTs, and Organ Mapping\
+    \ Antibody Panels (OMAPs34,-\\nsee below) to CTs and Bs. This definition is adapted from a related publication2.\\n\\\
+    u2022 \\u0007HRA Digital Objects (DOs): HRA DOs are the data components for generating the HRA KG. They are\\nexplained\
+    \ in detail in the Methods section. ASCT+B tables, 3D reference objects, and OMAPs are examples\\nof HRA DOs that are\
+    \ processed to become part of the HRA KG.\\n\\u2022 \\u0007Linked Open Data (LOD): A common data sharing pattern114, developed\
+    \ for the Semantic Web (www.\\nw3.org/2001/sw/wiki/Main_Page) that describes how to structure and share semantically rich\
+    \ data that al-\\nlows for maximum reuse and utility. To be LOD, the data should have an open license, use URIs in the\
+    \ data\\nto name entities whose URIs resolve (i.e., can be queried either directly via web request or via SPARQL) to\\\
+    nretrieve structured data in RDF about that URI and link to other resources via URIs.\\n\\u2022 \\u0007Linked Data Modeling\
+    \ Language (LinkML): LinkML (linkml.io/linkml)74 is a flexible language that allows\\nus to author linked\\u00a0data\\\
+    u00a0schemas in YAML (yaml.org) which describe the structure of one\\u2019s data. Addi-\\ntionally, it is a framework\
+    \ for working with and validating data in a variety of formats such as\\u00a0JSON, RDF,\\nand\\u00a0tab-separated values\
+    \ (TSV), with generators for compiling LinkML schemas to other frameworks.\\n\\u2022 \\u0007Organ Mapping Antibody Panels\
+    \ (OMAPs): Tabular data structures with panels of experiment-derived\\nand tested antibodies to target proteins for identifying\
+    \ ASs, CTs, cell states, or cell membrane staining in\\norgans. A related publication detailing OMAP construction and\
+    \ usage is available34,101.\\n\\u2022 \\u0007Persistent Uniform Resource Locator (PURL): A type of URL that\\u00a0points\
+    \ to a resolution service rather than a\\nwebsite. The resolution service then\\u00a0uses content negotiation to determine\
+    \ what content is needed (e.g., HTML for\\nhumans, structured data for machines) and redirects the user\\u00a0or directly\
+    \ returns the relevant data. PURLs are used\\nin LOD to provide persistent, resolvable URIs for entities so that they\
+    \ can be referenced without the URIs changing.\\n\\u2022 \\u0007Resource Description Framework (RDF): RDF is a standard\
+    \ to represent structured data on the web. It\\ndefines relationships between data objects, enabling exchange of structured\
+    \ information through triples\\nconsisting of a subject, predicate, and object (www.w3.org/RDF).\\u00a0In the HRA KG,\
+    \ every RDF graph is made\\navailable in a series of formats, see Data Processing Pipeline in Methods.\\n\\u2022 \\u0007SPARQL\
+    \ Protocol and RDF Query Language: A query language for RDF graphs (www.w3.org/TR/spar-\\nql11-query), SPARQL can be used\
+    \ to write declarative code to retrieve triples that describe two entities and\\ntheir relationship in an RDF graph.\\\
+    n\\u2022 \\u0007Subject matter experts (SMEs): Individuals who possess specialized training in areas related to HRA con-\\\
+    nstruction, such as anatomists, surgeons, clinicians, and physicians. SMEs may have valuable knowledge\\nabout entire\
+    \ organ systems, individual organs, or parts thereof, such as their cellular or molecular make-up,\\nor have expertise\
+    \ in experimental procedures.\\n\\n3\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nOntologies and KGs\\nLinking HRA DOs (see Box\\u00a01)\
+    \ to ontologies and, by extension, wider domains of expert knowledge is accom-\\nplished by the HRA KG (see\\u00a0Atlas\
+    \ Coverage\\u00a0in Methods). In the biomedical domain, ontologies are widely\\nused to structure data, which is of high\
+    \ relevance to HRA KG construction. For example, the NCBO BioPortal12\\nprovides easy access to 1,168 ontologies; similarly,\\\
+    u00a0the European Molecular Biology Laboratory\\u2019s\\u00a0European\\nBioinformatics Institute\\u00a0(EMBL-EBI) Ontology\
+    \ Lookup Service (OLS)17 supports 267 ontologies. The\\nUber-anatomy ontology (Uberon)18 is a cross-species ontology representing\
+    \ body parts, organs, and tissues,\\nprimarily focused in vertebrates. The Cell Ontology (CL)19 is also a cross-species\
+    \ ontology but focuses on classi-\\nfying and describing cells. Given that Uberon and CL are linked data, one can determine\
+    \ assertions such as kid-\\nney cortical cell (purl.obolibrary.org/obo/CL_0002681) is part of (purl.obolibrary.org/obo/BFO_0000050)\
+    \ cortex\\nof kidney (purl.obolibrary.org/obo/UBERON_0001225) from the knowledge represented in these ontologies.\\nOntologies\
+    \ are an indispensable part of generating, using, and maintaining KGs as they enable unifying\\nnomenclature across assay\
+    \ types, organs, donors, teams, and consortia. A recent publication by He et al.20,\\nfeaturing the HRA, shows how ontologies\
+    \ can be used to model, integrate, and reason over previously siloed\\nclinical, pathological, and molecular kidney data\
+    \ for precision medicine. It highlights the development of the\\nprecision medicine metadata ontology (PMMO) to integrate\
+    \ dozens of variables between the Kidney Precision\\nMedicine Project (KPMP)21,22 and Chan Zuckerberg Initiative (CZI)\
+    \ CELLxGENE (CxG) data. It then shows\\nspecific use cases in detecting healthy vs. acute kidney infection (AKI)/chronic\
+    \ kidney disease (CKD) disease\\nstates in cells supported by PMMO, Kidney Tissue Atlas Ontology (KTAO), and the HRA\\\
+    u2019s CCF Ontology,\\ndescribed in a related publication23.\\nBiomedical KGs use and interlink multiple ontologies to\
+    \ store and query data. For example, the Unified\\nMedical Language System (UMLS)24 \\u201cmetathesaurus\\u201d contains\
+    \ approximately 3.4 million biomedical concepts,\\nupdated every six months in May and November and is derived from other\
+    \ biomedical terminologies and ontol-\\nogies. The Petagraph KG25 uses the UMLS metathesaurus to integrate biomolecular\
+    \ datasets and connects them\\nto approximately 200 cross-referenced ontologies to support exploration of gene variant\
+    \ epistasis as well as bio-\\nlogical assertions with reduced dimensionality, and to link relevant features to chromosome\
+    \ position and chro-\\nmosomal neighborhoods. The Human BioMolecular Atlas Program (HuBMAP, hubmapconsortium.org)26,27\\\
+    nUnified Biomedical Knowledge Graph2 (UBKG, ubkg.docs.xconsortia.org and on GitHub28) connects HuBMAP\\nexperimental data\
+    \ to ontologies. The Scalable Precision Medicine Open Knowledge Engine (SPOKE, spoke.\\nucsf.edu)29,30 processes 41 databases\
+    \ (53 million edges) and 11 ontologies to create an integrated graph with\\nuser access via a RESTful API. Petagraph,\
+    \ HuBMAP, and SPOKE use the Neo4J graph platform (neo4j.com). A\\ncomparison of the HRA KG and other KGs is provided in\
+    \ the Technical Validation section. KGs can be used to\\nextract knowledge across constantly evolving ontologies and data\
+    \ in various states of accessibility (private and\\npublic).\\u00a0Efforts like BioCypher (biocypher.org)31 enable the\
+    \ rapid construction and maintenance of KGs at lower\\ncost. This also addresses the lack of reusability and integrability,\
+    \ where KGs are built manually for a specific task,\\nand, as a result, do not adhere to Findable, Accessible, Interoperable,\
+    \ and Reusable (FAIR)32 principles.\\nUpdates since the CCF Ontology Paper\\nThe specimen, biological structure, and spatial\
+    \ ontologies in support of the HRA v1.2 using the\\u00a0CCF\\nOntology\\u00a0v2.0.1 were introduced in a prior publication23\
+    \ in 2023. Given substantial expansions of the HRA data\\nand new user requirements, major CCF ontology changes were made\
+    \ for HRA v2.0, published in December\\n2023. For example, the CCF Ontology (v3.0) is separated from the HRA, which is\
+    \ represented as a DO of type\\ncollection. CCF v3.0 is now\\u00a0a DO of type vocab, see HRA Digital Objects in Methods.\\\
+    u00a0Before HRA v2.0, the\\nCCF and HRA were a single graph, consisting of the HRA collection plus the CCF Ontology embedded\
+    \ into it.\\nStarting with HRA v2.0, the HRA collection references the CCF (but does not contain it) and is compiled from\
+    \ a\\ncollection of curated HRA DOs; it is hosted by the HRA KG at purl.humanatlas.io/collection/hra/v2.2. In other\\\
+    nwords, this was implemented to cleanly separate the CCF Ontology from the HRA, thus establishing a boundary\\nbetween\
+    \ the framework for creating atlases, which is the CCF, and a specific atlas, the HRA.\\nHRA vs. HRA KG\\nThe HRA KG makes\
+    \ it possible to access HRA data efficiently and to ask biological questions via programmatic\\nqueries. For example,\
+    \ (1) researchers can leverage the KG to identify the number of datasets and B expression\\nlevels given a particular\
+    \ CT as identified by its CL ID; (2) computational biologists can identify the canonical\\nBs for a given CT across many\
+    \ organs through the ASCT+B tables, made available in a validated, processed,\\nenriched LOD format through the HRA KG;\
+    \ (3) and data providers can validate their cell type annotations\\nagainst the HRA KG or predict the spatial origin of\
+    \ human tissue given its cellular make-up by comparing it\\nagainst cell type populations in the HRA KG. Examples are\
+    \ provided in the Usage Notes and on the companion\\nwebsite at cns-iu.github.io/hra-kg-supporting-information/#basic-usage.\\\
+    nThe HRA KG is composed of multiple named graphs (subgraphs), each focusing on a specific part of the\\natlas, such as\
+    \ biological structures or spatial references. The HRA collection is a collection of HRA DOs with\\nDOIs (ASCT+B Tables,\
+    \ 3D reference objects, OMAPs, etc.) that make up the core of the HRA at each release.\\nWhen processed, it compiles to\
+    \ a (large) RDF graph and is hosted by the HRA KG at purl.humanatlas.io/collec-\\ntion/hra. This relationship is further\
+    \ explained and visualized in the section entitled The HRA KG in the HRA\\nEcosystem.\\nThe HRA uses a graph structure\
+    \ (as opposed to a relational database)33 to ensure: (1) Flexibility. The schema\\nof the HRA KG can be extended as needed\
+    \ when new organs or HRA DO types become available (as opposed\\nto a rigid table schema that would need to be chosen\
+    \ for a relational database). Many HRA DOs, such as 3D\\nreference objects, are non-tabular and highly nested, which is\
+    \ challenging to model in relational databases.\\n\\n4\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n(2) Support for disparate data. HRA DOs take on many\
+    \ forms. For example, ASCT+B tables capture ASs,\\nCTs in those ASs, and the Bs that characterize those CTs; they are\
+    \ linked to OMAP and Antibody Validation\\nReport (AVR)34 tables (tabular data), 2D images and 3D models (graphic assets),\
+    \ as well as graph\\u00a0DOs, such\\nas scientific literature connected to the HRA (HRAlit)35 and cell type populations\
+    \ of the HRA (HRApop)1, all\\nnested. A relational database would make it necessary to choose a schema for each of these\
+    \ DO types.\\u00a0Moreover,\\na key strength of KGs lies in their underlying structure: while relational databases rely\
+    \ on tables with relation-\\nships stored as foreign keys, graphs are built on nodes and edges; the connections between\
+    \ data points are\\nmore obvious and explicit. As a result, unlike relational databases, where linking the data must be\
+    \ inferred\\nthrough complex joins, graphs are more intuitive and natural for representing data relationships. (3) Answering\\\
+    nbiological questions across HRA DO types. The KG structure makes it possible to programmatically answer\\nquestions across\
+    \ multiple DOs for one entire organ via graph queries (e.g., the ASCT+B table for the kidney\\nand the 3D reference object\
+    \ for the female, left kidney). In a relational database, this would necessitate a set of\\nnew tables that would need\
+    \ to be carefully created with foreign keys and relationships to support the kind of\\ndynamic graph-based queries readily\
+    \ available in SPARQL. (4) Deployment as 5-Star LOD. RDF graphs can\\nbe imported into triple stores in their native format\
+    \ and easily be queried together with connected biomedical\\nontologies (genes, proteins, cells, anatomy), which are also\
+    \ published as RDF. Existing HRA KG queries bridge\\ntheaforementioned\\u00a0Uberon18\\u00a0and\\u00a0CL19\\u00a0plus\
+    \ Provisional Cell Ontology (PCL)36, HUGO Gene Nomenclature\\nCommittee (HGNC, www.genenames.org)37, and HRA nodes, properties,\
+    \ and relationships stored or imported\\nfrom their respective graphs.\\nTo use the HRA KG in connection with a relational\
+    \ database, an initial query into the HRA KG can be used\\nto retrieve data as a simple table; then, a database management\
+    \ system like PostgreSQL (www.postgresql.org)\\ncan be used to aggregate the data with SQL features that perform complex\
+    \ window functions on it. This way, data\\nfrom the HRA KG can be indexed and used in a database downstream.\\nLimitations\\\
+    nThe current HRA KG has a number of known limitations that will be addressed in future HRA releases:\\nAutomation.\\nWhile\
+    \ many parts of the HRA KG construction process are automated, collecting and provid-\\ning DOs in their original form,\
+    \ such as comma-separated values (CSV), binary Graphics Library Transmission\\nFormat (glTF/GLB, www.khronos.org/gltf),\
+    \ or scalable vector graphics (SVG), is still a manual process involving\\nhuman labor. In future releases, machine learning\
+    \ algorithms15,38\\u201345\\u00a0will be employed to speed up tissue data seg-\\nmentation and annotation, using human\
+    \ expertise to review\\u00a0and correct as needed but not manually compile DOs.\\nBuild Time.\\nAt present, building the\
+    \ HRA KG from unprocessed DOs using code on GitHub46 takes about\\n13\\u2009hours on a local Linux server with 256GB RAM\
+    \ and 20 cores. As new DO types are added and HRApop as well\\nas HRAlit grow, the construction process will be continuously\
+    \ optimized\\u00a0by implementing better KG structures,\\nusing parallelization, and improving normalization and enrichment\
+    \ code (some libraries are particularly slow for\\ncertain DO types). Preliminary results from one experiment showed a\
+    \ nearly one-third reduction in execution\\ntime, demonstrating the potential of parallelization in faster, more efficient\
+    \ KG construction.\\nReduce ASCTB-TEMP Terms.\\nAs of HRA v2.2, 221 CTs across 33 ASCT+B tables do not yet exist in\\\
+    nCL or PCL; instead, they have an ASCTB-TEMP expert provided label. GitHub issues have been submitted\\nfor all, and the\
+    \ EMBL-EBI team is adding these terms. The Technical Validation section details ongoing\\nefforts to add new AS and CT\
+    \ terms from the\\u00a0HRA KG to existing ontologies. As of May 2025, 162 AS terms\\nwere added to the Uberon18 ontology,\
+    \ 155 CTs were added to CL19, and 468 CTs were added to PCL36 includ-\\ning 461 for the human brain47 in support of HRA\
+    \ construction and usage.\\nData Modeling.\\nTo be most useful to the HRA KG, each new DO type must have a LinkML schema\
+    \ (see\\nBox\\u00a01), normalization code, and enrichment code to transform the raw data into queryable information. As\
+    \ new\\nuse cases are identified, the HRA structure and canned queries will be revised and expanded. Currently, HRAlit35\\\
+    nis being served via a relational database. Knowledge modeling is underway to create an HRAlit graph and to\\nproperly\
+    \ connect it to the HRA KG, which will allow users to query peer-reviewed literature and funded awards\\nfor entities\
+    \ in the HRA KG.\\nEase of Use.\\nRetrieving data from KGs requires experience writing SPARQL queries, which few clinicians\\\
+    nand biomedical researchers possess. The HRA KG comes with canned queries at apps.humanatlas.io/api/grlc/ as\\nwell as\
+    \ Jupyter Notebooks (see companion website at cns-iu.github.io/hra-kg-supporting-information). Going\\nforward, the HRA\
+    \ Documentation Portal (under construction) will help train and provide resources to users\\nlearning how to query the\
+    \ HRA KG. Additionally, since KGs offer access to structured data, the possibilities of\\nutilizing large language models\
+    \ (LLMs) are explored\\u00a0to allow users to ask questions in prose. An LLM, enhanced\\nby retrieval-augmented generation\
+    \ (RAG), was prototyped to support natural language queries that are informed\\nby the knowledge in the HRA KG, see companion\
+    \ website at cns-iu.github.io/hra-kg-supporting-information\\n/#using-llms-and-rag-with-hra-kg. Finally, the\\u00a0HRA\
+    \ KG Explorer UI\\u00a0is in development, which will allow users\\nto browse the KG via the web to quickly identify, select,\
+    \ and download HRA DOs of interest in all available graph\\nformats. This will enable easy access to the HRA KG to users\
+    \ without experience writing code, making API\\nrequests via the grlc.io service, or running SPARQL queries.\\n\\n5\\\
+    nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"HRA Digital Objects.\\nHRA DOs\
+    \ come in diverse formats, such as ASCT+B tables1 (humanatlas.io/asctb-ta-\\nbles), 3D reference objects (humanatlas.io/3d-reference-library,\
+    \ 3d.nih.gov/collections/hra), and OMAPs34\\n(humanatlas.io/omap), see all in\\u00a0Box\\u00a01. Each DO has a type, name,\
+    \ and version in a PURL (see Box\\u00a01). For exam-\\nple, the PURL for the ASCT+B table for the kidney is purl.humanatlas.io/asct-b/kidney/v1.6,\
+    \ where asct-b/kid-\\nney/v1.6 indicates asct-b as the type, kidney as the\\u00a0organ name, and v1.6 as the version.\
+    \ These DOs are provided by\\nSMEs (see Box\\u00a01) using\\u00a0well-defined data structures (see SOPs at humanatlas.io/standard-operating-procedures\\\
+    nfor details), and are regularly validated48.\\nHRA DOs allow SMEs to provide expert knowledge that can be queried programmatically.\
+    \ ASCT+B tables, for\\nexample, make it possible for anatomists, surgeons, and other experts to digitize knowledge about\
+    \ the CTs and Bs\\nin healthy tissue via Google Sheets. When constructing a table, SMEs are asked to crosswalk HRA terms\
+    \ for AS,\\nCT, and B to terms and IDs in existing ontologies. Parsing the Google Sheets for downstream HRA usage\\u00a0is\
+    \ not\\nadvisable, as detailed validation and additional enrichment are required before the ASCT+B table data can be used.\\\
+    nA complete list of the\\u00a013 DO types in HRA v2.2 is provided in Table\\u00a01. These DOs can be categorized as\\\
+    nreference data (2d-ftu, asct-b, ctann, landmark, millitome, omap, ref-organ, vascular-geometry), experiment data\\n(ds-graph,\
+    \ graph), and other data (collection, schema, vocab). DOs are available in a variety of formats on the\\nLOD server at\
+    \ lod.humanatlas.io. Fig.\\u00a01 illustrates high-level relationships among the 13 DO types.\\nHigh-level Relationships\
+    \ between DO Types.\\n2D Illustrations (green): 2d-ftu DOs represent ASs in\\n2D\\u00a0(because FTUs are ASs) and the\
+    \ CTs in them, based on experimental data. 2d-ftu DOs can be downloaded in\\ntheir processed form or as SVG, Portable\
+    \ Network Graphics (PNG), or Adobe Illustrator (AI) files.\\u00a0The crosswalks\\nfrom 2D FTU illustrations to ASCT+B\
+    \ tables are also available as 2d-ftu DOs and can be downloaded as CSV files.\\n3D Spatial Reference (yellow): ref-organ\
+    \ DOs get anatomical context from landmark DOs, and millitome\\nDOs provide extraction sites for an entire organ, represented\
+    \ by a ref-organ DO. ref-organ and landmark DOs\\ncan have arbitrary 3D shapes and are available as GLB files. millitome\
+    \ DOs are cuboids and\\u00a0can be downloaded\\nin JSON-LD.\\u00a0The crosswalks from 3D reference objects\\u00a0to ASCT+B\
+    \ tables are also available as ref-organ DOs\\nand can be downloaded as CSV files.\\nBiological Structure (pink): The\
+    \ asct-b DO type plays a central role for multiple other DO types, see Box\\u00a01 and\\nTable\\u00a01. vascular-geometry\
+    \ DOs provide vascular metadata for asct-b DOs. Both can be downloaded as CSV files.\\nExperimental Data (purple): ds-graph\
+    \ DOs describe experimental datasets mapped into a ref-organ\\u00a0and enriched\\nwith further metadata, such as cell\
+    \ type summaries and mesh collisions. They can be downloaded as JSON-LD files.\\nExperiment Settings (cyan): omap DOs\
+    \ enable detection of proteins and CTs and are thus connected to ASs\\nand Bs in asct-b DOs. omap DOs are specific to\
+    \ organs, tissue preservation methods, and assay types and can be\\ndownloaded as CSV files or Microsoft Excel spreadsheets\
+    \ (XLSX).\\nOther DO types (blue): ctann DOs represent CTann crosswalks (see Box 1) that map manual and machine\\nlearning\
+    \ annotations for CTs from different CTann tools such as Azimuth49, CellTypist50,51, and popV52 to the\\nASCT+B tables\
+    \ via ontologies such as Uberon18, FMA53,54, CL19, and PCL36. Like the aforementioned omap\\nDOs, ctann DOs\\u00a0allow\
+    \ mapping experimental datasets, represented as the aforementioned ds-graphs, into the\\nHRA. Both can also\\u00a0be downloaded\
+    \ as CSV and XLSX files.\\nvocab DOs are referenced by asct-b, omap, ctann, and ref-organ DOs to annotate ASs, CTs, and\
+    \ Bs with ontol-\\nogy terms and can be downloaded as Web Ontology Language files (OWL, www.w3.org/OWL).\\ngraph DOs are\
+    \ ad-hoc graphs that can reference any other DO type as needed, depending on their function\\nand scope, and can thus\
+    \ have any download format available for the referenced DOs. All current graph DOs in\\nthe HRA KG are listed in Table\\\
+    u00a0S1. collection DOs aggregate multiple DOs and can be downloaded as YAML\\nfiles, allowing end users to create customized\
+    \ configurations for their particular needs. Importantly, the HRA\\nitself is a collection DO, with the most recent release\
+    \ always available at lod.humanatlas.io/collection/hra/latest.\\nAll current collections in the HRA KG are listed in Table\\\
+    u00a0S2.\\nFinally, the schema DO type describes the structure of all HRA DO types plus their metadata and can be\\ndownloaded\
+    \ in a variety of formats, including YAML, PNG, and SVG (as an ER diagram).\\nMetagraph.\\nHRA DO types can be aggregated\
+    \ into five thematic subgraphs: 2D Illustrations, 3D Spatial\\nReference, Biological Structure, Experimental Data, and\
+    \ Experiment Settings. The HRA KG metagraph in Fig.\\u00a02\\ndepicts the higher-order relationships among these interconnected\
+    \ subgraphs. The 3D Spatial Reference subgraph\\n(yellow) specifically is presented and explored in detail in a prior\
+    \ publication on the CCF Ontology23.\\nThe 2D Illustrations subgraph uses the Biological Structure subgraph to enrich\
+    \ its 2D FTU Illustrations and\\nthe FTU Illustration Nodes inside of it with the ontology-aligned naming for FTUs and\
+    \ CTs. The Biological\\nStructure subgraph provides the 2D anatomical context for the ASs and CTs in the FTUs.\\nThe 3D\
+    \ Spatial Reference subgraph represents the 3D CCF used to accurately position 3D reference objects\\nfor organs, anatomical\
+    \ landmarks inside or adjacent to them, and millitomes (see Table\\u00a01) within the human\\nbody. This subgraph links\
+    \ to the Biological Structure to provide the 3D anatomical context for the ASs.\\nThe Biological Structure subgraph anchors\
+    \ all other components. It contains the ASs, CTs, and Bs from 33\\nASCT+B tables together with their ontological relationships\
+    \ (for 32 organs plus one for anatomical systems).\\nASs and CTs can have self-loops, where an AS can be part_of another\
+    \ AS, creating a partonomy, and a CT can be\\na subclass of another CT in a typology (is_a).\\nThe Experimental Data subgraph\
+    \ focuses on experimental Datasets generated from assay analyses per-\\nformed on Donor Tissue Blocks (Samples). These\
+    \ are assigned an Extraction Site (Spatial Entity) with the HRA\\nRegistration User Interface (RUI)55 based on their anatomical\
+    \ origins to provide a location within the CCF. Since\\nHRA v1.2, extraction sites are placed_relative_to Reference Organs;\
+    \ note that this is also a change in terminology,\\n\\n6\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nwhich used to be called has_placement, see prior publication23.\
+    \ All possible alternative locations of an Extraction\\nSite (Spatial Entity), given its intersection(s) with one or multiple\
+    \ 3D ASs, are captured in a Corridor. Systematic\\nwhole-organ registration is supported by the Millitome, which defines\
+    \ a set of connected extraction sites placed_\\nrelative_to a Reference Organ. This subgraph also accommodates derived\
+    \ data computed from the assay results\\nand extraction sites, such as (a) Cell Summaries, which provide cell type populations\
+    \ and mean gene expression\\nvalues for specific CTs and their associated datasets and 3D extraction sites, and (b) Collision\
+    \ Summaries, which\\nidentify ASs that overlap with the registered tissue blocks inside a 3D extraction site, and detail\
+    \ the precise inter-\\nsection volume and percentages in these collisions.\\nExternal annotations that are not shown in\
+    \ this subgraph are also possible: Datasets can be annotated with a\\npublication; Donors, Tissue Blocks (Samples), and\
+    \ Datasets can have separate links to a data portal; and Donors\\ncan be annotated with a tissue provider.\\nFinally,\
+    \ the Experimental Settings subgraph catalogs Antibody Panels via OMAPs34, capturing details of\\nspecific Antibodies\
+    \ used to detect particular protein Biomarkers in the Biological Structure subgraph.\\nThe HRA KG in the HRA Ecosystem.\\\
+    nThe HRA KG represents major DOs of the HRA v2.2, including 33\\nASCT+B tables, 23 OMAPs, 22 2D FTUs, 71 3D reference\
+    \ objects (plus two whole body models with all organs\\nfor male/female and a crosswalk from 3D ASs to ontology terms),\
+    \ see apps.humanatlas.io/dashboard/data. In\\nMay 2025, the HRA KG had 10,064,033 nodes, 171,250,177 edges, and a size\
+    \ of 125.84 GB. The size of the 71 3D\\nreference objects (GLB files, lod.humanatlas.io/ref-organ) in HRA v2.2 is 301\
+    \ MB. In addition, the data covers\\nanatomical landmarks which are used in the RUI to facilitate tissue block registration\
+    \ in 3D reference objects;\\nthese are available at lod.humanatlas.io/landmark. As of HRA v2.2, there are landmarks for\
+    \ 59 out of 71 3D refer-\\nence objects. Together, they are 261 MBs large.\\nTo make raw and processed HRA DOs programmatically\\\
+    u00a0available as RDF graphs, the HRA KG serves as the\\nprimary database for the HRA, see Fig.\\u00a03.\\n(a) \\u0007703\
+    \ individual DOs of 13 types go through a 3-step process of normalization, enrichment, and deployment\\nvia the hra-do-processor\
+    \ (see code on GitHub56), where they are transformed from raw data in miscellane-\\nous file formats into an RDF graph,\
+    \ resulting in the\\u00a0HRA KG. Together, all\\u00a0the DOI\\u2019d\\u00a0HRA DOs form the\\nHRA collection. The normalization,\
+    \ enrichment, and deployment processes are described in the HRA KG\\nConstruction and Deployment section below.\\nDO\\\
+    nDescription\\nReference Data\\n2d-ftu\\nProvides 2D illustrations of FTU structures in an organ, with image assets and\
+    \ cell annotations that assign proper labels and\\nidentifiers based on CL for each image segment. An SOP is available98.\\\
+    nasct-b\\nRepresents an ASCT+B table, see Box 1. Contains detailed knowledge about human anatomy in a nested,\\u00a0hierarchical\
+    \ order,\\nexplaining the organization of ASs, the CTs in each AS, and the Bs that distinguish each CT1. An SOP is available99.\\\
+    nctann\\nRepresents a crosswalk, see Box 1. Translates CT labels or abbreviations from sc/snRNAseq analysis tools, specifically\
+    \ Azimuth49,\\nCellTypist50,51, and popV52 into standardized terms in CL\\u00a0and PCL. The translation quality is measured\
+    \ using standard\\npredicates\\u00a0in SKOS, such as\\u00a0skos:exactMatch and skos:narrowMatch narrow match,\\u00a0to\
+    \ ensure consistent data harmonization\\nacross sc/snRNAseq analyses.\\nlandmark\\nProvides 3D model shapes representing\
+    \ features near organs of interest (e.g., an artery or pelvis bone near a kidney) to help\\nexperts accurately orient\
+    \ themselves when registering tissue blocks into a 3D reference object.\\nmillitome\\nProvides data about cutting tissue\
+    \ samples using a millitome device. An SOP is available100.\\nomap\\nRepresents an OMAP, see Box 1. Reduces the costs\
+    \ of conducting cell imaging experiments. OMAPs34 contain a panel of\\nantibodies designed to target specific proteins\
+    \ for identifying ASs, CTs, cell states, or cell membrane stainings within organs,\\nbased on actual experimental projects.\
+    \ An SOP is available101.\\nref-organ\\nRepresents a 3D reference object, see Box 1. Provides 3D models of human organs\\\
+    u00a0with accurate size and position data, to\\nsupport the creation of a comprehensive 3D model of the human body.\\\
+    u00a0Each 3D model is\\u00a0carefully annotated with a proper label\\nand an identifier from Uberon or FMA. Multiple SOPs\
+    \ are available102,103.\\nvascular-geometry\\nProvides detailed geometry information on the human blood vasculature with\
+    \ key attributes, such as diameter, length,\\npopulation, sample size, and reference to the source of data. Multiple SOPs\
+    \ are available104\\u2013107.\\nExperiment Data\\nds-graph\\nProvides sample registration information submitted by consortium\
+    \ members in HuBMAP and other efforts, including accurate\\nposition, rotation, and size. When combined with ref-organ\
+    \ data, this information helps create 3D tissue block placements. This\\ntissue block information is linked to datasets\
+    \ from researchers\\u2019 assay analyses that offer deeper insights into the tissue blocks. The\\n\\u201cds\\u201d stands\
+    \ for \\u201cdataset.\\u201d\\ngraph\\nContains externally created RDF (see Box 1) graph data, i.e., produced by a process\
+    \ different from the hra-do-processor (see\\nHRA KG Construction and Deployment\\u00a0in Methods).\\nOther Data\\ncollection\\\
+    nCombines multiple DOs to create a collection of data. The HRA itself is released as a curated collection of DOs in each\
+    \ new\\u00a0HRA\\nKG version.\\nschema\\nDescribes the structure of the normalized form of a single DO type, its metadata,\
+    \ or shared concepts between DOs.\\nvocab\\nContains various reference ontologies and vocabularies that hold standard\
+    \ concepts and relationships used to construct DOs.\\nvocab DOs are typically external biomedical ontologies like CL and\
+    \ Uberon; they provide a convenient mechanism for querying\\nreference ontologies alongside HRA-curated DOs.\\nTable 1.\\\
+    u2002 Different DO types used in the HRA KG, describing their purposes and the data they contain plus\\nSOPs detailing\
+    \ their construction.\\n\\n7\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n(b) \\u0007Graph representations of external experimental\
+    \ datasets from various sources with mean B expression values\\nand cell type population data, resulting in the ds-graph\
+    \ DO type. Experimental data from various portals is\\nmapped into the HRA via one or a combination of multiple methods,\
+    \ such as 3D tissue registration\\u00a0with the\\nRUI55, Azimuth49, CellTypist50,51, and popV52 annotations aligned to\
+    \ ASCT+B tables via ontology cross-\\nwalks, or\\u00a0OMAPs34 for spatial proteomic data. These portals include the CZI\
+    \ CxG portal (cellxgene.czis-\\ncience.com), the Gene Expression Omnibus (GEO, www.ncbi.nlm.nih.gov/geo)57,58, the Genotype-Tissue\\\
+    nExpression Portal (GTEx, gtexportal.org/home)59, the Analysis, Technology, Leadership, Administration,\\nand Science\
+    \ - Data to Knowledge (ATLAS-D2K) Center, which contains data for the GenitoUrinary\\nDevelopmental Molecular Anatomy\
+    \ Project (GUDMAP, www.atlas-d2k.org/gudmap)60,61 and the (Re)\\nBuilding a Kidney (RBK, https://www.atlas-d2k.org/rebuildingakidney)\
+    \ Consortium62, the Human Cell\\nAtlas (HCA, www.humancellatlas.org/data-portal)63, the Human Tumor Atlas Network (HTAN,\
+    \ human-\\ntumoratlas.org/explore)64, the HuBMAP26,27 Data Portal (portal.hubmapconsortium.org), the KPMP21,22\\nKidney\
+    \ Tissue Atlas (atlas.kpmp.org), and the Cellular Senescence Network (SenNet, data.sennetconsortium.\\norg/search)65 Data\
+    \ Portal.\\u00a0Finally, hra-registrations refers to HRA DOs of type ds-graph that are manually\\ncurated, stored in a\
+    \ HRA GitHub repository, and used in the EUI and other HRA applications. The HRA\\nAPI provides dedicated endpoints to\
+    \ retrieve the latest ds-graph\\u00a0DO\\u00a0data\\u00a0from various portals, e.g., apps.\\nhumanatlas.io/api/ds-graph/hubmap\
+    \ for HuBMAP.\\n(c) \\u0007HRA applications and services use the HRA KG as their main data backend through the HRA API\
+    \ or via a\\nSPARQL endpoint (lod.humanatlas.io/sparql).\\n\\u0007The HRA API provides the HRA UIs with access to Uberon,\
+    \ FMA, CL, PCL, and HGNC IDs for ASs, CTs,\\nand Bs as well as spatial entities for tissue blocks and organs23 for the\
+    \ RUI and Exploration User Interface\\n(EUI)55. For example, when using the EUI to select AS, CT, and B terms (on the\
+    \ left side of the UI), counts are\\nretrieved from those relationships that are curated from multiple graphs. Since all\
+    \ graphs are in the RDF for-\\nmat, multiple graphs\\u00a0can be queried seamlessly without modifying the source graphs.\
+    \ The primary HRA\\u00a0API\\nat apps.humanatlas.io/api has programming language-specific client libraries in JavaScript,\
+    \ TypeScript,\\nAngular 17+, and Python 3.6+. These client libraries are published to common code package managers,\\\
+    nincluding NPM (www.npmjs.com) and PyPI (pypi.org), that\\u00a0wrap API calls into simple function calls, mak-\\ning HRA\
+    \ data easy to use from software development environments. A full list of client libraries is available\\nat humanatlas.io/api.\
+    \ A set of example Python Notebooks is provided on GitHub66. Links to publicly acces-\\nsible instances of UIs using the\
+    \ HRA KG on data portals are provided in Table\\u00a0S3. Ad-hoc queries to retrieve\\ncounts and access DOs from the HRA\
+    \ KG can be run\\u00a0via the SPARQL endpoint. The HRA Dashboard (apps.\\nhumanatlas.io/dashboard) and the HRA Portal\
+    \ (humanatlas.io)2 provide usage and data statistics about the\\nHRA by querying the HRA KG. The FTU Explorer (apps.humanatlas.io/ftu-explorer)67\
+    \ accesses CL IDs for\\ncells and HGNC IDs for Bs via the HRA KG. HRAlit data35 (see also GitHub68) connects 136 DOs from\
+    \ HRA\\nv1.4 to 583,117 experts, 7,103,180 publications, 896,680 funded projects, and 1,816 experimental datasets.\\nHRApop1\
+    \ provides CTs and mean B expression values for experimental datasets mapped to the HRA.\\u00a0The\\nHRA Organ Gallery\
+    \ in virtual reality (VR)69 utilizes the HRA KG to show predicted CTs in tissue blocks in\\nimmersive, 3D space.\\n(d)\
+    \ \\u0007The HRA KG is used in several data portals, including some from which ds-graph DOs are being\\nextracted\\u00a0(HuBMAP,\
+    \ SenNet, GTEx, KPMP). For example, the HRA-UBKG Exporter70 is used to make HRA\\ndata available for HuBMAP Data Portal\
+    \ services (portal.hubmapconsortium.org), such as Uberon18 aligned\\norgan pages (e.g., portal.hubmapconsortium.org/organ/lung),\
+    \ and AS search and filter functionality. The\\nRUI and EUI are used in various portals to serve consortium-specific needs\
+    \ of tissue providers.\\n(e) \\u0007Several external repositories serve and/or use HRA KG data: NCBO Bioportal and Ontobee\
+    \ host the HRA\\nCCF Ontology23,71,72 (see Box\\u00a01). The OLS by EMBL-EBI provides a collection of HRA DOs for validation73.\\\
+    nCxG\\u00a0CellGuide (cellxgene.cziscience.com/cellguide) utilizes the ASCT+B tables to identify and present\\ncanonical\
+    \ Bs for CTs to their users. Finally, the NIH3D platform by the National Institute of Allergy and\\nInfectious Diseases\
+    \ (NIAID) hosts all 71 3D reference objects for organs in the HRA v2.2 (3d.nih.gov/collec-\\ntions/hra), plus two United\
+    \ files (one male, one female)\\u00a0with all respective\\u00a0organs combined. Additionally,\\nthe NIH BioArt platform\
+    \ serves 22 2D FTU illustrations at bioart.niaid.nih.gov/discover?collection=2.\\nHRA KG Construction and Deployment.\\\
+    nAll data and code to construct, deploy, and use the HRA\\nKG is available on GitHub46, Zenodo, or via APIs, see details\
+    \ in Table\\u00a0S4. The HRA KG is constructed twice a\\nyear, synchronized with the HRA release cycle2 (see release notes\
+    \ at humanatlas.io/overview-training-outreac\\nh#release-notes). The most essential code piece, the hra-do-processor56,\
+    \ is built around three main components:\\nthe schema, the data processing pipeline, and the web infrastructure. The following\
+    \ sections detail each of these\\ncomponents.\\nSchema.\\nWell-defined data schemas are crucial for ensuring data consistency,\
+    \ interoperability, and validation\\nin data management and analysis. The HRA KG uses LinkML74, a flexible and user-friendly\
+    \ schema language\\ndesigned to create effective data models and validation tools, to ensure input data adheres to a defined\
+    \ schema. ER\\ndiagrams of core HRA schemas explain the relationships between different HRA DOs, see examples on the com-\\\
+    npanion website at cns-iu.github.io/hra-kg-supporting-information/#mermaid-diagrams. A complete listing of\\nthe LinkML\
+    \ schemas used in HRA KG construction is available in Table\\u00a0S5. In addition to structural constraints,\\nLinkML\
+    \ supports the implementation of reference integrity to ensure that linked entities conform to external\\nontologies.\
+    \ For instance, the binds_to slot in the Antibody class was explicitly constrained to accept only HGNC\\ncodes, preventing\
+    \ invalid associations with non-protein entities. Furthermore, LinkML enables explicit mappings\\nbetween classes or slots\
+    \ to standardized vocabularies and ontologies. For example, the same binds_to slot was\\nmapped to the binds_to property\
+    \ in the CCF vocabulary.\\n\\n8\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nData Processing Pipeline.\\nThe 13 HRA DO types described\
+    \ above come from SMEs who contribute their\\nknowledge of anatomy, antibodies, pathology, and experimental procedures,\
+    \ and from public data portals\\u00a0as well\\nas repositories. Manually curated and experimental datasets from diverse\
+    \ sources need to be mapped to the HRA\\nand standard ontologies, normalized to a standard format (e.g., unification of\
+    \ term labels), and enriched (e.g.,\\nlinked to existing ontologies in support of causal reasoning). The hra-do-processor\
+    \ normalizes and enriches\\nthese DOs, then deploys them as RDF graphs. A catalog of these graphs is available on the\
+    \ HRA KG LOD server\\nat lod.humanatlas.io. A sequence of five steps converts raw DOs into the HRA KG. The steps are normalization,\\\
+    nenrichment, deployment, finalization, and serving, see details below.\\nFig. 1\\u2002 The 13 DO types in the HRA KG and\
+    \ how they relate to each other. Note that underscores in edge labels\\nwere replaced\\u00a0with blank spaces for legibility.\
+    \ Entity-relationship (ER)\\u00a0diagrams are provided on the companion\\nwebsite at cns-iu.github.io/hra-kg-supporting-information/#mermaid-diagrams.\\\
+    nFig. 2\\u2002 The HRA KG metagraph illustrates high-level relationships between subgraphs. Note that all edge labels\\\
+    nhave been modified as needed to avoid overlap while maintaining correct semantics. For class names (e.g., FTU\\nIllustration),\
+    \ a blank space was added\\u00a0between PascalCased class names.\\n\\n9\\nScientific Data |         (2025) 12:1100  |\
+    \ https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nNormalization.\\\
+    u2003 This initial step ensures that all incoming data is transformed into a consistent format that\\naligns with the\
+    \ predefined schema. The hra-do-processor loads and parses the disparate source data and trans-\\nforms it into a standardized\
+    \ linked\\u00a0data representation. For example, in the case of asct-b DOs, the source data\\ncomes from Google Sheets,\
+    \ exported as CSV files (unnormalized, raw ASCT+B tables are available at humanat-\\nlas.io/asctb-tables); during normalization,\
+    \ the hra-do-processor reads this tabular structure and converts each\\ndata row in the table into a tree structure, see\
+    \ example shown in Fig.\\u00a0S1.\\nAn exemplary YAML file is provided at github.com/cns-iu/hra-kg-supporting-information/blob/main/docs/\\\
+    nintermediary_format.yaml. YAML was chosen as the standard file format for the normalized data due to its\\nsimplicity,\
+    \ readability, and interoperability with JSON, as well as\\u00a0its\\u00a0high-level of support in LinkML. By con-\\nverting\
+    \ the LinkML schema into a JSON schema file, the translated YAML data can easily be validated\\u00a0to ensure\\nit adheres\
+    \ to the defined schema and the automated ingestion code is correctly implemented.\\nIn general, HRA DOs come in two major\
+    \ formats: tabular data (like asct-b DOs) and nested key-value\\npairs\\u00a0(like ds-graph DOs). SOPs provide detailed\
+    \ instructions to SMEs on how to author DOs, e.g., asct-b and\\nomap (see references to relevant SOPs in Table 1).\\u00a0Extracting\
+    \ knowledge from tabular data begins with schema\\ninference, which includes identifying header rows, data types, and\
+    \ relationships between columns. Typically,\\nthe first row serves as the header, and the data types are inferred by analyzing\
+    \ the values in the\\u00a0entire col-\\numn. Determining the relationships between columns requires either consulting\
+    \ a knowledge base or relying on\\ndomain experts48. In asct-b DOs, the relationship between the column headers for ASs\
+    \ at different levels (AS/1,\\nAS/2, AS/3) involves aligning their values with Uberon or FMA, then confirming that they\
+    \ follow the part_of\\nrelationship. Further refinement means identifying parent-child relationships by grouping columns\
+    \ that logi-\\ncally belong together as a single concept. For example, the columns rrid, host, isotype, clonality,\\u00a0and\
+    \ conjugate in\\nan omap DO are attributes of an antibody rather than separate concepts. Once the table structure is understood,\\\
+    nthe next step is semantic annotation, where table components are linked to concepts from external knowledge\\nsources\
+    \ or ontologies. This process involves three steps: (1) matching individual cell values to ontology terms,\\nsuch as linking\
+    \ the label kidney to UBERON:0002113; (2) associating entire columns with controlled vocab-\\nularies, for example, defining\
+    \ the REF/1 column as dct:references to describe a cited, related resource, and (3)\\nFig. 3\\u2002 The role of the HRA\
+    \ KG in the HRA data ecosystem: (a) HRA DOs, (b) experimental datasets as well as\\n3D size, location, and rotation of\
+    \ tissue blocks registered into the HRA, (c) HRA applications, (d) data portals,\\nand (e) external services of the HRA\
+    \ KG. Note that the HRA KG is able to serve all existing versions of the HRA\\nand HRA DOs, including those preceding\
+    \ the most recent HRA v2.2 release in December 2024.\\n\\n10\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nassociating relationships between columns to ontology\
+    \ terms, such as linking the relation between AS/2 and\\nAS/1 columns to BFO:0000050, which denotes a part_of relationship.\\\
+    nFor nested key-value pair data, schema inference is more straightforward since the hierarchical structure is\\nmore visible\
+    \ than in flat, tabular data. However, it is still necessary to determine data types, structural relation-\\nships, and\
+    \ references within the data. For instance, the size field in data from ref-organ DOs is recognized as a\\nnested object\
+    \ that contains x, y, and z fields, which are later inferred to be of decimal type based on the populated\\nvalues. When\
+    \ identifying references, fields containing the substring id are typically recognized as reference fields\\nthat indicate\
+    \ a link to an external entity.\\nOnce the schema is inferred, a similar step of semantic annotation is performed to the\
+    \ data elements by link-\\ning them to ontology concepts. For example, a nested field node.size.x is mapped to the x_dimension\
+    \ annotation\\nproperty in the CCF Ontology. Likewise, the value VH_M_aortic_valve is mapped to UBERON:0002137, allow-\\\
+    ning it to be correctly identified as an aortic valve from Uberon, complete with its anatomical context. Finally,\"\n\
+    \  },\n  {\n    \"name\": \"references are introduced using unique identifiers to maintain consistency and avoid redundancy.\
+    \ For instance,\",\n    \"text\": \"Research Resource Identifiers (RRIDs)75,76 are used to refer to a specific antibody\
+    \ rather than repeating its full\\ndetails.\\nData quality is crucial to ensure accurate query results. To handle potential\
+    \ errors in the source data, e.g.,\\nincorrect or ambiguous entity names, the normalization step (1) performs\\u00a0basic\
+    \ string validation, e.g., ensuring\\nthat DOIs begin with the right prefix, (2)\\u00a0ensures that\\u00a0Compact URIs\
+    \ (CURIEs) are formatted correctly, (3)\\napplies\\u00a0custom validation per HRA DO type (optional), and (4)\\u00a0validates\\\
+    u00a0the structure of the normalized data\\nagainst the inferred schema.\\nEnrichment.\\u2003 This step converts the normalized\
+    \ data for all DOs\\u00a0to RDF and enriches it with relationships,\\nentities, and metadata from external resources.\
+    \ After the source data is translated into YAML and validated,\\nenrichment begins by converting the validated data into\
+    \ OWL-based statements. The LinkML framework offers\\ntools that facilitate the transformation of tree-structured data\
+    \ into OWL constructs, including class and prop-\\nerty declarations, as well as instances of a class (see Fig.\\u00a0S2).\
+    \ OWL was chosen as the data representation for\\nthe enrichment step due to its robust capabilities for rich data expression,\
+    \ its ability to embed semantic mean-\\ning, and its seamless integration with LinkML. In turn, LinkML provides direct\
+    \ support for OWL by allowing\\nschema elements to include OWL constructs, making it easy to map the data into a semantically\
+    \ rich ontology\\nstructure. The enrichment process continues by integrating additional information from reference ontologies\
+    \ as\\nwell as authoritative databases like RRID and the Antibody Registry77 API to retrieve metadata (label, descrip-\\\
+    ntion) about antibodies, for which there is only an RRID in the raw HRA DO for OMAPs.\\nThe goal is to enhance the initial\
+    \ data gathered from SMEs with more detailed, authoritative information.\\nIn asct-b DOs, many data points already reference\
+    \ Uberon and CL terms. These terms are enriched\\u00a0by retriev-\\ning supplementary information from the corresponding\
+    \ ontologies, including class hierarchies, labels, defini-\\ntions, synonyms, database references, and visual depictions.\
+    \ For example, the standard label for a CL:0002306\\nis identified\\u00a0as epithelial cell of proximal tubule,\\u00a0which\
+    \ is categorized under the broader class meso-epithelial cell.\\nThese details, which were absent from the original dataset,\
+    \ add valuable context. The end result is a semantically\\nenriched dataset that not only preserves the original data\
+    \ but also extends it with additional context, relation-\\nships, and meaning.\\nDeployment.\\u2003 Once the data is enriched,\
+    \ it is prepared for use in downstream applications or for access by\\nend users. This stage involves organizing the data\
+    \ into its final distribution formats and setting up the correct\\nstructure for the file system directory. HRA data is\
+    \ used by many different tools that need diverse formats: HRA\\nUIs like the EUI and RUI55 use JSON-LD, which is best\
+    \ when using the data directly and imperatively (i.e., in a\\nprogramming language using for loops). Python and JavaScript\
+    \ have native support for handling JSON and have\\nsemantics built in, and an exemplary Jupyter Notebook (jupyter.org)\
+    \ to showcase how an ASCT+B table as a\\nJSON file can be parsed is provided on the companion website at cns-iu.github.io/hra-kg-supporting-informatio\\\
+    nn/#notebook-to-query-the-hra-knowledge-graph-kg; the Usage Notes section provides\\u00a0details. The Blazegraph\\n(blazegraph.com)\
+    \ SPARQL server uses Terse RDF Triple Language (Turtle)78; the Turtle format also helps devel-\\nopers write SPARQL queries\
+    \ to the HRA KG by making its triple structure explicit and showing possible sub-\\njects, predicates, and objects. Older\
+    \ semantic web tools use RDF/Extensible Markup Language (XML, www.\\nw3.org/TR/rdf-syntax-grammar), N-Triples79, and N-Quads80.\
+    \ Additionally, ROBOT14, Apache Jena, and RDF\\nI/O technology (RIOT, jena.apache.org/documentation/io) use XML for reifying\
+    \ graphs. HRA KG data is pre-\\nprocessed in those formats to be readily usable. Publishing all these formats streamlines\
+    \ the content negotiation\\nprocess later (see Box\\u00a01), when different applications access the published HRA KG on\
+    \ the LOD server at lod.\\nhumanatlas.io, which can then immediately deliver the HRA data in the correct format. During\
+    \ the deployment\\nstep, the hra-do-processor also prepares the metadata that accompanies the graph data before copying\
+    \ files and\\ndata assets into their designated folders.\\nFinalization.\\u2003 Next, the necessary metadata and HTML\\\
+    u00a0landing pages for web publication are generated, e.g.,\\nlod.humanatlas.io/asct-b/eye/latest leads to the most recently\
+    \ published ASCT+B table for the eye. In addition,\\nthis stage includes building the SPARQL database that will be uploaded\
+    \ to the web for users to access at lod.\\nhumanatlas.io/sparql. During\\u00a0deployment, data and metadata for each DO\
+    \ are converted and exported;\\u00a0during\\nfinalization,\\u00a0\\u00a0an indexed and optimized database file for the\
+    \ Blazegraph SPARQL server\\u00a0is also derived. The\\ndatabase contains\\u00a0the latest version of every DO, every\
+    \ version of the HRA collection,\\u00a0and a metadata catalog for\\nevery version of every DO in the HRA KG.\\n\\n11\\\
+    nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nServing.\\u2003 Data processed in the previous steps, including raw DO data, processed\
+    \ data products, HTML pages,\\nmetadata, and the SPARQL database, are made available online at lod.humanatlas.io. The\
+    \ data is regularly\\nupdated and synchronized, either during scheduled releases or when updates occur, to ensure that\
+    \ the most\\ncurrent version is always available. To make the processed data widely accessible, Amazon Web Services (AWS,\\\
+    naws.amazon.com) is used to serve the HRA KG as LOD, employing three of its core services: Amazon Simple\\nStorage Service\
+    \ (S3), Elastic Container Service\\u00a0(ECS) and CloudFront for data storage, computation, and content\\ndelivery, respectively.\
+    \ Implementation details are provided in the next section.\\nWeb Infrastructure.\\nAmazon S3 is a highly scalable data\
+    \ storage service to store and retrieve data. The HRA\\nKG uses it to store the content from the local deployment directories,\
+    \ including the Blazegraph database file. By\\nsyncing these local directories with an S3 storage, the data is securely\
+    \ stored and readily available for content\\ndelivery.\\nAmazon ECS is a fully managed container service to run applications\
+    \ in Docker containers (www.docker.com)\\nfor a highly scalable and reliable environment for computational needs\\u00a0in\
+    \ support of HRA HG construction and\\nusage. For HRA, a Blazegraph instance is run within an ECS container. The ECS container\
+    \ periodically checks\\nthe S3 storage for an updated Blazegraph database file. When a newly built Blazegraph file is\
+    \ detected, ECS will\\nseamlessly update the Blazegraph server to ensure that the latest data is available for querying.\\\
+    nAmazon CloudFront is a global Content Delivery Network (CDN) designed to accelerate the distribution\\nof content by\
+    \ caching copies at multiple serving locations around the world. The HRA KG uses CloudFront to\\ncreate a URL fabric that\
+    \ caches and serves content from S3 storage, ensuring fast and reliable access for users\\nregardless of their geographical\
+    \ location. The content stored in S3 is made publicly available through URLs lead-\\ning to a CDN, e.g., cdn.humanatlas.io/digital-objects/ref-organ/liver-female/v1.2/assets/3d-vh-f-liver.glb,\
+    \ which\\nreturns the GLB file for the 3D reference object for the female liver. This allows downstream users of the HRA\\\
+    nKG to access processed, high-quality HRA DOs via common data exchange formats, e.g., the Harmonizone81,82\\nprocures\
+    \ CTs and genes from the asct-b DOs via the HRA CDN at cdn.humanatlas.io/hra-asctb-json-releases/\\nhra-asctb-all.v2.2.json.\\\
+    nAdditionally, CloudFront provides advanced content negotiation features, e.g., \\u00a0dynamic handling of URLs\\nstarting\
+    \ with purl.humanatlas.io and lod.humanatlas.io. Content negotiation allows the web infrastructure to\\nserve data in\
+    \ different formats based on user needs, whether a user requires RDF, JSON, XML, or another\\nformat. The PURL returns\
+    \ HRA DO data as an RDF graph based on the Accept header of the request: human\\nusers get redirected to the LOD server,\
+    \ machines to JSON or RDF versions. The LOD server also returns meta-\\ndata for processed HRA DOs, such as who created\
+    \ it, when it was published, and what different assets and\\nreifications are available to download, as Data Catalog Vocabulary\
+    \ (DCAT) datasets with provenance (www.\\nw3.org/TR/vocab-dcat-3). Moreover, CloudFront also acts as an intermediary for\
+    \ the SPARQL endpoint hosted\\nby Blazegraph within ECS by making it accessible at lod.humanatlas.io/sparql.\\nOther Ontologies.\\\
+    nThe HRA KG includes other reference ontologies at lod.humanatlas.io/vocab (e.g.,\\nUberon and CL) so they can be queried\
+    \ together in an efficient manner. Table\\u00a02 lists all ontologies that are\\nincluded in the HRA KG together with\
+    \ their version numbers.\\nData Records\\nThe whole, compressed HRA KG is available on Zenodo83 and is ~5.1 GB large.\
+    \ It is also deposited on the HRA\\nCDN at cdn.humanatlas.io/hra-kg-releases/hra-kg.v2.2.tar.xz. The primary server for\
+    \ the HRA KG v2.2 is at\\nlod.humanatlas.io. The SPARQL endpoint to query the HRA KG is at lod.humanatlas.io/sparql. The\
+    \ HRA API\\n(apps.humanatlas.io/api) supports programmatic access to the HRA KG. Exemplary queries are available via the\\\
+    ncompanion website at cns-iu.github.io/hra-kg-supporting-information/#example-queries.\\nThe\\u00a0NCBO BioPortal84\\\
+    u00a0hosts both the HRA (mirror of purl.humanatlas.io/collection/hra/v2.2) and the CCF\\nOntology23,71 (mirror of lod.humanatlas.io/vocab/ccf).\\\
+    nThe EMBL-EBI\\u00a0OLS hosts the latest versions of both the HRA73 and CCF85. OLS provides both a web-based\\nGUI for\
+    \ users and programmatic access via the REST API (www.ebi.ac.uk/ols4/help), enabling the HRA and CCF\\nto be accessed\
+    \ using the same standard interface as other ontologies.\\nThe NIH3D platform by NIAID hosts all 71 3D reference objects\
+    \ for organs in the HRA v2.2 alongside two\\nUnited files with all organs combined (3d.nih.gov/collections/hra). BioArt\
+    \ makes 22 2D FTU illustrations avail-\\nable\\u00a0at bioart.niaid.nih.gov/discover?collection=2.\\nWeekly term and relationship\
+    \ validation reports of ASCT+B Tables are available on GitHub86.\\nAll data and SOPs are released under Creative Commons\
+    \ Attribution 4.0 International (CC BY 4.0).\\nTechnical Validation\\nThis section covers comparison to other KGs; growth\
+    \ of the HRA coverage and usage over time; and term addi-\\ntions to Uberon and CL by the HRA effort.\\nComparison to\
+    \ other KGs.\\nWe compared the HRA KG with other major biomedical KGs quantitatively\\n(number of nodes, node types, edges,\
+    \ edge types, and size) and qualitatively (date of latest release,\\u00a0technology\\nused, accessibility via SPARQL,\
+    \ need for authentication, presence of API for canned queries, license, and repro-\\nducibility), see Table\\u00a03. Jupyter\
+    \ Notebook with queries for statistics in support of this comparison is on the com-\\npanion website at cns-iu.github.io/hra-kg-supporting-information/#comparison-to-other-kgs.\\\
+    nThe Stimulating Peripheral Activity to Relieve Conditions (SPARC)87 Connectivity Knowledge Base of the\\nAutonomic Nervous\
+    \ System (SCKAN)88,89 provides FAIR vocabulary for its multimodal models, data, maps,\\n\\n12\\nScientific Data |    \
+    \     (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nand simulations across species. It ingests community ontologies across SPARC-relevant domains, such as phys-\\niology,\
+    \ anatomy, molecular structures, and experimental design (see Fig.\\u00a04), and serves the data via an endpoint\\nat\
+    \ blazegraph.scicrunch.io/blazegraph/sparql. Petagraph25 and UBKG were introduced in the Background &\\nSummary section.\
+    \ Petagraph and UBKG data were retrieved from the Common Fund Data Ecosystem (CFDE)\\nData Distillery (dd-kg-ui.cfde.cloud/about).\
+    \ Ubergraph90 is a RDF triplestore with a public SPARQL endpoint\\nthat makes 39 ontologies from the OBO Foundry10,11\
+    \ available as a pre-computed KG to support ontology brows-\\ning and connection verification. Finally, the Open Research\
+    \ Knowledge Graph (ORKG)91,92 aims to improve\\nprocessing of scholarly knowledge via an infrastructure that makes the\
+    \ description of research contributions\\nmachine-readable; it uses LLMs to support natural language queries (ask.orkg.org).\\\
+    nThe number of nodes and complexity of these KGs ranges from 188k nodes of 165k types to 54\\u2009M nodes of 5\\ntypes.\
+    \ The\\u00a0size ranges from 437 MB for ORKG to 162GB for UBKG (Data Distillery version).\\nThe UBKG and Petagraph use\
+    \ the Neo4J platform and require a UMLS License (www.nlm.nih.gov/data-\\nbases/umls.html). ORKG has a CC0 1.0 Universal\
+    \ license. All other KGs are open access with the CC BY 4.0\\nlicense (creativecommons.org/licenses/by/4.0/deed.en).\\\
+    nNote: One complication when comparing KGs is that data representation is different between RDF-based KGs using\\nRDF/SPARQL\
+    \ and Property Graph (PG)-based KGs using Neo4J. RDF consists of only edges (triples) with subject,\\npredicate, and object.\
+    \ PGs consist of a set of nodes and edges. In RDF, nodes (i.e., resources) are annotated via an edge/\\ntriple (e.g.,\
+    \ <https://example.com> <http://www.w3.org/2000/01/rdf-schema#label>\\u2009\\u201cExample.com Label\\u201d) whereas\\\
+    nin a PG, annotations are just part of the node\\u2019s data structure. That is, in RDF, edges are used to both annotate\
+    \ nodes\\nand represent relationships between nodes. As a result, comparing raw edge counts between a PG and RDF graph\
+    \ is\\ncomplicated. To account for this,\\u00a0corresponding SPARQL (for RDF Graphs) and Cypher (for PGs, neo4j.com/docs/\\\
+    ncypher-manual/current/introduction) queries were written\\u00a0to retrieve the number of nodes, edges, and edge types\
+    \ that,\\nwhile not perfect, still gives a sense of their quantitative relationship. A full list of SPARQL and Cypher\
+    \ queries can be\\nfound in the Supporting Information at cns-iu.github.io/hra-kg-supporting-information/#comparison-queries.\\\
+    nFig.\\u00a04 shows the bimodal network of the seven KGs (blue nodes) and the 288 ontologies (pink nodes) they\\nimport\
+    \ and serve. All but ORKG import Uberon and CL and as a result, they cover the same organs, ASs,\\nand CTs that exist\
+    \ in these ontologies. The HRA KG has 951 additional TEMP-ASs, 221 TEMP-CTs, and 296\\nTEMP-Biomarkers (genes, proteins,\
+    \ lipids, metabolites, proteoforms) that were identified by human experts as\\nmissing and will be added to Uberon, CL,\
+    \ and biomarker ontologies. A SPARQL query to retrieve the number\\nof TEMP entities in the HRA KG as of May 2025 is available\
+    \ on the companion website at cns-iu.github.io/\\nhra-kg-supporting-information/#example-queries.\\nGrowth of Uberon,\
+    \ CL, and PCL over Time from other Sources.\\nTo compare the growth of the\\nHRA KG against other KGs, the number of nodes,\
+    \ edges, and edge types was computed for Uberon, CL, and\\nPCL. To that end, OWL files with release dates were downloaded\
+    \ from GitHub repositories (Uberon93, CL94,\\nPCL95), then queried with a SPARQL query. The resulting CSV file holds the\
+    \ number of nodes, edges, and\\nedge types for Uberon, CL, and PCL by release. All data and code is available in the Supporting\
+    \ Information\\non GitHub96. The CSV file at github.com/cns-iu/hra-kg-supporting-information/blob/main/notebooks/output/\\\
+    nother-ontologies-growth.csv shows the growth of these three KGs between 2022 and 2025. Note that Uberon was\\nfirst started\
+    \ in 2012, but the data available via releases in GitHub only goes back to 2022.\\u00a0The number of edge\\ntypes is relatively\
+    \ stable, hovering around 100 for all three. The number of nodes and edges has been stable in\\nUberon and CL but has\
+    \ seen a steep increase for PCL since mid-2024, highlighting the more rapidly changing\\nnature of PCL versus the more\
+    \ stable and established other two ontologies. Since 2022, Uberon/CL/PCL have had\\nat most 15,959/3,122/16,980 nodes,\
+    \ 238,139/30,635/221,269 edges, and 171/58/85 edge types.\\nName\\nDescription\\nVersion Number\\nURL\\nMain Website\\\
+    nCCF\\nCommon Coordinate\\nFramework Ontology23\\n3.0\\npurl.humanatlas.io/vocab/ccf\\nhumanatlas.io/ccf-ontology\\nCL\\\
+    nCell Ontology19\\n2024-09-26\\npurl.humanatlas.io/vocab/cl108\\nobophenotype.github.io/cell-ontology\\nFMA\\nFoundational\
+    \ Model of\\nAnatomy53,54\\n5.0.0\\npurl.humanatlas.io/vocab/fma\\nsi.washington.edu/projects/fma\"\n  },\n  {\n    \"\
+    name\": \"HGNC\",\n    \"text\": \"HUGO Gene Nomenclature\\nCommittee37\\n2024-03-04\\npurl.humanatlas.io/vocab/hgnc\\\
+    nwww.genenames.org\"\n  },\n  {\n    \"name\": \"HRAVS\",\n    \"text\": \"HuBMAP Research Attributes\\nValue Set\\n2.5.3\\\
+    npurl.humanatlas.io/vocab/hravs\\nbioportal.bioontology.org/ontologies/HRAVS\"\n  },\n  {\n    \"name\": \"LMHA\",\n \
+    \   \"text\": \"Cell Ontology for Human\\nLung Maturation (LungMAP\\nHuman Anatomy)109\\n1.4\\npurl.humanatlas.io/vocab/lmha\\\
+    nbioportal.bioontology.org/ontologies/LUNGMAP_H_CELL\\nPCL\\nProvisional Cell Ontology36,110\\n2024-07-11\\npurl.humanatlas.io/vocab/pcl\\\
+    nGitHub108\\nRO\\nOBO Relation\\nOntology (zenodo.org/\\nrecords/14976337)\\n2024-04-24\\npurl.humanatlas.io/vocab/ro\\\
+    nGitHub111\\nUberon\\nUberon Multi-species\\nAnatomy Ontology18\\n2024-11-25\\npurl.humanatlas.io/vocab/uberon\\nobophenotype.github.io/uberon\"\
+    \n  },\n  {\n    \"name\": \"VCCF\",\n    \"text\": \"Vasculature Common\\nCoordinate Framework1,112\\n2024-02-23\\npurl.humanatlas.io/vocab/vccf\\\
+    nGitHub113\\nTable 2.\\u2002 Ontologies used in the HRA KG as of HRA v2.2.\\n\\n13\\nScientific Data |         (2025)\
+    \ 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nAtlas Coverage.\\nThe HRA Dashboard (apps.humanatlas.io/dashboard/data) shows the size and coverage of\\nHRA data; the\
+    \ number and type of HRA usage over time; publication and experimental data linked to the HRA;\\nplus the demographic\
+    \ coverage of HRA authors, tissue donors, and users.\\nFig.\\u00a05a shows the number of instances of different DO types.\
+    \ Specifically, HRA KG v2.2 covers 71 organs\\nvia 3D ref-organ DOs.\\u00a0Note that eye, fallopian tube, kidney, knee,\
+    \ mammary gland, ovary, palatine tonsil, renal\\nProperty\"\n  },\n  {\n    \"name\": \"HRA KG\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"SPARC KG\",\n    \"text\": \"Petagraph\\nUBKG (Data Distillery)\\nUbergraph\"\n  },\n  {\n\
+    \    \"name\": \"ORKG\",\n    \"text\": \"#Nodes\\n1,543,074\\n188,146\\n32,192,544\\n54,154,737\\n4,071,817\\n557,821\\\
+    n#Node types\\n1,540,507\\n164,750\\n3\\n5\\n3,942,352\\n556,706\\n#Edges\\n101,720,865\\n812,969\\n151,690,690\\n227,826,739\\\
+    n458,605,464\\n1,853,694\\n#Edge types\\n509\\n221\\n1,960\\n2,260\\n778\\n4,217\\nSize*\"\n  },\n  {\n    \"name\": \"\
+    ,848 MB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \",571\
+    \ MB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \",895 MB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \",450\
+    \ MB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MB\",\n    \"text\": \"Date of latest\\nrelease\\nDec 15, 2024\\\
+    nSept 21, 2024\\nMay 5, 2024\\nJan 3, 2025\\nJan 13, 2025\\nFeb 11, 2025\\nTechnology\"\n  },\n  {\n    \"name\": \"RDF/SPARQL\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RDF/SPARQL\",\n    \"text\": \"Neo4J\\nNeo4J\"\n  },\n  {\n    \"name\"\
+    : \"RDF/SPARQL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RDF/SPARQL\",\n    \"text\": \"(Neo4J also\\navailable)\\\
+    nProvides SPARQL\\nendpoint\\nX\\nX\\nX\\nX\\nNo authenticated\\naccess needed for\\nqueries\\nX\\nX\\nX\\nX\\nHas API\
+    \ with\\ncanned queries\\nX\\nX\\nX\\nX\\nX\\nX\\nData Usage License\\n(strictest listed)\"\n  },\n  {\n    \"name\":\
+    \ \"CC BY 4.0\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\": \"UMLS License\\nUMLS License\"\
+    \n  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CC0 1.0\",\n    \"text\": \"\
+    Universal**\\nData and code full\\nreproducible\\nX\\nX\\nX\\nX\\nX\\nX\\nTable 3.\\u2002 Key properties of the\\u00a0HRA\
+    \ KG and other KGs. *RDF-based KGs were converted to N-Quads to get the\\ntotal uncompressed size for each. To compare\
+    \ sizes, Neo4J KGs were converted to RDF N-Quad format; context\\nand documentation are at cns-iu.github.io/hra-kg-supporting-information/#comparison-to-other-kgs.\
+    \ A Neo4J\\nutility (neo4j.com/labs/apoc/4.1/export/json) was used to export a whole database in the JSON-lines format\\\
+    n(jsonlines.org) and convert\\u00a0it to RDF using a JSON-LD context with newline-delimited JSON (ndjsonld, www.\\nnpmjs.com/package/ndjsonld).\
+    \ **Data sourced from Papers With Code, licensed CC BY-SA.\\nOntologies\\nKGs\"\n  },\n  {\n    \"name\": \"HRA KG\",\n\
+    \    \"text\": \"CL\\nFMA\"\n  },\n  {\n    \"name\": \"HGNC\",\n    \"text\": \"PCL\\nRO\\nUberon\"\n  },\n  {\n    \"\
+    name\": \"SPARC KG\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CHEBI\",\n    \"text\": \"NPO\\nPetagraph\"\n  },\n\
+    \  {\n    \"name\": \"PATO\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DOID\",\n    \"text\": \"OBI\\nMI\\nMP\\\
+    nUO\"\n  },\n  {\n    \"name\": \"MONDO\",\n    \"text\": \"GO\\nHPO\\nData Distillery\\nUbergraph\"\n  },\n  {\n    \"\
+    name\": \"ORKG\",\n    \"text\": \"Fig. 4\\u2002 Bimodal network of KGs and the ontologies they ingest and serve. Labels\
+    \ are only shown for nodes with\\na degree greater than or equal to three, i.e., the KGs themselves and all ontologies\
+    \ shared by at least three KGs.\\nTwo ontologies have manually added labels (PCL, RO). Note that Petagraph and Data Distillery\
+    \ ingest many of\\nthe same\\u00a0ontologies and are thus very similar. The most shared ontologies across KGs\\u00a0are\
+    \ Uberon, CL, FMA,\\nHGNC, CHEBI, STRING, DOID, UO, PATO, OBI, and GO. The layout was made with Gephi (gephi.org), using\\\
+    nthe Yifan Hu (Proportional) Algorithm for layout (yifanhu.net/PUB/graph_draw.pdf).\\n\\n14\\nScientific Data |      \
+    \   (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    npelvis, and ureter have left and right HRA DOs for the same Uberon ID and that exactly five organs are female\\nonly\
+    \ (fallopian tube, mammary gland, ovary, placenta, and\\u00a0uterus) while one is male only (prostate). 33 asct-b\\nDOs\
+    \ tables exist, where 32 cover organs and one covers anatomical systems. ctann crosswalks exist for 23 organs,\\nwith\
+    \ 12 organs having crosswalks for more than one CTann annotation tool. In\\u00a0HRA KG v2.2, omap DOs exist\\nfor 13 organs\\\
+    u00a0(including retina and vermiform appendix, which are not shown in Fig. 5a). Finally, 2d-ftu DOs\\nare present for\
+    \ 10 organs, with the kidney having the most (eight).\\nFig.\\u00a05b plots HRA growth since HuBMAP started in 2018 (but\
+    \ only shows data since March 2020). The green\\nline shows publications linked to the HRA via the HRAlit35 dataset, which\
+    \ captures literature connected to the\\nHRA v1.4 (June 2023). In 2021, more HRA DO\\u00a0types were added (omap DOs34,\
+    \ later 2d-ftu DOs67), plus a grow-\\ning library of SOPs detailing HRA construction and usage (humanatlas.io/standard-operating-procedures).\
+    \ As\\nnew HRA DOs are published, they are ingested into the HRA KG.\\nFig.\\u00a05c shows the number of terms that were\
+    \ added to existing ontologies\\u00a0based on SME input via HRA DOs.\\nAs of May 2025, the HRA and other atlasing efforts\
+    \ added 162 terms to Uberon, 155 to CL, and 468 to PCL\\n(shown in the line graph\\u00a0are additions between July 2023\\\
+    u00a0and January 2025).\\nUsage Notes\\nUsers access the HRA KG via UIs, APIs, and data products on lod.humanatlas.io\
+    \ to answer biomedical ques-\\ntions. A list of all HRA applications that use the HRA KG is provided in Table\\u00a0S3.\
+    \ A list of publications and\\naliases used throughout HRA applications per HRA DO is provided in Table\\u00a0S6. Exemplary\
+    \ Python code is\\nprovided on the companion website at cns-iu.github.io/hra-kg-supporting-information/#basic-usage.\\\
+    nFig. 5\\u2002 Graphs from the HRA Dashboard showing HRA KG v2.2 growth and coverage: (a) DOs per organ,\\n(b) HRA KG\
+    \ growth in terms of DOs over time, (c) number of terms added from the HRA and other sources to\\nCL, PCL, and Uberon\
+    \ over time.\\n\\n15\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nThe HRA KG makes it possible to access harmonized, high-quality reference and experimental\
+    \ data in stand-\\nard data formats. Three widely used queries are detailed: (1) retrieve AS-CT-B records from the ASCT+B\\\
+    ntables, (2) get mean B expression values for CTs across datasets in HRApop, and (3) query the HRA KG to\\nachieve two\
+    \ types of predictions: cell type populations given a spatial origin (3D extraction site), and spatial\\norigin (3D extraction\
+    \ site and registration corridor) given a cell type population, see HRA user stories 1-2 in a\\nrelated publication2.\
+    \ Code for queries and advanced usage examples are presented on GitHub97. An overview of\\nHRA user stories and how the\
+    \ HRA KG supports them is provided in Table\\u00a0S7.\\nTo simplify HRA KG usage, the grlc.io service was implemented\\\
+    u00a0to make a set of canned SPARQL que-\\nries available as RESTful\\u00a0web requests. Internally, the service creates\
+    \ an OpenAPI specification (swagger.io/\\nspecification) that advertises the available queries. A user-friendly interface\
+    \ to these queries is provided\\u00a0at\\napps.humanatlas.io/api/grlc/. Annotated screenshots of the query interface with\
+    \ instructions on how to\\nrun the queries and download the resulting data is available on the companion website at cns-iu.github.io/\\\
+    nhra-kg-supporting-information/#how-to-run-queries-via-our-openapi-spec. This deployment was inspired by\\nthe PubMed\
+    \ Medical Subject Headings (MeSH)\\u00a0SPARQL Explorer at id.nlm.nih.gov/mesh/query.\\nThe HRA KG can also be used in\
+    \ coordination with relational databases. With initial SPARQL queries into\\nthe KG, users can get data as a long table.\
+    \ Then, a database system like DuckDB (duckdb.org) can be used to\\naggregate the KG data with SQL features that perform\
+    \ complex window functions and aggregations on it. That\\nis,\\u00a0users can index the HRA KG data and save it in a relational\\\
+    u00a0database and use it\\u00a0for different purposes.\"\n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\"\
+    : \"All the code used to construct and deploy the HRA KG v2.2 is available on GitHub46 and URLs are provided\\nin Table\\\
+    u00a0S4. Documentation, including an additional overview of HRA KG construction code, is provided in\\nthe Supporting\
+    \ Information repository for this paper on GitHub97. Documentation with annotated screenshots\\nto show how to run pre-made\
+    \ SPARQL queries against the HRA KG via grlc.io is at cns-iu.github.io/hra-kg-\\nsupporting-information/#how-to-run-queries-via-our-openapi-spec.\
+    \ All code was released under the MIT\\nLicense.\\nReceived: 20 February 2025; Accepted: 9 May 2025;\\nPublished: xx xx\
+    \ xxxx\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\t B\\u00f6rner, K. et al. Anatomical structures,\
+    \ cell types and biomarkers of the Human Reference Atlas. Nat. Cell Biol. 23, 1117\\u20131128\\n(2021).\\n2.\\t B\\u00f6rner,\
+    \ K. et al. Human BioMolecular Atlas Program (HuBMAP): 3D Human Reference Atlas construction and usage. Nat.\"\n  },\n\
+    \  {\n    \"name\": \"Methods 1\\u201316, https://doi.org/10.1038/s41592-024-02563-5 (2025)\",\n    \"text\": \"3.\\t\
+    \ Singhal, A. Introducing the Knowledge Graph: things, not strings. Google https://blog.google/products/search/introducing-\\\
+    nknowledge-graph-things-not/ (2012).\\n4.\\t Yu, C. & Li, Z. Building commonsense knowledge graphs to aid product recommendation.\
+    \ Amazon Science https://www.amazon.\\nscience/blog/building-commonsense-knowledge-graphs-to-aid-product-recommendation\
+    \ (2024).\\n5.\\t Noy, N. et al. Industry-scale knowledge graphs: lessons and challenges. Commun ACM 62, 36\\u201343 (2019).\\\
+    n6.\\t Dan, B. & Miller, L. FOAF Vocabulary Specification. FOAF Vocabulary Specification http://xmlns.com/foaf/spec/ (2014).\\\
+    n7.\\t Miles, A. & P\\u00e9rez-Ag\\u00fcera, J. R. SKOS: Simple Knowledge Organisation for the Web. Cat. Classif. Q. 43,\
+    \ 69\\u201383 (2007).\\n8.\\t S. Abdallah, Y. Raimond, & M. Sandler An Ontology-based Approach to Information Management\
+    \ for Music Analysis Systems. in\\nJournal of the Audio Engineering Society (2006).\\n9.\\t Y. Raimond, S. Abdallah, M.\
+    \ Sandler, & F. Giasson The Music Ontology. in (Vienna, Austria, 2007).\\n10.\\t Smith, B. et al. The OBO Foundry: coordinated\
+    \ evolution of ontologies to support biomedical data integration. Nat. Biotechnol. 25,\\n1251 (2007).\\n11.\\t Jackson,\
+    \ R. et al. OBO Foundry in 2021: operationalizing open data principles to evaluate ontologies. Database 2021, baab069\\\
+    n(2021).\\n12.\\t Whetzel, P. L. et al. BioPortal: enhanced functionality via new Web services from the National Center\
+    \ for Biomedical Ontology to\\naccess and use ontologies in software applications. Nucleic Acids Res. 39, W541\\u2013W545\
+    \ (2011).\\n13.\\t Musen, M. A. The Prot\\u00e9g\\u00e9 Project: A Look Back and a Look Forward. AI Matters 1, 4\\u201312\
+    \ (2015).\\n14.\\t Jackson, R. C. et al. ROBOT: A Tool for Automating Ontology Workflows. BMC Bioinformatics 20, 407 (2019).\\\
+    n15.\\t Jain, Y. et al. Segmenting functional tissue units across human organs using community-driven development of generalizable\\\
+    nmachine learning algorithms. Nat. Commun. 14, 4656 (2023).\"\n  },\n  {\n    \"name\": \"Hausenblas, M. 5-star Open Data.\
+    \ http://5stardata.info/en/ (2024)\",\n    \"text\": \"17.\\t Jupp, S., Burdett, T., Leroy, C. & Parkinson, H. E. A new\
+    \ Ontology Lookup Service at EMBL-EBI. in Workshop on Semantic Web\\nApplications and Tools for Life Sciences (Cambridge,\
+    \ UK, 2015).\\n18.\\t Mungall, C. J., Torniai, C., Gkoutos, G. V., Lewis, S. E. & Haendel, M. A. Uberon, an integrative\
+    \ multi-species anatomy ontology.\\nGenome Biol 13, R5 (2012).\\n19.\\t Diehl, A. D. et al. The Cell Ontology 2016: enhanced\
+    \ content, modularization, and ontology interoperability. J. Biomed. Semant. 7,\\n44 (2016).\\n20.\\t He, Y. O. et al.\
+    \ Ontology-based modeling, integration, and analysis of heterogeneous clinical, pathological, and molecular kidney\\ndata\
+    \ for precision medicine. Preprint at https://doi.org/10.1101/2024.04.01.587658 (2024).\\n21.\\t Himmelstein, D. S. et\
+    \ al. Systematic integration of biomedical knowledge prioritizes drugs for repurposing. eLife 6, e26726 (2017).\\n22.\\\
+    t El-Achkar, T. M. et al. A multimodal and integrated approach to interrogate human kidney biopsies with rigor and reproducibility:\\\
+    nguidelines from the Kidney Precision Medicine Project. Physiol. Genomics 53, 1\\u201311 (2021).\\n23.\\t Herr, B. W.\
+    \ II et al. Specimen, biological structure, and spatial ontologies in support of a Human Reference Atlas. Sci. Data 10,\
+    \ 171\\n(2023).\\n24.\\t Bodenreider, O. The Unified Medical Language System (UMLS): integrating biomedical terminology.\
+    \ Nucleic Acids Res. 32, D267\\n(2004).\\n25.\\t Stear, B. J. et al. Petagraph: A large-scale unifying knowledge graph\
+    \ framework for integrating biomolecular and biomedical data.\\nSci. Data 11, 1338 (2024).\\n26.\\t Jain, S. et al. Advances\
+    \ and prospects for the Human BioMolecular Atlas Program (HuBMAP). Nat. Cell Biol. 25, 1089\\u20131100 (2023).\\n\\n16\\\
+    nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\n27.\\t Snyder, M. P. et al. The human body at cellular resolution: the NIH Human Biomolecular\
+    \ Atlas Program. Nature 574, 187\\u2013192\\n(2019).\\n28.\\t HuBMAP Consortium. x-atlas-consortia/ubkg-neo4j: A container\
+    \ implementation to serve the Unified Biomedical Knowledge\\nGraph in Neo4j. https://github.com/x-atlas-consortia/ubkg-neo4j\
+    \ (2025).\\n29.\\t Morris, J. H. et al. The scalable precision medicine open knowledge engine (SPOKE): a massive knowledge\
+    \ graph of biomedical\\ninformation. Bioinforma. Oxf. Engl. 39, btad080 (2023).\\n30.\\t Baranzini, S. E. et al. A biomedical\
+    \ open knowledge network harnesses the power of AI to understand deep human biology. AI\\nMag. 43, 46\\u201358 (2022).\\\
+    n31.\\t Lobentanzer, S. et al. Democratizing knowledge representation with BioCypher. Nat. Biotechnol. 41, 1056\\u20131059\
+    \ (2023).\\n32.\\t Wilkinson, M. D. et al. The FAIR Guiding Principles for scientific data management and stewardship.\
+    \ Sci. Data 3, 160018 (2016).\\n33.\\t Hogan, A. et al. Knowledge Graphs. https://doi.org/10.1007/978-3-031-01918-0 (Springer\
+    \ International Publishing, Cham, 2022).\\n34.\\t Quardokus, E. M. et al. Organ Mapping Antibody Panels: a community resource\
+    \ for standardized multiplexed tissue imaging. Nat.\"\n  },\n  {\n    \"name\": \"Methods 20, 1174\\u20131178 (2023)\"\
+    ,\n    \"text\": \"35.\\t Kong, Y. & B\\u00f6rner, K. Publication, funding, and experimental data in support of Human\
+    \ Reference Atlas construction and usage.\\nSci. Data 11, 574 (2024).\\n36.\\t Tan, S. Z. K. et al. Brain Data Standards\
+    \ - A method for building data-driven cell-type ontologies. Sci. Data 10, 50 (2023).\\n37.\\t Seal, R. L. et al. Genenames.org:\
+    \ the HGNC resources in 2023. Nucleic Acids Res 51, D1003\\u2013D1009 (2023).\\n38.\\t Ma, J. et al. Segment anything\
+    \ in medical images. Nat. Commun. 15, 654 (2024).\\n39.\\t Jain, Y. et al. Segmentation of human functional tissue units\
+    \ in support of a Human Reference Atlas. Commun. Biol. 6, 717 (2023).\\n40.\\t Wang, X. J. et al. Generalized cell phenotyping\
+    \ for spatial proteomics with language-informed vision models. Preprint at https://\\ndoi.org/10.1101/2024.11.02.621624\
+    \ (2024).\\n41.\\t Israel, U. et al. A Foundation Model for Cell Segmentation. Preprint at https://doi.org/10.48550/arXiv.2311.11004\
+    \ (2023).\\n42.\\t Jain, Y. et al. Vasculature segmentation in 3D hierarchical phase-contrast tomography images of human\
+    \ kidneys. Preprint at https://\\ndoi.org/10.1101/2024.08.25.609595 (2024).\\n43.\\t Yagis, E. et al. Deep learning for\
+    \ 3D vascular segmentation in hierarchical phase contrast tomography: a case study on kidney. Sci.\\nRep. 14, 27258 (2024).\\\
+    n44.\\t Brbi\\u0107, M. et al. Annotation of spatially resolved single-cell data with STELLAR. Nat. Methods 19, 1411\\\
+    u20131418 (2022).\\n45.\\t Greenwald, N. F. et al. Whole-cell segmentation of tissue images with human-level performance\
+    \ using large-scale data annotation\\nand deep learning. Nat. Biotechnol. 40, 555\\u2013565 (2022).\\n46.\\t HuBMAP Consortium.\
+    \ hubmapconsortium/hra-kg: Human Reference Atlas Knowledge Graph. https://github.com/\\nhubmapconsortium/hra-kg (2025).\\\
+    n47.\\t Siletti, K. et al. Transcriptomic diversity of cell types across the adult human brain. Science 382, eadd7046,\
+    \ https://doi.org/10.1126/\\nscience.add7046 (2023).\\n48.\\t Caron, A. R. et al. A general strategy for generating expert-guided,\
+    \ simplified views of ontologies. Preprint at https://doi.\\norg/10.1101/2024.12.13.628309 (2024).\\n49.\\t Hao, Y. et\
+    \ al. Integrated analysis of multimodal single-cell data. Cell 184, 3573\\u20133587.e29 (2021).\\n50.\\t Dom\\u00ednguez\
+    \ Conde, C. et al. Cross-tissue immune cell analysis reveals tissue-specific features in humans. Science 376, eabl5197\\\
+    n(2022).\\n51.\\t Xu, C. et al. Automatic cell-type harmonization and integration across Human Cell Atlas datasets. Cell\
+    \ 186, 5876\\u20135891.e20 (2023).\\n52.\\t Ergen, C. et al. Consensus prediction of cell type labels in single-cell data\
+    \ with popV. Nat. Genet. https://doi.org/10.1038/s41588-\\n024-01993-3 (2024).\\n53.\\t Golbreich, C., Grosjean, J. &\
+    \ Darmoni, S. J. The Foundational Model of Anatomy in OWL 2 and its use. Artif. Intell. Med. 57,\\n119\\u2013132 (2013).\\\
+    n54.\\t Rosse, C. & Mejino, J. L. V. A reference ontology for biomedical informatics: the Foundational Model of Anatomy.\
+    \ J. Biomed.\\nInform. 36, 478\\u2013500 (2003).\\n55.\\t B\\u00f6rner, K. et al. Tissue registration and exploration\
+    \ user interfaces in support of a human reference atlas. Commun. Biol. 5, 1369\\n(2022).\\n56.\\t HuBMAP Consortium. hubmapconsortium/hra-do-processor:\
+    \ HRA Digital Objects Processor. https://github.com/\\nhubmapconsortium/hra-do-processor (2025).\\n57.\\t Clough, E. et\
+    \ al. NCBI GEO: archive for gene expression and epigenomics data sets: 23-year update. Nucleic Acids Res. 52,\"\n  },\n\
+    \  {\n    \"name\": \"D138\\u2013D144 (2023)\",\n    \"text\": \"58.\\t Clough, E. & Barrett, T. The Gene Expression Omnibus\
+    \ database. Methods Mol. Biol. Clifton NJ 1418, 93\\u2013110 (2016).\\n59.\\t Lonsdale, J. et al. The Genotype-Tissue\
+    \ Expression (GTEx) project. Nat. Genet. 45, 580\\u2013585 (2013).\\n60.\\t McMahon, A. P. et al. GUDMAP: The Genitourinary\
+    \ Developmental Molecular Anatomy Project. J. Am. Soc. Nephrol. 19, 667\\n(2008).\\n61.\\t Harding, S. D. et al. The GUDMAP\
+    \ database \\u2013 an online resource for genitourinary research. Development 138(13), 2845\\u201353\\n(2011).\\n62.\\\
+    t  Oxburgh, L. et al. (Re)Building a Kidney. J Am Soc Nephrol. 28(5) 1370\\u20131378, https://doi.org/10.1681/ASN.2016101077\
+    \ (2017).\\n63.\\t Rozenblatt-Rosen, O., Stubbington, M. J. T., Regev, A. & Teichmann, S. A. The Human Cell Atlas: from\
+    \ vision to reality. Nature 550,\\n451\\u2013453 (2017).\\n64.\\t The Human Tumor Atlas Network (HTAN): exploring tumor\
+    \ evolution in time and space. Nature https://www.nature.com/\\ncollections/fihchcjehc (2024).\\n65.\\t SenNet Consortium.\
+    \ et al. NIH SenNet Consortium to map senescent cells throughout the human lifespan to understand\\nphysiological health.\
+    \ Nat. Aging 2, 1090\\u20131100 (2022).\\n66.\\t Cyberinfrastructure for Network Science Center. hra-api/notebooks at\
+    \ main x-atlas-consortia/hra-api: HRA-API: Human\\nReference Atlas API. GitHub https://github.com/x-atlas-consortia/hra-api/tree/main/notebooks\
+    \ (2025).\\n67.\\t Bidanta, S. et al. Functional tissue units in the Human Reference Atlas. Nat. Commun. 16, 1526 (2025).\\\
+    n68.\\t Cyberinfrastructure for Network Science Center. x-atlas-consortia/hra-lit: Publication, funding, and experimental\
+    \ data in support\\nof Human Reference Atlas construction and usage (HRAlit). https://github.com/x-atlas-consortia/hra-lit\
+    \ (2025).\\n69.\\t Bueckle, A. et al. The HRA Organ Gallery affords immersive superpowers for building and exploring the\
+    \ Human Reference Atlas\\nwith virtual reality. Front. Bioinforma. 3 (2023).\\n70.\\t HuBMAP Consortium. x-atlas-consortia/hra-ubkg-exporter:\
+    \ A CLI for exporting a subset of the HRA Knowledge Graph to UBKG\\nformat. https://github.com/x-atlas-consortia/hra-ubkg-exporter\
+    \ (2024).\\n71.\\t Caron, A. R., B\\u00f6rner, K., Osumi-Sutherland, D., Herr II, B. W. & Hardi, J. Human Reference Atlas\
+    \ Common Coordinate Framework\\nOntology | NCBO BioPortal. https://bioportal.bioontology.org/ontologies/CCF (2024).\\\
+    n72.\\t Caron, A. R., B\\u00f6rner, K., Osumi-Sutherland, D., Herr II, B. W. & Hardi, J. Common Coordinate Framework Ontology\
+    \ | OntoBee.\\nhttps://ontobee.org/ontology/CCFO (2024).\\n73.\\t B\\u00f6rner, K., Herr II, B. W. & Hardi, J. hra-ols\
+    \ (v2.2) graph data. https://www.ebi.ac.uk/ols4/ontologies/hra (2024).\\n74.\\t Moxon, S. et al. The Linked Data Modeling\
+    \ Language (LinkML): A General-Purpose Data Modeling Framework Grounded in\\nMachine-Readable Semantics. in CEUR Workshop\
+    \ Proceedings vol. 3073, 148\\u2013151 (2021).\\n75.\\t Bandrowski, A. et al. The Resource Identification Initiative:\
+    \ A cultural shift in publishing. F1000Research 4, 134 (2015).\\n\\n17\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n76.\\t Singh Chawla, D. Researchers argue for standard\
+    \ format to cite lab resources. Nature https://doi.org/10.1038/nature.2015.17652\\n(2015).\\n77.\\t Bandrowski, A., Pairish,\
+    \ M., Eckmann, P., Grethe, J. & Martone, M. E. The Antibody Registry: ten years of registering antibodies.\\nNucleic Acids\
+    \ Res. 51, D358\\u2013D367 (2023).\\n78.\\t Beckett, D., Berners-Lee, T., Prud\\u2019hommeaux, E. & Carothers, G. RDF\
+    \ 1.2 Turtle. RDF 1.2 Turtle https://www.w3.org/TR/rdf12-\\nturtle/ (2025).\"\n  },\n  {\n    \"name\": \"Beckett, D.\
+    \ RDF 1.1 N-Triples. https://www.w3.org/TR/n-triples/ (2014)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Carothers,\
+    \ G. RDF 1.1 N-Quads. https://www.w3.org/TR/n-quads/ (2013)\",\n    \"text\": \"81.\\t Diamant, I., Clarke, D. J. B.,\
+    \ Evangelista, J. E., Lingam, N. & Ma\\u2019ayan, A. Harmonizome 3.0: integrated knowledge about genes and\\nproteins\
+    \ from diverse multi-omics resources. Nucleic Acids Res. 53, D1016\\u2013D1028 (2025).\\n82.\\t Rouillard, A. D. et al.\
+    \ The harmonizome: a collection of processed datasets gathered to serve and mine knowledge about genes and\\nproteins.\
+    \ Database 2016, baw100 (2016).\\n83.\\t Bueckle, A., Herr, B. & B\\u00f6rner, K. HRA Knowledge Graph v2.2. Zenodo https://doi.org/10.5281/zenodo.15323983\
+    \ (2025).\\n84.\\t B\\u00f6rner, K., Herr II, B. W. & Hardi, J. Human Reference Atlas | NCBO BioPortal. https://bioportal.bioontology.org/ontologies/HRA\\\
+    n(2025).\\n85.\\t Caron, A. R., B\\u00f6rner, K., Osumi-Sutherland, D., Herr II, B. W. & Hardi, J. ccf (v3.0.0) graph\
+    \ data. https://www.ebi.ac.uk/ols4/\\nontologies/ccf (2024).\\n86.\\t HuBMAP Consortium. ccf-validation-tools/reports\
+    \ at master \\u00b7 hubmapconsortium/ccf-validation-tools: HRA ASCT+B\\nValidation Reports. GitHub https://github.com/hubmapconsortium/ccf-validation-tools/tree/master/reports\
+    \ (2025).\\n87.\\t Surles-Zeigler, M. et al. Extending and using anatomical vocabularies in the stimulating peripheral\
+    \ activity to relieve conditions\\nproject. Front. Neuroinformatics 16, (2022).\\n88.\\t Imam, F. T. et al. Developing\
+    \ a multiscale neural connectivity knowledgebase of the autonomic nervous system. Front.\\nNeuroinformatics 19, 1541184\
+    \ (2025).\\n89.\\t de Bono, B. et al. Representing Normal and Abnormal Physiology as Routes of Flow in ApiNATOMY. Front.\
+    \ Physiol. 13, 795303\\n(2022).\\n90.\\t Balhoff, J. et al. Ubergraph: Integrating OBO Ontologies into a Unified Semantic\
+    \ Graph. in Proceedings of the International\\nConference on Biomedical Ontology 2022 (ICBO) (eds. Ph.D, A. D. D., Ph.D,\
+    \ W. D. D. & He, Y. \\u2018Oliver\\u2019) vol. 3805 I.1-9 (CEUR, Ann\\nArbor, Michigan, 2022).\\n91.\\t Jaradeh, M. Y.\
+    \ et al. Open Research Knowledge Graph: Next Generation Infrastructure for Semantic Scholarly Knowledge. in\\nProceedings\
+    \ of the 10th International Conference on Knowledge Capture 243\\u2013246 (Association for Computing Machinery, New York,\\\
+    nNY, USA, 2019). https://doi.org/10.1145/3360901.3364435.\\n92.\\t Jaradeh, M. Y., Oelen, A., Prinz, M., Stocker, M. &\
+    \ Auer, S. Open Research Knowledge Graph: A System Walkthrough. in Digital\\nLibraries for Open Knowledge: 23rd International\
+    \ Conference on Theory and Practice of Digital Libraries, TPDL 2019, Oslo, Norway,\\nSeptember 9-12, 2019, Proceedings\
+    \ 348\\u2013351, https://doi.org/10.1007/978-3-030-30760-8_31 (Springer-Verlag, Berlin, Heidelberg, 2019).\\n93.\\t OBO\
+    \ Phenotype. Releases \\u00b7 obophenotype/uberon. GitHub https://github.com/obophenotype/uberon/releases (2025).\\n94.\\\
+    t OBO Phenotype. Releases \\u00b7 obophenotype/cell-ontology. GitHub https://github.com/obophenotype/cell-ontology/releases\
+    \ (2025).\\n95.\\t OBO Phenotype. Releases \\u00b7 obophenotype/provisional_cell_ontology. GitHub https://github.com/obophenotype/provisional_cell_\\\
+    nontology/releases (2025).\\n96.\\t Cyberinfrastructure for Network Science Center. hra-kg-supporting-information/notebooks\
+    \ at main \\u00b7 cns-iu/hra-kg-supporting-\\ninformation. GitHub https://github.com/cns-iu/hra-kg-supporting-information/tree/main/notebooks\
+    \ (2025).\\n97.\\t Bueckle, A. et al. hra-kg-supporting-information/README.md. GitHub https://github.com/cns-iu/hra-kg-supporting-\\\
+    ninformation/blob/main/README.md (2025).\\n98.\\t Bajema, R. SOP: Creating 2D Illustrations for Functional Tissue Units\
+    \ (FTUs). https://doi.org/10.5281/zenodo.7409575 (2022).\\n99.\\t Quardokus, E. M., Record, E. & Herr II, B. W. SOP: Authoring\
+    \ Anatomical Structures, Cell Types and Biomarkers (ASCT+B)\\nTables. https://doi.org/10.5281/zenodo.5746152 (2022).\\\
+    n100.\\t Kienle, P., Quardokus, E. M. & Bueckle, A. SOP: Constructing a Millitome and Generating Virtual Tissue Blocks.\
+    \ https://doi.\\norg/10.5281/zenodo.7901004 (2023).\\n101.\\t Radtke, A. J. & Quardokus, E. M. SOP: Construction of Organ\
+    \ Mapping Antibody Panels for Multiplexed Antibody-Based Imaging\\nof Human Tissues. https://doi.org/10.5281/zenodo.5749883\
+    \ (2021).\\n102.\\t Schlehlein, H. & Quardokus, E. M. SOP: Creating 3D Models from Datasets. https://doi.org/10.5281/zenodo.7384276\
+    \ (2022)\\n103.\\t Quardokus, E. M., Bueckle, A., B\\u00f6rner, K., Record, E. & Browne, K. SOP: 3D Reference Object Approval.\
+    \ https://doi.org/10.5281/\\nzenodo.5944196 (2022).\\n104.\\t Ju, Y. & Jain, Y. SOP: Computing Cell Type to Vasculature\
+    \ Distance Distributions. https://doi.org/10.5281/zenodo.10371473 (2023).\\n105.\\t Weber, G. & Gustilo, K. SOP: Authoring\
+    \ the Blood Vasculature Geometry Table. https://doi.org/10.5281/zenodo.11623223 (2024).\\n106.\\t Weber, G. & Gustilo,\
+    \ K. SOP: Authoring the Pathway Organ Crosswalk Tables. https://doi.org/10.5281/zenodo.11623745 (2024).\\n107.\\t Weber,\
+    \ G. & Gustilo, K. SOP: Constructing Blood Vasculature-Organ Crosswalk Diagrams. https://doi.org/10.5281/\\nzenodo.11623898\
+    \ (2024).\\n108.\\t OBO Phenotype. obophenotype/provisional_cell_ontology: Draft cell type definitions from data - candidates\
+    \ for inclusion in CL.\\nhttps://github.com/obophenotype/provisional_cell_ontology (2025).\\n109.\\t Pan, H. et al. Comprehensive\
+    \ anatomic ontologies for lung development: A comparison of alveolar formation and maturation\\nwithin mouse and human\
+    \ lung. J. Biomed. Semant. 10, 18 (2019).\\n110.\\t Ontology Lookup Service. Provisional Cell Ontology https://www.ebi.ac.uk/ols4/ontologies/pcl\
+    \ (2025).\\n111.\\t OBO Relations. oborel/obo-relations: About RO is an ontology of relations for use with biological\
+    \ ontologies. https://github.com/\\noborel/obo-relations (2025).\\n112.\\t Weber, G. M., Ju, Y. & B\\u00f6rner, K. Considerations\
+    \ for Using the Vasculature as a Coordinate System to Map All the Cells in the\\nHuman Body. Front. Cardiovasc. Med. 7,\
+    \ (2020).\\n113.\\t HuBMAP Consortium. hubmapconsortium/hra-vccf: Human Reference Atlas - Vasculature Common Coordinate\
+    \ Framework.\\nhttps://github.com/hubmapconsortium/hra-vccf (2024).\\n114.\\t Berners-Lee, T. Linked Data - Design Issues.\
+    \ https://www.w3.org/DesignIssues/LinkedData.html (2006).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\"\
+    : \"The authors would like to thank S\\u00f6ren Auer, Ino de Bruijn, Yongqun (Oliver) He, Nancy Ruschman, James\\nMcLaughlin,\
+    \ Deanne Taylor, Maria-Esther Vidal, Avi Ma\\u2019ayan, and Ritika Kundra for their expert comments\\nand suggestions\
+    \ on earlier versions of this paper. Libby Maier supported the design of figures. The HRA is under\\nactive development\
+    \ by HuBMAP, SenNet, KPMP, GUDMAP, and the National Institute of Diabetes and Digestive\\nand Kidney Diseases (NIDDK)\
+    \ with expert input by the HRA Editorial Board and in close collaboration with\\nexperts from more than 25 other consortia.\
+    \ K.B. is a co-director of and is funded by the\\u00a0Canadian Institute for\\nAdvanced Research (CIFAR) MacMillan Multiscale\
+    \ Human program. This research has also\\u00a0been supported by\\nthe NIH Common Fund through the Office of Strategic\
+    \ Coordination/Office of the NIH Director under awards:\\n\\n18\\nScientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nOT2OD033756 and OT2OD026671 (A.B., B.W.H., J.H., E.M.Q.,\
+    \ M.M., K.B.); OT2OD026675 and OT2OD033759\\n(A.B., NIH JumpStart Award/Fellowship); OT2OD030545 (A.B., B.W.H., K.B.),\
+    \ Further, this work was supported\\nby: the SenNet Consortium Organization and Data Coordinating Center (CODCC) under\
+    \ award number\\nU24CA268108-01 (A.B., B.W.H., E.M.Q., K.B.); by the NIDDK under award U24DK135157 (B.W.H., K.B.); by\\\
+    nthe KPMP grant U2CDK114886 (A.B., B.W.H., K.B.); and the NIH National Institute of Allergy and Infectious\\nDiseases\
+    \ (NIAID), Department of Health and Human Services under BCBB Support Services Contract\\nHHSN316201300006W/HHSN27200002.\
+    \ This research was supported in part by the Intramural Research\\nProgram of the U.S. National Institutes of Health\\\
+    u00a0(NIH). The funders had no role in study design, data collection\\nand analysis, decision to publish, or preparation\
+    \ of the manuscript. The content is solely the responsibility of the\\nauthors and does not necessarily represent the\
+    \ official views of the NIH.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"A.B. led the writing\
+    \ of the paper, built the companion website at cns-iu.github.io/hra-kg-supporting-information,\\nand leads the HRApop\
+    \ effort. With B.W.H. and K.B., he shares corresponding authorship. B.W.H. and J.H. built\\nthe hra-do-processor and engineered\
+    \ the CCF Ontology as well as HRA DO\\u00a0data structures. B.W.H. leads the\\ndevelopment of the HRA UIs as well as the\
+    \ construction and deployment\\u00a0of the HRA KG. A.B. and B.W.H.\\ncompiled various\\u00a0Jupyter\\u00a0Notebooks to\
+    \ demonstrate usage of the HRA KG on the companion website. E.M.Q.\\ncompiled CTann annotation crosswalks used in and\
+    \ published with the HRA KG. M.M. oversees HRA ontology\\nengineering. K.B. leads the HRA effort and specified HRA KG\
+    \ usage to help focus HRA KG development and\\ndocumentation. A.B., B.W.H., J.H., E.M.Q., and K.B. wrote the paper. All\
+    \ other authors reviewed and commented\\non the paper.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\"\
+    : \"The authors declare no competing interests.\\nAdditional information\"\n  },\n  {\n    \"name\": \"Supplementary information\
+    \ Supplementary material is\\u00a0available at https://doi.org/10.1038/s41597-025-05183-6\",\n    \"text\": \"Correspondence\
+    \ and requests for materials should be addressed to A.B., B.W.H. or K.B.\\nReprints and permissions information is available\
+    \ at www.nature.com/reprints.\\nPublisher\\u2019s note Springer Nature remains neutral with regard to jurisdictional claims\
+    \ in published maps and\\ninstitutional affiliations.\\nOpen Access This article is licensed under a Creative Commons\
+    \ Attribution 4.0 International\\nLicense, which permits use, sharing, adaptation, distribution and reproduction in any\
+    \ medium or\\nformat, as long as you give appropriate credit to the original author(s) and the source, provide a link\
+    \ to the Cre-\\native Commons licence, and indicate if changes were made. The images or other third party material in\
+    \ this\\narticle are included in the article\\u2019s Creative Commons licence, unless indicated otherwise in a credit\
+    \ line to the\\nmaterial. If material is not included in the article\\u2019s Creative Commons licence and your intended\
+    \ use is not per-\\nmitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly\
+    \ from the\\ncopyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.\\n\\\
+    n\\u00a9 The Author(s) 2025\"\n  }\n]"
+  acknowledgments: 'The authors would like to thank Sören Auer, Ino de Bruijn, Yongqun (Oliver) He, Nancy Ruschman, James
+
+    McLaughlin, Deanne Taylor, Maria-Esther Vidal, Avi Ma’ayan, and Ritika Kundra for their expert comments
+
+    and suggestions on earlier versions of this paper. Libby Maier supported the design of figures. The HRA is under
+
+    active development by HuBMAP, SenNet, KPMP, GUDMAP, and the National Institute of Diabetes and Digestive
+
+    and Kidney Diseases (NIDDK) with expert input by the HRA Editorial Board and in close collaboration with
+
+    experts from more than 25 other consortia. K.B. is a co-director of and is funded by the Canadian Institute for
+
+    Advanced Research (CIFAR) MacMillan Multiscale Human program. This research has also been supported by
+
+    the NIH Common Fund through the Office of Strategic Coordination/Office of the NIH Director under awards:
+
+
+    18
+
+    Scientific Data |         (2025) 12:1100  | https://doi.org/10.1038/s41597-025-05183-6
+
+    www.nature.com/scientificdata
+
+    www.nature.com/scientificdata/
+
+    OT2OD033756 and OT2OD026671 (A.B., B.W.H., J.H., E.M.Q., M.M., K.B.); OT2OD026675 and OT2OD033759
+
+    (A.B., NIH JumpStart Award/Fellowship); OT2OD030545 (A.B., B.W.H., K.B.), Further, this work was supported
+
+    by: the SenNet Consortium Organization and Data Coordinating Center (CODCC) under award number
+
+    U24CA268108-01 (A.B., B.W.H., E.M.Q., K.B.); by the NIDDK under award U24DK135157 (B.W.H., K.B.); by
+
+    the KPMP grant U2CDK114886 (A.B., B.W.H., K.B.); and the NIH National Institute of Allergy and Infectious
+
+    Diseases (NIAID), Department of Health and Human Services under BCBB Support Services Contract
+
+    HHSN316201300006W/HHSN27200002. This research was supported in part by the Intramural Research
+
+    Program of the U.S. National Institutes of Health (NIH). The funders had no role in study design, data collection
+
+    and analysis, decision to publish, or preparation of the manuscript. The content is solely the responsibility of the
+
+    authors and does not necessarily represent the official views of the NIH.'
+  author_contributions: 'A.B. led the writing of the paper, built the companion website at cns-iu.github.io/hra-kg-supporting-information,
+
+    and leads the HRApop effort. With B.W.H. and K.B., he shares corresponding authorship. B.W.H. and J.H. built
+
+    the hra-do-processor and engineered the CCF Ontology as well as HRA DO data structures. B.W.H. leads the
+
+    development of the HRA UIs as well as the construction and deployment of the HRA KG. A.B. and B.W.H.
+
+    compiled various Jupyter Notebooks to demonstrate usage of the HRA KG on the companion website. E.M.Q.
+
+    compiled CTann annotation crosswalks used in and published with the HRA KG. M.M. oversees HRA ontology
+
+    engineering. K.B. leads the HRA effort and specified HRA KG usage to help focus HRA KG development and
+
+    documentation. A.B., B.W.H., J.H., E.M.Q., and K.B. wrote the paper. All other authors reviewed and commented
+
+    on the paper.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\",\n   \
+    \ \"page\": 15\n  }\n]"
+references:
+  reference_count: 2

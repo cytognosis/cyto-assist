@@ -1,0 +1,110 @@
+---
+title: "QB3 Early-Stage Mentoring Application"
+subtitle: "Winter 2026 Submission"
+date: 2025-10-10
+author:
+  - name: "Shahin Mohammadi"
+    email: "mohammadi@cytognosis.org"
+    affiliation: "Cytognosis Foundation"
+
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    self-contained: true
+  pdf:
+    documentclass: article
+    papersize: letter
+    fontsize: 11pt
+    margin-left: 1in
+    margin-right: 1in
+    margin-top: 1in
+    margin-bottom: 1in
+  docx:
+    toc: true
+
+# Content is loaded from content.yml via metadata-file
+metadata-files:
+  - content.yml
+---
+
+```{python}
+#| echo: false
+#| output: asis
+
+import yaml
+from pathlib import Path
+
+# ── Load template and content ──────────────────────────────────────────────
+template = yaml.safe_load(Path("_template.yml").read_text())
+content = yaml.safe_load(Path("content.yml").read_text())
+
+def get_value(content_dict, section_id, field_id):
+    """Get a field value from the content dict."""
+    section = content_dict.get(section_id, {})
+    return section.get(field_id)
+
+def render_field(field, value):
+    """Render a single field as markdown."""
+    label = field["label"]
+    required = " *" if field.get("required") else ""
+    hint = field.get("hint", "")
+    ftype = field.get("type", "text")
+    
+    lines = [f"### {label}{required}\n"]
+    
+    if hint:
+        lines.append(f"> _{hint}_\n")
+    
+    if ftype == "choice":
+        options = field.get("options", [])
+        for opt in options:
+            check = "x" if value == opt else " "
+            lines.append(f"- [{check}] {opt}")
+        lines.append("")
+    elif ftype in ("name", "address"):
+        subfields = field.get("subfields", [])
+        lines.append("| Field | Value |")
+        lines.append("|-------|-------|")
+        for sf in subfields:
+            sf_value = value.get(sf["id"], "") if isinstance(value, dict) else ""
+            lines.append(f"| {sf['label']} | {sf_value} |")
+        lines.append("")
+    elif ftype == "file":
+        if value:
+            lines.append(f"📎 {value}\n")
+        else:
+            lines.append("_No file uploaded._\n")
+    else:
+        if value:
+            lines.append(f"{value}\n")
+        else:
+            lines.append("_[Not provided]_\n")
+    
+    return "\n".join(lines)
+
+# ── Render all sections ────────────────────────────────────────────────────
+for section in template["sections"]:
+    section_id = section["id"]
+    section_title = section["title"]
+    note = section.get("note")
+    
+    print(f"## {section_title}\n")
+    
+    if note:
+        print(f"::: {{.callout-note}}")
+        print(f"{note}")
+        print(f":::\n")
+    
+    for field in section["fields"]:
+        value = get_value(content, section_id, field["id"])
+        print(render_field(field, value))
+
+# ── Footer ─────────────────────────────────────────────────────────────────
+footer = template.get("template", {}).get("footer")
+if footer:
+    print("---\n")
+    print(f"_{footer}_\n")
+    print("> **\\* = Required field**")
+```

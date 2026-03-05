@@ -1,0 +1,625 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/BioCypher.pdf
+
+identifiers:
+  doi: 10.1038/s41587-023-01848-y
+  pmid: '37337100'
+citation:
+  title: B
+  year: '2023'
+  journal: Nature Biotechnology
+  volume: '41'
+  pages: 1056-1059
+  publisher: Springer Science and Business Media LLC
+  authors: Sebastian Lobentanzer, Patrick Aloy, Jan Baumbach, Balazs Bohar, Vincent J. Carey, Pornpimol Charoentong, Katharina
+    Danhauser, Tunca Doğan, Johann Dreo, Ian Dunham, Elias Farr, Adrià Fernandez-Torras, Benjamin M. Gyori, Michael Hartung,
+    Charles Tapley Hoyt, Christoph Klein, Tamas Korcsmaros, Andreas Maier, Matthias Mann, David Ochoa, Elena Pareja-Lorente,
+    Ferdinand Popp, Martin Preusse, Niklas Probul, Benno Schwikowski, Bünyamin Sen, Maximilian T. Strauss, Denes Turei, Erva
+    Ulusoy, Dagmar Waltemath, Judith A. H. Wodke, Julio Saez-Rodriguez
+content:
+  sections: "[\n  {\n    \"name\": \"Modularity. To rationalize efforts across\",\n    \"text\": \"the community, we propose\
+    \ a modular\\narchitecture that maximizes reuse of data\\nand code in three ways: input, ontology\\nand output (Fig. 1a).\
+    \ Input adapters al-\\nlow delegating maintenance work to one\\ncentral place for each resource, ontol-\\nogy adapters\
+    \ give access to the wealth\\nof structured information curated by the\\nontology community, and output adapt-\\ners allow\
+    \ benchmarking and selection of\\ndatabase management systems. Togeth-\\ner, these mechanisms enable a workflow\\nthat\
+    \ reduces the time and effort to de-\\nvelop and deploy custom KGs.\"\n  },\n  {\n    \"name\": \"Harmonization. By using\
+    \ ontologies as\",\n    \"text\": \"expertly crafted repositories of concep-\\ntual hierarchies, we facilitate harmoni-\\\
+    nzation from a biological perspective. We\\nhelp with the technical aspects of using\\nand manipulating ontologies \\\
+    u2014 for in-\\nstance, by flexibly extending or hybrid-\\nizing complementary ontologies.\"\n  },\n  {\n    \"name\"\
+    : \"Reproducibility. By sharing the map-\",\n    \"text\": \"ping of KG contents to ontologies, we fa-\\ncilitate reproduction\
+    \ of the structure of\\nthe corresponding database without ac-\\ncess to the primary data, which may be\\nprohibited by\
+    \ license or privacy issues.\\nWe also enable extraction of subgraphs,\\neffectively converting storage-oriented\\nto\
+    \ task-specific KGs, which because of\\ntheir reduced sizes are easier to share\\nalongside analyses.\"\n  },\n  {\n \
+    \   \"name\": \"Reusability and accessibility. The sus-\",\n    \"text\": \"tainability of research software is strong-\\\
+    nly related to adoption in \\u2014 and contribu-\\ntions from \\u2014 the community. BioCypher is\\ndeveloped as a TRUSTworthy\
+    \ open-source\\nsoftware, applying methods of conti\\u00ad\\nnuous integration and deployment and\\nincluding a diverse\
+    \ community of re-\\nsearchers and developers from the begin-\\nning. This facilitates workflows that are\\ntested end-to-end,\
+    \ including the integrity\\nof the scientific data. We operate under\\nthe permissive MIT license and provide\\ncommunity\
+    \ members with guidelines for\\ntheir contributions and a code of conduct\\n(https://github.com/biocypher).\\nDifferent\
+    \ measures further increase the\\naccessibility and FAIRness of our framework.\\nFor example, we provide a template repository\\\
+    nfor a BioCypher pipeline with adapters, includ-\\ning a Docker Compose setup. To enable learn-\\ning by example, we curate\
+    \ existing pipelines,\\nas well as all adapters they use, in our GitHub\\norganization. Using the GitHub API and a\\nBioCypher\
+    \ pipeline, we build a \\u2018meta-graph\\u2019\\nfor the simple browsing and analysis of BioCy-\\npher workflows (https://meta.biocypher.org).\\\
+    nTo inform the contents of this meta-graph,\\nwe have reactivated and now maintain the\\nBiomedical Resource Ontology8,\
+    \ which\\nhelps to categorize pipelines and adapters\\ninto research areas, data types and purposes\\n(Supplementary Note\
+    \ 2).\\nBioCypher is implemented as a Python library\\nthat provides a low-code access point to data\\nprocessing and\
+    \ ontology manipulation, empha-\\nsizing the reuse of existing resources to the high-\\nest extent possible. We have begun\
+    \ to open the\\nplatform to other bioinformatics ecosystems,\\nstarting with R/Bioconductor (https://biocypher.\\norg/r-bioc.html).\
+    \ By our design principles and\\nthe automation of data management tasks, we\\naim to free up developer time and guide\
+    \ deci-\\nsion making on how to represent knowledge,\\nbridging the gap between the field of\\nbiomedical ontology and\
+    \ the broad application\\nof databases in research.\\nBy abstracting the KG build process as a\\ncombination of modular\
+    \ input adapters, we\\nsave developer time in the maintenance of\\nCheck for updates\\n\\nnature biotechnology\\nVolume\
+    \ 41 | August 2023 | 1056\\u20131059 | 1057\\nCorrespondence\\nintegrative resources built from overlap-\\nping primary\
+    \ sources (Fig. 1b): for instance,\\nOmniPath9, Bioteque2, CROssBAR DB10 and\\nthe Clinical Knowledge Graph11.\\nBy mapping\
+    \ the contents of those resources\\nonto a common ontological space, we gain\\ninteroperability between the different\
+    \ bio-\\nmedical domains (Fig. 1c). BioCypher helps\\nwith the mapping procedure by providing\\nexamples and an interface,\
+    \ as well as numer-\\nous user-friendliness measures. By using the\\nindustry standard Web Ontology Language\\n(OWL) format,\
+    \ we provide access to most\\navailable ontologies. Separating the ontology\\nframework from the modeled data enables\
+    \ the\\nimplementation of reasoning applications at\\nthe ontology level \\u2014 for instance, the ad hoc\\nharmonization\
+    \ of disease ontologies.\\na\\nc\\nb\\nResources\\nSecondary resource\\nCSV\\nNetworkX\\nSQL\\nRDF\\n...\\nis candidate\\\
+    nhas\\nalternative\\nis\\nused\\nin\\nreceptor\\ntargeted by\\nis part of\\nrelevant in\\nhas\\nis part of\\nis similar\
+    \ to\\nhas\\nCell line\\nreceived\\nmeasured in\\nmeasured in\\n...\\n...\\nBioCypher\\nOntologies\\n.csv\\nhttp://\\\
+    nftp://\\nTissue\\nDrug\\nGene\\nHarmonization\\nGO\\n...\\nDO\\netc\\nAdapters\\nKnowledge graph\\nOptimization\\nConfiguration\\\
+    nCell line\\nTissue\\nPatient\\nProtein\\nCell\\u2013cell\\nsignaling\\nPeptide\"\n  },\n  {\n    \"name\": \"Funding\"\
+    ,\n    \"text\": \"Disease\\nProcess\\nGenetic dependency\\nTarget\\nDrug\\nLPG\\nRDF\\netc\\nSQL\\nPrimary resource\\\
+    nNeo4j\\nArangoDB\\nFlow\\nPathway\\nFig. 1 | The BioCypher framework. a, Threefold modularity: resources (left) and\\\
+    nontologies (bottom left) are combined to yield a knowledge graph (right). The\\nmapping of entities to ontology concepts\
+    \ is realized by shareable configuration,\\nwhich can be iteratively optimized. b, Initially, we transform commonly used,\\\
+    ncurated \\u2018secondary\\u2019 resources into configurable, task-specific knowledge graphs\\nin various output formats.\
+    \ Incrementally, these secondary adapters will be\\nreplaced by primary resource adapters (Supplementary Fig. 1). Colored\
+    \ panels\\nin a,b indicate parts of the BioCypher ecosystem. c, Agreeing on a common\\nrepresentational framework allows\
+    \ harmonization of task-specific data sources\\nto answer complex queries across biomedical domains. For instance, starting\\\
+    nat mass spectrometry measurements of a patient\\u2019s tumor (left), one could go\\nthrough clinical annotations to genetic\
+    \ dependencies from the Dependency\\nMap project to identify potential drug targets or through pathway or process\\nannotations\
+    \ in Reactome and IntAct, identify relevant ligand\\u2013receptor pairs\\nusing OmniPath, and use CROssBAR to perform\
+    \ drug discovery or repurposing\\nfor these receptors. Panels correspond to resources; although we work on most\\nof the\
+    \ displayed resources, the figure is used for illustrative purposes and does\\nnot depict an existing pipeline.\\n\\nnature\
+    \ biotechnology\\nVolume 41 | August 2023 | 1056\\u20131059 | 1058\\nCorrespondence\\nBy providing access to a range of\
+    \ modular\\noutput adapters, we facilitate the project-\\nspecific benchmarking and selection of suit-\\nable database\
+    \ management systems. For\\ninstance, a Neo4j adaptor provides rapid\\naccess to extensive databases for mainte-\\nnance\
+    \ of knowledge and enables queries from\\nanalysis (Jupyter) notebooks. Switching to\\nalternative graph or relational\
+    \ databases (for\\nexample, ArangoDB or PostgreSQL) allows\\ntask-specific performance optimization.\\nA comma-separated\
+    \ values (CSV) writer and\\nPython-native adapters (for example, Pandas,\\nsparse matrix or NetworkX formats) yield\\\
+    nknowledge representations that can directly\\nbe used programmatically by a wide range of\\nmachine learning frameworks.\
+    \ As a result of\\nBioCypher\\u2019s modular nature, more output\\nadapters can quickly be added.\\nApplication programming\
+    \ interfaces (APIs)\\nbuilt on top of the BioCypher KGs enable\\ncomplex and versatile queries and simplify\\nthe interaction\
+    \ of users with the knowledge.\\nFor example, web widgets and apps (such as\\ndrug discovery and repositioning with https://\\\
+    ncrossbar.kansil.org and analysis workflows\\nwith https://drugst.one) allow researchers to\\nbrowse and customize the\
+    \ database and to\\nplug it into standard pipelines. Additionally, a\\nstructured, semantically enriched knowledge\\nrepresentation\
+    \ facilitates connection to and\\nimproves performance of modern natural lan-\\nguage processing applications such as\
+    \ GPT12,\\nwhich can be specifically tuned for biomedi-\\ncal research13. The use of common standards\\nenables sharing\
+    \ of tools across projects and\\ncommunities or in cloud-based services\\nthat preserve sensitive patient data (Supple-\\\
+    nmentary Note 3).\\nThere have been numerous attempts at\\nstandardizing KGs and making biomedi-\\ncal data stores more\
+    \ interoperable. We can\\nidentify three general types of approaches,\\nin increasing order of abstraction: centrally\\\
+    nmaintained databases, explicit standard\\nformats (modeling languages) and KG frame-\\nworks. With BioCypher, we aim\
+    \ to improve\\nuser-friendliness on all three levels of abstrac-\\ntion (see Supplementary Note 4). Despite\\nmany efforts,\
+    \ there is no widely accepted\\nsolution. Very often, resources take the \\u2018path\\nof least resistance\\u2019 in adopting\
+    \ their own, arbi-\\ntrary formats of representation. To our knowl-\\nedge, no framework provides easy access to\\nstate-of-the-art\
+    \ KGs to the average biomedi-\\ncal researcher, a gap that BioCypher aims\\nto fill. We demonstrate some key advantages\\\
+    nof BioCypher by case studies in Supplemen-\\ntary Note 5.\\nWe believe that creating a more interopera-\\nble biomedical\
+    \ research community is as much\\na social effort as it is a scientific software prob-\\nlem. To facilitate adoption of\
+    \ any approach,\\nthe process must be made as simple as possi-\\nble, and it must yield tangible rewards, such as\\nsubstantial\
+    \ savings in developer time. We will\\nprovide hands-on training for all interested\\nresearchers, and we invite all database\
+    \ and\\ntool developers to join our collective effort.\\nSebastian Lobentanzer\\n1\\n, Patrick Aloy2,3,\\nJan Baumbach\\\
+    n4, Balazs Bohar5,6,\\nVincent J. Carey7, Pornpimol Charoentong8,9,\\nKatharina Danhauser10, Tunca Do\\u011fan\\n11,12,\\\
+    nJohann Dreo13,14, Ian Dunham15,16,\\nElias Farr\\n1, Adri\\u00e0 Fernandez-Torras2,\\nBenjamin M. Gyori\\n17, Michael\
+    \ Hartung\\n4,\\nCharles Tapley Hoyt17, Christoph Klein10,\\nTamas Korcsmaros\\n5,18,19, Andreas Maier\\n4,\\nMatthias\
+    \ Mann\\n20,21, David Ochoa\\n15,16,\\nElena Pareja-Lorente2, Ferdinand Popp\\n22,\\nMartin Preusse\\n23, Niklas Probul\\\
+    n4,\\nBenno Schwikowski13, B\\u00fcnyamin Sen\\n11,12,\\nMaximilian T. Strauss\\n20, Denes Turei1,\\nErva Ulusoy\\n11,12,\
+    \ Dagmar Waltemath24,\\nJudith A. H. Wodke24 &\\nJulio Saez-Rodriguez\\n1\\n1Heidelberg University, Faculty of Medicine,\\\
+    nand Heidelberg University Hospital,\\nInstitute for Computational Biomedicine,\\nBioquant, Heidelberg, Germany. 2Institute\\\
+    nfor Research in Biomedicine (IRB Barcelona),\\nthe Barcelona Institute of Science and\\nTechnology, Barcelona, Spain.\
+    \ 3Instituci\\u00f3\\nCatalana de Recerca i Estudis Avan\\u00e7ats\\n(ICREA), Barcelona, Spain. 4Institute for\\nComputational\
+    \ Systems Biology, University\\nof Hamburg, Hamburg, Germany. 5Earlham\\nInstitute, Norwich, UK. 6Biological Research\\\
+    nCentre, Szeged, Hungary. 7Channing\\nDivision of Network Medicine, Mass General\\nBrigham, Harvard Medical School, Boston,\\\
+    nMA, USA. 8Centre for Quantitative Analysis\\nof Molecular and Cellular Biosystems\\n(Bioquant), Heidelberg University,\
+    \ Heidelberg,\\nGermany. 9Department of Medical\\nOncology, National Centre for Tumour\\nDiseases (NCT), Heidelberg University\\\
+    nHospital (UKHD), Heidelberg, Germany.\\n10Department of Pediatrics, Dr. von Hauner\\nChildren\\u2019s Hospital, University\
+    \ Hospital,\\nLMU Munich, Munich, Germany. 11Biological\\nData Science Lab, Department of Computer\\nEngineering, Hacettepe\
+    \ University, Ankara,\\nTurkey. 12Department of Bioinformatics,\\nGraduate School of Health Sciences,\\nHacettepe University,\
+    \ Ankara, Turkey.\\n13Computational Systems Biomedicine Lab,\\nDepartment of Computational Biology,\\nInstitut Pasteur,\
+    \ Universit\\u00e9 Paris Cit\\u00e9, Paris,\\nFrance. 14Bioinformatics and Biostatistics\\nHub, Institut Pasteur, Universit\\\
+    u00e9 Paris Cit\\u00e9,\\nParis, France. 15European Molecular Biology\\nLaboratory, European Bioinformatics Institute\\\
+    n(EMBL-EBI), Wellcome Genome Campus,\\nHinxton, UK. 16Open Targets, Wellcome\\nGenome Campus, Hinxton, UK. 17Laboratory\\\
+    nof Systems Pharmacology, Harvard Medical\\nSchool, Boston, MA, USA. 18Imperial College\\nLondon, London, UK. 19Quadram\
+    \ Institute\\nBioscience, Norwich, UK. 20Proteomics\\nProgram, Novo Nordisk Foundation Centre for\\nProtein Research,\
+    \ University of Copenhagen,\\nCopenhagen, Denmark. 21Department of\\nProteomics and Signal Transduction,\\nMax Planck\
+    \ Institute of Biochemistry,\\nMartinsried, Germany. 22Applied Tumour\\nImmunity Clinical Cooperation Unit, National\\\
+    nCentre for Tumour Diseases (NCT), German\\nCancer Research Centre (DKFZ), Heidelberg,\\nGermany. 23German Centre for\
+    \ Diabetes\\nResearch (DZD), Neuherberg, Germany.\\n24Medical Informatics Laboratory, University\\nMedicine Greifswald,\
+    \ Greifswald, Germany.\\ne-mail: sebastian.lobentanzer@\\nuni-heidelberg.de;\\npub.saez@uni-heidelberg.de\\nPublished\
+    \ online: 19 June 2023\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nLi, M. M., Huang, K. & Zitnik,\
+    \ M. Nat. Biomed. Eng. 6,\\n1353\\u20131369 (2022).\\n2.\\nFern\\u00e1ndez-Torras, A., Duran-Frigola, M., Bertoni, M.,\\\
+    nLocatelli, M. & Aloy, P. Nat. Commun. 13, 5304 (2022).\"\n  },\n  {\n    \"name\": \"Tiddi, I. & Schlobach, S. Artif.\
+    \ Intell. 302, 103627 (2022)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Bonner, S. et al. Brief. Bioinform. 23,\
+    \ bbac404 (2022)\",\n    \"text\": \"5.\\nCallahan, T. J., Tripodi, I. J., Pielke-Lombardo, H.\\n& Hunter, L. E. Annu.\
+    \ Rev. Biomed. Data Sci. 3, 23\\u201341\\n(2020).\"\n  },\n  {\n    \"name\": \"Wilkinson, M. D. et al. Sci. Data 3, 160018\
+    \ (2016)\",\n    \"text\": \"7.\\nLin, D. et al. Sci. Data 7, 144 (2020).\"\n  },\n  {\n    \"name\": \"Tenenbaum, J.\
+    \ D. et al. J. Biomed. Inform. 44, 137\\u2013145\",\n    \"text\": \"(2011).\\n9.\\nT\\u00fcrei, D., Korcsm\\u00e1ros,\
+    \ T. & Saez-Rodriguez, J. Nat.\"\n  },\n  {\n    \"name\": \"Methods 13, 966\\u2013967 (2016)\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"Do\\u011fan, T. et al. Nucleic Acids Res. 49, e96 (2021)\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"Santos, A. et al. Nat. Biotechnol. 40, 692\\u2013702 (2022)\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"Andrus, B. R., Nasiri, Y., Cui, S., Cullen, B. & Fulda, N\",\n    \"text\": \"Proc. AAAI Conf. Artif. Intell.\
+    \ 36, 10436\\u201310444 (2022).\"\n  },\n  {\n    \"name\": \"Lobentanzer, S. & Saez-Rodriguez, J. Preprint at\",\n  \
+    \  \"text\": \"https://doi.org/10.48550/arxiv.2305.06488 (2023).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n \
+    \   \"text\": \"This project has received funding from the European Union\\u2019s\\nHorizon 2020 research and innovation\
+    \ programme (grant\\nagreement No 965193 (DECIDER) and 116030 (TransQST)),\\nthe German Federal Ministry of Education\
+    \ and Research\\n(BMBF, Computational Life Sciences grant No 031L0181B\\nand MSCoreSys research initiative research core\\\
+    nSMART-CARE 031L0212A), the US Defense Advanced\\nResearch Projects Agency (DARPA) Young Faculty Award\\n(W911NF-20-1-0255),\
+    \ and the Medical Informatics Initiative\\nGermany, MIRACUM consortium (FKZ: 01ZZ2019). We\\nthank Henning Hermjakob,\
+    \ Benjamin Haibe-Kains, Pablo\\nRodriguez-Mier, Daniel Dimitrov and Olga Ivanova for\\n\\nnature biotechnology\\nVolume\
+    \ 41 | August 2023 | 1056\\u20131059 | 1059\\nCorrespondence\\nfeedback on the manuscript and Ben Hitz and Pedro Assis\
+    \ for\\nfeedback on their use of BioCypher.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"The\
+    \ project was conceived by S.L. and J.S.-R. The software\\nwas developed by S.L. with input from D.T. The manuscript\\\
+    nwas drafted by S.L., edited by J.S.-R. and jointly revised by\\nall co-authors. All co-authors as members of the BioCypher\\\
+    nConsortium contributed to the case studies in development\\nand writing and gave feedback for software development,\\\
+    nwhich was coordinated and integrated by S.L. All authors\\nexcept first and last are listed alphabetically by surname.\"\
+    \n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"J.S.-R. reports funding from GSK, Pfizer and Sanofi\
+    \ and fees\\nfrom Travere Therapeutics and Astex Pharmaceuticals.\\nAdditional information\"\n  },\n  {\n    \"name\"\
+    : \"Supplementary information The online version contains\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"supplementary\
+    \ material available at\",\n    \"text\": \"https://doi.org/10.1038/s41587-023-01848-y.\\nPeer review information Nature\
+    \ Biotechnology thanks the\\nanonymous reviewers for their contribution to the peer\\nreview of this work.\"\n  }\n]"
+  funding: 'Disease
+
+    Process
+
+    Genetic dependency
+
+    Target
+
+    Drug
+
+    LPG
+
+    RDF
+
+    etc
+
+    SQL
+
+    Primary resource
+
+    Neo4j
+
+    ArangoDB
+
+    Flow
+
+    Pathway
+
+    Fig. 1 | The BioCypher framework. a, Threefold modularity: resources (left) and
+
+    ontologies (bottom left) are combined to yield a knowledge graph (right). The
+
+    mapping of entities to ontology concepts is realized by shareable configuration,
+
+    which can be iteratively optimized. b, Initially, we transform commonly used,
+
+    curated ‘secondary’ resources into configurable, task-specific knowledge graphs
+
+    in various output formats. Incrementally, these secondary adapters will be
+
+    replaced by primary resource adapters (Supplementary Fig. 1). Colored panels
+
+    in a,b indicate parts of the BioCypher ecosystem. c, Agreeing on a common
+
+    representational framework allows harmonization of task-specific data sources
+
+    to answer complex queries across biomedical domains. For instance, starting
+
+    at mass spectrometry measurements of a patient’s tumor (left), one could go
+
+    through clinical annotations to genetic dependencies from the Dependency
+
+    Map project to identify potential drug targets or through pathway or process
+
+    annotations in Reactome and IntAct, identify relevant ligand–receptor pairs
+
+    using OmniPath, and use CROssBAR to perform drug discovery or repurposing
+
+    for these receptors. Panels correspond to resources; although we work on most
+
+    of the displayed resources, the figure is used for illustrative purposes and does
+
+    not depict an existing pipeline.
+
+
+    nature biotechnology
+
+    Volume 41 | August 2023 | 1056–1059 | 1058
+
+    Correspondence
+
+    By providing access to a range of modular
+
+    output adapters, we facilitate the project-
+
+    specific benchmarking and selection of suit-
+
+    able database management systems. For
+
+    instance, a Neo4j adaptor provides rapid
+
+    access to extensive databases for mainte-
+
+    nance of knowledge and enables queries from
+
+    analysis (Jupyter) notebooks. Switching to
+
+    alternative graph or relational databases (for
+
+    example, ArangoDB or PostgreSQL) allows
+
+    task-specific performance optimization.
+
+    A comma-separated values (CSV) writer and
+
+    Python-native adapters (for example, Pandas,
+
+    sparse matrix or NetworkX formats) yield
+
+    knowledge representations that can directly
+
+    be used programmatically by a wide range of
+
+    machine learning frameworks. As a result of
+
+    BioCypher’s modular nature, more output
+
+    adapters can quickly be added.
+
+    Application programming interfaces (APIs)
+
+    built on top of the BioCypher KGs enable
+
+    complex and versatile queries and simplify
+
+    the interaction of users with the knowledge.
+
+    For example, web widgets and apps (such as
+
+    drug discovery and repositioning with https://
+
+    crossbar.kansil.org and analysis workflows
+
+    with https://drugst.one) allow researchers to
+
+    browse and customize the database and to
+
+    plug it into standard pipelines. Additionally, a
+
+    structured, semantically enriched knowledge
+
+    representation facilitates connection to and
+
+    improves performance of modern natural lan-
+
+    guage processing applications such as GPT12,
+
+    which can be specifically tuned for biomedi-
+
+    cal research13. The use of common standards
+
+    enables sharing of tools across projects and
+
+    communities or in cloud-based services
+
+    that preserve sensitive patient data (Supple-
+
+    mentary Note 3).
+
+    There have been numerous attempts at
+
+    standardizing KGs and making biomedi-
+
+    cal data stores more interoperable. We can
+
+    identify three general types of approaches,
+
+    in increasing order of abstraction: centrally
+
+    maintained databases, explicit standard
+
+    formats (modeling languages) and KG frame-
+
+    works. With BioCypher, we aim to improve
+
+    user-friendliness on all three levels of abstrac-
+
+    tion (see Supplementary Note 4). Despite
+
+    many efforts, there is no widely accepted
+
+    solution. Very often, resources take the ‘path
+
+    of least resistance’ in adopting their own, arbi-
+
+    trary formats of representation. To our knowl-
+
+    edge, no framework provides easy access to
+
+    state-of-the-art KGs to the average biomedi-
+
+    cal researcher, a gap that BioCypher aims
+
+    to fill. We demonstrate some key advantages
+
+    of BioCypher by case studies in Supplemen-
+
+    tary Note 5.
+
+    We believe that creating a more interopera-
+
+    ble biomedical research community is as much
+
+    a social effort as it is a scientific software prob-
+
+    lem. To facilitate adoption of any approach,
+
+    the process must be made as simple as possi-
+
+    ble, and it must yield tangible rewards, such as
+
+    substantial savings in developer time. We will
+
+    provide hands-on training for all interested
+
+    researchers, and we invite all database and
+
+    tool developers to join our collective effort.
+
+    Sebastian Lobentanzer
+
+    1
+
+    , Patrick Aloy2,3,
+
+    Jan Baumbach
+
+    4, Balazs Bohar5,6,
+
+    Vincent J. Carey7, Pornpimol Charoentong8,9,
+
+    Katharina Danhauser10, Tunca Doğan
+
+    11,12,
+
+    Johann Dreo13,14, Ian Dunham15,16,
+
+    Elias Farr
+
+    1, Adrià Fernandez-Torras2,
+
+    Benjamin M. Gyori
+
+    17, Michael Hartung
+
+    4,
+
+    Charles Tapley Hoyt17, Christoph Klein10,
+
+    Tamas Korcsmaros
+
+    5,18,19, Andreas Maier
+
+    4,
+
+    Matthias Mann
+
+    20,21, David Ochoa
+
+    15,16,
+
+    Elena Pareja-Lorente2, Ferdinand Popp
+
+    22,
+
+    Martin Preusse
+
+    23, Niklas Probul
+
+    4,
+
+    Benno Schwikowski13, Bünyamin Sen
+
+    11,12,
+
+    Maximilian T. Strauss
+
+    20, Denes Turei1,
+
+    Erva Ulusoy
+
+    11,12, Dagmar Waltemath24,
+
+    Judith A. H. Wodke24 &
+
+    Julio Saez-Rodriguez
+
+    1
+
+    1Heidelberg University, Faculty of Medicine,
+
+    and Heidelberg University Hospital,
+
+    Institute for Computational Biomedicine,
+
+    Bioquant, Heidelberg, Germany. 2Institute
+
+    for Research in Biomedicine (IRB Barcelona),
+
+    the Barcelona Institute of Science and
+
+    Technology, Barcelona, Spain. 3Institució
+
+    Catalana de Recerca i Estudis Avançats
+
+    (ICREA), Barcelona, Spain. 4Institute for
+
+    Computational Systems Biology, University
+
+    of Hamburg, Hamburg, Germany. 5Earlham
+
+    Institute, Norwich, UK. 6Biological Research
+
+    Centre, Szeged, Hungary. 7Channing
+
+    Division of Network Medicine, Mass General
+
+    Brigham, Harvard Medical School, Boston,
+
+    MA, USA. 8Centre for Quantitative Analysis
+
+    of Molecular and Cellular Biosystems
+
+    (Bioquant), Heidelberg University, Heidelberg,
+
+    Germany. 9Department of Medical
+
+    Oncology, National Centre for Tumour
+
+    Diseases (NCT), Heidelberg University
+
+    Hospital (UKHD), Heidelberg, Germany.
+
+    10Department of Pediatrics, Dr. von Hauner
+
+    Children’s Hospital, University Hospital,
+
+    LMU Munich, Munich, Germany. 11Biological
+
+    Data Science Lab, Department of Computer
+
+    Engineering, Hacettepe University, Ankara,
+
+    Turkey. 12Department of Bioinformatics,
+
+    Graduate School of Health Sciences,
+
+    Hacettepe University, Ankara, Turkey.
+
+    13Computational Systems Biomedicine Lab,
+
+    Department of Computational Biology,
+
+    Institut Pasteur, Université Paris Cité, Paris,
+
+    France. 14Bioinformatics and Biostatistics
+
+    Hub, Institut Pasteur, Université Paris Cité,
+
+    Paris, France. 15European Molecular Biology
+
+    Laboratory, European Bioinformatics Institute
+
+    (EMBL-EBI), Wellcome Genome Campus,
+
+    Hinxton, UK. 16Open Targets, Wellcome
+
+    Genome Campus, Hinxton, UK. 17Laboratory
+
+    of Systems Pharmacology, Harvard Medical
+
+    School, Boston, MA, USA. 18Imperial College
+
+    London, London, UK. 19Quadram Institute
+
+    Bioscience, Norwich, UK. 20Proteomics
+
+    Program, Novo Nordisk Foundation Centre for
+
+    Protein Research, University of Copenhagen,
+
+    Copenhagen, Denmark. 21Department of
+
+    Proteomics and Signal Transduction,
+
+    Max Planck Institute of Biochemistry,
+
+    Martinsried, Germany. 22Applied Tumour
+
+    Immunity Clinical Cooperation Unit, National
+
+    Centre for Tumour Diseases (NCT), German
+
+    Cancer Research Centre (DKFZ), Heidelberg,
+
+    Germany. 23German Centre for Diabetes
+
+    Research (DZD), Neuherberg, Germany.
+
+    24Medical Informatics Laboratory, University
+
+    Medicine Greifswald, Greifswald, Germany.
+
+    e-mail: sebastian.lobentanzer@
+
+    uni-heidelberg.de;
+
+    pub.saez@uni-heidelberg.de
+
+    Published online: 19 June 2023'
+  acknowledgments: 'This project has received funding from the European Union’s
+
+    Horizon 2020 research and innovation programme (grant
+
+    agreement No 965193 (DECIDER) and 116030 (TransQST)),
+
+    the German Federal Ministry of Education and Research
+
+    (BMBF, Computational Life Sciences grant No 031L0181B
+
+    and MSCoreSys research initiative research core
+
+    SMART-CARE 031L0212A), the US Defense Advanced
+
+    Research Projects Agency (DARPA) Young Faculty Award
+
+    (W911NF-20-1-0255), and the Medical Informatics Initiative
+
+    Germany, MIRACUM consortium (FKZ: 01ZZ2019). We
+
+    thank Henning Hermjakob, Benjamin Haibe-Kains, Pablo
+
+    Rodriguez-Mier, Daniel Dimitrov and Olga Ivanova for
+
+
+    nature biotechnology
+
+    Volume 41 | August 2023 | 1056–1059 | 1059
+
+    Correspondence
+
+    feedback on the manuscript and Ben Hitz and Pedro Assis for
+
+    feedback on their use of BioCypher.'
+  author_contributions: 'The project was conceived by S.L. and J.S.-R. The software
+
+    was developed by S.L. with input from D.T. The manuscript
+
+    was drafted by S.L., edited by J.S.-R. and jointly revised by
+
+    all co-authors. All co-authors as members of the BioCypher
+
+    Consortium contributed to the case studies in development
+
+    and writing and gave feedback for software development,
+
+    which was coordinated and integrated by S.L. All authors
+
+    except first and last are listed alphabetically by surname.'
+  competing_interests: 'J.S.-R. reports funding from GSK, Pfizer and Sanofi and fees
+
+    from Travere Therapeutics and Astex Pharmaceuticals.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n   \
+    \ \"page\": 2\n  },\n  {\n    \"id\": \"fig_p2_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_2.png\",\n\
+    \    \"page\": 2\n  },\n  {\n    \"id\": \"fig_p2_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_3.png\"\
+    ,\n    \"page\": 2\n  },\n  {\n    \"id\": \"fig_p2_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_4.png\"\
+    ,\n    \"page\": 2\n  },\n  {\n    \"id\": \"fig_p2_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_5.png\"\
+    ,\n    \"page\": 2\n  }\n]"
+references:
+  reference_count: 6

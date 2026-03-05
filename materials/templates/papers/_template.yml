@@ -1,0 +1,226 @@
+# Scientific Paper — Template Specification
+#
+# Defines all extractable structured fields from a scientific paper.
+# This template works across input formats: PDF, DOCX, LaTeX, HTML, Markdown.
+#
+# Schema Version: 1.0
+
+template:
+  name: "Scientific Paper"
+  version: "1.0"
+  description: "Standard template for structured extraction from scientific publications"
+  output_formats: [html, pdf, docx]
+
+sections:
+  # ─── Identifiers ─────────────────────────────────────────────────────────
+  - id: identifiers
+    title: "Identifiers"
+    fields:
+      - id: doi
+        label: "DOI"
+        type: text
+        required: false
+        hint: "Digital Object Identifier (e.g., 10.1038/s41586-024-xxxxx)"
+
+      - id: pmid
+        label: "PubMed ID (PMID)"
+        type: text
+        required: false
+        hint: "PubMed identifier for bio/med papers"
+
+      - id: pmcid
+        label: "PubMed Central ID (PMCID)"
+        type: text
+        required: false
+
+      - id: arxiv_id
+        label: "arXiv ID"
+        type: text
+        required: false
+        hint: "e.g., 2301.12345"
+
+      - id: url
+        label: "Paper URL"
+        type: url
+        required: false
+
+  # ─── Citation ────────────────────────────────────────────────────────────
+  - id: citation
+    title: "Citation Details"
+    fields:
+      - id: title
+        label: "Paper Title"
+        type: text
+        required: true
+
+      - id: authors
+        label: "Authors"
+        type: textarea
+        required: true
+        hint: "Full author list in order of appearance"
+
+      - id: first_authors
+        label: "First Author(s)"
+        type: textarea
+        required: false
+        hint: "Author(s) credited as first/equal-contribution first authors"
+
+      - id: senior_authors
+        label: "Senior/Last Author(s)"
+        type: textarea
+        required: false
+        hint: "Senior/corresponding author(s), typically listed last"
+
+      - id: author_affiliations
+        label: "Author Affiliations"
+        type: textarea
+        required: false
+
+      - id: corresponding_email
+        label: "Corresponding Author Email(s)"
+        type: textarea
+        required: false
+
+      - id: journal
+        label: "Journal / Conference / Preprint Server"
+        type: text
+        required: false
+
+      - id: volume
+        label: "Volume"
+        type: text
+        required: false
+
+      - id: issue
+        label: "Issue"
+        type: text
+        required: false
+
+      - id: pages
+        label: "Pages"
+        type: text
+        required: false
+
+      - id: year
+        label: "Year"
+        type: text
+        required: true
+
+      - id: publisher
+        label: "Publisher"
+        type: text
+        required: false
+
+      - id: publication_type
+        label: "Publication Type"
+        type: choice
+        required: false
+        options:
+          - "article"
+          - "inproceedings"
+          - "preprint"
+          - "book"
+          - "chapter"
+          - "thesis"
+          - "report"
+          - "review"
+
+      - id: bibtex_key
+        label: "BibTeX Citation Key"
+        type: text
+        required: false
+        hint: "e.g., smith2024deep"
+
+  # ─── Content ─────────────────────────────────────────────────────────────
+  - id: content
+    title: "Paper Content"
+    fields:
+      - id: abstract
+        label: "Abstract"
+        type: section
+        required: true
+
+      - id: keywords
+        label: "Keywords"
+        type: textarea
+        required: false
+
+      - id: sections
+        label: "Paper Sections"
+        type: textarea
+        required: true
+        hint: "JSON list of {name, text} objects for each section (Introduction, Methods, Results, Discussion, etc.)"
+
+      - id: author_contributions
+        label: "Author Contributions"
+        type: textarea
+        required: false
+        hint: "Author contribution statement if present"
+
+      - id: acknowledgments
+        label: "Acknowledgments"
+        type: textarea
+        required: false
+
+      - id: funding
+        label: "Funding"
+        type: textarea
+        required: false
+
+      - id: competing_interests
+        label: "Competing Interests / Conflicts of Interest"
+        type: textarea
+        required: false
+
+  # ─── Figures & Tables ────────────────────────────────────────────────────
+  - id: figures
+    title: "Figures & Tables"
+    fields:
+      - id: figure_list
+        label: "Figures"
+        type: textarea
+        required: false
+        hint: "JSON list of {id, caption, path} objects for each figure"
+
+      - id: table_list
+        label: "Tables"
+        type: textarea
+        required: false
+        hint: "JSON list of {id, caption, path} objects for each table (exported as CSV)"
+
+  # ─── References ──────────────────────────────────────────────────────────
+  - id: references
+    title: "References & Citations"
+    fields:
+      - id: reference_count
+        label: "Total Number of References"
+        type: number
+        required: false
+
+      - id: references_bib
+        label: "References BibTeX File"
+        type: file
+        required: false
+        hint: "Path to exported references.bib"
+
+  # ─── Associated Materials ────────────────────────────────────────────────
+  - id: associated
+    title: "Associated Materials"
+    fields:
+      - id: code_repositories
+        label: "Code Repositories"
+        type: textarea
+        required: false
+        hint: "JSON list of {url, description} for GitHub/GitLab/Zenodo repos"
+
+      - id: data_repositories
+        label: "Data Repositories"
+        type: textarea
+        required: false
+        hint: "JSON list of {url, accession, database, description} for GEO/CellxGene/NDA etc."
+
+      - id: supplementary_materials
+        label: "Supplementary Materials Index"
+        type: textarea
+        required: false
+        hint: "JSON list of {title, path, url} for supplementary documents"

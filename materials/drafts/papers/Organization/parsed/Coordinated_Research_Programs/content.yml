@@ -1,0 +1,1606 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/Organization/Coordinated Research Programs.pdf
+
+citation:
+  title: RESEARCH LEADERS
+  year: '2025'
+content:
+  abstract: 'Related Chapters
+
+    • Selling a program
+
+    • Communicating your vision'
+  sections: "[\n  {\n    \"name\": \"RESEARCH LEADERS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"A PLAYBOOK FOR\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SPECULATIVE TECHNOLOGIES\",\n    \"text\": \"Ben Reinhardt and Eileen\
+    \ Nakahata\"\n  },\n  {\n    \"name\": \"ST-003\",\n    \"text\": \"The Research Leader\\u2019s Playbook\\nBen Reinhardt\\\
+    nEileen Nakahata\\nSpeculative Technologies\\nSpring 2025\\n2\\n\\nTable of Contents\"\n  },\n  {\n    \"name\": \"The\
+    \ Different Roles and Phases of Running a Coordinated Research\",\n    \"text\": \"Program\"\n  },\n  {\n    \"name\"\
+    : \"WTF is a Coordinated Research Program?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"The Mindsets of a Coordinated\
+    \ Research Leader\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Identifying Who Cares\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"Identifying Performers\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Navigating a Network\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"What Ideas Make a Good Coordinated Research Program?\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Identifying Bottlenecks and Key Risks\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Techno-economic and Impact Analyses\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Planning for Transition\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"Program Failure Modes\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Mapping Incentives\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Selling a Program\",\n    \"text\": \"\"\n \
+    \ },\n  {\n    \"name\": \"Communicating Your Vision\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Budgeting for\
+    \ a Coordinated Research Program\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Institutional Moves for Interfacing\
+    \ with Other Organizations\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Knowing When to Quit and Setting Up Kill\
+    \ Criteria\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Metrics\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"How to Write a Good Solicitation\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Coordinated Research Leader Archetypes\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Glossary\",\n    \"text\": \"3\\n\\nThe Different Roles and Phases of\
+    \ Running a\\nCoordinated Research Program\\nThe leader of a coordinated research program1 needs to wear many hats. This\
+    \ is\\none of the reasons why the job is so hard! These hats roughly correspond to the\\ndifferent phases of a program.\
+    \ Leading a program through each phase is almost\\na different job.\\nThe phases are:\"\n  },\n  {\n    \"name\": \"Exploration\
+    \ and Field Mapping\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Refining Ideas\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \"Program Design\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Communicating Vision\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"Program Engineering\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Program\
+    \ Execution\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Tech Transition\",\n    \"text\": \"It\\u2019s important\
+    \ to note that these phases are not rigidly sequential. They bleed\\ninto each other and you need to work on several at\
+    \ the same time: it\\u2019s important\\nto consider tech transition even while doing exploration and field mapping \\\
+    u2014\\nkeeping your eyes out for who will shepherd the technology beyond your program\\nand what those people care about;\
+    \ you will need to update both your program\\ndesign in real time as you execute on it and run into previously unknown\\\
+    nunknowns; you should have a communicable vision from day one and update it\\nas you explore and refine ideas.\\nSome\
+    \ write-ups that don\\u2019t fit into any specific role or phase\\n\\u2022 Coordinated Research Leader Archetypes\\n\\\
+    u2022 The Mindsets of a Coordinated Research Leader\\n\\u2022 WTF is a Coordinated Research Program\\n\\u2022 Glossary\\\
+    n1The definition of a coordinated research program is nebulous, but roughly, it\\u2019s a multi-\\nperson, time-bound\
+    \ research effort with a clear goal that doesn\\u2019t fit into a single academic lab\\nor a startup. For more nuance,\
+    \ read this.\\n4\"\n  },\n  {\n    \"name\": \"Exploration and Field Mapping\",\n    \"text\": \"The goals of exploration\
+    \ and field mapping are to:\"\n  },\n  {\n    \"name\": \"Have a working knowledge and network of the people and organizations\"\
+    ,\n    \"text\": \"working adjacent to your program\\u2019s goal.\"\n  },\n  {\n    \"name\": \"Understand current practice\
+    \ well enough that you can evaluate people\",\n    \"text\": \"and ideas: who is good; who is moving slowly because they\
+    \ are slacking\\nand who is merely working on something incredibly hard; whether you are\\nasking performers to do something\
+    \ impossible or merely very hard.\"\n  },\n  {\n    \"name\": \"Understand the limitations of current practice well enough\
+    \ that you can\",\n    \"text\": \"go several layers deep and identify unintuitive gaps or bottlenecks (see\\nIdentifying\
+    \ bottlenecks and Key risks).\\nYour role here is similar to a startup founder doing customer explo-\\nration.\\nYou probably\
+    \ come into a program with a hunch. If you don\\u2019t, create one.\\nExploration without an initial hunch to at least\
+    \ bias your search is far less\\neffective.\\nThe point of a coordinated research program is to reach a goal.\\nIt\\u2019s\
+    \ tempting (and a commendable urge) to leave yourself completely open to\\nserendipitous goals. It\\u2019s counterintuitive,\
+    \ but having a goal makes it more likely\\nto find different goals because you have something to compare to and contrast\\\
+    nagainst.\\nField mapping is the process of figuring out the state of a \\u201cfield\\u201d \\u2014 the rough\\ninterconnected\
+    \ ideas. Who is working on what? What things are not being\\nworked on? Why?\\nSome concrete tactics for exploration and\
+    \ field mapping:\\n\\u2022 Creating a list of research programs that have attempted something\\nsimilar in the past and\
+    \ talking to the people who ran those projects. (If\\nyou think that nothing like what you\\u2019re thinking about doing\
+    \ has been\\ndone, you\\u2019re wrong.)\\n\\u2022 Creating a list of 100 researchers and companies that seem to be working\\\
+    nin or peripheral to your goal and talk to them.\\n\\u2022 Reading a few review papers in order to identify people who\
+    \ might be\\ngood initial nodes in a network to reach out to is a reasonable starting point,\\n\\u2022 Writing down intermediate\
+    \ syntheses, hypotheses and conclusions from\\nconversations in long-form text. Long-form writing (as opposed to bullet\\\
+    npoints) is important because it enables you to create causal connections\\nbetween different things that you\\u2019re\
+    \ exploring and to notice unintuitive\\ngaps or consistent blockers, both of which can be fruitful things for a\\n5\\\
+    n\\nprogram to go after. Update these notes as you learn more. Linked notes\\ntools like Bear or Obsidian can be useful\
+    \ for this, but Google Docs, paper,\\nor the built-in notes tools in Windows or Mac are fine \\u2014 whatever works\\\
+    nbest for your brain.\\nAll of these require navigating a network\\nIt\\u2019s tempting to do an exhaustive search of\
+    \ all potential people and ideas in\\na space, but this is a bad idea. This phase of the program should be as short\\\
+    nas possible, but no shorter!\\nA good heuristic for when you\\u2019ve done enough\\nexploration and field mapping is\
+    \ when your network exploration starts to close\\nloops. That is, you start being routed towards people/papers/organizations\
+    \ by\\nconversations in seemingly very disparate areas.\\nRelated write-ups\\n\\u2022 Identifying who cares\\n\\u2022\
+    \ Identifying performers\\n\\u2022 Navigating a network\"\n  },\n  {\n    \"name\": \"Refining Ideas\",\n    \"text\"\
+    : \"The goal of refining ideas is to identify:\\n\\u2022 A concrete program goal that is both incredibly aggressive and\
+    \ potentially\\nachievable within the program\\u2019s lifetime.\\n\\u2022 Milestones that would suggest the program is\
+    \ moving towards that goal.\\n\\u2022 The different thrusts that a program would need to address that goal.\\n\\u2022\
+    \ The key risks to the program (see Identifying bottlenecks and Key risks)\\nand what evidence would suggest that you\
+    \ have mitigated them.\\nRefining ideas requires both thinking and talking. You need deep thinking to\\nconnect and distill\
+    \ the pieces of information that you\\u2019ve gathered while exploring\\nand field mapping, and then you need to talk\
+    \ to people to test those ideas against\\nthe world.\\nYour role here is an analyst and researcher.\\nRefining ideas should\
+    \ happen in a loop with exploration: some conversations\\ngenerate an idea for an impactful sub-goal and then running\
+    \ that idea by those\\nsame experts (or different ones) can give you more unintuitive nuance on it.\\nRemember, people\
+    \ default to talking about higher levels of abstraction so it\\u2019s up\\nto you to make the ideas more precise.\\nSome\
+    \ concrete tactics for refining ideas:\\n6\\n\\n\\u2022 Running workshops\\n\\u2022 Requests for information\\n\\u2022\
+    \ Circling back with people you talked to during exploration with a concrete\\nhypothesis for them to react to\\nRelated\
+    \ write-ups\\n\\u2022 What ideas make a good coordinated research program?\\n\\u2022 Identifying bottlenecks and Key risks\"\
+    \n  },\n  {\n    \"name\": \"Program Design\",\n    \"text\": \"The goal of program design is to create the structure\
+    \ of a program:\\n\\u2022 What work actually needs to be done to achieve the program\\u2019s goals?\\n\\u2022 What kind\
+    \ of projects are best suited to encourage that work?\\n\\u2022 How do those projects need to interact?\\n\\u2022 What\
+    \ needs to happen at the end of a program so that it can have impact?\\nWorking backwards, what do you need to put in\
+    \ place during the course of\\nthe program so that can happen?\\nYour role here is a strategist, laying out the troop\
+    \ movements.\\nSome examples:\\n\\u2022 You might determine that your program\\u2019s goal can be achieved with\\nwidely-available\
+    \ resources combined with a hard-to-create dataset. In this\\nsituation, a good program design might consist of one or\
+    \ more projects\\nto create the dataset combined with a competition. (This is roughly the\\nshape of the Vesuvius Challenge)\
+    \ Those projects and the competition need\\ntheir own design (how do you know they\\u2019re successful, what timelines\
+    \ do\\nthey happen on, how will the competition be run and managed?)\\n\\u2022 You might determine that there are two\
+    \ very different approaches that\\ncould potentially achieve the program\\u2019s goal. One approach is at a higher\\nTechnology\
+    \ Readiness Level (TRL) but faces a lot of scaling risks, while\\nthe other is lower TRL but will clearly scale if it\
+    \ addresses early risks. In\\nthis situation, a good program design might consist of one track that funds\\nstartups working\
+    \ on the high TRL approach and another track funding\\nlabs working on components of the lower TRL approach. The existence\
+    \ of\\nthe program will make sure that the labs coordinate towards a coherent\\noutput and that if the startups fail to\
+    \ scale the higher TRL approach, they\\nmight be able to adopt the other approach which the labs have matured.\\n7\\n\\\
+    nConcrete tactics for program design:\\n\\u2022 Writing down the ideal end state for the program and a causal narrative\\\
+    nin as much detail as possible for how that would feasibly happen.\\n\\u2022 Creating Block Diagrams.\\n\\u2022 Putting\
+    \ out requests for proposals.\\nRelated write-ups and resources\\n\\u2022 Planning for transition\\n\\u2022 Program failure\
+    \ modes\\n\\u2022 Mapping incentives\\n\\u2022 ARPA program design language\"\n  },\n  {\n    \"name\": \"Communicating\
+    \ Vision\",\n    \"text\": \"The only way your program will be successful is if you are able to convince and\\nalign several\
+    \ different groups:\\n\\u2022 Great collaborators (performers, employees, etc.)\\n\\u2022 The people holding the purse\
+    \ strings\\n\\u2022 Whoever is going to carry the technology on beyond your program\\nYour role here is to be a keynote\
+    \ speaker, a general rallying your\\ntroops.\\nIn order to get any groups on board with the program\\u2019s vision, you\
+    \ need to have\\na clear idea of what it is. (This goes back to creating concrete goals.)\\nCommunicating the program\\\
+    u2019s vision to collaborators is critical because\\n\\u2022 People who feel like they\\u2019re working towards a shared\
+    \ vision do better work.\\n\\u2022 In part your program will succeed because people will continue to work\\ntowards its\
+    \ visions even after the program ends.\\n\\u2022 Even collaborators who are paying lip service to a vision because you\
+    \ can\\nthrow around serious chunks of money need to understand it to be effective.\\nThere are so many small decisions\
+    \ that can\\u2019t be captured by metrics that\\ncollaborators will fail to do good work (and you might have to pull their\"\
+    \n  },\n  {\n    \"name\": \"funding) if they don\\u2019t know where that work is targeted\",\n    \"text\": \"Concrete\
+    \ tactics for communicating vision:\\n8\\n\\n\\u2022 Always have an up-to-date. . .\\n\\u2013 One or two sentence blurb\
+    \ that you (or people who are making\\n<double-opt-in intros>) can use in emails.\\n\\u2013 A one-to-two-page document\
+    \ that explains the current working ideas\\nof your program.\\n\\u2013 A deck of slides that you can go to in order to\
+    \ illustrate specific ideas\\nin your program that are easier to communicate visually.\\n\\u2022 After every conversation\
+    \ you have, write down:\\n\\u2013 Questions or points of confusion that came up\\n\\u2013 Which specific things you said\
+    \ that resonated or fell flat\\n\\u2013 Points of regret or things you could have explained better\\n\\u2022 Pay attention\
+    \ to the Pyramid Principle \\u2014 start with the bottom line of\\nthe program up front \\u201cwe\\u2019re working on\
+    \ tools to 10x the production of X\\u201d\\nand then go into details.\\n\\u2022 Simplify your language as much as possible,\
+    \ but no further. Even technical\\npeople secretly like straightforward explanations and you will need to\\ncommunicate\
+    \ across a number of disciplines. AI tools like LLMs can help\\nwith this.\\n\\u2022 Start with concrete examples and\
+    \ stories and then work your way to\"\n  },\n  {\n    \"name\": \"Program Engineering\",\n    \"text\": \"Once you have\
+    \ a precise program design and your program is funded, you need\\nto get into the weeds of who is doing what. This means\
+    \ soliciting proposals,\\nnegotiating contracts, and generally putting rubber to the road.\\nYour role here is a tactician,\
+    \ a salesperson, and a contract lawyer.\\nUltimately, no plan survives first contact with reality intact. You will have\
+    \ to\\nconstantly adjust your program design based on who you can get on board and\\nwhat their demands are once you start\
+    \ getting into specifics.\\nIn this phase, it really pays to understand the nitty-gritties of the processes\\n9\\n\\nin\
+    \ your specific organization: what kind of contracts you can write, what the\\nprocess looks like, and who is in charge\
+    \ of it. Doing this will allow you to have\\nas much freedom and power as you can without getting sued, fired, or going\
+    \ to\\nprison.\\nIt\\u2019s hard to give generic, concrete advice at this stage, but some meta-concrete\\nadvice:\\n\\\
+    u2022 Do the legwork to understand the specific constraints in your organization\\non what sort of contracts you can write.\\\
+    n\\u2022 Always keep planning for transition in mind, especially around IP.\\n\\u2022 Make friends with your legal team!\\\
+    n\\u2022 Read the fine print.\\n\\u2022 Everything is negotiable.\\nMany organizations may say \\u201cthis is how\\nwe\
+    \ do things. Full stop\\u201d but given the right incentives, that is never the case.\\n\\u2022 Negotiating contracts\
+    \ always takes longer than you expect.\\n\\u2022 Keep in mind that nothing is a done deal until the legal contract is\
+    \ signed\\nand the money is out the door. (And even then, things can go south.)\\nThe classic book out there on negotiation\
+    \ is Never Split the Difference, which is\\nwell worth reading before you get to this phase of your program.\\nRelated\
+    \ Chapters\\n\\u2022 Institutional moves\\n\\u2022 Identifying performers\\n\\u2022 Mapping incentives\\n\\u2022 Knowing\
+    \ when to Quit and setting up Kill Criteria\\n\\u2022 Planning for transition\\n\\u2022 Metrics\\n\\u2022 Budgeting for\
+    \ a coordinated research program\"\n  },\n  {\n    \"name\": \"Program Execution\",\n    \"text\": \"Program execution\
+    \ is when the \\u201cactual\\u201d research happens: contracts are signed,\\nmoney is out the door, and researchers are\
+    \ measuring, mixing, tinkering. Ironi-\\n10\\n\\ncally, as the program leader there will not be as many things for you\
+    \ to do on a\\ndaily basis.\\nYour role here is as a project manager and CEO.\\nTreating projects within the program as\
+    \ \\u201cfire and forget\\u201d is often a mistake for\\nseveral reasons.\"\n  },\n  {\n    \"name\": \"Work expands to\
+    \ fill the time allotted to it\",\n    \"text\": \"Without tight feedback\\nloops with people doing the hands-on work,\
+    \ whether they are external\\ncollaborators or employees, things will often take longer in a compounding\\nway. This isn\\\
+    u2019t to say you should be breathing down their necks, but it\\u2019s\\nimportant to touch base regularly.\"\n  },\n\
+    \  {\n    \"name\": \"Success will often require making adjustments to the program over time\",\n    \"text\": \"The more\
+    \ in the loop you are, the smaller those adjustments need to be to\\nkeep things from going off the rails. There is a\
+    \ tension here because you\\nalso don\\u2019t want to micromanage.\"\n  },\n  {\n    \"name\": \"Some of the power of\
+    \ a coordinated research program comes from cross-\",\n    \"text\": \"pollination between the different projects. It\
+    \ takes work to make sure that\\nthey are talking to each other regularly.\\n(Of course, the relative importance of these\
+    \ different factors depend on what\\nsort of program you have and what kind of program leader you are.)\\nSome concrete\
+    \ tactics:\\n\\u2022 Have regular in-person check-ins with performers. It\\u2019s one thing for people\\nto say \\u201ceverything\
+    \ is fine\\u201d on the phone but a very different thing when\\nyou can see the lab.\\n\\u2022 Have gatherings for any\
+    \ external collaborators with plenty of unstructured\\ntime.\\n\\u2022 Be willing to kill projects. It\\u2019s incredibly\
+    \ hard, but can free up resources\\nfor other work.\\n\\u2022 Be willing to double down on projects that are going very\
+    \ well.\\nRelated Writeups\\n\\u2022 How to write a good solicitation\\n\\u2022 Knowing when to Quit and setting up Kill\
+    \ Criteria\\n\\u2022 Program failure modes\\n\\u2022 Planning for transition\\n11\"\n  },\n  {\n    \"name\": \"Tech Transition\"\
+    ,\n    \"text\": \"In order for a program to have an impact, the technology needs to transition\\nbeyond the program.\
+    \ \\u201cTransition\\u201d can mean many things: continuing as an\\nactive area of research in other organizations; being\
+    \ incorporated into different\\nproducts; spawning one or more startups; becoming an open source project; and\\nmany others.\\\
+    nYour role here is a business development person and advocate.\\nYou need to start planning for this phase of the program\
+    \ long before the end of\\nthe program.\\nRealize that technology ultimately lives in people\\u2019s heads \\u2014 the\
+    \ more people\\nwho worked on the technology as part of the program you can enable to continue\\nworking on it afterwards,\
+    \ the more likely it is to succeed.\\nUltimately, you need to give up control over something that has been your baby\\\
+    nfor years.\\nYou can see concrete tactics in Planning for transition.\\nRelated Writeups\\n\\u2022 Planning for transition\\\
+    nThe adventure begins\\nThis playbook is a hopefully useful piece in a bigger toolkit that can enable\\nyou to lead amazing\
+    \ research programs. You can (and should!) complement\\nthis playbook with two other resources. First, do deep dives on\
+    \ the stories of\\nprevious programs \\u2013 both successes and failures \\u2013 that bear a family resemblance\\nto what\
+    \ you\\u2019re setting out to do. Second, find people who have done similar\\nthings before and talk to them about what\
+    \ you\\u2019re trying to do, ideally more\\nthan once. Successfully leading a program requires many different hats at\
+    \ the\\nsame time. Some of these roles will inevitably be in tension with one another.\\nThe skill of being a program\
+    \ leader is knowing which tools and approaches to\\nprioritize and when. Some of that can come from external sources,\
+    \ but at the\\nend of the day, the responsibility of making that call rests on your shoulders.\\nGood luck!\\n12\\n\\\
+    nWTF is a Coordinated Research Program?\\n\\u201cCoordinated research program\\u201d is, quite frankly, a made up term\
+    \ to cover a wide\\nrange of activities that nevertheless share enough important similarities that we\\ncan talk about\
+    \ them as a group. Like most nebulous things, any tight definition\\nwould have so many exceptions and caveats as to be\
+    \ useless. So instead, I\\u2019ll\\ndefine a coordinated research program by describing what it is and what it is\\nnot\
+    \ so you can start to pattern-match.\\nCoordinated research programs:\\n\\u2022 Do research work that doesn\\u2019t make\
+    \ sense for a single academic\\nlab or startup to tackle for some systemic, institutional reason.\\nThere are many reasons\
+    \ why it might not make sense: it might not fit in\\nan academic lab because it requires a lot of repetitive engineering\
+    \ and\\nwouldn\\u2019t create publishable results; it might not fit in a startup because it\\nwould be hard to capture\
+    \ the value it creates or isn\\u2019t creating a sellable\\nproduct at all. Unfortunately \\u201cnobody will fund me to\
+    \ do this\\u201d is not a\\nsystemic, institutional reason.\\n\\u2022 Have a single, opinionated leader with a lot of\
+    \ control over the\\nprogram\\u2019s direction and actions.\\n\\u2022 Involve more than one person.\\n\\u2022 Are finite\
+    \ and have a precise goal. That is, when you get to the end\\nof a finite amount of time, you know whether you\\u2019ve\
+    \ hit your goal or not.\\nCoordinated research programs can certainly lead to other coordinated\\nresearch programs in\
+    \ order to hit a longer-term goal, but each program\\nneeds to have its own clear goals.\\n\\u2022 Very often create public\
+    \ goods. This is generally a big reason that\\nthey don\\u2019t make a good startup. Some cases are obvious like creating\
+    \ an\\nopen-source tool or public dataset. However, there are many gray areas,\\nsuch as a program that figures out how\
+    \ to scale up a process that a startup\\nthen commercializes. The general sense is that these programs should\\ncreate\
+    \ some kind of positive externality, otherwise they either aren\\u2019t worth\\nit or should be funded by investors.\\\
+    n\\u2022 Very often involve work being done in more than one organiza-\\ntion. Coordinated research programs exist on\
+    \ a spectrum between fully\\nexternalized, where the coordinating organization does none of the hands-on\\nresearch, work\
+    \ to fully internalized where the coordinating organization\\ndoes all of the hands-on research. In their platonic ideals,\
+    \ ARPA programs\\nare an example of the former and FROs are an example of the latter.\\nWithin these broad characteristics,\
+    \ this playbook is primarily meant for people\\n13\\n\\ncreating coordinated research programs with a few more characteristics:\\\
+    n\\u2022 They are meant to have a broad impact in the world, whether it\\u2019s\\nthrough creating new knowledge, tools,\
+    \ or processes. Coordinated research\\nprograms can try to unlock esoteric new knowledge but the way you go\\nabout starting\
+    \ and running them is quite different.\\n\\u2022 Have a timeline of ~five years and a budget on the order of\\n~$10-50\
+    \ million. The way that one plans for drastically more or less\\ntime than five years or raises and deploys drastically\
+    \ more or less than\\n~$10 million are just very different.\\nSome examples of coordinated research programs within the\
+    \ scope of this play-\\nbook:\\n\\u2022 ARPA programs.\\n\\u2022 Focused Research Organizations.\\n\\u2022 Many of the\
+    \ programs at foundations like The Gates Foundation or The\\nSloan Foundation.\\n\\u2022 Carbon to Sea\\nSome examples\
+    \ of coordinated research programs at the edge of or beyond the\\nscope of this playbook:\"\n  },\n  {\n    \"name\":\
+    \ \"\\u2022 LIGO\",\n    \"text\": \"\\u2022 The Rockefeller Foundation\\u2019s Molecular Biology program\\nSome examples\
+    \ of things that probably aren\\u2019t coordinated research programs:\\n\\u2022 Most NSF and NIH programs. Importantly,\
+    \ program officers are often\\nbeholden to committees about what they fund and have little ability to\\nchange the program\\\
+    u2019s direction once it has started.\\n\\u2022 Most institutes (like the Alan Institute, the Arc Institute, HHMI etc).\\\
+    nImportantly, institutes last an indefinite amount of time and often have\\nbroad rather than precise goals.\\n14\\n\\\
+    nThe Mindsets of a Coordinated Research Leader\\nThere are many mindset shifts between most other jobs and leading a coordinated\\\
+    nresearch program. It\\u2019s impossible to enumerate all of them, but perhaps the top\\nten are:\"\n  },\n  {\n    \"\
+    name\": \"Extreme urgency\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Acting under uncertainty\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Bias towards action\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"You are not\
+    \ a PI or a Startup CEO\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Identifying what not how\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"Focusing on bottlenecks and key risks\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Starting with the end in mind\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Impact over novelty\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Turning the impossible into the inevitable\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"If it doesn\\u2019t 10x, it\\u2019s not worth it\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Extreme\
+    \ urgency\",\n    \"text\": \"Most coordinated research efforts, whether they are ARPA programs or FROs,\\nonly last around\
+    \ five years. That may seem like a long time, but if you work\\nbackwards from an ambitious goal (like showing that it\\\
+    u2019s possible to make GPS\\nunits small enough to fit in someone\\u2019s hand when they are currently the size of\\\
+    na shipping container), things need to start happening from day one.\\nFurthermore, you need to effectively transmit this\
+    \ urgency to those around you:\\nit\\u2019s not the normal mode of action for many disciplines or organizations and\\\
+    nthey will push back.\"\n  },\n  {\n    \"name\": \"Acting under uncertainty\",\n    \"text\": \"Acting quickly means\
+    \ making big decisions before you have complete information\\n\\u2014 not only because you don\\u2019t have the time to\
+    \ be 100% sure that an action is the\\nbest action, but because when you\\u2019re doing ambitious work, it\\u2019s often\
+    \ impossible\\nto know what the optimal action is.\\nConcretely, this means not hesitating before you send that email\
+    \ over whether\\nit\\u2019s to the right person, or whether you\\u2019ve done enough background research.\"\n  },\n  {\n\
+    \    \"name\": \"Bias towards action\",\n    \"text\": \"If there\\u2019s a choice between an action and thinking more\
+    \ about a problem, go for\\nthe action.\\n15\\n\\nConcretely, this means that the gap between saying you will do something\
+    \ and\\ndoing should be very small. Have that meeting or send that email on Friday\\nafternoon instead of Monday; pick\
+    \ up the phone or visit a lab instead of playing\\nscheduling ping pong; get the one project you\\u2019re sure about started\
+    \ even if others\\nare still up in the air.\"\n  },\n  {\n    \"name\": \"You are not a PI or a startup CEO\",\n    \"\
+    text\": \"The role of a coordinated research leader can look a lot like a PI of a lab or a\\nCEO of a company but there\
+    \ are several key differences that you always need to\\nkeep in mind:\\n\\u2022 Performers and collaborators do not work\
+    \ for you. Almost all\\ncoordinated research programs involve working with researchers at other\\norganizations, to varying\
+    \ degrees. With these people, you don\\u2019t have the\\nability to specify exactly what gets done and the feedback loops\
+    \ around\\nthe work are looser than if everybody were in the same organization.\\nExternal work will often be proposed\
+    \ to you, as opposed to you specifying\\nexactly who should do what. Even if you have a specific contract with\\nexternal\
+    \ collaborators, the only real lever you have is whether to continue\\nor end the contract.\\n\\u2022 You rarely own the\
+    \ results of the program. The goal of a coordinated\\nresearch program is to get the job done. If it were possible to\
+    \ do that while\\nmaking money, you would have started a startup; if it were possible to\\ndo that as the first author\
+    \ on a paper, you could do it in an academic\\nlab. A program might produce papers, IP, or companies, but if you focus\\\
+    non capturing those, you will hamstring the program\\u2019s success. To a large\\nextent, running a coordinated research\
+    \ program is a service position: your\\njob is to enable others.\\n\\u2022 Your goal is not to build an empire. In most\
+    \ situations, your program\\nand position will be temporary. You should not focus on building a legacy\\nor a lasting\
+    \ entity \\u2013 the job is to reach a finite, concrete goal.\\nAs such, you need to constantly be thinking how you can\
+    \ convince people that\\ntheir goals align with your goals and create communities and systems that will\\ncontinue beyond\
+    \ the short few yours that your coordinated research program\\nexists.\"\n  },\n  {\n    \"name\": \"Identifying \\u2018what\\\
+    u2019 not \\u2018how\\u2019\",\n    \"text\": \"In part because you are not going to be the expert in all aspects of your\
+    \ program\\nand in part because research ideas come from unexpected places and evolve over\\ntime, your primary job is\
+    \ to identify what goals and pieces of work need to be\\ndone, not how to achieve them.\\nConcretely, that means identifying\
+    \ the key metrics that need to be hit, interfaces,\\nand minimal system architectures but not becoming attached to any\
+    \ particular\\nidea early in the program\\u2019s lifetime.\\n16\\n\\nThe need to focus on what over how is especially\
+    \ important the more external\\nresearchers you are working with.\"\n  },\n  {\n    \"name\": \"Focusing on bottlenecks\
+    \ and key risks\",\n    \"text\": \"Thinking about how to enable technology that currently seems impossible can be\\noverwhelming.\
+    \ One way to cut through the noise is to focus on two (connected)\\nideas:\"\n  },\n  {\n    \"name\": \"Bottlenecks \\\
+    u2014 these are the problems/capabilities that, if solved/created,\",\n    \"text\": \"would enable many other people\
+    \ and organizations to move forward on the\\ntechnology you care about.\"\n  },\n  {\n    \"name\": \"Key Risks \\u2014\
+    \ these are \\u201csticking points\\u201d (especially facts about the world)\",\n    \"text\": \"that if true, would make\
+    \ your program\\u2019s approach infeasible.\\nCreating projects to address bottlenecks and key risks is an effective way\
+    \ to\\nmove a program forward.\\nFor more on bottlenecks and key risks, see this write up.\"\n  },\n  {\n    \"name\"\
+    : \"Starting with the end in mind\",\n    \"text\": \"It is important to work backwards from not just your program\\u2019s\
+    \ goals, but the\\nbroader technology impact you intend your program to unlock. These goals\\nmight mean a concrete technology\
+    \ or pathway to one, but it could also be a new\\nunderstanding of what the actual problem is, so that a future program\
+    \ can solve\\nit.\\nThis working backwards needs to include not just technical steps, but human\\nones as well: what communities\
+    \ need to be formed, how will technology be\\nadopted, etc.\"\n  },\n  {\n    \"name\": \"Impact over novelty\",\n   \
+    \ \"text\": \"It is tempting to focus on doing exciting new things that nobody has done before,\\nbut that isn\\u2019t\
+    \ the role of a coordinated research leader. Yes, your program will\\nneed to do new things, but you should actually do\
+    \ the bare minimum of new\\nthings in order to accomplish your goals.\"\n  },\n  {\n    \"name\": \"Impact happens through\
+    \ other people\",\n    \"text\": \"More than anything else, a coordinated research program is about changing\\npeople\\\
+    u2019s minds and behavior.\\nWhether you are creating a dataset, a tool, or a demo, you will need many other\\npeople\
+    \ to take action based on your work in order for it to be impactful.\\nFor example, the goal of an ARPA program is to\
+    \ make a specific set of people\\nrealize that something that they previously thought was impossible, extremely\\nunlikely,\
+    \ (or didn\\u2019t think about it at all) is instead possible and something they\\nshould be working on. What that change\
+    \ looks like will depend heavily on your\\ndomain and the outcomes you\\u2019re hoping to achieve (this is a big reason\
+    \ your job\\nis hard!)\\n17\\n\\nFiguring out what you need others to do based on your program is why the idea\\nof a\
+    \ \\u201ctheory of change\\u201d is particularly important.\"\n  },\n  {\n    \"name\": \"If it doesn\\u2019t 10x, it\\\
+    u2019s not worth it\",\n    \"text\": \"One of the core goals of a coordinated research program is to enable work that\\\
+    nwouldn\\u2019t happen in other organizations because of its high chance of failure. The\\nother side of that coin is\
+    \ that if the program does succeed, it needs to create\\na reward that was worth that risk. There are plenty of organizations\
+    \ that will\\nwork on incremental improvements or small wins.\\nA heuristic for what makes a program\\u2019s goals ambitious\
+    \ enough is that, if\\nsuccessful, it will create an \\u201corder of magnitude\\u201d improvement on how it\\u2019s done\\\
+    ntoday. In some cases, understanding what order-of-magnitude improvement\\nlooks like is straightforward: goals like reducing\
+    \ the size of an instrument or cost\\nof a material by 10x or increasing the maximum power output of a system by\\n10x.\\\
+    nIn other situations, \\u201corder of magnitude\\u201d improvement is fuzzier \\u2014 it needs\\nto be a step-change,\
+    \ enabling things that were previously impossible: getting\\nautonomous cars to finish a course that nobody could previously\
+    \ finish or\\nnetworking together multiple computers from thousands of miles apart in a\\nscalable way.\\nThroughout all\
+    \ of this, think about multiple timescales and priorities\\nsimultaneously.\\nYou need to think about making concrete\
+    \ personal progress on the timescale of\\na week, technical program goals on the timescale of a year, and broader impacts\\\
+    non the timescale of a decade. At the same time, you need to consider all at once\\nthe incentives of researchers, ambitious\
+    \ but not impossible technical goals, how\\nto make the work as general purpose as possible while still being pragmatic,\
+    \ and\\nhow the technology is going to get into the world.\\nThe questions you should be obsessed with:\\n\\u2022 What\
+    \ research will not happen under the current system? Some ways to\\nbreak that question down is to ask what work is:\\\
+    n\\u2013 Too weird for most government funders?\\n\\u2013 Too engineering-heavy/not-novel/coordination-heavy for one or\
+    \ more\\nlabs to self-organize around it?\\n\\u2013 Too researchy/high-uncertainty for a startup?\\n\\u2013 Too unaligned\
+    \ with current paradigms for a big company to take it\\nseriously?\\n\\u2022 If something would be incredible if it worked,\
+    \ why hasn\\u2019t it been done yet?\\n(Answer with as much specificity as possible.)\\n18\\n\\n\\u2022 Where are the\
+    \ weirdos? It\\u2019s easy to gravitate to the people doing good\\nwork at top labs, but they are often well-funded already\
+    \ and good at\\npushing out their ideas. Think outside of the usual Big Cities. (Of course,\\noften the best people are\
+    \ the best for clear reasons and sometimes they\\u2019re\\nstill unable to work on something important).\\n\\u2022 What\
+    \ happens after this program?\\nWhile we\\u2019re not in the business\\nof developing products, we are in the business\
+    \ of unlocking impactful\\ntechnologies. In order for technologies to have an impact, they need to\\nbe carried forward\
+    \ by people whether that\\u2019s in the form of a further\\nresearch program (with its own theory of change), a nonprofit\
+    \ organization,\\na community using open source technology, a startup, companies\\nincorporating it into their own product\
+    \ line, or something else. DARPA\\nhas a mixed record on transitioning in part because it rarely thinks about\\nwhat happens\
+    \ after a program ends until the program is almost over.\\n\\u2022 What are fast clever experiments that could answer\
+    \ crux-like questions\\nabout risks or possibilities?\\n19\\n\\nIdentifying Who Cares\\nOne of the hardest questions of\
+    \ The Heilmeier Catechism is the first half of\\nquestion number four: \\u201cWho cares?\\u201d\\nAnswering \\u201cWho\
+    \ cares?\\u201d is tricky because answering it directly doesn\\u2019t get at the\\nidea behind the question that will\
+    \ help your program succeed. The direct answer\\nis often along the lines of \\u201ca few researchers.\\u201d Most people\
+    \ are not invested in\\nthings that they think are impossible and, if your program is genuinely trying to\\nturn the impossible\
+    \ into the inevitable, most people beyond a few diehards will\\nnot care.\\nA more useful framing for this question is:\
+    \ \\u201cWho will care about the program\\u2019s\"\n  },\n  {\n    \"name\": \"results if it was successful? And what\
+    \ difference will it make to them both\",\n    \"text\": \"short term and long-term?\\u201d Or put differently: \\u201cwho\
+    \ will see the output of the\\nprogram and think \\u2018ah! That could be valuable to me\\u2019 and ideally imagine a\\\
+    ntrajectory where it achieves that?\\u201d\\nPragmatically, \\u201cwho cares?\\u201d is about the program\\u2019s output\
+    \ because the technol-\\nogy needs a home at the end of a program. The world is littered with the cold,\\nstillborn bodies\
+    \ of promising technologies that nobody cared about enough to\\nnurture until they could survive on their own. That home\
+    \ could be as humble\\nas a nonprofit, a smattering of labs with funding from other organizations, or\\nstartups that\
+    \ still need to do a lot of work. But in order for even those things\\nto happen, both people doing the work and people\
+    \ who will fund those homes\\nneed some promising evidence that they\\u2019ll be able to achieve their goal. One of\\\
+    na program\\u2019s jobs is to give them that evidence. \\u201cWho cares?\\u201d tells you who that\\nevidence is for,\
+    \ and therefore what that evidence needs to be.\\nFor better or worse, every program needs a narrative about why it is\
+    \ worth\\ndeploying scarce resources of time and money on: this is what will get it funded,\\nalign people who are working\
+    \ on it, and act as a discriminator on how to prioritize\\nwork. One of the most powerful narrative structures is: \\\
+    u201cif we can do X, it will\\nremove bottleneck Y, which will enable Z.\\u201d\\nOne framing for a program is that \\\
+    u201ca particular group would do something\\ndrastically differently if these specific technical things were different.\\\
+    u201d When we\\ntalk about \\u201cwho cares,\\u201d we\\u2019re talking about that particular group.\\nFiguring out who\
+    \ cares is extremely hard! Answering that question well is a big\\nchunk of program design.\\nPragmatically, how do you\
+    \ figure out who cares?\\nIn order to answer the question, you need to talk to a lot of people. There are,\\nof course,\
+    \ exceptions if you\\u2019re building the thing for a broader group you\\u2019re part\\nof, but this situation is rare.\
+    \ Building a thing because you think it\\u2019s cool or\\nimportant doesn\\u2019t count as \\u201cbuilding a thing for\
+    \ a broader group you\\u2019re part\\nof\\u201d \\u2014 you need to be building it because the group will want to use\
+    \ it to do\\nsomething they find valuable.\\n20\\n\\nBefore talking to anyone, you should have a hypothesis about a group\
+    \ and what\\nthey might find useful. (Eg. People who build membranes care about having\\nbetter control over microscale\
+    \ pore structure). You shouldn\\u2019t come out of the\\ngate and ask about it directly \\u2013 be intensely curious about\
+    \ their context \\u2013 but\\nit\\u2019s important to have some anchor in your head to bias your line of questioning.\\\
+    nOtherwise, conversations tend to stay incredibly abstract and not particularly\\nuseful.\\nStart by simply trying to\
+    \ understand what the constraints on their work are\\nand what they care about. Ideally you lead them as little as possible,\
+    \ but you\\ndo need to give some framing about why you\\u2019re asking questions \\u2014 eg. \\u201cI\\u2019m\\nworking\
+    \ on a program to explore X\\u201d and maybe \\u201cI have a hypothesis that Y.\\u201d If\\nyou\\u2019re lucky, they\\\
+    u2019ll riff off of that, but most of the time they won\\u2019t.\\nSome things to keep in mind:\\n\\u2022 These people\
+    \ often don\\u2019t care how the technology you\\u2019re working on works\\nas long as it stays within their constraints.\\\
+    n\\u2022 You should never ask people \\u201cwhat do you want?\\u201d\\nIf you ask \\u201cwhat\\nwould you care about?\\\
+    u201d They will never give you a good answer, a la the\\nsupposed Henry Ford quote \\u201cif I asked people what they\
+    \ wanted, they\\nwould tell me \\u2018a faster horse.\\u2019 \\u201d\\n\\u2022 You should rarely even ask \\u201cwould\
+    \ you care about <this specific program\\noutput>?\\u201d Because people won\\u2019t tell you the truth: either they\\\
+    u2019ll say yes\\nto make you feel good or \\u201cno\\u201d because they have no imagination. You\\nneed to come at it\
+    \ sideways.\\n\\u2022 The trick is to iterate on hypotheses until you have something nuanced\\nand precise that will stand\
+    \ up to scrutiny.\\nNote: this is secretly all startup customer discovery advice\\nResources\\n\\u2022 How to Talk to\
+    \ Users : YC Startup Library | Y Combinator\\n\\u2022 Amazon.com: The Mom Test: How to Talk to Customers & Learn If Your\\\
+    nBusiness Is a Good Idea When Everyone Is Lying to You (Audible Audio\\nEdition): Rob Fitzpatrick, Rob Fitzpatrick, Robfitz\
+    \ Ltd: Books\\n21\\n\\nIdentifying Performers\\nNote that this writeup is ARPA-program specific\\nWithout good performers,\
+    \ an ARPA program based on the best ideas in the\\nworld will fail. So take it seriously! Finding good performers requires\
+    \ a healthy\\nmix of sales (seeking out and convincing great people to join the program) and\\nmarketing (sending up signal\
+    \ flares so that great people can and will seek you\\nout).\\nSome specific tactics\\n\\u2022 Requests for Information\
+    \ (RFIs). RFIs are a standard way to open\\nyourself to good inbounds. RFIs are one of the broadest nets you can\\ncast,\
+    \ but it\\u2019s important to note that they will bias towards people who are\\npaying attention to whatever channels\
+    \ you\\u2019re advertising the RFI on and\\nhave the time to write it up.\\n\\u2013 It\\u2019s easy to write an RFI but\
+    \ hard to write a good RFI that is\\nboth broad enough to solicit good ideas from left field, but not so\\nbroad that\
+    \ even good performers go off in some direction that is\\nfar from where you hope they would go. In order to do this,\
+    \ it\\u2019s\\nimportant to have done a lot of work beforehand to refine your ideas\\nand understand how people commonly\
+    \ misinterpret them or go down\\nnot-helpful rabbit holes.\\n\\u2022 Pay attention to excitement levels.\\nWhenever you\\\
+    u2019re talking to\\npotential performers (or anybody!) pay attention to how excited they are\\nabout the program: do\
+    \ they volunteer ideas and ask good questions or\\njust try to convince you that what they\\u2019re already doing is a\
+    \ good fit.\\n\\u2022 Go to conferences outside your field. Maximize the conference by\\nreaching out to promising people\
+    \ beforehand, go to the hallway sessions\\ninstead of talks, and drop in on conversations. Pay attention to who\\nengages\
+    \ when you tell them about your program.\\n\\u2022 Physically visiting labs. If there are people or groups that you think\\\
+    nare particularly promising, visiting their labs can be incredibly informative\\neven though you could do a phone or zoom\
+    \ call. Being in the lab has a\\nwhole slew of benefits:\\n\\u2013 It can give you a much better idea of their capabilities\
+    \ and how much\\nelse they have going on.\\n\\u2013 Seeing the lab can generate questions or ideas that wouldn\\u2019t\
+    \ come up\\notherwise.\\n\\u2013 Being in the lab gives you a chance to interact not just with a PI or\\nCEO, but the\
+    \ people who will actually be doing the work.\\n22\\n\\n\\u2022 Paying attention to performers on previous programs. People\
+    \ who\\nhave worked as an ARPA program before (as grad students and postdocs\\nin addition to as PIs) tend to understand\
+    \ the urgency and ambition that\\nthey\\u2019re signing up for so people who have been on successful performer\\nteams\
+    \ in the past are a good place to look for performers in the future.\\n\\u2022 Hold office hours. With modern technology,\
+    \ it\\u2019s easy to hold \\u201cDigital\\noffice hours\\u201d where people can ask you questions and pitch you ideas.\\\
+    n\\u2022 Holding workshops. Once you\\u2019ve narrowed down your ideas and have\\na sense of who might be good performers,\
+    \ holding a workshop can help\\nyou learn more about their engagement and how they might interact with\\nother potential\
+    \ performers.\\nSome things to note\\n\\u2022 Big-deal labs and organizations usually have stronger agendas so you need\\\
+    nto do work to make sure that they\\u2019re actually aligned with what you want\\nto do.\\n\\u2022 More broadly, don\\\
+    u2019t over-index on \\u201cbadges\\u201d:\\npedigrees, awards, or\\nhow reverently people in a field talk about them.\
+    \ Sometimes the best\\nperformers have a chip on their shoulder and come from a 2nd tier\\ninstitution but are extremely\
+    \ qualified for a specific project.\\n\\u2022 Passion and competence aren\\u2019t substitutes \\u2014 good performers\
+    \ need both.\\n\\u2022 Make sure you pay attention to a potential performer\\u2019s ability to spin up\\nquickly. While\
+    \ you may run into excited people with great ideas, you also\\nneed to judge them based on their ability to quickly turn\
+    \ money into work.\\nUnfortunately, this means you often need to rule people out if they aren\\u2019t\\nPIs in labs or\
+    \ director level or above in companies. (If you can give them\\nthe ability to spin up quickly, by helping them start\
+    \ a lab or work in an\\nexisting one, this calculus changes.)\\nBe aware of your specific organization\\u2019s rules around\
+    \ how you can solicit and\\nengage with performers. The tactics you have at your disposal depend on the\\nInstitutional\
+    \ moves that are open to you at your particular organization. Eg.\\nSome organizations require you to do an open call\
+    \ for any grant, contract, or\\nposition. Even in that situation you should (ideally, if permitted) identify who\\nyou\
+    \ would like to work with and make sure that they\\u2019re aware of the call and\\nencourage them to apply.\\nAfter you\\\
+    u2019ve identified good performers you need to make sure they are sold on\\nthe program\\u2019s vision (even if they have\
+    \ come to you). See Selling a program.\\n23\\n\\nNavigating a Network\\nA large part of designing a program involves navigating\
+    \ networks that you may\\nnot be part of and creating new ones.\\nWhat are the goals of these networks?\\n\\u2022 Finding\
+    \ potential collaborators \\u2013 employees, performers, or others\\n\\u2022 Finding potential \\u201ccustomers\\u201d\
+    \ for the program\\n\\u2022 Unearthing unexpected directions\\n\\u2022 Understanding what different communities think\
+    \ about your program\\n\\u2022 Identifying bottlenecks and key risks\\nDepending on what you are looking for, you\\u2019ll\
+    \ want to talk to people in different\\npositions:\\n\\u2022 If you are looking for external collaborators, aim to talk\
+    \ to decision-makers,\\nwhether it\\u2019s a PI of a lab or someone with equivalent authority in a\\ncompany. It\\u2019s\
+    \ easier to get in touch with postdocs/staff researchers and\\noften they will be more excited and even have better ideas.\
+    \ However, to\\ncreate performers, you need to get people with decision-making authority\\non board. (Of course, excited\
+    \ non-decision-makers can connect you to\\ndecision-makers.)\\n\\u2022 Similarly, if you are looking for potential \\\
+    u201ccustomers,\\u201d you want to talk to\\ndecision makers who could affect the technology\\u2019s ability to move forward.\\\
+    n\\u2022 If you are looking for bottlenecks and risks, you\\u2019ll want to talk to a wide\\narray of people who have\
+    \ been around a subject for a while. Most important\\nbottlenecks and risks around technologies only make themselves apparent\\\
+    nwith sufficient context and experience. However, you don\\u2019t want to take\\nany one person\\u2019s view on it because\
+    \ it\\u2019s easy for single experiences to\\ndetermine what someone thinks is feasible.\\nWhether or not you are part\
+    \ of a network primarily affects how you begin working\\nyour way through the network:\\n\\u2022 When you are already\
+    \ part of a network: Start with the people\\nyou have the most social capital with \\u2014 people who you can ask dumb\\\
+    nquestions of and who are the most likely to be generative.\\n\\u2022 When you are not already part of a network: Before\
+    \ diving into a\\nnetwork that you\\u2019re not yet part of, it\\u2019s helpful to read some literature\\n(blog posts,\
+    \ papers, parts of books) just to get an anchor point. These\\nwill probably be the wrong resources but it gives you a\
+    \ starting point for\\n24\\n\\nboth people and questions. (Don\\u2019t spend too long on the literature! It\\u2019s\\\
+    nthe sort of thing you can spend infinite time on.) Once you have some\\ninitial questions, reach out to corresponding\
+    \ authors on papers that seem\\nparticularly relevant and go to conferences to just wander around and talk\\nto people.\\\
+    nIt will be tempting to talk to the highest-status people in a network \\u2014\\nthey will be the most salient both from\
+    \ the literature and from people\\u2019s rec-\\nommendations. However, there\\u2019s a strong correlation between individuals\\\
+    nbeing high-status and having their own strong agendas.\\nKeep in mind that you don\\u2019t need to win over everybody\
+    \ \\u2014 you just need to\\nfind the people who are potential allies. Most people you will talk to won\\u2019t be\\nuseful.\\\
+    nYou do not need to do everything that everybody you talk to recommends \\u2014 this\\nwould take much more time than\
+    \ you have. There is a skill to sorting through\\nwhich pointers \\u2014 people and resources \\u2014 are worth your time.\\\
+    nSomething to watch out for is that it\\u2019s easy to over-index on what academic\\nresearchers think is important and\
+    \ possible. There are several reasons for this:\\nacademics write the vast majority of papers, which are good starting\
+    \ points for\\ndigging into an area; they\\u2019re generally more open to talking; and their emails\\nare just easier\
+    \ to find! However, academic research priorities and challenges are\\noften different from the ones you need to tackle\
+    \ to have a large impact (unless\\nyou\\u2019re simply trying to advance an academic field).\\n25\\n\\nGeneral Tactics\\\
+    nThere are several concrete tactics that apply to navigating any network, regardless\\nof whether you are part of it or\
+    \ not:\\n\\u2022 Always have some \\u201chypotheses\\u201d that you\\u2019re gathering evidence for\\nor against as a\
+    \ way of directing your network navigation.\\nThese are\\nhypotheses about your program \\u2013 what\\u2019s important,\
+    \ specifics of what you\\nshould focus on, theories of change, etc.\\n\\u2022 Take advantage of LinkedIn\\u2019s 2nd degree\
+    \ connection feature to figure out\\nwho you know who might know a person you\\u2019re trying to talk to.\\n\\u2022 Reach\
+    \ out early, reach out often. You need to reach out to many more\\npeople than you think you do. For every good conversation,\
+    \ you will have\\nmany bad conversations and even more ignored emails.\\n\\u2022 Always follow up. Just because someone\
+    \ didn\\u2019t respond, doesn\\u2019t mean\\nthey don\\u2019t want to talk to you. People are just busy. I generally follow\
+    \ up\\nonce per week until I\\u2019ve followed up three times or they have explicitly\\ntold me they\\u2019re not interested.\\\
+    n\\u2022 Pay attention to institutional affiliations \\u2014 companies, universities,\\nspecific labs and teams \\u2014\
+    \ and when people were at that institution to see\\nwhether they might be able to connect you to a target.\\n\\u2022 Pay\
+    \ attention to coauthors for the same reason.\\n\\u2022 Use some kind of software to track people. You will ideally be\
+    \ talking to\\nfar more people than you can keep in your head. This tracking software\\ncan be as simple as a spreadsheet.\
+    \ Other options include Airtable, Folk2,\\nNotion, Hubspot to name a few. None of these is the \\u201cbest\\u201d \\u2013\
+    \ the best\\ntool is the one you\\u2019ll use.\\n\\u2022 It\\u2019s generally harder to talk to people at non-academic\
+    \ organizations\\n(companies, the government, etc), but it\\u2019s incredibly important! Some\\ntactics for getting to\
+    \ folks:\\n\\u2013 Talk to former employees: they usually know people who are still\\nthere and may also be able to tell\
+    \ you the information you\\u2019re looking\\nfor.\\n\\u2013 If you want to talk to a startup about their technology it\\\
+    u2019s often\\nmore productive to talk to people who worked for a failed startup in\\nthe same space.\\n\\u2013 Organizations\
+    \ often have standard formats for their emails \\u2013 if you\\n2This is the one that I use personally as of 2024.\\n26\\\
+    n\\ncan figure that out (there are services online that help) you can cold\\nemail people.\\n\\u2013 Reaching out to people\
+    \ on Linkedin has a low hit rate but is worth-\\nwhile.\\nEmail Tactics\\n\\u2022 Having a good blurb about who you are\
+    \ and what you\\u2019re doing is critical.\\nA good blurb is short (at most three sentences) and gives the most\\nimportant\
+    \ information up front. Ideally it\\u2019s customized to your target\\u2019s\\ninterest. (Here are some examples of blurbs).\\\
+    n\\u2022 Employ the double opt-in intro when possible (really do read this if you\\nhaven\\u2019t heard the term before).\\\
+    nConversation Tactics\\n\\u2022 Do some research on people before you talk to them: read their CV, skim\\nthe abstracts\
+    \ of their papers, look at their website. Doing your research\\nboth lets you ask much better questions and flatters people,\
+    \ making them\\nmore likely to help you.\\n\\u2022 While you do want to leave room for serendipity, it\\u2019s important\
+    \ to have\\nconcrete questions going into every conversation. Most people will default\\nto talking about higher levels\
+    \ of abstraction but lower ones are more\\nuseful. Additionally, concrete questions are better hooks to get people\\nto\
+    \ talk to you in the first place. Ideally, people would understand what\\nyou\\u2019re going for and summon ideas for\
+    \ other people you should talk to\\nand useful ideas you should pursue.\\n27\\n\\n\\u2022 In every conversation, make\
+    \ sure you ask \\u201cwho else should I talk to?\\u201d\\n(Ideally, this question should be about specific things that\
+    \ came up in the\\nconversation.)\\n\\u2022 If they recommend people you should talk to, make sure to ask \\u201ccan you\\\
+    nmake those introductions?\\u201d\\n\\u2022 Follow up conversations with a thank you, a short recap of what you talked\\\
+    nabout (in case you remembered something wrong or they have additional\\nthoughts), and a list of the people who they\
+    \ are going to introduce you to.\\nHow do you know when to stop?\\nYou can do this kind of network explo-\\nration forever,\
+    \ but because you need extreme urgency and a bias towards action,\\nat some point you need to decide that you\\u2019ve\
+    \ talked to enough people (of course\\nyou should continue talking to people, but it needs to become a back burner\\nactivity).\
+    \ Three ways to make this call are\"\n  },\n  {\n    \"name\": \"Pay attention to your learning rate. When you notice\
+    \ that you tend\",\n    \"text\": \"to hear the same things in each conversation, it\\u2019s not as necessary to have\\\
+    nmore conversations.\"\n  },\n  {\n    \"name\": \"Pay attention to people-loops closing\",\n    \"text\": \"When the\
+    \ people you\\u2019re\\ntalking to tend to recommend talking to the same set of people that you\\u2019ve\\nalready talked\
+    \ to, you may have exhausted the experts in an area. (Of\\ncourse there could be a disconnected cluster of people).\"\n\
+    \  },\n  {\n    \"name\": \"Time boxes. Give yourself clear deadlines to stop being in full conversation\",\n    \"text\"\
+    : \"exploration mode. Frankly, this is probably the most straightforward and\\npragmatic approach.\\n28\\n\\nWhat Ideas\
+    \ Make a Good Coordinated Research\\nProgram?\\nCoordinated research programs can take many forms, but not all ideas \\\
+    u2013 even\\ngreat research ideas \\u2013 make a good coordinated research program. It\\u2019s impossible\\nto enumerate\
+    \ the exact characteristics of ideas that make a good program: every\\ncharacteristic would have many exceptions. (It\
+    \ doesn\\u2019t help that the entire term\\nis an umbrella term for a whole class of things which themselves are incredibly\\\
+    nnebulous!)\\nThe best we can do is a list of characteristics where the more of them an idea\\ncan check off, the more\
+    \ likely it is to make a good coordinated research program.\\nWe can then go one level deeper and list the characteristics\
+    \ that make an idea\\nparticularly well-suited for one type of program or another (eg.\\nan ARPA\\nprogram vs. an FRO).\\\
+    nGood coordinated research programs. . .\\n\\u2022 . . . have a clear goal.\\nUnlike many good research programs, the\
+    \ best\\ncoordinated research programs don\\u2019t muddle forward while supporting\\nwide-ranging work, even if it\\u2019s\
+    \ great work. In part this is because there\\nare plenty of organizations that run broad research programs and in part\\\
+    nbecause a diffuse program can\\u2019t get much done during the few years\\nthat characterizes a coordinated research\
+    \ program if it is appropriately\\nambitious.\\n\\u2022 . . . are extremely ambitious. Another way of framing this is\
+    \ that they will\\nbe big if true. It\\u2019s easy to imagine ambitious ideas, but much harder to\\ncreate ambitious ideas\
+    \ that also have a clear goal that is feasibly achievable.\\n\\u2022 . . . have a clear argument for why that ambitious\
+    \ goal is possible. It\\u2019s\\neasy to lay out an ambitious goal, but hard to lay out clear ambitious\\ngoals with clear\
+    \ reasons why it might be possible to hit.\\n\\u2022 . . . can imaginably get to that ambitious goal in ~five years. A\
+    \ few years\\nis shockingly short for ambitious research, so ideas need to walk a fine line.\\n(There is no structural\
+    \ reason for this five-year timeline, but acting on a\\nmuch shorter or longer timeline creates a cascade that makes the\
+    \ idea into\\na very different thing.)\\n\\u2022 . . . require more than $1M but less than ~$50M to hit those goals. The\\\
+    ntype of work you need to do to plan and fund work on both the low and\\nhigh end becomes very different.\\n\\u2022 .\
+    \ . . have some number of people who think that goal might be impossible\\n\\u2014 and they might be right. Not only is\
+    \ this a good heuristic for ambition,\\nbut because one of the most useful things a program can do is to turn\\n29\\n\\\
+    nthe impossible into inevitable, it\\u2019s important to have a clear set of people\\nwhose minds can be changed.\\n\\\
+    u2022 . . .\\nfocus on neglected problems or very different approaches to ex-\\nisting problems.\\nCoordinated research\
+    \ programs are relatively small\\nin the grand scheme of money spent on research worldwide.\\nOn the\\nmargin, a program\
+    \ working using a slightly different approach to tackle a\\nproblem that many other people are working on will not have\
+    \ much impact.\\n\\u2022 . . . have a clear \\u2018theory of change.\\u2019 At the end of the day, a coordinated\\nresearch\
+    \ program can create amazing knowledge or technical capabilities,\\nbut it won\\u2019t matter unless other individuals\
+    \ or organizations carry it\\nforward after the program ends. In order for that to happen, the program\\nneeds a clear\
+    \ idea (that can of course change over time) of what happens\\nwhen the program ends and how to enable that. (Even though\
+    \ many times\\nthe impact doesn\\u2019t happen the way the theory of change intended!)\\nWhat ideas should be a specific\
+    \ type of coordinated research program?\\nARPA programs and Focused Research Organizations (FROs) are two of the\\nmost\
+    \ legible structures for coordinated research programs, so it\\u2019s worth digging\\ninto specific characteristics that\
+    \ make an idea particularly well-suited for ARPA\\nprograms or FROs.\\nFor the purpose of this discussion, \\u201cARPA\
+    \ program\\u201d is shorthand for external\\nresearch coordinated by an empowered program leader, while \\u201cFRO\\u201d\
+    \ is shorthand\\nfor a time-boxed nonprofit research that primarily does internal research. In\\nreality, \\u201cARPA\
+    \ programs\\u201d and \\u201cFROS\\u201d are nebulous concepts that don\\u2019t have a\\nclean line between them. For\
+    \ more on the difference between FROs and ARPA\\nprograms, you can also read this piece.\\nIt\\u2019s easier to start\
+    \ ARPA programs and FROs because of their institutional\\nlegibility but keep in mind that coordinated research programs\
+    \ can take other\\nforms, most of which do not have names!\\nWhat ideas make a good ARPA program?\\nGood ARPA programs.\
+    \ . .\\n\\u2022 . . . have work that can be parallelized. Mechanically, ARPA programs\\nconsist of a number of different\
+    \ performers working on different projects.\\nThis style of work lends itself best to work that can be parallelized,\\\
+    nwhether it\\u2019s different components of a system or different approaches to a\\nproblem.\\n\\u2022 . . . require expertise\
+    \ that lives in existing organizations and would be hard\\nto hire away. Externalized research has the advantage that\
+    \ it doesn\\u2019t\\nrequire researchers to leave their home institution.\\n30\\n\\n\\u2022 . . . have several possible\
+    \ routes to impact. A common theme of ARPA\\nprograms is that they make a number of bets not just on approaches to\\nsolving\
+    \ the problem but on the way that they\\u2019re going to have an impact.\\nFor example, the program may produce a technology\
+    \ that is taken up by a\\nlarge organization or a startup; or maybe it starts a new field of research.\\nSome examples\
+    \ of good ARPA programs (and why):\\n\\u2022 ARPANET. The ARPANET program created the network that would\\neventually\
+    \ become the internet. It was well-suited to be an ARPA program\\nbecause:\\n\\u2013 It was justified in terms of an immediate\
+    \ need (robust communication\\ninfrastructure) but had the potential to go on to be much more\\nimpactful.\\n\\u2013 It\
+    \ involved both grungy engineering problems (building and installing\\nthe hardware) and hard research problems (coming\
+    \ up with robust\\nprotocols).\\n\\u2013 It required coordinating a number of different organizations \\u2013\\ncontractors\
+    \ and academic labs \\u2013 with different expertise.\\n\\u2022 DARPA Grand Challenge. The DARPA Grand Challenge was a\
+    \ prize\\ncompetition for a vehicle to autonomously navigate across the California\\ndesert. It was well-suited to be\
+    \ an ARPA program because:\\n\\u2013 It required unconventional funding mechanisms. It was one of the\\nfirst times the\
+    \ US government offered prizes for a competition.\\n\\u2013 Autonomous driving was a technology that had been worked on\
+    \ for\\ndecades but was at the point where a strong push could create a\\nstep-change in its capabilities.\\n\\u2013 It\
+    \ shifted perception of autonomous vehicles from something that\\nmight never happen to something that was inevitable,\
+    \ leading to tons\\nof follow-on work in large companies and startups.\\n\\u2022 GPS miniaturization. The original GPS\
+    \ receivers used analog signals\\nand weighed 50 pounds. The MGR program created GPS receivers that\\nwere the size of\
+    \ a pack of cards and digitized the system. It was well-suited\\nto be an ARPA program because:\\n\\u2013 It was impactful\
+    \ work that wasn\\u2019t particularly \\u201cnovel\\u201d (GPS already\\nexisted, the challenge was just to make it smaller).\\\
+    n\\u2013 It had a clear but incredibly ambitious goal.\\n\\u2013 It opened the path for many subsequent improvements.\\\
+    n31\\n\\nWhat ideas make a good FRO?\\nGood FROs. . .\\n\\u2022 . . . have a clear goal from day one: whether it\\u2019s\
+    \ a dataset, a well defined\\ntool, or something else.\\n\\u2022 . . . know precisely how they\\u2019ll deploy ~$50M early\
+    \ on in the program\\u2019s\\nlifetime. This is harder than you think!\\n\\u2022 . . . have a single project or tight\
+    \ coupling between projects from day one.\\n\\u2022 . . . have strong conviction about the right approach at the project\
+    \ level\\nearly on.\\n\\u2022 . . . have a core team who are willing to work full-time lined up before\\nstarting. An\
+    \ FRO needs to hit the ground running and is initially judged\\non its core team.\\nSome examples of good FROs (and why):\\\
+    n\\u2022 E11 Bio. E11 Bio is mapping the entire mouse brain at the cellular level.\\nThe organization is creating a dataset\
+    \ and developing technologies that\\nare primarily useful for researchers \\u2013 a valuable public resource that would\\\
+    nbe incredibly hard to monetize. It is well suited for an FRO because:\\n\\u2013 Doing this brain mapping requires a lot\
+    \ of engineering to extend\\nexisting technologies and a lot of repetitive but expensive work to\\nslice brains, scan\
+    \ those slices, and analyze them.\\n\\u2013 While all of this work is hard and requires a lot of problem solving, it\\\
+    ncould be described at a pretty granular level early on.\\n\\u2022 Cultivarium. Cultivarium creates open-source tools\
+    \ to enable scientists\\nto work with novel microorganisms: things like data on growth rates,\\nprotocols for modifying\
+    \ their DNA, computational tools, etc. It is well\\nsuited for an FRO because:\\n\\u2013 There\\u2019s a vaguely standard\
+    \ set of tools and data you want to create\\nfor each microorganism; it just takes a lot of work to create them.\\n\\\
+    u2022 RAND Health Insurance Experiment. The RAND corporation had a\\nlot of clear experimental questions that could only\
+    \ be tested in the context\\nof a health insurance company. So they started their own. While the\\nconcept of an FRO had\
+    \ not been invented yet, it was well suited for an\\nFRO because:\\n\\u2013 It was a time-boxed experiment (most of the\
+    \ work was done in the\\nfirst five years).\\n\\u2013 It was answering clear questions.\\n32\\n\\n\\u2013 It was clear\
+    \ what execution looked like from day one.\\nWhat ideas aren\\u2019t good fits for coordinated research programs?\\nSome\
+    \ examples of good ideas that are a poor fit for a coordinated research\\nprogram.\\n\\u2022 LIGO. The Laser Interferometer\
+    \ Gravitational Wave Observatory is a\\nlarge-scale physics experiment and observatory designed to detect cosmic\\ngravitational\
+    \ waves. It has been incredibly impactful for our knowledge of\\nthe universe but would have been a poor coordinated research\
+    \ program for\\nseveral reasons:\\n\\u2013 LIGO took several decades of prototyping and building.Coordinated\\nresearch\
+    \ programs generally exist on shorter timescales.\\n\\u2013 LIGO took hundreds of millions of dollars to get to the point\
+    \ where it\\ncould take observations. Coordinated research programs are generally\\ntens of millions of dollars.\\n\\\
+    u2013 LIGO\\u2019s main focus is expanding the scope of human knowledge\\nrather than creating new capabilities.\\n\\\
+    u2022 SpaceX. While it involved a lot of high-risk technology development,\\nSpaceX both had a clear path to profitability\
+    \ and the work to create that\\ntechnology was best done in a single, tightly-coordinated organization.\\nHow do I operationalize\
+    \ all this?\\nYou can operationalize these characteristics by creating a checklist and making\\nsure that your program\
+    \ idea can tick off all the boxes (or you have a very precise\\nway to get around that requirement).\\n33\\n\\nIdentifying\
+    \ Bottlenecks and Key Risks\\nThere are an infinite number of things one can do to advance ambitious technology.\\nIdentifying\
+    \ bottlenecks and key risks is a powerful way of both cutting through\\nthe noise to prioritize work and also to sell\
+    \ ideas to stakeholders.\\nBottlenecks and key risks are nebulous concepts: neither has hard boundaries\\nthat define\
+    \ what does or does not \\u201ccount.\\u201d To give rough definitions:\\n\\u2022 Bottlenecks are the problems/capabilities\
+    \ that, if solved/created by a\\nprogram, would enable many other people and organizations to move\\nforward on the technology\
+    \ you care about.\\n\\u2022 Key Risks are potential facts about the world that, if true, would make\\nyour program\\u2019s\
+    \ approach infeasible.\\nSome heuristics for how to conceptualize bottlenecks and key risks:\\n\\u2022 Bottlenecks are\
+    \ things that a program can address, while key risks are\\npotential game-stoppers internal to a program.\\n\\u2022 Bottlenecks\
+    \ are the facts that make a technology feel intractable or hopeless.\\n\\u2022 Bottlenecks are the rate-limiters on progress\
+    \ in an area. Technical progress\\nis much more abstract than manufacturing, but the analogy to a factory\\nwhere one\
+    \ machine can process parts much more slowly than all the others\\ncan be useful.\\n\\u2022 Technology bottlenecks usually\
+    \ take the form \\u201cSome group, A, would do B\\nif C were different.\\u201d C is the bottleneck.\\n\\u2022 Key risks\
+    \ are often the reason that other people think what a program is\\ntrying to do is impossible.\\n\\u2022 Key risks are\
+    \ often the black box that you want to say \\u201cwe\\u2019ll figure that\\nout later.\\u201d\\nSome examples of technological\
+    \ bottlenecks and key risks:\\n\\u2022 One bottleneck to cheap spaceflight is reusable launch systems. Some key\\nrisks\
+    \ for creating reusable launch systems are rocket engines that can\\nrestart consistently and control systems to land\
+    \ a rocket successfully.\\n\\u2022 One bottleneck to rapidly developable vaccines was a mechanism for creating\\nspecific\
+    \ antigens on demand. A key risk for RNA vaccines to address this\\nbottleneck was a mechanism of encapsulating the RNA.\\\
+    nAt the end of the day, you need to drill down to the specific bottlenecks your\\nprogram can address and the key risks\
+    \ that can be addressed by individual\\n34\\n\\nprojects within your program. It\\u2019s straightforward to say something\
+    \ like \\u201ccost is\\nbottlenecking carbon removal,\\u201d but drilling down into actionable, technology-\\nbased drivers\
+    \ of those costs is hard.\\nThere are two ways of dealing with bottlenecks: removing them or going around\\nthem. Removing\
+    \ a bottleneck looks like shrinking a critical system from the size\\nof a shipping container to the size of a briefcase.\
+    \ Going around a bottleneck\\nlooks like removing the need for that system all together.\\nWhen you are designing your\
+    \ program, it\\u2019s critical to address the key risks first\\n(this is another framing for the idea of \\u201cfailing\
+    \ fast.\\u201d It\\u2019s tempting to start with\\nthe easy stuff, but that work may be moot if it turns out you cannot\
+    \ mitigate a\\nkey risk (see Tackle the monkey first).\\nBrass Tacks and Tactics\\nIdentifying the bottlenecks and key\
+    \ risks (especially to an actionable level) is\\nnot straightforward.\\nPeople don\\u2019t often think in terms of bottlenecks\
+    \ and risks, especially at the level\\nof a whole technology instead of their own personal projects. As a result, you\\\
+    ncan\\u2019t just read the answer in literature or ask people \\u201cwhat are the bottlenecks\\nin your area?\\u201d\\\
+    nHere are some tactics for teasing out key risks and bottlenecks:\\n\\u2022 Drawing block diagrams and fishbone diagrams\
+    \ can help identify the causal\\nconnections in a system and enable you to trace a high-level bottleneck to\\nan actionable\
+    \ source.\\n\\u2022 Sankey diagrams can help identify what the biggest contributors to some\\nflow is (eg. Identifying\
+    \ why something is expensive).\\n\\u2022 Fermi estimates and breaking down the physics behind a system are\\nhelpful for\
+    \ identifying bottlenecks and key risks. For example, \\u201cif we were\\nto build this at an impactful scale, it would\
+    \ <require all the niobium in the\\nworld>,<cook a human brain with the amount of energy it puts in>, etc.\\u201d\\n\\\
+    u2022 When you are talking to experts in an area who don\\u2019t think that an idea\\nwill work, dig into why they don\\\
+    u2019t think it will work. These are likely to\\nbe some of the key risks: if the experts are right, the program is dead\
+    \ and\\nthe work is to prove them wrong.\\n\\u2022 When you\\u2019re talking to potential \\u201ccustomers\\u201d for\
+    \ a program (see Identifying\\nwho cares), try to figure out what subtle things would cause them to dismiss\\nthe program\\\
+    u2019s outputs (e.g., Does it need to fit into a briefcase? Will nobody\\nuse it if it\\u2019s above $100?). These are\
+    \ also key risks.\\nAs an example of a good bottleneck analysis, see Adam Marblestone\\u2019s positional\\nchemistry bottleneck\
+    \ analysis.\\n35\\n\\nTechno-economic and Impact Analyses\\n\\u201cTechno-economic analysis\\u201d is a fancy term for\
+    \ quantitatively trying to answer\\nthe question: \\u201cis it possible to eventually produce this technology at a price\
+    \ that\\npeople would be willing to pay for it?\\u201d (I\\u2019m going to refer to it as TEA for the\\nrest of this section\
+    \ but don\\u2019t assume that everyone will know what the acronym\\nstands for, or even the term \\u201ctechno-economic\
+    \ analysis\\u201d for that matter.)\\nAn \\u201cimpact analysis\\u201d quantitatively tries to answer the question \\\
+    u201cif you are\\nwildly successful, what difference does it make?\\u201d\\nTEAs and impact analyses are not the same\
+    \ thing, but they are both quantitative\\nways of exploring what needs to be true for your program to be worthwhile (and\\\
+    nwhether it is worthwhile at all!) This section covers both because sometimes\\nwhen people say they want one, they actually\
+    \ want the other and both types of\\nanalysis require similar approaches and skills \\u2014 figuring out benchmark metrics,\\\
+    nunpacking systems, dimensional analysis, and Fermi Estimates.\\nWhat is a Techno-economic analysis?\\nThere is no \\\
+    u201cofficial\\u201d definition of a TEA that everybody will agree on. Here, I\\u2019m\\ngoing to define a TEA as an analysis\
+    \ that answers four questions as quantitatively\\nas possible:\"\n  },\n  {\n    \"name\": \"What are the limits to the\
+    \ technology\\u2019s performance (assuming someone\",\n    \"text\": \"successfully built and scaled it)?\"\n  },\n  {\n\
+    \    \"name\": \"How much would that performance cost?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"What performance\
+    \ do other current approaches have?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"How much do those other current\
+    \ approaches cost?\",\n    \"text\": \"Things that TEAs ignore:\\n\\u2022 How much the R&D and scaling efforts will cost.\\\
+    n\\u2022 The market dynamics and market size for the technology: techno-economic\\nanalyses are not business plans! \\\
+    u201cMarket dynamics\\u201d here mean things like\\nwhich organizations are doing what, pricing, margins, etc.\\nNote\
+    \ that TEAs are application specific. This fact will be annoying if you\\u2019re\\ntrying to create a general-purpose\
+    \ technology. However, it\\u2019s useful for forcing\\nyou to narrow down your program\\u2019s focus to a specific domain\
+    \ which you will\\nalmost inevitably need to do to sell it anyway: TEAs can help you compare the\\nimpact that the technology\
+    \ would have on different domains.\\nFor example, a TEA for a new way of making steel might show that the resulting\\\
+    nsteel is 15% stronger than other production methods, but cost 5% more than\\ncommon methods. That\\u2019s good to know!\
+    \ In order for the program to be a good\\n36\\n\\nidea, you need a good sense of whether the strength increase is worth\
+    \ the cost\\nincrease and for whom. Or whether there are other properties the new steel has\\nthat people would pay for.\\\
+    n(The program\\u2019s worthwhileness also depends on the impact of having 15%\\nstronger steel.)\\nWhat is an impact analysis\\\
+    nAn impact analysis tries to put numbers on the questions:\\n\\u2022 If this program were wildly successful in achieving\
+    \ its technical goals, what\\ndifference would that make?\\n\\u2022 What needs to be true in order for that to happen?\\\
+    u201d\\nFor example, an impact analysis for a program to create a new kind of carbon\\ncapture technology might show the\
+    \ following: even if the program were wildly\\nsuccessful and the new technology were adopted as hard as people could,\
+    \ its\\nimpact would be limited because it requires a catalyst metal that is so rare that\\neven if you used all the world\\\
+    u2019s entire supply to make the technology its capacity\\nwould only be able to remove 0.001% of the world\\u2019s yearly\
+    \ carbon emissions.\\nNow, that result doesn\\u2019t necessarily doesn\\u2019t mean the program isn\\u2019t worth doing.\\\
+    nWhat it does mean is that either you need to focus your program heavily on\\nreplacing the catalyst with something more\
+    \ common, increasing the supply of\\nthe catalyst, or have a strong argument why exogenous factors will increase\\nsupply\
+    \ of the catalyst.\\nIf you hadn\\u2019t done the analysis, either someone would eventually point out the\\ncatalyst problem\
+    \ and crater support for the program, or you would complete\\nthe program and have almost no impact!\\nWhy you should\
+    \ do a TEA\\nYou should do a back-of-the-envelope TEA both for yourself and external stake-\\nholders.\\nReasons you should\
+    \ do it for yourself:\\n\\u2022 So you\\u2019re not fooling yourself and wasting your time pursuing a technology\\nthat\
+    \ will never actually be useful.\\n\\u2022 To force yourself to make explicit assumptions about what needs to happen\\\
+    nto make the technology viable, what matters about the technology, and\\nwhat you expect the state of a world in which\
+    \ the technology is useful.\\n\\u2022 To identify the biggest risks and gaps between the state of the technology\\nnow\
+    \ and where it needs to be in order to be useful.\\n37\\n\\nReasons TEAs are important for external stakeholders:\\n\\\
+    u2022 TEAs create a legible scenario where the technology is useful and makes it\\nclear what assumptions underlying that\
+    \ scenario.\\n\\u2022 The analysis makes it clear that you understand where the bottlenecks are\\nand the biggest gaps\
+    \ you need to close.\\n\\u2022 TEAs should actually make it clear that if your program is successful, it\\nwill make a\
+    \ meaningful difference in something important and why it\\u2019s a\\nbetter approach than alternatives.\\nYou could create\
+    \ a rocket that could get to Mars in a week, but if it cost a\\ntrillion dollars per flight it would never actually exist\
+    \ in the real world. (Unless\\nsomeone discovered something worth trillions of dollars on Mars, of course.)\\nDARPA successfully\
+    \ created artificial blood, but it was so much more expensive\\nthan normal blood with no prospect of getting cheaper,\
+    \ that ultimately it was\\nnever used. TEAs are meant to prevent these situations or at least make sure\\nyou\\u2019re\
+    \ walking into them with eyes wide open.\\nWhen you should do TEAs and Impact analyses\\nTEAs only make sense in the context\
+    \ of building technologies and creating\\nexplicitly \\u201cuseful\\u201d things \\u2014 if the goal of a program is to\
+    \ create fundamental\\nknowledge about the universe, the concept of costs beyond the scope of the\\nprogram or performance\
+    \ don\\u2019t make much sense.\\nYou should try to do an impact analysis for any program. It forces you to have\\na precise\
+    \ theory of change <INTERNAL LINK>, can uncover unintuitive things\\nyour program needs to prioritize to have impact,\
+    \ and makes a great sales pitch.\\nObviously there are many impacts that metrics cannot capture \\u2014 how would\\nyou\
+    \ do an impact analysis on a program to discover what caused the Big Bang?\\nHowever, these cases are more rare than you\
+    \ might think and often not doing an\\nimpact analysis is an excuse for lazy thinking.\\nHow to do a techno-economic analysis\\\
+    nYou can do TEAs with arbitrary amounts of detail, but roughly they fall into\\ntwo categories: back-of-the-envelope calculations\
+    \ and hardcore analysis. The\\nsteps are mostly the same for both so first I\\u2019ll give a broad picture of what goes\\\
+    ninto both kinds of analysis, walk through an example of a back-of-the-envelope\\nanalysis and then flag what you can\
+    \ do to be increasingly hardcore.\"\n  },\n  {\n    \"name\": \"Write down the key metrics that matter in the domain (ie.\
+    \ the metrics\",\n    \"text\": \"that people who use it will care about). These might be a property of the\\ntechnology\
+    \ itself, or a property of something that the technology is an\\ninput to or a component of.\\n38\"\n  },\n  {\n    \"\
+    name\": \"Create a spreadsheet (everything further down goes into this spreadsheet)\",\n    \"text\": \"For all numbers,\
+    \ make sure to write down units, your source for that\\nnumber, and assumptions that are going into it.\"\n  },\n  {\n\
+    \    \"name\": \"Write down/derive the inputs to making your technology. These inputs\",\n    \"text\": \"fall into two\
+    \ broad categories:\"\n  },\n  {\n    \"name\": \"Capital costs: these are the factories, containers, and machines that\"\
+    ,\n    \"text\": \"someone needs to buy once to create the thing.\\nThey are fixed\\nregardless of how much of the thing\
+    \ you do or make.\"\n  },\n  {\n    \"name\": \"Operating costs: these are costs that grow proportionally to the\",\n\
+    \    \"text\": \"amount of stuff you make \\u2014 labor, materials, and energy.\"\n  },\n  {\n    \"name\": \"Use these\
+    \ costs to make a reasonable estimate of how your technology\",\n    \"text\": \"could perform on the key metrics you\
+    \ identified.\"\n  },\n  {\n    \"name\": \"Identify a comparable technology available today\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"Estimate (or just look up) how the comparable technology performs on\",\n    \"text\": \"\
+    your key metrics and on costs.\"\n  },\n  {\n    \"name\": \"Compare the performance and cost of the current technology\
+    \ and your\",\n    \"text\": \"proposed technology.\\nIn step #1, ideally you can find a metric that you can use to compare\
+    \ across\\ntechnologies, regardless of how they achieve what people want, like $/kg to\\norbit or $/kWh \\u2014 these\
+    \ are called \\u201cperformance-equivalent functional units.\\u201d\\nHowever, in some cases (like the antimatter propulsion\
+    \ example below) there\\u2019s\\nno single metric that matters \\u2014 sometimes it makes more sense to just present\\\
+    na few performance metrics instead of creating one convoluted metric that tries\\nto capture everything. One of those\
+    \ performance metrics should always involve\\ncost or it looks like you\\u2019re trying to pull something. However, sometimes\
+    \ people\\nare willing to pay more for more performance.\\nExample of a back-of-the-envelope analysis\\nThe goal of a\
+    \ back-of-the-envelope analysis is to be accurate to within an order\\nof magnitude and to highlight how the inputs to\
+    \ a technology are related.\\nLet\\u2019s walk through an example of a back-of-the-envelope analysis. In this case,\\\
+    nwe\\u2019re going to assume we have an idea for a program to produce antimatter for\\nspace propulsion at scale. It\\\
+    u2019s in large part based on Casey Handmer\\u2019s work\\nhere (Casey is, incidentally, the master of this kind of analysis).\\\
+    nWhen we\\u2019re talking about big spacecraft, a thing many people care about is\\ngetting to Mars. The two big things\
+    \ about getting there are how long it takes\\nand how much it costs. There\\u2019s not a great way of combining these\
+    \ into a single\\n39\\n\\nmetric3 so let\\u2019s keep them separate for now.\\nWe\\u2019ll use SpaceX\\u2019s starship\
+    \ as a benchmark technology. We\\u2019re going to use its\\nnumbers to get the mass/volume of a standard spacecraft that\
+    \ we want to send\\nto mars. We\\u2019re also going to look up how much it costs to fuel it up ($240,000)\\nand how long\
+    \ it would take to go to Mars (259 days).\\nWe\\u2019re then going to look at antimatter propulsion. With some assumptions\
+    \ we\\ncan figure out that an antimatter-powered starship could create 32000 m/s of\\ndelta-v and get us to Mars in 14\
+    \ days. That\\u2019s pretty good!\\nHow much is that performance going to cost?\\nFirst let\\u2019s think about the capital\
+    \ costs. Here it gets super hand-wavy because\\nas of writing this, I don\\u2019t know how we would produce antimatter\
+    \ at scale,\\nbut proposals for how to do it involve a lot of vaguely similar hardware to\\nfusion reactors (superconducting\
+    \ magnets, vacuums, etc) so let\\u2019s assume that an\\nantimatter factory costs roughly as much as how much a Commonwealth\
+    \ Fusion\\nplant is expected to cost: $7.6B (yes \\u2014 this is assumptions on assumptions). In\\nreal life, you should\
+    \ have a much better sense of at least the components of the\\ncapital needed to create a technology.\\nNow, let\\u2019s\
+    \ think about operating costs.\\nWe can start with the amount of\\nantimatter we\\u2019re producing per year \\u2014 let\\\
+    u2019s assume the factory can produce\\nfour flights\\u2019 worth of antimatter. In reality you should have some justification\\\
+    nfor the capacity you can achieve at scale but here I\\u2019m just literally making it up.\\nNote that this is eight orders\
+    \ of magnitude more than the most antimatter that\\nhas ever been produced in a year.\\nAssuming we have an amazing process\
+    \ that is 50% efficient we can calculate\\nhow much energy that will take and then how much that energy would cost\\nassuming\
+    \ we\\u2019re making it all from cheap solar. As for other operating costs\\n(labor, maintenance, etc) I\\u2019m just\
+    \ going to totally hand wave and assume it\\u2019s\\n0.01% of the total capital cost per year. This gives us a cost/year\
+    \ of both energy\\nand other operating expenses.\\nWe can find a $/trip number by combining the operating costs and the\
+    \ capital\\ncosts. We can get a $/year number from the capital costs by assuming that all\\nthe capital equipment will\
+    \ last 15 years and dividing the cost by the number\\nof years it will last. This is called the \\u201camortized cost.\\\
+    u201d (Just dividing capital\\ncosts by how long you expect the equipment to last is a very naive way of\\nthinking about\
+    \ capital costs \\u2014 a hardcore analysis will calculate but it\\u2019s fine for\\nback-of-the-envelope calculation.)\
+    \ We can then add operating and the fractional\\ncapital costs to get how much running the factory will cost per year\
+    \ therefore a\\nquarter of that cost is the $/trip. (Remember we assumed our capacity was four\\nflights of antimatter\
+    \ per year).\\n3You could combine cost and speed with a time to money conversion (e.g. $35k/day to stay\\non ISS) but\
+    \ the major reasons to go to Mars faster are not monetary \\u2013 avoiding radiation\\nexposure, minimizing time stuck\
+    \ in a tiny spaceship, being able to respond to disasters, etc.\\n40\\n\\nThat calculation leads to it costing $127,000,000\
+    \ for fuel for an antimatter-\\npowered flight compared to $240,000 for a conventionally fueled flight. That\\u2019s a\\\
+    nlot more expensive!\\nSo to reiterate our final metrics:\\n\\u2022 A \\u2018benchmark\\u2019 conventionally-powered starship\
+    \ flight to Mars takes 259\\ndays and costs $240000 in fuel.\\n\\u2022 An antimatter-powered flight to Mars takes 14 days\
+    \ and costs $127,000,000\\nin fuel.\\nNote that doing this whole analysis took about an hour and a half \\u2014 most of\\\
+    nthat was looking up numbers. Back of the envelope calculations should be fast.\\nThis example illustrates some important\
+    \ things that will come up frequently\\nwhen doing techno-economic analyses:\\n\\u2022 The analysis suggests that the\
+    \ new technology (even once it works) will be\\ndrastically more expensive than the alternative, even if it performs much\\\
+    nbetter. In order for working on the technology to be a good idea you\\neither need a good explanation of who wants the\
+    \ improved performance\\nenough to pay the price or a clear idea of what the major cost drivers are\\nand a pathway for\
+    \ them to become cheap enough for the new technology\\nto become cost competitive. (See tornado charts in the hardcore\
+    \ section\\nfor more about that).\\n\\u2022 You will need to make a ton of assumptions \\u2014 that\\u2019s fine, as long\
+    \ as you\\nmake it clear where you made them.\\n\\u2022 Pay attention to units! Often if you can\\u2019t just look up\
+    \ a quantity, you can\\nfigure out how to calculate it by looking at the units.\\nMaking the analysis more hardcore\\\
+    nTo a large extent, making an analysis more hardcore involves breaking systems\\nand assumptions into their constituent\
+    \ components. Some specific things you\\ncan do include:\\n\\u2022 Capital costs\\n\\u2013 Break out the capital costs\
+    \ into different components\\n\\u2013 Instead of treating capital costs as a lump sum for an asset that lasts\\nforever,\
+    \ treat them as a regular payment over the finite lifetime of a\\nfactory or piece of equipment.\\n\\u2013 Instead of\
+    \ assuming that you pay off the same amount of cap-\\nital costs every year, you can use a more sophisticated financial\
+    \ model.\\n41\\n\\n\\u2022 Operating costs\\n\\u2013 Break the technology out into its constituent parts \\u2014 this\
+    \ is known\\nas a \\u201cbill of materials\\u201d\\n\\u2022 Do sensitivity analyses \\u2014 these are analyses that show\
+    \ how much cost and\\nperformance can change based on different assumptions.\\n\\u2013 Create tornado charts \\u2013 horizontal\
+    \ bar charts that illustrate how\\nsensitive performance and cost is to different parameters.\\n\\u2013 Do Monte Carlo\
+    \ simulations that randomly vary different parameters\\nin order to capture the range and distribution of potential outcomes.\\\
+    nAn\\nexample of a tornado chart.\\n(At some point in the future I\\u2019ll expand this section to do a walkthrough of\\\
+    na hardcore TEA analysis but in the meantime, here is an example of a pretty\\nthorough analysis.)\"\n  },\n  {\n    \"\
+    name\": \"Conclusion\",\n    \"text\": \"Techno-economic and impact analyses are an important part of designing a\\nprogram!\
+    \ They are a quantitative sanity-check to both you and other people\\nfor why work is important and feasible. You can\
+    \ spend arbitrary amounts of\\ntime on these analyses so make sure you\\u2019re doing them at the appropriate level\\\
+    nof detail for whatever stage of program design you\\u2019re at. If you think your idea\\nis impossible to do a TEA or\
+    \ impact analysis for, chances are you\\u2019re wrong \\u2013 for\\nbetter or for worse, large programs need to be able\
+    \ to justify their existence. So\\nget cracking!\\n42\\n\\nPlanning for Transition\\nIn order for a program to have an\
+    \ impact, it needs to transition beyond the\\nprogram. \\u201cTransition\\u201d can mean many things: continuing as an\
+    \ active area\\nof research in other organizations; being incorporated into different products;\\nspawning one or more\
+    \ startups; becoming an open source project; and many\\nothers.\\nFailure to transition is how many programs fail to have\
+    \ impact, even if they hit\\ntheir technical goals.\\nDesign decisions early in a technology\\u2019s lifetime have profound\
+    \ effects on its\\nability to be something that somebody wants and survive beyond the R&D\\ncocoon. Small differences,\
+    \ like the ability for a new material to be created using\\nexisting equipment or interface with standard connection points,\
+    \ can have a huge\\nimpact on its ability to transition.\\nFiguring out what these differences need to be depends on both\
+    \ a strong hy-\\npothesis about what is going to happen at the end of the program and a deep\\nunderstanding of what the\
+    \ technology actually needs to do in that situation.\\nFurthermore, a technology\\u2019s ability to transition is sometimes\
+    \ a function of long\\npreparation for multiple parties. A team of researchers who reach the end of\\na project and say\
+    \ \\u201cOk! Let\\u2019s become a startup now!\\u201d will often fail. A big\\norganization needs time to wrap their head\
+    \ around a new technology (especially\\nif it follows a different paradigm) and often wants specific proof-points that\\\
+    naren\\u2019t obvious or derivable. Even if it\\u2019s something that would drastically help\\ntheir business, you often\
+    \ can\\u2019t just show up with a brand-new technology and\\nexpect them to absorb it with open arms.\\nConcrete tactics\\\
+    nNote that many of these will vary depending on your specific program and\\norganization\\n\\u2022 Spend a lot of time\
+    \ building relationships with decision-makers at\\norganizations who might provide homes or support for our technologies\\\
+    nafter programs end: these could range from large companies to government\\norganizations to large foundations.\\nUnderstand\
+    \ what problems or\\nconstraints these people are facing that your programs could potentially\\nsolve or remove.\\n\\\
+    u2022 Ask \\u201cWho will care about this program if it hits its goals? What does the\\ntechnology need to look like in\
+    \ order for them to care? What needs to\\nhappen in order for it to look that way? What happens at the end of the\\nprogram?\\\
+    u201d\\n\\u2022 Continually update your transition hypothesis throughout the course of a\\nprogram.\\n43\\n\\n\\u2022\
+    \ Find a business-minded CEO and get them to start working with a team\\nfor a year before the program ends.\\n\\u2022\
+    \ Help a team spin up a demonstration manufacturing line.\\n\\u2022 Negotiate with a large foundation to fund a spinout\
+    \ nonprofit.\\n\\u2022 Coaching people building the technology on how to start thinking like\\nentrepreneurs.\\n\\u2022\
+    \ Create self-reinforcing networks of researchers and stakeholders through\\nconferences, publications, etc.\\n\\u2022\
+    \ Have a large company as a performer whose funding is contingent on\\nspinning up a new product line around the program\\\
+    u2019s technology.\\n\\u2022 Make sure that the IP created by the program doesn\\u2019t become locked up\\nin a university\
+    \ tech transfer office or large company.\\n\\u2022 Get teams to start talking to potential follow-on funders long before\
+    \ the\\nprogram ends.\\n\\u2022 Talk to other funders across government, investors, and foundations about\\nwhat they\
+    \ would want to see in order to support the technology after the\\nprogram ends.\\nRelated resources\\n\\u2022 DARPA transition\
+    \ failures\\n\\u2022 Loonshots \\u2014 specifically the section around \\u201cManage the Transfer not the\\ntechnology\\\
+    u201d\\n44\\n\\nProgram Failure Modes\\nSufficiently ambitious programs can\\u2019t eliminate the chance of failure. However,\\\
+    nyou can affect the odds that you fail in a new way, due to an unknown unknown,\\nrather than fall into the common traps\
+    \ for coordinated research programs.\\nIt\\u2019s worth unpacking a bit what it means for a coordinated research program\\\
+    nto succeed or fail. Coordinated research programs are not like businesses which\\nare judged on their financial success\
+    \ at the end of the day regardless of whether\\nthey achieved that success through a brilliant invention or driving competitors\\\
+    nout of business. (Often, it is both!) In a narrow sense, a coordinated research\\nprogram is successful when it hits\
+    \ some set of technical goals. But in a broad\\nsense, a program is successful when it has a large counterfactual impact:\
+    \ looking\\nbackwards, the world is very different (in a good, technical way) than if the\\nprogram had never happened.\
+    \ Some examples of programs that were technical\\nfailures, but counterfactually impactful, include Have Blue, which failed\
+    \ to create\\na flight-worthy plane but was pivotal for stealth technology, or the first DARPA\\nGrand Challenge, where\
+    \ not a single car finished the race but the teams and\\nsubsequent programs it spawned went on to create the entire autonomous\
+    \ car\\nindustry.\\nIdeally, programs are successful in both the narrow and broad sense: it\\u2019s\\nmuch harder to know\
+    \ whether a technically failed program will, or has had,\\na counterfactual impact.\\nIt\\u2019s harder to sell subsequent\
+    \ programs based on\\ntechnical failure that arguably had a counterfactual impact \\u2014 that impact\\nusually takes\
+    \ years or decades to become obvious and counterfactuals are\\nnotoriously hard.\\nFailure modes are therefore things\
+    \ that can prevent programs from succeeding\\nin both the narrow and broad sense.\\n45\\n\\nThere are an infinite number\
+    \ of ways that programs can fail, but below are some\\ncommon failure patterns ordered roughly by where in a program\\\
+    u2019s lifetime the\\nfailure occurs:\\n\\u2022 The program never gets off the ground or is canceled because manage-\\\
+    nment doesn\\u2019t see the program\\u2019s goals as within scope of the organization.\\nExample: a program to create\
+    \ disaster response robots at DARPA that\\nwasn\\u2019t seen as directly relevant to defense.\\n\\u2022 A program leader\
+    \ listens to experts who say that something is impossible\\nand abandons an idea or scopes it down, only to have another\
+    \ group succeed\\nat the ambitious vision. Example: DARPA ran many AI programs over\\nthe past several decades, but most\
+    \ of the AI breakthroughs did not come\\nfrom these programs because the programs focused on improving existing\\nparadigms\
+    \ instead of previously written-off methods, like neural networks,\\nor left-field ideas, like transformers.\\n\\u2022\
+    \ Not asking the right questions about what is or is not possible. Example:\\nIt\\u2019s not an ARPA program, but Bell\
+    \ Labs\\u2019 failure to create fiber-optic\\ncables is illustrative. Bell Labs researchers asked \\u201chow transparent\
+    \ is the\\nbest glass?\\u201d The answer indicated that it is impossible to transmit light\\nthrough a kilometer of glass.\
+    \ Charles Kao asked \\u201chow transparent could\\nyou possibly make glass?\\u201d That answer meant that light could\
+    \ travel\\nthrough several kilometers of glass without amplification. As a result, Bell\\nLabs wasted 20 years working\
+    \ on hollow waveguides instead.\\n\\u2022 The program\\u2019s idea isn\\u2019t compelling to management for one of many\\\
+    nreasons.\\n46\\n\\n\\u2022 An authority above management decides that the program is not a good\\nuse of money.\\n\\\
+    u2022 An approach is physically impossible.\\n\\u2022 An approach is bottlenecked by another technology that is not yet\
+    \ good\\nenough.\\n\\u2022 The work ends up being far more expensive than expected.\\n\\u2022 The program leader who championed\
+    \ the program leaves and the replace-\\nment has a different vision or approach that confuses or alienates employees\\\
+    nor collaborators.\\n\\u2022 Conflicts between the program manager and employees or collaborators.\\n\\u2022 The program\
+    \ primarily supports work that would have happened without\\nit.\\n\\u2022 Technology developments outside the program\
+    \ make the program\\u2019s output\\nobsolete.\\n\\u2022 A solution doesn\\u2019t scale (What does it mean for a technology\
+    \ to scale?)\\n\\u2022 A problem is primarily political or cultural instead of technical.\\n\\u2022 Regulations prevent\
+    \ the technology from getting out into the world.\\n\\u2022 Failure to transition because it disrupts an existing paradigm\
+    \ in the orga-\\nnizations that were expected to carry it forward.\\n\\u2022 Failure to transition because several different\
+    \ external collaborators worked\\non different components of a system and there\\u2019s no incentive to put them\\ntogether\
+    \ at the end of a program\\n\\u2022 (Related to the previous) IP from different projects gets locked up \\u2014 either\\\
+    nin a single large organization that has no incentive to commercialize the\\nwork or in several organizations that prevent\
+    \ integration.\\nThere\\u2019s no foolproof way to avoid these failures, but some concrete tactics\\ninclude:\\n\\u2022\
+    \ Being brutally honest with yourself about the biggest risks to the program\\n(see Identifying bottlenecks and key risks)\
+    \ and addressing them up front.\\n\\u2022 Frequently check in with yourself on whether your program is showing\\nsigns\
+    \ of a potential failure mode.\\n\\u2022 Be open to feedback on whether you are trending towards a specific failure\\\
+    nmode.\\n\\u2022 Divide a piece of paper or whiteboard into three columns.\\n47\\n\\n\\u2013 In the first column, write\
+    \ down as many ways that the program could\\nfail as you can think of. Be realistic and specific!\\n\\u2013 In the second\
+    \ column, write down what actions you could take\\nduring the program to minimize that chance of failure. There may be\\\
+    nnothing you can do besides run straight towards it! These are the\\nkey risks that you should get to as quickly as possible.\\\
+    n\\u2013 In the third column, write down what indicators you would have\\nthat you were headed towards a specific failure\
+    \ mode. It\\u2019s tough to\\naccept, but if you are honest with yourself, these are some of your\\nindicators of when\
+    \ you should think about killing an approach or\\nentire program. (See Knowing when to quit.)\\n\\u2022 Bias towards failing\
+    \ by being too ambitious! The point of a coordinated\\nresearch program is to swing for the fences. One way to do this\
+    \ is to ask\\nyourself \\u201cwill I be proud to have failed trying to do this thing?\\u201d\\nExternal resources\\n\\\
+    u2022 Why does DARPA work? Section on DARPA Transition Failures.\\n\\u2022 Arthur C. Clarke\\u2019s \\u201cFailures of\
+    \ Imagination and Failures of Nerve.\\u201d From\\nProfiles of the Future:\\n\\u2013 \\u201cFailure of Nerve occurs when\
+    \ even given all the relevant facts the\\nwould-be prophet cannot see that they point to an inescapable\"\n  },\n  {\n\
+    \    \"name\": \"conclusion.\\u201d\",\n    \"text\": \"\\u2013 \\u201cFailure of Imagination arises when all the available\
+    \ facts are appreci-\\nated and marshaled correctly \\u2013 but when the really vital facts are still\\nundiscovered,\
+    \ and the possibility of their existence is not admitted.\\u201d\\n48\\n\\nMapping Incentives\\nAt its core, a successful\
+    \ research program enables work that would not have\\notherwise happened. In order for this to happen, you need to give\
+    \ people the\\nresources to do things they already want to do or you need to shift what they\\nwant to do. In either of\
+    \ those cases you need to think about people\\u2019s incentives:\\nwhat is driving them to act the way they do.\\nIncentives\
+    \ matter for coordinated research programs both so that you can\\neffectively coordinate people within the program and\
+    \ also so that the program\\nitself can be impactful. If you don\\u2019t consider incentives, you are going to find\\\
+    nyourself constantly frustrated by people who say they will do one thing and wind\\nup doing another or simply won\\u2019t\
+    \ cooperate at all. Furthermore, many programs\\nattempt to address systemic problems. Most people are not malicious or\
+    \ stupid\\n\\u2014 they\\u2019re simply acting according to incentives you might not see. In order to\\nmake headway on\
+    \ these problems, you need to figure out what is incentivizing\\npeople in that system so that you can shift those incentives.\\\
+    nFor example, companies are incentivized to maximize profits (shocking!) so\\nthey\\u2019re incredibly unlikely to use\
+    \ a replacement technology that is [cooler/more\\nsustainable/etc] if it costs drastically more than what they\\u2019re\
+    \ currently using.\\nInstalling new technology also costs money so companies are rarely incentivized\\nto use technologies\
+    \ that are small improvements over what they already use.\\nGovernments (and especially militaries) have different incentives\
+    \ such as keeping\\nsoldiers and citizens alive, making politicians look good, and appeasing lobbyists,\\nso they are\
+    \ sometimes willing to pay significantly more for marginal improvements\\nin capabilities.\\nThere is no best-practice\
+    \ methodology to mapping incentives or incorporating\\nthem into your program design. One approach is long-form writing\
+    \ where you\\nwork backwards from the outcome that you want, describing who you want to do\\nwhat and what their current\
+    \ incentives are. Another is to set up a spreadsheet\\nor piece of paper with several columns:\\n\\u2022 Actor\\n\\u2022\
+    \ Current incentives\\n\\u2022 Desired action\\n\\u2022 Why their current incentives prevent them from taking the desired\
+    \ action\\n\\u2022 Potential actions you could take to bridge that gap.\\nFiguring out what people\\u2019s and groups\\\
+    u2019 incentives are in the first place is not\\nstraightforward. You can\\u2019t ask directly both because it\\u2019s\
+    \ incredibly awkward to\\nask \\u201cso, beyond the nice-sounding reasons, why are you really doing this?\\u201d and\\\
+    npeople often don\\u2019t notice what\\u2019s really driving their behavior.\\n49\\n\\nSome tactics for discerning incentives:\\\
+    n\\u2022 Figure out what gets people in a particular position promoted or fired.\\nReaper functions dominate other incentives.\\\
+    n\\u2022 Look at where an organization\\u2019s free cash flow comes from.\\n\\u2022 Look at what someone\\u2019s peers\
+    \ celebrate or condemn.\\n\\u2022 Look at whether an individual or organization is under any particular\\nlegal obligation.\\\
+    n\\u2022 Observe\\nthe\\npatterns\\nin\\ntrajectories\\nand\\nfailure\\nmodes\\nof\\npeo-\\nple/organizations/ideas that\
+    \ look similar to people/organizations/ideas\\nthat you\\u2019re considering.\\nThere are also many questions that you\
+    \ can ask to tease out different sets of\\nincentives. These questions are domain specific. Some of them include:\\n\\\
+    u2022 For academics\\n\\u2013 What stage of their career are they at?\\n\\u2217Do they have tenure?\\n\\u2013 How large\
+    \ a lab do they need to support?\\n\\u2013 What projects do they already have going?\\n\\u2013 What ideas have they pinned\
+    \ their career to?\\n\\u2022 For universities\\n\\u2013 How could being involved in a program increase their prestige?\\\
+    n\\u2022 For large companies\\n\\u2013 What is their core product/revenue stream?\\n\\u2013 How is that product priced?\\\
+    n\\u2022 For people at companies\\n\\u2013 Is this person\\u2019s department a cost center or a profit center?\\n\\u2022\
+    \ For startups\\n\\u2013 What are they trying to build?\\n\\u2013 What ideas have they sold to their investors?\\n\\u2013\
+    \ How soon do they need to raise another round?\\nOnce you understand the incentives at play, you can either try to shift\
+    \ them or\\n50\\n\\nwork around them.\\nWays that you can shift incentives:\\n\\u2022 Pay someone to do something\\n\\\
+    u2022 Create a field that they can publish into\\n\\u2022 Make them feel like their peers\\u2019 opinions have shifted\
+    \ or help them find\\nnew peers\\n\\u2022 Change the opinion of their bosses\\n\\u2022 Convince them that a problem is\
+    \ actually interesting\\nWays to work around incentives:\\n\\u2022 Enable someone to do more of what they want to do in\
+    \ exchange for\\nspending some of their time doing what you want to do.\\n\\u2022 Convince them that what you want them\
+    \ to do is related to what they\\nalready find interesting.\\n\\u2022 Shift your goals to be more aligned with theirs.\\\
+    nRelated\\n\\u2022 Stagnation and Scientific Incentives\\n\\u2022 \\u201cIt\\u2019s all about incentives\\u201d\\n51\\\
+    n\\nSelling a program\\nIt\\u2019s easy to think that your ideas should speak for themselves or that sufficiently\\nincredible\
+    \ results will cause the world to beat a pathway to your door. Unfortu-\\nnately, this is not the case! A program leader\
+    \ needs to be a salesperson from\\nbefore their program starts until the day it ends or someone else takes over.\\nThere\
+    \ are three major groups you need to sell a program to:\"\n  },\n  {\n    \"name\": \"Management. This is a catch-all\
+    \ term for whomever has the authority to\",\n    \"text\": \"authorize resources for the program or shut them off.\"\n\
+    \  },\n  {\n    \"name\": \"Collaborators. These are the people who are going to be doing work\",\n    \"text\": \"during\
+    \ the course of the program.\"\n  },\n  {\n    \"name\": \"Transition partners. These are the people who will carry on\
+    \ the work after\",\n    \"text\": \"the end of the program. Remember, technology is people.\\nMany tactics matter regardless\
+    \ of who you\\u2019re selling to. Note that many of these\\nmay feel like they\\u2019re in tension \\u2014 good sales\
+    \ is walking a tightrope:\\n\\u2022 Focus on the bottom line up front. Even if someone will want to get\\nin the weeds,\
+    \ you need to anchor them on why they should care in the\\nfirst place. This looks like saying something like \\u201cOur\
+    \ goal is to create\\nprice-competitive complex carbon-based molecules from atmospheric\\ncarbon instead of petroleum.\
+    \ Specifically, this program is focused on using\\ncell-derived enzymes in a continuous-flow process.\\u201d instead of\
+    \ launching\\ninto \\u201cthere\\u2019s a process where you pull the enzymes out of a cell and can\\nthen use them to\
+    \ do the same metabolic processes as in a cell . . . \\u201d\\n\\u2022 Be precise. It is far more compelling to say \\\
+    u201cOur goal is to increase the\\nnumber of probes that can be inserted into the human brain by two orders\\nof magnitude\
+    \ without increasing price or damage\\u201d than to say \\u201cOur goal\\nis to radically transform brain-computer interfaces\\\
+    u201d\\n\\u2022 Make the outcome of the program emotionally compelling. Even deeply\\ntechnical people make decisions\
+    \ based on whether they\\u2019re excited, scared,\\netc \\u2014 they\\u2019re just better at justifying it to themselves.\
+    \ The tricky bit\\nis that different people will find different facts, arguments, and styles of\\npresentation emotionally\
+    \ compelling.\\n\\u2022 Spreadsheets are some of the best sales tools. It is incredibly compelling if\\nyou can show \\\
+    u201chere are the numbers that combine to show how it is today,\\nhere are the numbers around how it could be, and here\
+    \ are the numbers\\nthat show that this idea is physically possible.\\u201d (This is also why Fermi\\nEstimates are compelling.)\\\
+    n\\u2022 Practice your opening lines and answers to common questions. It\\u2019s not\\n52\\n\\njust about what you say\
+    \ but how you say it. If you can respond smoothly\\nand confidently, it will go a long way towards hooking your listener.\\\
+    n\\u2022 ABS: Always Be Selling. Try to get everyone you talk to excited about\\nyour program, regardless of whether you\
+    \ think it is relevant. The way you\\nfigure out how to sell an idea is through iteration.\\n\\u2022 After (ideally) every\
+    \ conversation, write down what questions people\\nasked, where they seemed to be confused, and how you would have done\
+    \ it\\nbetter (explained it differently, talked less, etc).\\n\\u2022 Understand who the decision maker is, and who the\
+    \ decision maker listens\\nto. Realize that nothing matters until the decision maker is convinced, but\\npart of that\
+    \ process is convincing the people the decision maker listens to.\\nIdeally, get the person who the decision maker listens\
+    \ to, to iterate with\\nyou and explain the ins and outs of the system.\\n\\u2022 It\\u2019s helpful to always have a\
+    \ 1-2 sentence blurb, a 1-2 page document, and\\na few slides available about your ideas, regardless of the format that\
+    \ you\\u2019ll\\nbe pitching in. Don\\u2019t wait until the idea is \\u201cready\\u201d to create these.\\n\\u2022 If\
+    \ you can, get materials from people who have previously been successful\\nwith the person or group you\\u2019re dealing\
+    \ with.\\n\\u2022 Pay attention to incentives!\\n\\u2022 Always make it clear how supporting your program will help whomever\\\
+    nyou\\u2019re talking to achieve their own personal goals.\\n\\u2022 Help people feel like an idea was their own idea\
+    \ (even if it was yours.)\\n\\u2022 Do not underestimate the power of good plots and figures.\\nIt\\u2019s time\\nconsuming,\
+    \ but often a good figure or plot can hammer home a point far\\nmore effectively than words. Adobe Illustrator and ipython/matlab\
+    \ are\\ntools worth being familiar with.\\n\\u2022 People rarely act in isolation. Give people the tools to sell the idea\
+    \ to\\nothers: very clear logical lines of argument, numbers, or figures.\\nSome specific advice for selling your program\
+    \ to different groups:\\nManagement\\n\\u2022 Pay attention to whomever management reports to and what they care\\nabout.\
+    \ Decision-makers ultimately need to justify their decisions to other\\ndecision-makers, peers, or the public.\\n53\\\
+    n\\n\\u2022 Keep management in the loop as your ideas evolve. It\\u2019s easier to sell an\\nidea if it doesn\\u2019t\
+    \ seem like it came out of nowhere.\\n\\u2022 Try to understand the decision-making process as well as possible: who\\\
+    nwill management consult, what materials do they want to see, etc.\\nCollaborators\\n\\u2022 Make it clear how working\
+    \ on your program is aligned with their personal\\nor career goals.\\nTransition Partners\\n\\u2022 Try to figure out\
+    \ what constraints they\\u2019re under. If the program doesn\\u2019t\\naddress or work within those constraints, it will\
+    \ go nowhere regardless of\\nhow promising results are.\\n\\u2022 Start the sales process to transition partners long\
+    \ before the end of the\\nprogram.\\n54\\n\\nCommunicating your vision\\nThe Basics\\nTo start a coordinated research\
+    \ program, you need to convince smart people to\\nfund and support your idea. You will need to convince both nontechnical\
+    \ people\\nand technical people who have varying degrees of expertise in your domain. To\\nwin that support, you need\
+    \ to communicate your vision to people outside your\\nfield in a way that is concise, compelling, and specific. This can\
+    \ be a challenging\\nbalance to strike, but we\\u2019ve put together some templates, examples, and tips to\\nget you started.\\\
+    nWe\\u2019ve found the following helpful to start communicating and pitching a coordi-\\nnated research program:\\n\\\
+    u2022 A short blurb: This should be just a few sentences that you can include\\nin the body of an email to explain who\
+    \ you are and what you are doing.\\nThink of it like the written version of the minute-long description you\\nmight give\
+    \ in a casual conversation.\\n\\u2022 A short brief (approximately 2 pages): This is a high-level overview of\\nwhat you\
+    \ propose to do with enough specifics to convince a reader that\\nyour idea is important and unique as well as to make\
+    \ it clear that you\\nhave a concrete plan.\\n\\u2022 A pitch presentation: This is a series of slides that you can narrate.\\\
+    nThe content in your pitch will overlap with your brief, but it gives you the\\nopportunity to communicate that information\
+    \ with visuals, timing, and\\ntone.\\nThe brief and pitch will largely cover the same information and include things\\\
+    nlike:\\n\\u2022 Why your idea is important, actionable, and unique\\n\\u2022 Why you\\u2019re the right person for the\
+    \ job\\n\\u2022 Why a coordinated research program is the right approach\\n\\u2022 Your ask for potential funders/supporters\\\
+    n\\u2022 A high level plan that breaks the work down into tracks/tranches/phases\\nYour blurbs, briefs, and pitches can\\\
+    u2019t and shouldn\\u2019t be comprehensive. Instead,\\nthe goal of all of them is to start a conversation. Anyone with\
+    \ the resources to\\nsupport your program will be busy. Before you can convince anyone to help you,\\nyou need to persuade\
+    \ them to make time to listen to you. These are tools to\\nhelp you get buy-in for longer, more detailed discussions.\\\
+    n55\\n\\nDon\\u2019t wait until your idea is \\u201cready\\u201d to create these materials or to start pitching\\nyour\
+    \ idea. Going through the process of creating these materials will help clarify\\nyour thinking. Versions you create early\
+    \ in the process will also allow you to get\\nhigher quality feedback as you refine your idea.\\nThe Blurb\\nBlurbs are\
+    \ your skeleton key to unlock many conversations: a cold email or\"\n  },\n  {\n    \"name\": \"introduction will succeed\
+    \ or fail based on whether your blurb can both inform\",\n    \"text\": \"and excite someone. Additionally, a blurb is\
+    \ someone\\u2019s first impression of you:\\nwhether you have interesting ideas or are full of BS.\\nGood blurbs are short,\
+    \ specific, and start with the bottom line. They should also\\nminimize both technical jargon and buzzwords. Your blurb\
+    \ will not be static. It\\nshould evolve as your program idea matures.\\nThere\\u2019s no specific formula, but we recommend\
+    \ a three-sentence structure:\\n1. <Sentence about what you\\u2019re doing and why>\\n2. <Some concrete examples that\
+    \ someone could get excited about>\\n3. <Something tying to the specific audience or credibility-enhancing infor-\\nmation>\\\
+    nExample:\\nSome tips:\\n\\u2022 One of the most powerful narrative structures is: \\u201cif we can do X, it will\\nremove\
+    \ bottleneck Y, which will enable Z.\\u201d\\n\\u2022 Write, outline or talk through a longer-form version first. It is\
+    \ much easier\\nto pull out the most important details from a longer description than to\\n56\\n\\nstart from scratch\
+    \ on the most pared down version.\\n\\u2022 It is really tempting to cut words by using more technical vocabulary.\\nDon\\\
+    u2019t fall into that trap.\\n\\u2022 Don\\u2019t try to provide too much detail. Remember that you only need the\\nreader\
+    \ to get enough of your idea to want to have a conversation with you\\nabout it.\\n\\u2022 At the same time, be concrete.\
+    \ It\\u2019s easy to create a blurb that is full of\\nvague terms and aspirations.\\n\\u2022 An LLM can sometimes be helpful\
+    \ for taking a pile of thoughts and\\nturning it into a few sentences that minimize jargon.\\n\\u2022 Test your blurb\
+    \ out with other people you know from a mix of backgrounds.\\nThis can be helpful both when you\\u2019re trying to figure\
+    \ out which details to\\ninclude in your blurb and once you have a draft blurb and want to make\\nsure it hits the right\
+    \ notes and doesn\\u2019t include jargon.\\nThe Brief\\nLike the blurb, the primary purpose of the brief is to get you\
+    \ a follow-up meeting.\\nIt should provide a clear, specific, and concise overview. It should not try to\\nbe comprehensive,\
+    \ but it should make a reader feel like they understand what\\nyou\\u2019re trying to do without obvious gaps.\\nWe recommend\
+    \ that you aim for 2 pages (no more than 3 pages). This length\\nworks because it is:\\n\\u2022 Short enough that people\
+    \ will read it\\n\\u2022 Long enough to communicate the essentials of a complex or technical idea\\nThe brief should provide\
+    \ details on what your program will do, how it could\\nwork, and how it\\u2019s different from today\\u2019s state-of-the-art,\
+    \ enabling readers to\\nstart evaluating your idea. However, you still need non-technical people to be\\nable to understand\
+    \ it.\\nTo help with structuring a brief about a coordinated research program, we\\ncreated a more detailed template with\
+    \ tips and examples.\\nSome tips:\\n\\u2022 Take the time to make sure your writing is clear and flows well. Remember,\\\
+    nyou\\u2019re competing for time and attention, so you don\\u2019t want readers to\\nhave to work to understand your point.\\\
+    n57\\n\\n\\u2022 Apply the pyramid principle throughout.\\nFor each section (and\\neven each paragraph) start with the\
+    \ point you want the reader to take\\naway from that section before going into the details that support that point.\\\
+    n\\u2022 Use technical language where it adds needed clarity and specificity, but use\\nsimpler language wherever a less\
+    \ accessible term does not add significant\\nvalue.\\n\\u2022 If you need to introduce technical terms or acronyms, limit\
+    \ yourself to a\\nfew essential terms that you define thoroughly. Even if you explain them\\nwell, readers can only hold\
+    \ a few new terms in their working memory.\\n\\u2022 Eliminate any jargon-y phrases that sound technical but are actually\\\
+    nmeaningless (e.g. \\u201cmaximizing learning and information density such that\\nactionable methods can be developed\\\
+    u201d).\\n\\u2022 Don\\u2019t try to write a brief that works for all applications of your re-\\nsearch/technology. Focus\
+    \ primarily on one application and its impact\\n(you can briefly mention others at the end). If you can\\u2019t pick one\
+    \ focus,\\nwrite more than one version of your brief. You can test the different\\nversions to see which resonates better,\
+    \ or keep both for different audiences.\\nWriting Resources\\n\\u2022 Program Brief Template\\n\\u2022 The Science of\
+    \ Scientific Writing (super helpful tactics for how to\\n58\\n\\ncommunicate science clearly without oversimplifying)\\\
+    n\\u2022 The Pyramid Principle (the original book is recommended too!)\\n\\u2022 The Storytelling Power of Numbers\\n\\\
+    u2022 Summer SciComm Series: Cognitive Load\\nThe Pitch\\nThe pitch for a coordinated research program falls somewhere\
+    \ between a startup\\npitch and a scientific presentation. Like a startup pitch, your goal is to persuade\\nyour audience\
+    \ to invest time and resources in you and your idea. However, your\\nargument will hinge more on technological feasibility\
+    \ and impact than financial\\nreturns.\\nWhen and how to use your pitch\\nOnce someone has expressed interest in your\
+    \ program, the pitch is another mode\\nfor communicating an overview of your proposed program. Don\\u2019t jump into full\\\
+    npitch mode at a first meeting, unless the person you\\u2019re meeting asks you to pitch\\nto them. Start with a shorter,\
+    \ more informal conversation and then ask if they\\nwould like to hear your full pitch. If it makes sense, you can ask\
+    \ if you can pull\\nup a specific slide as a visual aid.\\nWe recommend keeping your pitch to 10-15 minutes in length.\
+    \ This is long\\nenough for you to give a high-level overview with some specifics and short enough\\nthat you can give\
+    \ it in a 30 minute meeting with time for questions. You should\\nalso have extra slides ready at the end of your pitch\
+    \ to help you address questions\\nthat you expect to may come up. This tactic shows off your preparation and\\nallows\
+    \ you to adapt the level of detail, and the topics on which to provide more\\ndetail, based on your audience\\u2019s questions.\
+    \ These extra slides are a good place\\nto provide additional context or depth that didn\\u2019t fit the time frame or\
+    \ narrative\\nof your pitch or to clear up common misconceptions.\\nThe pitch should stand on its own regardless of whether\
+    \ the audience has read\\nyour brief. You may want to send your program brief to your audience in advance\\nof and/or\
+    \ as a follow up to your presentation. Even if you share your brief\\nbeforehand, you won\\u2019t want to assume they\\\
+    u2019ve read it or remember what they\\nread.\\nWhat goes into your pitch\\nA pitch is made up of the following:\\n\\\
+    u2022 The things you say\\n59\\n\\n\\u2022 Your delivery (including timing, tone, eye contact, body language and how\\\
+    nyou interact with the audience)\\n\\u2022 Visual aids (i.e. slides)\\nYou should put as much or more thought into planning\
+    \ and practicing the\\nfirst two as creating a slide deck. Slides should not be your primary way of\\ncommunicating your\
+    \ message to the audience; they should be a tool to reinforce\\nwhat you say.\\nThere are two types of slide decks: visuals\
+    \ supporting a presentation and\\ndocuments that can be read without the presenter. We don\\u2019t recommend trying\\\
+    nto use a single slide deck as both a visual aid and standalone document. People\\ncan\\u2019t effectively read slides\
+    \ and listen to you. Text-heavy slides mean they\\u2019ll\\nmiss what you have to say. Plus, they\\u2019re boring. If\
+    \ you want a slide deck for\\npeople to read on their own, it\\u2019s best to have 2 versions.\\nWe\\u2019ve created an\
+    \ outline to help you create your pitch.\\nSome tips:\\n\\u2022 Communicate the potential impact of your program at the\
+    \ beginning. Get\\nthem excited about listening to the rest of your pitch.\\n\\u2022 Plan when and how you want to handle\
+    \ questions. Depending on the\\ncontext and audience, you may want to encourage the audience to\\ninterrupt with questions\
+    \ or wait until the end. It helps to explicitly set\\nthese expectations at the beginning of your presentation. Incorporate\\\
+    npracticing Q&A into your pitch practice.\\n\\u2022 The Pyramid Principle applies to your pitch as well.\\n\\u2013 Organize\
+    \ your presentation and your slides around the key points\\nyou want your audience to take away and remember to start\
+    \ with the\\nanswer and then go into the supporting details/evidence.\\n\\u2013 Apply this principle not just to the narrative\
+    \ as a whole, but to the\\nkey takeaway for each section of your presentation. This helps keep\\nyour presentation focused\
+    \ and organized and cues your audience to\\ntopic transitions, letting them know what to look for next\\n\\u2022 The Assertion-Evidence\
+    \ Slide layout (see links below) is a good basic\\nstarting point for slide design.\\n\\u2022 Keep text on slides to a\
+    \ minimum.\\n\\u2013 Make the most of titles by using them to convey your main takeaway.\\n\\u2013 Take out any text on\
+    \ slides that you\\u2019re just using as a reminder of\\n60\\n\\nwhat to say and put it in your notes instead. People\
+    \ can either read\\nyour slides or listen to you.\\n\\u2013 Presentation slides should not have text smaller than 45 pt\
+    \ font (or\\n23 pt in Google Slides) both for visibility and to keep you from using\\ntoo much text.\\n\\u2013 If you\
+    \ have any text on a slide, read it out verbatim or the audience\\nwill stop paying attention to what you\\u2019re saying\
+    \ to read what\\u2019s\\nwritten on the slides.\\n\\u2022 Use images or diagrams that reinforce what you say, people can\
+    \ more\\neasily process visual and verbal information at the same time than written\\nand verbal information.\\n\\u2022\
+    \ Don\\u2019t copy jpegs of figures from scientific papers. Create a new version of\\nthat figure specifically for what\
+    \ you need.\\n\\u2013 Include only the information you want to highlight.\\n\\u2013 Break up complex figures and introduce\
+    \ them piece-by-piece.\\n\\u2013 Add annotations to highlight key takeaways or numbers.\\n\\u2013 Make sure any text labels\
+    \ use a readable font size.\\n\\u2022 Powerpoint\\u2019s convert text to SmartArt tool makes it really easy to convert\\\
+    nbullets of text into diagrams.\\nPitching Resources\\n\\u2022 Brains Slide Design Tips\\n\\u2022 \\u201cHow to Design\
+    \ a Better Pitch Deck,\\u201d YCombinator\\n\\u2022 Assertion-Evidence Slides\\n\\u2022 HBR Guide to Persuasive Presentations\\\
+    n\\u2022 Speaking Up Without Freaking Out\\n61\\n\\nBudgeting for a coordinated research program\\nThere is no algorithm\
+    \ for figuring out a program\\u2019s budget. As such, most of\\nthe advice here will be frustratingly common sense. The\
+    \ unsatisfying reality is\\nthat budgeting for large programs is essentially a bundle of tricks that you use\\nto come\
+    \ up with numbers that everybody involved thinks are good enough as\\nopposed to an actual procedure.\\nAt a high level,\
+    \ the budgeting process is some mixture of\\n\\u2022 Bottom-up budgeting.\\nBottom-up budgeting is figuring out how\\\
+    nmuch things will cost from \\u201cfirst principles\\u201d \\u2014 figuring out how much\\nequipment, consumables, person-hours\
+    \ the program will take and how\\nmuch you expect each of those to cost.\\n\\u2022 Comparables. Sometimes the most straightforward\
+    \ way to know how\\nmuch something will cost is to compare it to what something similar cost\\nin the past and make adjustments\
+    \ based on the difference.\\n\\u2022 Top-down budgeting. In reality, your budget should be informed in\\npart by asking\
+    \ \\u201chow much can we do with the amount of money we think\\nwe can get?\\u201d\\nTo many technical people, comparable\
+    \ and top-down budgeting probably feel\\nunsatisfying, but the uncertainty associated with any research program means\\\
+    nthat a bottom-up budget can be just as inaccurate as a comparison or a top-down\\nbudget. The most accurate budget will\
+    \ likely come from a mixture of the three.\\nThat scenario could look like \\u201cthere\\u2019s a huge gap between the\
+    \ bottom-up budget\\nand how much a comparable thing cost in the past, which made me realize I\\nwasn\\u2019t accounting\
+    \ for a delay in this key part so to make it within the budget my\\norganization normally authorizes, I need to cut this\
+    \ other project and redirect\\nits funds towards making sure that part comes on time.\\u201d\\nThe closest thing to an\
+    \ \\u201calgorithm\\u201d for budgeting a coordinated research program\\nmight be the following:\\n\\u2022 Start with\
+    \ the Gantt chart. Any considerations about budget are\\ndownstream of the actual work that needs to happen in the program.\
+    \ You\\nshould have a good idea of:\\n\\u2013 The different lines of work or projects that need to happen\\n\\u2013 The\
+    \ milestones those projects will need to hit\\n\\u2013 The dependencies between those projects\\n\\u2022 Identify monetary\
+    \ bottlenecks. Most programs will have some places\\nwhere more money won\\u2019t make things go any faster \\u2014 things\
+    \ like clinical\\ntrials or regulatory approval processes that can\\u2019t be parallelized.\\nIt\\u2019s\\n62\\n\\nimportant\
+    \ to identify these places because in order to hit your goals on\\ntime, you may need to budget more for areas where money\
+    \ could buy\\nspeed. (See more below about the nuances of buying speed.)\\n\\u2022 Understand comparables. Do enough research\
+    \ and talk to enough\\npeople that you have a sense of roughly the cost of both individual parts\\nof your program (salaries,\
+    \ equipment, consumables, bureaucracy, etc) and\\nthe program overall. (This is yet another reason why navigating a network\\\
+    nis important!)\\n\\u2022 Put yourself in the shoes of the project leader. For any given\\nproject, put yourself in the\
+    \ shoes of that project\\u2019s leader (this could be\\nyou!) and sketch out what you would need to hit your milestone\
+    \ and how\\nmuch those things would cost.\\n\\u2022 Write down your biggest assumptions. For every non-obvious number\\\
+    nyou write down, you should write down the three biggest assumptions\\nbehind that number. For example \\u201cI\\u2019m\
+    \ assuming that it will be much\\neasier to do tests 2-5 after they figure out how to do test 1.\\u201d Bounce these\\\
+    nassumptions off of people!\\n\\u2022 Work backwards from different budgets. What do you think you\\ncould achieve with\
+    \ $2M? $5M? $25M? Would that be compelling?\\nThe massive caveat here is that the amount of time you should spend on each\
+    \ of\\nthese steps will vary greatly for different programs, organizations, and contexts.\\nThere are four things to lean\
+    \ on when you\\u2019re thinking about budgets:\"\n  },\n  {\n    \"name\": \"Your own experience. In your experience,\
+    \ how much do projects like the\",\n    \"text\": \"ones you\\u2019re thinking about cost? How long do they take?\\n2.\
+    \ (Ideally unbiased) technical experts. People who have seen projects that\\nhave a similar institutional structure to\
+    \ your program and the projects\\nyou\\u2019re proposing.\\nIn an ARPA organization these are SETAs or the\\nequivalent\
+    \ (PSpecs and TSpecs in the case of ARIA)\"\n  },\n  {\n    \"name\": \"LLMs like GPT4 or Anthropic\\u2019s Claude even\
+    \ in early 2024 can be helpful\",\n    \"text\": \"for structuring assumptions and digging up comparable programs and\\\
+    nbudgets. The two caveats are to always double check numbers with a\\nmore trustworthy source and don\\u2019t ask them\
+    \ about \\u201chow do I budget a\\nprogram?\\u201d directly or they\\u2019ll likely give you generic drivel.\"\n  },\n\
+    \  {\n    \"name\": \"The business model of whatever organization you\\u2019re getting money from\",\n    \"text\": \"\
+    (More on this consideration in the top-down budgeting section). This\\nconsideration goes for whether you\\u2019re an\
+    \ employee of an organization that\\nruns programs like ARIA or are raising money from an external entity.\\n63\\n\\nThe\
+    \ rest of this writeup is primarily a bag of tricks and considerations.\\nThings to think about\\n\\u2022 Consider overhead\
+    \ in your budgeting, both for yourself (travel, collabo-\\nration, operations if you need that) and for external collaborators\
+    \ if you\\nhave those.\\n\\u2013 If you are going to be working with geographically distributed people,\\nmake sure you\
+    \ carve out a coordination budget to bring them together.\\n\\u2013 Make sure you carve out a travel budget.\\n\\u2022\
+    \ When you\\u2019re thinking about how many people a specific project or task will\\ntake, there\\u2019s never a hard\
+    \ number. Instead you could think of additional\\npeople as making your timelines and chances of success more robust.\
+    \ It\\u2019s\\nalways possible that a single grad student could successfully hit all of a\\nproject\\u2019s milestones\
+    \ on time through superhuman effort or luck. However,\\nthe probability of that is low. More people on a project generally\
+    \ increases\\nthat probability. Adding more people will rarely decrease timelines in a\\nstraightforward way.\\n\\u2022\
+    \ You can often \\u201cpay more for speed.\\u201d There are straightforward ways to\\nbuy speed: purchasing a piece of\
+    \ equipment instead of building it, buying\\ntools instead of using shared ones, hiring a specialist instead of having\
+    \ a\\ngrad student do it. You can also buy \\u201cstochastic speed\\u201d by parallelizing\\na problem: if each person\
+    \ or group has some probability of figuring it\\nout each month, statistically the program will figure it out faster if\
+    \ you\\nhave more people working on the problem. For example, you could hire\\nmultiple contract research organizations\
+    \ to do the same thing to increase\\nthe likelihood that one will do it right the first time. (Just because you\\u2019ve\\\
+    npaid someone to do something doesn\\u2019t mean they\\u2019ll do it the way you\\nwant and on time!).\\n\\u2022 Scale\
+    \ is expensive! To some extent, your program\\u2019s budget depends on\\nwhat scale you expect a solution to get to. (The\
+    \ question of scale feeds\\nback from budgeting into program design: to some extent you need to\\ntune your scale ambitions\
+    \ to the budget you believe you can command.)\\n\\u2022 If you\\u2019re working with external collaborators, there are\
+    \ many different\\narchetypes of projects, each with its own cost structures and amount of\\npadding that needs to be\
+    \ built in. Some archetypes include:\\n\\u2013 A large industry partner with academic subcontractors\\n\\u2013 An academic\
+    \ partner with their own subcontractors\\n\\u2013 Small companies\\n64\\n\\n\\u2022 If possible, keep a pool of money\
+    \ held in reserve. A rule of thumb is that\\nthis reserve should be 20% of the program\\u2019s budget. It has a number\
+    \ of\\nuses, including:\\n\\u2013 Unexpected expenses causing a promising project to run out of money\\n\\u2013 Doubling\
+    \ down on projects that actually can absorb more money\\n\\u2013 Opportunistically pursuing something that didn\\u2019t\
+    \ come up until you\\nstarted the program\\n\\u2013 Enabling transition at the end of the program: whether it\\u2019s\
+    \ seeding\\na spinout, matching a budget from a large company, or paying for\\nengineering work to make a tool or dataset\
+    \ more usable.\\n\\u2022 Run your numbers by people. Budgeting is a situation where the wisdom\\nof crowds can actually\
+    \ work. (This is yet another reason why it\\u2019s important\\nto build a network!)\\n\\u2022 Different domains have different\
+    \ \\u201cbudget physics.\\u201d Especially hardware vs\\nsoftware vs life sciences.\\n\\u2022 Different organizations\
+    \ will have different rules about how earmarked your\\nbudget needs to be.\\n\\u2022 Budgeting isn\\u2019t binary. It\\\
+    u2019s never the case that there\\u2019s some number that\\nwill guarantee success or failure.\\n\\u2022 As a program\
+    \ leader, you are often going to be on both sides of the\\nbudgeting process: creating your own budget and evaluating\
+    \ other people\\u2019s\\nproposed budgets.\\n\\u2022 You should adjust your budget estimates up or down depending on who\
+    \ you\\nneed to attract to be successful. One aspect of \\u201cwho do you need?\\u201d is how\\nin-demand the skillset\
+    \ is: if you\\u2019re doing a program in an obscure area where\\nexperts are in low demand, you don\\u2019t need as much\
+    \ money as doing an AI\\nproject in 2024. Another aspect is how sensitive a project\\u2019s success is to the\\nskill\
+    \ of the people executing it: do you need a team in the 99th percentile\\nor could a 95th percentile team do it? Adjust\
+    \ budget estimates accordingly.\\n\\u2022 In the world of budgeting programs, you might hear the following acronyms:\\\
+    n\\u2013 ROM \\u2014 rough order of magnitude\\n\\u2013 WAG \\u2014 Wild-ass guess\\nRed Flags\\nIf you see these in a\
+    \ budget, you should be wary. Similarly, you shouldn\\u2019t do\\n65\\n\\nthese when budgeting!\\n\\u2022 Too many significant\
+    \ figures. Based on the org you want to round to the\\nnearest $1/2/5M.\\n\\u2022 When a PI is going to be spending less\
+    \ than 20% of their time on a program.\\n\\u2022 If the common assumption is that a project will take N people X months\\\
+    nand someone wants to use 2N people and take X/2 months, they probably\\nwill not succeed.\\n\\u2022 Linear spending \\\
+    u2014 if someone budgets the same amount for every unit of\\ntime.\\nAn aside on top-down budgeting\\nThe reality is that\
+    \ a lot of your budgeting considerations are going to be driven\\nless by how much the program would cost in a vacuum\
+    \ and more by where the\\nmoney is coming from. As a result, budgeting is inextricably tied to fundraising\\n(whether\
+    \ from external funders or higher levels within an organization). Some\\nconsiderations for top-down budgeting:\\n\\u2022\
+    \ Figure out both the ceiling and normal amount of money that an\\norganization deploys into a program.\\n\\u2022 When\
+    \ asking for money, don\\u2019t be shy! Chance of rejection doesn\\u2019t actually\\nchange with the amount you\\u2019re\
+    \ asking for as long as it\\u2019s well-reasoned4\\nand under the organization\\u2019s ceiling.\\n\\u2022 Related to the\
+    \ above, standard negotiating tactics apply: you want to\\nanchor your counterpart on the highest amount that won\\u2019t\
+    \ cause them to\\nleave the negotiation.\\n\\u2022 Understand the dynamics of money within the organization:\\n\\u2013\
+    \ Does the organization have a hard budget that can be exhausted? If\\nso, how much is left?\\n\\u2013 Does the organization\
+    \ have a budget it wants to spend down by the\\nend of the year? If so, how much do they want to unload?\\n\\u2013 What\
+    \ are the rules around things that can be funded within the\\nbudget you\\u2019re asking for? Can you pay for travel?\
+    \ Meetings? Small\\nseed projects? Or are those things funded separately?\\n4People can tell if you do nothing but work\
+    \ backwards from a maximum check size.\\n66\\n\\nInstitutional moves for interfacing with other or-\\nganizations\\nNote\
+    \ that none of this is legal advice!\\nThere are many ways to get external work done in a coordinated research\\nprogram:\
+    \ everything from soliciting proposals and giving grants to the best\\nproposals to hosting a competition to hiring someone\
+    \ to do a specific piece of\\nwork to convincing two other organizations to sign a joint development agreement\\nwith\
+    \ each other. You could think of each of these arrangements to get one or\\nmore people or organizations to do a thing\
+    \ as an \\u201cinstitutional move.\\u201d Because\\nyou aren\\u2019t doing any of the work with your own hands, institutional\
+    \ moves are\\nyour tools for getting things done.\\nGrants vs. Contracts\\nMany institutional moves bottom out in giving\
+    \ an organization or individual\\nmoney. Money can go out the door in the form of either grants or contracts, so\\nit\\\
+    u2019s good to be familiar with what each entails.\\nBroadly, these are the differences between a grant and a contract:\\\
+    n\\u2022 Grants\\n\\u2013 Scope of work is defined by the applicant\\n\\u2013 No legally binding requirement to achieve\
+    \ results\\n\\u2013 Assumes \\u201cbest effort\\u201d on the part of the applicant\\n\\u2013 Enables more flexibility\
+    \ in outcomes beyond what was initially agreed\\nupon\\n\\u2013 IP generally is owned by the public or creator\\n\\u2022\
+    \ Contract\\n\\u2013 Scope of work is defined by the buyer\\n\\u2013 Legally binding agreement to provide specific goods\
+    \ and services in\\nexchange for compensation\\n\\u2013 IP is generally owned by the buyer\\nHere is a more detailed table\
+    \ of differences in the US government and here is an\\narticle about the differences.\\nSome potential institutional moves\\\
+    nTheoretically, there are an infinite number of potential institutional moves.\\nWhich moves you can actually execute\
+    \ on are limited by:\\n67\\n\\n\\u2022 Imagination\\n\\u2022 Legality\\n\\u2022 Requirements of your particular organization\
+    \ and their contracting author-\\nity\\nAnd of course, what other people are willing to agree to.\\nSome more common moves:\\\
+    n\\u2022 Giving a grant to an academic organization.\\n\\u2013 Grants don\\u2019t give you any power over the output or\
+    \ intermediate\\nproducts.\\n\\u2013 Once you\\u2019ve given a grant, it is incredibly hard to get it back.\\n\\u2013\
+    \ You need to negotiate both with the PI and the university.\\n\\u2013 The work will primarily be done by graduate students.\\\
+    n\\u2022 Working through a prime contractor who breaks up work into subcontracts\\n\\u2022 Signing a contract with an\
+    \ organization for a specific work product\\n\\u2022 Giving a grant to a startup.\\n\\u2022 Giving a grant to a nonprofit\
+    \ organization\\n\\u2022 Creating a competition with a prize pool\\n\\u2013 Winnowing down competitors\\n\\u2022 Running\
+    \ a series of hackathons\\n\\u2022 Stipulating that two organizations need to integrate components\\n\\u2022 Having one\
+    \ organization generate some kind of result and have another\\norganization test those results\\n\\u2022 Creating a consortium\
+    \ of organizations through some combination of\\nconvenings and putting in initial money.\\n\\u2022 Creating a public\
+    \ dataset\\n\\u2022 Creating a set of standards or interfaces\\nNote that these moves are not mutually exclusive: you\
+    \ could (and often need\\nto!) sign a contract with a contractor to run a competition.\\n68\\n\\nSome less conventional\
+    \ moves that one could imagine:\\n\\u2022 Giving a postdoc or independent researcher a grant to do work at an\\nacademic\
+    \ lab or independent lab space.\\n\\u2022 Helping change regulations, potentially by providing experimental evidence\\\
+    n\\u2022 Matching funding from other private or government organizations\\n\\u2022 Creating clear tranches with milestones\
+    \ at which other organizations will\\nput in funding\\n\\u2022 Setting up an endowment for an open source project\\n\\\
+    u2022 Doubling down on a project that is going surprisingly well\\n69\\n\\nKnowing When to Quit and Setting Up Kill Cri-\\\
+    nteria\\nOne of the reasons that programs are able to take large risks is the willingness to\\nkill off projects or entire\
+    \ lines of investigation. Quitting enables you to redirect\\ntime and resources towards more productive uses. Knowing\
+    \ when to quit is\\nan art and actually doing it is incredibly hard, especially when it means firing\\nemployees or effectively\
+    \ firing external performers.\\nQuitting can happen at several points:\\n\\u2022 Abandoning an idea while designing a\
+    \ program.\\n\\u2022 Choosing not to continue a line of work after an initial experiment.\\n\\u2022 Ending a project before\
+    \ getting to a specific endpoint.\\nThere are several reasons why you might quit:\\n\\u2022 You realize (through analysis\
+    \ or experiment) that an idea violates the laws\\nof physics.\\n\\u2022 You determine that an approach won\\u2019t scale\
+    \ or is otherwise a dead end.\\n\\u2022 A problem is primarily a non-technological issue.\\n\\u2022 Other work has made\
+    \ a project or approach obsolete.\\n\\u2022 An external collaborator just isn\\u2019t good or shows themselves unable\
+    \ to\\nexecute.\\n\\u2022 Someone higher up decides that they don\\u2019t want to continue funding your\\nprogram for\
+    \ several reasons \\u2013 anything from budget cuts to optics to\\npolitics.\\nGood kill criteria:\\n\\u2022 Are objective.\
+    \ The most straightforward way to achieve objectivity is\\nmeasurability, but requiring measurability can rule out many\
+    \ good projects.\\n\\u2022 Are agreed upon by all parties involved. This often requires negotiation.\\n\\u2022 Have ways\
+    \ that employees or external collaborators can realize that they\\naren\\u2019t on target and step up their game. This\
+    \ might look like intermediate\\ncheckpoints or a continuously variable metric.\\nConcrete tactics around quitting:\\\
+    n\\u2022 Create precise, falsifiable hypotheses.\\n70\\n\\n\\u2022 Timebox everything \\u2014 whether it\\u2019s your\
+    \ own exploration of ideas or\\nperformer projects.\\n\\u2022 Be very clear with everybody involved up front about what\
+    \ rate of progress\\nyou expect.\\n\\u2022 One way to make sure that you\\u2019re on the same page with researchers\\\
+    n(both internal and external) about expectations is to have them specify\\ntheir own milestones (with some nudging towards\
+    \ ambition).\\n\\u2022 Create tight feedback loops with everybody involved in the program and\\nespecially researchers,\
+    \ both internal and external to the org.\\n\\u2022 Once you know that you should quit, act as fast as possible. Anything\
+    \ else\\nis a waste of time and money.\\nConcrete Examples\\nExamples of programs that cut sub-projects or performers:\\\
+    n\\u2022 Cutting sub-projects or external collaborators due to cost\\noverruns.\\nDuring DARPA\\u2019s Miniature GPS Receiver\
+    \ Program,\\nTony Tether cut Magnavox as a performer because they had repeated\\ncost overruns. Pruning performers based\
+    \ on cost overruns is not uncommon.\\n\\u2022 Cutting sub-projects or external collaborators that fail to hit\\nmilestones.\
+    \ During the F6 Program (Future, Fast, Flexible, Fractionated,\\nFree-Flying Spacecraft United by Information Exchange),\
+    \ DARPA aimed\\nto develop a new approach to satellite architecture. The program\\u2019s PM\\nhad to make tough decisions\
+    \ around cutting performers who were not\\nmeeting the milestones in developing modular and flexible spacecraft\\nsystems.\\\
+    n\\u2022 Cutting teams from a staged competition based on milestones.\\nDuring the DARPA Robotics Challenge, teams had\
+    \ to succeed at one or\\ntwo different sub-challenges (a competition with a simulated robot and a\\nscoped version of\
+    \ the final challenge) to make it to the final competition.\\nThose that failed at the challenges were cut and those that\
+    \ succeeded were\\ngiven additional funding. (See image)\\n71\\n\\nExamples of programs that ended early. (Note that it\\\
+    u2019s also a reason to quit if\\nyou are convinced that a program would run into one of these situations during\\nthe\
+    \ design phase):\\n\\u2022 Quitting a program because the approach is deeply mismatched\\nto the goals.\\nThe Fast Adaptable\
+    \ Next-Generation Ground Vehicle\\nprogram was focused on building open-source vehicle design and man-\\nufacturing, but\
+    \ was ultimately ended early because there were enough\\nclassified military designs and materials that an open source\
+    \ approach just\\ndidn\\u2019t work for military vehicles.\\n\\u2022 Quitting because it didn\\u2019t seem possible to\
+    \ hit key metrics. The\\nExoskeletons for Human Performance Augmentation Program aimed to\\ndevelop wearable exoskeletons\
+    \ to enhance soldier performance. It faced\\nsignificant technical challenges, especially in power supply and weight\\\
+    nreduction. The technological hurdles and the high cost of development led\\nto its early termination.\\n\\u2022 The Transformer\
+    \ (TX) Program sought to develop a flying car-like vehicle\\nfor military use.\\nIt encountered numerous challenges in\
+    \ design and\\nfeasibility, particularly in achieving the desired performance within the\\nconstraints of size, weight,\
+    \ and power. The program was terminated early\\ndue to these technical and practical limitations.\\n\\u2022 Quitting because\
+    \ of politics. The Total Information Awareness (TIA)\\nProgram was developing technologies for large-scale data mining\
+    \ and\\nanalysis to prevent terrorist attacks. It was terminated due to public\\nconcerns over privacy and civil liberties.\
+    \ The controversy over surveillance\\n72\\n\\nand data collection led to a loss of support in Congress, resulting in its\\\
+    nearly closure.\\n\\u2022 Quitting because the world changes. The SyNAPSE (Systems of\\nNeuromorphic Adaptive Plastic\
+    \ Scalable Electronics) program, started in\\nthe late 2000s, aimed to create electronic neuromorphic machine technology\\\
+    nthat would function similarly to a human brain. The goal was to develop a\\nnew generation of computers and electronics\
+    \ that could interpret, analyze,\\nand learn from data in a sophisticated, efficient manner, much like the\\nhuman brain.\
+    \ However, as the program progressed, the rapid advancement\\nof machine learning and artificial intelligence in the broader\
+    \ tech industry,\\nparticularly the development and improvement of deep learning algorithms,\\novershadowed the goals\
+    \ of SyNAPSE. These advancements in AI and ma-\\nchine learning offered more immediate and practical solutions to problems\\\
+    nSyNAPSE aimed to address.\\nDeep learning, leveraging large neural networks and massive amounts\\nof data, began to demonstrate\
+    \ remarkable capabilities in image and\\nspeech recognition, natural language processing, and other areas that were\\\
+    nonce thought to require the kind of neuromorphic computing DARPA\\u2019s\\nSyNAPSE program was exploring. As a result,\
+    \ the focus in the tech in-\\ndustry shifted towards these more immediately applicable AI technologies,\\nwhich were rapidly\
+    \ evolving and being integrated into various applications.\\nThis shift made some of the objectives of the SyNAPSE program\
+    \ seem less\\nrelevant, leading to its early wind-down.\\nRelated resources:\\n\\u2022 The monkey and the pedestal\\n\\\
+    u2022 Funding breakthrough research\\n73\\n\\nMetrics for coordinated research programs\\nMetrics for coordinated research\
+    \ programs (and research in general) are incredibly\\ntricky because good metrics are far more powerful than no metrics,\
+    \ while bad\\nmetrics can be actively harmful. (In a nutshell, good metrics > no metrics\\n> bad metrics)\\nA note on\
+    \ terminology: This writeup will talk about both \\u201cmetrics\\u201d and \\u201cquan-\\ntifiable goals\\u201d because\
+    \ it\\u2019s hard to talk about one without discussing the other.\\nThe line between \\u201cmetrics\\u201d and \\u201cquantifiable\
+    \ goals\\u201d is fuzzy but metrics have a\\nsense of being measured continuously and used as indicators while goals have\
+    \ a\\nsense of being measured only at specific times and being more binary in their\\noutcomes.\\nWhat is the purpose\
+    \ of metrics?\\nMetrics can serve several purposes:\\n\\u2022 Agnostically adjudicating between different approaches to\
+    \ a\\nproblem. A good metric can enable you to compare drastically different\\napproaches and ultimately decide which\
+    \ is more promising.\\n\\u2022 Introducing a new paradigm. Commonly used metrics often encode\\nparadigms in a field or\
+    \ industry.\\nIntroducing a new metric can push\\npeople towards new paradigms.\\nFor example, a common metric in\\nsemiconductors\
+    \ is \\u201cprice per transistor.\\u201d The industry touts how low that\\nprice is compared to other widgets. However,\
+    \ if you looked at the \\u201cprice\\nper mole of transistors\\u201d the price looks incredibly high compared to other\\\
+    nthings we use in bulk, like drugs.\\n\\u2022 An internal barometer or dashboard of progress over time.\\nMetrics are\
+    \ one way for program leaders and people on project leads to\\nhave a sense of how close they are to hitting their goals.\\\
+    n\\u2022 Focusing and driving work. Metrics are a great way to make sure\\nteams and collaborators are on the same page\
+    \ about what is important.\\nThose same focusing metrics can also be a catalyst for conversations about\\nwhat\\u2019s\
+    \ going on if they\\u2019re not being hit.\\n\\u2022 An easy way for someone external to a project or program to\\njudge\
+    \ progress and success. From the outside, it\\u2019s much easier to\\ncompare two numbers (target number and achieved\
+    \ number) than any\\nother way of evaluating an effort you\\u2019re not inside of.\\nIdeally, all of these purposes will\
+    \ align behind a single, straightforward to measure\\nmetric for the program, perhaps with some project-by-project intermediate\\\
+    nmetrics. Unfortunately, that is almost never the case.\\nDifferent people and organizations will have different approaches\
+    \ to metrics,\\n74\\n\\nfrom using them as law to eschewing them entirely.5\\nHow to think about creating metrics\\n\\\
+    u2022 Determine whether there is a metric that is an actual proxy for getting\\ncloser to the solution\\n\\u2013 Example:\
+    \ if you\\u2019re trying to make better rockets, the metric of\\nnewtons of thrust per kilogram of mass in a thruster\
+    \ relates directly\\nto how much mass the rocket can get into orbit, which is its primary\\npurpose.\\n\\u2022 Think seriously\
+    \ about whether a program or project lends itself to met-\\nrics. In large part, suitability for metrics has to do with\
+    \ the amount of\\nuncertainty about what the final outcome looks like. The question of\\nmetric suitability is fraught:\
+    \ applying metrics to a situation where they\\u2019re\\ninappropriate can lead to wasted work, but it\\u2019s also tempting\
+    \ to use that\\nas an excuse just to avoid the restriction of freedom that metrics create.\\n\\u2022 For any goal, ask\
+    \ whether hitting it will convince the people who you want\\nto care that something is possible or exciting. If not, it\\\
+    u2019s a bad goal.\\n\\u2013 Example: if a program was trying to make a high tensile strength\\nmaterial for a space elevator\
+    \ but the process couldn\\u2019t make the\\nmaterial longer than a few centimeters, it won\\u2019t make people think a\\\
+    nspace elevator is any more possible than before. (This is the current\\nsituation with carbon nanotubes.)\\n\\u2022 Ask\
+    \ \\u201cwhat intermediate metrics would let me know that we have gotten\\npast a key risk?\\u201d These are the \\u201ctraining\
+    \ the monkey\\u201d parts of the program.\\n\\u2013 Example: if you\\u2019ve identified that corrosion on an electronics\
+    \ compo-\\nnent is a key risk, using contact resistance as an intermediate metric\\nis a good idea.\\n\\u2022 Determine\
+    \ (at least for yourself) whether a goal is a \\u201cmust hit\\u201d or a stretch\\ngoal meant to drive effort.\\n\\u2013\
+    \ Example: if you\\u2019re trying to make a wall-penetrating radar and\\nwould be happy if it could penetrate one meter\
+    \ of concrete, you might\\nwant to set a stretch goal of being able to penetrate two meters of\\nconcrete. However, if\
+    \ you\\u2019re making a backpack mounted device,\\nweighing less than a person can carry is a must-hit goal.\\n\\u2022\
+    \ Cost or system scalability are legitimate metrics! Many times, bringing\\nthe cost of a process down is a research-heavy\
+    \ activity and is what will\\nactually get someone to care.\\n5Personally, the author thinks that you should use a few\
+    \ well-chosen metrics to keep yourself\\nand other people honest, as an aspiration, and as a way of noticing problems\
+    \ sneaking up, but\\nnot as an ultimate arbiter of success or failure.\\n75\\n\\n\\u2022 Use as few metrics as you can\
+    \ but no less. Having too many metrics can\\nlead to not focusing on what\\u2019s actually important, but too few metrics\
+    \ can\\nend up ignoring those important things!\\n\\u2022 Understand what metrics you need to hit for a technology to\
+    \ transition.\\n\\u2013 Example: a DARPA program to create artificial blood hit all its\\ntechnical metrics, but the artificial\
+    \ blood was so much more expensive\\nthan blood from a blood bank that the technology was never used.\\nMetrics for a\
+    \ program\\u2019s overall success\\nIt\\u2019s especially tricky to create metrics for the overall success of a coordinated\\\
+    nresearch program for two reasons:\"\n  },\n  {\n    \"name\": \"Their impact almost always happens on the timescales\
+    \ of years or longer\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Often, their impact happens in unexpected ways\"\
+    ,\n    \"text\": \"That being said, it\\u2019s useful to be able to point to some concrete indicators.\\nObviously, one\
+    \ metric for overall success is \\u201cdid you hit your goals and interme-\\ndiate metrics?\\u201d This is one of the\
+    \ few metrics that can be assessed immediately\\nat the end of the program. Of course, judging a program solely on hitting\
+    \ its\\ngoals assumes both that you selected the right goals to have an impact and that\\nunexpected factors won\\u2019t\
+    \ affect the amount that even the right goals can have\\non impact.\\nSome other potential metrics that could be used\
+    \ at time intervals after the\\nprogram ends:\\n\\u2022 Follow-on money that goes towards work that follows the program:\\\
+    nthis could include startups, nonprofits, and research programs in both\\ngovernments and large companies.\\n\\u2022 Use\
+    \ of a term coined during the programs.\\n\\u2022 Contributions to or uses of tools or resources the program creates.\\\
+    n\\u2022 Papers and patents that come out of the program and citations of those\\npublications.\\nTwo caveats around program\
+    \ success metrics:\"\n  },\n  {\n    \"name\": \"The same metrics that indicate a program\\u2019s ultimate success or\
+    \ failure\",\n    \"text\": \"should not be used as intermediate milestones. Projects will rarely show\\ncontinuous improvement.\"\
+    \n  },\n  {\n    \"name\": \"Beware that all of these metrics can warp the program if you emphasize\",\n    \"text\":\
+    \ \"them too much. (See what has happened to academia with the rise of\\ncitation metrics!)\\n76\\n\\nMetrics failure\
+    \ modes\\n\\u2022 Creating a single compound metric out of a number of other met-\\nrics: When there are a number of different\
+    \ measurements you care about,\\nit\\u2019s tempting to assign each one a weight and create a single compound\\nmetric.\\\
+    nThis is a bad idea.\\nIn addition to it being almost impossi-\\nble to pick the right weights, compound metrics often\
+    \ obscure critical flaws.\\n\\u2022 Goodhart\\u2019s law: People are incredibly good at optimizing for a metric\\nwhen\
+    \ they have enough incentive to do so. If you emphasize a proxy metric\\nfor something less measurable, it\\u2019s easy\
+    \ to wind up in a situation where\\nyou\\u2019re maximizing that metric without addressing the thing it\\u2019s a proxy\
+    \ for.\\n\\u2022 Not updating a metric or goal when new information comes up:\\nNot infrequently, you will discover something\
+    \ in the course of a program\\nthat makes a metric or measurable goal irrelevant to the goal of the\\nprogram. It\\u2019s\
+    \ a hard conversation with stakeholders and collaborators to\\ntell them that you were wrong about the original metrics\
+    \ and need to\\nchange, but sticking to the old metric will lead to failure.\\n\\u2022 Focusing on a metric at the exclusion\
+    \ of all other sorts of\\ninformation about a program\\u2019s success: Many important things\\ncannot be quantified.\\\
+    n\\u2022 Creating a metric in a situation where there\\u2019s too much\\nuncertainty to know what the right metric is.\\\
+    n\\u2022 Expecting a metric to show continuous improvement: Especially\\nin research, progress is often nonlinear. A metric\
+    \ can show no movement\\ntowards a goal for a long time and then suddenly explode when someone\\nhas a breakthrough.\\\
+    n\\u2022 Trying to quantify something that isn\\u2019t actually a quantity: It\\u2019s\\ntempting to create quantifiable\
+    \ proxies for non-quantitative things like\\n\\u201cusability.\\u201d These proxies almost always fail to drive work in\
+    \ a useful way.\\nSome examples of good metrics\\n\\u2022 Strength to weight ratio of a material (and really any physical\
+    \ properties)\\n\\u2022 Yield of a process\\n\\u2022 Number of components in a system\\nBad metrics\\n\\u2022 Number of\
+    \ collaborations\\n77\\n\\n\\u2022 Lines of code\\n\\u2022 Media mentions\\n\\u2022 Number of publications (without any\
+    \ other consideration)\\n78\\n\\nHow to Write a Good Solicitation\\nSpecifics of how you write a solicitation will depend\
+    \ heavily on how your orga-\\nnization does things and the design of your program. Here are some generally\\napplicable\
+    \ tips:\\n\\u2022 Spend more time on what you are not looking for than what you are\\nlooking for\\n\\u2022 Leave yourself\
+    \ open to approaches you haven\\u2019t imagined. Two ways to do\\nthis are\"\n  },\n  {\n    \"name\": \"Focus on what\
+    \ you are not looking for (see above)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Be very clear that your goals\
+    \ and metrics are directly aimed at the\",\n    \"text\": \"problem you\\u2019re trying to solve or the capability you\\\
+    u2019re trying to\\nbuild. It\\u2019s easy for metrics to assume a specific paradigm \\u2014 as a\\nmade-up example, if\
+    \ a program was focused on incredibly efficient\\nvehicles, asking for a motor that can get 100 miles/gallon would rule\\\
+    nout electric or fuel-cell vehicles which might actually accomplish the\\ngoal better.\\n\\u2022 Put out a call for short\
+    \ (~2-page) letters of intent (LOIs) before a call\\nfor full proposals. The call for an LOI should look roughly like\
+    \ the full\\nsolicitation except asking for shorter documents and fewer details (eg. No\\nneed for a detailed budget or\
+    \ timelines). Doing an LOI call first has several\\nadvantages:\"\n  },\n  {\n    \"name\": \"It saves everybody time.\
+    \ Ideally the majority of the full proposals\",\n    \"text\": \"will be good because they got a go-ahead from you. That\
+    \ way, you\\ndon\\u2019t have to waste a lot of time reading long proposals and people\\nwho would be rejected don\\u2019t\
+    \ have to spend time writing them.\"\n  },\n  {\n    \"name\": \"It enables you to refine the full solicitation based\
+    \ on common\",\n    \"text\": \"misunderstandings or things you didn\\u2019t see but would like to see\\nmore of in LOI\
+    \ submissions.\"\n  },\n  {\n    \"name\": \"Similar to #2,\",\n    \"text\": \"it enables you to see which groups of\
+    \ peo-\\nple/disciplines/labs didn\\u2019t submit LOIs that you would have wanted\\nand then go encourage them to submit\
+    \ something.\"\n  },\n  {\n    \"name\": \"An effective LOI makes the full proposals more like a contract\",\n    \"text\"\
+    : \"negotiation than a lottery, which is much kinder to already-stressed\\nPIs.\\n\\u2022 Regardless of whether you have\
+    \ a LOI or not, you ideally have in mind\\nseveral real people who you would want to respond to while writing the\\nsolicitation.\
+    \ More specific audiences let you write tighter solicitations and\\n79\\n\\nreduce confusion.\\nA rough outline of a good\
+    \ solicitation\"\n  },\n  {\n    \"name\": \"Title. Create a concise and descriptive title \\u2014 the title should be\
+    \ concise\",\n    \"text\": \"yet descriptive, capturing the essence of the program. Obviously there is\\ntension between\
+    \ descriptive and concise!\\n\\u2022 Good Example: \\u201cAdvancing Autonomous Systems in unstructured\\nenvironments\\\
+    u201d\\n\\u2022 Bad Example: \\u201cNext-gen AI: AI systems anywhere anytime for\\nanybody that can operate in situations\
+    \ where other AIs cannot\\u201d (This\\nis both long and unspecific )\"\n  },\n  {\n    \"name\": \"Goals. Before anything\
+    \ else, state the program\\u2019s specific and ambitious\",\n    \"text\": \"goals in the most simple language possible.\
+    \ It\\u2019s tempting to give background\\nfirst or go very detailed but do not do this!\\n\\u2022 Example: \\u201cDevelop\
+    \ AI algorithms capable of real-time decision-\\nmaking in dynamic environments.\\u201d\"\n  },\n  {\n    \"name\": \"\
+    Background. Give readers brief and relevant context for why the program\",\n    \"text\": \"exists in the first place.\
+    \ Keep it short and directly related to the objective.\\n\\u2022 Example: \\u201cCurrent AI systems struggle in unstructured\
+    \ environ-\\nments. This program seeks to address this gap. <Some more infor-\\nmation about the specific failure points\
+    \ and contexts of use you are\\nhoping to address>\"\n  },\n  {\n    \"name\": \"Scope. Outline specific areas of interest\
+    \ or research topics. This guides\",\n    \"text\": \"potential contributors towards relevant proposals. Keep the scope\
+    \ defined\\nand focused, while leaving yourself open to unanticipated approaches or\\nways to achieve the program\\u2019s\
+    \ high-level goals.\\n\\u2022 Example: \\u201cFocus areas include hardware-software co-development,\\ntransfer between\
+    \ simulation-based reinforcement learning and live\\nsensor-in-the loop learning, and human-AI collaboration.\\u201d\"\
+    \n  },\n  {\n    \"name\": \"Requirements. List specific criteria that proposals must meet. Clarity\",\n    \"text\":\
+    \ \"here prevents ambiguity and ensures quality submissions. Ideally, these\\nare as clear and measurable as possible.\\\
+    n\\u2022 Example: \\u201cProposals must demonstrate a pathway to achieving\\nreal-world application within five years.\\\
+    u201d <List of indicators of this>\"\n  },\n  {\n    \"name\": \"Timeline. Provide a timeline with distinct phases and\
+    \ milestones. This\",\n    \"text\": \"shows the program\\u2019s trajectory and expectations. Ideally, this timeline is\\\
+    nas realistic and structured as possible.\\n\\u2022 Condensed Example: \\u201cPhase 1 (12 months): Prototype develop-\\\
+    nment. Phase 2 (24 months): Field testing.\\u201d\"\n  },\n  {\n    \"name\": \"Budget. Clearly state the budget. Providing\
+    \ guidelines on funding per\",\n    \"text\": \"project helps in planning and proposal alignment. The budget should be\\\
+    nas transparent and justified as possible.\\n\\u2022 Example: \\u201cTotal budget is $10M, with individual project funding\\\
+    nup to $2M based on scope and impact.\\u201d\"\n  },\n  {\n    \"name\": \"Proposal Format. Specify the format and content\
+    \ for proposals. This\",\n    \"text\": \"80\\n\\nensures uniformity and ease of evaluation. This format will depend heavily\\\
+    non your organization, but wherever you have leeway, think about how you\\ncan make the proposal as short as possible\
+    \ while still giving you enough\\ninformation to make a decision.\\n\\u2022 Example: \\u201cProposals should follow the\
+    \ provided format: Executive\\nSummary, Technical Approach, Team Qualifications, Budget. No\\nmore than one page per section.\\\
+    u201d\"\n  },\n  {\n    \"name\": \"Evaluation Criteria. Define how proposals will be judged. This guides\",\n    \"text\"\
+    : \"applicants in structuring their proposals effectively. These criteria should\\nbe as objective and comprehensive as\
+    \ possible.\\n\\u2022 Example: \\u201cProposals will be evaluated based on how directly they\\naddress the capabilities\
+    \ this program is trying to build, counterfactual\\nimpact if the project is successful, clear timelines, and whether\
+    \ the\\nproject would be able to get funding from other sources.\"\n  },\n  {\n    \"name\": \"Submission Guidelines.\
+    \ Make sure that people know how and when\",\n    \"text\": \"to submit their proposals. It\\u2019s organization dependent\
+    \ but ideally the\\nsubmission is as straightforward and accessible as possible.\\n\\u2022 Example: \\u201cSubmit proposals\
+    \ via the online portal by [date]. Late\\nsubmissions will not be accepted.\\u201d\"\n  },\n  {\n    \"name\": \"Contact\
+    \ Information. Make sure potential applicants have a point of\",\n    \"text\": \"contact for questions or clarifications.\
+    \ Answer questions promptly!\\n\\u2022 Example: \\u201cFor queries, contact the program coordinator at. . . .\\u201d\\\
+    nRemember, the key is to be clear, concise, and focused. Your solicitation should\\ninspire and guide potential contributors,\
+    \ providing them with all the necessary\\ninformation to submit high-quality, relevant proposals.\\nThere are many examples\
+    \ of ARPA solicitations available on Grants.gov (filter\\nfor your favorite ARPA Office)\\n81\\n\\nCoordinated Research\
+    \ Leader Archetypes\\nDifferent coordinated research goals require very different kinds of leadership.\\nDifferent people\
+    \ are also inclined towards different leadership styles. (It\\u2019s worth\\nnoting that successful programs require a\
+    \ match between the style of leadership\\na program needs and the style of leadership the program\\u2019s leader is inclined\\\
+    ntowards, but there is flexibility on both sides.)\\nCalling out specific archetypes is incomplete by its nature. Any\
+    \ individual\\nprogram leader will rarely fall exactly in any given archetype \\u2014 you could think\\nof these archetypes\
+    \ as basis vectors for approaches to program leadership.\\nNone of these archetypes are \\u201cbetter\\u201d or \\u201cworse.\\\
+    u201d\\nGrand visioneer\\nManaging change agent\\nSystem change agent\\nFinisher\\nCaptain Kirk\\nPI of PIs\\nGeneralist\\\
+    nThe Enabler\\n82\\n\\nGrand visioneer\\nThe grand visioneer leads through an inspired vision for radical change that\\\
+    u2019s\\nable to inspire others. They are able to get their vision into other people\\u2019s heads\\nto the extent that\
+    \ they adopt it as their own. A grand visioneer gathers the best\\ntalent who have bought in, makes sure they know each\
+    \ other, and gives them\\nthe resources to pursue their ideas with minimal inference.\\nGood for\\n\\u2022 Creating new\
+    \ fields and exploring a technology landscape.\\nBad for\\n\\u2022 Situations that need specific implementation pathways\\\
+    n\\u2022 Short impact timelines\\n\\u2022 Situations that need tight coordination\\n\\u2022 Micromanagers\\nTactics\\\
+    n\\u2022 Creating vision documents\\n\\u2022 Consistent workshops\\n\\u2022 Enabling people who have not yet established\
+    \ themselves\\n\\u2022 Helping start labs\\nExamples\\n83\\n\\n\\u2022 JCR Licklider\\n\\u2022 Warren Weaver\\n84\\n\\\
+    nManaging change agent\\nA managing change agent identifies a concrete step change that can be completed\\nwithin the\
+    \ lifetime of a program or two. The managing change agent gathers\\nthe best talent in a \\u201cstructure\\u201d and monitors\
+    \ them to make sure that they\\u2019re\\nmoving towards a specific goal.\\nGood for\\n\\u2022 Finalizing groundbreaking\
+    \ prototypes/products.\\nBad for\\n\\u2022 Broad, fuzzy ideas.\\n\\u2022 Creating new fields.\\nTactics\\n\\u2022 Creating\
+    \ an architecture and specifications and giving specific tasks to\\ndifferent groups\\n\\u2022 Competitions\\nExamples\\\
+    n\\u2022 Bob Kahn when creating TCP/IP\\n\\u2022 Tony Tether\\n\\u2022 Norm Whitaker who ran the second DARPA grand challenge\\\
+    n\\u2022 Robert Taylor\\n85\\n\\nSystem change agent\\nA system change agent creates and stewards an unintuitive but carefully\
+    \ con-\\nstructed vision based on deep knowledge of a critical system. They have a deep\\nrelationship to market and industry\
+    \ trends and are able to generate consensus\\namong complex and/or conflicted stakeholders by communicating openly and\\\
+    ngiving clear guidance.\\nGood for\\n\\u2022 Creating unintuitive or unsexy advances that will have large ripple effects\\\
+    n\\u2022 Making advances in complex or opaque industries\\n\\u2022 Changes that need an industry to get on board\\n\\\
+    u2022 People who have deep industry background\\nBad for\\n\\u2022 People without existing networks in an field, industry,\
+    \ or discipline\\n\\u2022 Fragmented or nonexistent ecosystems\\nTactics\\n\\u2022 Workshops and meetings to build consensus\
+    \ around\\n\\u2022 Joint development with existing players\\nExamples\\n\\u2022 Barry Leiner\\n\\u2022 Jonathan M. Smith\\\
+    n86\\n\\nFinisher\\nFinishers are managers of sort-of-known paths (not creators of new paths). They\\nmanage to goals,\
+    \ time, cost, impact. They get sh*t done. This archetype is\\nperhaps the least \\u201csexy\\u201d but potentially the\
+    \ most impactful.\\nGood for\\n\\u2022 Situations where all the pieces are there but nobody is putting them\\ntogether\\\
+    n\\u2022 Situations where \\u201ceverybody knows\\u201d what should be done but it is\\nhard/expensive/not incentivized/unpopular\\\
+    nBad for\\n\\u2022 People who want to work on their own new ideas\\nTactics\\n\\u2022 Parallelized efforts and cutting\
+    \ performers who aren\\u2019t performing.\\n\\u2022 Strong project management: Gantt charts, etc.\\nExamples\\n\\u2022\
+    \ Kristy DeWitt\\n87\\n\\nCaptain Kirk\\nCaptain Kirks are people who can innovate in a very fast moving or chaotic area\\\
+    nwith critical but often highly uncertain possibilities and risks. The AI/LLM\\nworld of 2023 is a good example of such\
+    \ an area. They have the ability to read\\nthe world, credibly predict/articulate trends in a fast changing domain with\
+    \ lots\\nof uncertainty, and then figure out what is not happening that could be additive\\nto the whole field.\\nGood\
+    \ for\\n\\u2022 Areas where there is already a lot of action\\nBad for\\n\\u2022 Areas that have been stagnant\\nTactics\\\
+    n\\u2022 Fast, small, derisking projects\\n\\u2022 First principles thinking\\nExamples\\n\\u2022 Geoffery Ling \\u2014\
+    \ HAND (neurotech + biotech work)\\n\\u2022 Justin Sanchez (former director BTO + 3 neurotech programs)\\n88\\n\\nPI of\
+    \ PIs\\nThe PI of PIs acts something like a principal investigator (PI) but instead of grad\\nstudents and postdocs working\
+    \ under them, there are other PIs. Here \\u201cacting\\nlike a PI\\u2019 \\u2019 means co-designing projects with collaborators/grantees/performers\\\
+    ntowards a larger vision, holding \\u201clab meetings\\u201d to coordinate, all with varying\\nlevel of hands-off-ness.\
+    \ A PI of PIs roughly stays within and work across their\\nprevious field (viewed broadly).\\nGood for\\n\\u2022 Established\
+    \ researchers in an area.\\n\\u2022 Existing fields.\\nBad for\\n\\u2022 People with less prestigious track records.\\\
+    n\\u2022 People coming into an area from the outside.\\nTactics\\n\\u2022 Regular coordination meetings.\\n89\\n\\nGeneralist\\\
+    nThe generalist sees a solution or capability that falls outside of any established\\nfield. They pull together people\
+    \ from very different worlds to work together and\\nhelp translate between them.\\nGood for\\n\\u2022 People who have\
+    \ training in a discipline that lends itself to first-principles\\nthinking like physics.\\n\\u2022 Situations where there\
+    \ are experts across several disciplines who should be\\ncollaborating who are not.\\nBad for\\n\\u2022 People who are\
+    \ not deeply technical.\\nTactics\\n\\u2022 First principles thinking/Fermi analyses.\\n\\u2022 Creating new networks\
+    \ very quickly.\\n90\\n\\nEnabler\\nThe enabler acts as a salesperson and advocate for other researchers\\u2019 ambitious\\\
+    nideas rather than building a program around their own ideas.\\nGood for\\n\\u2022 Great salespeople\\n\\u2022 People\
+    \ who want to have an impact but don\\u2019t have a strong thesis\\n\\u2022 Areas with lots of small bottlenecks instead\
+    \ of single large ones\\nBad for\\n\\u2022 People who like to be steering the ship\\nTactics\\n\\u2022 Talking to and\
+    \ identifying the top people in a field\\nExamples\\n\\u2022 Ken Perko\\n91\\n\\nGlossary\\nThis playbook was originally\
+    \ written specifically for ARPA-style programs. It\\nhas been expanded to apply to coordinated research programs more\
+    \ generally.\\nAs a result, it still uses some ARPA-related jargon. It also uses some general\\nterms that correspond\
+    \ to ARPA jargon. This glossary is meant both to introduce\\npeople unfamiliar with the ARPA world to the jargon in the\
+    \ playbook and to\\norient those familiar with ARPA terms to their counterparts in the playbook.\\n\\u2022 ARPA-style\
+    \ programs are programs in the style of DARPA and\\norganizations modeled after it (like ARPA-H, ARPA-E, IARPA, etc.)\\\
+    nThe defining characteristics of an ARPA-style program is that it\\u2019s led by\\nan empowered program manager, does\
+    \ work entirely through external\\nresearchers, has ambitious goals, lasts ~5 years and deploys ~$50M. See\\nhere for\
+    \ much more detail.\\n\\u2022 External collaborators are people or organizations who are doing\\nresearch work as part\
+    \ of the program but are external to whatever\\norganization is running the program. In an ARPA context, they would be\\\
+    ncalled \\u201cperformers.\\u201d External collaborators could be companies (of many\\nflavors), academic labs, or individuals.\
+    \ There\\u2019s a wide range of ways that\\ncollaborations can be structured, from informal agreements to grants to\\\
+    ncontracts with clear deliverables.\\n\\u2022 Fermi Estimates are order-of-magnitude estimates of key quantities for\\\
+    na program, based on dimensional analysis and explicit assumptions. See\\nhere for more.\\n\\u2022 Focused Research Organizations\
+    \ (FROs) are time-bound, non-\\nacademic research organizations focused on building a specific tool, dataset,\\nor piece\
+    \ of knowledge. See here for more.\\n\\u2022 The Heilmeier Catechism (sometimes referred to as the Heilmeier\\nQuestions)\
+    \ is a set of questions developed by DARPA to help agency\\nofficials think through and evaluate proposed research programs.\
+    \ Other\\nARPA agencies employ variations of this framework, but the classic\\nDARPA Heilmeier questions are:\"\n  },\n\
+    \  {\n    \"name\": \"What are you trying to do? Articulate your objectives using absolutely no\",\n    \"text\": \"jargon.\"\
+    \n  },\n  {\n    \"name\": \"How is it done today, and what are the limits of current practice?\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"What is new in your approach and why do you think it will be successful?\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Who cares? If you are successful, what difference will it make?\",\n    \"text\": \"\
+    92\"\n  },\n  {\n    \"name\": \"What are the risks?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"How much will\
+    \ it cost?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"How long will it take?\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"What are the midterm and final \\u201cexams\\u201d to check for success?\",\n    \"text\": \"\\u2022\
+    \ Internal vs. External work refers to whether the actual work (pipetting,\\ncoding, drilling, etc) is done within the\
+    \ organization coordinating the\\nresearch or not. In an ARPA context, all work is external work.\\n\\u2022 Projects are\
+    \ activities with a specific deliverable. A program is made\\nup of one or more projects.\\n\\u2022 Theory of change refers\
+    \ to your strategy for how what you do will\\ntransition to the real world and deliver impact.\"\n  },\n  {\n    \"name\"\
+    : \"Acknowledgements\",\n    \"text\": \"There are many many people whose wisdom and work contributed to this\\nhandbook.\
+    \ As a synthesis, inevitably I will have absorbed some ideas without\\neven realizing who originated them. Apologies in\
+    \ advance for that! As a hopefully\\nliving synthesis, may this list be ever expanding.\\nThanks to:\\nARIA, for supporting\
+    \ the foundational work underpinning this handbook.\\nJessica Alfoldi, for meticulous editing and tireless enthusiasm\
+    \ for the whole\\nproject.\\nThe massive number of people with far more first-hand experience than me who\\ntalked through\
+    \ these things\\n\\u2022 Joshua Elliott\\n\\u2022 Ilan Gur\\n\\u2022 Adam Russell\\n\\u2022 Steve Buchsbaum\\n\\u2022\
+    \ Arati Prabhakar\\n93\\n\\n\\u2022 Adam Marblestone\\n\\u2022 Bridget Baumgartner\\n\\u2022 Geoff Ling\\n\\u2022 Tom\
+    \ Kalil\\n\\u2022 Patrick McGrath\\n\\u2022 Amy Kruse\\n\\u2022 Brad Ringeisen\\n\\u2022 Dan Wattendorf\\n\\u2022 David\
+    \ Gunning\\n\\u2022 Eric Van Gieson\\n\\u2022 Hemai Parthasarathy\\n\\u2022 John Blitch\\n\\u2022 Mark Micire\\n\\u2022\
+    \ Mike Fiddy\\n\\u2022 Pae Wu\\n\\u2022 Phil Root\\n\\u2022 Wade Shen\\n\\u2022 Lisa Porter\\nAnd many others.\\n94\"\n\
+    \  }\n]"
+  funding: 'project helps in planning and proposal alignment. The budget should be
+
+    as transparent and justified as possible.
+
+    • Example: “Total budget is $10M, with individual project funding
+
+    up to $2M based on scope and impact.”'
+  acknowledgments: 'There are many many people whose wisdom and work contributed to this
+
+    handbook. As a synthesis, inevitably I will have absorbed some ideas without
+
+    even realizing who originated them. Apologies in advance for that! As a hopefully
+
+    living synthesis, may this list be ever expanding.
+
+    Thanks to:
+
+    ARIA, for supporting the foundational work underpinning this handbook.
+
+    Jessica Alfoldi, for meticulous editing and tireless enthusiasm for the whole
+
+    project.
+
+    The massive number of people with far more first-hand experience than me who
+
+    talked through these things
+
+    • Joshua Elliott
+
+    • Ilan Gur
+
+    • Adam Russell
+
+    • Steve Buchsbaum
+
+    • Arati Prabhakar
+
+    93
+
+
+    • Adam Marblestone
+
+    • Bridget Baumgartner
+
+    • Geoff Ling
+
+    • Tom Kalil
+
+    • Patrick McGrath
+
+    • Amy Kruse
+
+    • Brad Ringeisen
+
+    • Dan Wattendorf
+
+    • David Gunning
+
+    • Eric Van Gieson
+
+    • Hemai Parthasarathy
+
+    • John Blitch
+
+    • Mark Micire
+
+    • Mike Fiddy
+
+    • Pae Wu
+
+    • Phil Root
+
+    • Wade Shen
+
+    • Lisa Porter
+
+    And many others.
+
+    94'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p25_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p25_1.png\",\n \
+    \   \"page\": 25\n  },\n  {\n    \"id\": \"fig_p27_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p27_1.png\"\
+    ,\n    \"page\": 27\n  },\n  {\n    \"id\": \"fig_p42_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p42_1.png\"\
+    ,\n    \"page\": 42\n  },\n  {\n    \"id\": \"fig_p46_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p46_1.png\"\
+    ,\n    \"page\": 46\n  },\n  {\n    \"id\": \"fig_p56_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p56_1.png\"\
+    ,\n    \"page\": 56\n  },\n  {\n    \"id\": \"fig_p58_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p58_1.png\"\
+    ,\n    \"page\": 58\n  },\n  {\n    \"id\": \"fig_p72_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p72_1.png\"\
+    ,\n    \"page\": 72\n  },\n  {\n    \"id\": \"fig_p83_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p83_1.png\"\
+    ,\n    \"page\": 83\n  },\n  {\n    \"id\": \"fig_p85_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p85_1.png\"\
+    ,\n    \"page\": 85\n  },\n  {\n    \"id\": \"fig_p86_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p86_1.png\"\
+    ,\n    \"page\": 86\n  },\n  {\n    \"id\": \"fig_p87_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p87_1.png\"\
+    ,\n    \"page\": 87\n  },\n  {\n    \"id\": \"fig_p88_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p88_1.png\"\
+    ,\n    \"page\": 88\n  },\n  {\n    \"id\": \"fig_p89_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p89_1.png\"\
+    ,\n    \"page\": 89\n  },\n  {\n    \"id\": \"fig_p90_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p90_1.png\"\
+    ,\n    \"page\": 90\n  },\n  {\n    \"id\": \"fig_p91_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p91_1.png\"\
+    ,\n    \"page\": 91\n  },\n  {\n    \"id\": \"fig_p95_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p95_1.png\"\
+    ,\n    \"page\": 95\n  }\n]"

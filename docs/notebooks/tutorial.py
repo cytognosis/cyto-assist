@@ -7,9 +7,10 @@ app = marimo.App(width="full", layout_file="layout.json")
 @app.cell
 def __():
     import marimo as mo
-    import cyto_assist as pkg
-    import torch
     import numpy as np
+    import torch
+
+    import cyto_assist as pkg
 
     mo.md(
         """
@@ -31,7 +32,6 @@ def __(mo, pkg, torch):
         - **HW Acceleration**: `{'Available' if torch.cuda.is_available() else 'Disabled'}`
         """
     )
-    return
 
 
 @app.cell

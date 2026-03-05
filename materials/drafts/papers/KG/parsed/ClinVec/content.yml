@@ -1,0 +1,1281 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/ClinVec.pdf
+
+identifiers:
+  doi: 10.7910/DVN/Z6H1A8
+citation:
+  title: 'ClinVec: Unified Embeddings of Clinical Codes Enable Knowledge-Grounded AI in Medi- 1  cine  2  Ruth Johnson , Uri
+    Gottlieb , Galit Shaham , Lihi Eisen , Jacob Waxman , Stav Devons- 3  Sberro , Curtis R. Ginder , Peter Hong , Raheel
+    Sayeed , Xiaorui Su , Ben Y. Reis , Ran  4  D. Balicer , Noa Dagan , and Marinka Zitnik   5    6  7  8  9  10  11  12  13  14  15  16  17'
+content:
+  sections: "[\n  {\n    \"name\": \"Department of Biomedical Informatics, Harvard Medical School, Boston, MA, USA\",\n  \
+    \  \"text\": \"9\\n3 Clalit Research Institute, Innovation Division, Clalit Health Services, Ramat-Gan, Israel\\n10\\\
+    n4 Cardiovascular Division, Department of Medicine, Brigham and Women's Hospital, Harvard Medical School, Bos-\\n11\\\
+    nton, MA, USA\\n12\\n5 Division of General Pediatrics, Department of Pediatrics, Boston Children\\u2019s Hospital, Boston,\
+    \ MA, USA\\n13\\n6 Information Technology, Enterprise Data Analytics and Reporting, Boston Children\\u2019s Hospital,\
+    \ Boston, MA, USA\\n14\"\n  },\n  {\n    \"name\": \"Department of Pediatrics, Harvard Medical School, Boston, MA, USA\"\
+    ,\n    \"text\": \"15\\n8 Predictive Medicine Group, Computational Health Informatics Program, Boston Children\\u2019s\
+    \ Hospital, Boston, MA,\\n16\\nUSA\\n17\\n9 Faculty of Health Sciences, School of Public Health, Ben Gurion University\
+    \ of the Negev, Be\\u2019er Sheva, Israel\\n18\\n10 Software and Information Systems Engineering, Ben Gurion University,\
+    \ Be\\u2019er Sheva, Israel\\n19\"\n  },\n  {\n    \"name\": \"Harvard Data Science Initiative, Cambridge, MA, USA\",\n\
+    \    \"text\": \"20\"\n  },\n  {\n    \"name\": \"Broad Institute of MIT and Harvard, Cambridge, MA, USA\",\n    \"text\"\
+    : \"21\\n13 Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University, Allston, MA, USA\\\
+    n22\\n*  Joint correspondence: noada@clalit.org.il and marinka@hms.harvard.edu\\n23\\n\\n24\\n\\n25\\nIntegrating structured\
+    \ clinical knowledge into artificial intelligence (AI) models remains a major\\n26\\nchallenge. Medical codes primarily\
+    \ reflect administrative workflows rather than clinical reason-\\n27\\ning, limiting AI models\\u2019 ability to capture\
+    \ true clinical relationships and undermining their gen-\\n28\\neralizability. To address this, we introduce ClinGraph,\
+    \ a clinical knowledge graph that integrates\\n29\\neight EHR-based vocabularies, and ClinVec, a set of 153,166 clinical\
+    \ code embeddings derived\\n30\\nfrom ClinGraph using a graph transformer neural network. ClinVec provides a machine-readable\\\
+    n31\\nrepresentation of clinical knowledge that captures semantic relationships among diagnoses, med-\\n32\\nications,\
+    \ laboratory tests, and procedures. Panels of clinicians from multiple institutions evalu-\\n33\\nated the embeddings\
+    \ across 96 diseases and more than 3,000 clinical codes, confirming their\\n34\\nalignment with expert knowledge. In a\
+    \ retrospective analysis of 4.57 million patients from Clalit\\n35\\nHealth Services, we show that ClinVec supports phenotype\
+    \ risk scoring and stratifies individuals\\n36\\nby survival outcomes. We further demonstrate that injecting ClinVec into\
+    \ large language models\\n37\\nimproves performance on medical question answering, including for region-specific clinical\
+    \ sce-\\n38\\nnarios. ClinVec enables structured clinical knowledge to be injected into predictive and genera-\\n39\\\
+    ntive AI models, bridging the gap between EHR codes and clinical reasoning.\\n\\n40\\n\\n\\n2\"\n  },\n  {\n    \"name\"\
+    : \"Introduction\",\n    \"text\": \"41\\nMedicine builds on centuries of accumulated knowledge and the goal of individualized\
+    \ patient\\n42\\ncare through clinical reasoning and evidence-based practice1. Over time, medical vocabularies\\n43\\\
+    nand ontologies have been developed to represent clinical information, fostering interoperability\\n44\\nand data exchange\
+    \ across healthcare systems2\\u20134. However, these standardized coding systems re-\\n45\\nmain fragmented, with each\
+    \ vocabulary designed for specific use cases. This fragmentation lim-\\n46\\nits their integration into artificial intelligence\
+    \ (AI) models and introduces a gap between clinical\\n47\\nknowledge and its computational representation in precision\
+    \ medicine.\\n48\\nThe widespread adoption of electronic health records (EHRs) and data standardization initiatives\\\
+    n49\\nhas accelerated the use of structured clinical data in AI models5,6, with more than half of\\n50\\nhealthcare foundation\
+    \ AI models relying on structured clinical codes, such as billing data and\\n51\\nmedication records7. These models implicitly\
+    \ assume that EHRs contain information sufficient to\\n52\\ncapture the clinical concepts relevant to patient care. In\
+    \ practice, this assumption often fails.\\n53\\nModels trained on EHR data frequently learn patterns specific to a single\
+    \ healthcare system ra-\\n54\\nther than generalizable medical relationships8\\u201311. The variability of clinical codes\
+    \ across institu-\\n55\\ntions further limits the transferability of prediction models12\\u201315. Many codes are selected\
+    \ or rec-\\n56\\norded for operational rather than clinical reasons16, influenced by geographic factors17\\u201319, na-\\\
+    n57\\ntional policies20\\u201323, insurance requirements24\\u201326, physician practices27\\u201329, and other features\
+    \ of lo-\\n58\\ncal healthcare delivery30\\u201334. EHR-based models, as a result, often fail to reflect consistent clinical\\\
+    n59\\ndefinitions or relationships among codes35\\u201339.\\n60\\nThe lack of alignment between EHR-based prediction models\
+    \ and clinical knowledge also intro-\\n61\\nduces concerns about model bias and transparency40. Although large language\
+    \ models (LLMs)\\n62\\noffer implicit access to clinical knowledge embedded within their training data, unvetted datasets\\\
+    n63\\nfrom biological data repositories and scientific articles used to train LLMs can increase the risk\\n64\\nof bias\
+    \ and mistakes in generated outputs41\\u201343. LLMs can struggle to represent clinical codes44\\u201346,\\n65\\nespecially\
+    \ rare or highly specific codes, resulting in inaccuracies, over-generalizations, or hallu-\\n66\\ncinations during inference47.\
+    \ This can be concerning given that a large portion of medical codes\\n67\\nmay not be used in everyday clinical practice\
+    \ where, for example, fewer than 5% of SNOMED\\n68\\nCT codes account for 95% of usage in healthcare institutions48, creating\
+    \ a mismatch between\\n69\\nwhat is modeled and what is clinically relevant.\\n70\\n\\n\\n3\\nMost AI models lack mechanisms\
+    \ to integrate clinical knowledge, limiting their ability to align\\n71\\nwith medical best practices49,50. Clinical researchers\
+    \ have published over 3,700 evidence-based\\n72\\nguidelines across 39 countries51\\u201354, yet this structured knowledge\
+    \ remains largely unused in\\n73\\nmodel development. Most AI models rely on statistical patterns in patient data or text\
+    \ corpora,\\n74\\nbut these approaches do not capture the clinical knowledge embedded in structured EHR codes.\\n75\\\
+    nBridging this gap requires consistent, machine-readable representations that reflect how clinical\\n76\\ncodes relate\
+    \ to real-world medical practice. While embeddings exist for text and images55\\u201360, no\\n77\\ncomparable resource\
+    \ captures structured clinical knowledge for use in AI models.\\n78\\nTo address the gap between clinical knowledge and\
+    \ structured EHR data, we developed a\\n79\\nClinGraph, a clinical knowledge graph spanning eight standardized medical\
+    \ vocabularies, and\\n80\\nClinVec, a set of 153,166 clinical code embeddings derived from ClinGraph. ClinVec defines\
+    \ a\\n81\\nunified, machine-readable latent space that captures relationships among diagnoses, medications,\\n82\\nlaboratory\
+    \ tests, and procedures. This approach generates clinically meaningful representations\\n83\\nof medical codes in a hypothesis-free\
+    \ manner and provides a resource for integrating structured\\n84\\nclinical knowledge into predictive models for precision\
+    \ medicine. The learned embeddings re-\\n85\\nveal patterns aligned with human anatomy and disease phenotypes and were\
+    \ validated by panels\\n86\\nof clinical experts across 96 diseases and more than 3,000 clinical codes. We further demonstrate\\\
+    n87\\nthe predictive utility of ClinVec through phenotype risk score analyses for chronic kidney dis-\\n88\\nease, chronic\
+    \ obstructive pulmonary disease, and heart failure, using EHR data from 4.57 million\\n89\\npatients in Clalit Health\
+    \ Services. Finally, we show that integrating ClinVec into large language\\n90\\nmodels improves medical question answering\
+    \ across a range of clinical scenarios. ClinGraph and\\n91\\nClinVec provide a foundation for embedding structured clinical\
+    \ knowledge into AI models, sup-\\n92\\nporting interpretability, cross-institutional transferability, and alignment with\
+    \ clinical practice.\\n93\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"94\\nClinGraph and ClinVec: Representing\
+    \ structured medical knowledge for AI\\n95\\nMany efforts have focused on structuring clinical knowledge for enhanced\
+    \ interoperability and\\n96\\ndata harmonization. Clinical knowledge has been traditionally structured using Common Data\\\
+    n97\\nModels (CDMs), which standardize data by mapping diverse coding systems into a unified\\n98\\nschema61. Alternatively,\
+    \ biomedical ontologies organize information in a hierarchical structure to\\n99\\nfacilitate semantic interoperability\
+    \ and reasoning across coding systems. However, both rely on\\n100\\nfixed schemas and expert-defined relationships that\
+    \ limit their contextual richness and\\n101\\n\\n\\n4\\nadaptability to real-world data. KGs offer a more flexible approach\
+    \ by integrating diverse\\n102\\nknowledge sources without rigid schema constraints. However, most knowledge graphs do\
+    \ not\\n103\\nexplicitly incorporate standard clinical vocabularies and instead focus on biological processes62\\u2013\\\
+    n104\\n64, therapeutics55,65,66, genetic phenotypes67\\u201370, or a combination thereof71\\u201373. KGs that incorpo-\\\
+    n105\\nrate clinical vocabularies are often restricted to ICD codes (diagnosis codes) or rely on medical\\n106\\nterminologies\
+    \ like HPO74 and MONDO75, which are not standard in most EHRs76\\u201378. Several ap-\\n107\\nproaches construct KGs directly\
+    \ from patient data79\\u201381, but this process is highly sensitive to the\\n108\\nsource patient population, potentially\
+    \ limiting generalizability.\\n109\\nWe develop a resource consisting of ClinGraph, a knowledge graph consisting of 153,166\
+    \ nodes\\n110\\nand 2,873,025 edges spanning eight clinical vocabularies (Figure 1A, 1B), and ClinVec, a set of\\n111\\\
+    nhigh-dimensional, vector representations (embeddings) of clinical knowledge that can be inte-\\n112\\ngrated into AI\
+    \ models (Figure 1C, 1D). ClinGraph incorporates diagnosis codes (ICD9CM,\\n113\\nICD10CM, phecodes), laboratory tests\
+    \ (LOINC), medications (RxNorm, ATC), procedures\\n114\\n(CPT), and other controlled clinical vocabularies (SNOMED CT,\
+    \ UMLS), and represents each\\n115\\nconcept in the KG as a medical code (Supplementary Table S1). Relational information\
+    \ is de-\\n116\\nrived from multiple databases, including ontologies such as Unified Medical Language System82\\n117\\\
+    n(UMLS) and empirically constructed knowledge bases such as PheMap83, which derives relation-\\n118\\nships from the large-scale\
+    \ mining of biomedical literature (Supplementary Table S2).\\n119\\n\\n\\n5\\n120\\nFigure 1: Overview of approach. (A)\
+    \ Meta-graph showing the structure of ClinGraph and the edge relationships\\n121\\nbetween clinical vocabularies shown\
+    \ as node types. (B) An example local neighborhood of ClinGraph. Each clinical\\n122\\ncode is represented as a node,\
+    \ and the color denotes the clinical vocabulary. (C) Workflow for generating clinical\\n123\\nknowledge embeddings: building\
+    \ the clinical knowledge graph, constructing a graph transformer model, and gener-\\n124\\nating embeddings through self-supervised\
+    \ learning. (D) Clinical AI applications of ClinGraph and ClinVec.\\n125\\nA key feature of ClinGraph is that it represents\
+    \ clinical concepts using their original coding sys-\\n126\\ntems, rather than aggregating them into a common vocabulary.\
+    \ This design preserves coding-spe-\\n127\\ncific structures such as hierarchical relationships and clinically meaningful\
+    \ groupings and avoids\\n128\\nthe information loss that can occur when mapping between vocabularies. To evaluate the\
+    \ cover-\\n129\\nage of EHR coding systems, we compared ClinGraph to six existing KGs. For each KG, we\\n130\\nmapped\
+    \ its node identifiers to EHR codes and calculated the proportion of coverage for common\\n131\\ncoding systems (Supplementary\
+    \ Table S3). ClinGraph is the only resource that integrates diag-\\n132\\nnoses, medications, laboratory tests, and procedures\
+    \ in a unified framework based on structured\\n133\\nEHR data. Other KGs do not include nodes for procedures or laboratory\
+    \ tests. While ClinGraph,\\n134\\nPrimeKG76, and PharMeBINet84 capture similar proportions of ICD10CM codes, ClinGraph\\\
+    n135\\nspans a broader range of diagnoses. By evaluating the number of distinct ICD10CM root codes\\n136\\n(for example,\
+    \ J45), we found that ClinGraph includes 35% more disease areas than other graphs.\\n137\\nThis likely reflects the clinical\
+    \ orientation of ClinGraph, in contrast to other resources that em-\\n138\\nphasize biological and genetic phenotypes.\\\
+    n139\\nA\\n!\\\"#$%&'(\\n)*+$#,-%./01%\\n2$3&4$/)&51%$\\n6*\\\"#1.1#/051%$\\n!\\\"#$%1.1#/0.1/#1+0.(\\n)1#41%$(/$5/\\\
+    n7-5)0%895\\n5*%\\\"#14$\\n:10/$#\\n;)*#10\\\"\\n;)*#1/130.1505\\n20&<$/0.\\n#$/0%1+&/)*\\n=0/#$./14*\\n>*$($3&4\\n?#$\\\
+    \"0&<$/$5\"\n  },\n  {\n    \"name\": \"@-A$%0'$(\",\n    \"text\": \"\\\"0&<$/$5\"\n  },\n  {\n    \"name\": \"B&/-#0/*(1%5$/\"\
+    ,\n    \"text\": \"\\\"0&<$/$5\"\n  },\n  {\n    \"name\": \";*+$(C(\\\"0&<$/$5(\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"$''0/-5(D0/)(E0\\\"%$*(\",\n    \"text\": \".14+'0.&/01%5\\n:'-.15$\"\n  },\n  {\n    \"name\": \"F%.#$&5$\\\
+    \"(/)0#5/\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \";*+$(G(\\\"0&<$/$5\",\n    \"text\": \">\\\"$4&\"\n  },\n\
+    \  {\n    \"name\": \"H-+-5(\",\n    \"text\": \"%$+)#0/05\\n:'-.&81%\"\n  },\n  {\n    \"name\": \"I$%&'(,&0'-#$\",\n\
+    \    \"text\": \"Knowledge graph defines\\narchitecture of GNN\\nB\\nGraph transformer\\nNodes share information between\
+    \ neighbors during training\\nClinVec embeddings\\nEmbeddings for each clinical concept through self-supervised learning\\\
+    nInsulin\\nRenal failure\\nGlucose\\nClinGraph knowledge\\ngraph\\nD\\nClinical AI applications\\n71#/0.15/$#10\\\"5\\\
+    n7)#1%0.(#$%&'(,&0'-#$\\n?#$\\\"%051%$\\nType 2 diabetes\"\n  },\n  {\n    \"name\": \"UMLS\",\n    \"text\": \"\"\n \
+    \ },\n  {\n    \"name\": \"ICD10CM\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ICD9CM\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"SNOMEDCT-US\",\n    \"text\": \"Phecode\"\n  },\n  {\n    \"name\": \"LOINC\",\n    \"text\"\
+    : \"CPT\\nRxNorm\"\n  },\n  {\n    \"name\": \"ATC4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ATC5\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"N=29,406\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"N=42,883\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"N=10,130\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"N=716\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"N=34,842\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"N=10,157\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"N=1,793\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"N= 4,463\"\
+    ,\n    \"text\": \"14,399\\n4,377\\nC\\nEye exam\\nDry eyes\\nMetformin\\nRetinopathy\\nDialysis\\n!\\\"#$%$&'(#&)*\\\
+    n+%,*\\n!\\\"#$%&\\\"'(%')*&+\\n,*-%&\\\"'(%')*&+\\nPatient-level disease prediction\\nInforming disease subtyping and\\\
+    nclinical manifestations\\nSubgroup A\\nSubgroup B\\nSubgroup C\\nMedical question-answering\\n?\\n!;7\\n7?;\"\n  },\n\
+    \  {\n    \"name\": \"F72GJ7B\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HKFL7\",\n    \"text\": \"?)$.1\\\"$\"\
+    \n  },\n  {\n    \"name\": \"I3L1#4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MLKB>2(7;\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"NBHM\",\n    \"text\": \"-./*(0.\\\"#1*0\\n71#/051'\\n:'-.1.1#/0.10\\\"5\\n6$41##)10\\\"\
+    5\\n71'1%15.1+*\"\n  },\n  {\n    \"name\": \"B-5.'$(5+&54\",\n    \"text\": \"!\\\"#$%&'(8'&%\\\"\\n!\\\"#$%&'(\\n)*%+,-./\\\
+    n20&<$/0.\\n#$/0%1+&/)*\\n20&<$/0.(4&.-'&#(\\n$\\\"$4&\"\n  },\n  {\n    \"name\": \"&<$/$5(D0/)(\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"E$/1&.0\\\"1505\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"K+/0.&'(.1)$#$%.$(\"\
+    ,\n    \"text\": \"/1418#&+)*\"\n  },\n  {\n    \"name\": \"F%5-'0%5(&%\\\"(&%&'18-$5(\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \",1#(0%O$./01%P(,&5/Q&./0%8\",\n    \"text\": \"6*+$#/$%501%\"\n  },\n  {\n    \"name\": \"H*4+)14&\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"R'11\\\"(8'-.15$(\",\n    \"text\": \"4$&5-#$4$%/\"\n  },\n  {\n   \
+    \ \"name\": \"L$+)#0/05\",\n    \"text\": \"20&'*505\"\n  },\n  {\n    \"name\": \")#1%0.(E0\\\"%$*(\\\"05$&5$\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"N#$&(%0/#18$%P\",\n    \"text\": \"7#$&/0%0%$\"\n  },\n  {\n    \"name\"\
+    : \"*.'1+)1Q\",\n    \"text\": \"5+)&40\\\"$\\n?#1/$0%-#0&\\n6$4&/-#0&\\n;)*#10\\\"(1#8&%\"\n  },\n  {\n    \"name\":\
+    \ \"L$+)#0/05\",\n    \"text\": \".1%\\\"0/01%\\n>*$(\\\"#1+5\\nClinGraph: unified clinical knowledge graph for EHRs\"\
+    \n  },\n  {\n    \"name\": \"H-+-5(\",\n    \"text\": \"%$+)#0/05\\n.1%\\\"0/01%\\n\\n\\n6\\nWhile KGs represent information\
+    \ as discrete nodes and edges, embedding-based representations\\n140\\ncreate a machine-readable form of information that\
+    \ encodes clinical concepts and their contex-\\n141\\ntual information into continuous vectors. Transforming discrete\
+    \ KGs into continuous embed-\\n142\\ndings enables complex inference tasks, such as grounding AI models in clinical knowledge85,\\\
+    n143\\nthat are not possible using only node-and-edge graph representations. Using a heterogenous\\n144\\ngraph transformer\
+    \ (HGT)86, we learn a function that maps each node (medical code) in the KG to\\n145\\nlow-dimensional representations\
+    \ (embeddings). The KG determines how information is shared\\n146\\nbetween nodes throughout the KG, while a multi-head\
+    \ attention mechanism enhances the\\n147\\nmodel\\u2019s ability to up-weight and down-weight different parts of the topological\
+    \ space87. We\\n148\\nmodel four distinct node types\\u2014diagnosis codes, medications, laboratory tests/procedures,\
+    \ and\\n149\\nclinical concepts/vocabularies\\u2014where grouping similar vocabularies (e.g., RxNorm and ATC)\\n150\\\
+    nenables information sharing across related nodes while preserving enough type-specific infor-\\n151\\nmation to support\
+    \ effective parameter learning (Methods). We train the model for edge predic-\\n152\\ntion through self-supervised learning\
+    \ via contrastive edge masking88. This approach generates\\n153\\nembeddings for each clinical code such that codes located\
+    \ near one another in the knowledge\\n154\\ngraph are also positioned closely in the latent space, reflecting their semantic\
+    \ similarity.\\n155\\nTo support the integration of ClinVec into AI models, the learned embeddings must be consistent\\\
+    n156\\nwith current clinical knowledge and reflect information used in routine healthcare. Existing ref-\\n157\\nerence\
+    \ datasets for evaluating the semantic relatedness of clinical terms are limited in size (fewer\\n158\\nthan 1,500 data\
+    \ points) and based on outdated coding systems that include obsolete codes. We\\n159\\nconstructed a new validation dataset\
+    \ consisting of 96 diseases across 10 major disease categories,\\n160\\nsuch as circulatory and respiratory disorders,\
+    \ and over 3,000 SNOMED CT codes. A panel of ex-\\n161\\npert clinicians from Israel and the United States annotated the\
+    \ dataset. Based on clinician input,\\n162\\nwe selected 96 phecodes representing conditions that are clinically relevant\
+    \ to general adult pa-\\n163\\ntient populations. For each phecode, we identified the 20 SNOMED CT codes with the highest\\\
+    n164\\ncosine similarity to the phecode embedding and randomly sampled an additional 20 SNOMED\\n165\\nCT codes as controls\
+    \ (Figure 2A).\\n166\\nCodes already forming an edge with the disease node within the knowledge graph were excluded\\\
+    n167\\nfrom the analysis. The final evaluation dataset comprises 96 disease lists, each with 40\\n168\\nSNOMED CT codes\
+    \ for a total of 3,680 data points, almost 3 times the size of existing bench-\\n169\\nmarks combined.\\n170\\n\\n\\n7\\\
+    n171\\nFigure 2: Concordance between ClinVec embedding similarity and clinical expert scores. (A) Overview of clin-\\\
+    n172\\nical expert review process. (B) We report the mean cosine similarity across all disease-term pairs stratified by\
+    \ clini-\\n173\\ncal expert scores 1-5. (C) We stratify cosine similarity scores across four disease categories and show\
+    \ examples of\\n174\\nSNOMED CT codes that were assigned a clinical expert score of 5.\\n175\\nTo assess the relevance\
+    \ of each clinical code to a given disease, clinicians graded SNOMED CT\\n176\\ncodes on a scale from 1 (unrelated) to\
+    \ 5 (very relevant), evaluating both accuracy and applicabil-\\n177\\nity to clinical practice (Figure 2B). Clinicians\
+    \ graded each SNOMED CT code on a scale from 1\\n178\\nto 5, where 1 indicated the code was unrelated to the target disease\
+    \ and 5 indicated it was highly\\n179\\nrelevant and frequently observed in clinical practice. We compared these expert\
+    \ ratings to the co-\\n180\\nsine similarity between the corresponding ClinVec embeddings. Grouping similarity scores\
+    \ by\\n181\\nclinician rating revealed a positive correlation, with mean cosine similarity increasing across\\n182\\nscores\
+    \ 1 to 5 (0.30, 0.53, 0.58, 0.63, 0.61). When stratifying by disease category, we observed\\n183\\nlower alignment for\
+    \ neoplasms compared to other categories. In this case, high embedding simi-\\n184\\nlarity was often assigned a low clinical\
+    \ relevance score by reviewers. This misalignment likely\\n185\\nreflects the heterogeneity of neoplasms, which vary by\
+    \ organ system, stage, and metastatic\\n186\\nA\\n!\\\"#\\\"$%&'(\\\")*%#+'\\\",-*)'./$)\\\"$\\n012345*67\\n8%#9\\n6&'#':'%#*.:/$\\\
+    \"\\n3\\\"#,%&*)'.\\\"%.\\\"\\n;\\\"%)%:<\\\"\\n=#>\\\"$\\n?#./@#'%\\nA\\nB\\nC\\n6/.'#\\\"\"\n  },\n  {\n    \"name\"\
+    : \"DEFF\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DEFG\",\n    \"text\": \"C\\nH\"\n  },\n  {\n    \"name\"\
+    : \"DEFI\",\n    \"text\": \"J\\nEEE\\nEEE\\nEEE\\nEEE\"\n  },\n  {\n    \"name\": \"JKLCCA\",\n    \"text\": \"\"\n \
+    \ },\n  {\n    \"name\": \"DEJJ\",\n    \"text\": \"B\"\n  },\n  {\n    \"name\": \"M&%,\\\"&\\\",*)'./$)\\\"$*\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"JKLCCB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DEDJ\",\n   \
+    \ \"text\": \"A\\n0.30\\n0.53\\n0.58\\n0.63\\n0.61\\nB\\n6&%&',*\"\n  },\n  {\n    \"name\": \"\\\"$N':\\\"\",\n    \"\
+    text\": \";\\\"%&,<:%$\\\"*\"\n  },\n  {\n    \"name\": \"O/.,/#\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\\
+    \"#,\\\"$.P\",\n    \"text\": \"3\\\")':%&\\n!\\\"#$%&'\\n!\\\"#$%&'$(\\n!\\\"#$%&(\\n)*+',#$%&'$(\\n-,./,(0+$&+$+\\nC\\\
+    n4#&%$>\\\")*>&%#).\"\n  },\n  {\n    \"name\": \"O'/Q.-\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \";R@%#*Q%Q'&&/@%*N'$R.*\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"'#S\\\":,'/#\",\n    \"text\": \"?.:<%\\\"@'%\"\n  },\n  {\n    \"name\"\
+    : \"T\\\"#,$':R&%$*,%:<-:%$)'%\",\n    \"text\": \"=#>'/>$%@\"\n  },\n  {\n    \"name\": \"<-$/')*#/)R&\\\"\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"'.\\\"%.\\\"*/S*9')#\\\"-*\",\n    \"text\": \"0\\\":/#)%$-*,<-$/')*\"\n  },\n\
+    \  {\n    \"name\": \"<-Q\\\"$Q&%.'%*\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"M%&.-\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"'.,R$U%#:\\\"*'#*.Q\\\"\\\":<*\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Q'./)':*Q%$/+-.@%&\"\
+    ,\n    \"text\": \"%#+'\\\",-*)'./$)\\\"$\"\n  },\n  {\n    \"name\": \"/Q*.:/$\\\")*012345*67*:/)\\\".*\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"U-*)'.\\\"%.\\\"*:%,\\\">/$-\",\n    \"text\": \"6&'#':'%#*.:/$\\\"\"\n  },\n  {\n\
+    \    \"name\": \"\\\"/Q&%.@.*VBF*)'.\\\"%.\\\".W\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"'$:R&%,/$-*.-.,\\\"\
+    @*VAF*)'.\\\"%.\\\".W\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"#)/:$'#\\\"X@\\\",%U/&':*VAG*)'.\\\"%.\\\".W\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\\"R$/&/>':%&*VAD*)'.\\\"%.\\\".W\",\n    \"text\": \"'\"\n  },\n \
+    \ {\n    \"name\": \"Y#$\\\"&%,\\\")\",\n    \"text\": \")\"\n  },\n  {\n    \"name\": \"Z\\\"..*$\\\"&%,\\\")\",\n  \
+    \  \"text\": \"*\\n8\\\"&%,\\\")\\n+\"\n  },\n  {\n    \"name\": \"T\\\"$-*$\\\"&%,\\\")\",\n    \"text\": \"(\\n3/.,*$\\\
+    \"&%,\\\")\"\n  },\n  {\n    \"name\": \"\\\"%#*\\\"@U\\\"))'#>*.'@'&%$',-*U-*\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \":&'#':'%#*.:/$\\\".*V1[BLFKCW\",\n    \"text\": \"8\\nbehavior. Among disease-code pairs with low clinician\
+    \ scores (\\u22642) and high cosine similarity\\n187\\n(>0.8), many mismatches involved anatomical proximity rather than\
+    \ clinical relevance. For ex-\\n188\\nample, top-scoring terms for \\u201ccancer of salivary glands\\u201d included thyroid\
+    \ conditions. Although\\n189\\nthese organs are anatomically adjacent and involved in autoimmune diseases such as Sj\\\
+    u00f6gren\\u2019s\\n190\\nsyndrome or Hashimoto\\u2019s thyroiditis, they are not directly related in the context of salivary\
+    \ gland\\n191\\ncancer. These findings suggest that embeddings for highly specific diseases could benefit from\\n192\\\
+    nfine-tuning on subgraphs of the KG to improve granularity and clinical alignment.\\n193\\nAnatomical and medical subspecialty\
+    \ structure emerge in the embedding space\\n194\\nClinical knowledge embeddings must capture patterns that align with\
+    \ human biology, disease\\n195\\npresentation, and clinical workflows. Although ClinGraph shares some content with other\
+    \ bio-\\n196\\nmedical KGs, its integration of clinical vocabularies and relationship types produces embeddings\\n197\\\
+    nthat more effectively represent clinically meaningful structure in the latent space. To evaluate\\n198\\nthis, we trained\
+    \ heterogeneous graph transformers on PrimeKG and a SNOMED CT-based KG\\n199\\nusing the same model architecture and training\
+    \ setup as for ClinGraph, and compared the result-\\n200\\ning embedding spaces (Methods).\\n201\\nWe characterize the\
+    \ breadth and granularity of the clinical knowledge represented in the learned\\n202\\nembeddings. Visualizing the latent\
+    \ space of disease (Figure 3A, Supplementary Figure S1A-C)\\n203\\nand drug embeddings (Figure 3B, Supplementary Figure\
+    \ S1D-F) generated by each KG, the em-\\n204\\nbeddings derived from ClinGraph broadly maintain groupings of diseases\
+    \ by organ system, mir-\\n205\\nroring the organization of clinical care. However, embeddings produced by PrimeKG and\\\
+    n206\\nSNOMED-CT KG do not exhibit this distinct clustering pattern. This observation is supported\\n207\\nwhen comparing\
+    \ silhouette scores and adjusted mutual information (AMI) where embedding\\n208\\nclusters from ClinGraph (silhouette:\
+    \ 0.54, AMI: 0.31) produce metrics at the same value or\\n209\\ngreater than clusters produced from other KGs (PrimeKG\
+    \ - silhouette: 0.54, AMI: 0.02;\\n210\\nSNOMED-CT KG - silhouette: 0.15, AMI: -1e-4). Further examining the clusters\
+    \ of phecode\\n211\\nembeddings from ClinGraph, although some phenotypes deviate from these main clusters, many\\n212\\\
+    ndeviations reflect known distinctions within clinical care. For example, most endocrine condi-\\n213\\ntions cluster\
+    \ together (Figure 3A: orange cluster), but some phenotypes cluster more closely with\\n214\\nsense organ conditions (Figure\
+    \ 3A: green cluster). However, this small set of endocrine pheno-\\n215\\ntypes includes mainly eye-related conditions\
+    \ resulting from complications from endocrine disor-\\n216\\nders, such as diabetic retinopathy and exophthalmos.\\n217\\\
+    n\\n\\n9\\n218\\nFigure 3. Latent ClinVec space captures biomedical knowledge consistent with organ system biology and\\\
+    n219\\nanatomy. (A) Scatter plots showing a reduced dimension of the embedding space of clinical codes. On the left, the\\\
+    n220\\nlatent space of phecodes is shown, where each phecode is shaded by its corresponding organ system categorization.\\\
+    n221\\nOn the right, the latent space of ATC medication codes is shown, where each ATC code is shaded according to the\\\
+    n222\\ncorresponding ATC level 1. (B) Visualization of the embedding region of digestive system ICD10CM codes. We\\n223\\\
+    n!\\\"#$%&\\n!\\\"#$%'\\n()*+,-).%/,-)012*-34\\n5,*/-%6*)7-8/,\\n90:1.*/:)-);\\n<*/:)*.%*//,;-\\n=8>2%)0%+/,*;-\\n?06/,@8,0-\\\
+    n>,0;-/*-)10\"\n  },\n  {\n    \"name\": \">+,::)0A%;2*.,%16%23,.1:,;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \">+,::)0A%;2*.,%16%#B<%.1:,;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDE#F%\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"GF,0H1:)*H,2)0,%\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \":,/)I*-)I,;J\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"CD'##%\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GC*-8/*7%12)8>\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"%*7K*71):;J\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GL-*-)0;J\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"<&D#F\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"#0M),-4\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\\"*N1/%:,2/,;;)I,%\",\n    \"text\": \":);1/:,/\\n!\\\"#$%&\\n!\\\"\
+    #$%'\"\n  },\n  {\n    \"name\": \">+,::)0A%;2*.,%16%23,.1:,;%O)-3)0%-3,%:)A,;-)I,%;4;-,>\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"B,,-3%*0:%>18-3%:);1/:,/;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"P1)0-%,>+,::)0A%;2*.,%16%?<(&D<\\\
+    \"Q%#B<Q%LCR\\\"9(<BQ%*0:%<$B%.1:,;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"L4;-,>).%7828;%,/4-3,>*-1;8;%\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"B42,%&%:)*+,-,;\",\n    \"text\": \"!\\\"#$%&\\n!\\\"#$%'\\n!\\\"#$%&\\\
+    n!\\\"#$%'\"\n  },\n  {\n    \"name\": \"<1;)0,%;)>)7*/)-4%O)-3%B42,%&%:)*+,-,;\",\n    \"text\": \"\\\"41.*/:)*7%\\n)06*/.-)10\"\
+    \n  },\n  {\n    \"name\": \"L,.10:*/4%\",\n    \"text\": \"342,/-,0;)10\"\n  },\n  {\n    \"name\": \"(/8A%;./,,0)0A\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \",I*-,:%>11:\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"<3*0A,;%)0%*22,-)-,\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \",/-,0;)I,%/,0*7%\",\n    \"text\": \"6*)78/,\"\n  },\n  {\n    \"name\"\
+    : \"S,0*7%>*;;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"T/);-%)0N8/4\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"\\\"S?%U%2,7I);\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"F*.K%;2*;>;\",\n    \"text\": \"\\\"\
+    *.87*/%/,-)0*7\\n,:,>*\\n()*+,-).%\\n/,-)012*-34\"\n  },\n  {\n    \"name\": \"=10A%-,/>%:/8A%\",\n    \"text\": \"-3,/*24\\\
+    n$/1+7,>;%/,7*-,:%-1%\\n>,:).*7%6*.)7)-4\"\n  },\n  {\n    \"name\": \"S,2*)/%16%3,/0)*\",\n    \"text\": \"<17,.-1>4\"\
+    \n  },\n  {\n    \"name\": \"F)7)*/4%;4;-,>\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"()A,;-)I,%:);1/:,/;\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"M123-3*7>1;\",\n    \"text\": \"A\\nB\\nC\\n=4>231>*\"\n  },\n  {\n  \
+    \  \"name\": \"C10U51:AK)0V;%\",\n    \"text\": \"74>231>*\"\n  },\n  {\n    \"name\": \"R;-,121/1;);\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"F10,%.4;-\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"$*-3*71A).%6/*.-8/,\"\
+    ,\n    \"text\": \"<3/10).%+/10.3)-);\\n#;-3>*\"\n  },\n  {\n    \"name\": \"LD&##\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"G#0-)+)1-).;%)0%\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-3*7>171A).*7;J\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"();,*;,;%16%N*OQ%;*7)I*/4%A7*0:;Q%-10A8,\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"!\\\"\\\"#!\\\"$ ();1/:,/;%16%-,,-3Q%2872Q%A)0A)I*\",\n    \"text\": \"!%%#!%&\"\n  },\n  {\n    \"name\": \"\
+    '()#'(*+(,0-16*.)*7%*01>*7),;Q%:);,*;,;%16%N*O\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"!(( ();,*;,;;%16%,;123*A8;\"\
+    ,\n    \"text\": \"5,/0)*;\\n!&\\\"#!&)\\n,%\\\"#,%$\"\n  },\n  {\n    \"name\": \"();,*;,;%16%*08;Q%\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"/,.-8>Q%3,>1//31):;\",\n    \"text\": \"!)\\\"#!)&\"\n  },\n  {\n    \"name\": \"L4>2-1>;%16%:)A,;-)I,%\"\
+    ,\n    \"text\": \";4;-,>%*0:%*+:1>,0\"\n  },\n  {\n    \"name\": \"();,*;,;%16%)0-,;-)0,;Q%,0-,/)-);Q%.17)-);\",\n  \
+    \  \"text\": \"!-\\\"#!-$\"\n  },\n  {\n    \"name\": \"();,*;,;%16%7)I,/%\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"!.\\\"#!.* ();1/:,/;%16%A*77+7*::,/Q%+)7)*/4%-/*.-Q%2*0./,*;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"/.)0&+<1>27).*-)10;%16%7)I,/%-/*0;27*0-\"\
+    ,\n    \"text\": \"!*%#!**\\nHormones and insulins\"\n  },\n  {\n    \"name\": \"#&DF(\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"W78.1;,%\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"O,/)0A%\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \":/8A;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDXFY%G$;4.31;-)>87*0-;\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"%%%%%*0:%011-/12).;J\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"WD&##\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"GW40,.171A).*7\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"*0-)+)1-).;J\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"$0,>10)*%:8,%-1%680A8;\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"W/*I,;V%:);,*;,\",\n    \"text\": \"$/,>,0;-/8*7%-,0;)10%\"\n  },\n  {\n    \"name\": \";40:/1>,%G$\\\"LJ\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"<1;)0,%;)>)7*/)-4%O)-3%=828;\",\n    \"text\": \"542,/8/).,>)*\\n9/4-3/1.4-,%\\\
+    n;,:)>,0-*-)10%/*-,\"\n  },\n  {\n    \"name\": \"Z)-*>)0%(%:,6).),0.4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"F711:%.1*A87*-)10\",\n    \"text\": \"6*.-1/;\"\n  },\n  {\n    \"name\": \"C,23/)-);\",\n    \"text\": \"#0,>)*%16%.3/10).\\\
+    n:);,*;,\"\n  },\n  {\n    \"name\": \"W78.1.1/-).1):;\",\n    \"text\": \"<1/-).1;-,/1):;\"\n  },\n  {\n    \"name\"\
+    : \"F,-*%+71.K)0A%*A,0-;\",\n    \"text\": \"?0;87)0%-17,/*0.,%2*0,7\"\n  },\n  {\n    \"name\": \"?0;87)0;%*0:%*0*71A8,;\"\
+    ,\n    \"text\": \"<,/,+/*7%*/-,/)*7%\\n*0,8/4;>%\"\n  },\n  {\n    \"name\": \"C,8/12*-3)\",\n    \"text\": \"*/-3/12*-34\\\
+    n<3/10).%;)08;)-);\\n#;-3>*\\n();1/:,/;%16%0*;*7\"\n  },\n  {\n    \"name\": \".*I)-4\",\n    \"text\": \"10\\nhighlight\
+    \ the following phenotype subcategories: functional digestive disorders \\u2013 phecodes, teeth and mouth disor-\\n224\\\
+    nders (center), and biliary system (right). (C) Visualization of embedding space overlaid with ICD10CM, ATC,\\n225\\nSNOMEDCT,\
+    \ and CPT codes. Codes are shaded based on cosine similarity with type 1 diabetes (left) and system-\\n226\\natic lupus\
+    \ erythematosus (right), and the target disease embedding is denoted with a black diamond. The black stars\\n227\\nindicate\
+    \ a subset of codes related to each disease. These are presented along with other codes in their proximity but\\n228\\\
+    nare not directly related to the disease of interest.\\n229\\nExtending this clustering analysis to drug categories based\
+    \ on the ATC-1 level, embeddings gen-\\n230\\nerated by both ClinGraph and PrimeKG show clustering by drug category although\
+    \ ClinGraph\\n231\\nhas a higher silhouette score (0.71 vs. 0.64). In contrast, embeddings from the SNOMED-CT\\n232\\\
+    nknowledge graph do not produce distinct clusters and have an AMI score close to zero. This is\\n233\\nlikely attributable\
+    \ to the more extensive drug coverage in ClinGraph compared to SNOMED-CT\\n234\\nKG. Again, we also find that deviations\
+    \ in the expected cluster labeling according to the ATC-1\\n235\\nclassification in ClinGraph reflect known artifacts\
+    \ of the ATC coding system. For example, the\\n236\\nembeddings for ATC-4 codes G01AA (antibiotics) and D06AX (antibiotics\
+    \ for topical use) are\\n237\\nlocated nearby in the embedding space despite being in different ATC-1 categories. These\
+    \ anal-\\n238\\nyses demonstrate that the effectiveness of clinical embeddings depends on the design of the un-\\n239\\\
+    nderlying KG. ClinGraph\\u2019s integration of clinically grounded vocabularies and relationship types\\n240\"\n  },\n\
+    \  {\n    \"name\": \"results in more accurate representations, outperforming existing KGs across multiple evaluation\"\
+    ,\n    \"text\": \"241\\nmetrics.\\n242\\nA unified clinical vocabulary latent space must capture patterns at broad anatomical\
+    \ levels while\\n243\\nalso identifying discernible relationships at clinical subspecialty levels. To illustrate the granular-\\\
+    n244\\nity of ClinVec clinical vocabulary embeddings, we perform a separate dimensionality reduction\\n245\\nanalysis\
+    \ using only phecodes of the digestive system (Figure 3B). We find that conditions within\\n246\\nthe same subspecialty\
+    \ are significantly closer together compared with all other conditions of the\\n247\\ndigestive system, where codes describing\
+    \ functional digestive disorders (p-value=3.65\\u00d710-45;\\n248\\ntwo-sided Mann-Whitney U test), biliary system (p-value=6.38\\\
+    u00d710-44), and conditions of mouth\\n249\\nand teeth (p-value=1.05\\u00d710-74) are separated within the latent space.\
+    \ Although these codes all\\n250\\nfall under the practice of gastroenterology, the embeddings exhibit distinct clustering\
+    \ patterns\\n251\\nthat reflect their unique clinical presentations and organ systems. This finding show that ClinVec\\\
+    n252\\nembeddings to capture fine-grained distinctions within broader medical categories.\\n253\\nA key advantage of ClinVec\
+    \ embedding space is that it allows direct comparison of clinical\\n254\\ncodes across different vocabularies, bridging\
+    \ gaps between otherwise disconnected coding\\n255\\n\\n\\n11\\nsystems. We compare ClinVec to two state-of-the-art open-source\
+    \ clinical embeddings,\\n256\\nsnomed2vec89 and cui2vec90, in a set of zero-shot retrieval tasks. For a given disease,\
+    \ we select\\n257\\nthe top k closest codes within the embedding space and compare with these with the diseases\\u2019\\\
+    n258\\nsymptom list as listed in the Mayo Clinic disease description. We report each model\\u2019s perfor-\\n259\\nmance\
+    \ using \\u2018hits @ k\\u2019 which measures the proportion of diseases where a relevant symptom is\\n260\\nranked among\
+    \ the top k items within the embedding space. We find that the ClinVec embeddings\\n261\\noutperform other approaches\
+    \ across a variety of values of k (Supplementary Table S4A). While\\n262\\nhierarchical structures explain some of the\
+    \ clustering, the embeddings also capture meaningful\\n263\\npatterns in cross-domain relationships, such as between diseases\
+    \ and their associated treatments,\\n264\\nwhich are not strictly hierarchical. We perform a similar analysis for drug\
+    \ indications with estab-\\n265\\nlished first-line drug treatments. For example, non-Hodgkin\\u2019s lymphoma and CHOP\
+    \ (cyclophos-\\n266\\nphamide, doxorubicin, vincristine, prednisone), testicular cancer and BEP (bleomycin, etoposide,\\\
+    n267\\ncisplatin), and major depressive disorder and selective serotonin reuptake inhibitors. Limiting re-\\n268\\ntrieval\
+    \ over codes exclusively describing ATC5-level medications, for each disease, we perform\\n269\\nzero-shot retrieval across\
+    \ >2,000 drug codes and assess the codes with the highest cosine similar-\\n270\\nity with the disease embedding. We find\
+    \ that the ClinVec embeddings outperform other ap-\\n271\\nproaches across a variety of values of k (Supplementary Table\
+    \ S4B).\\n272\\nEmbedding space reveals clinically grounded diagnostic and symptom patterns\\n273\\nMany clinical applications\
+    \ require disease-level resolution, where models must distinguish be-\\n274\\ntween specific diagnoses and their associated\
+    \ symptom profiles. To evaluate how ClinVec cap-\\n275\\ntures these diagnostic patterns, we examine type 1 diabetes (T1D)\
+    \ and systemic lupus erythema-\\n276\\ntosus (Figure 3C). We compute the cosine similarity between the T1D embedding and\
+    \ ICD10CM\\n277\\ncodes, CPT, LOINC, and SNOMED CT codes within the embedding space and visualize these\\n278\\npatterns\
+    \ by projecting the computed cosine similarity onto the latent space. Broadly, near the em-\\n279\\nbedding of T1D, we\
+    \ observe regions of high cosine similarity as shaded in red and orange. We\\n280\\nfind that many codes within this region\
+    \ are consistent with relevant T1D laboratory tests, such as\\n281\\n\\u2018insulin tolerance panel\\u2019, and common\
+    \ complications, including cardiovascular diseases (Meth-\\n282\\nods). We also identify a cluster of eye-related tests\
+    \ for T1D, including codes for eye exams and\\n283\\nmacular edema. This highlights the embedding space's ability to capture\
+    \ nuanced patterns that\\n284\\nextend beyond identifying codes associated with the same organ system, recapitulating\
+    \ patterns\\n285\\naligned with established disease presentations. Repeating this process for lupus, regions with\\n286\\\
+    n\\n\\n12\\nhigh cosine similarity highlight relevant tests such as erythrocyte sedimentation rate, which is\\n287\\nused\
+    \ to assess systemic inflammation and nephritis, a common complication.\\n288\\nClinVec contains the expressivity and\
+    \ flexibility to describe a wide range of clinical scenarios\\n289\\nwithin the embedding space. Through embedding arithmetic,\
+    \ embeddings can be combined\\n290\\nmathematically to form new meanings. For example, the similarity between the vector\
+    \ summa-\\n291\\ntion of common heart disease symptoms (e.g., shortness of breath, chest pain) and the disease\\n292\\\
+    nembedding of common heart disease yields a cosine similarity score of 0.66. These observations\\n293\\nmirror the geometric\
+    \ properties of word embeddings in natural language processing91, effectively\\n294\\ncapturing the relationship between\
+    \ concepts without explicitly defining it in the original vocabu-\\n295\\nlary. We refer to the aggregation of symptom\
+    \ embeddings in this manner as a disease symptom\\n296\\nembedding\\u2014denoting that the resulting vector is a composition\
+    \ of the symptoms of a given dis-\\n297\\nease (Figure 4A, 4B).\\n298\\n\\n299\\nFigure 4: Embedding operations mirror\
+    \ symptomatic manifestations of clinical conditions. (A) Overview of\\n300\\nthe approach for constructing disease symptom\
+    \ embeddings. (B) Line plot showing the cosine similarity across four\\n301\\nautoimmune diseases and the aggregation\
+    \ of Graves\\u2019 disease symptoms. Aggregated embeddings are computed by\\n302\\n+\\n+\\nOrdered by highest to\\nlowest\
+    \ population frequency\\nSimilarity to\"\n  },\n  {\n    \"name\": \"COPD\",\n    \"text\": \"embedding\\nCough\\n+ Wheezing\\\
+    n+ Pneumonia\\n+ Fatigue\"\n  },\n  {\n    \"name\": \"COPD\",\n    \"text\": \"Cough\\nWheezing\\nFatigue\"\n  },\n \
+    \ {\n    \"name\": \"COPD\",\n    \"text\": \"Cough\\n+ Wheezing\\nTranslate disease symptoms from Mayo Clinic\\nA\\n!\\\
+    \"#$%&'()(*\\n!\\\"#$\\n\\u201cFatigue and malaise\\u201d\\n\\u201cchronic cough\\u201d\\n\\u201cbacterial infection\\\
+    u201d\\n!\\\"#$%\\n!\\\"#$&!\\n!\\\"&$!\\n'()*+\\n,+--./0*\\n!\\\"#$%\\n#&'()*+,*-.\\n123/*)-\\ndescriptions to ICD10\
+    \ codes\\n4\\\"&$5\\n60-)7(0/2\\n!\\\"#$\\\"%\\n&'\\\"#(%\\\"&)*#\\n$$$\\n$$$\\nAggregate ICD10 embeddings from ClinVec\\\
+    nCompute cosine similarity between disease\\nembedding and aggregation of symptoms\\n+,,'-,\\\"&-\\n-./-00)#,(\\n1-&-'*,-#-*$(2,'\\\
+    \"342&'\\\"#(5*'.-'\\n/627%)#)7)\\\"#(\\nPneumonia\\n+\\nB\\n%&'()*'+,*-,./012+3,45+20+2\\n+,-(./0%'$11\\n+2\\\"0(.3-\\\
+    n+455-.3'\\\"5%\\n6-)105\\\"'%*#*'-\\n+7$(0-5\\n+468$0-)*-\\n+9:()%\\\");\\n0(113-%1#680$61\\n%()0-5.36-)0\\\"5#\\n+<=$8/0/\\\
+    \"'6$1\\n>$%1#680$61\\n+?-\\\"0%\\n1-)1(0(@(0#\"\n  },\n  {\n    \"name\": \"+A\\\"'8(0\\\"0($)1\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"+B(.-10(@-%1#680$61\",\n    \"text\": \"+>-5@$31)-11\"\n  },\n  {\n    \"name\": \"+455(0\\\
+    \"C('(0#\",\n    \"text\": \"#0)526),(*(780)5*6,(/21082692\\nCrohn\\u2019s disease\\nMultiple scerolsis\\nGraves\\u2019\
+    \ Disease\\nLupus\\nC\\n\\n\\n13\\nperforming a vector sum across the embeddings for each symptom. (C) Heatmap showing\
+    \ cosine similarity between\\n303\\neach disease embedding and the aggregation of symptoms. Sizes of circles correspond\
+    \ to the magnitude of the co-\\n304\\nsine similarity.\\n305\\nWe assess this pattern by examining nine diseases with\
+    \ significant health implications across dif-\\n306\\nferent clinical specialties. Five conditions are among the top non-communicable\
+    \ diseases with\\n307\\nthe highest mortality rate identified by the World Health Organization92 and four are among the\\\
+    n308\\nmost common autoimmune disorders in adult populations93. Using clinical descriptions of dis-\\n309\\neases from\
+    \ the Mayo Clinic94\\u201398 and the manual translation of symptom lists to diagnosis codes,\\n310\\nwe aggregate all\
+    \ disease symptoms in the form of ICD-9 code embeddings (Supplementary Ta-\\n311\\nble S5). Computing the cosine similarity\
+    \ between the disease symptom embedding and the target\\n312\\ndisease embedding across all nine diseases, we find that\
+    \ all pairs have positive similarity scores\\n313\\n(mean-cos-similarity: 0.77, SD: 0.13) (Supplementary Table S7). Moreover,\
+    \ conditions with\\n314\\noverlapping symptoms also exhibit high similarity scores. For instance, the phecode embedding\\\
+    n315\\nfor multiple sclerosis also has a high similarity score with the disease composition embedding for\\n316\\nlupus\
+    \ (cos-similarity=0.58), as both diseases share symptoms such as fatigue and muscle pain.\\n317\\nWe observe high levels\
+    \ of congruence between diseases affecting the same organ system, such as\\n318\\nlung cancer (target disease) and COPD\
+    \ (symptom embedding), which both affect the respiratory\\n319\\nsystem (cos-similarity=0.86).\\n320\\nAfter identifying\
+    \ this pattern, we evaluated whether individual symptoms exhibit consistent syn-\\n321\\ntactic and semantic structure\
+    \ within the embedding space. To approximate the disease specificity\\n322\\nof each symptom, we ranked symptoms by their\
+    \ frequency in a sample of patients from Clalit\\n323\\nHealth Services (CHS), from most to least common. For each of\
+    \ the nine diseases, we incremen-\\n324\\ntally aggregated symptom embeddings in order of decreasing frequency. As less\
+    \ common symp-\\n325\\ntoms were added, the combined symptom embedding progressively aligned more closely with\\n326\\\
+    nthe target disease embedding (Supplementary Figures S2, S3). To test the robustness of this\\n327\\ntrend, we perturbed\
+    \ key components of the embedding aggregation process. Across variations,\\n328\\nincluding swapping the target disease,\
+    \ substituting related symptoms, and introducing randomly\\n329\\nselected symptoms to mimic real-world variability, the\
+    \ symptom embedding consistently moved\\n330\\ncloser to the corresponding disease embedding in the latent space (Supplementary\
+    \ Figure S4).\\n331\\nThis process can help study diseases with similar symptoms by revealing subtle differences in\\\
+    n332\\nclinical presentations. This level of granularity can be observed when comparing various autoim-\\n333\\nmune diseases\
+    \ due to the presentation of overlapping symptoms. For Graves\\u2019 disease, we\\n334\\n\\n\\n14\\ncompute the initial\
+    \ cosine similarity between the disease embedding for each of the four diseases\\n335\\nand the first symptom embedding,\
+    \ \\u201cpalpitations\\u201d, (the Graves\\u2019 symptom found to be most preva-\\n336\\nlent in the sampled patient population),\
+    \ but no disease has a cosine similarity score > 0.40 (Fig-\\n337\\nure 3B). Given the relatively high prevalence of this\
+    \ symptom in the general patient population\\n338\\nand lack of disease specificity (freq=0.232), it is unsurprising that\
+    \ initial symptoms do not show\\n339\\na high correlation with any of the immune conditions. However, as we add symptoms\
+    \ that are\\n340\\nrelatively less common within the general population, such as \\u2018goiter\\u2019 (freq=0.029), the\
+    \ composi-\\n341\\ntion of symptoms becomes increasingly similar to the representation of Graves\\u2019 disease, and the\\\
+    n342\\nsimilarity with the other three autoimmune conditions begins to diverge. These patterns mirror\\n343\\nhow individual\
+    \ symptoms may not provide sufficient information to assess the probability of a\\n344\\nspecific condition, but as a\
+    \ patient accumulates more symptoms over time, the aggregation of\\n345\\nthese symptoms can stratify patients by disease\
+    \ risk.\\n346\\nClinical knowledge embeddings stratify patients by disease risk and severity\\n347\\nWe next investigate\
+    \ how ClinVec can be utilized in the context of patient outcome prediction, in-\\n348\\ncluding disease progression and\
+    \ disease risk. Using only information derived from ClinVec, we\\n349\\ncompute a disease-specific risk score for various\
+    \ conditions and the relative disease risk for each\\n350\\npatient. Analogous to polygenic risk score frameworks99, we\
+    \ compute a phenotype risk score100\\n351\\nby scanning a patient\\u2019s EHR and aggregating the embeddings across conditions\
+    \ with the highest\\n352\\nsimilarity to the disease of interest (Methods). We validated our approach using retrospective\\\
+    n353\\nEHR data from 4.57 million individuals101 at CHS and specifically focused on patients listed in\\n354\\nthe CHS\
+    \ chronic registry, a registry maintained by CHS that monitors individuals with specific\\n355\\nchronic conditions102.\
+    \ We examine three clinical conditions with the largest sample sizes within\\n356\\nthe chronic registry: chronic kidney\
+    \ disease (CKD), chronic obstructive pulmonary disease\\n357\\n(COPD), and heart failure.\\n358\\n\\n\\n15\\n\\n359\\\
+    nFigure 5: Clinical code embedding risk scores correlate with disease prevalence and severity. (A-C) We pro-\\n360\\nvide\
+    \ scatter plots showing the risk score percentiles of each disease versus the disease prevalence within each bin.\\n361\\\
+    nDots are shaded according to disease prevalence. Columns are divided by diseases: heart failure, CKD, and COPD.\\n362\\\
+    nFor each condition, we constructed a matched case-control cohort (Supplementary Table S6,\\n363\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Figure S5) and used 5 years of clinical history to compute a relative risk score for\",\n    \"\
+    text\": \"364\\neach patient. For a target disease (here represented by an ICD10CM embedding), we identify\\n365\\nembeddings\
+    \ (features) most relevant to the disease by selecting all codes within a given radius in\\n366\\nthe embedding space\
+    \ (see Methods). Each patient\\u2019s score is computed as a weighted sum of these\\n367\\nfeatures, where the weight\
+    \ is calculated as the cosine similarity between the feature embedding\\n368\\nand target disease embedding. In practice,\
+    \ the size of the radius (k-neighbors) can be selected by\\n369\\ncomparing a validation patient dataset, similar to choosing\
+    \ the optimal performing p-value\\n370\\nthreshold in PRS103. This approach eliminates the need to pre-specify a list\
+    \ of features useful for\\n371\\ndiseases with heterogeneous presentations and highly variable symptoms, such as many\
+    \ chronic\\n372\\nconditions.\\n373\\nQuantifying patients\\u2019 disease risk according to their risk score percentile\
+    \ of the total score distri-\\n374\\nbution, we observe the separation of patients according to disease status across\
+    \ all three condi-\\n375\\ntions, particularly at the extreme end of the risk distribution (Figure 5). Within the group\
+    \ of indi-\\n376\\nviduals in the 10th percentile of the risk score distribution for CKD, there is a disease prevalence\\\
+    n377\\nof 6.2%. For patients above the 99th percentile, the disease prevalence increases to 23.4%. Top-\\n378\\nidentified\
+    \ clinical code embeddings are consistent with each disease's known comorbidities, lab\\n379\\ntest results, and medication\
+    \ usage. For example, among the top features of chronic kidney dis-\\n380\\nease is Diabetes mellitus, which is a well-documented\
+    \ risk factor for the disease, and Pro-\\n381\\nteinuria, which can be an early disease indicator. Although we assess\
+    \ the population-level corre-\\n382\\nlation between disease prevalence and risk score percentile, these results suggest\
+    \ opportunities to\\n383\\nA\\nB\\nC\\n\\n\\n16\\nleverage clinical knowledge embeddings for patient monitoring in a way\
+    \ that is independent of\\n384\\nany training dataset.\\n385\\nGiven the marked stratification by disease status, we evaluate\
+    \ whether the computed risk scores\\n386\\ncould provide disease subtyping information. Intuitively, suppose individuals\
+    \ acquire a greater\\n387\\nnumber of highly relevant clinical conditions. In that case, this trend may indicate a later\
+    \ disease\\n388\\nstage and increased mortality rates. To prevent confounding from disease-specific effects with\\n389\\\
+    nage and sex, we restrict the assessment to individuals of the same sex and diagnosed at a similar\\n390\\nage (Methods).\
+    \ For each of the three conditions, we compute the mode age and sex and use this\\n391\\nas inclusion criteria for the\
+    \ survival analysis. Re-calibrating score percentiles based on the final\\n392\\nset of patients, we observe a striking\
+    \ stratification by 6-year survival rate (Supplementary Figure\\n393\\nS6). For CKD (age=72 sex=Male), individuals within\
+    \ the top quintile of this score distribution\\n394\\nfor CKD had a relative 42.6% lower 6-year survival compared to those\
+    \ in the bottom quartile\\n395\\n(top-quartile: 56.8.3%, bottom-quartile: 76.5%). This trend is particularly remarkable\
+    \ consider-\\n396\\ning the risk scores were inferred without any institution-specific, disease-specific, or patient-\\\
+    n397\\nlevel information during training.\\n398\\nClinVec provides structured clinical knowledge to improve LLM performance\\\
+    n399\\nClinical embeddings provide a structured approach to incorporate domain-specific knowledge\\n400\\ninto foundation\
+    \ models such as LLMs. One common strategy is knowledge injection, where em-\\n401\\nbeddings from external knowledge\
+    \ sources are appended to the LLM input. Recent studies show\\n402\\nthat this approach improves performance on tasks\
+    \ such as medical question answering by\\n403\\ngrounding LLM outputs in a clinically relevant context104\\u2013107. We\
+    \ adapt MMed-Llama106, an\\n404\\nopen-source LLM composed of 8 billion parameters. To test whether ClinVec embeddings\
+    \ im-\\n405\\nprove LLM performance beyond what can be achieved with domain-specific training data alone,\\n406\\nwe evaluated\
+    \ our knowledge token injection approach using an LLM already trained on medical\\n407\\ncontent. We used parameter-efficient\
+    \ fine-tuning to integrate 42,883 clinical knowledge tokens\\n408\\ninto the LLM, where each token corresponded to a ClinVec\
+    \ embedding of a UMLS concept\\n409\\n(Supplementary Figure S7). This approach allows domain adaptation without retraining\
+    \ the en-\\n410\\ntire model or requiring a labeled clinical dataset. It provides a resource-efficient strategy for in-\\\
+    n411\\ncorporating structured clinical knowledge into LLMs.\\n412\\nTo assess the impact of clinical knowledge embeddings\
+    \ on LLM performance, we used the\\n413\\nMedQA1\\u20134 dataset, which contains questions from the US Medical Licensing\
+    \ Exams (USMLE).\\n414\\n\\n\\n17\\nWe applied the UMLS MetaMap API to map question text to UMLS concepts, then retrieved\
+    \ the\\n415\\ncorresponding ClinVec embeddings and appended them to the tokenized prompt (see Methods).\\n416\\nThis approach\
+    \ incorporates structured, clinically grounded knowledge without retraining the un-\\n417\\nderlying LLM. Instead, ClinVec\
+    \ supports retrieval-augmented generation, where embeddings rel-\\n418\\nevant to the input are used to guide the LLM\
+    \ response.\\n419\\nAssessing performance with a held-out test set of MedQA (N=1,247 questions), we find a 10.3%\\n420\\\
+    nincrease in question-answering accuracy when incorporating the clinical knowledge embeddings\\n421\\n(acc=0.64) compared\
+    \ to question answering without it (acc=0.58). We observe the largest perfor-\\n422\\nmance gains when questions are short,\
+    \ likely because the language model has limited contextual\\n423\\ninformation to generate accurate answers. Adding just\
+    \ one or two clinical knowledge embed-\\n424\\ndings leads to an average improvement of 11.7%, suggesting that the relationship\
+    \ information\\n425\\nencoded in these embeddings helps compensate for missing context. Performance continues to\\n426\\\
+    nimprove as more tokens are added, reaching a peak at around 9 to 10 tokens. Beyond this point,\\n427\\nadditional embeddings\
+    \ introduce less relevant or less specific information, which reduces overall\\n428\\naccuracy.\\n429\\n\\n430\\nFigure\
+    \ 5: Integrating ClinVec with large language models improves medical question-answering. (A) Over-\\n431\\nview diagram\
+    \ of question-answering with knowledge injection using ClinVec. (B) We report the accuracy of\\n432\\nRheumatoid arthritis\\\
+    nCongestive heart disease\\nGastroesophageal reflux disease\\nUpper respiratory infection\\nA)\\nB)\\nC)\\nD)\\n\\u201cAnswer:\
+    \ B\\u201d\\nQuestion:\\nAnswer options:\\nTokenizer:\\nParameter efficient fine-tuning:\\nLLM\\nProjector\\nOutput\\\
+    n!\\\"#$\\n!\\\"%&\\n!\\\"#'\\n!\\\"%&\\nB\\nC\\n!\\\"#$%&'()!\\n%&')!\\nA\\nA 77 year old man comes in with complaints\
+    \ of\\ndifficulty breathing, fatigue, and swollen ankles.\\nHe has been previously diagnosed with hypertension\\nand currently\
+    \ takes Atorvastatin.  What is a potential\\ndiagnosis for the patient?\\n[\\u2019A\\u2019 , \\u201877\\u2019,...,\\u2018takes\\\
+    u2019,\\u2018At\\u2019,\\u2018or\\u2019,\\u2018vas\\u2019,\\u2018tatin\\u2019,...,\\u2018A\\u2019,\\u2018Rheum\\u2019,\\\
+    u2018atoid\\u2019,\\n\\u2018arthritis\\u2019,\\u2018B\\u2019, \\u2018Congestive\\u2019, \\u2018heart\\u2019,\\u2018disease\\\
+    u2019,\\u2018C\\u2019,\\u2018Gastro\\u2019,\\u2018esoph\\u2019,\\n\\u2018ageal\\u2019, \\u2018reflux\\u2019, \\u2018disease\\\
+    u2019, \\u2018D\\u2019, \\u2018Upper\\u2019, \\u2018respiratory\\u2019, \\u2018infection\\u2019,\\nSNOMEDCT:Dyspnea, SNOMEDCT:Fatigue,\
+    \ SNOMEDCT:Ankle edema, ICD10CM:I10,\"\n  },\n  {\n    \"name\": \"ATC:C10AA05, UMLS:C0003873, UMLS:C0018802, UMLS:C0017168,\
+    \ UMLS:C0041912]\",\n    \"text\": \"LLM\\nLLM+ClinVec\\nLLM\\nLLM+ClinVec\\n\\n\\n18\\nN=1,247 medical questions in the\
+    \ MedQA dataset. The red line denotes random performance with four candidate\\n433\\nanswer options. (C) Accuracy of N=3,724\
+    \ multiple-choice questions from AfriMed-QA dataset. The red line de-\\n434\\nnotes baseline performance with five answer\
+    \ options.\\n435\\nTo assess generalizability across different clinical scenarios, we also examined the recently re-\\\
+    n436\\nleased AfriMed-QA dataset109, which consists of 3,724 multiple-choice questions collected from\\n437\\nhealthcare\
+    \ settings across 16 African countries. Since the dataset was released in early 2025,\\n438\\nthere is no data leakage\
+    \ between the training and fine-tuning datasets. We observe a similar mag-\\n439\\nnitude of performance improvement where\
+    \ we observe accuracy of 0.64 with the addition of\\n440\\nclinical knowledge embeddings compared to 0.59 without\\u2014a\
+    \ 8.5% increase. Breaking down per-\\n441\\nformance by clinical specialty (a label provided in the original dataset),\
+    \ we identify the special-\\n442\\nties with the greatest performance gains, including hematology (+37.0%) and ophthalmology\\\
+    n443\\n(+20.3%). Given the specificity of these fields, the addition of clinical knowledge yields the most\\n444\\nsubstantial\
+    \ improvements in question-answering performance. Hematology shows the largest\\n445\\ngains, likely due to the distinct\
+    \ disease presentations encountered in African settings that are un-\\n446\\nderrepresented in the training data of most\
+    \ large language models. For instance, one correctly an-\\n447\\nswered question concerns antiretroviral treatment regimens\
+    \ for HIV-associated anemia, a clinical\\n448\\nscenario more common in regions with high HIV prevalence. This example\
+    \ illustrates how an-\\n449\\nchoring model responses in structured, domain-specific knowledge from ClinVec helps address\\\
+    n450\\nregional variation and improves accuracy in specialized medical contexts. We observe consistent\\n451\\nperformance\
+    \ improvements across both U.S.- and Africa-based clinical questions, suggesting\\n452\\nthat ClinVec supports generalizable\
+    \ medical reasoning.\\n453\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"454\\nWe introduce ClinGraph,\
+    \ a clinical knowledge graph, and ClinVec, a corresponding set of\\n455\\n153,166 clinical vocabulary embeddings, that\
+    \ together translate structured clinical information\\n456\\ninto a machine-readable format for use in AI models. These\
+    \ embeddings capture patterns among\\n457\\nclinical codes that reflect human anatomy, disease presentation, and healthcare\
+    \ organization.\\n458\\nThey encode semantic relationships that support the combination and comparison of clinical con-\\\
+    n459\\ncepts. We demonstrate that the embeddings enable patient-level prediction across diverse condi-\\n460\\ntions without\
+    \ using patient data during training. Evaluations by inter-institutional panels of clini-\\n461\\ncians from the United\
+    \ States and Israel confirm that the embeddings align with current clinical\\n462\\n\\n\\n19\\nknowledge and practice.\
+    \ This resource offers a generalizable framework for sharing clinical\\n463\\nknowledge and developing transferable, knowledge-grounded\
+    \ AI models.\\n464\\nClinical code embeddings offer a way to represent structured clinical knowledge for use in AI\\n465\\\
+    nmodels. By encoding relationships among diagnoses, procedures, medications, and laboratory\\n466\\ntests, the embeddings\
+    \ create a knowledge-grounded representation of clinical data that can be\\n467\\nused in downstream machine learning\
+    \ applications. These representations are well-suited to serve\\n468\\nas inputs to foundation models, large-scale models\
+    \ pre-trained on unlabeled data and adapted to\\n469\\nspecific tasks through fine-tuning with labeled datasets110. The\
+    \ foundation model approach has\\n470\\nshown success in natural language processing and computer vision, supported in\
+    \ part by the\\n471\\navailability of publicly shared models such as DeepSeek111 and LLaMA112. Our resource can be\\n472\\\
+    nused in retrieval-augmented generation113 systems where embeddings serve as a structured\\n473\\nknowledge base. In this\
+    \ setting, relevant embeddings can be retrieved based on a user prompt to\\n474\\nprovide clinical context and support\
+    \ more accurate and informed model outputs41.\\n475\\nWhile this resource offers a foundation for advancing precision\
+    \ medicine, it has several limita-\\n476\\ntions. First, the current knowledge representations do not model uncertainty.\
+    \ Clinical knowledge\\n477\\nis derived from heterogeneous sources, and the frequency or relevance of specific observations\\\
+    n478\\ncan vary across populations. For example, while disease guidelines may list several symptoms,\\n479\\ntheir prevalence\
+    \ and clinical importance often differ between individuals. Second, the quality of\\n480\\nthe embeddings depends on the\
+    \ accuracy of the underlying KG. Errors such as incorrect or in-\\n481\\ncomplete edges can introduce noise and distort\
+    \ the learned representations. As clinical\\n482\\nknowledge evolves, the graph must be regularly updated to reflect current\
+    \ clinical standards and\\n483\\npractice. Third, the embeddings do not incorporate contextual information, such as age\
+    \ or sex,\\n484\\nwhich can influence the presentation and interpretation of clinical concepts. For example, the\\n485\\\
+    nclinical presentation of a heart attack can vary significantly between males and females114, but\\n486\\nthis delineation\
+    \ is not considered in the construction of the embeddings.\\n487\\nClinVec embeddings cover common and chronic diseases,\
+    \ with limited representation of genetic\\n488\\ndisorders and Mendelian conditions. Future work will incorporate codes\
+    \ from phecodeX115, an\\n489\\nupdated vocabulary that includes chromosomal anomalies, as well as resources focused on\
+    \ Men-\\n490\\ndelian diseases, such as the Online Mendelian Inheritance in Man (OMIM)116 and Human Pheno-\\n491\\ntype\
+    \ Ontology (HPO)74. We also plan to integrate databases that capture biological mechanisms,\\n492\\n\\n\\n20\\nincluding\
+    \ those involving genes and proteins, to improve the representation of disease with com-\\n493\\nplex or poorly defined\
+    \ clinical features.\\n494\\nClinGraph consolidates fragmented coding systems into a unified representation of clinical\\\
+    n495\\nknowledge, addressing interoperability challenges while protecting patient privacy. The embed-\\n496\\ndings are\
+    \ designed to capture clinical knowledge that generalizes across care settings and aligns\\n497\\nwith established medical\
+    \ practices. Unlike datasets that only reflect recorded health states, Clin-\\n498\\nVec embeddings incorporate information\
+    \ about clinical guidelines, mechanistic associations, and\\n499\\ndisease-treatment pathways. Because the embeddings\
+    \ are derived from structured vocabularies\\n500\\nand not patient-level data, they can be shared across institutions\
+    \ without risk of exposing identifi-\\n501\\nable information. Unlike models pre-trained on patient records, which may\
+    \ inadvertently retain\\n502\\nor memorize sensitive information117,118, ClinVec embeddings can be shared across healthcare\\\
+    n503\\nsystems without risking patient privacy. This approach also reduces dependence on specific pa-\\n504\\ntient populations\
+    \ and supports diverse clinical applications. By embedding structured clinical\\n505\\nknowledge into AI models, this\
+    \ resource helps ensure that predictions are grounded in estab-\\n506\\nlished medical understanding119. Resources such\
+    \ as unified clinical vocabulary embeddings can\\n507\\nstrengthen the reliability and generalizability of AI models.\\\
+    n\\n508\\n\\n\\n21\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"509\\nStandardized medical vocabularies\\\
+    n510\\nWe use standardized medical vocabularies to construct all clinical concepts in ClinGraph and\\n511\\nClinVec, supporting\
+    \ broad applicability across clinical use cases:  Unified Medical Language\\n512\\nSystem (UMLS), International Classification\
+    \ of Diseases (ICD)120, Anatomical Therapeutic\\n513\\nChemical (ATC) Classification121, RxNorm122, Systemized Nomenclature\
+    \ of Medicine \\u2013 Clinical\\n514\\nTerms (SNOMED CT)123, Current Procedural Terminology (CPT)124, Logical Observation\
+    \ Iden-\\n515\\ntifiers Names and Codes (LOINC)125, and phecodes126. Here, we define a clinical code as an en-\\n516\\\
+    ntry within a medical vocabulary with a unique identifier.\\n517\\nWe begin by integrating the clinical codes and relationships\
+    \ defined in the UMLS vocabulary.\\n518\\nWe incorporate all UMLS CUIs (concept unique identifier) with a source vocabulary\
+    \ in\\n519\\nICD10CM, SNOMED CT, LOINC, RxNorm, ATC, or CPT (N=42,883 nodes). Next, we inte-\\n520\\ngrate all ICD10CM\
+    \ codes up to 2 decimal places (N=34,842) and all ICD9CM codes. We also\\n521\\nadd information from the phecode coding\
+    \ system which represents clinical phenotypes as phe-\\n522\\ncodes, formed by aggregating groups of diagnostic codes\
+    \ (i.e., ICD codes) into clinical sub-\\n523\\ngroupings (N=1,817) 127\\u2013129. Phecodes were developed to facilitate\
+    \ the secondary use of EHRs\\n524\\nfor biomedical research rather than for patient monitoring or hospital administration.\
+    \ Numbers\\n525\\nafter the decimal point reflect a hierarchical structure similar to the ICD code hierarchy. Under\\\
+    n526\\neach leaf phecode is the set of corresponding ICD-9/10 codes where each phecode has between 1\\n527\\n\\u2013 20+\
+    \ associated ICD-9/10 codes. Next, we add nodes representing LOINC Part codes, which are\\n528\\nstandardized attribute\
+    \ values used to construct the LOINC codes that specify a given laboratory\\n529\\ntest. We restrict our inclusion to\
+    \ only LOINC Part component codes which refer to the substance\\n530\\nbeing tested (N=14,399). We also incorporate all\
+    \ CPT codes (N=4,377), ATC codes (levels 3-5:\\n531\\nN=5,179), and RxNorm drug groups (N=10,130).\\n532\\nNext, we integrate\
+    \ a subset of SNOMED CT codes as nodes in ClinGraph. Because the\\n533\\nSNOMED CT vocabulary includes many codes (>350,000),\
+    \ we wanted to restrict the inclusion\\n534\\nto the most clinically relevant codes. We begin by selecting all SNOMED\
+    \ CT codes from the\\n535\\nCORE (Clinical Observations Recording and Encoding) Subset, a set of most frequently used\\\
+    n536\\ncodes provided by UMLS constructed to maximize data interoperability across institutions. Next,\\n537\\nwe include\
+    \ SNOMED CT codes from the Convergent Medical Terminology subset diagnosis list,\\n538\\n\\n\\n22\\na set of core terms\
+    \ originally curated by Kaiser Permanente and now used across numerous\\n539\\nhealthcare systems.\\n540\\nRelationships\
+    \ between clinical concepts\\n541\\nTo construct edges between pairs of clinical concepts (nodes), we first incorporate\
+    \ relationships\\n542\\ndefined by the PheMap database, an existing knowledge base of biomedical knowledge that de-\\\
+    n543\\nfines a set of relationships between the codes and various clinical vocabularies83. This database\\n544\\noffers\
+    \ relationship pairs linking phecodes and clinical codes from other medical vocabularies, in-\\n545\\ncluding RxNorm,\
+    \ CPT, LOINC, and SNOMED CT. Relationships defined in PheMap were de-\\n546\\ntermined through text mining and natural\
+    \ language processing of open-source biomedical litera-\\n547\\nture. These relationships can be interpreted as a phenotype\
+    \ being \\u201cassociated with\\u201d a given clini-\\n548\\ncal concept. To construct relationships between different\
+    \ medication codes, we use ATCPROD,\\n549\\na product-level mapping of RxNorm to ATC-4 classes. Edges between ICD9CM and\
+    \ ICD10CM\\n550\\ncodes are derived from the General equivalence mappings (GEM), the official crosswalk map-\\n551\\nping\
+    \ diagnoses codes to and from ICD9CM and ICD10CM.\\n552\\nConstructing ClinGraph\\n553\\nTo efficiently represent clinical\
+    \ knowledge in a format optimized for machine learning, we for-\\n554\\nmally organize the clinical codes and relationships,\
+    \ as described above, into a heterogenous\\n555\\nknowledge graph130 (KG) called ClinGraph. We draw an undirected edge\
+    \ between two clinical\\n556\\ncodes if they have a pairwise relationship as described above in the clinical vocabulary\
+    \ aggrega-\\n557\\ntion process. Multiple edges are drawn if two nodes have a relationship defined multiple times\\n558\\\
+    n(e.g., a relationship between a phecode and ICD-9CM code derived from the phecode hierarchy\\n559\\nand the PheMap knowledge\
+    \ base). The final graph comprises 153,166 nodes across seven node\\n560\\ntypes and 2,873,025 edges, and the distribution\
+    \ of nodes and edges can be found in Supplemen-\\n561\\ntary Table S1, S2.\\n562\\nWe model 4 distinct node types: diagnosis\
+    \ codes (ICD9CM, ICD10CM, phecodes), medications\\n563\\n(ATC, RxNorm), laboratory tests/procedures (LNC, CPT), and clinical\
+    \ concepts/vocabularies\\n564\\n(SNOMED CT, UMLS). By grouping similar vocabularies (e.g., RxNorm and ATC), we allow\\\
+    n565\\nfor information sharing across similar nodes. However, modeling distinct edge types would re-\\n566\\nquire the\
+    \ harmonization of relationship types across databases. For databases without defined\\n567\\nedge type semantics, such\
+    \ as PheMap, this harmonization process would likely require additional\\n568\\n\\n\\n23\\nresources and clinical expertise.\
+    \ For this reason, we only model distinct node types and leave the\\n569\\nimplementation of edge-type specific embeddings\
+    \ as future work.\\n570\\nHeterogenous graph transformer\\n571\\nGraph notation\\n572\\nA heterogeneous graph, \\ud835\\\
+    udca2= (\\ud835\\udcb1, \\u2130), is defined by a set of nodes \\ud835\\udcb1 and edges \\u2130. We define a\\n573\\nmapping\
+    \ function \\ud835\\udc53!: \\ud835\\udcb1\\u2192\\ud835\\udcaf!where each node \\ud835\\udc63\\u2208\\ud835\\udcb1 has\
+    \ an assigned node type \\ud835\\udc53!(\\ud835\\udc63) \\u2208\\ud835\\udcaf!.\\n574\\nHere, the node types represent\
+    \ different clinical vocabularies. For a given graph, \\ud835\\udca2, we denote\\n575\\nthe graph neural network, \\u210b\\\
+    ud835\\udca2, as a function that maps a vector of features for a node \\ud835\\udc62, written\\n576\\nas \\ud835\\udc99\\\
+    ud835\\udc96 \\u2208\\u211d%, to a vector of real numbers representing the latent space:\\n577\\n\\u210b\\ud835\\udca2:\
+    \ \\ud835\\udc99\\ud835\\udc96\\u2192\\ud835\\udc9b\\ud835\\udc96 .\\n578\\nHere, \\ud835\\udc51 is the dimension of the\
+    \ input vector. This resulting mapped vector (also called an embed-\\n579\\nding) is denoted by \\ud835\\udc9b\\u2208\\\
+    u211d%. For convenience of notation, we assume that the input and output\\n580\\ndimensions are equal. We provide a table\
+    \ with relevant notation and indicate whether they are an\\n581\\ninferred parameter within the model.\\n582\\n\\n583\\\
+    nVariable\\nDescription\\nDimension\\nTrainable\"\n  },\n  {\n    \"name\": \"(Y/-)\",\n    \"text\": \"\\ud835\\udcd6\\\
+    nGraph\\n-\\n-\\n\\ud835\\udce5\\nSet of vertices or nodes\\n-\\n-\\n\\ud835\\udcd4\\nSet of edges\\n-\\n-\\n\\ud835\\\
+    udce3\\ud835\\udc97\\nSpace of node types\\n-\\n-\\nd\\nInput dimension\\n\\u211d'\\n-\\nL\\nNumber of layers\\n\\u211d'\\\
+    n-\\n\\ud835\\udcd7\\ud835\\udcd6\\nGraph neural network function\"\n  },\n  {\n    \"name\": \"\\u211d%  \\u2192\\u211d%\"\
+    ,\n    \"text\": \"Y\\n\\ud835\\udc99\\ud835\\udc96\\nFeature vector of node u\\n\\u211d%\\n-\\n\\ud835\\udc9b\\ud835\\\
+    udc96\\nEmbedding vector of node u\\n\\u211d%\\nY\\n\\ud835\\udcdd(\\ud835\\udc96)\\nNeighborhood of node u\\n-\\n-\\\
+    n\\ud835\\udc8e\\ud835\\udc96\\nMessage feature of node u\\n\\u211d%\\nY\\n\\ud835\\udc89\\ud835\\udc96\\n(\\ud835\\udc8d)\\\
+    nEmbedding of node u at the lth layer\\n\\u211d%\\nY\\n\\ud835\\udc00\\ud835\\udc13\\ud835\\udc13(\\ud835\\udc94, \\ud835\\\
+    udc95)\\nAttention vector for node u\\n\\u211d%\\nY\\nh\\nNumber of heads\\n\\u211d'\\n-\\n\\ud835\\udc7e\\ud835\\udc78\\\
+    n\\ud835\\udc8a, \\ud835\\udc7e\\ud835\\udc72\\n\\ud835\\udc8a\\nWeight matrices\"\n  },\n  {\n    \"name\": \"\\u211d%\\\
+    u00d7%\",\n    \"text\": \"0\\nY\\n\\ud835\\udc89\\ud835\\udc86\\ud835\\udc82\\ud835\\udc85(\\ud835\\udc94, \\ud835\\\
+    udc95)\\ud835\\udc8a\\nAttention head vector for source node u and\\ntarget node v\\n\\ud835\\udc51/\\u210e\\nY\\n\\ud835\\\
+    udc7e\\ud835\\udc78\\n\\ud835\\udc8a, \\ud835\\udc7e\\ud835\\udc72\\n\\ud835\\udc8a\\nWeight matrices for attention computation\"\
+    \n  },\n  {\n    \"name\": \"\\u211d%\\u00d7%\",\n    \"text\": \"0\\nY\\n\\ud835\\udc7e\\ud835\\udc7d\\n\\nWeigh matrix\
+    \ for attention computation\\n\\u211d\\n%\\n0\\u00d7%\\n0\\nY\\n\\n\\n24\\n\\ud835\\udc72\\ud835\\udc94\\n\\ud835\\udc8a,\
+    \ \\ud835\\udc78\\ud835\\udc95\\n\\ud835\\udc8a\\nQuery and key vectors\\n\\u211d\\n%\\n0\\u00d7'\\nY\"\n  },\n  {\n \
+    \   \"name\": \"A \\u2299\\ud835\\udc69\",\n    \"text\": \"Hadamard product between A and B\\n-\\n-\\n!\\nElement-wise\
+    \ summation\\n-\\n-\\n\\u2551\\ud835\\udc8f(\\ud835\\udc99\\ud835\\udc8a)\\nRow-level concatenation of the set vectors\\\
+    n-\\n-\\n\\ud835\\udc87(\\ud835\\udc96, \\ud835\\udc97)\\nSimilarity scoring function\\n-\\nY\\n\\u2225\\u22c5\\u2225\\\
+    nL2-norm\\n\\u211d'\\n-\\n\\ud835\\udc976\\nNode forming a positive edge with \\ud835\\udc96\\n-\\n-\\n\\ud835\\udc977\\\
+    nNode that does not form an edge with \\ud835\\udc96\\n-\\n-\\n\\ud835\\udcd68\\nGraph with masked edges\\n-\\n-\\nTable\
+    \ 1: Summary of notation. We provide a summary of the variables used in deriving the graph transformer net-\\n584\\nwork\
+    \ model, the dimension of each variable, and whether it is a learned or fixed parameter. Rows are sorted accord-\\n585\\\
+    ning to the order in which each variable is introduced.\\n\\n586\\n\\n\\n25\\nOverview\\n587\\nWe model the architecture\
+    \ of our graph neural network (GNN) after the heterogeneous graph\\n588\\ntransformer (HGT)86. In this work, we briefly\
+    \ describe the key model steps. The complete deri-\\n589\\nvation of HGT is detailed in previous work86.\\n590\\nLearning\
+    \  \\u210b\\ud835\\udca2 involves aggregating information across the graph structure defined by \\ud835\\udca2. For a\\\
+    n591\\ntarget node \\ud835\\udc61, we define its neighborhood, \\ud835\\udca9(\\ud835\\udc61), as the set of nodes with\
+    \ a direct connection or\\n592\\nedge with t. Information is propagated through the graph by gathering information from\
+    \ the\\n593\\nneighborhood of \\ud835\\udc61, which is aggregated into a message feature \\ud835\\udc8e9. The embedding\
+    \ of t can be\\n594\\nupdated with the resulting message feature, \\ud835\\udc89:\\n(;6') = UPDV\\ud835\\udc8e9\\n(;),\
+    \ \\ud835\\udc89\\ud835\\udc96\\n(\\ud835\\udc8d)W where \\ud835\\udc89\\ud835\\udc95\\n(\\ud835\\udc8d6\\ud835\\udfcf)is\
+    \ the embed-\\n595\\nding of node \\ud835\\udc61 at the l+1 layer and UPD(\\u00b7) refers to an update function that integrates\
+    \ messages\\n596\\nwith the current node embedding. Note that the input of the l+1 layer is the output of the previ-\\\
+    n597\\nous layer, and by stacking L layers \\ud835\\udc899\\n(\\u2219), we represent the final HGT as a composition of\
+    \ these\\n598\\nfunctions across all layers:\\n599\\n\\u210b\\ud835\\udca2(\\ud835\\udc999) = ( \\ud835\\udc899\\n(>)\
+    \ \\u2218 \\ud835\\udc899\\n(>7') \\u2218\\u2026 \\u2218\\ud835\\udc899\\n('))(\\ud835\\udc999).\\n600\\nThe input of\
+    \ the model is the set of node features, \\ud835\\udc999 \\u2208\\u211d% for all nodes in \\ud835\\udca2 which is then\
+    \ used\\n601\\nto initialize the 090 layer embedding of each node \\ud835\\udc899\\n(?). In practice, each of the node\
+    \ features is\\n602\\ninitialized using Xavier noise. The embedding represents the relational information learned from\\\
+    n603\\nthe knowledge graph without additional information from the node features.\\n604\\nMulti-head attention mechanism\\\
+    n605\\nThe HGT uses  multi-head attention, which is a key feature of transformer architecture87. Multi-\\n606\\nhead attention\
+    \ utilizes multiple attention mechanisms, or heads, in parallel to tend to different\\n607\\nparts of the input, where\
+    \ each head has its own set of learnable weights (parameters). Updating a\\n608\\nnode\\u2019s embedding involves aggregating\
+    \ messages across all \\u210e heads and weighting each mes-\\n609\\nsage by its attention score. This mechanism essentially\
+    \ up- and down-weights messages based on\\n610\\ntheir importance so that only necessary information is propagated to\
+    \ the target node. Although\\n611\\nthe original HGT architecture allows the modeling of different relation types within\
+    \ heterogene-\\n612\\nous graphs, we treat all nodes and edges as a single type during inference to maximize infor-\\\
+    n613\\nmation sharing across the knowledge graph.\\n614\\n\\n\\n26\\nFor a target node \\ud835\\udc61, a single attention\
+    \ head is a series of linear projections of the embedding from\\n615\\nthe previous layer, normalized by the embedding\
+    \ dimension. Here, a linear projection for an in-\\n616\\nput \\ud835\\udc99\\u2208\\u211d%, is defined as an affine linear\
+    \ transformation, \\ud835\\udc9a= \\ud835\\udc7e\\ud835\\udc7b\\ud835\\udc99+ \\ud835\\udc83 where \\ud835\\udc83 is a\
+    \ bias term\\n617\\nand \\ud835\\udc7e is a learnable weight matrix. For convenience, we drop the bias term in the following\
+    \ der-\\n618\\nivations, but in practice, the parameter corresponding to the bias term is absorbed into the esti-\\n619\\\
+    nmation of \\ud835\\udc7e.\\n620\\nThe series of linear projections mirror the standard query, key, and value vectors\
+    \ used in the\\n621\\nstandard transformer architecture. The attention score vector corresponding to the edge between\\\
+    n622\\nsource node s and target node t, represented as \\ud835\\udc00\\ud835\\udc13\\ud835\\udc13(\\ud835\\udc60, \\ud835\\\
+    udc61), is computed as the concatenation of\\n623\\neach head\\u2019s output:\\n624\\n\\ud835\\udc72A\"\n  },\n  {\n \
+    \   \"name\": \"B = _\\ud835\\udc7eC\",\n    \"text\": \"B `\\nD\\ud835\\udc89A\\n(;7'),\\n625\\n\\ud835\\udc789\"\n \
+    \ },\n  {\n    \"name\": \"B = _\\ud835\\udc7eE\",\n    \"text\": \"B `\\nD\\ud835\\udc899\\n(;7'),\\n626\\n\\ud835\\\
+    udc6f\\ud835\\udc6c\\ud835\\udc68\\ud835\\udc6b(\\ud835\\udc60, \\ud835\\udc61)B = _\\ud835\\udc7eF\\nB `\\nD\\ud835\\\
+    udc72\\ud835\\udc94\\n\\ud835\\udc8a\\n\\u2299(\\ud835\\udc78\\ud835\\udc95\"\n  },\n  {\n    \"name\": \"B) \\u22c51\"\
+    ,\n    \"text\": \"\\ud835\\udc51,\\n627\\n\\ud835\\udc00\\ud835\\udc13\\ud835\\udc13(\\ud835\\udc60, \\ud835\\udc61)\
+    \ = \\u2551B\\u2208[?,0] \\ud835\\udc07\\ud835\\udc04\\ud835\\udc00\\ud835\\udc03(\\ud835\\udc60, \\ud835\\udc61)B.\\\
+    n628\\nHere, the operator \\u201cA \\u2299\\ud835\\udc69\\u201d represents the elementwise or Hadamard product between\
+    \ \\ud835\\udc68 and \\ud835\\udc69,\\n629\\nand the operator \\u201c\\u25515(\\ud835\\udc99B)\\u201d represents the row-level\
+    \ concatenation of the given set of vectors\\n630\\n{\\ud835\\udc99', . . . , \\ud835\\udc995}.\\n631\\nThe input vector\
+    \ is \\ud835\\udc89A\\n(;7') \\u2208\\u211d\\ud835\\udc85\\u00d7', and the learnable weight matrices are \\ud835\\udc7eE\"\
+    \n  },\n  {\n    \"name\": \"B , \\ud835\\udc7eC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"B \\u2208\\u211d%\\\
+    u00d7\\\"\",\n    \"text\": \"#, and\\n632\\n\\ud835\\udc7eF\\n\\n\\u2208\\u211d\\n\\\"\\n#\\u00d7\\\"\\n# where\\n%\\\
+    n0 is the input dimension divided by the number of heads. For these weight\\n633\\nmatrices, the subscripts refer to the\
+    \ query, key, and value elements in the transformer. The result-\\n634\\ning query and key vectors follow as \\ud835\\\
+    udc72A\"\n  },\n  {\n    \"name\": \"B , \\ud835\\udc789\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"B \\u2208\\\
+    u211d\",\n    \"text\": \"\\\"\\n#\\u00d7'. The resulting attention vectors from each\\n635\\nhead and final multi-head\
+    \ attention vector are \\ud835\\udc07\\ud835\\udc04\\ud835\\udc00\\ud835\\udc03(\\ud835\\udc60, \\ud835\\udc61)B \\u2208\\\
+    u211d\\n\\\"\\n#\\u00d7' and \\ud835\\udc00\\ud835\\udc13\\ud835\\udc13(\\ud835\\udc60, \\ud835\\udc61) \\u2208\\u211d%\\\
+    u00d7'. And\\n636\\nto ensure the attention scores for the target node t sum to 1, a \\ud835\\udc46\\ud835\\udc5c\\ud835\\\
+    udc53\\ud835\\udc61\\ud835\\udc5a\\ud835\\udc4e\\ud835\\udc65(\\u00b7) is applied across all\\n637\\nneighbors of t.\\\
+    n638\\nMessage passing\\n639\\n\\n\\n27\\nFor target node t, we first compute the message vectors across all heads for\
+    \ each neighbor of t.\\n640\\nThis message is calculated as a linear projection of the embedding for source node s from\
+    \ the\\n641\\nprior layer multiplied by a weight matrix (\\ud835\\udc7e\\ud835\\udc7b). Each head maintains its linear\
+    \ projection matrix\\n642\\nbut \\ud835\\udc7e\\ud835\\udc7b is shared across all attention heads.\\n643\\nThe final message\
+    \ passed from \\ud835\\udc60 \\u2192\\ud835\\udc61 is a concatenation of messages produced from each of the\\n644\\nh\
+    \ heads. This resulting message vector is then multiplied by the multi-head attention vector. The\\n645\\nfinal updated\
+    \ embedding (\\ud835\\udc899\\n(;)) is computed by aggregating across all neighbors of the node \\ud835\\udc61\\n646\\\
+    nthrough an elementwise sum. This is followed by a linear projection (\\ud835\\udc7eL), which creates sepa-\\n647\\nrate\
+    \ projection for each node type. We need a single matrix because we only model a single node\\n648\\ntype. This is then\
+    \ followed by a residual connection and passed through an activation function:\\n649\\n\\ud835\\udc8eA\"\n  },\n  {\n\
+    \    \"name\": \"(;) = \\u2551B\\u2208[',0]V\\ud835\\udc7e\\ud835\\udc7b ( \\ud835\\udc7eM\",\n    \"text\": \"B$\\ud835\\\
+    udc89A\"\n  },\n  {\n    \"name\": \"(;7'))W\",\n    \"text\": \",\\n651\\n\\ud835\\udc89o9\\n(;) = p \\ud835\\udc00\\\
+    ud835\\udc13\\ud835\\udc13(\\ud835\\udc60, \\ud835\\udc61)\"\n  },\n  {\n    \"name\": \"\\u2200!\\u2208L(:)\",\n    \"\
+    text\": \"\\u2299\\ud835\\udc8eA\\n(;),\\n652\\n\\ud835\\udc899\\n(;) = \\u03c3V\\ud835\\udc7eL \\ud835\\udc89o9\\n(;)\
+    \ + \\ud835\\udc899\"\n  },\n  {\n    \"name\": \"(;7')W\",\n    \"text\": \"650\\nThe learnable weight matrices are \\\
+    ud835\\udc7e\\ud835\\udc7b\\u2208\\u211d\\n\\\"\\n#\\u00d7\\\"\"\n  },\n  {\n    \"name\": \"# ,  \\ud835\\udc7eM\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"B \\u2208\\u211d%\\u00d7\\\"\",\n    \"text\": \"# , and  \\ud835\\udc7eL\
+    \  \\u2208\\u211d%\\u00d7%. The message\\n653\\nvector is \\ud835\\udc8e9\\n(;) \\u2208\\u211d%\\u00d7'. The operator\
+    \ \\u2a01 represents the elementwise summation. Training the final\\n654\\nmodel involves optimizing the set of learnable\
+    \ weight matrices, {\\ud835\\udc7eC\"\n  },\n  {\n    \"name\": \"B , \\ud835\\udc7eE\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \"B , \\ud835\\udc7eF\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"B , \\ud835\\udc7eM\",\n \
+    \   \"text\": \"B } across h\\n655\\nheads and finding  {\\ud835\\udc7eD, \\ud835\\udc7eL} that minimizes the loss function\
+    \ \\u2112.\\n656\\nSelf-supervised learning\\n657\\nFor a given node \\ud835\\udc62, our goal is to generate an embedding\
+    \ \\ud835\\udc9b:that quantifies the topological infor-\\n658\\nmation of the graph w.r.t \\ud835\\udc62. The learning\
+    \ objective can be framed as a link prediction problem,\\n659\\nwhere given two nodes \\ud835\\udc62 and \\ud835\\udc63,\
+    \ we want to train a function to predict whether an edge exists be-\\n660\\ntween these two nodes. This function can be\
+    \ described by,\\n661\\n\\ud835\\udc53(\\ud835\\udc62, \\ud835\\udc63) =\\n(\\ud835\\udc9b:)D\\ud835\\udc9b!\\n\\u2225\\\
+    ud835\\udc9b: \\u2225\\u2225\\ud835\\udc9b! \\u2225= \\ud835\\udc50\\ud835\\udc5c\\ud835\\udc60(\\ud835\\udc9b:, \\ud835\\\
+    udc9b!),\\n665\\nwhere \\ud835\\udc9b: =  \\u210b(\\ud835\\udc62), and \\u210b(\\u2219) represents the trained GNN function\
+    \ that provides the node em-\\n662\\nbeddings. Note that because edges are undirected and the scoring function is symmetric,\\\
+    n663\\n\\ud835\\udc53(\\ud835\\udc62, \\ud835\\udc63) =  \\ud835\\udc53(\\ud835\\udc63, \\ud835\\udc62).\\n664\\n\\n\\\
+    n28\\nOptimizing this above scoring functions means solving for the parameters of \\u210b(\\u2219). This can be\\n666\\\
+    nperformed using contrastive learning. We mask a random subset of edges to create a modified\\n667\\nversion of the graph,\
+    \ \\ud835\\udca28. Then, given a source node \\ud835\\udc62, we define a node where \\ud835\\udc636 \\u2208\\ud835\\udca9(\\\
+    ud835\\udc62) repre-\\n668\\nsents a target node that forms an edge with \\ud835\\udc62 in the original graph \\ud835\\\
+    udca2. We denote \\ud835\\udc63\\n\\u2013 \\u2209\\ud835\\udca9(\\ud835\\udc62) as a\\n669\\nnode that does not form an\
+    \ edge with \\ud835\\udc62 in \\ud835\\udca2 and denote the set of these negative examples\\n670\\nas {\\ud835\\udc63'\\\
+    n7, \\ud835\\udc63P\\n7, \\u22ef, \\ud835\\udc635\\n7}.\\n671\\nThe function \\ud835\\udc53(\\ud835\\udc62, \\ud835\\\
+    udc63) is trained on \\ud835\\udca28to estimate whether a source node \\ud835\\udc62 forms an edge with tar-\\n672\\nget\
+    \ node \\ud835\\udc63 in the original graph \\ud835\\udca2. We can quantify the probability of an edge existing between\\\
+    n673\\n\\ud835\\udc62 and \\ud835\\udc636 with negative edges \\ud835\\udc63{':5}\\n7\\nas the probability,\\n674\\n\\\
+    ud835\\udc5d_\\ud835\\udc62, \\ud835\\udc636, \\ud835\\udc63{':5}\\n7\\n`  =\\n\\ud835\\udc52\\ud835\\udc65\\ud835\\udc5d(\\\
+    ud835\\udc9b:D\\ud835\\udc9b6)\\n\\ud835\\udc52\\ud835\\udc65\\ud835\\udc5d(\\ud835\\udc9b:D\\ud835\\udc9b6 + \\ud835\\\
+    udc9b:D\\ud835\\udc9b'\\n7 + \\u22ef+ \\ud835\\udc9b:D\\ud835\\udc9b57) .\\n679\\nGiven a dataset of N source nodes, each\
+    \ with a corresponding set of candidate nodes as described\\n675\\nabove, the negative log-likelihood over the dataset\
+    \ is equivalent to the cross-entropy loss where\\n676\\nthe true \\\"class\\\" always corresponds to the positive node\
+    \ \\ud835\\udc636. This type of contrastive loss func-\\n677\\ntion is well-established88,131\\u2013133 and is formulated\
+    \ as follows:\\n678\"\n  },\n  {\n    \"name\": \"\\u2112 = \\u2212\\u2211\",\n    \"text\": \"\\ud835\\udc59\\ud835\\\
+    udc5c\\ud835\\udc54_\\ud835\\udc5d(\\ud835\\udc62, \\ud835\\udc636, \\ud835\\udc63{':5}\\n7\\n)`\\nL\\n:\\n,\\n680\\nwhere\
+    \ \\ud835\\udc636 \\u2208\\ud835\\udca9(\\ud835\\udc62) and \\ud835\\udc63{':5}\\n7\\n\\u2209\\ud835\\udca9(\\ud835\\\
+    udc62).\\n681\\nNode type-aware sampling of positive and negative edges\\n682\\nThe contrastive learning requires specifying\
+    \ positive and negative edges during training, where a\\n683\\npositive edge is defined as a pair of nodes with an existing\
+    \ edge in ClinGraph, and a negative\\n684\\nedge is a pair of nodes that are not connected by an edge. To generate a training\
+    \ tuple comprised\\n685\\nof a single positive edge and a set of corresponding negative edges, we randomly sample an ex-\\\
+    n686\\nisting edge within ClinGraph denoted as (\\ud835\\udc62, \\ud835\\udc63) and \\ud835\\udcafF(\\ud835\\udc63) is\
+    \ the node type of target node \\ud835\\udc63. To\\n687\\ncreate a negative sample, we select a node \\ud835\\udc5f such\
+    \ that \\ud835\\udcafF(\\ud835\\udc5f) = \\ud835\\udcafF(\\ud835\\udc63) and \\ud835\\udc5f\\u2209\\ud835\\udca9(\\ud835\\\
+    udc62).\\n688\\nStochastic mini-batch training with neighbor sampling\\n689\\nBecause the topology and size of the GNN\
+    \ are determined by the KG, storing the entire network\\n690\\nand its hidden states onto a single GPU is impossible.\
+    \ Although training with mini-batches alle-\\n691\\nviates some of this issue, the computation graph (the set of nodes\
+    \ involved in message passing in\\n692\\n\\n\\n29\\neach iteration) for a GNN with L layers often still includes millions\
+    \ of parameters. To circumvent\\n693\\nthis, we use node neighbor sampling to select only a subset of nodes to include\
+    \ at each layer\\n694\\nwhen computing a node\\u2019s message vector. Specifically, we take a sample n of neighbors at\
+    \ each\\n695\\nk-hop neighborhood at each gradient descent step when computing messages during optimiza-\\n696\\ntion.\
+    \ Node types with a smaller set of nodes ClinGraph are upweighted to ensure they are repre-\\n697\\nsented in the sampling.\
+    \ The number of samples at each layer is a hyperparameter selected\\n698\\nthrough hyperparameter tuning. The final training\
+    \ was performed on an H100 GPU for ten\\n699\\nepochs, during which we trained on all 2,873,025 edges of the KG.\\n700\\\
+    nHyperparameter tuning\\n701\\nWe perform hyperparameter tuning in 2 steps: first for the model architecture and then\
+    \ for the\\n702\\nparameters involved in the contrastive learning objective. We select a random subset of 500,000\\n703\\\
+    nedges for training and 100,000 for validation from ClinGraph. We perform hyperparameter tun-\\n704\\ning using Raytune\
+    \ where we fix the learning rate (1e-4), number of negative samples (10), batch\\n705\\nsize (100), and sampling neighborhood\
+    \ (10) and vary the following parameters: number of layers\\n706\\n(2, 3, 4), input feature dimension (128, 256, 512),\
+    \ output embedding dimension (128, 256, 512),\\n707\\nhead dimension (128, 256, 512), number of heads (2, 3, 4), and dropout\
+    \ (0, 0.1, 0.2). Perfor-\\n708\\nmance is assessed by measuring the prediction accuracy on the set of 100,000 validation\
+    \ edges\\n709\\nand 100,000 node pairs that are not linked in the KG (negative edges). The optimal set of GNN\\n710\\\
+    nparameters is 4 layers, 128 input dimensions, 128 output embedding dimensions, 512-dimension\\n711\\nhead size, three\
+    \ heads, and a dropout of 0.0.\\n712\\nWe repeat the hyperparameter selection process by fixing the parameters selected\
+    \ above and vary\\n713\\nthe following: learning rate (1e-3, 1e-4, 1e-5), neighborhood sampling (5, 10, 20), and number\
+    \ of\\n714\\nnegative samples (3, 5, 10). The final hyperparameter set selected is a learning rate of 1e-5,\\n715\\nneighborhood\
+    \ sampling of 20 nodes, and three negative samples. All experiments were per-\\n716\\nformed using the Ray Tune software\
+    \ (https://docs.ray.io/en/latest/tune/index.html).\\n717\\nClinical evaluation study\\n718\\nA key transferability aspect\
+    \ is demonstrating that the inferred clinical knowledge embeddings\\n719\\ncapture medical insights that align with established\
+    \ clinical consensus. Although the knowledge\\n720\\ngraph construction was based on mined biomedical literature, the\
+    \ inferred embeddings and latent\\n721\\nspace offer insight into relationships between codes beyond the direct edges\
+    \ in the KG. To\\n722\\n\\n\\n30\\nvalidate this, we perform a human pilot evaluation with groups of clinical experts\
+    \ from Brigham\\n723\\nWomen\\u2019s (N=1), Mass General (N=1), Boston Children\\u2019s Hospital (N=1), and CHS (N=3).\\\
+    n724\\nTo systematically assess this, we evaluate the association between different diseases and\\n725\\nSNOMEDCT US codes.\
+    \ We restrict the set of SNOMED codes to the Clinical Observations Re-\\n726\\ncordings and Encoding (CORE) Problem List\
+    \ Subset of SNOMED CT48. This subset of codes\\n727\\nhas been identified as most informative in documenting and encoding\
+    \ clinical information. We\\n728\\nsurvey clinicians to select 90 disease phenotypes (phecodes) that broadly capture major\
+    \ disease\\n729\\nareas and are clinically relevant for potential clinical AI applications. For each disease, we com-\\\
+    n730\\npute the cosine similarity between each SNOMED CT code that does not already form an edge\\n731\\nwith the target\
+    \ phecode. We select the top 20 SNOMED CT codes for evaluation. A control set is\\n732\\nconstructed by randomly selecting\
+    \ 20 SNOMED CT codes that are not in the top 20 nor already\\n733\\nform an edge in the KG. To prevent biases due to differences\
+    \ in the frequency of symptoms or\\n734\\nhigh degree and low degree within ClinGraph, we match control SNOMED CT codes\
+    \ based on\\n735\\nthe case code\\u2019s node degree.\\n736\\nClinicians were provided with shuffled disease lists of\
+    \ case and control codes. For a given dis-\\n737\\nease, a single clinician evaluated the full list of codes. They were\
+    \ provided a brief background of\\n738\\nSNOMED CT codes and a scoring rubric where they were asked to evaluate each SNOMED\
+    \ CT\\n739\\ncode according to how related each code is to the given disease phenotype. We utilize a Likert\\n740\\nscale134\
+    \ based on scores 1 \\u2013 5: \\u2018unrelated\\u2019 (0) and ' highly related\\u2019 (5). If a code is too broad or\\\
+    n741\\nnon-specific (e.g. \\u2018Clinical evaluation\\u2019), these are assigned a 0.\\n742\\nVisualizing the latent space\\\
+    n743\\nTo visualize the ClinVec embedding space, we perform UMAP135 directly on the embedding vec-\\n744\\ntors and plot\
+    \ the first two dimensions. When performing dimensionality reduction, we use phe-\\n745\\ncodes, ICD10CM, ATC, LOINC,\
+    \ CPT, and SNOMED CT embeddings. Phecode categorizations\\n746\\nare pre-defined from the phecode v1.2 mapping136. To\
+    \ visualize the latent space of phecodes\\n747\\nwithin the digestive system, we performed UMAP only on the subset of\
+    \ ICD10CM embeddings\\n748\\nwithin the \\u2018Digestive\\u2019 category. We highlight ICD10CM codes broadly corresponding\
+    \ to\\n749\\nmouth/teeth conditions (phecodes 520-530), functional digestive disorders (560-570), and biliary\\n750\\\
+    ntract disorders (570-580). To highlight embeddings related to specific diseases, we compute the\\n751\\ncosine similarity\
+    \ between an ICD10CM embedding (representing a disease) and each embedding\\n752\\nwithin the latent space. We visualize\
+    \ this relationship by shading each embedding within the\\n753\\n\\n\\n31\\nUMAP space according to the cosine similarity.\
+    \ We highlight relevant codes for lupus and type 1\\n754\\ndiabetes to provide additional interpretation of the latent\
+    \ space map. This information was de-\\n755\\nrived from the guidelines provided by the National Resource Center on Lupus137\
+    \ and the Centers\\n756\\nfor Disease Control and Prevention138.\\n757\\nComparing embeddings from PrimeKG and SNOMED-CT\
+    \ KG\\n758\\nWe generate embeddings for PrimeKG and SNOMED-CT KG using the same graph transformer\\n759\\narchitecture\
+    \ and hyperparameters as ClinGraph. For PrimeKG, we modeled 10 node types as de-\\n760\\nfined by the KG. For SNOMED-CT\
+    \ KG, we only used a single node type (i.e. homogenous\\n761\\ngraph) since all nodes represent SNOMED CT codes. We trained\
+    \ both models for 5 epochs and\\n762\\ngenerated embeddings of size 128 for all SNOMED CT codes in SNOMED-CT KG and all\
+    \ dis-\\n763\\neases (MONDO, HPO nodes) and drugs (DrugBank nodes) for PrimeKG. Clustering metrics, in-\\n764\\ncluding\
+    \ silhouette score and adjusted mutual information, were computed according to ATC\\n765\\nlevel 1 and phecode category.\\\
+    n766\\nBecause neither KG have ICD or ATC codes, we mapped the nodes as follows. For SNOMED-\\n767\\nCT KG, we mapped\
+    \ each SNOMED CT code to its UMLS CUI and then to its corresponding\\n768\\nICD10CM code if present. If a UMLS CUI does\
+    \ not have a corresponding source ICD10CM\\n769\\ncode, we removed the node embedding from the cluster calculation. To\
+    \ map SNOMED CT to\\n770\\nATC, we first mapped SNOMED CT codes to its UMLS CUI. We then used UMLS to identify\\n771\\\
+    nUMLS CUI codes with \\u2018ingredient-of\\u2019 relationships that describe the active ingredient (repre-\\n772\\nsented\
+    \ as ATC) present in a given UMLS CUI drug. SNOMED CT codes that did not have a\\n773\\nmapped ATC ingredient were removed\
+    \ from the clustering calculation. Clustering metrics were\\n774\\ncomputed using all 128 dimensions from each set of\
+    \ embeddings, and cluster visualizations were\\n775\\nproduced using UMAP.\\n776\\nZero-shot embedding retrieval tasks\\\
+    n777\\nWe downloaded embeddings from snomed2vec\\n778\\n(https://github.com/KhushbuAgarwal/Snomed2Vec) and cui2vec (https://github.com/beaman-\\\
+    n779\\ndrew/cui2vec) directly from the original publications. We formulated a set of 12 retrieval tasks\\n780\\nusing\
+    \ well-established disease-symptom and disease-indication lists (Supplementary Table S8).\\n781\\nTop ranked neighbors\
+    \ are determined using cosine similarity between embeddings. We report\\n782\\n\\n\\n32\\neach model\\u2019s performance\
+    \ using \\u2018hits @ k\\u2019 which measures the proportion of diseases where a\\n783\\nrelevant symptom/drug is ranked\
+    \ among the top k items within the embedding space.\\n784\\nDisease embedding arithmetic\\n785\\nConstructing disease\
+    \ symptom embeddings\\n786\\nTo demonstrate the syntactic and semantic properties of ClinVec, we use vector-level arithmetic\\\
+    n787\\nto aggregate together disease symptoms to form a \\u2018disease symptom embedding\\u2019. Aggregation is\\n788\\\
+    nperformed using sum pooling, but any vector-level aggregation method could be used in practice.\\n789\\nFor a given disease,\
+    \ we retrieve the list of symptoms from the Mayo Clinic Disease Description\\n790\\nGuidelines139. A clinician manually\
+    \ translates each symptom into its corresponding ICD10CM\\n791\\ncode. We provide these translations for all nine diseases\
+    \ discussed within this analysis (Supple-\\n792\\nmentary Table S5). To demonstrate the trend of increased similarity\
+    \ between a disease embed-\\n793\\nding and the disease symptom embedding, we order symptoms from highest to lowest preva-\\\
+    n794\\nlence. We approximate population prevalence using a random sample of 200,000 patients from\\n795\\nthe CHS database.\\\
+    n796\\nDisease symptom embeddings are first initialized with a vector of zeros. We then add the embed-\\n797\\ndings from\
+    \ all symptoms (represented by an ICD10CM embedding). For visualization, we com-\\n798\\npute the cosine similarity between\
+    \ the disease symptom embedding at each step and the target\\n799\\ndisease embedding, represented using an ICD10CM embedding.\
+    \ Across diseases, we see a broad\\n800\\ntrend of increased similarity with the disease embedding as more symptoms are\
+    \ aggregated.\\n801\\nRobustness analysis\\n802\\nTo assess the robustness and generalizability of these trends, we perform\
+    \ the same analysis under\\n803\\nvarious conditions while perturbing different variables in the framework. This includes\
+    \ analyses\\n804\\nassessing the uncertainty in selecting disease symptoms, incorrect disease specification, and the\\\
+    n805\\nimpact of random symptoms. First, due to the noise and uncertainty associated with using diag-\\n806\\nnosis codes\
+    \ as proxies for disease symptoms13, we tried to model real-world circumstances by\\n807\\nvarying the ICD10CM code used\
+    \ to represent each symptom. We selected a set of candidate\\n808\\nICD10CM codes for each symptom by taking the original\
+    \ code from the clinician review and se-\\n809\\nlecting all ICD10CM codes with the same parent code by removing one decimal\
+    \ place. For ex-\\n810\\nample, for code \\u2018786.2\\u2019 (Cough), the candidate set would include \\u2018786.1\\u2019\
+    \ (Stridor), \\u2018786.0\\u2019\\n811\\n\\n\\n33\\n(Dyspnea and respiratory abnormalities), etc. Then, when selecting\
+    \ each symptom for aggrega-\\n812\\ntion, a random code from the candidate set is selected. This process is repeated 10\
+    \ times, yielding\\n813\\nsimilarity curves constructed from 10 different disease symptoms.\\n814\\nNext, we wanted to\
+    \ simulate when the disease of interest is mis-specified compared to the symp-\\n815\\ntom list. This reflects situations\
+    \ where the symptoms do not describe the target disease of interest\\n816\\nbut, instead, a closely related condition.\
+    \ To imitate this, we selected a set of diseases similar to\\n817\\nthe target disease; this was done by looking at other\
+    \ ICD10CM with the same parent code. When\\n818\\ncomputing the similarity between symptom embedding and disease embedding\
+    \ composition, we\\n819\\nused the phecode embedding of the alternative disease. Finally, we wanted to assess the situation\\\
+    n820\\nwhere incorrect information is included in the symptom list. We simulated this by adding a ran-\\n821\\ndomly selected\
+    \ ICD10CM code to the symptom list and included it in the computation of the ag-\\n822\\ngregated symptoms. Because we\
+    \ use vector addition to aggregate symptoms and addition is com-\\n823\\nmutative, we place the random symptom at the\
+    \ beginning of the aggregation procedure.\\n824\\nPhenotype risk score\\n825\\nCase/control construction\\n826\\nTo define\
+    \ cases, we first selected all patients with at least one ICD9CM code from the list of in-\\n827\\nclusion codes (CHS\
+    \ encodes their EHR using ICD9CM). We then filter patients to include only\\n828\\npatients listed on the CHS chronic\
+    \ registry to confirm they have received the disease diagnosis.\\n829\\nBecause patients are not guaranteed to be added\
+    \ to the chronic registry when they are first diag-\\n830\\nnosed, we treat the first occurrence of the inclusion ICD9CM\
+    \ code as the date of diagnosis. For\\n831\\neach patient, we set the index date as January 1 of the year of diagnosis,\
+    \ where only information\\n832\\noccurring before the index date will be included in the risk score computation. For prediction,\
+    \ we\\n833\\nselect all EHRs recorded within the past 5 years of the index date.\\n834\\nTo define controls, we begin\
+    \ with the phecode exclusion criteria provided by the phecode map-\\n835\\nping v1.2. For each phecode, the mapping provides\
+    \ a list of exclusion phecodes that are typically\\n836\\nsimilar conditions or overlap with the target disease. We begin\
+    \ by selecting all individuals who\\n837\\nhave never received any exclusion diagnoses at any point in their EHR. We also\
+    \ remove individ-\\n838\\nuals from the chronic disease registry for the specified disease. We select a matched control\
+    \ from\\n839\\nthis set of candidate control patients for each case. Matching is based on the following criteria: 1)\\\
+    n840\\nsame sex, 2) year of birth \\u00b12 years, and 3) number of recorded diagnoses in the EHR (with at\\n841\\n\\n\\\
+    n34\\nleast 1 diagnosis in the EHR). The complete case-control process is illustrated in Supplementary\\n842\\nFigure\
+    \ S5.\\n843\\nRisk score computation\\n844\\nFor a given disease, a risk score is computed as the weighted sum of relevant\
+    \ clinical codes,\\n845\\nwhere the weight is the cosine similarity between the embedding of each code and the disease\\\
+    n846\\nembedding. We restricted the set of potential features to laboratory tests, medications, and\\n847\\nICD9CM codes\
+    \ with at least a 0.1% prevalence within the CHS patient population. The CHS\\n848\\nEHR did not have SNOMED CT or CPT\
+    \ codes for analysis. To determine the clinical codes re-\\n849\\nlated to each disease, we compute the cosine similarity\
+    \ between all clinical codes within the la-\\n850\\ntent space and the target disease embedding, represented by a phecode.\
+    \ The final set of features\\n851\\nis the top k codes, where k=20, and the feature weights are the cosine similarity\
+    \ scores. In prac-\\n852\\ntice, the choice of k can be treated as a hyper-parameter and optimized with a validation dataset,\\\
+    n853\\nsimilar to the p-value thresholding of polygenic risk scores. Patient risk scores are computed as a\\n854\\nweighted\
+    \ sum where the associated weight is added to the sum if the patient has the given code\\n855\\nin their EHR and given\
+    \ a 0 otherwise. Features are counted once in the score computation, even\\n856\\nif a patient receives the codes multiple\
+    \ times.\\n857\\nSurvival analysis\\n858\\nFor each disease, we computed the most common age at diagnosis and the sex\
+    \ with the highest\\n859\\ndisease prevalence. We restricted the survival analysis to patients meeting these age/sex criteria\\\
+    n860\\nand those with a diagnosis date from 2016 or earlier. We re-computed risk score quantiles based\\n861\\nonly on\
+    \ this restricted set of patients. We looked at the 6 years of EHR after each patient\\u2019s index\\n862\\ndate and denoted\
+    \ a patient as deceased if they had a non-null death date. Patients were stratified\\n863\\ninto risk score quartiles\
+    \ based on the risk score computed at the index date. Confidence intervals\\n864\\nfor the survival curves were computed\
+    \ using 10,000 bootstrapped samples.\\n865\\nIntegrating ClinVec with LLMs\\n866\\nWe augment MMed-Llama106\\u2014an 8-billion-parameter\
+    \ open-source medical foundation model\\n867\\nthat already incorporates domain-specific knowledge through pre-training\\\
+    u2014with 42,883 ClinVec\\n868\\nembeddings and a 4-layer MLP projector module to align embedding dimensions which is\\\
+    n869\\ntrained with parameter efficient fine-tuning. We download the pre-trained model from Hugging\\n870\\n\\n\\n35\\\
+    nFace (https://huggingface.co/Henrychur/MMed-Llama-3-8B) and use the authors\\u2019 fine-tuning\\n871\\npipeline to perform\
+    \ parameter efficient fine-tuning with LoRA140 (https://github.com/MAGIC-\\n872\\nAI4Med/MMedLM/tree/main). We used the\
+    \ same prompts and sets of hyper-parameters pro-\\n873\\nvided by MMed-Llama, specifically tuning the following target\
+    \ modules: \\u2018q_proj\\u2019, \\u2018v_proj\\u2019,\\n874\\n\\u2018v_proj\\u2019, \\u2018mlp\\u2019. Fine-tuning was\
+    \ performed on the training English subset of multiple-choice\\n875\\nquestions from the MedQA dataset (https://huggingface.co/datasets/VodLM/medqa).\\\
+    n876\\nMetaMap\\n877\\nWe annotate each multiple-choice question using the MetaMap141 tool, which annotates natural\\\
+    n878\\nlanguage text with UMLS CUI codes. For each question, we concatenated the text from the ques-\\n879\\ntion and\
+    \ the answer options and submitted the text to the MetaMapLite REST API\\n880\\n(https://ii.nlm.nih.gov/metamaplite/rest).\
+    \  We limit the choice of UMLS CUI codes to the follow-\\n881\\ning semantic types: \\u201cSign or Symptom\\u201d, \\\
+    u201cDisease or Syndrome\\u201d, \\u201cPharmacological Substance\\u201d,\\n882\\n\\u201cMental or Behavioral Dysfunction\\\
+    u201d, \\u201cChemical\\u201d, \\u201cAnatomical Structure\\u201d.\\n883\\nAfriMed-QA\\n884\\nWe also perform a validation\
+    \ study on the AfriMed-QA109 dataset (https://huggingface.co/da-\\n885\\ntasets/intronhealth/afrimedqa_v2). We restricted\
+    \ to only multiple-choice questions and removed\\n886\\nquestions that had more than one assigned correct answer. The\
+    \ original dataset provides clinical\\n887\\nsubspecialty information for each question.\\n888\\nInstitutional Review\
+    \ Board approval\\n889\\nParts of this study that relate to the use of CHS data (for evaluating the predictive ability\
+    \ of the\\n890\\nKG-derived concept embeddings) were approved by the CHS Institutional Review Board (Hel-\\n891\\nsinki)\
+    \ committee.\\n\\n892\\n\\n\\n36\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"893\\nData and clinical\
+    \ concept embeddings, as well as the ClinGraph knowledge graph, are available\\n894\\nvia Harvard Dataverse https://doi.org/10.7910/DVN/Z6H1A8.\
+    \ Due to national and organiza-\\n895\\ntional data privacy regulations, CHS individual-level data from this study cannot\
+    \ be shared pub-\\n896\\nlicly.\\n897\"\n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"898\\nThe Python\
+    \ implementation of the heterogeneous graph transformer and the associated codebase\\n899\\nfor model training, (non-individual-level)\
+    \ analyses, and embedding evaluations are available at\\n900\\nhttps://github.com/mims-harvard/Clinical-knowledge-embeddings.\
+    \ The project website is at\\n901\\nhttps://zitniklab.hms.harvard.edu/projects/Clinical-knowledge-embeddings.\\n902\"\n\
+    \  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"903\\nR.J., B.Y.R., R.D.B., N.D., and M.Z. are supported\
+    \ by the Berkowitz Family Living Laboratory\\n904\\nat Harvard Medical School and the Clalit Research Institute. R.J.\
+    \ and M.Z. gratefully\\n905\\nacknowledge the support of NIH R01-HD108794, NSF CAREER 2339524, US DoD FA8702-\\n906\\\
+    n15-D-0001, awards from Harvard Data Science Initiative, Amazon Faculty Research, Google Re-\\n907\\nsearch Scholar Program,\
+    \ AstraZeneca Research, Roche Alliance with Distinguished Scientists,\\n908\\nSanofi iDEA-iTECH, Pfizer Research, Chan\
+    \ Zuckerberg Initiative, John and Virginia Kaneb Fel-\\n909\\nlowship at Harvard Medical School, Biswas Computational\
+    \ Biology Initiative in partnership with\\n910\\nthe Milken Institute, Harvard Medical School Dean's Innovation Fund for\
+    \ the Use of Artificial\\n911\\nIntelligence, and Kempner Institute for the Study of Natural and Artificial Intelligence\
+    \ at Har-\\n912\\nvard University. Any opinions, findings, conclusions or recommendations expressed in this ma-\\n913\\\
+    nterial are those of the authors and do not necessarily reflect the views of the funders. We grate-\\n914\\nfully acknowledge\
+    \ the resources provided by the Clalit Research Institute. We thank Michelle M.\\n915\\nLi, Ayush Noori, Intae Moon, and\
+    \ Shvat Messica for contributing to the model development and\\n916\\nanalyses.\\n917\"\n  },\n  {\n    \"name\": \"Author\
+    \ contributions\",\n    \"text\": \"918\\nR.J. developed a unified knowledge graph representation of clinical concepts\
+    \ and designed, im-\\n919\\nplemented, and benchmarked heterogeneous graph transformer models. U.G. implemented the\\\
+    n920\\napproach and conducted detailed analyses using CHS individual-level data. L.H., J.W., S.D.,\\n921\\n\\n\\n37\\\
+    nC.R.G., P.H., and R.S. formed an inter-institutional panel of clinicians that evaluated the align-\\n922\\nment of clinical\
+    \ concept representations with established clinical knowledge across 90 diseases\\n923\\nand 3,000 clinical codes. B.Y.R.\
+    \ and R.B. provided feedback on the methodology and evaluated\\n924\\nthe clinical concept embeddings through large-scale\
+    \ phenotype risk scoring and alignment with\\n925\\nexpert clinical knowledge. R.J., N.D., and M.Z. conceptualized and\
+    \ designed the study. All au-\\n926\\nthors contributed to writing the manuscript.\\n927\"\n  },\n  {\n    \"name\": \"\
+    Competing interests\",\n    \"text\": \"928\\nThe authors declare no competing interests.\\n\\n929\\n\\n\\n38\"\n  },\n\
+    \  {\n    \"name\": \"References\",\n    \"text\": \"930\\n1. National Research Council (US) Committee on A Framework\
+    \ for Developing a NewTaxon-\\n931\\nomy of Disease. Toward Precision Medicine: Building a Knowledge Network for Biomedical\\\
+    n932\\nResearch and a New Taxonomy of Disease. (National Academies Press (US), Washington\\n933\"\n  },\n  {\n    \"name\"\
+    : \"(DC), 2011)\",\n    \"text\": \"934\\n2. Campbell, J. R. et al. Phase II Evaluation of Clinical Coding Schemes: Completeness,\
+    \ Taxon-\\n935\\nomy, Mapping, Definitions, and Clarity. J. Am. Med. Inform. Assoc. 4, 238\\u2013251 (1997).\\n936\\n3.\
+    \ de Lusignan, S. Codes, classifications, terminologies and nomenclatures: definition, develop-\\n937\\nment and application\
+    \ in practice. Inform. Prim. Care 13, 65\\u201370 (2005).\\n938\\n4. Kather, J. N., Ferber, D., Wiest, I. C., Gilbert,\
+    \ S. & Truhn, D. Large language models could\\n939\\nmake natural language again the universal interface of healthcare.\
+    \ Nat. Med. 1\\u20133 (2024)\\n940\\ndoi:10.1038/s41591-024-03199-w.\\n941\\n5. Hulsen, T. et al. From Big Data to Precision\
+    \ Medicine. Front. Med. 6, 34 (2019).\\n942\\n6. Topol, E. J. High-performance medicine: the convergence of human and\
+    \ artificial intelligence.\\n943\\nNat. Med. 25, 44\\u201356 (2019).\\n944\"\n  },\n  {\n    \"name\": \"The Shaky Foundations\
+    \ of Foundation Models in Healthcare. https://hai.stan-\",\n    \"text\": \"945\\nford.edu/news/shaky-foundations-foundation-models-healthcare\
+    \ (2023).\\n946\\n8. Zech, J. R. et al. Variable generalization performance of a deep learning model to detect pneu-\\\
+    n947\\nmonia in chest radiographs: A cross-sectional study. PLOS Med. 15, e1002683 (2018).\\n948\\n9. Yang, J., Soltan,\
+    \ A. A. S. & Clifton, D. A. Machine learning generalizability across healthcare\\n949\\nsettings: insights from multi-site\
+    \ COVID-19 screening. Npj Digit. Med. 5, 1\\u20138 (2022).\\n950\\n10.\\nPanch, T. et al. \\u201cYes, but will it work\
+    \ for my patients?\\u201d Driving clinically relevant re-\\n951\\nsearch with benchmark datasets. Npj Digit. Med. 3, 1\\\
+    u20134 (2020).\\n952\\n11.\\nGoetz, L., Seedat, N., Vandersluis, R. & van der Schaar, M. Generalization\\u2014a key chal-\\\
+    n953\\nlenge for responsible AI in patient-facing clinical applications. Npj Digit. Med. 7, 1\\u20134 (2024).\\n954\\\
+    n\\n\\n39\\n12.\\nO\\u2019Malley, K. J. et al. Measuring Diagnoses: ICD Code Accuracy. Health Serv. Res. 40,\\n955\\n1620\
+    \ (2005).\\n956\\n13.\\nBotsis, T., Hartvigsen, G., Chen, F. & Weng, C. Secondary Use of EHR: Data Quality Is-\\n957\\\
+    nsues and Informatics Opportunities. Summit Transl. Bioinforma. 2010, 1\\u20135 (2010).\\n958\\n14.\\nSudat, S. E., Robinson,\
+    \ S. C., Mudiganti, S., Mani, A. & Pressman, A. R. Mind the clini-\\n959\\ncal-analytic gap: Electronic health records\
+    \ and COVID-19 pandemic response. J. Biomed. In-\\n960\\nform. 116, 103715 (2021).\\n961\\n15.\\nBinkheder, S. et al.\
+    \ Real-World Evidence of COVID-19 Patients\\u2019 Data Quality in the\\n962\\nElectronic Health Records. Healthcare 9,\
+    \ 1648 (2021).\\n963\\n16.\\nChalmers, R. J. G. Health Care Terminology for the Electronic Era. Mayo Clin. Proc. 81,\\\
+    n964\\n729\\u2013731 (2006).\\n965\\n17.\\nSong, Z. et al. Physician Practice Pattern Variations in Common Clinical Scenarios\\\
+    n966\\nWithin 5 US Metropolitan Areas. JAMA Health Forum 3, e214698 (2022).\\n967\\n18.\\nBaicker, K., Chandra, A., Skinner,\
+    \ J. S. & Wennberg, J. E. Who you are and where you\\n968\\nlive: how race and geography affect the treatment of medicare\
+    \ beneficiaries. Health Aff. Proj.\\n969\\nHope Suppl Variation, VAR33-44 (2004).\\n970\\n19.\\nBaicker, K., Chandra,\
+    \ A. & Skinner, J. S. Geographic variation in health care and the\\n971\\nproblem of measuring racial disparities. Perspect.\
+    \ Biol. Med. 48, S42-53 (2005).\\n972\\n20.\\nMedicine, I. of, Services, B. on H. C. & Programs, C. on R. H. I. P. M.,\
+    \ Payment, and\\n973\\nPerformance Improvement. Rewarding Provider Performance: Aligning Incentives in Medi-\\n974\\ncare.\
+    \ (National Academies Press, 2007).\\n975\\n21.\\nBlumenthal, D. & Tavenner, M. The \\u201cMeaningful Use\\u201d Regulation\
+    \ for Electronic Health\\n976\\nRecords. N. Engl. J. Med. 363, 501\\u2013504 (2010).\\n977\\n22.\\nMcIlvennan, C. K.,\
+    \ Eapen, Z. J. & Allen, L. A. Hospital Readmissions Reduction Pro-\\n978\\ngram. Circulation 131, 1796\\u20131803 (2015).\\\
+    n979\\n\\n\\n40\\n23.\\nMorden, N. E., Colla, C. H., Sequist, T. D. & Rosenthal, M. B. Choosing Wisely \\u2014 The\\n980\\\
+    nPolitics and Economics of Labeling Low-Value Services. N. Engl. J. Med. 370, 589\\u2013592\\n981\\n(2014).\\n982\\n24.\\\
+    nFisher, E. S. et al. The implications of regional variations in Medicare spending. Part 1:\\n983\\nthe content, quality,\
+    \ and accessibility of care. Ann. Intern. Med. 138, 273\\u2013287 (2003).\\n984\\n25.\\nCharlesworth, C. J., Meath, T.\
+    \ H. A., Schwartz, A. L. & McConnell, K. J. Comparison of\\n985\\nLow-Value Care in Medicaid vs Commercially Insured Populations.\
+    \ JAMA Intern. Med. 176,\\n986\\n998\\u20131004 (2016).\\n987\\n26.\\nBaicker, K., Chernew, M. E. & Robbins, J. A. The\
+    \ spillover effects of Medicare managed\\n988\\ncare: Medicare Advantage and hospital utilization. J. Health Econ. 32,\
+    \ 1289\\u20131300 (2013).\\n989\\n27.\\nAncker, J. S. et al. How is the electronic health record being used? Use of EHR\
+    \ data to\\n990\\nassess physician-level variability in technology use. J. Am. Med. Inform. Assoc. 21, 1001\\u2013\\n991\\\
+    n1008 (2014).\\n992\\n28.\\nRoland, M. Linking Physicians\\u2019 Pay to the Quality of Care \\u2014 A Major Experiment\
+    \ in the\\n993\\nUnited Kingdom. N. Engl. J. Med. 351, 1448\\u20131454 (2004).\\n994\\n29.\\nSirovich, B. E., Gottlieb,\
+    \ D. J., Welch, H. G. & Fisher, E. S. Variation in the Tendency of\\n995\\nPrimary Care Physicians to Intervene. Arch.\
+    \ Intern. Med. 165, 2252\\u20132256 (2005).\\n996\\n30.\\nBerner, E. S., Kasiraman, R. K., Yu, F., Ray, M. N. & Houston,\
+    \ T. K. Data quality in the\\n997\\noutpatient setting: impact on clinical decision support systems. AMIA Annu. Symp.\
+    \ Proc.\\n998\\nAMIA Symp. 41\\u201345 (2005).\\n999\\n31.\\nVerheij, R. A., Curcin, V., Delaney, B. C. & McGilchrist,\
+    \ M. M. Possible Sources of Bias\\n1000\\nin Primary Care Electronic Health Record Data Use and Reuse. J. Med. Internet\
+    \ Res. 20, e185\\n1001\\n(2018).\\n1002\\n\\n\\n41\\n32.\\nAgniel, D., Kohane, I. S. & Weber, G. M. Biases in electronic\
+    \ health record data due to\\n1003\\nprocesses within the healthcare system: retrospective observational study. BMJ 361,\
+    \ k1479\\n1004\\n(2018).\\n1005\\n33.\\nTang, P. C., Ralston, M., Arrigotti, M. F., Qureshi, L. & Graham, J. Comparison\
+    \ of Meth-\\n1006\\nodologies for Calculating Quality Measures Based on Administrative Data versus Clinical\\n1007\\nData\
+    \ from an Electronic Health Record System: Implications for Performance Measures. J.\\n1008\\nAm. Med. Inform. Assoc.\
+    \ 14, 10\\u201315 (2007).\\n1009\\n34.\\nHogan, W. R. & Wagner, M. M. Accuracy of Data in Computer-based Patient Records.\
+    \ J.\\n1010\\nAm. Med. Inform. Assoc. 4, 342 (1997).\\n1011\\n35.\\nHripcsak, G. & Albers, D. J. Next-generation phenotyping\
+    \ of electronic health records. J.\\n1012\\nAm. Med. Inform. Assoc. JAMIA 20, 117 (2012).\\n1013\\n36.\\nWilliams, R.,\
+    \ Kontopantelis, E., Buchan, I. & Peek, N. Clinical code set engineering for\\n1014\\nreusing EHR data for research: A\
+    \ review. J. Biomed. Inform. 70, 1\\u201313 (2017).\\n1015\\n37.\\nDelvaux, N. et al. Coding Systems for Clinical Decision\
+    \ Support: Theoretical and Real-\\n1016\\nWorld Comparative Analysis. JMIR Form. Res. 4, e16094 (2020).\\n1017\\n38.\\\
+    nOdigie, E. et al. Fast Healthcare Interoperability Resources, Clinical Quality Language,\\n1018\\nand Systematized Nomenclature\
+    \ of Medicine\\u2014Clinical Terms in Representing Clinical Evi-\\n1019\\ndence Logic Statements for the Use of Imaging\
+    \ Procedures: Descriptive Study. JMIR Med. In-\\n1020\\nform. 7, e13590 (2019).\\n1021\\n39.\\nKokkinakis, D. What is\
+    \ the Coverage of SNOMED CT&#174;on Scientific Medical Cor-\\n1022\\npora? in User Centred Networked Health Care 814\\\
+    u2013818 (IOS Press, 2011). doi:10.3233/978-\\n1023\\n1-60750-806-9-814.\\n1024\\n40.\\nWiens, J. et al. Do no harm: a\
+    \ roadmap for responsible machine learning for health care.\\n1025\\nNat. Med. 25, 1337\\u20131340 (2019).\\n1026\\n\\\
+    n\\n42\\n41.\\nYang, J. et al. Poisoning medical knowledge using large language models. Nat. Mach. In-\\n1027\\ntell.\
+    \ 6, 1156\\u20131168 (2024).\\n1028\\n42.\\nOmiye, J. A., Lester, J. C., Spichak, S., Rotemberg, V. & Daneshjou, R. Large\
+    \ language\\n1029\\nmodels propagate race-based medicine. Npj Digit. Med. 6, 1\\u20134 (2023).\\n1030\\n43.\\nZack, T.\
+    \ et al. Assessing the potential of GPT-4 to perpetuate racial and gender biases in\\n1031\\nhealth care: a model evaluation\
+    \ study. Lancet Digit. Health 6, e12\\u2013e22 (2024).\\n1032\\n44.\\nSoroush, A. et al. Large Language Models Are Poor\
+    \ Medical Coders \\u2014 Benchmarking of\\n1033\\nMedical Code Querying. NEJM AI 1, AIdbp2300040 (2024).\\n1034\\n45.\\\
+    nHuang, J. et al. A critical assessment of using ChatGPT for extracting structured data\\n1035\\nfrom clinical notes.\
+    \ Npj Digit. Med. 7, 1\\u201313 (2024).\\n1036\\n46.\\nBurford, K. G., Itzkowitz, N. G., Ortega, A. G., Teitler, J. O.\
+    \ & Rundle, A. G. Use of\\n1037\\nGenerative AI to Identify Helmet Status Among Patients With Micromobility-Related Injuries\\\
+    n1038\\nFrom Unstructured Clinical Notes. JAMA Netw. Open 7, e2425981 (2024).\\n1039\\n47.\\nLee, S. A. & Lindsey, T.\
+    \ Can Large Language Models abstract Medical Coded Language?\\n1040\\nPreprint at https://doi.org/10.48550/arXiv.2403.10822\
+    \ (2024).\\n1041\\n48.\\nThe CORE Problem List Subset of SNOMED CT\\u00ae. https://www.nlm.nih.gov/re-\\n1042\\nsearch/umls/Snomed/core_subset.html.\\\
+    n1043\\n49.\\nvon Rueden, L. et al. Informed Machine Learning \\u2013 A Taxonomy and Survey of Integrat-\\n1044\\ning\
+    \ Prior Knowledge into Learning Systems. IEEE Trans. Knowl. Data Eng. 35, 614\\u2013633\\n1045\\n(2023).\\n1046\\n50.\\\
+    nSirocchi, C., Bogliolo, A. & Montagna, S. Medical-informed machine learning: integrat-\\n1047\\ning prior knowledge into\
+    \ medical decision systems. BMC Med. Inform. Decis. Mak. 24, 186\\n1048\\n(2024).\\n1049\\n51.\\nGeneral Cardiovascular\
+    \ Risk Profile for Use in Primary Care | Circulation.\\n1050\\nhttps://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.107.699579.\\\
+    n1051\\n\\n\\n43\\n52.\\nACMG recommendations for standards for interpretation of sequence variations. Genet.\\n1052\\\
+    nMed. 2, 302\\u2013303 (2000).\\n1053\\n53.\\nPoonacha, T. K. & Go, R. S. Scientific evidence underlying National Comprehensive\\\
+    n1054\\nCancer Network Clinical Practice Guidelines. J. Clin. Oncol. 28, 6020\\u20136020 (2010).\\n1055\\n54.\\nInstitute\
+    \ of Medicine (US) Committee on Standards for Developing Trustworthy Clinical\\n1056\\nPractice Guidelines. Clinical Practice\
+    \ Guidelines We Can Trust. (National Academies Press\\n1057\\n(US), Washington (DC), 2011).\\n1058\\n55.\\nZitnik, M.,\
+    \ Agrawal, M. & Leskovec, J. Modeling polypharmacy side effects with graph\\n1059\\nconvolutional networks. Bioinformatics\
+    \ 34, i457\\u2013i466 (2018).\\n1060\\n56.\\nNelson, W. et al. To Embed or Not: Network Embedding as a Paradigm in Computational\\\
+    n1061\\nBiology. Front. Genet. 10, (2019).\\n1062\\n57.\\nTshitoyan, V. et al. Unsupervised word embeddings capture latent\
+    \ knowledge from mate-\\n1063\\nrials science literature. Nature 571, 95\\u201398 (2019).\\n1064\\n58.\\nZitnik, M. et\
+    \ al. Machine learning for integrating data in biology and medicine: Princi-\\n1065\\nples, practice, and opportunities.\
+    \ Inf. Fusion 50, 71\\u201391 (2019).\\n1066\\n59.\\nZhou, H. et al. Knowledge-guided convolutional networks for chemical-disease\
+    \ relation\\n1067\\nextraction. BMC Bioinformatics 20, 260 (2019).\\n1068\\n60.\\nNunes, S., Sousa, R. T. & Pesquita,\
+    \ C. Multi-domain knowledge graph embeddings for\\n1069\\ngene-disease association prediction. J. Biomed. Semant. 14,\
+    \ 11 (2023).\\n1070\\n61.\\nInformatics, O. H. D. S. and. Chapter 4 The Common Data Model | The Book of OHDSI.\\n1071\\\
+    n62.\\nHimmelstein, D. S. & Baranzini, S. E. Heterogeneous Network Edge Prediction: A Data\\n1072\\nIntegration Approach\
+    \ to Prioritize Disease-Associated Genes. PLOS Comput. Biol. 11,\\n1073\\ne1004259 (2015).\\n1074\\n63.\\nMorris, J. H.\
+    \ et al. The scalable precision medicine open knowledge engine (SPOKE): a\\n1075\\nmassive knowledge graph of biomedical\
+    \ information. Bioinformatics 39, btad080 (2023).\\n1076\\n\\n\\n44\\n64.\\nSantos, A. et al. A knowledge graph to interpret\
+    \ clinical proteomics data. Nat. Biotechnol.\\n1077\\n40, 692\\u2013702 (2022).\\n1078\\n65.\\nHimmelstein, D. S. et al.\
+    \ Systematic integration of biomedical knowledge prioritizes\\n1079\\ndrugs for repurposing. eLife 6, e26726 (2017).\\\
+    n1080\\n66.\\nGogleva, A. et al. Knowledge graph-based recommendation framework identifies drivers\\n1081\\nof resistance\
+    \ in EGFR mutant non-small cell lung cancer. Nat. Commun. 13, 1667 (2022).\\n1082\\n67.\\nZhu, Q. et al. An integrative\
+    \ knowledge graph for rare diseases, derived from the Genetic\\n1083\\nand Rare Diseases Information Center (GARD). J.\
+    \ Biomed. Semant. 11, 13 (2020).\\n1084\\n68.\\nSosa, D. N. et al. A Literature-Based Knowledge Graph Embedding Method\
+    \ for Identify-\\n1085\\ning Drug Repurposing Opportunities in Rare Diseases. Pac. Symp. Biocomput. Pac. Symp. Bi-\\n1086\\\
+    nocomput. 25, 463\\u2013474 (2020).\\n1087\\n69.\\nFeng, F. et al. GenomicKB: a knowledge graph for the human genome.\
+    \ Nucleic Acids\\n1088\\nRes. 51, D950\\u2013D956 (2023).\\n1089\\n70.\\nRenaux, A. et al. A knowledge graph approach\
+    \ to predict and interpret disease-causing\\n1090\\ngene interactions. BMC Bioinformatics 24, 324 (2023).\\n1091\\n71.\\\
+    nPercha, B. & Altman, R. B. A global network of biomedical relationships derived from\\n1092\\ntext. Bioinformatics 34,\
+    \ 2614\\u20132624 (2018).\\n1093\\n72.\\nErnst, P., Siu, A. & Weikum, G. KnowLife: a versatile approach for constructing\
+    \ a large\\n1094\\nknowledge graph for biomedical sciences. BMC Bioinformatics 16, 157 (2015).\\n1095\\n73.\\nZheng, S.\
+    \ et al. PharmKG: a dedicated knowledge graph benchmark for bomedical data\\n1096\\nmining. Brief. Bioinform. 22, bbaa344\
+    \ (2021).\\n1097\\n74.\\nRobinson, P. N. et al. The Human Phenotype Ontology: A Tool for Annotating and Ana-\\n1098\\\
+    nlyzing Human Hereditary Disease. Am. J. Hum. Genet. 83, 610\\u2013615 (2008).\\n1099\\n75.\\nVasilevsky, N. A. et al.\
+    \ Mondo: Unifying diseases for the world, by the world.\\n1100\\n2022.04.13.22273750 Preprint at https://doi.org/10.1101/2022.04.13.22273750\
+    \ (2022).\\n1101\\n\\n\\n45\\n76.\\nChandak, P., Huang, K. & Zitnik, M. Building a knowledge graph to enable precision\\\
+    n1102\\nmedicine. Sci. Data 10, 67 (2023).\\n1103\\n77.\\nWang, M. et al. PDD Graph: Bridging Electronic Medical Records\
+    \ and Biomedical\\n1104\\nKnowledge Graphs via Entity Linking. in The Semantic Web \\u2013 ISWC 2017 (eds. d\\u2019Amato,\
+    \ C.\\n1105\\net al.) 219\\u2013227 (Springer International Publishing, Cham, 2017). doi:10.1007/978-3-319-\\n1106\\n68204-4_23.\\\
+    n1107\\n78.\\nNelson, C. A., Butte, A. J. & Baranzini, S. E. Integrating biomedical research and elec-\\n1108\\ntronic\
+    \ health records to create knowledge-based biologically meaningful machine-readable\\n1109\\nembeddings. Nat. Commun.\
+    \ 10, 3045 (2019).\\n1110\\n79.\\nHuan, J.-M. et al. The biomedical knowledge graph of symptom phenotype in coronary\\\
+    n1111\\nartery plaque: machine learning-based analysis of real-world clinical data. BioData Min. 17,\\n1112\\n13 (2024).\\\
+    n1113\\n80.\\nRotmensch, M., Halpern, Y., Tlimat, A., Horng, S. & Sontag, D. Learning a Health\\n1114\\nKnowledge Graph\
+    \ from Electronic Medical Records. Sci. Rep. 7, 5994 (2017).\\n1115\\n81.\\nMurali, L., Gopakumar, G., Viswanathan, D.\
+    \ M. & Nedungadi, P. Towards electronic\\n1116\\nhealth record-based medical knowledge graph construction, completion,\
+    \ and applications: A\\n1117\\nliterature study. J. Biomed. Inform. 143, 104403 (2023).\\n1118\\n82.\\nBodenreider, O.\
+    \ The Unified Medical Language System (UMLS): integrating biomedical\\n1119\\nterminology. Nucleic Acids Res. 32, D267\\\
+    u2013D270 (2004).\\n1120\\n83.\\nZheng, N. S. et al. PheMap: a multi-resource knowledge base for high-throughput pheno-\\\
+    n1121\\ntyping within electronic health records. J. Am. Med. Inform. Assoc. 27, 1675\\u20131687 (2020).\\n1122\\n84.\\\
+    nK\\u00f6nigs, C., Friedrichs, M. & Dietrich, T. The heterogeneous pharmacological medical bi-\\n1123\\nochemical network\
+    \ PharMeBINet. Sci. Data 9, 393 (2022).\\n1124\\n85.\\nAlber, D. A. et al. Medical large language models are vulnerable\
+    \ to data-poisoning at-\\n1125\\ntacks. Nat. Med. 31, 618\\u2013626 (2025).\\n1126\\n\\n\\n46\\n86.\\nHu, Z., Dong, Y.,\
+    \ Wang, K. & Sun, Y. Heterogeneous Graph Transformer. Preprint at\\n1127\\nhttps://doi.org/10.48550/arXiv.2003.01332 (2020).\\\
+    n1128\\n87.\\nVaswani, A. et al. Attention Is All You Need. Preprint at\\n1129\\nhttps://doi.org/10.48550/arXiv.1706.03762\
+    \ (2023).\\n1130\\n88.\\nOord, A. van den, Li, Y. & Vinyals, O. Representation Learning with Contrastive Predic-\\n1131\\\
+    ntive Coding. Preprint at https://doi.org/10.48550/arXiv.1807.03748 (2019).\\n1132\\n89.\\nAgarwal, K. et al. Snomed2Vec:\
+    \ Random Walk and Poincar\\u00e9 Embeddings of a Clinical\\n1133\\nKnowledge Base for Healthcare Analytics. Preprint at\\\
+    n1134\\nhttps://doi.org/10.48550/arXiv.1907.08650 (2019).\\n1135\\n90.\\nBeam, A. L. et al. Clinical Concept Embeddings\
+    \ Learned from Massive Sources of Multi-\\n1136\\nmodal Medical Data. Preprint at https://doi.org/10.48550/arXiv.1804.01486\
+    \ (2019).\\n1137\\n91.\\nMikolov, T., Yih, S. W. & Zweig, G. Linguistic Regularities in Continuous Space Word\\n1138\\\
+    nRepresentations. in (2013).\\n1139\\n92.\\nThe top 10 causes of death. https://www.who.int/news-room/fact-sheets/detail/the-top-10-\\\
+    n1140\\ncauses-of-death.\\n1141\\n93.\\nConrad, N. et al. Incidence, prevalence, and co-occurrence of autoimmune disorders\
+    \ over\\n1142\\ntime and by age, sex, and socioeconomic status: a population-based cohort study of 22 million\\n1143\\\
+    nindividuals in the UK. Lancet Lond. Engl. 401, 1878\\u20131890 (2023).\\n1144\\n94.\\nHeart disease - Symptoms and causes.\
+    \ Mayo Clinic https://www.mayoclinic.org/diseases-\\n1145\\nconditions/heart-disease/symptoms-causes/syc-20353118.\\n1146\\\
+    n95.\\nCOPD - Symptoms and causes. Mayo Clinic https://www.mayoclinic.org/diseases-condi-\\n1147\\ntions/copd/symptoms-causes/syc-20353679.\\\
+    n1148\\n96.\\nAlzheimer\\u2019s disease - Symptoms and causes. Mayo Clinic https://www.mayo-\\n1149\\nclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447.\\\
+    n1150\\n\\n\\n47\\n97.\\nLung cancer - Symptoms and causes. Mayo Clinic https://www.mayoclinic.org/diseases-\\n1151\\\
+    nconditions/lung-cancer/symptoms-causes/syc-20374620.\\n1152\\n98.\\nStroke - Symptoms and causes. Mayo Clinic https://www.mayoclinic.org/diseases-condi-\\\
+    n1153\\ntions/stroke/symptoms-causes/syc-20350113.\\n1154\\n99.\\nDudbridge, F. Power and Predictive Accuracy of Polygenic\
+    \ Risk Scores. PLOS Genet. 9,\\n1155\\ne1003348 (2013).\\n1156\\n100.\\nBastarache, L. et al. Phenotype risk scores identify\
+    \ patients with unrecognized Mendelian\\n1157\\ndisease patterns. Science 359, 1233\\u20131239 (2018).\\n1158\\n101.\\\
+    nBalicer, R. D. & Afek, A. Digital health nation: Israel\\u2019s global big data innovation hub.\\n1159\\nThe Lancet 389,\
+    \ 2451\\u20132453 (2017).\\n1160\\n102.\\nRennert, G. & Peterburg, Y. Prevalence of selected chronic diseases in Israel.\
+    \ Isr. Med.\\n1161\\nAssoc. J. IMAJ 3, 404\\u2013408 (2001).\\n1162\\n103.\\nChoi, S. W., Mak, T. S. H. & O\\u2019Reilly,\
+    \ P. F. A guide to performing Polygenic Risk Score\\n1163\\nanalyses. Nat. Protoc. 15, 2759\\u20132772 (2020).\\n1164\\\
+    n104.\\nSinghal, K. et al. Toward expert-level medical question answering with large language\\n1165\\nmodels. Nat. Med.\
+    \ 31, 943\\u2013950 (2025).\\n1166\\n105.\\nSinghal, K. et al. Large language models encode clinical knowledge. Nature\
+    \ 620, 172\\u2013\\n1167\\n180 (2023).\\n1168\\n106.\\nQiu, P. et al. Towards Building Multilingual Language Model for\
+    \ Medicine. Preprint at\\n1169\\nhttps://doi.org/10.48550/arXiv.2402.13963 (2024).\\n1170\\n107.\\nMaharjan, J. et al.\
+    \ OpenMedLM: prompt engineering can out-perform fine-tuning in\\n1171\\nmedical question-answering with open-source large\
+    \ language models. Sci. Rep. 14, 14156\\n1172\\n(2024).\\n1173\\n\\n\\n48\\n108.\\nJin, D. et al. What Disease does this\
+    \ Patient Have? A Large-scale Open Domain Question\\n1174\\nAnswering Dataset from Medical Exams. Preprint at\\n1175\\\
+    nhttps://doi.org/10.48550/arXiv.2009.13081 (2020).\\n1176\\n109.\\nOlatunji, T. et al. AfriMed-QA: A Pan-African, Multi-Specialty,\
+    \ Medical Question-An-\\n1177\\nswering Benchmark Dataset. Preprint at https://doi.org/10.48550/arXiv.2411.15640 (2025).\\\
+    n1178\\n110.\\nBommasani, R. et al. On the Opportunities and Risks of Foundation Models. Preprint at\\n1179\\nhttps://doi.org/10.48550/arXiv.2108.07258\
+    \ (2022).\\n1180\\n111.\\nDeepSeek-AI et al. DeepSeek-V3 Technical Report. Preprint at\\n1181\\nhttps://doi.org/10.48550/arXiv.2412.19437\
+    \ (2025).\\n1182\\n112.\\nTouvron, H. et al. LLaMA: Open and Efficient Foundation Language Models. Preprint at\\n1183\\\
+    nhttps://doi.org/10.48550/arXiv.2302.13971 (2023).\\n1184\\n113.\\nLewis, P. et al. Retrieval-Augmented Generation for\
+    \ Knowledge-Intensive NLP Tasks.\\n1185\\nPreprint at https://doi.org/10.48550/arXiv.2005.11401 (2021).\\n1186\\n114.\\\
+    nHeart Disease in Men and Women. https://www.massgeneralbrigham.org/en/about/news-\\n1187\\nroom/articles/heart-disease-in-men-and-women.\\\
+    n1188\\n115.\\nShuey, M. M. et al. Next-generation phenotyping: introducing phecodeX for enhanced\\n1189\\ndiscovery research\
+    \ in medical phenomics. Bioinformatics 39, btad655 (2023).\\n1190\\n116.\\nAmberger, J. S., Bocchini, C. A., Schiettecatte,\
+    \ F., Scott, A. F. & Hamosh, A. OMIM.org:\\n1191\\nOnline Mendelian Inheritance in Man (OMIM\\u00ae), an online catalog\
+    \ of human genes and ge-\\n1192\\nnetic disorders. Nucleic Acids Res. 43, D789-798 (2015).\\n1193\\n117.\\nLukas, N. et\
+    \ al. Analyzing Leakage of Personally Identifiable Information in Language\\n1194\\nModels. in 2023 IEEE Symposium on\
+    \ Security and Privacy (SP) 346\\u2013363 (2023).\\n1195\\ndoi:10.1109/SP46215.2023.10179300.\\n1196\\n\\n\\n49\\n118.\\\
+    nPan, X., Zhang, M., Ji, S. & Yang, M. Privacy Risks of General-Purpose Language Mod-\\n1197\\nels. in 2020 IEEE Symposium\
+    \ on Security and Privacy (SP) 1314\\u20131331 (2020).\\n1198\\ndoi:10.1109/SP40000.2020.00095.\\n1199\\n119.\\nShevtsova,\
+    \ D. et al. Trust in and Acceptance of Artificial Intelligence Applications in\\n1200\\nMedicine: Mixed Methods Study.\
+    \ JMIR Hum. Factors 11, e47031 (2024).\\n1201\\n120.\\nInternational Classification of Diseases (ICD). https://www.who.int/standards/classifica-\\\
+    n1202\\ntions/classification-of-diseases.\\n1203\\n121.\\nATCDDD - Structure and principles. https://atcddd.fhi.no/atc/structure_and_principles/.\\\
+    n1204\\n122.\\nRxNorm. https://www.nlm.nih.gov/research/umls/rxnorm/index.html.\\n1205\\n123.\\nSNOMED CT. https://www.nlm.nih.gov/healthit/snomedct/index.html.\\\
+    n1206\\n124.\\nCPT\\u00ae overview and code approval. American Medical Association https://www.ama-\\n1207\\nassn.org/practice-management/cpt/cpt-overview-and-code-approval\
+    \ (2024).\\n1208\\n125.\\nForrey, A. W. et al. Logical observation identifier names and codes (LOINC) database: a\\n1209\\\
+    npublic use set of codes and names for electronic reporting of clinical laboratory test results.\\n1210\\nClin. Chem.\
+    \ 42, 81\\u201390 (1996).\\n1211\\n126.\\nDenny, J. C. et al. PheWAS: demonstrating the feasibility of a phenome-wide\
+    \ scan to dis-\\n1212\\ncover gene-disease associations. Bioinforma. Oxf. Engl. 26, 1205\\u20131210 (2010).\\n1213\\n127.\\\
+    nWu, P. et al. Mapping ICD-10 and ICD-10-CM Codes to Phecodes: Workflow Develop-\\n1214\\nment and Initial Evaluation.\
+    \ JMIR Med. Inform. 7, e14325 (2019).\\n1215\\n128.\\nWei, W.-Q. et al. Evaluating phecodes, clinical classification software,\
+    \ and ICD-9-CM\\n1216\\ncodes for phenome-wide association studies in the electronic health record. PLOS ONE 12,\\n1217\\\
+    ne0175508 (2017).\\n1218\\n129.\\nBastarache, L. Using Phecodes for Research with the Electronic Health Record: From\\\
+    n1219\\nPheWAS to PheRS. Annu. Rev. Biomed. Data Sci. 4, 1\\u201319 (2021).\\n1220\\n\\n\\n50\\n130.\\nWilcke, X., Bloem,\
+    \ P. & de Boer, V. The knowledge graph as the default data model for\\n1221\\nlearning on heterogeneous knowledge. Data\
+    \ Sci. 1, 39\\u201357 (2017).\\n1222\\n131.\\nRadford, A. et al. Learning Transferable Visual Models From Natural Language\
+    \ Supervi-\\n1223\\nsion. Preprint at https://doi.org/10.48550/arXiv.2103.00020 (2021).\\n1224\\n132.\\nSohn, K. Improved\
+    \ Deep Metric Learning with Multi-class N-pair Loss Objective. in Ad-\\n1225\\nvances in Neural Information Processing\
+    \ Systems vol. 29 (Curran Associates, Inc., 2016).\\n1226\\n133.\\nChen, T., Kornblith, S., Norouzi, M. & Hinton, G. A\
+    \ simple framework for contrastive\\n1227\\nlearning of visual representations. in Proceedings of the 37th International\
+    \ Conference on Ma-\\n1228\\nchine Learning vol. 119 1597\\u20131607 (JMLR.org, 2020).\\n1229\\n134.\\nLikert, R. A technique\
+    \ for the measurement of attitudes. Arch. Psychol. 22  140, 55\\u201355\\n1230\\n(1932).\\n1231\\n135.\\nMcInnes, L.,\
+    \ Healy, J. & Melville, J. UMAP: Uniform Manifold Approximation and Pro-\\n1232\\njection for Dimension Reduction. Preprint\
+    \ at https://doi.org/10.48550/arXiv.1802.03426\\n1233\\n(2018).\\n1234\\n136.\\nPheWAS - Phenome Wide Association Studies.\
+    \ https://phewascatalog.org/phe-\\n1235\\ncodes_v1_1.\\n1236\\n137.\\nLab Tests for Lupus | Lupus Foundation of America.\
+    \ https://www.lupus.org/resources/lab-\\n1237\\ntests-for-lupus.\\n1238\\n138.\\nCDC. Type 1 Diabetes. Diabetes https://www.cdc.gov/diabetes/about/about-type-1-diabe-\\\
+    n1239\\ntes.html (2025).\\n1240\\n139.\\nMedical Diseases & Conditions. Mayo Clinic https://www.mayoclinic.org/diseases-condi-\\\
+    n1241\\ntions.\\n1242\\n140.\\nHu, E. J. et al. LoRA: Low-Rank Adaptation of Large Language Models. Preprint at\\n1243\\\
+    nhttps://doi.org/10.48550/arXiv.2106.09685 (2021).\\n1244\\n\\n\\n51\\n141.\\nAronson, A. R. Effective mapping of biomedical\
+    \ text to the UMLS Metathesaurus: the\\n1245\\nMetaMap program. Proc. AMIA Symp. 17\\u201321 (2001).\\n1246\\n\\n1247\"\
+    \n  }\n]"
+  acknowledgments: '903
+
+    R.J., B.Y.R., R.D.B., N.D., and M.Z. are supported by the Berkowitz Family Living Laboratory
+
+    904
+
+    at Harvard Medical School and the Clalit Research Institute. R.J. and M.Z. gratefully
+
+    905
+
+    acknowledge the support of NIH R01-HD108794, NSF CAREER 2339524, US DoD FA8702-
+
+    906
+
+    15-D-0001, awards from Harvard Data Science Initiative, Amazon Faculty Research, Google Re-
+
+    907
+
+    search Scholar Program, AstraZeneca Research, Roche Alliance with Distinguished Scientists,
+
+    908
+
+    Sanofi iDEA-iTECH, Pfizer Research, Chan Zuckerberg Initiative, John and Virginia Kaneb Fel-
+
+    909
+
+    lowship at Harvard Medical School, Biswas Computational Biology Initiative in partnership with
+
+    910
+
+    the Milken Institute, Harvard Medical School Dean''s Innovation Fund for the Use of Artificial
+
+    911
+
+    Intelligence, and Kempner Institute for the Study of Natural and Artificial Intelligence at Har-
+
+    912
+
+    vard University. Any opinions, findings, conclusions or recommendations expressed in this ma-
+
+    913
+
+    terial are those of the authors and do not necessarily reflect the views of the funders. We grate-
+
+    914
+
+    fully acknowledge the resources provided by the Clalit Research Institute. We thank Michelle M.
+
+    915
+
+    Li, Ayush Noori, Intae Moon, and Shvat Messica for contributing to the model development and
+
+    916
+
+    analyses.
+
+    917'
+  author_contributions: '918
+
+    R.J. developed a unified knowledge graph representation of clinical concepts and designed, im-
+
+    919
+
+    plemented, and benchmarked heterogeneous graph transformer models. U.G. implemented the
+
+    920
+
+    approach and conducted detailed analyses using CHS individual-level data. L.H., J.W., S.D.,
+
+    921
+
+
+
+    37
+
+    C.R.G., P.H., and R.S. formed an inter-institutional panel of clinicians that evaluated the align-
+
+    922
+
+    ment of clinical concept representations with established clinical knowledge across 90 diseases
+
+    923
+
+    and 3,000 clinical codes. B.Y.R. and R.B. provided feedback on the methodology and evaluated
+
+    924
+
+    the clinical concept embeddings through large-scale phenotype risk scoring and alignment with
+
+    925
+
+    expert clinical knowledge. R.J., N.D., and M.Z. conceptualized and designed the study. All au-
+
+    926
+
+    thors contributed to writing the manuscript.
+
+    927'
+  competing_interests: '928
+
+    The authors declare no competing interests.
+
+
+    929
+
+
+
+    38'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\",\n    \"\
+    page\": 7\n  },\n  {\n    \"id\": \"fig_p7_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_2.png\",\n   \
+    \ \"page\": 7\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\",\n\
+    \    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_2.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p12_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p12_1.png\"\
+    ,\n    \"page\": 12\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_2.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_3.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_4.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_5.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_6.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_2.png\"\
+    ,\n    \"page\": 17\n  }\n]"
+references:
+  reference_count: 1
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://doi.org/10.7910/DVN/Z6H1A8.\",\n    \"accession\": \"\",\n    \"database\"\
+    : \"\",\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/mims-harvard/Clinical-knowledge-embeddings.\",\n    \"description\"\
+    : \"\"\n  }\n]"

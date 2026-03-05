@@ -1,0 +1,236 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/NetworkCommons.pdf
+
+identifiers:
+  doi: 10.5281/zenodo.14719118
+citation:
+  title: 'NetworkCommons: bridging data, knowledge, and  methods to build and evaluate context-specific  biological networks'
+  year: '1911'
+content:
+  abstract: 'Summary: We present NetworkCommons, a platform for integrating prior knowledge, omics data, and network inference
+    methods, facilitating
+
+    their usage and evaluation. NetworkCommons aims to be an infrastructure for the network biology community that supports
+    the development
+
+    of better methods and benchmarks, by enhancing interoperability and integration.
+
+    Availability and implementation: NetworkCommons is implemented in Python and offers programmatic access to multiple omics
+    datasets,
+
+    network inference methods, and benchmarking setups. It is a free software, available at https://github.com/saezlab/networkcommons,
+    and de­
+
+    posited in Zenodo at https://doi.org/10.5281/zenodo.14719118.'
+  sections: "[\n  {\n    \"name\": \"methods to build and evaluate context-specific\",\n    \"text\": \"biological networks\\\
+    nVictor Paton1,\\u2021 , Denes T\\u20acurei1,\\u2021 , Olga Ivanova1 , Sophia M\\u20aculler-Dott1 ,\\nPablo Rodriguez-Mier1\
+    \ , Veronica Venafra2,3 , Livia Perfetto2 , Martin Garrido-Rodriguez1,4,5,\\u0003 ,\\nJulio Saez-Rodriguez1,5,\\u0003\\\
+    n1Institute for Computational Biomedicine, Heidelberg University Hospital and Heidelberg University, Heidelberg, 69120,\
+    \ Germany\\n2Department of Biology and Biotechnologies \\u201cC. Darwin\\u201d, University of Rome La Sapienza, 00185\
+    \ Rome, Italy\\n3Ph.D. Program in Cellular and Molecular Biology, Department of Biology, University of Rome \\u2018Tor\
+    \ Vergata\\u2019, 00133 Rome, Italy\\n4Molecular Systems Biology Unit, European Molecular Biology Laboratory (EMBL), Heidelberg,\
+    \ 69117, Germany\\n5European Bioinformatics Institute (EMBL-EBI), Hinxton, Cambridgeshire, CB10 1SD, United Kingdom\\\
+    n\\u0003Corresponding authors. Julio Saez-Rodriguez, European Bioinformatics Institute (EMBL-EBI), Hinxton, Cambridgeshire,\
+    \ CB10 1SD, United Kingdom. E-mail:\\nsaezlab@ebi.ac.uk; Martin Garrido-Rodriguez, Molecular Systems Biology Unit, European\
+    \ Molecular Biology Laboratory (EMBL), Heidelberg, 69117, Germany.\\nE-mail: martin.garrido@embl.de.\\n\\u2021\\u00bc\
+    \ equal contribution.\\nAssociate Editor: Jianlin Cheng\"\n  },\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"\
+    Network biology leverages computational methods to clarify\\ncomplex interactions among molecules, including genes, pro\\\
+    u00ad\\nteins, and metabolites (Zitnik et al. 2023). In particular,\\ncontext-specific\\nnetwork\\ninference\"\n  },\n\
+    \  {\n    \"name\": \"methods\",\n    \"text\": \"integrate\\ncontext-agnostic prior knowledge with omics data to identify\\\
+    nsubnetworks associated with specific conditions, such as per\\u00ad\\nturbations or diseases (Garrido-Rodriguez et al.\
+    \ 2022). These\\nnetworks then enable various downstream applications, in\\u00ad\\ncluding omics data interpretation and\
+    \ identification of poten\\u00ad\\ntial drug targets (Perrone et al. 2024).\\nA wide range of tools have been developed\
+    \ to infer net\\u00ad\\nworks from different combinations of knowledge and data.\\nHowever, these tools do not share a\
+    \ common application\\nprogramming interface (API). This lack of interoperability\\nhinders the benchmarking of these\
+    \ methods as well as the\\nreuse and combination of their modules.\\nHere, we present NetworkCommons, a Python package\\\
+    nthat unifies programmatic access to (i) prior knowledge, (ii)\\nomics data, and (iii) network contextualization methods.\\\
+    nWith these components, we provide a platform for users to\\ncreate, apply, and evaluate custom subnetwork identification\\\
+    nproblems. The value of this platform is illustrated by provid\\u00ad\\ning access to four preprocessed omics datasets,\
+    \ eight network\\ninference methods, and four benchmarking setups, as a step\\u00ad\\nping stone toward a \\u201cNetwork\
+    \ commons\\u201d, an ecosystem of\\nresources and methods for network biology. All code and ex\\u00ad\\ntensive documentation\
+    \ are available at https://networkcom\\nmons.readthedocs.io/.\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\":\
+    \ \"NetworkCommons offers a high-level API for accessing prior\\nknowledge, omics data, and contextualization methods,\\\
+    nallowing users to integrate, evaluate, and visualize generated\\nsubnetworks. The package is divided into four primary\\\
+    nmodules (Fig. 1).\\nThe first module provides access to prior knowledge net\\u00ad\\nworks (PKNs), representing various\
+    \ types of context-\\nindependent, protein-level interactions. Users can either use\\none of the built-in PKNs or import\
+    \ their own by converting it\\ninto a NetworkCommons PKN object (Supplementary Data\\nSIV.1). The currently built-in PKNs\
+    \ include only directed net\\u00ad\\nworks. Directed networks are of particular interest as they\\nReceived: 29 November\
+    \ 2024; Revised: 22 January 2025; Editorial Decision: 24 January 2025; Accepted: 31 January 2025\\n\\u00a9 The Author(s)\
+    \ 2025. Published by Oxford University Press.\\nThis is an Open Access article distributed under the terms of the Creative\
+    \ Commons Attribution License (https://creativecommons.org/licenses/by/4.0/), which\\npermits unrestricted reuse, distribution,\
+    \ and reproduction in any medium, provided the original work is properly cited.\\nBioinformatics, 2025, 41(2), btaf048\\\
+    nhttps://doi.org/10.1093/bioinformatics/btaf048\\nAdvance Access Publication Date: 5 February 2025\\nApplications Note\\\
+    n\\ncontain the minimal molecular information needed to gener\\u00ad\\nate causal hypotheses and statements (Tour\\u0013e\
+    \ et al. 2021).\\nOf note, the API and some of the included methods are also\\nfully compatible with undirected graphs.\
+    \ The networks may\\nalso include a weight interaction attribute to indicate up- or\\ndown-regulation. These weights can\
+    \ also convey other quan\\u00ad\\ntitative or qualitative information, although most of the net\\u00ad\\nwork contextualization\
+    \ methods do not directly use this\\ninformation. The built-in prior knowledge relies primarily on\\nOmniPath (T\\u20acurei\
+    \ et al. 2021), a database combining dozens\\nof resources, covering protein\\u2013protein, kinase\\u2013substrate, li\\\
+    u00ad\\ngand\\u2013receptor interactions, as well as gene regulatory net\\u00ad\\nworks. Other sources can be easily added\
+    \ (Supplementary\\nData SIV.1).\\nThe omics data module provides built-in access to prepro\\u00ad\\ncessed omics datasets,\
+    \ encompassing diverse types of omics\\ndata across multiple biological contexts. We illustrate the ac\\u00ad\\ncess to\
+    \ four datasets, and also how users can connect their\\nown datasets to the platform (Supplementary Data SIV.2).\\nAll\
+    \ datasets are managed through pandas data frames, with\\nan additional interface available for AnnData objects from\\\
+    nthe scverse framework (Virshup et al. 2023, 2024), as illus\\u00ad\\ntrated in a dedicated vignette that uses perturbational\
+    \ data\\nfrom pertpy (Heumos et al. 2024). The first among the data\\u00ad\\nsets\\nis\\ndose-response\\nphosphoproteomics\\\
+    ndata\\nfrom\\nDecryptM, as preprocessed by its authors (Zecha et al.\\n2023). Second, we curated and reprocessed data\
+    \ from the\\nPANACEA DREAM challenge (Douglass et al. 2022), which\\nprofiles single-dose transcriptomic responses to\
+    \ 32 kinase\\ninhibitors across 11 cancer cell lines. Third, we added basal\\nmetabolomics and transcriptomics data from\
+    \ the NCI-60\\ncancer cell line collection (Shoemaker 2006). Lastly, we pro\\u00ad\\nvide access to harmonized multi-omics\
+    \ data from the Clinical\\nProteomic Tumor Analysis Consortium (Li et al. 2023),\\nwhich includes genomics, transcriptomics,\
+    \ proteomics, and\\nphosphoproteomics data for various tumor and adjacent nor\\u00ad\\nmal tissue samples across a wide\
+    \ range of cancer types. This\\nsecond module offers access to a variety of large datasets\\nspanning basal, perturbed,\
+    \ and clinical contexts, and users\\nare welcome to input their own datasets.\\nThe methods module offers a consistent\
+    \ API for various\\nnetwork contextualization methods. Each method requires,\\nat a minimum, a PKN object and a set of\
+    \ upstream and\\ndownstream measurements of molecular activities. The out\\u00ad\\nput of each method is a contextualized\
+    \ subnetwork.\\nNetworkCommons already includes a range of contextualiza\\u00ad\\ntion methods, such as topology-based,\
+    \ recursive propagation,\\ndiffusion approaches, and causal propagation (described in\\ndetail in Supplementary Data SII).\
+    \ New methods can be in\\u00ad\\ncluded from external modules by wrappers, or implemented\\ndirectly within NetworkCommons,\
+    \ using libraries already\\nsupported in the framework, such as NetworkX (Hagberg\\net al. 2008) or CORNETO (Rodriguez-Mier\
+    \ et al. 2024). For\\nexample, the causal reasoning method CARNIVAL (Liu et al.\\n2019), as implemented in CORNETO, is\
+    \ made available in\\nNetworkCommons by a minimal wrapper (Supplementary\\nData SII.6). We also incorporate SignalingProfiler\
+    \ (Venafra\\net al. 2024), which integrates topology-based methods\\nand CORNETO to generate hierarchical signaling models\\\
+    n(Supplementary\\nData\"\n  },\n  {\n    \"name\": \"SII.7)\",\n    \"text\": \"NetworkCommons\\nalso\\nprovides network\
+    \ visualization and other plotting functions\\nto support quality control, data exploration and result\\ninterpretation.\\\
+    nThe fourth main component of NetworkCommons, the evalu\\u00ad\\nation module, allows for the benchmarking of contextualization\"\
+    \n  },\n  {\n    \"name\": \"methods. We illustrate this with four strategies to evaluate\",\n    \"text\": \"context-specific\
+    \ subnetworks, using the datasets already available\\nvia the omics data module. Each evaluation strategy requires con\\\
+    u00ad\\ntext specific networks as input, and outputs a set of evaluation\\nmetrics. The first evaluation strategy makes\
+    \ use of the\\nFigure 1. Overview of NetworkCommons. The package connects four different areas: data, prior knowledge,\
+    \ contextualization methods, and evaluation.\\n2\\nPaton et al.\\n\\nperturbational profiles from compounds in the PANACEA\
+    \ proj\\u00ad\\nect. Here, the networks are scored according to the number of re\\u00ad\\ncovered off-target proteins.\
+    \ The second strategy uses DecryptM\\ndata to recover phosphorylation changes based on sensitivity to\\ndrug perturbations.\
+    \ The third strategy scores subnetworks based\\non the enrichment of an a priori expected gene set. Lastly, we\\nused\
+    \ harmonized data from the Clinical Proteomic Tumor\\nAnalysis Consortium to showcase our fourth evaluation strategy.\\\
+    nHere, we used protein abundance from proteomics, and activity\\nscores inferred from transcriptomics to contextualize\
+    \ networks.\\nThese are then evaluated based on the enrichment of kinase activ\\u00ad\\nities from phosphoproteomics.\
+    \ More details about the strategies\\nare available in Supplementary Data SIII, about the implementa\\u00ad\\ntion and\
+    \ creating new strategies, see Supplementary Data SIV.4.\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"\
+    In this note, we present NetworkCommons, a platform for\\nthe integration of omics data and prior knowledge with meth\\\
+    u00ad\\nods to generate context-specific molecular interaction net\\u00ad\\nworks. With our design, we aim for interoperability,\
+    \ ease of\\naccess, and robustness of existing and future components.\\nWhile the current version represents the beginning\
+    \ of a\\nbroader effort, we already illustrate its potential by providing\\nintegrated access to several data sources,\
+    \ methods, and differ\\u00ad\\nent evaluation strategies for contextualization methods. We\\npropose a programmatic environment\
+    \ where these evaluation\\nstrategies can be tested. We provide four of them to demon\\u00ad\\nstrate this concept, and\
+    \ as a starting point for method devel\\u00ad\\nopers to evaluate new approaches.\\nIn the future, we aim to expand the\
+    \ ecosystem to include\\nmore datasets, methods, and prior knowledge, to provide\\nsupport for a wider range of applications.\\\
+    nWe plan to incorporate additional methods, such as phuEGO\\n(Giudice et al. 2024), and to expand our networks to functional\\\
+    nand disease annotations, leveraging integrated knowledge\\ngraphs (Lobentanzer et al. 2023). Additionally, we plan to\
+    \ ex\\u00ad\\ntend the scope of available prior knowledge and methodologies\\nto include undirected networks. This includes\
+    \ leveraging module\\ndiscovery methods like DOMINO (Levi et al. 2021), which can\\nprovide valuable insights, such as\
+    \ enhancing our understanding\\nof genetic variations (Barrio-Hernandez et al. 2023). We also\\naim to further develop\
+    \ the API by introducing higher level\\nobjects, expanding the use of AnnData for handling omics data\\n(Virshup et al.\
+    \ 2023), open ways toward Boolean modeling\\n(Ruscone et al. 2024), and improve the connection with other\\necosystems\
+    \ such as scverse for single-cell data analysis and pre\\u00ad\\nprocessing, and in particular pertpy to leverage perturbational\\\
+    ndata (Heumos et al. 2024).\\nWith NetworkCommons, we aim to create a meeting point\\nfor the network biology community.\
+    \ We envision it as a key in\\u00ad\\nfrastructure, modules, and utilities that everyone can reuse for\\ntheir own developments\
+    \ and applications, and supports a\\nbroader collective effort to build robust and efficient context-\\nspecific network\
+    \ inference methods and advanced benchmarks.\\nTo facilitate this, we created contribution guidelines, inviting\\ncurrent\
+    \ and future developers within the network biology field\\nto contribute with data, prior knowledge, methods and evalua\\\
+    u00ad\\ntion strategies. By providing a unified platform for data, prior\\nknowledge, and methods, we aim not only to\
+    \ empower users to\\nuse mechanistic network approaches in their research, but also\\nto encourage the community to join\
+    \ efforts and push the bound\\u00ad\\naries of network biology.\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n  \
+    \  \"text\": \"We would like to thank Aurelien Dugourd, Benjamin Maier,\\nEvangelia Petsalaki, and Laurence Calzone for\
+    \ the inspiring\"\n  },\n  {\n    \"name\": \"discussions that contributed to our design\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"Author contributions\",\n    \"text\": \"VPG, DT, LP, MGR and JSR: Conceptualization; VPG, DT,\\\
+    nOI, VV: Software; VPG, PRM, SMD, MGR and JSR:\\nMethodology; VPG, OI: Visualization. VPG, DT, MGR and\\nJSR Writing \\\
+    u2013 Original Draft Preparation. MGR, JSR: Project\\nAdministration. JSR: Funding Acquisition.\"\n  },\n  {\n    \"name\"\
+    : \"Supplementary data\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary data are available at Bioinformatics\
+    \ online\",\n    \"text\": \"Conflict of interest: J.S.-R. reports funding from GSK, Pfizer\\nand Sanofi and fees/honoraria\
+    \ from Travere Therapeutics,\\nStadapharm, Astex, Pfizer, Grunenthal, Moderna, and Owkin.\"\n  },\n  {\n    \"name\":\
+    \ \"Funding\",\n    \"text\": \"D.T. and O.I. were supported by the HPC/Exascale Centre of\\nExcellence for Personalised\
+    \ Medicine in Europe [PerMedCoE;\\nEuropean Union Horizon 2020 program, grant no. 951773], D.\\nT. also by the German\
+    \ Federal Ministry of Education and\\nResearch [Bundesministerium f\\u20acur Bildung und Forschung\\nBMBF; grant no. 031L0181B]\
+    \ funds granted to J.S.-R., and O.I.\\nby the German Research Foundation (DFG) grant 411368829\\nSA 3536/2\\u20131. S.M.-D.\
+    \ was funded by the German Federal\\nMinistry of Education and Research, particularly the LiSyM\\nCancer research core\
+    \ (BMBF, Funding number: 031L0257B). P.\\nR.-M. was supported by DECIDER [European Union Horizon\\n2020 program, grant\
+    \ no. 965193]. M.G.-R. was supported\\nthrough state funds approved by the State Parliament of Baden-\\nW\\u20acurttemberg\
+    \ for the Innovation Campus Health \\u00fe Life Science\\nAlliance Heidelberg Mannheim.\"\n  },\n  {\n    \"name\": \"\
+    Data availability\",\n    \"text\": \"NetworkCommons is implemented in Python and offers pro\\u00ad\\ngrammatic access\
+    \ to multiple omics datasets, network inference\"\n  },\n  {\n    \"name\": \"methods, and benchmarking setups. It is\
+    \ a free software, avail\\u00ad\",\n    \"text\": \"able at https://github.com/saezlab/networkcommons, and depos\\u00ad\\\
+    nited in Zenodo at https://doi.org/10.5281/zenodo.14719118.\\nAdditional information about omics data included and\\nused\
+    \ in NetworkCommons can be found at https://network\\ncommons.readthedocs.io/en/latest/datasets.html\"\n  },\n  {\n  \
+    \  \"name\": \"References\",\n    \"text\": \"Barrio-Hernandez I, Schwartzentruber J, Shrivastava A et al. Network\\nexpansion\
+    \ of genetic associations defines a pleiotropy map of human\\ncell biology. Nat Genet 2023;55:389\\u201398.\\nDouglass\
+    \ EF, Allaway RJ, Szalai B et al.; DREAM CTD-squared\\nPancancer Drug Activity Challenge Consortium. A community chal\\\
+    u00ad\\nlenge for a pancancer drug mechanism of action inference from per\\u00ad\\nturbational profile data. Cell Rep\
+    \ Med 2022;3:100492.\\nNetworkCommons\\n3\\n\\nGarrido-Rodriguez M, Zirngibl K, Ivanova O et al. Integrating knowl\\u00ad\\\
+    nedge and omics to decipher mechanisms via large-scale models of\\nsignaling networks. Mol Syst Biol 2022;18:e11036.\\\
+    nGiudice G, Chen H, Koutsandreas T et al. phuEGO: a network-\\nbased method to reconstruct active signaling pathways from\\\
+    nphosphoproteomics\\ndatasets.\\nMol\\nCell\\nProteomics\\n2024;\\n23:100771.\\nHagberg AA, Schult DA, Swart PJ. Exploring\
+    \ network structure, dy\\u00ad\\nnamics, and function using NetworkX. In: Proceedings of the 7th\\nPython in Science Conference,\
+    \ edited by Gael Millman and Travis\\nVaught Varoquaux. Pasadena, CA USA. 2008, 11\\u20135.\\nHeumos L, Ji Y, May L et\
+    \ al. Pertpy: an end-to-end framework for per\\u00ad\\nturbation analysis. bioRxiv, https://doi.org/10.1101/2024.08.04.\\\
+    n606516, 2024, preprint: not peer reviewed.\\nLevi H, Elkon R, Shamir R. DOMINO: a network-based active module\\nidentification\
+    \ algorithm with reduced rate of false calls. Mol Syst\\nBiol 2021;17:e9593.\\nLiu A, Trairatphisan P, Gjerga E et al.\
+    \ From expression footprints to\\ncausal pathways: contextualizing large signaling networks with\\nCARNIVAL. NPJ Syst\
+    \ Biol Appl 2019;5:40.\\nLi Y, Dou Y, Da Veiga Leprevost F et al.; Clinical Proteomic Tumor\\nAnalysis Consortium. Proteogenomic\
+    \ data and resources for pan-\\ncancer analysis. Cancer Cell 2023;41:1397\\u2013406.\\nLobentanzer S, Aloy P, Baumbach\
+    \ J et al. Democratizing\\nknowledge representation with BioCypher. Nat Biotechnol 2023;\\n41:1056\\u20139.\\nPerrone\
+    \ MC, Lerner MG, Dunworth M et al. Prioritizing drug targets\\nby perturbing biological network response functions. PLoS\
+    \ Comput\\nBiol 2024;20:e1012195.\\nRodriguez-Mier P, Garrido-Rodriguez M, Gabor A et al. Unified\\nknowledge-driven network\
+    \ inference from omics data. bioRxiv,\\nhttps://doi.org/10.1101/2024.10.26.620390, 2024, preprint: not\\npeer reviewed.\\\
+    nRuscone M, Tsirvouli E, Checcoli A et al. NeKo: a tool for automatic net\\u00ad\\nwork construction from prior knowledge.\
+    \ bioRxiv, https://doi.org/10.\\n1101/2024.10.14.618311, 2024, preprint: not peer reviewed.\\nShoemaker RH. The NCI60\
+    \ human tumour cell line anticancer drug\\nscreen. Nat Rev Cancer 2006;6:813\\u201323.\\nTour\\u0013e V, Vercruysse S,\
+    \ Acencio ML et al. The minimum information\\nabout a molecular interaction CAusal STatement (MI2CAST).\\nBioinformatics\
+    \ 2021;36:5712\\u20138.\\nT\\u20acurei D, Valdeolivas A, Gul L et al. Integrated intra- and intercellular\\nsignaling\
+    \ knowledge for multicellular omics analysis. Mol Syst Biol\\n2021;17:e9923.\\nVenafra V, Sacco F, Perfetto L. SignalingProfiler\
+    \ 2.0: a network-based\\napproach to bridge multi-omics data to phenotypic hallmarks.\\nbioRxiv, https://doi.org/10.1101/2024.01.25.577229,\
+    \ 2024, pre\\u00ad\\nprint: not peer reviewed.\\nVirshup I, Bredikhin D, Heumos L, Scverse Community et al. The\\nscverse\
+    \ project provides a computational ecosystem for Single-Cell\\nomics data analysis. Nat Biotechnol 2023;41:604\\u20136.\\\
+    nVirshup I, Rybakov S, Theis FJ et al. Anndata: access and store anno\\u00ad\\ntated data matrices. JOSS 2024;9:4371.\\\
+    nZecha J, Bayer FP, Wiechmann S et al. Decrypting drug actions and pro\\u00ad\\ntein modifications by dose- and time-resolved\
+    \ proteomics. Science\\n2023;380:93\\u2013101.\\nZitnik M, Li MM, Wells A et al. Current and future directions in net\\\
+    u00ad\\nwork biology. Bioinform Adv 2024;4:vbae099.\\n\\u00a9 The Author(s) 2025. Published by Oxford University Press.\\\
+    nThis is an Open Access article distributed under the terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0/),\
+    \ which permits\\nunrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly\
+    \ cited.\\nBioinformatics, 2025, 41, 1\\u20134\\nhttps://doi.org/10.1093/bioinformatics/btaf048\\nApplications Note\\\
+    n4\\nPaton et al.\"\n  }\n]"
+  acknowledgments: 'We would like to thank Aurelien Dugourd, Benjamin Maier,
+
+    Evangelia Petsalaki, and Laurence Calzone for the inspiring'
+  author_contributions: 'VPG, DT, LP, MGR and JSR: Conceptualization; VPG, DT,
+
+    OI, VV: Software; VPG, PRM, SMD, MGR and JSR:
+
+    Methodology; VPG, OI: Visualization. VPG, DT, MGR and
+
+    JSR Writing – Original Draft Preparation. MGR, JSR: Project
+
+    Administration. JSR: Funding Acquisition.'
+  funding: 'D.T. and O.I. were supported by the HPC/Exascale Centre of
+
+    Excellence for Personalised Medicine in Europe [PerMedCoE;
+
+    European Union Horizon 2020 program, grant no. 951773], D.
+
+    T. also by the German Federal Ministry of Education and
+
+    Research [Bundesministerium f€ur Bildung und Forschung
+
+    BMBF; grant no. 031L0181B] funds granted to J.S.-R., and O.I.
+
+    by the German Research Foundation (DFG) grant 411368829
+
+    SA 3536/2–1. S.M.-D. was funded by the German Federal
+
+    Ministry of Education and Research, particularly the LiSyM
+
+    Cancer research core (BMBF, Funding number: 031L0257B). P.
+
+    R.-M. was supported by DECIDER [European Union Horizon
+
+    2020 program, grant no. 965193]. M.G.-R. was supported
+
+    through state funds approved by the State Parliament of Baden-
+
+    W€urttemberg for the Innovation Campus Health þ Life Science
+
+    Alliance Heidelberg Mannheim.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n    \"\
+    page\": 2\n  }\n]"
+references:
+  reference_count: 80

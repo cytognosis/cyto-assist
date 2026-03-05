@@ -1,0 +1,81 @@
+# Draper Richards Kaplan Foundation — Template Specification
+#
+# DRK venture philanthropy application.
+# Source: Grant_writing_frameworks.md + drkfoundation.org
+#
+# Schema Version: 1.0
+
+template:
+  name: "Draper Richards Kaplan Foundation Application"
+  version: "1.0"
+  source: "https://www.drkfoundation.org/apply-for-funding/submit-an-application/"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Problem and Solution ───────────────────────────────────────────────
+  - id: problem_solution
+    title: "Problem and Solution"
+    fields:
+      - id: mission
+        label: "Please succinctly describe the organization's mission and objectives."
+        type: section
+        required: true
+
+      - id: problem
+        label: "Please describe the social problem your organization addresses."
+        type: section
+        required: true
+
+      - id: solution
+        label: "Please describe the solution your organization provides."
+        type: section
+        required: true
+
+  # ─── Impact ─────────────────────────────────────────────────────────────
+  - id: impact
+    title: "Impact"
+    fields:
+      - id: how_solves
+        label: "Please explain how your organization solves (or contributes to solving) the social problem in a way that improves on existing efforts."
+        type: section
+        required: true
+
+      - id: underserved
+        label: "Please explain how your solution supports an underserved population, including the benefits that population has seen from your pilot(s)."
+        type: section
+        required: true
+
+      - id: uniqueness
+        label: "Please explain how your approach is unique, including comparisons with other initiatives or organizations addressing the same problem."
+        type: section
+        required: true
+
+      - id: results
+        label: "Please describe the organization's tangible results to date and detail how you plan to measure organizational outcomes and success going forward."
+        type: section
+        required: true
+
+  # ─── Scale ──────────────────────────────────────────────────────────────
+  - id: scale
+    title: "Scale"
+    fields:
+      - id: scale_plan
+        label: "Please explain how you plan to scale the organization over time."
+        type: section
+        required: true
+
+      - id: earned_income
+        label: "Please explain the main sources of earned income that your organization will use to sustain your work over time."
+        type: section
+        required: true
+
+  # ─── Leader ─────────────────────────────────────────────────────────────
+  - id: leader
+    title: "Leader"
+    fields:
+      - id: resume
+        label: "Standard resume/CV for the entrepreneur(s) and/or key leadership team members."
+        type: file
+        required: true
+        constraints:
+          formats: [pdf, docx]

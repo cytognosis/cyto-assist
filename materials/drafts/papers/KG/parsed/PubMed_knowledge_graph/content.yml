@@ -1,0 +1,891 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/PubMed knowledge graph.pdf
+
+identifiers:
+  doi: 10.1038/s41597-025-05343-8
+  pmid: '40527887'
+citation:
+  title: 'PubMed knowledge graph 2.0:  Connecting papers, patents, and  clinical trials in biomedical science'
+  year: '2025'
+  journal: Scientific Data
+  volume: '12'
+  publisher: Springer Science and Business Media LLC
+  authors: Jian Xu, Chao Yu, Jiawei Xu, Vetle I. Torvik, Jaewoo Kang, Mujeen Sung, Min Song, Yi Bu, Ying Ding
+content:
+  abstract: String
+  sections: "[\n  {\n    \"name\": \"Background & Summary\",\n    \"text\": \"The rapid expansion of digital data in scholarly\
+    \ domains has unlocked new horizons for exploring patterns\\ncharacterizing the structure and evolution of science1. Academic\
+    \ papers, patents, and clinical trials are three\\ndistinct yet interconnected components in the realm of scholarly communication\
+    \ of medicine. Each serves a\\nunique purpose and follows a specific structure, yet they all share the common goal of\
+    \ disseminating knowl-\\nedge and findings. Academic papers aim to further science through the dissemination of original\
+    \ research,\\noften peer-reviewed to ensure validity and quality2\\u20135. They provide detailed descriptions of research\
+    \ methods\\nand results, serving as valuable references for other researchers. However, the impact of academic papers\
+    \ is\\noften confined to the academic community, making it challenging to translate findings directly into practical\\\
+    napplications. In contrast, patents offer significant advantages in protecting innovation as legal documents that\\nestablish\
+    \ intellectual property rights for new inventions and processes6\\u201310. They can reveal technological trends\\nand\
+    \ directions in industry research, providing insights into the commercialization of academic inquiries11\\u201313.\\nHowever,\
+    \ patents generally lack extensive experimental data, theoretical insights, and comprehensive discus-\\nsions of scientific\
+    \ principles that are characteristic of papers and clinical trial studies, which can lead to a gap in\\nthe detailed understanding\
+    \ of technological developments14\\u201318. Clinical trial records provide a comprehensive\\noverview of all aspects of\
+    \ the clinical trials, producing study records including discussions and conclusions that\\nsupply context to the results.\
+    \ The results of clinical trials are crucial for regulatory approval and clinical adop-\\ntion. These records, while rich\
+    \ in procedural detail and regulatory compliance, typically lack the exploratory\\nscientific narratives and theoretical\
+    \ underpinnings that academic papers elaborate on19\\u201321. Similarly, they do not\\ndelve into the technical specifications\
+    \ and potential commercial applications that are the focus of patents22,23.\\n1School of Information Management, Sun Yat-sen\
+    \ University, Guangzhou, China. 2School of Information, University\\nof Texas at Austin, Austin, TX, USA. 3School of Information\
+    \ Sciences, University of Illinois at Urbana-Champaign,\\nChampaign, IL, USA. 4Department of Computer Science and Engineering,\
+    \ Korea University, Seoul, South Korea.\\n5School of Computing, Kyung Hee University, Seoul, South Korea. 6Department\
+    \ of Library and Information Science,\\nYonsei University, Seoul, South Korea. 7Department of Information Management,\
+    \ Peking University, Beijing, China.\\n8Dell Medical School, University of Texas at Austin, Austin, TX, USA. \\u2709e-mail:\
+    \ issxj@mail.sysu.edu.cn; ying.ding@\\naustin.utexas.edu\\nData Descriptor\"\n  },\n  {\n    \"name\": \"OPEN\",\n   \
+    \ \"text\": \"2\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nThis absence of information can create a disconnect between the practical execution\
+    \ of clinical trials and the\\nbroader scientific and commercial context of medical research24\\u201329.\\nWhile each\
+    \ type of scholarly document\\u2014be it academic papers, patents, or clinical trial records\\u2014serves a\\nunique function\
+    \ within the scientific landscape, the potential synergies between them are often not fully real-\\nized. Establishing\
+    \ a more integrated approach to these diverse knowledge repositories could significantly enrich\\nour comprehension of\
+    \ the scientific ecosystem. By fostering a more interconnected framework, we can facilitate\\na multidimensional perspective\
+    \ that enhances innovation, accelerates the translation of research into practical\\napplications, and promotes a more\
+    \ collaborative environment for scientific discovery30\\u201333. This holistic view\\nwould not only bridge the existing\
+    \ gaps but also pave the way for a more cohesive and progressive scientific\\ncommunity. Some studies have obtained interesting\
+    \ findings using data from various types of literature. For\\nexample, a study on Bee Pollen has effectively utilized\
+    \ academic papers, patents, and clinical trials to present a\\ncomprehensive view of its health benefits34; Meyer et al.35\
+    \ used both patent and paper literature for scientometric\\nanalysis and found that inventor-authors tend to be more productive\
+    \ and academically influential than ordinary\\nauthors; Thelwall et al.36 conducted citation analysis on clinical trials\
+    \ and papers and found that articles cited by\\nclinical trials are usually more likely to have long-term impact.\\nThe\
+    \ efforts in constructing knowledge graphs from academic literature can be categorized as follows:\\n(1)\\t Fine-grained\
+    \ single-type literature knowledge graph. This category refers to works that utilize only one\\ntype of scholarly output,\
+    \ either academic papers, patents, or clinical trials. Each type provides unique\\ninsights and data that contribute to\
+    \ the construction of knowledge graphs. Chen et al.37 constructed a\\npublicly available Clinical Trial Knowledge Graph\
+    \ (CTKG), including nodes representing medical entities\\nin clinical trials (such as studies, drugs, and conditions)\
+    \ and edges representing relationships between\\nthese entities (such as drugs used in studies). Patent data is often\
+    \ used to build engineering knowledge\\ngraphs38,39. Zou et al.40 constructed a patent-based knowledge graph, patent-KG,\
+    \ to represent knowledge\\nfacts in engineering design patents. Knowledge graphs like the Clinical Trial Knowledge Graph\
+    \ (CTKG)\\nand patent-KG serve as specialized repositories that capture the nuances of their respective domains.\\nCTKG,\
+    \ for instance, provides a structured representation of clinical trials, offering insights into the rela-\\ntionships\
+    \ between medical entities such as drugs and conditions. This specificity is invaluable for research-\\ners focusing on\
+    \ clinical outcomes and drug efficacy. Similarly, patent-KG encapsulates the inventive steps\\nand technical details of\
+    \ engineering design patents, illuminating the pathways of technological innovation.\\nHowever, because they are independent\
+    \ knowledge graphs summarized from the single-type literature,\\nthey cannot provide the association of knowledge among\
+    \ theoretical, clinical, and commercial research.\\nConsequently, scientometrics analysis and knowledge discovery research\
+    \ based on such a graph are subject\\nto certain constraints.\\n(2)\\t Coarse-grained Integrated multi-type academic graph.\
+    \ This type of graph involves the fusion of differ-\\nent types of scholarly outputs. SciSciNet41, a large-scale open\
+    \ data lake for scientific research, contains a\\ndatabase that captures scientific publications, researchers, and institutions\
+    \ and tracks their connections\\nto related entities, including citations to patents, scientific publications in clinical\
+    \ trials, and social media\\nmentions. The Dimensions database42 indexes papers and their citations and uniquely connects\
+    \ publica-\\ntions to their related grants, funding agencies, patents, and clinical trials. Bibliometric networks like\
+    \ Di-\\nmensions and SciSciNet offer a more holistic view of scholarly communication by integrating diverse types\\nof\
+    \ literature. However, while these knowledge graphs have significantly advanced our understanding of\\nscholarly communication,\
+    \ they lack a more refined, multi-perspective linking approach between different\\ntypes of scientific literature and\
+    \ evaluative entities.\\nOverall, the current knowledge graph, whether it is a fine-grained knowledge graph based on knowledge\\\
+    nentities like gene, drug, and disease or a coarse-grained knowledge graph based on evaluation entities like paper,\\\
+    nauthor, and journal, lacks multi-perspective and fine-grained comprehensive links to create stronger associ-\\nations\
+    \ between different knowledge. This limitation prevents the full utilization of the interconnectedness of\\nvarious types\
+    \ of scholarly outputs, thereby restricting the potential for more holistic scientometrics analysis and\\nknowledge discovery.\\\
+    nIn 2020, we developed a PubMed knowledge graph (referred to as PKG 1.0)43 based on the PubMed 2019\\ndataset (https://pubmed.ncbi.nlm.nih.gov/).\
+    \ PKG 1.0 created connections among the bio-entities, authors,\\narticles, affiliations, and funding. It facilitates measuring\
+    \ scholarly impact, knowledge usage, and knowledge\\ntransfer, as well as profiling authors and organizations based on\
+    \ their connections with bio-entities. Recognized\\nfor its utility, PKG 1.0 was supplemented by Scientific Data with\
+    \ \\u201ca detailed open access model of the PubMed\\nliterature\\u201d, enhancing its reach and applicability44. Over\
+    \ the subsequent years, PKG 1.0 has been utilized across\\ndifferent research domains such as artificial intelligence33,45,\
+    \ information retrieval46,47, and scientometrics48,49.\\nAs shown in Table\\u00a01, PKG 1.0 has been cited more than 100\
+    \ times in Web of Science, with the citation fields\\npredominantly in Computer Science, Information Science Library Science,\
+    \ and Mathematical Computational\\nBiology.\\nThe table illustrates the distribution of citation fields of PKG 1.0 within\
+    \ the Web of Science database. Each\\nline represents a different research field, with the number of citations, example\
+    \ of specific studies, and purpose of\\nusing PKG 1.0. Computer Science leads with 83 citations, followed by Information\
+    \ Science Library Science with\\n52 citations. Other notable fields include Mathematical Computational Biology, Mathematics,\
+    \ and Health Care\\nSciences Services. This data was queried from Web of Science on January 06, 202550.\\nHowever, PKG\
+    \ 1.0 only focused on paper data, which presents limitations when compared to integrating\\npapers, patents, and clinical\
+    \ trials. This focus restricts the ability to support comprehensive research across\\n\\n3\\nScientific Data |       \
+    \  (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    ndifferent types of academic literature. The connections between these three types of literature are also crucial for\\\
+    na holistic understanding of knowledge transfer and innovation pathways. The necessity for PKG 2.0 arises from\\nthe ever-growing\
+    \ complexity of biomedical research and the increasing interdependence of scientific literature.\\nPKG 2.0 is designed\
+    \ to address these challenges by integrating papers, patents, and clinical trials as core data,\\nestablishing fine-grained\
+    \ connections between these document types through bioentities, citations, and projects.\\nAdditionally, based on this\
+    \ linked dataset, we have conducted supplementary and extended works, including\\ninstitution disambiguation, calculating\
+    \ commonly used measurements of authors, integrating citation data from\\nmultiple sources, and supplementing detailed\
+    \ information of journals annually (see Fig.\\u00a01 for more details). By\\nintegrating these diverse sources of knowledge,\
+    \ PKG 2.0 aims to provide a holistic view of the research land-\\nscape, enabling researchers to uncover patterns and\
+    \ insights that were previously obscured by the siloed nature\\nof data.\\nThe core of PKG includes the entirety of PubMed\
+    \ papers, all clinical trial studies from ClinicalTrials.\\ngov (https://clinicaltrials.gov/), and biomedical-related\
+    \ patents from USPTO (https://www.uspto.gov/) and\\nPatentsView (https://patentsview.org/). PKG establishes connections\
+    \ between papers, patents, and clinical tri-\\nals through bioentities, projects, authors, and citations. It integrates\
+    \ extended metadata from multiple sources,\\nincluding iCite (https://icite.od.nih.gov/), and SciMago (https://www.scimagojr.com/).\
+    \ This results in a biomed-\\nical knowledge graph that not only features rich metadata but also provides fine-grained\
+    \ knowledge annotations\\nand tightly interconnected relationships. Figure\\u00a02 shows the logical model of PKG in a\
+    \ relational database.\\nIn practice, PKG 2.0 is expected to benefit a diverse range of users across multiple fields.\
+    \ For those in the\\ninformation retrieval domain, researchers can access a wealth of related information from different\
+    \ types of\\nliterature, which significantly enhances the comprehensiveness and accuracy of knowledge retrieval compared\\\
+    nto traditional search methods. In the field of scientometrics, the integrated nature of PKG 2.0 allows scholars to\\\
+    nanalyze the relationships between different types of scholarly outputs, such as citation patterns, collaboration\\nnetworks,\
+    \ and knowledge transfer mechanisms among papers, patents, and clinical trials. This holistic view can\\nuncover previously\
+    \ hidden patterns and trends, facilitating more profound scientometric analysis and research.\\nIn the realm of machine\
+    \ learning and artificial intelligence, PKG 2.0 offers high-quality linked datasets that are\\nhighly conducive to knowledge\
+    \ reasoning. The well-structured and interrelated data can be used to train mod-\\nels, enabling machines to better understand\
+    \ complex relationships within biomedical research and ultimately\\nimproving the performance and accuracy of machine-learning\
+    \ algorithms in tasks such as prediction, classifica-\\ntion, and decision-making in the biomedical field.\"\n  },\n \
+    \ {\n    \"name\": \"Methods\",\n    \"text\": \"PKG encompasses the entirety of PubMed papers, all clinical trial studies\
+    \ from ClinicalTrials.gov, and\\nbiomedical-related patents from USPTO. Linkages between these three types of literature\
+    \ are established\\nthrough knowledge entities, citations, author name disambiguation (AND), and projects provided by\
+    \ NIH\\nExporter (https://reporter.nih.gov). Fine-grained connections at the knowledge entity level can provide more\\\
+    naccurate insights into the flow of knowledge. Subsequent work includes matching journal information and dis-\\nambiguating\
+    \ institutions. These efforts rely on high-quality fine-grained entities, comprehensive citation data,\\naccurate author\
+    \ disambiguation, and reliable project information. Therefore, the extraction of knowledge enti-\\nties, author disambiguation,\
+    \ citation integration, and project details across papers, clinical trials, and patents are\\ncrucial components of this\
+    \ study.\\nLinkages based on fine-grained knowledge entities.\\nIn this section, we detail the methodologies\\nemployed\
+    \ to establish linkages between papers, clinical trials, and patents using fine-grained knowledge entities.\\nThe unique\
+    \ identifiers assigned to these knowledge entities serve as a primary mechanism for interconnecting\\nthe three types\
+    \ of literature. This approach is crucial for creating a comprehensive and interconnected knowledge\\ngraph that accurately\
+    \ reflects the complex relationships within biomedical research. The primary challenge lies\\nin the precise extraction\
+    \ and normalization of bio-entities, ensuring that each entity is uniquely and consist-\\nently identified across different\
+    \ document types. Additionally, mapping the relationships between these entities\\nrequires sophisticated techniques to\
+    \ handle the vast and diverse datasets involved. To address these challenges,\\nwe employ advanced natural language processing\
+    \ methods and leverage the iBKH dataset (https://github.com/\\nField\\nNumber of citations\\nExample of specific studies\
+    \ (Paper title)\\nPurpose of using PKG 1.0\\nComputer Science\\n83\\nSPACES: Explainable Multimodal AI for Active\\nSurveillance,\
+    \ Diagnosis, and Management of\\nAdverse Childhood Experiences (ACEs)45\\nConstructing an explainable\\nmultimodal AI\\\
+    nInformation Science Library\\nScience\\n52\\nBuilding the COVID-19 Portal by Integrating\\nLiterature, Clinical Trials,\
+    \ and Knowledge Graphs85\\nBuilding an information\\nretrieval system\\nMathematical\\nComputational Biology\\n38\\nAnalyzing\
+    \ knowledge entities about COVID-19\\nusing entitymetrics86\\nAnalyzing knowledge entities\\nabout COVID-19\\nMathematics\\\
+    n27\\nA graph neural network-based node classification\\nmodel on class-imbalanced graph data87\\nBuilding a node classification\\\
+    nmodel\\nHealth Care Sciences\\nServices\\n23\\nDigital Personal Health Coaching Platform for\\nPromoting Human Papillomavirus\
+    \ Infection\\nVaccinations and Cancer Prevention: Knowledge\\nGraph-Based Recommendation System88\\nConstructing a digital\
+    \ personal\\nhealth coaching platform\\nTable 1.\\u2002 Distribution of Citation Fields of PKG 1.0 in Web of Science.\\\
+    n\\n4\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nwcm-wanglab/iBKH/)51 for accurate relation mapping. This section will cover the detailed\
+    \ processes of biomed-\\nical entity extraction, normalization, and relation mapping, as well as the extraction of datasets\
+    \ and methods\\nentities.\\nBiomedical entity extraction and relation mapping.\\nKnowledge entities provide a quick understand-\\\
+    ning of the research content or topics within the literature, facilitating further literature management and pattern\\\
+    nanalysis. Interactions between genes, proteins, or drugs in specific biological contexts are central to many biomed-\\\
+    nical studies. However, the vast volume and rapid publication rate of biomedical literature make manual identifica-\\\
+    ntion of these content elements impractical52. To address this challenge, named entity recognition techniques are\\nemployed\
+    \ to automatically identify domain-specific terms in PubMed articles.\\nWe propose a biomedical text mining tool, BERN2\
+    \ (http://bern2.korea.ac.kr/)53, for accurate and efficient\\nbiomedical Named Entity Recognition (NER) and named entity\
+    \ normalization (NEN). BERN2 has been used\\nto extract biomedical entities from the titles and abstracts of papers, clinical\
+    \ trials, and patents in this study. The\\nextracted entities include nine categories: gene/protein, disease, drug/chemical,\
+    \ species, mutation, cell line, cell\\ntype, DNA, and RNA. The bio-entity extraction component comprises two models: a\
+    \ multi-task NER model that\\nidentifies named entities in papers, clinical trials, and patents, and a multi-type normalization\
+    \ model that links\\nthese biomedical entities to unique concept identifiers. After performing biomedical entity extraction,\
+    \ we used\\nthe iBKH dataset to map the relationships between the extracted entities.\\nNamed entity recognition. BERN2\
+    \ employs a multi-task NER model to simultaneously extract all entity types\\nexcept for mutations. Multi-task learning\
+    \ (MTL)54 aims to improve performance by allowing models to share\\nrepresentations across related tasks. In biomedical\
+    \ NER, MTL often outperforms single-task learning (STL)\\nbecause it enables models to leverage shared word semantics\
+    \ across different tasks55. Due to the lack of a publicly\\navailable training set specifically for mutations, BERN2 utilizes\
+    \ tmVar 2.056 as the NER model for mutation-type\\nbiomedical entities. Cross-entropy objectives were used to optimize\
+    \ the model, and the loss function for the\\nmodel was defined as follows:\\n\\u2211\\u2211\\n= \\u2212\\n\\u22c5\\n=\\\
+    n=\\nL\\nNM\\ny\\np\\n1\\nlog(\\n)\\n(1)\\ni\\nN\\nj\\nM\\nij\\nij\\n1\\n1\\nFig. 1\\u2002 Framework of PKG 2.0. (A) Three\
+    \ ways in which the three types of academic literature link to each other.\\n(B) The specific methods or data sources\
+    \ of the linkage. (C) Supplementary and extended works in PKG 2.0.\\n\\n5\\nScientific Data |         (2025) 12:1018 \
+    \ | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nwhere\
+    \ N is the number of task-specific layers, M is the max sequence length of input texts, yij denotes the\\nground-truth\
+    \ label, and pij denotes the probability that each task-specific layer produces.\\n(1)\\t Named entity normalization.\
+    \ Relying solely on rule-based NEN models cannot cover all variations in enti-\\nty names. To address this limitation,\
+    \ we use the BioSyn57 module, a neural network-based NEN approach,\\nwhich extends standardization to entities not covered\
+    \ by rule-based methods. Regarding type overlaps,\\nsuch as the case of \\u2018androgen\\u2019 belonging to both genes\
+    \ and compounds, we prioritize categories with CUIs,\\nas they provide richer information. Additionally, mutations identified\
+    \ by tmVar2.0 consistently receive the\\nhighest priority category label.\\n(2)\\t Using the iBKH dataset to label relations\
+    \ between bio-entities. The study of relationships between entities\\nholds great promise for advancing our understanding\
+    \ of complex biological systems and improving health-\\ncare outcomes. It can enhance the predictive capabilities of biomedical\
+    \ models, leading to more accurate\\ndiagnoses and more effective treatments. Based on the aforementioned BERN2 entity\
+    \ extraction results, we\\ncombined the iBKH to map the relationships between biomedical entities. Specifically, a total\
+    \ of six types of\\nrelationships were mapped, including disease-drug, disease-disease, disease-gene, drug-drug, drug-gene,\\\
+    nand gene-gene. As BERN2 and iBKH use different sources of entity IDs, we mapped different IDs during\\nthe mapping process.\
+    \ BioMart58, Human Disease Ontology59, PharmGKB60, and drug_id_mapping61 were\\nused to map the entity IDs in iBKH to\
+    \ the entity IDs in BERN2.\\nDataset and method entity extraction.\\nIdentifying the methods and datasets used in academic\
+    \ papers is\\ncrucial for ensuring reproducibility, validating results, and enabling further research advancements.\\\
+    nWe used a dictionary-based approach to extract methods and datasets. Relative words in Ontology for\\nBiomedical Investigations62\
+    \ are used for method entity extraction, and NAR Database (https://www.oxford-\\njournals.org/nar/database), NIH-BMIC\\\
+    u2019s domain-specific repositories (https://www.nlm.nih.gov/NIHbmic),\\nand EMBL-EBI data resources (https://www.ebi.ac.uk/services/data-resources-and-tools)\
+    \ are used for data set\\nentity extraction. This is an exploratory fine-grained entity extraction work, and the problem\
+    \ of name ambiguity\\nstill needs to be resolved.\\nFig. 2\\u2002 The entity relationship diagram of PKG. PKG includes\
+    \ \\u201cArticles\\u201d, \\u201cClinicalTrials\\u201d, and \\u201cPatents\\u201d as the\\nmain data tables, and links\
+    \ them to each other through a series of relationship tables, as well as to other tables\\ncapturing data from a range\
+    \ of sources. For clarity, here we show a subset and their main fields of the tables (see\\nthe Data Records section and\
+    \ the appendix for a more comprehensive view of the tables).\\n\\n6\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nLinkages based on citations.\\nIn this section, we outline\
+    \ the methodologies employed to link papers, pat-\\nents, and clinical trials through citation relationships. Citations\
+    \ serve as one of the primary mechanisms for inter-\\nconnecting these three types of literature, providing a comprehensive\
+    \ view of how knowledge flows and evolves\\nFig. 3\\u2002 The process of the author name disambiguation. It mainly combines\
+    \ the author disambiguation results of\\nthe Author-ity dataset and Semantic Scholar.\\nNode type\\nStatistics\\nDescribe\\\
+    nArticle\\n36,551,113\\nPapers from PubMed\\nPatent\\n1,344,469\\nPatents from USPTO\\nClinical Trials\\n480,795\\nClinical\
+    \ trial studies from ClinicalTrials.gov\\nAuthor\\n26,217,594\\nDisambiguated authors in PKG\\nInstitution\\n69,457\\\
+    nDisambiguated institutions identified with ROR\\nBioEntity\\n357,686\\nBioEntities extracted by BERN2\\nJournal\\n21,382\\\
+    nJournals mapped with SciMago\\nProject\\n2,023,148\\nProjects funded by NIH\\nTable 2.\\u2002 Statistics of node types.\\\
+    nRelation type\\nNode type 1\\nNode type 2\\n# of Relation\\nPaper-Author\\nPaper\\nAuthor\\n160,848,959\\nPaper-Journal\\\
+    nPaper\\nJournal\\n29,215,730\\nPaper-Paper (citation)\\nPaper\\nPaper\\n774,810,780\\nBioEntity-Clinical Trial\\nBioEntity\\\
+    nClinical Trial\\n11,416,614\\nBioEntity-Paper\\nBioEntity\\nPaper\\n464,643,559\\nBioEntity-Patent\\nBioEntity\\nPatent\\\
+    n6,469,587\\nProject-Clinical Trial\\nProject\\nClinical Trial\\n33,658\\nProject-Paper\\nProject\\nPaper\\n6,984,399\\\
+    nProject-Patent\\nProject\\nPatent\\n81,133\\nAuthor-PI\\nAuthor\\nPI\\n53,424,596\\nPaper-Clinical Trial (citation)\\\
+    nPaper\\nClinical Trial\\n967,719\\nPaper-Patent (citation)\\nPaper\\nPatent\\n18,192,186\\nTable 3.\\u2002 Statistics\
+    \ of relation types.\\n\\n7\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nacross different domains. This approach is essential\
+    \ for creating a cohesive and interconnected knowledge graph\\nthat accurately reflects the citation networks within biomedical\
+    \ research. The primary challenge lies in integrating\\ncitation data from multiple sources and ensuring the accuracy\
+    \ and completeness of these linkages. To address\\nthese challenges, we leverage various datasets and identify specific\
+    \ citation patterns to enhance the reliability\\nof citation data. This section will cover the detailed processes of integrating\
+    \ citations from multiple sources and\\nestablishing citation linkages among papers, patents, and clinical trials.\\nBio-entity\
+    \ Type\\nArticle\\nClinical Trial\\nPatent\\nTotal number\\nDistinct PMIDs\\nTotal number\\nDistinct nct_ids\\nTotal number\\\
+    nDistinct PatentIds\\nSpecies\\n46,363,597\\n11,610,019\\n2,097,318\\n361,618\\n501,642\\n173,495\\nDisease\\n101,605,033\\\
+    n17,767,719\\n3,063,362\\n366,880\\n606,955\\n192,240\\nGene\\n82,177,926\\n9,444,042\\n703,203\\n125,248\\n703,600\\\
+    n193,360\\nDrug\\n89,639,755\\n12,542,164\\n1,588,577\\n226,824\\n2,178,980\\n371,800\\nmutation\\n1,018,182\\n263,564\\\
+    n5,576\\n2,250\\n5,308\\n2,307\\ncell_line\\n13,616,107\\n5,090,803\\n56,917\\n28,114\\n181,511\\n97,499\\ncell_type\\\
+    n26,530,138\\n8,252,231\\n294,149\\n98,660\\n210,375\\n103,579\\nDNA\\n22,920,173\\n7,660,784\\n165,055\\n80,523\\n787,810\\\
+    n324,921\\nRNA\\n4,436,313\\n1,809,388\\n20,063\\n10,212\\n5,308\\n2,307\\nTable 4.\\u2002 Statistics of extracted biomedical\
+    \ entities.\\nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nUnique\
+    \ ID assigned by PubMed to identify articles.\\nPubYear\\nInteger\\nThe year in which the journal issue was published.\\\
+    nArticleTitle\\nString\\nThe title of the article.\\nAuthorNum\\nInteger\\nThe number of the Author.\\nCitedCount\\nInteger\\\
+    nThe number of citations.\\nIsClinical\\nInteger\\nMark whether this article belongs to a clinical trial.\\nTable 5.\\\
+    u2002 Data type for records of Papers.\\nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n  \
+    \  \"text\": \"Integer\\nUnique ID assigned by PubMed to identify articles.\\nAuthorOrder\\nInteger\\nThe order of the\
+    \ author in this article.\\nAuthorNum\\nInteger\\nThe number of authors in this article.\\nPubYear\\nInteger\\nThe year\
+    \ in which the journal issue was published.\\nAID\\nInteger\\nAuthor ID in PKG.\\nTable 6.\\u2002 Data type for records\
+    \ of Link_Papers_Authors.\\nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"\
+    Integer\\nUnique ID assigned by PubMed to identify articles.\\nAuthorOrder\\nInteger\\nThe order of the author in this\
+    \ article.\\nAID\\nInteger\\nAuthor ID in PKG.\\nAffiliation\\nString\\nRaw affiliation string in Pubmed.\\nDepartment\\\
+    nString\\nDepartment of the affiliation.\\nInstitution\\nString\\nInstitution of the affiliation.\\nZipcode\\nString\\\
+    nZipcode of the affiliation.\\nCountry\\nString\\nCountry of the affiliation.\\nCity\\nString\\nCity of the affiliation.\\\
+    nState\\nString\\nState of the affiliation.\\nType\\nString\\nType of the institution.\"\n  },\n  {\n    \"name\": \"\
+    IND_ID\",\n    \"text\": \"Integer\\nUnique ID of the institution.\\nInstitution_IND\\nString\\nInstitution of the author\
+    \ after the institution name disambiguation.\\nTable 7.\\u2002 Data type for records of Affiliations.\\n\\n8\\nScientific\
+    \ Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nIntegrate citations from multiple sources.\\nComplete citation data is fundamental for ensuring the relia-\\nbility of\
+    \ citation analyses63. Thanks to the open citation movement, the number of citations in academic literature\\nhas surpassed\
+    \ one billion, and the reliability of open citation data now exceeds that of closed databases64. To\\nenhance the completeness\
+    \ and reliability of citation data, we integrated data from two sources:\\nIndex\\nFormat\\nShort description\"\n  },\n\
+    \  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nThe PMID of the citing article.\\nRefArticleID\\nInteger\\nThe\
+    \ PMID of the cited article.\\nTable 8.\\u2002 Data type for records of ReferenceList_Papers.\\nIndex\\nFormat\\nShort\
+    \ description\"\n  },\n  {\n    \"name\": \"PI_ID\",\n    \"text\": \"Integer\\nA unique identifier for each of the project\
+    \ Principal Investigators.\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nUnique ID assigned by PubMed\
+    \ to identify articles.\\nAID\\nInteger\\nAuthor disambiguation ID.\\nApplication_ID\\nString\\nA unique identifier of\
+    \ the project record in the ExPORTER database.\\nTable 9.\\u2002 Data type for records of PIs.\\nIndex\\nFormat\\nShort\
+    \ description\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nUnique ID assigned by PubMed to identify\
+    \ articles.\\nStartPosition\\nInteger\\nStart position of mention in an abstract.\\nEndPosition\\nInteger\\nEnd position\
+    \ of mention in an abstract.\\nMention\\nString\\nEntity mentioned in an abstract.\\nEntityid\\nString\\nNormalized entity\
+    \ identifiers, include mesh, mim, CL, cellosaurus, NCBITaxon, NCBIGene, CHEBI.\\nType\\nInteger\\nEnumerated type of entity;\
+    \ values include species, disease, gene, drug, mutation, cell_line, cell_type,\"\n  },\n  {\n    \"name\": \"DNA, RNA\"\
+    ,\n    \"text\": \"is_neural_normalized\\nInteger\\nFor diseases and chemicals, BERN2 use hybrid NEN models, which are\
+    \ a combination of both rule-\\nbased and neural network-based models. An entity that is not normalized by the rule-based\
+    \ model is\\nthen normalized by a neural network-based model.\\nTable 10.\\u2002 Data type for records of Link_Papers_BioEntities.\\\
+    nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nUnique ID assigned\
+    \ by PubMed to identify articles.\\nPubYear\\nInteger\\nThe year in which the journal issue was published.\\nJournal_ISSN\\\
+    nString\\nUnique ID of Journal.\\nJournal_Title\\nString\\nTitle of Journal.\\nJournal_SJR\\nFloat\\nThe SJR of the journal\
+    \ when the issue was published.\\nJournal_Hindex\\nInteger\\nThe h-index of the journal when the issue was published.\\\
+    nTable 11.\\u2002 Data type for records of Link_Papers_Journals.\\nIndex\\nFormat\\nShort description\\nnct_id\\nString\\\
+    nUnique ID assigned by ClinicalTrials.gov to identify clinical trial studies.\\nbrief_title\\nString\\nTitle of the trial.\\\
+    nstart_date\\ndate\\nThe date the study started in a date-type format so that it can be used to find studies before/after/inclusive\
+    \ of a date\\nor dates. For studies that only provide month/year, the last day of the month is used.\\nTable 12.\\u2002\
+    \ Data type for records of ClinicalTrials.\\nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n\
+    \    \"text\": \"Integer\\nUnique ID assigned by PubMed to identify articles.\\nNctId\\nString\\nUnique clinical trial\
+    \ study identifier in ClinicalTrials.gov.\\nTable 13.\\u2002 Data type for records of Link_Papers_ClinicalTrials.\\n\\\
+    n9\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\n(1)\\t PubMed Citation Data: PubMed citation data is provided by various publishers.\
+    \ However, the level of\\nattention given to this task varies among publishers, resulting in significant data gaps.\\\
+    nIndex\\nFormat\\nShort description\\nnct_id\\nString\\nUnique ID assigned by ClinicalTrials.gov to identify clinical\
+    \ trial studies.\\nEntityid\\nString\\nNormalized entity identifiers, include mesh, mim, CL, cellosaurus, NCBITaxon, NCBIGene,\
+    \ CHEBI.\\nTable 14.\\u2002 Data type for records of Link_ClinicalTrials_BioEntities.\\nIndex\\nFormat\\nShort description\\\
+    nnct_id\\nString\\nUnique ID assigned by ClinicalTrials.gov to identify clinical trial studies.\\nAID\\nInteger\\nUnique\
+    \ ID assigned by PKG to identify authors.\\nsame_author_prob\\nFloat\\nThe score of the linkage between the investigator\
+    \ and the AID.\\nTable 15.\\u2002 Data type for records of Investigators.\\nIndex\\nFormat\\nShort description\\nPatentId\\\
+    nString\\nUnique ID assigned by USPTO to identify patents.\\nGrantedDate\\nDate\\nGranted date of the patent.\\nTitle\\\
+    nString\\nTitle of the patent.\"\n  },\n  {\n    \"name\": \"Abstract of the patent\",\n    \"text\": \"Table 16.\\u2002\
+    \ Data type for records of Patents.\\nIndex\\nFormat\\nShort description\\nPatentId\\nString\\nUnique ID of patent in\
+    \ USPTO.\\nRefPMID\\nInteger\\nUnique ID assigned by PubMed to identify articles.\\nConfScore\\nInteger\\nConfidence of\
+    \ the citation.\\nWhereFound\\nString\\nWhere the citation was been founded.\\nTable 17.\\u2002 Data type for records\
+    \ of Link_Patents_Papers.\\nIndex\\nFormat\\nDescription\\npatent_id\\nString\\nUnique ID assigned by USPTO to identify\
+    \ patents.\\nassignee_sequence\\nInteger\\nOrder in which assignee appears on the patent.\\nassignee_id\\nString\\nUnique\
+    \ PatentsView database assignee ID assigned by disambiguation algorithm.\\ndisambig_assignee_organization\\nString\\nOrganization\
+    \ name, if assignee is organization.\\nassignee_type\\nInteger\\nClassification of assignee:2 - US Company or Corporation,\
+    \ 3 - Foreign Company or\\nCorporation, 4 - US Individual, 5 - Foreign Individual, 6 - US Government, 7 - Foreign\\nGovernment,\
+    \ 8 - Country Government, 9 - State Government (US). Note: A \\u201c1\\u201d appearing\\nbefore any of these codes signifies\
+    \ part interest.\\naffiliation_disambiguated_OA\\nString\\nUnique ID and organization name assigned by OpenAlex\\u2019s\
+    \ disambiguation algorithm.\\nTable 18.\\u2002 Data type for records of Assignee.\\nIndex\\nFormat\\nShort description\\\
+    nPatentId\\nString\\nUnique ID of patent in USPTO.\\nStartPosition\\nInteger\\nStart position of mention in an abstract.\\\
+    nEndPosition\\nInteger\\nEnd position of mention in an abstract.\\nMention\\nString\\nEntity mentioned in an abstract.\\\
+    nEntityid\\nString\\nNormalized entity identifiers, include mesh, mim, CL, cellosaurus,\\nNCBITaxon, NCBIGene, CHEBI.\\\
+    nType\\nInteger\\nEnumerated type of entity; values include species, disease, gene,\\ndrug, mutation, cell_line, cell_type,\
+    \ DNA, RNA.\\nTable 19.\\u2002 Data type for records of Link_Patents_BioEntities.\\n\\n10\\nScientific Data |        \
+    \ (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    n(2)\\t NIH Open Citation Collection (NIH-OCC)65: NIH-OCC data consists of PMID-to-PMID citation rela-\\ntionships. The\
+    \ non-structured citation text from articles is initially extracted and matched with relevant\\narticles, alongside details\
+    \ on the fields present in the paper (e.g., journal name, author names, title terms).\\nThe comparison of fields such\
+    \ as title, author, and journal name with the input text helps in pinpointing the\\nmost suitable matches. NIH-OCC data\
+    \ is generated from unrestricted sources such as MedLine, PubMed\\nCentral (PMC), and CrossRef, resulting in higher data\
+    \ completeness.\\nDuring the integration process, through manual verification, we found that some citation data might\
+    \ have\\nincorrect links. For example, some data from earlier years in PubMed contain obvious errors, especially where\\\
+    nthe publication year of the citing literature is several years later than that of the cited literature. To address this,\\\
+    nwe removed citation data with a negative difference of more than 1 year.\\nCitations between papers and patents.\\nTechnological\
+    \ innovation serves as the foundation for eco-\\nnomic growth, and many valuable innovations rely on scientific discoveries66.\
+    \ In fact, science can be considered\\na \\u2018map\\u2019 for business inventors who seek to leverage original technologies\
+    \ or ignite their own research and devel-\\nopment efforts67. The citations between scientific papers reflect mutual influences\
+    \ among research endeavors.\\nAdditionally, the direct citation of patents in academic papers (patent-to-paper citations)\
+    \ provides a supplemen-\\ntary measure of the impact of fundamental research on commercialization. However, extracting\
+    \ patent-to-paper\\ncitations poses challenges. Non-patent literature citations recorded by the United States Patent and\
+    \ Trademark\\nOffice (USPTO) do not always adhere to standard citation formats, and a significant number of citations\
+    \ exist\\nonly within the main text, not in the patent metadata. Consequently, systematically identifying referenced articles\\\
+    nremains a complex task.\\nIndex\\nFormat\\nShort description\\nPatentId\\nString\\nUnique ID of patent in USPTO.\\ninventor_id\\\
+    nString\\nInventor id assigned by PatentsView.\\nTable 20.\\u2002 Data type for records of Inventors.\\nIndex\\nFormat\\\
+    nShort description\"\n  },\n  {\n    \"name\": \"PMID\",\n    \"text\": \"Integer\\nUnique ID assigned by PubMed to identify\
+    \ articles.\\nentity_id1/entity_id2\\nString\\nThe IDs of two biomedical entities.\\nrelation_type\\nString\\nType of\
+    \ the two biomedical entities.\\nrelation_id\\nString\\nID allocated by PKG to identify the relation.\\nTable 21.\\u2002\
+    \ Data type for records of BioEntity_Relationships.\\nIndex\\nFormat\\nShort description\"\n  },\n  {\n    \"name\": \"\
+    PMID\",\n    \"text\": \"Integer\\nUnique ID assigned by PubMed to identify articles.\\nMention\\nString\\nEntity mentioned\
+    \ in an abstract.\\nEntity\\nString\\nStandard expression of entity.\\nType\\nInteger\\nIdentify whether this entity is\
+    \ a method or a dataset.\\nTable 22.\\u2002 Data type for records of DatasetMethod.\\nIndex\\nFormat\\nShort description\\\
+    nEntityId\\nString\\nNormalized entity identifier.\\nType\\nString\\nEnumerated type of entity; values include species,\
+    \ disease, gene, drug, mutation, cell_line, cell_type, DNA, RNA.\\nMention\\nString\\nText of the bioentity.\\nTable 23.\\\
+    u2002 Data type for records of BioEntities.\\nIndex\\nFormat\\nShort description\\nnct_id\\nString\\nUnique ID assigned\
+    \ by ClinicalTrials.gov to identify clinical trial studies.\\nPatentId\\nString\\nUnique ID of patent in USPTO.\\nType\\\
+    nString\\nType of the citation; values include citing and cited.\\nTable 24.\\u2002 Data type for records of Link_Clinicaltrials_Patents.\\\
+    n\\n11\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nIn PKG, we established links between PubMed articles and USPTO patents through citations.\
+    \ We used the\\nV64 version of the PCS dataset (https://zenodo.org/records/11461587/)68 as the base data. By mapping Digital\\\
+    nObject Identifiers (DOIs) to PubMed Identifiers (PMIDs), we were able to filter and identify USPTO patent\\ncitations\
+    \ that were specifically related to PubMed articles. Through this meticulous process, we compiled a com-\\nprehensive\
+    \ dataset comprising a total of 25,597,962 rows of data. This dataset encompasses 2,400,855 unique\\nUSPTO patents and\
+    \ 3,112,470 distinct PubMed articles. The integration of these two significant data sources\\nprovides a robust framework\
+    \ for analyzing the interplay between scientific research and technological innova-\\ntion, facilitating a deeper understanding\
+    \ of the citation dynamics between academic publications and patent\\nliterature.\\nCitations between papers and clinical\
+    \ trials.\\nJournal articles tend to report the results of experiments,\\nwhile detailed experimental procedures and additional\
+    \ information are often documented in clinical trial reports.\\nIn the United States, primary trial researchers funded\
+    \ by the National Institutes of Health (NIH) are actively\\nencouraged to publish trial results in journal articles69.\
+    \ The reporting of trial results is accomplished through\\npublishing journal articles containing trial results and submitting\
+    \ summaries to trial registries. Ideally, each\\ntrial should have at least one article about the results, even if the\
+    \ trial outcomes are non-significant or negative.\\nHowever, scientists often tend to publish only their positive findings,\
+    \ leading to a biased exploration of trial pro-\\ngress based solely on published papers. This approach may even result\
+    \ in significant errors in conclusions.\\nAnalyzing clinical trial registrations fundamentally helps mitigate this bias70.\
+    \ In PKG, we addressed this publi-\\ncation bias issue by incorporating Clinical Trial data. The Clinical Trial dataset\
+    \ is sourced from ClinicalTrials.gov\\nand provides information to the public, researchers, and healthcare professionals\
+    \ regarding clinical studies and\\ntheir outcomes. Aggregate Analysis of ClinicalTrials.gov (AACT) Database (https://aact.ctti-clinicaltrials.org/)71\\\
+    nprocessed ClinicalTrials.gov data, organizing it into 54 relational data tables that are updated daily. We selected\"\
+    \n  },\n  {\n    \"name\": \"references related to PubMed articles from the AACT dataset. In addition, the Uniform Requirements\
+    \ for\",\n    \"text\": \"Manuscripts (URM)72 requires timely trial registration before recruiting the first trial participant\
+    \ and ensuring\\naccurate linkage between published journal articles and trial registration records. PubMed includes trial\
+    \ reg-\\nistration numbers in its provided XML files, and we processed this data to as links between clinical trials and\\\
+    npapers in PKG.\\nBy incorporating clinical trial reports into PKG, we can trace the origins of research outcomes in papers\
+    \ and\\nalso retrospectively explore the academic theoretical foundations of clinical experiments, thus fostering cyclical\\\
+    nadvancement in biomedical scientific research.\\nCitations between patents and clinical trials.\\nWe have established\
+    \ links between patents and clinical\\nliterature through citations. Specifically, if a patent citation contains the character\
+    \ \\u201cCT\\u201d followed by an 8-digit\\nnumber, or if a clinical trial citation includes \\u201cus\\u201d or \\u201cpatent\\\
+    u201d followed by an 8-digit number, the corresponding\\ncitation is extracted. It is important to note that the number\
+    \ of citation links between patents and clinical litera-\\nture is relatively small.\\nLinkages based on projects.\\nThe\
+    \ NIH Exporter serves as a valuable resource, offering a wealth of infor-\\nmation about NIH-funded projects. This includes\
+    \ not only the metadata of the projects themselves but also the\\nassociated scholarly outputs in the form of papers,\
+    \ patents, and clinical trials. The annual publication of the latest\\ndata ensures that the information remains current\
+    \ and relevant, providing a comprehensive overview of the land-\\nscape of NIH-funded research. According to our investigation,\
+    \ NIH-funded research accounts for a significant\\nproportion of all grants recorded in PubMed.\\nBy linking the metadata\
+    \ of NIH-funded projects with the corresponding papers, patents, and clinical trials,\\nwe establish a detailed and interconnected\
+    \ view of the research landscape. This integration not only enriches the\\ndata within PKG but also enhances its analytical\
+    \ capabilities. It allows for a deeper understanding of the rela-\\ntionships and impacts of NIH-funded research across\
+    \ different types of literature. This comprehensive approach\\nis crucial for facilitating advanced analyses and uncovering\
+    \ insights that were previously hidden due to the\\nfragmented nature of scientific literature.\"\n  },\n  {\n    \"name\"\
+    : \"Supplementary and extended works\",\n    \"text\": \"In this section, we outline the supplementary and extended works\\\
+    nthat enhance the functionality and comprehensiveness of PKG. This section will cover the processes of supple-\\nmenting\
+    \ journal information by year of publication, institution name disambiguation, and calculation of com-\\nmonly used measurements.\\\
+    nAuthor name disambiguation.\\nThe issue of name ambiguity in scholarly publications is one of the most\\ncomplex and\
+    \ highly scrutinized aspects of disambiguation. Based on our investigation, by integrating existing\\nAND datasets such\
+    \ as Author-ity (https://databank.illinois.edu/datasets/IDB-2273402/)73 and Semantic Scholar\\n(https://www.semanticscholar.org/)74,\
+    \ a comprehensive and high-quality disambiguation result for PubMed\\nauthor names can be obtained.\\nWe selected the\
+    \ Author-ity dataset\\u2019s author disambiguation results as the primary author identify (AND_ID)\\nand supplemented\
+    \ it with Semantic Scholar\\u2019s AND results for author instances after 2018. Due to variations in\\ndisambiguation\
+    \ results from different sources, a single AND_ID in Semantic Scholar may simultaneously map\\nto multiple AND_IDs in\
+    \ the Author-ity dataset. This occurs due to Author-ity assigning different AND_IDs to\\nthe same author or AND_IDs being\
+    \ incorrectly assigned by Semantic Scholar. To address this propagation of\\nerrors during the integration process, we\
+    \ additionally trained a deep neural network (DNN) model to merge\\nconflicting AND_IDs using information such as author\
+    \ names, institutions, emails, countries, additional name\\n\\n12\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\ninformation from OpenAlex, and title and abstract embeddings,\
+    \ etc. The entire author disambiguation process\\ncan be outlined in the following steps, as shown in Fig.\\u00a03:\\\
+    nAs illustrated in Fig.\\u00a03, the author name disambiguation process in PKG involves the following steps:\\n(1)\\t\
+    \ We assigned a unique ID to each author instance based on the Author-ity AND results, ensuring that au-\\nthors from\
+    \ the Author-ity dataset (before 2018) have distinct IDs. This guarantees the highest accuracy for\\nauthor instances\
+    \ within the Author-ity dataset.\\n(2)\\t For authors with the same Semantic Scholar AND_ID who never appeared in the\
+    \ Author-ity dataset, we\\ncreated a new AND_ID to label them. For instance, author \\u201cFlorian Bucher\\u201d published\
+    \ two papers in\\n2021, resulting in two corresponding author instances. Because all papers that \\u201cFlorian Bucher\\\
+    u201d published\\nwere after 2018, they were not included in the Author-ity dataset and thus had no AND_ID assigned by\\\
+    nAuthor-ity. However, authors correctly disambiguated by Semantic Scholar were given unique AND_IDs\\nin Semantic Scholar.\
+    \ To maintain consistent labeling, we generated a new AND_ID, continuing from the\\nAuthor-ity AND_IDs, to label these\
+    \ two author instances as disambiguated by Semantic Scholar.\\n(3)\\t For author instances with a unique AND_ID in Semantic\
+    \ Scholar that also have the same AND_ID in the\\nAuthor-ity dataset, we assigned the Author-ity AND_ID to all instances\
+    \ as their unique ID. For example,\\n\\u201cThomas Hofbeck\\u201d published nine papers between 2010 and 2021. The first\
+    \ eight instances had a unique\\nAuthor-ity AND_ID, but the last one did not, as it was beyond the Author-ity dataset\\\
+    u2019s time coverage.\\nHowever, based on the AND results from Semantic Scholar, all nine instances had the same AND_ID.\\\
+    nTherefore, the last instance without an Author-ity AND_ID was labeled with the same ID as the other eight\\ninstances.\\\
+    n(4)\\t For authors instances with a unique AND_ID in Semantic Scholar but have different AND_IDs in the\\nAuthor-ity\
+    \ dataset, we trained a DNN model to handle this conflict to allocate a best AND_ID. The model\\ntreats author instances\
+    \ with the same AND_ID as author groups and determines the most likely author\\ngroup for the conflicting author instance.\
+    \ We trained the DNN model using the LAGOS-AND dataset\\n(https://zenodo.org/records/6731767/)75, creating approximately\
+    \ a 1:1 ratio of positive and negative sam-\\nples. The model features include author names, institutions, emails, countries,\
+    \ additional name informa-\\ntion from OpenAlex, and title and abstract embeddings. The validation results show that PKG\
+    \ significantly\\nimproves recall and F1 scores while maintaining precision.\\nAdditionally, we utilized this trained\
+    \ model to conduct name disambiguation for patent inventors and clin-\\nical trial investigators. By applying the similar\
+    \ set of features and the learned disambiguation model, we aim to\\nidentify and disambiguate individuals in these literatures.\
+    \ It should be noted that since the AND_ID in PKG\\nis the result of a probabilistic learning model, the disambiguation\
+    \ result is not recommended for individual\\nresearch.\\nInstitution name disambiguation.\\nUnified names and identifiers\
+    \ are essential for ensuring the reliability\\nof institution-related studies. However, there is a lack of institution\
+    \ name disambiguation in the affiliations of\\npaper authors, clinical trial investigators, and patent assignees in general.\
+    \ Performing institution disambigua-\\ntion ensures that researchers accurately refer to the same institutions when analyzing\
+    \ and comparing data from\\npapers, clinical trials, and patents.\\nWhile institution name repetition is not as frequent\
+    \ as that of author names, it remains a challenging task.\\nThe first hurdle lies in extracting institutional information\
+    \ because author affiliations are often unstructured. A\\ngenuine affiliation may encompass various elements, including\
+    \ country, state, city, institution, and department.\\nThese affiliations are influenced by individual author\\u2019s\
+    \ habits and publisher formatting styles. To gain a better\\nunderstanding of author affiliations, we employed the MapAffil76,77\
+    \ for affiliation extraction. This tool automat-\\nically parses information from free-text affiliation fields, extracting\
+    \ details such as country, state, city, location,\\ninstitution, and department.\\nDespite the MapAffil effectively captures\
+    \ various aspects of authorship at the individual level, further insti-\\ntution disambiguation is necessary for analyzing\
+    \ institutions at a higher level (e.g., institutional rankings).\\nDifferent scholars may employ distinct writing styles\
+    \ and coding conventions when referring to the same insti-\\ntution78. For instance, variations like \\u201cuniv instelling\
+    \ antwerp,\\u201d \\u201cuniv antwerpen ua,\\u201d \\u201cuniv antwerpen cde,\\u201d \\u201cuniv\\nantwerp vib,\\u201d\
+    \ and \\u201cuniv antwerp uia\\u201d all correspond to \\u201cuniv antwerp.\\u201d Additionally, due to translation errors\\\
+    nand misspellings, institutional ambiguity is prevalent in academic literature datasets79. Without institution name\\\
+    ndisambiguation, institutions with irregularly written names may appear weaker in rankings compared to equally\\ncapable\
+    \ counterparts. Therefore, instituting further disambiguation processes is crucial for accurate and con-\\nsistent representation\
+    \ of institutions in scholarly assessments. We used OpenAlex\\u2019s solution to solve this prob-\\nlem. OpenAlex addresses\
+    \ this issue by combining two independent classification models80. These models were\\ntrained on extensive historical\
+    \ MAG81 data and ROR82 data. According to the model\\u2019s report80, its precision is\\n0.96, and its recall is 0.95.\\\
+    nWe implemented this institution disambiguation work on the affiliations of paper authors, clinical trial inves-\\ntigators,\
+    \ and patent assignees. This application to these three types of literature data-related affiliations helps to\\nensure\
+    \ the accuracy and consistency of institutional representation in various academic and research contexts.\\nSupplementing\
+    \ specific information of the journal by year of publication.\\nIn the assessment of\\nscientific capabilities for research\
+    \ institutions and individuals, the primary focus is on the achievements of pub-\\nlicly published papers. The relative\
+    \ quality of the journals where these papers are published serves as a direct,\\ncrucial, and popular evaluation criterion.\
+    \ For complex scientific research questions that cannot be adequately\\n\\n13\\nScientific Data |         (2025) 12:1018\
+    \  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\naddressed\
+    \ within a single field, interdisciplinary research often provides more effective solutions83. Consequently,\\nunderstanding\
+    \ the quality of journals in other fields has become increasingly important.\\nPubMed provides information on the source\
+    \ journals for each indexed article. However, PubMed encom-\\npasses over thirty thousand different journals, and even\
+    \ seasoned scholars may struggle to recall the quality\\nlevels of journals across various domains. Therefore, quantitative\
+    \ evaluation of journals becomes essential.\\nSCImago is a publicly accessible portal that provides journal metrics calculated\
+    \ based on information from the\\nScopus database. These metrics serve for evaluating and analyzing scientific fields.\
+    \ We linked SCImago data to\\nPKG through the following steps:\\n(1)\\t Completing ISSN Fields in PubMed Journals: The\
+    \ ISSN (International Standard Serial Number) uniquely\\nidentifies journals and facilitates convenient and accurate cross-database\
+    \ linking. Approximately 1% of\\njournals in PubMed lack an ISSN field. To address this, we supplemented the ISSN data\
+    \ using other journal\\nnames as references.\\n(2)\\t Linking PKG with SCImago Using ISSN and PubYear Fields: We believe\
+    \ that evaluating paper quality\\nbased on journal information should not be static. Instead, it should consider the journal\\\
+    u2019s status in the\\nyear of publication. Rankings of different journals within the same field can fluctuate significantly\
+    \ across\\nyears. When specific journal information is unavailable for the publication year, we use data from the near-\\\
+    nest adjacent year.\\n(3)\\t Supplementing Data Based on the Linked Results: Using the results from the second step, we\
+    \ added data\\nfor the publication year, including SJR (Scientific Journal Rankings), impact factor, h-index, total publica-\\\
+    ntions, journal categories, publishers, and geographic regions.\\nCalculation of commonly used measurements.\\nUnderstanding\
+    \ the contributions and impact of indi-\\nvidual researchers is crucial for evaluating scientific progress and identifying\
+    \ areas of disparity. By accurately\\ndisambiguating authors and calculating key scientific metrics, we can gain deeper\
+    \ insights into the academic\\nlandscape. This work not only helps in recognizing the achievements of individual researchers\
+    \ but also sheds light\\non broader trends and patterns within the scientific community. Based on the author disambiguation\
+    \ results, we\\ncalculated scientific metrics for each author. Specifically:\\n(1)\\t Counting of the author\\u2019s publications:\
+    \ This is based solely on articles indexed in PubMed. If an author\\u2019s\\narticles are not included in PubMed, the\
+    \ calculated results may be lower than the actual count. However,\\nconsidering PKG\\u2019s focus on biomedical literature,\
+    \ we find this approach reasonable.\\n(2)\\t Calculation of the h-index: This is a comprehensive metric that evaluates\
+    \ an author\\u2019s scholarly impact by\\nconsidering both the number of publications and the number of citations received.\
+    \ It is widely used to\\nassess academic capabilities.\\nData Records\\nThe dataset is available at Figshare84, and keep\
+    \ update on GitHub at https://PubMedKG.github.io. The statistics\\nand descriptions of the main nodes and relationships\
+    \ in PKG are presented in Tables\\u00a02 and 3, respectively. See\\nthe \\u201cPKG 2.0 Database Description.pdf\\u201d\
+    \ at Figshare84 for more details of PKG. To help users organize and utilize\\nthe dataset more effectively, we have added\
+    \ serial numbers to the table names in the file available on Figshare.\\nWe performed biomedical entity extraction on\
+    \ articles, clinical trials, and patents. Table\\u00a04 presents statistical\\ndata on nine types of entities extracted\
+    \ from the three types of literature. The extraction results for each of the\\nthree types of literature are stored in\
+    \ separate data tables.\\nEach data field is self-explanatory, and fields with the same names in other tables adhere to\
+    \ a consistent\\ndata format that allows cross-table linking. Tables\\u00a05\\u201324 provide details on the essential\
+    \ field names, formats,\\nnon-empty data counts, and brief descriptions for each data file.\\nTechnical Validation\\nValidation\
+    \ of author name disambiguation.\\nWe validate our disambiguation results using the LAGOS-\\nAND dataset. This dataset\
+    \ is a recently published high-quality collection of author name disambiguation data,\\nautomatically constructed using\
+    \ authoritative sources such as ORCID and DOI. According to its reported valida-\\ntion information, the LAGOS-AND dataset\
+    \ is highly credible. The 2.0 version of the LAGOS-AND dataset is built\\non the OpenAlex database\\u2019s April 2022\
+    \ baseline version.\\nAccording to the evaluation results presented in Table 25, the Author-ity dataset exhibits the highest\
+    \ pre-\\ncision. Our integrated results ensure credible precision while significantly improving the recall and F1 score.\\\
+    nValidation of citations.\\nThe combined data table \\u201cReferenceList_Papers\\u201d contains 774,810,780 citation\\\
+    nrelationships across 30,695,697 articles. Compared to PubMed\\u2019s native citation data (268,400,936 entries), the\\\
+    ncumulative supplementation amounts to 506,409,844 additional citations. Validations of cross-type citations are\\nas\
+    \ follows:\\nValidation of paper-patent citations.\\nMatt76 provided a high-quality PCS dataset. We selected a portion\\\
+    nof the data from USPTO to PubMed for validation in our dataset. This dataset contains only positive annotations\\nand\
+    \ covers citations from 183 patents, which can be used to calculate recall. However, to evaluate precision, we\\n\\n14\\\
+    nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nneed negative annotations. Therefore, we supplemented the labeled data for these 183\
+    \ patents to compute accu-\\nracy. For each confidence level, we randomly extracted 100 annotation samples. During the\
+    \ annotation process,\\nwe primarily used auxiliary information such as author names, publication year, article title,\
+    \ journal, issue, and\\nvolume. Each annotated data point underwent verification by two research assistants.\\nBased on\
+    \ the known good dataset provided by Matt76, we extracted the relevant portion related to PubMed\\n(4,223 rows) and calculated\
+    \ the recall of the PCS dataset in PKG at different confidence levels.\\nAccording to the evaluation\\u00a0results\\u00a0in\
+    \ Table 26 for precision and recall, when the confidence level is between\\n4 and 10, the recall significantly decreases,\
+    \ while precision only shows a slight improvement. It appears that the\\naccuracy of the PCS dataset on PubMed performs\
+    \ similarly to its performance on MAG. We agree with Matt\\u2019s76\\nsuggestion that most scholars should focus on citations\
+    \ with a confidence level greater than or equal to 4. For\\nthose aiming to minimize erroneous data, citations with a\
+    \ confidence level of 10 can be used, as they exhibit both\\nhigh precision and decent recall.\\nValidation of paper-clinical\
+    \ trial citations.\\nWe evaluated the linkage of clinical trial data through\\ncross-validation with SciSciNet, as shown\
+    \ in Table 27. Due to differences in data time intervals, we validated the\\nnct_id from the PKG dataset against SciSciNet.\\\
+    nThere is a remarkable consistency between the two datasets, with 98.99% of the linkages in SciSciNet also\\npresent in\
+    \ PKG.\\nHolistic validation of PKG 2.0.\\nHolistic validation aims to assess the accuracy of interconnected linkages\\\
+    nacross papers, patents, and clinical trials. To validate the holistic accuracy of PKG 2.0, we conducted a manual\\nverification\
+    \ process. For each project, we manually verified the linkages by accessing the original documents on\\nPubMed, ClinicalTrials.gov,\
+    \ and USPTO\\u2019s Patent Public Search platform (https://ppubs.uspto.gov/). The vali-\\ndation focused on citation relationships,\
+    \ and project-literature connections. For instance, among the randomly\\nselected 100 patent-project linkages, upon checking\
+    \ on the USPTO\\u2019s Patent Public Search platform, we found that\\n82 of them were indeed mentioned in the \\u201cGOVERNMENT\
+    \ INTEREST\\u201d section of the patent texts. By dividing\\nthe number of checked linkages (82) by the total number of\
+    \ linkages in the sample (100), we calculated the accu-\\nracy to be 82%. Regarding the performance of bioentity extraction,\
+    \ which also serves as a crucial linkage among\\npapers, patents, and clinical trials, detailed information can be found\
+    \ in the \\u201cResults\\u201d section of the BERN270.\\nAs shown in Table\\u00a028, the accuracy of these linkages ranged\
+    \ from 82% to 100%, with most exceeding 95%.\\nHowever, patent-project linkages showed relatively lower precision (82%).\
+    \ This is likely because although the\\nNIH Exporter might have included relevant data, the funding source information\
+    \ may not be mentioned in the\\npatent texts. This validation confirms the robustness of PKG 2.0 in integrating multi-source\
+    \ biomedical literature\\nand underscores its reliability for cross-domain scientometric analysis.\\nUsage Notes\\nIn\
+    \ the field of biomedicine, scholarly outputs are mainly presented in the form of clinical trials, patents, and aca-\\\
+    ndemic papers. These different types of documentary data are complementary to each other. By comprehensively\\nanalyzing\
+    \ these literatures, it is possible to track the flow path of knowledge more accurately and deeply and then\\nunderstand\
+    \ the characteristics and laws of knowledge flow. For example, the clinical trial results of vaccines and\\ndrugs may\
+    \ prompt patent applications and patent information may be introduced into papers to demonstrate\\ntheir application prospects.\
+    \ This cross-literature knowledge flow not only helps scientists discover new research\\ndirections but also provides\
+    \ practical guidance for clinical doctors, ultimately promoting the overall progress\\nof the medical field. This requires\
+    \ a multi-perspective, fine-grained connection to the three types of literature.\\nWe attempt to explore the optimization\
+    \ of the multi-literature dataset and the analysis of knowledge flow\\nthrough the following use cases using the PKG dataset:\
+    \ integrating features from patents and clinical trials into\\ntraditional author disambiguation methods; using COVID-19\
+    \ vaccine research as a case study to transcend\\nliterature type limitations and more comprehensively explore knowledge\
+    \ flow.\\nEnhancing data quality through multi-source fine-grained linkages.\\nIn academic datasets, author\\ndisambiguation\
+    \ has always been one of the key challenges. Although many algorithms and models have been\\nproposed and implemented\
+    \ with relatively good results, these methods seem to have reached their performance\\nlimits. This study combines information\
+    \ from different sources and integrates and deeply correlates multiple data-\\nsets, which can more accurately capture\
+    \ the unique content features of authors, providing possibilities for further\\noptimizing author disambiguation tasks.\\\
+    nSpecifically, this study constructed pairwise experimental data from the Author-ity 2018 dataset based on\\nauthors with\
+    \ the same Initial, using whether they have the same links to patents or clinical trials as the standard.\\nName similarity,\
+    \ Publication year gap, Venue similarity, Affiliation similarity, and Content features commonly\\nused in author disambiguation\
+    \ research were used as baseline model features (BF), and features with the same\\nclinical trial links and the same patent\
+    \ links were subsequently added.\\nAs shown in Fig.\\u00a04, We report the accuracy (P), recall rate (R), F1, and Macro-F1\
+    \ metrics based on the\\nclassification-based method. The reason for using the additional metric Macro-F1 is that the\
+    \ datasets in the\\nauthor\\u2019s disambiguation research generally have natural skewness. As shown in the table above,\
+    \ the disambigua-\\ntion result has been greatly improved after adding the Clinical trial and Patent features. This example\
+    \ provides us\\nwith ideas for cross-iterating the overall optimization of the dataset using multiple types of data.\\\
+    nRevealing knowledge flow through Multi-source literature.\\nThe outbreak of the COVID-19 pan-\\ndemic has not only posed\
+    \ unprecedented challenges to global public health but also sparked an unprecedented\\nresearch boom in the academic community.\
+    \ The large number of patent applications, publication of papers, and\\n\\n15\\nScientific Data |         (2025) 12:1018\
+    \  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nconduct\
+    \ of clinical trials all represent scientific efforts to combat the pandemic. The rich literature resources have\\nplayed\
+    \ a promoting role in research, and some scholars have conducted quantitative analysis and exploration of\\nthe literature.\
+    \ Despite the large number of literatures, most studies are based on a single type of literature resource,\\nleading to\
+    \ an incomplete understanding of key areas such as vaccine and drug research. Analyzing multiple types\\nof literature\
+    \ simultaneously, leveraging the PKG 2.0 dataset, can help to understand the development process of\\nthis research more\
+    \ accurately and reveal important synergies among different types of knowledge.\\nAs a case study, we utilized the bioentity\
+    \ data and source institution data of the trials in PKG 2.0 to screen\\nout the earliest ten COVID-19 clinical trials\
+    \ sponsored by BioNTech SE. Then, by leveraging the linkages within\\nPKG 2.0, we identified their earliest relevant papers\
+    \ and patents. As depicted in Fig.\\u00a05, when these are plotted on\\nthe timeline of the same graph for analysis, the\
+    \ flow of knowledge across different types of literature becomes\\nclearly visible.\\nFor a significant portion of these\
+    \ trials, the timeline indicates a relatively short interval between the start of\\nthe trial and the publication of related\
+    \ papers. This rapid dissemination of trial results through academic papers\\nis crucial for sharing scientific findings\
+    \ within the research community. Moreover, the earliest trials in the data-\\nset even led to patent applications. This\
+    \ example showcases a significant synergy that goes beyond simply point-\\ning to individual papers or studies. It reveals\
+    \ how different types of knowledge from clinical trials, academic\\npapers, and patents interact and build upon each other.\
+    \ By integrating and analyzing these three different data-\\nsets within PKG 2.0, we can understand not only the specific\
+    \ process of vaccine research but also the knowledge\\nflow in a more comprehensive and accurate manner. For instance,\
+    \ we can observe how early clinical findings led\\nto academic publications that then guided the development of patented\
+    \ vaccination techniques, highlighting the\\nseamless flow of knowledge and innovation within the COVID-19 vaccine research\
+    \ domain.\\nTaking one of the COVID-19 vaccine research projects as an example, as shown in the Fig.\\u00a06, its clinical\
+    \ trials\\nfor vaccine safety and immunogenicity began on April 29, 2020. The clinical trial results were reported in\
+    \ a paper\\n% Precision\\n% Recall\\n% F1 score\\nAuthor-ity\\n98.58\\n67.79\\n80.33\\nSemantic Scholar\\n98.53\\n86.55\\\
+    n92.15\\nPKG\\n98.45\\n94.10\\n96.24\\nTable 25.\\u2002 The comparison of the accuracy of AND.\\nConfidence\\nNon-patent\
+    \ references\\nlinked\\nManually marked Incorrect\\n(sample of 100)\\n% Precision\\nEstimated cumulative\\n% Precision\\\
+    n# found (of 4,223\\nknown-good)\\n%\\nrecall\\n10\\n15,797,436\\n0\\n100\\n100\\n3,182\\n75.3\\n9\\n781,633\\n1\\n99\\\
+    n99.9\\n3,381\\n80.0\\n8\\n385,359\\n4\\n96\\n99.8\\n3,479\\n82.3\\n7\\n391,535\\n4\\n96\\n99.7\\n3,571\\n84.5\\n6\\n342,124\\\
+    n12\\n88\\n99.5\\n3,638\\n86.1\\n5\\n293,419\\n6\\n94\\n99.4\\n3,717\\n88.0\\n4\\n258,017\\n20\\n80\\n99.1\\n3,773\\n89.3\\\
+    n3\\n342,086\\n54\\n46\\n98.2\\n3,812\\n90.2\\n2\\n348,753\\n51\\n49\\n97.2\\n3,851\\n91.1\\n1\\n395,202\\n74\\n26\\n95.8\\\
+    n3,874\\n91.7\\nTable 26.\\u2002 The accuracy of patent-paper linkage.\\nPaper-trial pairs\\nIn PKG\\nNot in PKG\\nIn\
+    \ SciSciNet\\n428,627\\n4,376\\nNot in SciSciNet\\n76,154\\n\\u2014\\nTable 27.\\u2002 The accuracy of patent-paper linkage.\\\
+    nLinkage Name\\nAccuracy\\nLink_Papers_ClinicalTrials\\n100%\\nLink_Papers_Patents\\n97%\\nLink_Papers_Projects\\n99%\\\
+    nLink_ClinicalTrials_Projects\\n98%\\nLink_Patents_Projects\\n82%\\nTable 28.\\u2002 The holistic validation of PKG 2.0.\\\
+    n\\n16\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\npublished in Nature on August 12, 2020, followed by a patent application submitted to\
+    \ the USPTO on April\\n16, 2021 (granted on Jan 10, 2023). These three types of documents are interrelated: clinical trial\
+    \ reports cite\\npapers, papers register clinical trial numbers, and there are citations among patents, papers, and clinical\
+    \ trials.\\nAdditionally, these documents often share common biomedical entities.\\nThe clinical trial sponsored by BioNTech\
+    \ SE (ClinicalTrials.gov ID NCT04368728) was a comprehensive\\nstudy evaluating multiple aspects of different RNA vaccine\
+    \ candidates against COVID-19. In this trial, various\\nparameters like the safety, tolerability, immunogenicity, and\
+    \ efficacy of vaccine candidates were investigated.\\nFor instance, it explored different doses of vaccine candidates\
+    \ such as BNT162b1 and BNT162b2 in different\\nage groups and also considered aspects like booster doses and potential\
+    \ protection against emerging variants.\\nThis clinical trial was closely related to a paper published in Nature titled\
+    \ \\u201cPhase I/II study of COVID-19\\nRNA vaccine BNT162b1 in adults\\u201d. The paper reported the available safety,\
+    \ tolerability, and immunogenicity\\ndata from an ongoing placebo-controlled, observer-blinded dose-escalation study,\
+    \ which was precisely the clin-\\nical trial with the identifier NCT04368728. The findings in the paper, such as the dose-dependent\
+    \ nature of local\\nreactions and systemic events, and the increase in RBD-binding IgG concentrations and SARS-CoV-2 neutral-\\\
+    nizing titres after vaccination, provided crucial insights based on the clinical trial data. This synergy between the\\\
+    nclinical trial and the paper shows how real-world data from the trial was analyzed and presented in an academic\\npaper,\
+    \ contributing to the scientific understanding of the vaccine\\u2019s characteristics.\\nSubsequently, a patent titled\
+    \ \\u201cCoronavirus vaccine\\u201d filed by BioNTech SE. This patent related to methods and\\nagents for vaccination\
+    \ against coronavirus infection and inducing effective coronavirus antigen-specific immune\\nresponses. It built upon\
+    \ the knowledge gained from the clinical trial and the paper, translating the scientific\\nfindings about the vaccine\\\
+    u2019s potential and its effects on immune responses into a protectable intellectual property\\nrelated to vaccination\
+    \ methods.\\nPrevious efforts in knowledge graphs, such as the Fine-grained single-type literature knowledge graph and\\\
+    nCoarse-grained Integrated multi-type academic graph, have their limitations. For example, the Fine-grained\\nsingle-type\
+    \ literature knowledge graph focuses on only one type of literature, if we were relying solely on a\\nsingle-type literature\
+    \ knowledge graph, we would miss out on crucial connections. For instance, we wouldn\\u2019t be\\nable to see how the\
+    \ clinical trial results directly influenced the patent application or how the patent\\u2019s proposed vac-\\ncination\
+    \ methods were rooted in the real-world data from the clinical trial and the theoretical basis provided by the\\nacademic\
+    \ paper. The Coarse-grained Integrated multi-type academic graph, although integrating multiple types of\\nliterature,\
+    \ lacks the fine-grained comprehensive links that PKG 2.0 offers. In the context of our COVID-19 vaccine\\nexample, it\
+    \ might show general associations between the clinical trial, paper, and patent but would fail to cap-\\nture the detailed\
+    \ entity-level relationships. Through PKG 2.0, the linkages among these three types of documents\\nbecome evidence. For\
+    \ example, in PKG 2.0, we can trace how specific bioentities, projects, and even the researchers\\ninvolved were consistently\
+    \ represented and connected across the clinical trial, paper, and patent. The clinical trial\"\n  },\n  {\n    \"name\"\
+    : \"results informed the content of the paper, which in turn influenced the technological aspects covered in the patent\"\
+    ,\n    \"text\": \"Limitations and future directions for the PKG dataset.\\nPKG 2.0 has several limitations. In terms\\\
+    nof data access, currently, the knowledge graph is mainly offered in TSV and SQL formats. However, we are well\\naware\
+    \ that to more effectively meet the diverse needs of the research community, enhanced flexibility is indispen-\\nsable.\
+    \ Bearing this in mind, we have plans to investigate alternative data access methods, such as the development\\nof a user\
+    \ interface. This initiative is intended to streamline the data querying process, facilitating easier access for\\nusers,\
+    \ especially those without sophisticated technical capabilities, to explore the extensive information within\\nthe dataset.\
+    \ Furthermore, PKG2.0 dataset involves probabilistic and statistical models for tasks such as knowledge\\nentity extraction,\
+    \ author disambiguation, and institutional disambiguation. While the current results represent\\nthe best achievable outcomes\
+    \ given the state-of-the-art methodologies, certain biases remain inevitable due to the\\ninherent limitations of these\
+    \ models. We remain committed to the continuous improvement of these processes\\nand will strive to further refine the\
+    \ dataset in future iterations.\\nThe PKG dataset updating is a complex task that demands substantial computational resources\
+    \ and careful\\nconsideration of various factors. Firstly, it involves updates from multiple diverse data sources. Each\
+    \ update\\nentails not only the downloading of data from these sources and authorization verification but also meticulous\\\
+    nsource data formatting and comprehensive quality checks. Additionally, significant code refactoring and data\\ncomputation\
+    \ are required, which incur considerable computational costs. For example, the formatting process\\nmay involve converting\
+    \ data from different file formats and structures into a unified format suitable for integra-\\ntion into the PKG dataset,\
+    \ while the quality checks involve running multiple validation algorithms to ensure data\\nintegrity and accuracy. The\
+    \ code refactoring is essential to adapt to changes in the data sources and to optimize\\nthe processing pipeline for\
+    \ efficiency. As the dataset grows with each update and potential future expansions,\\nthe computational requirements\
+    \ will increase proportionally. Larger-scale applications that might utilize the\\nPKG dataset, such as complex data analytics\
+    \ or machine learning models, will place even greater demands on\\ncomputational resources. We need to consider how the\
+    \ current infrastructure and algorithms will scale to handle\\nthese increased loads.\\nIn the future, we plan to update\
+    \ the dataset annually using the latest files from PubMed, PatentsView,\\nClinicalTrials.gov, and other related sources.\
+    \ To ensure ongoing data consistency and accuracy, we will imple-\\nment a multi-step quality control process. Firstly,\
+    \ before each update, we will conduct a thorough review of the\\nsource data to identify and rectify any potential errors\
+    \ or inconsistencies. During the update process, we will use\\nadvanced data validation algorithms to cross-check and\
+    \ verify the new data against the existing dataset. After\\nthe update, we will perform post-update audits to confirm\
+    \ that the integrity of the dataset has been maintained.\\nIn addition to the annual updates based on PubMed, USPTO, and\
+    \ ClinicalTrials.gov update files and other\\nreliable sources, we will establish a detailed monitoring mechanism. This\
+    \ mechanism will keep a close eye on\\nsignificant changes in the biomedical field, such as emerging research trends,\
+    \ new data sources, and regulatory\\n\\n17\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nrequirements. If there are any substantial developments\
+    \ that necessitate more frequent updates than the annual\\nschedule, we will adjust the update frequency accordingly.\\\
+    nFig. 4\\u2002 Evaluation of author name disambiguation results for different feature groups. The Base group contains\\\
+    nfive commonly used features in the author name disambiguation task as a baseline; the Patent-based group and\\nTrial-based\
+    \ group, respectively, incorporate features related to patents and clinical trial studies, which improve\\nauthor disambiguation\
+    \ performance; after adding all features, the performance of the Comprehensive group\\nreaches a relatively optimal level.\\\
+    nFig. 5\\u2002 Timeline of COVID-19 Clinical Trials by BioNTech. It showcases the earliest ten COVID-19 clinical\\ntrials\
+    \ sponsored by BioNTech. For each trial, a horizontal line represents its duration, stretching from the start\\ndate to\
+    \ the completion date. Along these lines, marker points are placed to denote the publication times of\\nrelevant papers\
+    \ and patents.\\n\\n18\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\"\n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"The PubMed Knowledge\
+    \ Graph is available at https://pubmedkg.github.io, and the advanced neural biomedical\\nnamed entity recognition and\
+    \ normalization tool is available at https://github.com/dmis-lab/BERN2.\\nReceived: 11 September 2024; Accepted: 5 June\
+    \ 2025;\\nPublished: xx xx xxxx\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\t Fortunato, S. et al.\
+    \ Science of science. Science 359(6379), eaao0185 (2018).\\n2.\\t Van Noorden, R., Maher, B. & Nuzzo, R. The top 100 papers.\
+    \ Nature News 514(7524), 550 (2014).\\n3.\\t Rowland, F. The peer\\u2010review process. Learned publishing 15(4), 247\\\
+    u2013258 (2002).\"\n  },\n  {\n    \"name\": \"Shatz, D. Peer review: A critical inquiry. Rowman & Littlefield. (2004)\"\
+    ,\n    \"text\": \"5.\\t Reinhart, M. & Schendzielorz, C. Peer-review procedures as practice, decision, and governance\\\
+    u2014the road to theories of peer review.\\nScience and Public Policy 51(3), 543\\u2013552 (2024).\\n6.\\t Agrawal, A.\
+    \ & Henderson, R. Putting patents in context: Exploring knowledge transfer from MIT. Management science 48(1), 44\\u201360\\\
+    n(2002).\\n7.\\t Fleming, L., Greene, H., Li, G., Marx, M. & Yao, D. Government-funded research increasingly fuels innovation.\
+    \ Science 364(6446),\\n1139\\u20131141 (2019).\\n8.\\t Pandey, N., & Dharni, K. Intellectual property rights. PHI Learning\
+    \ Pvt. Ltd. (2014).\\n9.\\t Van Zeebroeck, N., van Pottelsberghe de la Potterie, B. & Guellec, D. Patents and academic\
+    \ research: a state of the art. Journal of\\nIntellectual Capital 9(2), 246\\u2013263 (2008).\\n10.\\t Long, P. O. Invention,\
+    \ authorship,\\u201d intellectual property,\\u201d and the origin of patents: Notes toward a conceptual history. Technology\\\
+    nand culture 32(4), 846\\u2013884 (1991).\\n11.\\t Markman, G. D., Siegel, D. S. & Wright, M. Research and technology\
+    \ commercialization. Journal of Management Studies 45(8),\\n1401\\u20131423 (2008).\\n12.\\t Tijssen, R. J. Global and\
+    \ domestic utilization of industrial relevant science: patent citation analysis of science\\u2013technology\\ninteractions\
+    \ and knowledge flows. Research policy 30(1), 35\\u201354 (2001).\\n13.\\t Sapsalis, E., de la Potterie, B. V. P. & Navon,\
+    \ R. Academic versus industry patenting: An in-depth analysis of what determines patent\\nvalue. Research Policy 35(10),\
+    \ 1631\\u20131645 (2006).\\n14.\\t Long, C. Patent signals. The University of Chicago Law Review, 625-679 (2002).\\n15.\\\
+    t Dohse, D., Goel, R. K. & Saunoris, J. W. Patenting uncertainty and its impact on innovation: evidence from the United\
+    \ States. The\\nJournal of Technology Transfer 48(5), 1839\\u20131859 (2023).\\n16.\\t Cohen, J. E. & Lemley, M. A. Patent\
+    \ scope and innovation in the software industry. Calif. L. Rev. 89, 1 (2001).\\n17.\\t Song, H., Hou, J. & Zhang, Y. Patent\
+    \ protection: does it promote or inhibit the patented technological knowledge diffusion?\\nScientometrics 127(5), 2351\\\
+    u20132379 (2022).\\n18.\\t Iqbal, M. S., & Nasir, F. Patenting of Living Organisms: Significance, Copyrights, Trade Secrets,\
+    \ and Trademarks. In Genetic\\nEngineering (pp. 159-181). Apple Academic Press (2023).\\n19.\\t Kapp, P., Esmail, L.,\
+    \ Ghosn, L., Ravaud, P. & Boutron, I. Transparency and reporting characteristics of COVID-19 randomized\\ncontrolled trials.\
+    \ BMC medicine 20(1), 363 (2022).\\n20.\\t Ganser, A. L., Raymond, S. A., & Pearson, J. D. Data quality and power in clinical\
+    \ trials: a comparison of ePRO and paper in a\\nrandomized trial. In ePro (pp. 49-77). Routledge (2016).\\nFig. 6\\u2002\
+    \ The patent, paper, and clinical trial related to a certain COVID-19 vaccine. The internal triangle in the\\nfigure shows\
+    \ the linkages among the three types of literature in the PKG, and the outer one shows a specific\\ninstance of the COVID-19\
+    \ vaccine. There are many related papers, clinical trials, and patents about the vaccine,\\nand the figure only demonstrates\
+    \ a certain one of each type of literature. For example, a series of related papers\\nfrom different time periods can\
+    \ be found through citations in clinical trials NCT04283461, including early\\nreports focusing on vaccine safety and\
+    \ efficacy in various populations (PMID33053279/33301246/33524990),\\nmid-term studies on vaccine effectiveness and adverse\
+    \ events (PMID35739094/35792746/36055877), and more\\nrecent reviews and exploratory studies (PMID38012751/35472295).\\\
+    n\\n19\\nScientific Data |         (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\n21.\\t Mintzes, B., Lexchin, J., & Quintano, A. Clinical trial transparency: many gains\
+    \ but access to evidence for new medicines remains\\nimperfect. British Medical Bulletin, 116(1) (2015).\\n22.\\t Gold,\
+    \ E. R., Kaplan, W., Orbinski, J., Harland-Logan, S. & N-Marandi, S. Are patents impeding medical care and innovation?\
+    \ PLoS\\nMedicine 7(1), e1000208 (2010).\\n23.\\t Nidhi, A. The Crossroad between intellectual property and clinical trials:\
+    \ Balancing incentives for innovation with access to\\nhealthcare. Journal of Intellectual Property Rights (JIPR) 28(4),\
+    \ 284\\u2013292 (2023).\\n24.\\t Hill, A. B. The clinical trial. New England Journal of Medicine 247(4), 113\\u2013119\
+    \ (1952).\\n25.\\t Berger, V. W. & Alperson, S. Y. A general framework for the evaluation of clinical trial quality. Reviews\
+    \ on recent clinical trials 4(2),\\n79\\u201388 (2009).\\n26.\\t Gnant, M. et al The future of clinical trials\\u2014goals,\
+    \ ideas, and discussion. memo-Magazine of European Medical Oncology, 1-10\\n(2024).\\n27.\\t National Research Council,\
+    \ Division of Behavioral, Social Sciences, Committee on National Statistics, & Panel on Handling Missing\\nData in Clinical\
+    \ Trials. The prevention and treatment of missing data in clinical trials (2010).\\n28.\\t Sertkaya, A., Wong, H. H.,\
+    \ Jessup, A. & Beleche, T. Key cost drivers of pharmaceutical clinical trials in the United States. Clinical\\nTrials\
+    \ 13(2), 117\\u2013126 (2016).\\n29.\\t Viergever, R. F. & Li, K. Trends in global clinical trial registration: an analysis\
+    \ of numbers of registered clinical trials in different parts\\nof the world from 2004 to 2013. BMJ open 5(9), e008932\
+    \ (2015).\\n30.\\t Grossi, V. et al. Data science: a game changer for science and innovation. International Journal of\
+    \ Data Science and Analytics 11,\\n263\\u2013278 (2021).\\n31.\\t Zupancic, N. Systematic Literature Review: Inter-Reletedness\
+    \ of Innovation, Resilience and Sustainability-Major, Emerging Themes\\nand Future Research Directions. Circular Economy\
+    \ and Sustainability 3(3), 1157\\u20131185 (2023).\\n32.\\t Xiang, Y., Ma, Y., Ji, M., & Su, Y. Interconnected Knowledge:\
+    \ Examining the Evolution of Graduate Student Innovation Ecosystems.\\nJournal of the Knowledge Economy, 1-40 (2023).\\\
+    n33.\\t Sourati, J. & Evans, J. A. Accelerating science with human-aware artificial intelligence. Nature human behaviour\
+    \ 7(10), 1682\\u20131696\\n(2023).\\n34.\\t Algethami, J. S. et al Bee pollen: Clinical trials and patent applications.\
+    \ Nutrients. 2022, 14, 2858 (2022).\\n35.\\t Meyer, M. Are patenting scientists the better scholars?: An exploratory comparison\
+    \ of inventor-authors with their non-inventing\\npeers in nano-science and technology. Research Policy 35(10), 1646\\\
+    u20131662 (2006).\\n36.\\t Thelwall, M. & Kousha, K. Are citations from clinical trials evidence of higher impact research?\
+    \ An analysis of ClinicalTrials. gov.\\nScientometrics 109(2), 1341\\u20131351 (2016).\\n37.\\t Chen, Z. et al. A knowledge\
+    \ graph of clinical trials (CTKG). Scientific reports 12(1), 4724 (2022).\\n38.\\t Siddharth, L., Blessing, L. T., Wood,\
+    \ K. L. & Luo, J. Engineering knowledge graph from patent database. Journal of Computing and\\nInformation Science in\
+    \ Engineering 22(2), 021008 (2022).\\n39.\\t Sarica, S., Song, B., Low, E., & Luo, J. Engineering knowledge graph for\
+    \ keyword discovery in patent search. In Proceedings of the\\ndesign society: international conference on engineering\
+    \ design (Vol. 1, No. 1, pp. 2249-2258). Cambridge University Press (2019, July).\\n40.\\t Zuo, H., Yin, Y. & Childs,\
+    \ P. Patent-kg: Patent knowledge graph extraction for engineering design. Proceedings of the Design Society\\n2, 821\\\
+    u2013830 (2022).\\n41.\\t Lin, Z., Yin, Y., Liu, L. & Wang, D. SciSciNet: A large-scale open data lake for the science\
+    \ of science research. Scientific Data 10(1),\\n315 (2023).\\n42.\\t Van Noorden, R. Science search engine links papers\
+    \ to grants and patents. Nature (2018).\\n43.\\t Xu, J. et al. Building a PubMed knowledge graph. Scientific data 7(1),\
+    \ 205 (2020).\\n44.\\t Boyack, K. W., Smith, C. & Klavans, R. A detailed open access model of the PubMed literature. Scientific\
+    \ Data 7(1), 408 (2020).\\n45.\\t Ammar, N. et al SPACES: Explainable multimodal ai for active surveillance, diagnosis,\
+    \ and management of adverse childhood\\nexperiences (ACEs). In 2021 IEEE International Conference on Big Data (Big Data)\
+    \ (pp. 5843-5847). IEEE (2021, December).\\n46.\\t Ebeid, I. A. Medgraph: A semantic biomedical information retrieval\
+    \ framework using knowledge graph embedding for pubmed.\\nFrontiers in Big Data 5, 965619 (2022).\"\n  },\n  {\n    \"\
+    name\": \"PubMed PORTAL http://er.tacc.utexas.edu/pubmed (2025)\",\n    \"text\": \"48.\\t Yu, C., Wang, C., Zhang, T.,\
+    \ Bu, Y., & Xu, J. Analyzing research diversity of scholars based on multi-dimensional calculation of\\nknowledge entities.\
+    \ Scientometrics, 1-30 (2023).\\n49.\\t Zhang, T., Tan, F., Yu, C., Wu, J. & Xu, J. Understanding relationship between\
+    \ topic selection and academic performance of scientific\\nteams based on entity popularity trend. Aslib Journal of Information\
+    \ Management 75(3), 561\\u2013588 (2023).\\n50.\\t Analyze results of 114 publications selected from All Databases.Web\
+    \ of Science https://webofscience.clarivate.cn/wos/alldb/analyze-\"\n  },\n  {\n    \"name\": \"results/7773a1b9-4507-4263-86d7-c8a5154a0834-013c8c1da6\
+    \ (2025)\",\n    \"text\": \"51.\\t Su, C. et al Biomedical discovery through the integrative biomedical knowledge hub\
+    \ (iBKH). Iscience, 26(4) (2023).\\n52.\\t Lee, K. et al. HiPub: translating PubMed and PMC texts to networks for knowledge\
+    \ discovery. Bioinformatics 32(18), 2886\\u20132888 (2016).\\n53.\\t Sung, M. et al. BERN2: an advanced neural biomedical\
+    \ named entity recognition and normalization tool. Bioinformatics 38(20),\\n4837\\u20134839 (2022).\"\n  },\n  {\n   \
+    \ \"name\": \"Caruana, R. Multitask learning. Machine learning 28, 41\\u201375 (1997)\",\n    \"text\": \"55.\\t Crichton,\
+    \ G., Pyysalo, S., Chiu, B. & Korhonen, A. A neural network multi-task learning approach to biomedical named entity\\\
+    nrecognition. BMC bioinformatics 18, 1\\u201314 (2017).\\n56.\\t Wei, C. H. et al. tmVar 2.0: integrating genomic variant\
+    \ information from literature with dbSNP and ClinVar for precision medicine.\\nBioinformatics 34(1), 80\\u201387 (2018).\\\
+    n57.\\t Sung, M., Jeon, H., Lee, J., & Kang, J. Biomedical entity representations with synonym marginalization. In 58th\
+    \ Annual Meeting of\\nthe Association for Computational Linguistics, ACL 2020 (pp. 3641-3650). Association for Computational\
+    \ Linguistics (ACL) (2020).\\n58.\\t Smedley, D. et al. BioMart\\u2013biological queries made easy. BMC genomics 10, 1\\\
+    u201312 (2009).\\n59.\\t Schriml, L. M. et al. The human disease ontology 2022 update. Nucleic acids research 50(D1),\
+    \ D1255\\u2013D1261 (2022).\\n60.\\t Barbarino, J. M., Whirl\\u2010Carrillo, M., Altman, R. B. & Klein, T. E. PharmGKB:\
+    \ a worldwide resource for pharmacogenomic\\ninformation. Wiley Interdisciplinary Reviews: Systems Biology and Medicine\
+    \ 10(4), e1417 (2018).\\n61.\\t Aisopos, F. & Paliouras, G. Comparing methods for drug\\u2013gene interaction prediction\
+    \ on the biomedical literature knowledge graph:\\nperformance versus explainability. BMC bioinformatics 24(1), 272 (2023).\\\
+    n62.\\t Bandrowski, A. et al. The ontology for biomedical investigations. PloS one 11(4), e0154556 (2016).\\n63.\\t Mishra,\
+    \ S., Fegley, B. D., Diesner, J. & Torvik, V. I. Self-citation is the hallmark of productive authors, of any gender. PloS\
+    \ one 13(9),\\ne0195773 (2018).\\n64.\\t Hutchins, B. I. A tipping point for open citation data. Quantitative science\
+    \ studies 2(2), 433\\u2013437 (2021).\\n65.\\t Hutchins, B. I. et al. The NIH Open Citation Collection: A public access,\
+    \ broad coverage resource. PLoS biology 17(10), e3000385 (2019).\\n66.\\t Poege, F., Harhoff, D., Gaessler, F. & Baruffaldi,\
+    \ S. Science quality and the value of inventions. Science advances 5(12), eaay7323\\n(2019).\\n67.\\t Fleming, L. & Sorenson,\
+    \ O. Science as a map in technological search. Strategic management journal 25(8\\u20109), 909\\u2013928 (2004).\\n68.\\\
+    t Marx, M. & Fuegi, A. Reliance on science by inventors: Hybrid extraction of in\\u2010text patent\\u2010to\\u2010article\
+    \ citations. Journal of Economics\\n& Management Strategy 31(2), 369\\u2013392 (2022).\\n\\n20\\nScientific Data |   \
+    \      (2025) 12:1018  | https://doi.org/10.1038/s41597-025-05343-8\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    n69.\\t Huser, V. & Cimino, J. J. Linking ClinicalTrials. gov and PubMed to track results of interventional human clinical\
+    \ trials. PloS one\\n8(7), e68409 (2013).\\n70.\\t Dickersin, K. & Rennie, D. Registering clinical trials. Jama 290(4),\
+    \ 516\\u2013523 (2003).\\n71.\\t Tasneem, A. et al. The database for aggregate analysis of ClinicalTrials. gov (AACT)\
+    \ and subsequent regrouping by clinical specialty.\\nPloS one 7(3), e33677 (2012).\\n72.\\t Huth, E. J. Uniform requirements\
+    \ for manuscripts: The new. Annals of Internal Medicine 108(2), 298\\u2013299 (1988).\\n73.\\t Torvik, V., & Smalheiser,\
+    \ N. Author-ity 2018\\u2014PubMed Author Name Disambiguated Dataset. University of Illinois Urbana-\\nChampaign. https://doi.org/10.13012/B2IDB-2273402_V1\
+    \ (2021).\\n74.\\t Wade, A. D. The semantic scholar academic graph (s2ag). In Companion Proceedings of the Web Conference\
+    \ 2022 (pp. 739-739)\\n(2022, April).\\n75.\\t Zhang, L., Lu, W. & Yang, J. LAGOS\\u2010AND: A large gold standard dataset\
+    \ for scholarly author name disambiguation. Journal of the\\nAssociation for Information Science and Technology 74(2),\
+    \ 168\\u2013185 (2023).\\n76.\\t Torvik, V. I. MapAffil: A bibliographic tool for mapping author affiliation strings to\
+    \ cities and their geocodes worldwide. In D-Lib\\nmagazine: the magazine of the Digital Library Forum (Vol. 21, No. 11-12).\
+    \ NIH Public Access (2015, November).\\n77.\\t Torvik, V: MapAffil 2018 dataset\\u2013PubMed author affiliations mapped\
+    \ to cities and their geocodes worldwide with extracted\\ndisciplines, inferred GRIDs, and assigned ORCIDs. University\
+    \ of Illinois at Urbana-Champaign https://doi.org/10.13012/\"\n  },\n  {\n    \"name\": \"B2IDB-2556310_V1 (2021)\",\n\
+    \    \"text\": \"78.\\t Huang, S., Yang, B., Yan, S. & Rousseau, R. Institution name disambiguation for research assessment.\
+    \ Scientometrics 99, 823\\u2013838 (2014).\\n79.\\t Ta\\u015fk\\u0131n, Z. & Al, U. Standardization problem of author\
+    \ affiliations in citation indexes. Scientometrics 98, 347\\u2013368 (2014).\\n80.\\t OurResearch. OpenAlex Institution\
+    \ Parsing. GitHub https://github.com/ourresearch/openalex-institution-parsing (2024).\\n81.\\t Wang, K. et al. Microsoft\
+    \ academic graph: When experts are not enough. Quantitative Science. Studies 1(1), 396\\u2013413 (2020).\\n82.\\t Lammey,\
+    \ R. Solutions for identification problems: a look at the Research Organization Registry. Science editing 7(1), 65\\u201369\
+    \ (2020).\\n83.\\t Zhao, Y., Liu, L. & Zhang, C. Is coronavirus-related research becoming more interdisciplinary? A perspective\
+    \ of co-occurrence\\nanalysis and diversity measure of scientific articles. Technological Forecasting and Social Change\
+    \ 175, 121344 (2022).\\n84.\\t Xu, J. et al. PubMed knowledge graph 2.0: Connecting papers, patents, and clinical trials\
+    \ in biomedical science. figshare https://doi.\\norg/10.6084/m9.figshare.26893861 (2025).\\n85.\\t Wan, A., et al Building\
+    \ the COVID-19 Portal By Integrating Literature, Clinical Trials, and Knowledge Graphs. In 2021 ACM/IEEE\\nJoint Conference\
+    \ on Digital Libraries (JCDL) (pp. 291-292). IEEE (2021, September).\\n86.\\t Yu, Q. et al. Analyzing knowledge entities\
+    \ about COVID-19 using entitymetrics. Scientometrics 126, 4491\\u20134509 (2021).\\n87.\\t Huang, Z., Tang, Y. & Chen,\
+    \ Y. A graph neural network-based node classification model on class-imbalanced graph data. Knowledge-\\nBased Systems\
+    \ 244, 108538 (2022).\\n88.\\t Ammar, N. et al. Digital Personal Health Coaching Platform for Promoting Human Papillomavirus\
+    \ Infection Vaccinations and\\nCancer Prevention: Knowledge Graph-Based Recommendation System. JMIR formative research\
+    \ 7, e50210 (2023).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"This work was supported by the\
+    \ National Natural Science Foundation of China [Grant Number: 72374233],\\nNatural Science Foundation of Guangdong Province\
+    \ [Grant Number: 2024A1515011778]. We would like\\nto express our sincere gratitude to the reviewers and editors for their\
+    \ meticulous evaluation and insightful\\nsuggestions. Their valuable feedback has significantly contributed to the improvement\
+    \ of this manuscript, helping\\nus to refine our work and present a more comprehensive and accurate study.\"\n  },\n \
+    \ {\n    \"name\": \"Author contributions\",\n    \"text\": \"Jian Xu and Ying Ding proposed the idea and supervised the\
+    \ project. Chao Yu and Jian Xu implemented the\\nconstruction of the dataset and wrote and revised this manuscript. Jiawei\
+    \ Xu and Yi Bu carried out the method\\nand dataset entity extraction. Vetle I. Torvik provided the Author-ity and MapAffil\
+    \ dataset, and guided the\\ndisambiguation process. Jaewoo Kang, Mujeen Sung, and Min Song carried out the bio-entity\
+    \ extraction and\\nvalidity.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"The authors declare\
+    \ no competing interests.\\nAdditional information\\nCorrespondence and requests for materials should be addressed to\
+    \ J.X. or Y.D.\\nReprints and permissions information is available at www.nature.com/reprints.\\nPublisher\\u2019s note\
+    \ Springer Nature remains neutral with regard to jurisdictional claims in published maps and\\ninstitutional affiliations.\\\
+    nOpen Access This article is licensed under a Creative Commons Attribution-NonCommercial-\\u00ad\\nNoDerivatives 4.0 International\
+    \ License, which permits any non-commercial use, sharing, distribu-\\ntion and reproduction in any medium or format, as\
+    \ long as you give appropriate credit to the original author(s)\\nand the source, provide a link to the Creative Commons\
+    \ licence, and indicate if you modified the licensed mate-\\nrial. You do not have permission under this licence to share\
+    \ adapted material derived from this article or parts of it.\\nThe images or other third party material in this article\
+    \ are included in the article\\u2019s Creative Commons licence,\\nunless indicated otherwise in a credit line to the material.\
+    \ If material is not included in the article\\u2019s Creative\\n\\u00adCommons licence and your intended use is not permitted\
+    \ by statutory regulation or exceeds the permitted\\nuse, you will need to obtain permission directly from the copyright\
+    \ holder. To view a copy of this licence, visit\\nhttp://creativecommons.org/licenses/by-nc-nd/4.0/.\\n\\n\\u00a9 The\
+    \ Author(s) 2025\"\n  }\n]"
+  acknowledgments: 'This work was supported by the National Natural Science Foundation of China [Grant Number: 72374233],
+
+    Natural Science Foundation of Guangdong Province [Grant Number: 2024A1515011778]. We would like
+
+    to express our sincere gratitude to the reviewers and editors for their meticulous evaluation and insightful
+
+    suggestions. Their valuable feedback has significantly contributed to the improvement of this manuscript, helping
+
+    us to refine our work and present a more comprehensive and accurate study.'
+  author_contributions: 'Jian Xu and Ying Ding proposed the idea and supervised the project. Chao Yu and Jian Xu implemented
+    the
+
+    construction of the dataset and wrote and revised this manuscript. Jiawei Xu and Yi Bu carried out the method
+
+    and dataset entity extraction. Vetle I. Torvik provided the Author-ity and MapAffil dataset, and guided the
+
+    disambiguation process. Jaewoo Kang, Mujeen Sung, and Min Song carried out the bio-entity extraction and
+
+    validity.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information
+
+    Correspondence and requests for materials should be addressed to J.X. or Y.D.
+
+    Reprints and permissions information is available at www.nature.com/reprints.
+
+    Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+
+    institutional affiliations.
+
+    Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-­
+
+    NoDerivatives 4.0 International License, which permits any non-commercial use, sharing, distribu-
+
+    tion and reproduction in any medium or format, as long as you give appropriate credit to the original author(s)
+
+    and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed mate-
+
+    rial. You do not have permission under this licence to share adapted material derived from this article or parts of it.
+
+    The images or other third party material in this article are included in the article’s Creative Commons licence,
+
+    unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative
+
+    ­Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted
+
+    use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit
+
+    http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+
+    © The Author(s) 2025'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n    \"\
+    page\": 4\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\",\n   \
+    \ \"page\": 5\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\",\n\
+    \    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_2.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p18_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_1.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_2.png\"\
+    ,\n    \"page\": 18\n  }\n]"
+references:
+  reference_count: 3
+associated:
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/dmis-lab/BERN2.\",\n    \"description\": \"\"\n  }\n]"

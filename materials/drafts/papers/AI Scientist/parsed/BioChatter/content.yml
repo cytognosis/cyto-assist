@@ -1,0 +1,291 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/BioChatter.pdf
+
+identifiers:
+  doi: 10.1038/s41587-024-02534-3
+  pmid: '39843580'
+citation:
+  title: G
+  year: '2025'
+  journal: Nature Biotechnology
+  volume: '43'
+  pages: 166-169
+  publisher: Springer Science and Business Media LLC
+  authors: Sebastian Lobentanzer, Shaohong Feng, Noah Bruderer, Andreas Maier, , Adrián G. Díaz, Amy Strange, Anis Ismail,
+    Anton Kulaga, Aurelien Dugourd, Barbara Zdrazil, Bastien Chassagnol, Cyril Pommier, Daniele Lucarelli, Ellen M. McDonagh,
+    Emma Verkinderen, Fernando M. Delgado-Chaves, Georg Fuellen, Hannah Sonntag, Jonatan Menger, Lionel Christiaen, Ludwig
+    Geistlinger, Luna Zacharias Zetsche, Marlis Engelke, Megan McNutt, Melissa Harrison, Melissa Hizli, Nikolai Usanov, Patrick
+    Baracho, Sebastian Beier, Stefan Boeing, Taru A. Muranen, Trang T. Le, Valeriia Dragan, Xiao-Ran Zhou, Yasmin Nielsen-Tehranchian,
+    Yuyao Song, Cankun Wang, Jan Baumbach, Jorge Abreu-Vicente, Nils Krehl, Qin Ma, Thomas Lemberger, Julio Saez-Rodriguez
+content:
+  sections: "[\n  {\n    \"name\": \"REST API\",\n    \"text\": \"Main\\nLLM\\nTool agent\\nDatabase agent\\nRevision agent\\\
+    nDatabase\\nDatabase\\nExternal tool\\nExternal API\\nAPI calling models\\nOncoKB\"\n  },\n  {\n    \"name\": \"BLAST\"\
+    ,\n    \"text\": \"External tool\\nUser\\nOpen source\\nOpen source\\nFig. 1 | The modular BioChatter platform architecture.\
+    \ a, BioChatter provides\\na selection of diverse APIs for various use cases (Python, REST) and two graphical\\nuser interfaces\
+    \ (the Python-based \\u201cLight\\u201d for rapid prototyping and the more\\nfull-featured JavaScript app \\u201cNext\\\
+    u201d). b, BioChatter facilitates the creation of\\ncustom deployments on a spectrum of tradeoff between simplicity/economy\\\
+    n(left) and security (right). c, BioChatter harmonizes the APIs of open-source\\nLLM deployment tools and proprietary\
+    \ LLM providers (brown), knowledge\\nmanagement systems such as knowledge graphs and vector databases (purple),\\npublic\
+    \ APIs (red) of databases (such as OncoKB14), and software (such as BLAST15).\\nIn addition, the LLM can be specifically\
+    \ instructed according to the user\\u2019s\\ncontext via customizable system prompts (green). Each use case is then\\\
+    nan individualized combination of these components, combined by either\\nmanual or semiautomated agentic workflows, and\
+    \ adapted to the user\\u2019s\\nneeds, including use-case-specific validation for robustness. API, application\\nprogramming\
+    \ interface; KG, knowledge graph; LLM, large language model; REST,\\nrepresentational state transfer.\\n\\nnature biotechnology\\\
+    nVolume 43 | February 2025 | 166\\u2013169 | 167\\nCorrespondence\\nplatforms, we present BioChatter (https://bio-\\nchatter.org),\
+    \ an open-source Python frame-\\nwork designed to develop custom biomedical\\nresearch software in line with open science\\\
+    nprinciples5. BioChatter\\u2019s modular architecture\\noffers broad applicability across various bio-\\nmedical research\
+    \ contexts (Fig. 1a). Its flexible\\ncomposition supports a wide range of applica-\\ntions, from rapid prototyping to\
+    \ fully encap-\\nsulated deployment (Fig. 1b).\\nTo eliminate redundancies from the fre-\\nquent reimplementation of basic\
+    \ workflows,\\nwe offer a permissively licensed software\\npackage that integrates and maintains basic\\nopen-source components\
+    \ (Supplementary\"\n  },\n  {\n    \"name\": \"Methods). This not only eases the software\",\n    \"text\": \"development\
+    \ burden but also unifies com-\\nmon LLM-driven workflows in biomedicine,\\nmaking them available through a single, cohe-\\\
+    nsive application programming interface (API,\\nFig. 1c). We harmonize the distinct APIs of LLM\\ndeployment tools and\
+    \ proprietary LLM pro-\\nviders, allowing the user to switch between dif-\\nferent models and providers without changing\\\
+    ntheir code.\\nWe integrate with existing open-source\\ninfrastructure such as BioCypher6 and other\\ndatabases, allowing\
+    \ injection of domain\\nknowledge to perform retrieval-augmented\\ngeneration (Supplementary Note: Retrieval-\\nAugmented\
+    \ Generation). We also facilitate\\nthe integration of live services (includ-\\ning web-based APIs) via the LLMs\\u2019\
+    \ ability to\\nparameterize API queries, made robust by\\ncustom implementations of each API ser-\\nvice in BioChatter.\
+    \ Finally, our customizable\\nplatform allows users to align the LLM to\\ntheir context via system prompts, as well as\\\
+    nadvanced workflows using agent-based sys-\\ntems (Supplementary Methods). Simplifying\\nthese customizations is a major\
+    \ benefit of\\nBioChatter, often achievable by changing a\\nApplication:\\nBioChatter\\nRepresentation:\\nBioCypher\\\
+    nExtraction:\\nBioGather\\na\\nb\\nc\\nApplication/use case\\n1.0\\n0.8\\n0.6\\n0.4\\n0.2\\n0.0\\nFeeds\\nInforms\\nValidates\\\
+    n.. reported\\nthat Gene\\nis altered in\\nDisease ..\\naltered in\\nKnowledge\\nand data\\nGene\\nUser: Which Genes\\\
+    n\\ncould we target\\n\\nin Disease ..\\nLLM: Based on the\\n\\ninformation ...\\nDisease\\nDedicated benchmark tasks\\\
+    n(dataset)\\nContinuous monitoring\\nFacilitates\\nCombinatorial results\\nCustom use case-driven\\napplications and services\\\
+    nModels\\nPrompts\\n...\\nAccuracy\\nLLM only\\nBioChatter\\nFig. 2 | Benchmarking, monitoring, and outlook. a, The workflow\
+    \ of introducing\\nuse case-specific tests into the BioChatter benchmarking framework facilitates\\ncontinuous monitoring.\
+    \ Dedicated benchmarks are run across a combination\\nof models and other parameters. b, Comparison of two benchmark tasks\
+    \ for\\nknowledge graph query generation show that BioChatter\\u2019s prompt engine\\nachieves much higher accuracy than\
+    \ the naive approach (measured as number\\nof correct query components among all tested). The BioChatter variant involves\\\
+    na multistep procedure of constructing the query, while the \\u201cLLM only\\u201d variant\\nreceives the complete schema\
+    \ definition of a BioCypher knowledge graph (which\\nBioChatter also uses as a basis for the prompt engine). The general\
+    \ instructions\\nfor both variants are otherwise the same (Supplementary Note: Benchmarking).\\nThe test includes all\
+    \ models, sizes and quantization levels (N = 150), and the\\nperformance is measured as the mean accuracy for the two\
+    \ tasks (0.486 \\u00b1 0.12 vs\\n0.844 \\u00b1 0.11, unpaired t-test P < 0.001, t = 18.65). Center line, median; box limits,\\\
+    nupper and lower quartiles; whiskers, 1.5\\u00d7 interquartile range; points, outliers.\\nc, The BioCypher ecosystem will\
+    \ cover the process of knowledge management\\nfrom extraction through representation to application. We will develop\\\
+    nBioGather (denoted by dashed lines as ongoing work) to integrate natively\\nwith the BioCypher and BioChatter frameworks\
+    \ to allow flexible extraction of\\ninformation from diverse resources using a unified API. This will achieve two\\npairs\
+    \ of bidirectional synergies: knowledge graphs to extraction pipelines and\\nknowledge graphs to LLMs, respectively.\\\
+    n\\nnature biotechnology\\nVolume 43 | February 2025 | 166\\u2013169 | 168\\nCorrespondence\\nsimple configuration file\
+    \ (for examples, see\"\n  },\n  {\n    \"name\": \"Supplementary Note: Customization)\",\n    \"text\": \"We provide abstract\
+    \ classes for the imple-\\nmentation of multi-agent systems based on\\nreflection7. These systems can be configured\\\
+    nto perform simple reflective tasks, such as fact\\nchecking, or more complex tasks, such as iter-\\natively improving\
+    \ knowledge graph queries\\non the basis of their results (Supplementary\"\n  },\n  {\n    \"name\": \"Methods). Prospectively,\
+    \ these agent systems\",\n    \"text\": \"have the potential to scale to considerable lev-\\nels of complexity. However,\
+    \ this will require\\nthorough evaluation and balancing between\\nperformance and computing cost8.\\nTo address the challenges\
+    \ of reproducibility\\nin LLM workflows, we developed a continuous\\nbenchmarking system that allows the com-\\nmunity\
+    \ to monitor the performance of all\\nincluded models on specific tasks. Whenever\\nwe add a feature, such as knowledge\
+    \ graph\\nquery generation, we introduce a battery of\\ntests to validate its functionality based on\\ncommunity-driven\
+    \ use cases (Fig. 2a). The\\nbenchmarking framework runs these tests\\nacross all models and relevant parameters and\\\
+    nreports the results to the community through\\nour website (Supplementary Note: Bench-\\nmarking). We rely on open-source\
+    \ software\\nto rapidly incorporate new models as they are\\nreleased, effectively keeping pace with rapid\\ndevelopments\
+    \ in the field by distributing\\ntechnical tasks across the community (Sup-\\nplementary Methods).\\nIn the case of knowledge\
+    \ graph connectiv-\\nity, we see a large increase of performance\\nacross all LLMs due to the native interaction of\\\
+    nBioChatter with BioCypher knowledge graphs\\n(Fig. 2b). Through the detailed description of\\nknowledge graph components\
+    \ in the BioCy-\\npher schema configuration, we can effectively\\nguide the LLM in using the knowledge graph\\n(Supplementary\
+    \ Methods). In future work,\\nwe plan to extend this approach to extract-\\ning information from text and images, and\
+    \ we\\nhave begun developing a new framework, Bio-\\nGather, to support this effort (Fig. 2c). A key\\nadvantage of this\
+    \ integrated approach is its\\nability to guide the model in extracting infor-\\nmation from unstructured sources, aligning\\\
+    nwith the knowledge graph\\u2019s schema for each\\nuse case. This promotes data harmonization\\nand leads to multiple\
+    \ synergies: LLMs make\\nknowledge more accessible and show supe-\\nrior extraction performance owing to their\\ncontext-awareness\
+    \ while knowledge graphs\\nmake LLMs more reliable and facilitate the\\nharmonization of extracted information.\\nDemands\
+    \ have been made for regulation,\\nan international forum, and benchmarks of\\nLLMs applied to biomedical research9,10,\
+    \ but\\npractical solutions rooted in the scientific\\ncommunity are still lacking. In contrast to\\nbiomedical image\
+    \ analysis, which boasts\\nnumerous open frameworks to facilitate\\naccess to AI methods, language-based\\nresearch tasks\
+    \ are at the stage of explora-\\ntion, case studies, perspectives, and recom-\\nmendations for manual application1,2,4,11.\\\
+    nA prevailing perspective on the medical appli-\\ncation of LLMs is that their development and\\nevaluation will be shaped\
+    \ and driven by regu-\\nlators and closed-source companies11, which\\nis likely to exclude actors outside the Global\\\
+    nNorth. We argue that, instead, the open sci-\\nence community should lead the develop-\\nment and evaluation of these\
+    \ new and rapidly\\nevolving technologies in a fully transparent,\\nopen-source manner, to allow an approach\\ninclusive\
+    \ of all groups of stakeholders and\\nthe global community3. We believe this to be\\nessential for approaching the emerging\
+    \ chal-\\nlenges in the field, such as ensuring safety in\\nsensitive applications. Rather than relying\\nsolely on benchmarking\
+    \ suites that highlight\\nmodel abilities, a framework based on Pop-\\nperian falsification \\u2014 designed to push the\\\
+    nlimits of these models \\u2014 will be paramount8.\\nWe prioritize pragmatic execution over\\nattempting to create a\
+    \ one-size-fits-all solu-\\ntion. By offering a flexible, modular platform\\ntailored to developers of custom solutions\
+    \ in\\nthe biomedical field, we aim to reduce devel-\\nopment and maintenance burdens while\\nenhancing the robustness\
+    \ of resulting applica-\\ntions. BioChatter is not designed to compete\\nwith existing infrastructure or consumer prod-\\\
+    nucts. Instead, it leverages open-source infra-\\nstructure to efficiently address the specific\\ndemands of biomedical\
+    \ research, distinguish-\\ning itself from proprietary consumer-oriented\\nproducts through its commitment to open-\\\
+    nness and transparency.\\nOur ultimate aim is to harmonize APIs\\nnot only for LLMs but across the entire sci-\\nentific\
+    \ knowledge management ecosystem.\\nThis includes everything from extraction of\\ninformation from text and images, through\\\
+    nknowledge representation, to the application\\nof this knowledge in decision-making, data\\nanalysis, hypothesis generation\
+    \ and scien-\\ntific communication. We focus on facilitating\\nresearch tasks that are manual and repetitive,\\nfreeing\
+    \ up more time for creative thinking and\\ncomplex reasoning4. To promote early collab-\\noration, we follow a completely\
+    \ open-source\\ndevelopment model. We have initiated pro-\\njects to tackle challenges in research software\\nsupport,\
+    \ knowledge management, publishing\\nand large-scale drug discovery through the\\nBioChatter consortium (Supplementary\
+    \ Note:\\nThe BioChatter Consortium).\\nIn the future, generative AI models will be\\ncontrastively trained to synthesize\
+    \ informa-\\ntion from multiple relevant modalities, includ-\\ning text, images, and molecular measurements\\nsuch as\
+    \ genomics and transcriptomics2,12.\\nThis approach is expected to enhance their\\nability to aid in reasoning8,13. While\
+    \ some of\\nour benchmarks already demonstrate the\\nexcellent capabilities of current-generation\\nLLMs in extracting\
+    \ multimodal information\\nfrom text and images (Supplementary Note:\\nBenchmarking), research and applications\\nin this\
+    \ area are still in their early stages. We\\nare committed to updating BioChatter and\\nits ecosystem to support new developments\\\
+    nin the field. We encourage the community to\\nengage with these advancements by request-\\ning features, contributing\
+    \ code and sharing\\ntheir research and applications.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\"\
+    : \"All data used in this study are available in\\nthe repository at https://github.com/biocy-\\npher/biochatter. In addition,\
+    \ the repository\\nis DOI-indexed at Zenodo/OpenAIRE (https://\\ndoi.org/10.5281/zenodo.10777945).\"\n  },\n  {\n    \"\
+    name\": \"Code availability\",\n    \"text\": \"All code used in this study is available in the\\nrepository at https://github.com/biocypher/\\\
+    nbiochatter. In addition, the repository is\\nDOI-indexed at Zenodo/OpenAIRE (https://\\ndoi.org/10.5281/zenodo.10777945).\\\
+    nSebastian Lobentanzer\\n1,2\\n,\\nShaohong Feng3, Noah Bruderer\\n4,\\nAndreas Maier\\n5, The BioChatter\\nConsortium*,\
+    \ Cankun Wang3,\\nJan Baumbach\\n5,6, Jorge Abreu-Vicente\\n7,\\nNils Krehl\\n1, Qin Ma\\n3,\\nThomas Lemberger7 &\\nJulio\
+    \ Saez-Rodriguez\\n1,8\\n1Heidelberg University, Faculty of Medicine\\nand Heidelberg University Hospital, Institute\\\
+    nfor Computational Biomedicine, Heidelberg,\\nGermany. 2Open Targets, European Molecular\\nBiology Laboratory-European\
+    \ Bioinformatics\\nInstitute (EMBL-EBI), Wellcome Genome\\nCampus, Hinxton, UK. 3Department of\\nBiomedical Informatics,\
+    \ The Ohio State\\nUniversity, Columbus, OH, USA. 4Michael\\nSars Centre, University of Bergen, Bergen,\\nNorway. 5Institute\
+    \ for Computational Systems\\nBiology, University of Hamburg, Hamburg,\\nGermany. 6Computational Biomedicine Lab,\\nDepartment\
+    \ of Mathematics and Computer\\n\\nnature biotechnology\\nVolume 43 | February 2025 | 166\\u2013169 | 169\\nCorrespondence\\\
+    nScience, University of Southern Denmark,\\nOdense, Denmark. 7EMBO, Heidelberg,\\nGermany. 8European Molecular Biology\\\
+    nLaboratory-European Bioinformatics Institute\\n(EMBL-EBI), Wellcome Genome Campus,\\nHinxton, UK. *A list of authors\
+    \ and their\\naffiliations appears at the end of the paper.\\ne-mail: sebastian.lobentanzer@gmail.com;\\nsaezlab@ebi.ac.uk\\\
+    nPublished online: 22 January 2025\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nPerez-Lopez, R.,\
+    \ Ghaffari Laleh, N., Mahmood, F. &\\nKather, J. N. Nat. Rev. Cancer 24, 427\\u2013441 (2024).\\n2.\\nSimon, E., Swanson,\
+    \ K. & Zou, J. Nat. Methods 21,\\n1422\\u20131429 (2024).\"\n  },\n  {\n    \"name\": \"Liesenfeld, A. & Dingemanse, M.\
+    \ Rethinking open source\",\n    \"text\": \"generative AI: open-washing and the EU AI Act. In\\nThe 2024 ACM Conference\
+    \ on Fairness, Accountability,\\nand Transparency, https://doi.org/10.1145/3630106.\"\n  },\n  {\n    \"name\": \"(ACM,\
+    \ 2024)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Pividori, M. Nature https://doi.org/10.1038/d41586-\",\n  \
+    \  \"text\": \"024-02630-z (2024).\\n5.\\nUNESCO. UNESCO Recommendation on Open Science.\\nUNESCO https://doi.org/10.54677/mnmh8546\
+    \ (2021).\\n6.\\nLobentanzer, S. et al. Nat. Biotechnol. 41, 1056\\u20131059 (2023).\\n7.\\nShinn, N. et al. Preprint\
+    \ at https://doi.org/10.48550/\\narxiv.2303.11366 (2023).\"\n  },\n  {\n    \"name\": \"Nezhurina, M., Cipolina-Kun, L.,\
+    \ Cherti, M. & Jitsev, J\",\n    \"text\": \"Preprint at https://doi.org/10.48550/arxiv.2406.02061\\n(2024).\\n9.\\nvan\
+    \ Dis, E. A. M., Bollen, J., Zuidema, W., van Rooij, R. &\\nBockting, C. L. Nature 614, 224\\u2013226 (2023).\"\n  },\n\
+    \  {\n    \"name\": \"Bockting, C. L., van Dis, E. A. M., van Rooij, R., Zuidema, W\",\n    \"text\": \"& Bollen, J. Nature\
+    \ 622, 693\\u2013696 (2023).\"\n  },\n  {\n    \"name\": \"Lee, P., Goldberg, C. & Kohane, I. The AI Revolution in\",\n\
+    \    \"text\": \"Medicine: GPT-4 and Beyond (Pearson, 2023).\"\n  },\n  {\n    \"name\": \"Schaefer, M. et al. Joint embedding\
+    \ of transcriptomes\",\n    \"text\": \"and text enables interactive single-cell RNA-seq data\\nexploration via natural\
+    \ language. In ICLR 2024 Workshop\\non Machine Learning for Genomics Explorations\\nhttps://openreview.net/forum?id=yWiZaE4k3K\
+    \ (2024).\"\n  },\n  {\n    \"name\": \"Lobentanzer, S., Rodriguez-Mier, P., Bauer, S. &\",\n    \"text\": \"Saez-Rodriguez,\
+    \ J. Mol. Syst. Biol. 20, 848\\u2013858 (2024).\"\n  },\n  {\n    \"name\": \"Chakravarty, D. et al. JCO Precis. Oncol.\
+    \ https://doi.org/\",\n    \"text\": \"10.1200/po.17.00011 (2017).\"\n  },\n  {\n    \"name\": \"Camacho, C. et al. BMC\
+    \ Bioinformatics 10, 421 (2009)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\":\
+    \ \"We thank H. Schumacher, D. Dimitrov and P. Badia i Mompel\\nfor feedback on the original draft of the manuscript and\\\
+    nthe software. This work was supported by funding from the\\nEuropean Union\\u2019s Horizon 2020 Research and Innovation\\\
+    nProgramme under grant agreement no 965193 for DECIDER\\n(JSR), awards U54AG075931 and R01DK138504 (QM)\\nfrom the National\
+    \ Institutes of Health, and the Pelotonia\\nInstitute for Immuno-Oncology. This manuscript was\\nwritten using Manubot\
+    \ (https://github.com/manubot) and\\npartially revised using LLMs. The entire manuscript was\\ndouble-checked for correctness,\
+    \ and the responsibility\\nfor the final content lies with the authors only. This project\\nis funded by the European\
+    \ Union under grant agreement\"\n  },\n  {\n    \"name\": \"Views and opinions expressed are, however,\",\n    \"text\"\
+    : \"those of the author(s) only and do not necessarily reflect\\nthose of the European Union or European Health and Digital\\\
+    nExecutive Agency (HADEA). Neither the European Union nor\\nthe granting authority can be held responsible for them.\\\
+    nThis work was also partly supported by the Swiss State\\nSecretariat for Education, Research and Innovation (SERI)\\\
+    nunder contract 22.00115.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"Authors between consortium\
+    \ and last author are ordered\\nalphabetically by first name. S.L. conceptualized and\\ndeveloped the platform, coordinated\
+    \ the consortium,\\nand wrote the manuscript. S.F. implemented BioChatter\\nfunctionality and developed both frontend\
+    \ and backend\\ncomponents for the BioChatter Next server. N.B. developed\\nthe API calling module with S.F. and S.L.\
+    \ A.M. implemented\\nthe local deployment functionality. The BioChatter\\nconsortium members contributed to the development\
+    \ of\\nthe platform and provided feedback on the manuscript.\\nC.W. architected the BioChatter Next server infrastructure.\\\
+    nJ.B. provided guidance and supervision as well as hardware\\nresources for local LLM use and contributed to performance\\\
+    nbenchmarking. J.A.-V. developed text extraction\\nbenchmarking procedures. N.K. implemented benchmarking\\nprocedures.\
+    \ Q.M. oversaw the development and deployment\\nof the BioChatter Next server environment. T.L. oversaw the\\ntext extraction\
+    \ work and acquired funding. J.S.-R. supervised\\nthe project, revised the manuscript, and acquired funding.\\nAll authors\
+    \ read and approved the final manuscript.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"J.S.-R.\
+    \ reports funding from GSK, Pfizer and Sanofi and fees\\nor honoraria from Travere Therapeutics, Stadapharm, Pfizer,\\\
+    nGrunenthal, Owkin, Moderna and Astex Pharmaceuticals.\\nAdditional information\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ information The online version\",\n    \"text\": \"contains supplementary material available at\\nhttps://doi.org/10.1038/s41587-024-02534-3.\\\
+    nThe BioChatter Consortium\\nAdri\\u00e1n G. D\\u00edaz9,10, Amy Strange11, Andreas Maier5, Anis Ismail12, Anton Kulaga13,\
+    \ Aurelien Dugourd1, Barbara Zdrazil14,\\nBastien Chassagnol15, Cankun Wang3, Cyril Pommier16,17, Daniele Lucarelli18,19,\
+    \ Ellen M. McDonagh2, Emma Verkinderen20,\\nFernando M. Delgado-Chaves5, Georg Fuellen21, Hannah Sonntag7, Jan Baumbach5,6,\
+    \ Jorge Abreu-Vicente7,\\nJonatan Menger22, Julio Saez-Rodriguez1,8, Lionel Christiaen4, Ludwig Geistlinger23, Luna Zacharias\
+    \ Zetsche24,\\nMarlis Engelke24, Megan McNutt3, Melissa Harrison8, Melissa Hizli25, Nikolai Usanov26, Nils Krehl1, Noah\
+    \ Bruderer4,\\nPatrick Baracho24, Qin Ma3, Sebastian Beier27, Sebastian Lobentanzer1,2, Shaohong Feng3, Stefan Boeing28,\\\
+    nTaru A. Muranen29, Thomas Lemberger7, Trang T. Le30, Valeriia Dragan1, Xiao-Ran Zhou27, Yasmin Nielsen-Tehranchian25\
+    \ &\\nYuyao Song8\\n9Interuniversity Institute of Bioinformatics in Brussels, Brussels, Belgium. 10Structural Biology\
+    \ Brussels, Vrije Universiteit Brussels, Brussels, Belgium.\\n11The Francis Crick Institute, London, UK. 12Laboratory\
+    \ of Multi-Omic Integrative Bioinformatics, Center for Human Genetics, Faculty of Medicine,\\nKatholieke Universiteit\
+    \ Leuven, Leuven, Belgium. 13Institute for Biostatistics and Informatics in Medicine and Ageing Research, University of\
+    \ Rostock,\\nRostock, Germany. 14Chemical Biology Services, European Molecular Biology Laboratory-European Bioinformatics\
+    \ Institute (EMBL-EBI), Wellcome\\nGenome Campus, Hinxton, UK. 15Laboratory of Probability, Statistics, and Modelling,\
+    \ Sorbonne University, Paris, France. 16Universit\\u00e9 Paris-Saclay,\\nINRAE, BioinfOmics, Plant Bioinformatics Facility,\
+    \ Versailles, France. 17Universit\\u00e9 Paris-Saclay, INRAE, URGI, Versailles, France. 18Institute of Translational\\\
+    nCancer Research and Experimental Cancer Therapy, Technical University of Munich, Munich, Germany. 19Department of Computational\
+    \ Health,\\nInstitute of Computational Biology, Helmholtz, Munich, Germany. 20Interuniversity Institute of Bioinformatics\
+    \ in Brussels, Universit\\u00e9 Libre de Bruxelles-\\nVrije Universiteit Brussel, Brussels, Belgium. 21Institute for Biostatistics\
+    \ and Informatics in Medicine and Ageing Research (IBIMA), Rostock University\\nMedical Center, Rostock, Germany. 22Institute\
+    \ of Medical Biometry and Statistics, Faculty of Medicine and Medical Center \\u2013 University of Freiburg,\\nFreiburg,\
+    \ Germany. 23Core for Computational Biomedicine, Department of Biomedical Informatics, Harvard Medical School, Boston,\
+    \ MA, USA.\\n24Heilbronn University of Applied Sciences, Heilbronn, Germany. 25GECKO Institute, Heilbronn University of\
+    \ Applied Sciences, Heilbronn, Germany.\\n26HEAlthy Life Extension Society (HEALES), Brussels, Belgium. 27Institute of\
+    \ Bio- and Geosciences (IBG-4: Bioinformatics), Bioeconomy Science Center\\n(BioSC), CEPLAS, Forschungszentrum J\\u00fclich,\
+    \ J\\u00fclich, Germany. 28Bioinformatics and Biostatistics Science Technology Platform and Software Engineering\\nand\
+    \ AI Science Technology Platform, The Francis Crick Institute, London, UK. 29Research Program in Systems Oncology, Research\
+    \ Programs Unit, Faculty\\nof Medicine, University of Helsinki, Helsinki, Finland. 30Bristol Myers Squibb, Cambridge,\
+    \ MA, USA.\"\n  }\n]"
+  acknowledgments: 'We thank H. Schumacher, D. Dimitrov and P. Badia i Mompel
+
+    for feedback on the original draft of the manuscript and
+
+    the software. This work was supported by funding from the
+
+    European Union’s Horizon 2020 Research and Innovation
+
+    Programme under grant agreement no 965193 for DECIDER
+
+    (JSR), awards U54AG075931 and R01DK138504 (QM)
+
+    from the National Institutes of Health, and the Pelotonia
+
+    Institute for Immuno-Oncology. This manuscript was
+
+    written using Manubot (https://github.com/manubot) and
+
+    partially revised using LLMs. The entire manuscript was
+
+    double-checked for correctness, and the responsibility
+
+    for the final content lies with the authors only. This project
+
+    is funded by the European Union under grant agreement'
+  author_contributions: 'Authors between consortium and last author are ordered
+
+    alphabetically by first name. S.L. conceptualized and
+
+    developed the platform, coordinated the consortium,
+
+    and wrote the manuscript. S.F. implemented BioChatter
+
+    functionality and developed both frontend and backend
+
+    components for the BioChatter Next server. N.B. developed
+
+    the API calling module with S.F. and S.L. A.M. implemented
+
+    the local deployment functionality. The BioChatter
+
+    consortium members contributed to the development of
+
+    the platform and provided feedback on the manuscript.
+
+    C.W. architected the BioChatter Next server infrastructure.
+
+    J.B. provided guidance and supervision as well as hardware
+
+    resources for local LLM use and contributed to performance
+
+    benchmarking. J.A.-V. developed text extraction
+
+    benchmarking procedures. N.K. implemented benchmarking
+
+    procedures. Q.M. oversaw the development and deployment
+
+    of the BioChatter Next server environment. T.L. oversaw the
+
+    text extraction work and acquired funding. J.S.-R. supervised
+
+    the project, revised the manuscript, and acquired funding.
+
+    All authors read and approved the final manuscript.'
+  competing_interests: 'J.S.-R. reports funding from GSK, Pfizer and Sanofi and fees
+
+    or honoraria from Travere Therapeutics, Stadapharm, Pfizer,
+
+    Grunenthal, Owkin, Moderna and Astex Pharmaceuticals.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  }\n]"
+references:
+  reference_count: 6
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://github.com/biocy-\",\n    \"accession\": \"\",\n    \"database\": \"\"\
+    ,\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/biocypher/\",\n    \"description\": \"\"\n  }\n]"

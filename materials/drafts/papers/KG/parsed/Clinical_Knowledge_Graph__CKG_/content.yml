@@ -1,0 +1,994 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Clinical Knowledge Graph (CKG).pdf
+
+identifiers:
+  doi: 10.1038/s41587-021-01145-6
+  pmid: '35102292'
+citation:
+  title: A knowledge graph to interpret clinical proteomics data
+  journal: Nature Biotechnology
+  year: '2022'
+  volume: '40'
+  pages: 692-702
+  publisher: Springer Science and Business Media LLC
+  authors: Alberto Santos, Ana R. Colaço, Annelaura B. Nielsen, Lili Niu, Maximilian Strauss, Philipp E. Geyer, Fabian Coscia,
+    Nicolai J. Wewer Albrechtsen, Filip Mundt, Lars Juhl Jensen, Matthias Mann
+content:
+  sections: "[\n  {\n    \"name\": \"Results\",\n    \"text\": \"Overview of CKG architecture. The CKG includes several inde-\\\
+    npendent functional modules that (1) format and analyze pro-\\nteomics data (analytics_core); (2) construct a graph database\\\
+    nA knowledge graph to interpret clinical\\nproteomics data\\nAlberto Santos\\u200a \\u200a1,2,3\\u2009\\u2709, Ana R.\
+    \ Cola\\u00e7o1, Annelaura B. Nielsen1, Lili Niu1, Maximilian Strauss1,4,\\nPhilipp E. Geyer1,4,5, Fabian Coscia\\u200a\
+    \ \\u200a1,5, Nicolai J. Wewer Albrechtsen\\u200a \\u200a1,6,7, Filip Mundt1,\\nLars Juhl Jensen\\u200a \\u200a1 and Matthias\
+    \ Mann\\u200a \\u200a1,5\\u2009\\u2709\\nImplementing precision medicine hinges on the integration of omics data, such\
+    \ as proteomics, into the clinical decision-making\\nprocess, but the quantity and diversity of biomedical data, and the\
+    \ spread of clinically relevant knowledge across multiple bio-\\nmedical databases and publications, pose a challenge\
+    \ to data integration. Here we present the Clinical Knowledge Graph (CKG),\\nan open-source platform currently comprising\
+    \ close to 20 million nodes and 220 million relationships that represent relevant\\nexperimental data, public databases\
+    \ and literature. The graph structure provides a flexible data model that is easily extendable\\nto new nodes and relationships\
+    \ as new databases become available. The CKG incorporates statistical and machine learning\\nalgorithms that accelerate\
+    \ the analysis and interpretation of typical proteomics workflows. Using a set of proof-of-concept\\nbiomarker studies,\
+    \ we show how the CKG might augment and enrich proteomics data and help inform clinical decision-making.\\nNature Biotechnology\
+    \ | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n692\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\\
+    nby integrating available data from a range of publicly accessible\\ndatabases, user-conducted experiments, existing ontologies\
+    \ and sci-\\nentific publications (graphdb_builder); (3) connect and query this\\ngraph database (graphdb_connector);\
+    \ and (4) facilitate data visual-\\nization, repository and analysis via online reports (report_manager)\\nand Jupyter\
+    \ notebooks (Fig. 1a,b). This architecture seamlessly\\nharmonizes and integrates data as well as user-supplied analysis.\
+    \ It\\nalso facilitates data sharing and visualization as well as interpreta-\\ntion based on detailed statistical reports\
+    \ annotated with biomedical\\nknowledge, generating clinically relevant results. In the next several\\nsections, we describe\
+    \ individual modules and the knowledge graph\\nconstruction process.\\nThe analytics core as an open proteomics analysis\
+    \ framework.\\nThe first step in downstream analysis of proteomics data requires a\\ncomprehensive and versatile collection\
+    \ of statistical, machine learn-\\ning and visualization methods. MSstats and Perseus have advanced\\nproteomics by providing\
+    \ multi-purpose statistical and bioinfor-\\nmatics tools for the analysis of quantitative MS-based proteomics\\ndata7,8.\
+    \ Taking these and other efforts as a reference, we developed\\nthe analytics core of CKG that encompasses the desired\
+    \ functional-\\nity in a transparent and efficient manner. We chose Python and its\\nassociated scientific stack because\
+    \ this allows us to adopt well-tested\\nand up-to-date algorithms while avoiding reimplementing already\\nexisting methods.\
+    \ The functionality implemented in the analytics\\ncore centers on statistical and visual data representation and covers\\\
+    nall main computational areas, such as expression, interaction and\\npost-translational, modification-based proteomics\
+    \ (Fig. 1b).\\nWe designed the analytics core to comprise the main steps in\\na data science pipeline: data preparation\
+    \ (filtering, normalization,\\nimputation and data formating), data exploration (summary sta-\\ntistics, ranking and distributions),\
+    \ data analysis (dimensionality\\nreduction, hypothesis testing and correlations) and visualization.\\nThe analytics core\
+    \ goes beyond previous efforts by integrating\\nthe analysis of other data types in addition to proteomics (that is,\\\
+    nclinical data, multi-omics, biological context and text mining).\\nFurthermore, to complement the extensive Python portfolio,\
+    \ we\\nincorporated functions optimized in the R language (that is, SAMR\\nand WGCNA21\\u201323) (Supplementary Table\
+    \ 2).\\nWe included a visualization module (viz) that covers both\\nbasic plots (for example, bar plot or scatter plot)\
+    \ and more com-\\nplex ones (for example, network, Sankey or polar plots) using the\\ngraphing library Plot.ly (https://plot.ly/),\
+    \ a graphing library com-\\npatible with Python and R. This way, visualizations created by the\\nCKG framework can be\
+    \ easily exported and used from other lan-\\nguages (Methods).\\nOwing to its modular design, the analytics core can be\
+    \ used\\nwithin the CKG framework but also independently by importing\\nit from Python. Similarly, the analysis and visualization\
+    \ function-\\nalities are not limited to proteomics data but can handle any type\\nof data in matrix format. The open\
+    \ design promotes easy integra-\\ntion of new analysis methods and visualizations. Our integration\\nof Jupyter notebooks,\
+    \ an open-source tool that allows mixing of\\ntext, graphics, code and data in a single document24\\u201327, enables\\\
+    nstandard or bespoke analysis pipelines, including addition of\\nexisting or user-implemented functionality from the Python\
+    \ or R\\necosystems (Methods).\\nBuilding and populating a graph database. To achieve seamless\\nannotation and integration\
+    \ of proteomics data with other omics\\nexperiments and/or literature information, we constructed a graph\\ndatabase that\
+    \ naturally connects large and heterogeneous data\\n(Supplementary Fig. 1a). We chose the open-source Neo4J database\\\
+    nplatform as our current backend because of its performance, indus-\\ntry acceptance and associated Cypher query language\
+    \ (https://neo4j.\\ncom/) (Supplementary Fig. 1b). To build the knowledge graph, we\\nfirst wrote a library of parsers\
+    \ (graphdb_builder) with associated\\nconfigurations for each ontology, database and type of experiment.\\nThese parsers\
+    \ download the data from online resources, extract\\ninformation and generate entities (nodes) and relationships, both\
+    \ of\\nwhich can have attributes, such as name or description, in protein\\nnodes. The parsers use paired configuration\
+    \ files that specify how\\nontologies, databases or experiments need to be interpreted. This\\ndesign allows unrestricted\
+    \ integration of new resources or process-\\ning tools. Their output formats tend to change from time to time, but\\nthis\
+    \ only affects one parser/configuration that can be easily adapted.\\nFor example, the current CKG\\u2019s proteomics\
+    \ parser accepts output\\ndata from data-dependent or data-independent acquisition modes\\nfrom commonly used programs,\
+    \ such as MaxQuant, Spectronaut,\\nFragPipe or DIA-NN28\\u201331, or the community standard format mzTab\\nfor MS-based\
+    \ proteomics and metabolomics data32. The CKG can\\nbe easily extended to accept additional data outputs as new process-\\\
+    ning programs emerge.\\nOnce the ontology, database and experiment files are stan-\\ndardized, formatted and imported,\
+    \ the graphdb_builder module\\nloads them into the graph database with a set of Cypher queries\\nthat create the corresponding\
+    \ nodes and relationships (Methods).\\nOur data model connects 36 different node labels with 47 differ-\\nent relationship\
+    \ types (Fig. 1c). To make experimental proteomics\\ndata33, we designed a data model capable of supporting storage\\\
+    nof standardized metadata (such as studied disease and interven-\\ntions) around each research project, defining unique\
+    \ identifiers for\\nenrolled individuals, collected biological samples and analyzed\\nsamples (Supplementary Fig. 2a).\
+    \ It enables predefined queries\\nabout experimentally determined protein hits, regarding their\\nassociation to the diseases\
+    \ studied (ontological associations), drugs\\nor annotated Gene Ontology terms and pathways. These types of\\nqueries\
+    \ provide insights into altered functions, suggesting drugs for\\nregulated proteins and connections to metabolites to\
+    \ reveal possible\\nconfounding factors.\\nCKG includes millions of nodes and relationships. The CKG\\ndatabase is continuosly\
+    \ growing and currently collects annotations\\nfrom 26 biomedical databases using ten ontologies and organizes\\nthis\
+    \ information into almost 20 million nodes connected by 220\\nmillion relationships (Supplementary Fig. 1a). More than\
+    \ 50 mil-\\nlion of these relationships involve \\u2018Publication\\u2019 nodes linking sci-\\nentific publications about\
+    \ studies in the human system, coded\\nwith PubMed identifiers, to proteins, drugs, diseases, functional\\nregions and\
+    \ tissues (Supplementary Fig. 3a). They were derived\\nFig. 1 | The clinical knowledge graph architecture. a, The CKG\
+    \ architecture is implemented in Python and contains several independent modules\\nresponsible for connecting to the graph\
+    \ database (graphdb_connector), building the graph (graphdb_builder), analyzing and visualizing experimental\\ndata (analytics_core),\
+    \ displaying and launching multiple applications (report_manager); it also contains a repository of Jupyter notebooks\
+    \ with analysis\\nexamples (notebooks). The code is accessible at https://github.com/MannLabs/CKG or as a complete Docker\
+    \ container. b, The CKG analytics core\\nimplements multiple up-to-date data science algorithms for statistical analysis\
+    \ and visualization of proteomics data: data preparation, exploration, analysis\\nand visualization. This library can\
+    \ also be used directly within Jupyter notebooks, independently of the other CKG modules, and to analyze other omics\\\
+    ntypes. c, The CKG graph database data model was designed to integrate multi-level clinical proteomics experiments and\
+    \ to annotate them with biomedical\\ndata. It defines different nodes (for example, Protein, Metabolite and Disease) and\
+    \ the types of relationship connecting them (for example, HAS_PARENT\\nand HAS_QUANTIFIED_PROTEIN). FC, fold change; Src,\
+    \ source code.\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n693\\\
+    n\\nArticles\\nNaTUre BIoTeCHnoloGy\\na\\nb\\nc\"\n  },\n  {\n    \"name\": \"MENTIONED_IN_PUBLICATION\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_DISEASE\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"STUDIES_DISEASE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SPLITTED_INTO\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"HAS_QUANTIFIED_PEPTIDE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_QUANTIFIED_PROTEIN\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_QUANTIFIED_MODIFIED_PROTEIN\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"COMPILED_INTERACTS_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"ANNOTATED_IN_PATHWAY\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH_INTEGRATED\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    IS_SUBSTRATE_OF\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MENTIONED_IN_PUBLICATION\",\n    \"text\": \"\"\n \
+    \ },\n  {\n    \"name\": \"ACTS_ON\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"HAS_STRUCTURE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TRANSLATED_INTO\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TRANSLATED_INTO\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"CURATED_AFFECTS_INTERACTION_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"FOUND_IN_PROTEIN\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IS_SUBUNIT_OF\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"BELONGS_TO_PROTEIN\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"FROM_TISSUE\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"BELONGS_TO_SUBJECT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_CLINICAL_STATE\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MENTIONED_IN_PUBLICATION\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"VARIANT_FOUND_IN_CHROMOSOME\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"VARIANT_FOUND_IN_CHROMOSOME\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"LOCATED_IN\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"MENTIONED_IN_PUBLICATION\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PUBLISHED_IN\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"MENTIONED_IN_PUBLICATION\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"TRANSCRIBED_INTO\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"TARGETS_CLINICALLY_RELEVANT_VARIANT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"VARIANT_IS_CLINICALLY_RELEVANT\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"VARIANT_FOUND_IN_GENE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IS_A_KNOWN_VARIANT\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_MODIFICATION\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    HAS_PARENT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_MODIFIED_SITE\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"VARIANT_FOUND_IN_GENE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CURATED_TARGETS\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    STUDIES_TISSUE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ANNOTATED_IN_PATHWAY\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"ANNOTATED_IN_PATHWAY\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IS_RESPONSIBLE\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"HAS_ENROLLED\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_CONTENT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ASSOCIATED_WITH\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_SIDE_EFFECT\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HAS_PARENT\",\n    \"text\": \"Disease\\nAnalytical_sample\\nProtein\\\
+    nComplex\\nBiological_sample\\nFunctional_region\\nChromosome\\nBiological_process\\nPublication\\nMolecular_function\\\
+    nTranscript\\nClinically_relevant_variant\\nSomatic_mutation\\nModification\\nModified_protein\\nKnown_variant\\nPeptide\\\
+    nGene\\nExperiment\\nGWAS_study\\nTissue\\nPathway\\nProtein_structure\\nUser\\nProject\\nSubject\\nClinical_variable\\\
+    nFood\\nMetabolite\\nCellular_component\\nDrug\\nPhenotype\\nAutomated analysis pipeline\\nData visualization\\nCount\\\
+    nSample\\nlog2 intensity\\nRank\\nt-SNE\\u2223UMAP\\u2223PC 2\\nt-SNE\\u2223UMAP\\u2223PC 1\\n\\u2013log(P-value)\\nlogFC\\\
+    nlog2 intensity\\n%CV\\nModule\\nVariable\\nVariable\\nVariable\\nCo-expression modules\\nProject overlap\\nImputation\\\
+    nData preparation\\nFiltering\\nRanking\\nDimentionality\\nreduction\\nHypothesis testing\\nData structure\\nDistributions\\\
+    nData exploration\\nData analysis\\nAnalytics core\\nNotebooks\\nCo-expression\\nmodules\\nData integration\\nCorrelations\\\
+    nSummary statistics\\nAnalytics\\nviz\\nArchive\\nDatabases\\nDownloads\\nExperiments\\nImports\\nOntologies\\nData\\\
+    nGraph database\\nAnalytics_core\\nNotebooks\\nReport_manager\\nGraphdb_builder\\nGraphdb_connector\\nDocs\\nSrc\\nDevelopment\\\
+    nreporting\\nassets\\nApps\\nassets\\nconfig\\nqueries\\nBuilder\\ndatabases\\nexperiments\\nontologies\\nNature Biotechnology\
+    \ | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n694\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\\
+    nfrom named-entity recognition on almost 7 million abstracts and\\nfull-text articles (8.5% of overall publications based\
+    \ on full text but\\n20.4% from the past 10 years)34,35, thus encapsulating aspects of the\\naccumulated biomedical knowledge\
+    \ in peer-reviewed publications.\\nWe found the graph structure to be easily scalable, facilitat-\\ning the integration\
+    \ of new ontologies, databases and experiments.\\nFurthermore, this inherent flexibility allows nodes and relation-\\\
+    nships originally designed to provide biomedical context primarily for\\nlarge-scale proteomics data interpretation to\
+    \ be readily remodeled to\\nintegrate other omics datasets. For instance, to integrate metabolo-\\nmics data, we can link\
+    \ metabolite nodes already present in the data-\\nbase to analytical samples. The existing relationships connecting\\\
+    nmetabolites to nodes, such as pathways, proteins, tissue or disease,\\naid interpretation and seamless integration with\
+    \ proteomics results.\\nThe CKG framework provides an infrastructure that facilitates\\nexploiting the existing connections\
+    \ in the graph and the already\\nimplemented and optimized graph algorithms in Neo4j and\\nPython libraries, such as NetworkX36.\
+    \ For example, when a new\\nproject is integrated, the default analysis can identify similar proj-\\nects in the graph,\
+    \ and the results of these comparisons are shown in\\nthe project report. This functionality compares projects based on\\\
+    nthe overlap of identified proteins (Jaccard and overlap similarity)\\nor similar protein profiles (Pearson correlation).\
+    \ In addition, the\\nCKG provides a framework for the application of network analysis\\nand machine learning algorithms.\
+    \ Learning on the graph structure\\nusing graph representation learning37,38 can enhance the prediction\\nof new links,\
+    \ a strategy known as link prediction or graph comple-\\ntion39,40 (Methods).\\nA framework to extract actionable knowledge.\
+    \ A main goal of\\nthe CKG is to combine the power of the analytics module with the\\nmassive prior information integrated\
+    \ into the graph database to\\nbest interpret MS-based proteomics or other omics experiments.\\nHarmonization of these\
+    \ heterogeneous but connected data sources\\nenables standard analysis pipelines that report results automaticaly,\\nreplacing\
+    \ weeks of manual work in a more consistent format. These\\nstandard reports provide an initial evaluation of the quality\
+    \ of the\\ngenerated data, highlight relevant hits and contextualize these hits\\nin relation to different biomedical\
+    \ components in the graph. The\\nreport manager component (report_manager) orchestrates the cre-\\nation and updates experimental\
+    \ projects and the automatic analysis,\\nvisualization and knowledge extraction (Fig. 2).\\nThe report manager was implemented\
+    \ as a collection of dash-\\nboard applications that interface with the database for an overview\\nof the knowledge graph\
+    \ (Home), to create and upload new clini-\\ncal proteomics projects (Project Creation and Data Upload) and\\nto run automated\
+    \ analysis pipelines (ProjectApp). This defines a\\nworkflow from project idea to knowledge-based analysis report\\n(Supplementary\
+    \ Fig. 2b). The Project Creation and Data Upload steps\\ngenerate the nodes and unique identifiers in the CKG for the\
+    \ project,\\nthe enrolled cohort individuals (if applicable), biological samples col-\\nlected and analytical samples\
+    \ analyzed by MS-based proteomics. This\\nalso includes connections to diseases, tissues and clinical interven-\\ntions\
+    \ (Supplementary Fig. 2c), which provide prior knowledge, such\\nas known proteins associated with these diseases and\
+    \ tissues or lit-\\nerature related to them. Once the clinical and/or proteomics data are\\nready and processed, they\
+    \ are integrated into the graph by the \\u2018Data\\nUpload\\u2019 dashboard app (Supplementary Fig. 2d).\\nUploading\
+    \ the data triggers the builder\\u2019s import and load process\\nand generates all the necessary relationships within\
+    \ the new proj-\\nect, including the links to proteins, peptides and protein modifica-\\ntions quantified in the project.\
+    \ The new links are used by the report\\nData\\nKnowledge\\nMinutes\\nAnalytics core\\nReport manager\\nHours\\nClinical\
+    \ samples\\nSample preparation\"\n  },\n  {\n    \"name\": \"LC\\u2013MS/MS\",\n    \"text\": \"Raw data analysis\\nlinical\
+    \ Knowledge Graph\\nDDA\\nDIA\\nGraph database\\nhttp://localhost:5000/\\nHome                  Documentation        \
+    \           About\"\n  },\n  {\n    \"name\": \"DOWNLOAD PROJECT REPORT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"REGENERATE PROJECT REPORT\",\n    \"text\": \"Project title\\nReport notebook\\nIn (1): from report_manager import\
+    \ project\\nIn (2): study_case_project.generate_report()\\nIn (*): queries = query_utils.read_knowledge_queries()\\nKGraph\\\
+    nProject information\\nReport created on: Month day, year (time)\\nAnalysis pipeline\\nSummary statistics\\nNumber of\
+    \ peptides identified per group\\nNumber of proteins identified per group\\nNumber of modified proteins identified per\
+    \ type\\nProtein ranking\\nPrincipal component analysis\\nRegulation\\nDifferential regulation ANOVA\\nLogput\\nMultiomics\\\
+    nProteomics\\nDownload\\nKnowledge graph\\nCo-expression\\nmodules\\nRegulated\\nproteins\\nPublications\\nDiseases\\\
+    nPathways\\nDrugs\\nInformation\\nFig. 2 | Automated statistical reports. The report_manager module includes a collection\
+    \ of dashboard applications that interface with the database and\\ndisplay statistics, create and upload new projects\
+    \ and report results from automated analysis pipelines. These reports include multiple tabs, one for each\\ndata type\
+    \ analyzed; a multiomics tab when multiple data types are analyzed together; and a knowledge graph that summarizes the\
+    \ results obtained in\\nthe previous tabs. This report can be viewed in the browser or accessed through a Jupyter notebook\
+    \ (Methods). LC\\u2013MS/MS, liquid chromatography with\\ntandem mass spectrometry. DDA, data dependent acquisition; DIA,\
+    \ data independent acquisition.\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\\
+    n695\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nmanager module to analyze the different data types relevant for\\nthe project.\
+    \ These analyses are predefined using configuration files\\nthat break down the steps of the complete analysis workflow\
+    \ in a\\nstandardized, flexible and scalable manner. They describe the input\\ndata, the analysis to be performed and\
+    \ the parameters to be used as\\nwell as how the results are visualized. The final report is then the\\nsequence of created\
+    \ visualizations for each data type divided into\\ndifferent tabs in the dashboard (plots and tables).\\nApart from being\
+    \ viewable in the browser, all reports, analy-\\nsis results and visualizations can be downloaded as a single com-\\npressed\
+    \ file containing tables and figures in ready-to-publish\\nformat. Moreover, they are also available in hierarchical data\
+    \ for-\\nmat (HDF5), a standard and scalable file format supported by many\\nprogramming languages, enabling interoperability.\
+    \ This design\\nfacilitates continuous integration of newly developed analyses and\\nvisualizations (Supplementary Fig.\
+    \ 4). Furthermore, configuration\\nfiles can be shared, which fosters transparency and facilitates repli-\\ncability and\
+    \ reproducibility.\\nAutomated CKG analysis for liver disease biomarker discovery.\\nTo show how CKG accelerates and extends\
+    \ both the analysis and\\ninterpretation of the data, we use its default pipeline on a proteomics\\nstudy of nonalcoholic\
+    \ fatty liver disease (NAFLD)41 (Fig. 3).\\nFor the clinical data, the CKG default analysis pipeline automati-\\ncally\
+    \ summarized clinical characteristics of the cohort and high-\\nlighted variables with significant variances between the\
+    \ studied\\ngroups (healthy and normal glucose tolerance (NGT), type 2 dia-\\nbetes (T2D), NGT with NAFLD and T2D with\
+    \ NAFLD and cirrho-\\nsis). This confirmed significant differences in the levels of the liver\\nenzymes alanine aminotransferase,\
+    \ aspartate aminotransferase and\\nalkaline phosphatase measurement or hemoglobin A1c (HbA1c),\\namong others.\\nThe proteomics\
+    \ default analysis started with an overview of the\\nidentified peptides and proteins as well as a detailed summary of\\\
+    ndescriptive statistics of the proteomics data matrix. The CKG con-\\ntinued with a visualization of proteome coverage,\
+    \ dynamic range,\\nprotein coefficients of variation (CVs) among samples and sample\\nquality control based on known tissue\
+    \ quality markers42. These\\nrankings were automatically annotated with curated information\\nmined from the knowledge\
+    \ graph, in this case highlighting mark-\\ners already used in the clinic linked to NAFLD or cirrhosis\\n(Supplementary\
+    \ Fig. 5).\\nThe default data analysis uses principal component analysis to\\nreduce the dimensionality of features for\
+    \ an overview of the data.\\nANOVA with post hoc tests then determines statistically signifi-\\ncant differences across\
+    \ all studied groups and between particular\\npairs of groups (post hoc analysis). Post hoc tests are presented as\\ninteractive\
+    \ volcano plots, with information about upregulated and\\ndownregulated proteins with a predefined significance threshold\\\
+    n(that is, fold change > 2 and false discovery rate (FDR)\\u2009<\\u20090.05) (Fig.\\n3a). The CKG automatically reproduced\
+    \ our previous results show-\\ning dysregulation of proteins involved in immune system regulation\\nand inflammation,\
+    \ such as C7, JCHAIN, PIGR and A2M, a known\\nmarker of liver fibrosis for which CKG reported 14 publications,\\nconfirming\
+    \ this connection. In addition, the CKG highlighted the\\nTTR-RBP complex (TTR and RBP4) as downregulated in patients\\\
+    nwith cirrhosis compared to healthy individuals. This complex is\\ninvolved in retinoid metabolism, whose dysregulation\
+    \ is linked to\\nhepatic diseases and alteration of the extracellular matrix deposi-\\ntion, leading to fibrosis43. Furthermore,\
+    \ the report revealed litera-\\nture and database associations among the regulatory role of CD5L\\nand cirrhosis, hepatocellular\
+    \ carcinoma and other liver diseases44.\\nThese metabolically interesting findings were missed in our man-\\nual analyses\
+    \ but were prioritized by the CKG\\u2019s automated pipeline,\\nwhich extracted significantly regulated proteins in the\
+    \ different\\nconditions. To visualize correlated protein changes as a network,\\nthe default analysis connected proteins\
+    \ with significant associations\\n(Pearson correlation coefficient > 0.5 and FDR\\u2009<\\u20090.05). Using the\\nLouvain\
+    \ algorithm to detect clusters of highly correlating proteins45\\nrevealed potentially clinically relevant connections,\
+    \ such as an asso-\\nciation of a cluster composed by PIGR, and DPP4 and TGFBI with\\nliver fibrosis. The background knowledge\
+    \ of millions of protein\\ninteractions enabled the CKG to identify six main clusters grouping\\nextracellular matrix\
+    \ remodelers, complementary components and\\ninflammation markers, which connected two of the candidate bio-\\nmarkers\
+    \ (PIGR and JCHAIN).\\nAssociating the differentially regulated proteins to drugs, dis-\\neases and publications and to\
+    \ enriched biological processes and\\npathways identified additional dysregulated pathways in NAFLD\\nthat were overlooked\
+    \ in our previous analysis. These included \\u2018reg-\\nulation of insulin-like growth factor (IGF-1) transport\\u2019\
+    \ and \\u2018uptake\\nby insulin-like growth factor binding proteins (IGFBPs)\\u2019, which\\nwere linked to changes in\
+    \ IGFBP3 acid-labile subunit (IGFALS).\\nNotably, such associations have recently been investigated for\\ncausal relationships\
+    \ and therapeutic potential in NAFLD46,47.\\nThe CKG also reported protein\\u2013disease associations, indicating\\npossible\
+    \ shared disease mechanisms with liver cancer, hepatitis and\\npancreas disease.\\nThe presence of various data types\
+    \ in the project triggered the\\ndefault multi-omics analysis pipeline. In a global clinical proteomics\\ncorrelation\
+    \ analysis48, clinical liver enzyme values clustered with\\nHbA1c, fasting glucose levels and several candidate biomarkers\\\
+    nof liver fibrosis and cirrhosis (such as PIGR, TGFBI, ANPEP and\\nC7) (Fig. 3b). The CKG also used WGCNA to obtain modules\
+    \ of\\nco-expressed proteins instead of individual proteins that are related\\nto clinical variables (Fig. 3c).\\nFinally,\
+    \ the automated analysis pipeline summarized all clinical,\\nproteomics and multi-omics analyses as a graph with all the\
+    \ regu-\\nlated proteins and the relationships extracted from the knowledge\\ngraph (such as diseases, drugs, interactions\
+    \ and pathways) using\\nbetweenness centrality to prioritize and reduce the number of nodes\\npresented (Fig. 3d).\\nThe\
+    \ entire default pipeline took less than 5 min but captured\\nbasically all insights gleaned from our previous manual\
+    \ analysis,\\nwhich had taken weeks. The interpretation of the differentially\\nabundant proteins had comprised time-consuming\
+    \ literature and\\ndatabase searches for known/published protein\\u2013disease associa-\\ntions and knowledge gathering41,\
+    \ but the CKG revealed them to be\\nto be incomplete.\\nCKG enables multi-proteomics data integration for cancer bio-\\\
+    nmarker discovery and validation. To explore the multi-analysis\\ncapabilities of the CKG, we reanalyzed a recent study\
+    \ in which we\\nidentified cancer/testis antigen family 45 (CT45) as a biomarker for\\nlong-term survival in ovarian serus\
+    \ adenocarcinoma and described\\nits mode of action3. Multi-dimensional proteomics, phosphopro-\\nteomics and interactomics\
+    \ were modeled as different connected\\nprojects in the CKG and analyzed independently using the default\\nanalysis adapted\
+    \ to each data type (proteomics, interactomics and\\nphosphoproteomics). The CKG reproduced CT45 as significantly\\nhigher\
+    \ expressed in patients with long-term remission after chemo-\\ntherapy (Fig. 4a,b). The CKG also confirmed that there\
+    \ was virtually\\nno previous knowledge about cellular roles and functions of CT45\\nbut produced 24 potential interactors\
+    \ of CT45, four of them belong-\\ning to the PP4 complex and contributed by a human interaction\\nmap49 (Fig. 4c).\\nThe\
+    \ PP4 complex has been linked to DNA damage repair50, which,\\ntogether with the fact that patients had undergone chemotherapy\\\
+    ninducing DNA interstrand crosslinks, prompted us to investigate\\nthe phosphoproteome in cell line models3. The CKG\\\
+    u2019s default analyis\\nof the signaling response of CT45-expressing cells versus controls\\nindeed revealed activation\
+    \ of the relevant DNA damage pathways.\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\\
+    n696\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\na\\nb\\nc\\nd\\nCo-expression\\nmodules\\nProteins\\nNon-alcoholic\\nfatty\
+    \ liver\\ndisease\\nRegulated\\nproteins\\nDiseases\\nPathways\\nDrugs\\nClinical\\nvariables\\nPublications\\nPrimary\
+    \ biliary\\ncirrhosis\\nAlcoholic liver\\ncirrhosis\\nLiver cancer\\nPmid: 21483580\\nPmid: 17109516\\nPmid: 24066001\\\
+    nPmid: 25423034\\nAlanine amino-\\ntransferse\\nmeasurement\\nRegulation of Igf\\ntransport and\\nuptake by Igfbps\\nRegulation\
+    \ of\\ncomplement\\ncascade\\nVitamine A\\nCalcium\\nBalsalazide\\nMagnesium\\nProject\\nAssociated nodes\\n\\u22123\\\
+    n\\u22122\\n\\u2212\\n3\\n0\\n1\\n2\\n3\\n4\\n5\\n6\\nlog2FC\\n\\u2013log10(P value)\"\n  },\n  {\n    \"name\": \"C7~P10643\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"JCHAIN~P01591\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PIGR~P01833\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TTR~P02766\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IGFALS~P35858\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IGFBP3~P17936\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RBP4~P02753\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"A2M~P01023\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TGFBI~Q15582\"\
+    ,\n    \"text\": \"1\\n0\\n1\\n2\"\n  },\n  {\n    \"name\": \"ALDOB~P05062\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"ATRN~O75882\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PTPRG~P23470\",\n    \"text\": \"Triglycerides\
+    \ measurement\\nAspartate aminotransferase\\nmeasurement\"\n  },\n  {\n    \"name\": \"EXT2~Q93063\",\n    \"text\": \"\
+    None~B2R773\\nVLDL cholesterol measurement\\nHigh-density\\nlipoprotein\\nmeassurement\\nDKFZp686G11190~Q6MZQ6\"\n  },\n\
+    \  {\n    \"name\": \"PLTP~P55058\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HEL-214~V9HW68\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"V3-4~Q5NV62\",\n    \"text\": \"Body height\\nBilirubin level\"\n  },\n  {\n    \"\
+    name\": \"CAT~P04040\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HBB~P68871\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"FGA~P02671\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HBA1~P69905\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"HBD~P02042\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CA1~P00915\",\n    \"text\": \"Alanine\
+    \ aminotransferase\\nmeasurement\"\n  },\n  {\n    \"name\": \"SERPINF1~P36955\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"PRDX2~P32119\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SERPINA4~P29622\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"FGB~P02675\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ECM1~Q16610\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"TGFBI~Q15582\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PIGR~P01833\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"FGG~P02679\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PLA2G7~A0A024RD39\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CP~P00450\",\n    \"text\": \"Gamma glutamyl\\ntransferase\\nmeasurement\"\
+    \n  },\n  {\n    \"name\": \"APOA1~P02647\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ANPEP~P15144\",\n    \"text\"\
+    : \"Alanine aminotransferase\\nmeasurement\\nAlbumin measurement\\nAge\\nAlkaline phosphatase\\nmeasurement\\nAspartate\
+    \ aminotransferase\\nmeasurement\\nBilirubin level\\nBody height\\nBody mass index\\nDiastole\\nFasting blood glucose\
+    \ level\\nGamma glutamyl transferase\\nmeasurement\\nHemoglobin A1c measurement\\nHigh-density lipoprotein\\nmeasurement\\\
+    nLow-density lipoprotein\\ncholesterol measurement\\nSystole\\nTriglycerides measurement\\nVLDL cholesterol measurement\\\
+    nWaist circumference\\nWeight\\nPlatelets/liter\\nME turquoise\\nME blue\\n\\u20130.2\\n0\\n0.2\\n\\u20130.32 (2 \\u00d7\
+    \ 10\\u20132)\\n\\u20130.15 (3 \\u00d7 10\\u20131)\\n\\u20130.065 (7 \\u00d7 10\\u20131)\\n\\u20130.17 (2 \\u00d7 10\\\
+    u20131)\\n\\u20130.19 (2 \\u00d7 10\\u20131)\\n\\u20130.17 (2 \\u00d7 10\\u20131)\\n\\u20130.11 (5 \\u00d7 10\\u20131)\\\
+    n\\u20130.13 (4 \\u00d7 10\\u20131)\\n\\u20130.13 (4 \\u00d7 10\\u20131)\\n0.028 (9 \\u00d7 10\\u20131)\\n\\u20130.1 (5\
+    \ \\u00d7 10\\u20131)\\n\\u20130.39 (6 \\u00d7 10\\u20133)\\n\\u20130.11 (5 \\u00d7 10\\u20131)\\n\\u20130.082 (6 \\u00d7\
+    \ 10\\u20131)\\n0.14 (3 \\u00d7 10\\u20131)\\n0.17 (3 \\u00d7 10\\u20131)\\n0.25 (8 \\u00d7 10\\u20132)\\n\\u20130.25\
+    \ (9 \\u00d7 10\\u20132)\\n0.014 (9 \\u00d7 10\\u20131)\\n0.064 (7 \\u00d7 10\\u20131)\\n\\u20130.1 (5 \\u00d7 10\\u20131)\\\
+    n\\u20130.023 (9 \\u00d7 10\\u20131)\\n\\u20130.002 (1 \\u00d7 100)\\n\\u20130.11 (4 \\u00d7 10\\u20131)\\n\\u20130.08\
+    \ (6 \\u00d7 10\\u20131)\\n\\u20130.21 (1 \\u00d7 10\\u20131)\\n\\u20130.12 (4 \\u00d7 10\\u20131)\\n\\u20130.13 (4 \\\
+    u00d7 10\\u20131)\\n\\u20130.13 (4 \\u00d7 10\\u20131)\\n\\u20130.097 (5 \\u00d7 10\\u20131)\\n\\u20130.22 (1 \\u00d7\
+    \ 10\\u20131)\\n\\u20130.39 (7 \\u00d7 10\\u20133)\\n\\u20130.18 (2 \\u00d7 10\\u20131)\\n0.27 (6 \\u00d7 10\\u20132)\\\
+    n0.2 (2 \\u00d7 10\\u20131)\\n\\u20130.043 (8 \\u00d7 10\\u20131)\\n\\u20130.074 (6 \\u00d7 10\\u20131)\\n0.03 (8 \\u00d7\
+    \ 10\\u20131)\\n0.0072 (1 \\u00d7 100)\\n\\u20130.4 (5 \\u00d7 10\\u20133)\\nFig. 3 | Default analysis of the nonalcoholic\
+    \ fatty liver disease study. The CKG\\u2019s automated analysis pipeline reproduced previous results (Niu et al.41).\\\
+    nVisualizations were generated automatically by the report manager and downloaded from the dashboard app. a, Differential\
+    \ regulation. The volcano plot is\\npart of the analysis performed on the proteomics data (Proteomics tab) and shows the\
+    \ dysregulation of proteins involved in immune system regulation and\\ninflammation (for example, C7, JCHAIN, PIGR and\
+    \ A2M) (two-sided t-test comparison of cirrhosis versus healthy\\u2014BH FDR\\u2009<\\u20090.05) (upregulated: orange/\\\
+    nred (fold change (FC)\\u2009>\\u20092); downregulated: light blue/blue (FC\\u2009>\\u20092)). b, Global clinical proteomics\
+    \ correlation analysis. The network finds correlations\\nbetween proteins and quantitative clinical variables (Spearman\
+    \ correlation) and shows that clinical liver enzyme values cluster together with HbA1c, PIGR,\\nTGFBI, ANPEP, C7 and other\
+    \ candidate biomarkers of liver fibrosis and cirrhosis (nodes colored by cluster\\u2014Louvain clustering). c, WGCNA.\
+    \ This analysis\\ngenerates a heat map showing the association of co-expression modules with clinical variables (correlation\
+    \ and P value). This plot shows a higher positive\\ncorrelation between the co-expression blue module and clinically measured\
+    \ liver enzyme levels in the plasma. d, Knowledge summary. This Sankey plot\\nshows a summary of all the results obtained\
+    \ connecting co-expression modules to proteins, clinical variables, related diseases and pathways, drugs and\\npublications.\
+    \ Betweenness centrality prioritizes the nodes to be visualized among all the associations found in the knowledge graph\
+    \ (top 15 central nodes for\\neach node type). VLDL, very-low-density lipoprotein. ME, module eigengenes.\\nNature Biotechnology\
+    \ | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n697\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\\
+    nThe CKG pinpointed several known DNA damage kinases (that is,\\nATM/ATR) and their correponding regulated substrates\
+    \ (SMC1A_\\nS966/S957, NBN_S615 and PBRM1_S948), providing deeper insights\\ninto the mechanisms of action of carboplatin\
+    \ and its negative regula-\\ntion of proliferation through DNA damage repair. Additionally, the\\nCKG exposed several\
+    \ other relevant kinases and associations that\\nhad eluded manual analysis, such as site-specific activation of MAPK\\\
+    nactivity as well as differences in CDC7 and CDK7 substrate regula-\\ntion (Fig. 4d). Although not used in this example,\
+    \ the CKG includes\\nsimilar capabilities for genomic and transcriptomics data, as well as\\nother omics data types, for\
+    \ further integration.\\nUsing CKG to prioritize treatment options for chemorefractory\\ncases. After standard treatment\
+    \ options have been exhausted in\\nend-stage cancer, molecular profiling might still reveal druggable\\ntargets and opportunities\
+    \ for drug repurposing51,52, and we previ-\\nously used proteomics profiling of cancer tissue to identify alter-\\nnative\
+    \ targeted strategies2,4. To similar ends, CKG currently mines\\nmore than 350,000 connections between proteins and approved\
+    \ or\\ninvestigational drugs targeting them (Supplementary Table 4).\\nIn our previous proteomic study of a chemorefractory\
+    \ meta-\\nstatic case of urachal carcinoma, we proposed lysine\\u2010specific\\nhistone demethylase 1 (LSD1/KDM1A) as\
+    \ a possible druggable\\ntarget2. Here, we extended that study with a broadened default\\nanalysis, supplemented with\
+    \ Jupyter notebooks that implement\\nrepurposing based on prior knowledge in a reusable pipeline that\\ncan be applied\
+    \ to other studies (Fig. 5). Comparing lung tumor to\\nnon-cancerous-appearing tissue revealed hundreds of significantly\\\
+    nTime (d)\\nlog2FC\\n\\u2013log10(P value)\"\n  },\n  {\n    \"name\": \"CT45\",\n    \"text\": \"Sensitive\\nResistant\\\
+    n0.2\\n\\u20134\\n\\u20133\\n\\u20132\\n\\u20131\\n0\\n1\\n2\\n3\\n0\\n1\\n2\\n3\\n4\\n0.4\\n0.6\\n0.8\\n1.0\\nCT45+ (n\
+    \ = 6)\\nCT45\\u2013 (n = 19)\\nP = 8.46 \\u00d7 10\\u20136 (log-rank)\\nResistant (n = 11)\\nP = 0.016 (log-rank)\\nSensitive\
+    \ (n = 14)\\nTime (d)\"\n  },\n  {\n    \"name\": \"NDUFA4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DSTN\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"GSTP1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"EIF5A2\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"PPP4R2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ENO1\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"CT45A3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PPM1G\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"TUBB3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SAMM50\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"MRPS2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CCT3\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"MRPS18B\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PPP4C\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"MRPS23\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MCM7\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"TSR1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RPSA\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"DAP3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SNRNP27\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"CWC22\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PPP4R3B\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"OSBPL8\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PPP4R3A\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"NOLC1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"UBTF\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"KHSRP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RBM42\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"PTCD3\",\n    \"text\": \"VCL\"\n  },\n  {\n    \"name\": \"MFAP1\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"POLRMT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CLK3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"NKAP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SGPL1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    RTN4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TRIM26\",\n    \"text\": \"PP4 complex\"\n  },\n  {\n    \"name\"\
+    : \"AKT1\",\n    \"text\": \"ATM\\nATR\"\n  },\n  {\n    \"name\": \"AURKB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"CAMK1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CAMK2A\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    CDC7\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDK1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDK2\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDK5\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CDK7\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"CSNK2A1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DYRK1A\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"GSK3B\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LIMK1\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"LIMK2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MAPK1\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"MAPK10\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MAPK13\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"MAPK14\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MAPK3\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"MAPK8\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MAPK9\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"MASTL\",\n    \"text\": \"MOS\"\n  },\n  {\n    \"name\": \"MTOR\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"NEK2 PLK1 PRKAA1 PRKAA2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PRKACA\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"PRKCA\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PRKD1\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"PRKDC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROCK1\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"TESK2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"UHMK1\",\n    \"text\": \"\
+    \\u22121.0 \\u22120.5\\n1.0\\n0.5\\n0\\nCarboplatin\\nCarboplatin + CT45\\nControl\\nControl + CT45\\na\\nb\\nc\\nd\\\
+    n500\\n1,000\\n1,500\\n2,000\\n2,500\\n3,000\\n500\\n1,000\\n1,500\\n2,000\\n2,500\\n3,000\\n0.2\\n0.4\\n0.6\\n0.8\\n1.0\\\
+    n0\\n0\\nFig. 4 | CKG analysis of multi-level clinical proteomics. a, The CKG highlights CT45 as the only protein significantly\
+    \ regulated when comparing ovarian tumor\\ntissue from chemo-resistant and chemo-sensitive patients (n\\u2009=\\u200925;\
+    \ SAMR s0\\u2009=\\u20092; BH FDR\\u2009<\\u20090.05) (data from Coscia et al.3). b, The CKG\\u2019s analysis pipeline\\\
+    nestimates the survival function for the clinical groups sensitive and resistant (two-sided log-rank test) with corresponding\
+    \ high (top 25%) and low (remaining\\n75%) CT45 expression and confirms the significantly longer disease-free survival\
+    \ of the high-CT45-expression group. c, Interaction proteomics revealed\\nsubunits of the PP4 phosphatase complex as direct\
+    \ interactors of CT45, shown by the CKG as clusters in the PPI network, confirming known interactors and\\nhighlighting\
+    \ potential novel ones (nodes colored by cluster). d, Phosphoproteomic analysis in the CKG identified significantly regulated\
+    \ sites and linked them to\\nupstream kinase regulators. Among these kinase regulators, CDK7, CDC7, ATR and ATM are highly\
+    \ affected by the action of carboplatin. FC, fold change.\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 |\
+    \ www.nature.com/naturebiotechnology\\n698\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nregulated proteins; thus, a strategy\
+    \ for knowledge-derived pri-\\noritization, such as text mining and disease and drug associations,\\nbecame necessary51,53,54.\
+    \ The CKG mined the graph to identify\\ndrug\\u2013target\\u2013disease triplets co-mentioned in the literature (3.3\\\
+    nmillion publications mentioning triplets); to enumerate side effects\\nassociated with drugs (72,000 associations); to\
+    \ find similar drugs\\nbased on side effects, indications and targets; and to connect drugs\\nwith functional pathways.\\\
+    nAmong 328 differentially regulated proteins, 188 were upreg-\\nulated (paired t-test; Supplementary Table 2), and 69\
+    \ had a\\nknown association to lung cancer. The CKG not only automati-\\ncally connected LSD1/KDM1A to tranylcypromine,\
+    \ the drug\\napproved by the tumor board for our patient, but also indicated\\ntrans-2-phenylcyclopropylamine, a known\
+    \ potent inhibitor of\\nthe demethylase, as another treatment option55. We identified\\n60 potential drugs targeting 19\
+    \ of the prioritized proteins. After\\nretrieving reported side effects associated with the chemothera-\\npeutic regimens\
+    \ used and the identified inhibitors, the CKG\\nre-ranked the remaining drugs according to dissimilar side effects\\n(Jaccard\
+    \ index). A cutoff of less than 0.2 resulted in six drugs (cho-\\nlic acid, dATP, resveratrol, calcitriol, vorinostat\
+    \ and trichostatin A)\\ntargeting six proteins (HDAC1, THBS1, CDH1, CDH17, PTGES\\nand TXN).\\nAdditionally, the CKG suggested\
+    \ publications that co-mention\\nthese drugs with their protein targets and the disease and affected\\ntissue, which highlighted\
+    \ the combination of vorinostat and tricho-\\nstatin A in more than 30 publications. These drugs inhibit HDAC1,\\na histone\
+    \ deacetylase that induces epigenetic repression linked to\\ntumor progression. Combinations of such inhibitors can inhibit\\\
+    nepigenetic silencing and its malignant effects56\\u201358. Primed by the\\ninvolvement of both HDAC1 and LSD1/KDM1A in\
+    \ histone modi-\\nfications, we extended the analysis to find possible connections\\nbetween these proteins, which revealed\
+    \ that they are subunits of the\\nCoREST complex, which has recently attracted therapeutic interest\\nand for which the\
+    \ CKG retrieved a paper describing the inhibition\\nof both HDAC1 and LSD1 (ref. 59).\\nCase studies exemplifiying the\
+    \ capabilities of CKG in sharable\\nnotebooks. Our reports directory (Supplementary Fig. 6) includes\\nthe sequence of\
+    \ analyses to reproduce the NAFLD and the urachal\\ncarcinoma studies described above as well as reanalysis of four\\\
+    nadditional datasets exemplifying the CKG\\u2019s functionality in differ-\\nent contexts. First, we reanalyzed our proteomics\
+    \ investigation of\\nthe differences between brown and white adipocytes60, prioritizing\\nand annotating significantly\
+    \ regulated proteins known to be asso-\\nciated with metabolic diseases. The resulting knowledge subgraph\\na\\nb\\nGraph\
+    \ database\\nReport manager\\nAnalytics core\\nSample preparation\"\n  },\n  {\n    \"name\": \"LC\\u2013MS/MS\",\n  \
+    \  \"text\": \"Raw data analysis\\nReport notebook\\n(1): Significantly regulated proteins\\n(5): + reduce adverse reactions\\\
+    n(6): + described as treatment for lung\\ncancer in literature\\n(2): + upregulated proteins\\n(3): + associated to lung\
+    \ cancer (DOID: 1324)\\n(4): + targeted by inhibitory drugs\\nPatient with urachal carcinoma\\nwith chemorefractory lung\\\
+    nmetastases\\nDrug combinations mentioned in literature\\nTrichostatin A, vorinostat\\nResveratrol, vorinostat\\nTrichostatin\
+    \ A, resveratrol\\nTrichostatin A, calcitriol\\nCalcitriol, cholic acid\\nCholic acid, resveratrol\\nCalcitriol, resveratrol\\\
+    nBumetanide, cholic acid\\nTrichostatin A, cholic acid\\nResveratrol, dATP\\nCalcitriol, vorinostat\\n0\\n10\\n20\\n30\\\
+    n40\\nDrug\\nDownregulated protein\\nUpregulated protein\\nDisease\\nLung metastasis\\nBiopsy\\nNormal lung tissue\\nClinical\
+    \ sample extraction\\nPatient with cancer\\nFilter proteins to identify candidate drug targets\\nFilter drugs to propose\
+    \ treatment\\nDrugs\\n6\\nPubMed IDs:\\n22121107, 25063076, 21502403, 20009910, 26870271, 19447172, 27549189, 25999677,\\\
+    n28506198, 22543582, 31186678, 27082124, 25880212, 19147762, 24059449, 23897821,\\n26636678, 23868005, 30537988, 19759901,\
+    \ 31146471, 23667527, 22384084, 23474591,\\n23596417, 31151327, 26622566, 29657262, 26272509, 27638876, 31048671, 24646280,\\\
+    n24210501, 24733477, 27069916, 27705912, 25409334, 24568341, 30533020\\nRelationship\\n(7): + drug combinations described\
+    \ in\\nliterature\\nVorinostat\\nTrichostatin A\\n6\\n6\\n(8): Proposed drug candidates\\n2\\nProteins\\n328\\n188\\n69\\\
+    n19\"\n  },\n  {\n    \"name\": \"CDH17\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"THBS1\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"HDAC1\",\n    \"text\": \"Resveratrol\\nCalcitriol\\nTXN\\ndATP\"\n  },\n  {\n    \"name\"\
+    : \"PTGES\",\n    \"text\": \"Vorinostat\\nCholic acid\"\n  },\n  {\n    \"name\": \"CDH1\",\n    \"text\": \"TrichostatinA\\\
+    nLung\\ncancer\\nO\\nH\\nN\\nN\\nH\\nOH\\nO\\nOH\\nO\\nO\\nN\\nH\\nN\\nH3C\\nCH3\\nCH3\\nH3C\\nH\\nFig. 5 | CKG helps\
+    \ to prioritize alternative treatments. a, Re-analysis of Doll et al.2 resulted in more than 300 significantly regulated\
+    \ proteins differentially\\nexpressed in uracal carcinoma, and the analysis was then extended to prioritize candidate\
+    \ drug targets and treatments. b, Simplified representation of the\\nmajor steps included in the extended downstream analysis.\
+    \ The pipeline mined the CKG database to identify upregulated proteins known to be linked to the\\nstudied disease, found\
+    \ inhibitory drugs for these proteins, retrieved reported side effects and ultimately identified possible combinations\
+    \ of the prioritized\\ndrugs based on co-mentioning in scientific literature. A Jupyter notebook with the complete analysis\
+    \ pipeline to prioritize candidate treatments can be\\nfound in notebooks/reporting, with the name Urachal Carcinoma Case\
+    \ Study.ipynb. LC\\u2013MS/MS, liquid chromatography with tandem mass spectrometry.\\nNature Biotechnology | VOL 40 |\
+    \ May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n699\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nhighlights\
+    \ several inflammation processes and connections to amy-\\nloidosis that had previously escaped our attention (Supplementary\\\
+    nFig. 7). Next, the CKG analyzed three studies external to our\\ngroup, starting with a longitudinal COVID-19 Olink dataset\
+    \ where\\nwe reproduced the results comparing COVID-19-positive and\\nCOVID-19-negative61 and also investigated proteomic\
+    \ differences\\nbetween the severity groups within the cohort. This analysis high-\\nlighted upregulation in proteins\
+    \ such as IL-6, IL-17C, CXCL10\\nand CCL7, among others, that generally increased with severity\\nand shows that CKG is\
+    \ not limited to MS-based proteomics data.\\nA medulloblastoma multi-level proteomics dataset reanalyzed a\\ntandem mass\
+    \ tag proteomics dataset and employed similarity net-\\nwork fusion to integrate proteomics, PTMs and RNA sequencing\\\
+    ndata to reveal medulloblastoma subgroups as well as the features\\nthat drive these subgroups (Supplementary Table 5)62.\
+    \ Finally, in\\nour reanalysis of the CPTAC glioblastoma discovery study (https://\\ncptac-data-portal.georgetown.edu/study-summary/S048),\
+    \ we used\\nthe knowledge graph to explore possible drug inhibitors for the list\\nof significantly upregulated proteins\
+    \ found when comparing tumor\\nand normal brain tissue (Supplementary Table 6). This exploratory\\nanalysis connected\
+    \ many of the upregulated proteins in tumors to\\npirfenidone, a drug generally used for idiopathic pulmonary fibrosis\\\
+    nknown to inhibit TGF-\\u03b2 signaling, a pathway de-regulated in malig-\\nnant gliomas, and also to reduce the tumor\
+    \ extracellular matrix63,64.\\nAll these notebooks are part of the CKG\\u2019s code repository and docu-\\nmentation and\
+    \ can be visualized at https://CKG.readthedocs.io/en/\\nlatest/advanced_features/ckg-notebooks.html.\"\n  },\n  {\n  \
+    \  \"name\": \"Discussion\",\n    \"text\": \"The CKG represents prior knowledge, experimental data and\\nde-identified\
+    \ clinical patient information in a large network. It har-\\nmonizes proteomics data with all this information using a\
+    \ graph\\nstructure that naturally provides immediate connections to the\\nidentified proteins. We found that its automated,\
+    \ instantaneous\\nand iterative nature helps in revealing pertinent biological con-\\ntext for better understanding and\
+    \ generation of new hypotheses.\\nFurthermore, the graph structure provides a flexible data model\\nthat is easily extendable\
+    \ to new nodes and relationships. Although\\nthe CKG was particularly designed for answering clinically relevant\\nquestions,\
+    \ it is equally applicable to other organisms and to any bio-\\nlogical study65.\\nThe CKG\\u2019s analytics core has\
+    \ an open modular design fully\\nimplemented in Python, exploiting open-source libraries that are\\nwidely employed and\
+    \ well maintained and that cover a broad data\\nscience ecosystem: statistics, network analysis, machine learning\\nand\
+    \ visualization. Using these libraries ensures the quality, robust-\\nness and efficiency of the underlying algorithms\
+    \ and methods.\\nIt also enables incorporation of new developments in data science,\\nwhich can quickly be adapted to\
+    \ specifically support proteomics\\ndata analysis. Increasing concerns about reproducibility of scien-\\ntific results66,67\
+    \ are also addressed by the CKG. We employ Jupyter\\nnotebooks to generate shareable analysis pipelines that make results\\\
+    nreproducible and replicable and envision widespread adoption of\\nthis framework by the proteomic community and beyond.\\\
+    nTo stimulate the adoption of the CKG, we integrated\\ncommunity-developed standards, such as mzTab and the Sample\\nand\
+    \ Data Relationship Format (SDRF)68, for metadata, as well as\\nmultiple proteomics data formats generated by commercial\
+    \ or\\nopen-source software. Furthermore, the CKG\\u2019s modular design\\nfacilitates changing these formats and the\
+    \ incorporation of new\\nones. This flexibility ensures that the CKG will be able to follow\\nan ever-expanding and active\
+    \ MS-based proteomics community as\\nwell as other omics initiatives.\\nThe different components of the CKG allow individual\
+    \ research\\ngroups to analyze, integrate and build a database of their proteomics\\nand other omics projects. Reports\
+    \ and notebooks can readily be\\nshared to replicate the analyses, thereby contributing to reproduc-\\nible science (Fig.\
+    \ 6a). Beyond this, the open nature and free availabil-\\nity of the CKG could allow the aggregation of data and knowledge\
+    \ in\\nwhat we term a community graph (Fig. 6b). This would ensure that\\nthe community benefits from similar proteomics\
+    \ or omics projects\\nperformed elsewhere. For biomarker discovery, this constitutes an\\nextension of the \\u2018rectangular\
+    \ strategy\\u201969, allowing direct and deep\\nproject comparison and leading to increasingly more robust and\\npowerful\
+    \ analysis and knowledge generation.\\nWe envision that different groups and institutions will have their\\nown local\
+    \ version of the CKG, protecting the sensitive nature of\\nhealthcare data, but in a way that still enables cross-platform\
+    \ analy-\\nses. New approaches, such as differential privacy and federated\\nlearning70,71, would allow researchers to\
+    \ use the CKG to train models\\niteratively across institutions without direct access to the sensitive\\ndata (Fig. 6c).\
+    \ Artificial intelligence is set to play an increasing role\\nin MS-based proteomics and biomarker discovery72, and we\
+    \ look\\nforward to integrating the CKG with these capabilities as well as\\ntaking advantage of novel graph deep learning\
+    \ capabilities.\\nIn conclusion, we describe the CKG, an open, robust framework\\nfor transparent, automated and integrated\
+    \ analysis of proteomics\\nand multi-level omics data, designed to incorporate all the prereq-\\nuisites for reproducible\
+    \ science. The CKG thus directly addresses\\nsome of the major bottlenecks toward personalized medicine and\\nthe rigorous,\
+    \ data-driven, clinical decision-making process. We\\nexpect that others in the biomedical and clinical research com-\\\
+    nmunity will be encouraged to contribute to and further develop\\nthis platform.\\na\\nb\\nc\\nUpload\"\n  },\n  {\n \
+    \   \"name\": \"Results\",\n    \"text\": \"YML\\nExperiment\\nIdea\\nUpload\"\n  },\n  {\n    \"name\": \"Results\",\n\
+    \    \"text\": \"Research\\ngroup A\\nExperiment\\nIdea\\nExchange of configurations\\nfor reproducibility\\nResearch\\\
+    ngroup B\\nData\\nCode\\nConfigurations\\nParsers\\nNotebooks\\nProjects\\nEHR data and\\nmolecular measurements\\nDecision\\\
+    nsupport\\nAction\\nModel\\nUpdate\\nSend\\nUpdate\\nSend\\nUpdate\\nSend\\nExpert panel\\nPatient\\nFig. 6 | Vision of\
+    \ CKG\\u2019s deployment. a, Reports and notebooks in local graphs can readily be shared to replicate analyses, thereby\
+    \ contributing to\\nreproducible science. b, Aggregating data and knowledge of multiple projects from different groups\
+    \ within a community would allow direct and deep project\\ncomparison and lead to increasingly more robust and powerful\
+    \ analysis and knowledge generation. c, To protect the sensitive nature of healthcare data\\nand still allow researchers\
+    \ to train models and learn from the data, the CKG could be implemented as a protected graph using federated learning.\
+    \ EHR,\\nelectronic health record.\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\\
+    n700\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nOnline content\\nAny methods, additional references, Nature Research report-\\\
+    ning summaries, source data, extended data, supplementary infor-\\nmation, acknowledgements, peer review information;\
+    \ details of\"\n  },\n  {\n    \"name\": \"author contributions and competing interests; and statements of\",\n    \"\
+    text\": \"data and code availability are available at https://doi.org/10.1038/\\ns41587-021-01145-6.\\nReceived: 18 November\
+    \ 2020; Accepted: 1 November 2021;\\nPublished online: 31 January 2022\"\n  },\n  {\n    \"name\": \"References\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"Leopold, J. A. & Loscalzo, J. Emerging role of precision medicine in\"\
+    ,\n    \"text\": \"cardiovascular disease. Circ. Res. 122, 1302\\u20131315 (2018).\"\n  },\n  {\n    \"name\": \"Doll,\
+    \ S. et al. Rapid proteomic analysis for solid tumors reveals LSD1 as a\",\n    \"text\": \"drug target in an end-stage\
+    \ cancer patient. Mol. Oncol. 12, 1296\\u20131307 (2018).\\n3.\\t Coscia, F. et al. Multi-level proteomics identifies\
+    \ CT45 as a chemosensitivity\\nmediator and immunotherapy target in ovarian cancer. Cell 175,\\n159\\u2013170 (2018).\"\
+    \n  },\n  {\n    \"name\": \"Doll, S., Gnad, F. & Mann, M. The case for proteomics and phospho\\u2010\",\n    \"text\"\
+    : \"proteomics in personalized cancer medicine. Proteomics Clin. Appl. 13,\\n1800113 (2019).\"\n  },\n  {\n    \"name\"\
+    : \"Lee, J. S. H., Kibbe, W. A. & Grossman, R. L. Data harmonization for a\",\n    \"text\": \"molecularly driven health\
+    \ system. Cell 174, 1045\\u20131048 (2018).\"\n  },\n  {\n    \"name\": \"Aebersold, R. & Mann, M. Mass-spectrometric\
+    \ exploration of proteome\",\n    \"text\": \"structure and function. Nature 537, 347\\u2013355 (2016).\"\n  },\n  {\n\
+    \    \"name\": \"Tyanova, S. et al. The Perseus computational platform for comprehensive\",\n    \"text\": \"analysis\
+    \ of (prote)omics data. Nat. Methods 13, 731\\u2013740 (2016).\\n8.\\t Choi, M. et al. MSstats: an R package for statistical\
+    \ analysis of quantitative\\nmass spectrometry-based proteomic experiments. Bioinformatics 30,\\n2524\\u20132526 (2014).\"\
+    \n  },\n  {\n    \"name\": \"Barab\\u00e1si, A.-L. & Oltvai, Z. N. Network biology: understanding the cell\\u2019s\",\n\
+    \    \"text\": \"functional organization. Nat. Rev. Genet. 5, 101\\u2013113 (2004).\"\n  },\n  {\n    \"name\": \"Barab\\\
+    u00e1si, A. L., Gulbahce, N. & Loscalzo, J. Network medicine: a\",\n    \"text\": \"network-based approach to human disease.\
+    \ Nat. Rev. Genet. 12, 56\\u201368 (2011).\"\n  },\n  {\n    \"name\": \"Strogatz, S. H. Exploring complex networks. Nature\
+    \ 410, 268\\u2013276 (2001)\",\n    \"text\": \"12.\\tMughal, S. et al. Pheno4J: a gene to phenotype graph database. Bioinformatics\\\
+    n33, 3317\\u20133319 (2017).\"\n  },\n  {\n    \"name\": \"Fabregat, A. et al. Reactome graph database: efficient access\
+    \ to complex\",\n    \"text\": \"pathway data. PLoS Comput. Biol. 14, e1005968 (2018).\"\n  },\n  {\n    \"name\": \"\
+    Balaur, I. et al. Recon2Neo4j: applying graph database technologies for\",\n    \"text\": \"managing comprehensive genome-scale\
+    \ networks. Bioinformatics 33,\\n1096\\u20131098 (2017).\"\n  },\n  {\n    \"name\": \"Himmelstein, D. S. et al. Systematic\
+    \ integration of biomedical knowledge\",\n    \"text\": \"prioritizes drugs for repurposing. eLife 6, e26726 (2017).\"\
+    \n  },\n  {\n    \"name\": \"Himmelstein, D. S. & Baranzini, S. E. Heterogeneous network edge\",\n    \"text\": \"prediction:\
+    \ a data integration approach to prioritize disease-associated genes.\\nPLoS Comput. Biol. 11, e1004259 (2015).\"\n  },\n\
+    \  {\n    \"name\": \"Yoon, B.-H., Kim, S.-K. & Kim, S.-Y. Use of graph database for the\",\n    \"text\": \"integration\
+    \ of heterogeneous biological data. Genomics Inform. 15, 19\\u201327\\n(2017).\"\n  },\n  {\n    \"name\": \"Have, C.\
+    \ T., Jensen, L. J. & Wren, J. Are graph databases ready for\",\n    \"text\": \"bioinformatics? Bioinformatics 29, 3107\\\
+    u20133108 (2013).\"\n  },\n  {\n    \"name\": \"Lehmann, J. et al. DBpedia\\u2014a large-scale, multilingual knowledge\
+    \ base\",\n    \"text\": \"extracted from Wikipedia. Semantic Web https://doi.org/10.3233/SW-140134\\n(2015).\\n20.\\\
+    tVirtanen, P. et al. SciPy 1.0: fundamental algorithms for scientific computing\\nin Python. Nat. Methods 17, 261\\u2013272\
+    \ (2020).\\n21.\\tTusher, V. G., Tibshirani, R. & Chu, G. Significance analysis of microarrays\\napplied to the ionizing\
+    \ radiation response. Proc. Natl Acad. Sci. USA 98,\\n5116\\u20135121 (2001).\"\n  },\n  {\n    \"name\": \"Pei, G., Chen,\
+    \ L. & Zhang, W. in Proteomics in Biology, Part A Methods in\",\n    \"text\": \"Enzymology Vol. 585 (ed. A. K. Shukla)\
+    \ 135\\u2013158 (Academic Press, 2017).\"\n  },\n  {\n    \"name\": \"Langfelder, P. & Horvath, S. WGCNA: an R package\
+    \ for weighted correlation\",\n    \"text\": \"network analysis. BMC Bioinform. 9, 559 (2008).\"\n  },\n  {\n    \"name\"\
+    : \"Mendez, K. M., Pritchard, L., Reinke, S. N. & Broadhurst, D. I. Toward\",\n    \"text\": \"collaborative open data\
+    \ science in metabolomics using Jupyter notebooks and\\ncloud computing. Metabolomics 15, 125 (2019).\\n25.\\tPerkel,\
+    \ J. M. Why Jupyter is data scientists\\u2019 computational notebook of choice.\\nNature 563, 145\\u2013146 (2018).\"\n\
+    \  },\n  {\n    \"name\": \"Lamb, J. et al. The Connectivity Map: using gene-expression signatures to\",\n    \"text\"\
+    : \"connect small molecules, genes, and disease. Science 313, 1929\\u20131935 (2006).\"\n  },\n  {\n    \"name\": \"Rule,\
+    \ A. et al. Ten simple rules for writing and sharing computational\",\n    \"text\": \"analyses in Jupyter Notebooks.\
+    \ PLoS Comput. Biol. 15, e1007007 (2019).\"\n  },\n  {\n    \"name\": \"Cox, J. & Mann, M. MaxQuant enables high peptide\
+    \ identification rates,\",\n    \"text\": \"individualized p.p.b.-range mass accuracies and proteome-wide protein\\nquantification.\
+    \ Nat. Biotechnol. 26, 1367\\u20131372 (2008).\"\n  },\n  {\n    \"name\": \"Bruderer, R. et al. Extending the limits\
+    \ of quantitative proteome profiling\",\n    \"text\": \"with data-independent acquisition and application to acetaminophen-\\\
+    ntreated three-dimensional liver microtissues. Mol. Cell. Proteomics 14,\\n1400\\u20131410 (2015).\"\n  },\n  {\n    \"\
+    name\": \"Kong, A. T., Leprevost, F. V., Avtonomov, D. M., Mellacheruvu, D. &\",\n    \"text\": \"Nesvizhskii, A. I. MSFragger:\
+    \ ultrafast and comprehensive peptide\\nidentification in mass spectrometry-based proteomics. Nat. Methods 14,\\n513\\\
+    u2013520 (2017).\"\n  },\n  {\n    \"name\": \"Demichev, V., Messner, C. B., Vernardis, S. I., Lilley, K. S. & Ralser,\
+    \ M\",\n    \"text\": \"DIA-NN: neural networks and interference correction enable deep proteome\\ncoverage in high throughput.\
+    \ Nat. Methods 17, 41\\u201344 (2020).\"\n  },\n  {\n    \"name\": \"Griss, J. et al. The mzTab data exchange format:\
+    \ communicating\",\n    \"text\": \"mass-spectrometry-based proteomics and metabolomics experimental results\\nto a wider\
+    \ audience. Mol. Cell. Proteomics 13, 2765\\u20132775 (2014).\"\n  },\n  {\n    \"name\": \"Wilkinson, M. D. et al. The\
+    \ FAIR Guiding Principles for scientific data\",\n    \"text\": \"management and stewardship. Sci. Data 3, 160018 (2016).\\\
+    n34.\\tPafilis, E. et al. The SPECIES and ORGANISMS resources for fast and accurate\\nidentification of taxonomic names\
+    \ in text. PLoS ONE 8, e65390 (2013).\"\n  },\n  {\n    \"name\": \"Cook, H. V. & Jensen, L. J. in Bioinformatics and\
+    \ Drug Discovery Methods in\",\n    \"text\": \"Molecular Biology Vol. 1939 (eds Larson, R. & Oprea, T.) 73\\u201389 (Humana\\\
+    nPress, 2019).\"\n  },\n  {\n    \"name\": \"Hagberg, A. A., Schult, D. A. & Swart, P. J. Exploring network structure,\"\
+    ,\n    \"text\": \"dynamics, and function using NetworkX. In Proc. 7th Python in Science\\nConference (eds Varoquaux,\
+    \ G. et al.) 11\\u201315 (SCIRP, 2008); http://conference.\\nscipy.org/proceedings/SciPy2008/paper_2\"\n  },\n  {\n  \
+    \  \"name\": \"Chami, I., Abu-El-Haija, S., Perozzi, B., R\\u00e9, C. & Murphy, K. Machine\",\n    \"text\": \"learning\
+    \ on graphs: a model and comprehensive taxonomy. Preprint at\\nhttps://arxiv.org/abs/2005.03675 (2020).\"\n  },\n  {\n\
+    \    \"name\": \"Chen, F., Wang, Y.-C., Wang, B. & Kuo, C.-C. J. Graph representation\",\n    \"text\": \"learning: a\
+    \ survey. APSIPA Transactions on Signal and Information Processing\\n9, e15 https://doi.org/10.1017/ATSIP.2020.13 (2020).\"\
+    \n  },\n  {\n    \"name\": \"Liben-Nowell, D. & Kleinberg, J. The link prediction problem for social\",\n    \"text\"\
+    : \"networks. Cornell University https://www.cs.cornell.edu/home/kleinber/\\nlink-pred.pdf (2004).\"\n  },\n  {\n    \"\
+    name\": \"Nickel, M., Murphy, K., Tresp, V. & Gabrilovich, E. A review of relational\",\n    \"text\": \"machine learning\
+    \ for knowledge graphs. Proc. IEEE 104, 11\\u201333 (2015).\\n41.\\tNiu, L. et al. Plasma proteome profiling discovers\
+    \ novel proteins associated\\nwith non\\u2010alcoholic fatty liver disease. Mol. Syst. Biol. 15, e8793 (2019).\"\n  },\n\
+    \  {\n    \"name\": \"Geyer, P. E. et al. Plasma proteome profiling to detect and avoid sample\\u2010\",\n    \"text\"\
+    : \"related biases in biomarker studies. EMBO Mol. Med. 11, e10427 (2019).\\n43.\\tShirakami, Y., Lee, S. A., Clugston,\
+    \ R. D. & Blaner, W. S. Hepatic metabolism\\nof retinoids and disease associations. Biochim. Biophys. Acta 1821,\\n124\\\
+    u2013136 (2012).\\n44.\\tSarvari, J. et al. Differentially expressed proteins in chronic active hepatitis,\\ncirrhosis,\
+    \ and HCC related to HCV infection in comparison with HBV\\ninfection: a proteomics study. Hepat. Mon. 13, e8351 (2013).\\\
+    n45.\\tBlondel, V. D., Guillaume, J.-L., Lambiotte, R. & Lefebvre, E. Fast unfolding of\\ncommunities in large networks.\
+    \ Preprint at https://arxiv.org/abs/0803.0476\\n(2008).\\n46.\\tAhrens, M. et al. DNA methylation analysis in nonalcoholic\
+    \ fatty liver disease\\nsuggests distinct disease-specific and remodeling signatures after bariatric\\nsurgery. Cell Metab.\
+    \ 18, 296\\u2013302 (2013).\\n47.\\tWittenbecher, C. et al. Insulin-like growth factor binding protein 2 (IGFBP-2)\\nand\
+    \ the risk of developing type 2 diabetes. Diabetes 68, 188\\u2013197 (2019).\\n48.\\tWewer Albrechtsen, N. J. et al. Plasma\
+    \ proteome profiling reveals dynamics of\\ninflammatory and lipid homeostasis markers after Roux-en-Y gastric bypass\\\
+    nsurgery. Cell Syst. 7, 601\\u2013612 (2018).\"\n  },\n  {\n    \"name\": \"Hein, M. Y. et al. A human interactome in\
+    \ three quantitative dimensions\",\n    \"text\": \"organized by stoichiometries and abundances. Cell 163, 712\\u2013723\
+    \ (2015).\"\n  },\n  {\n    \"name\": \"Gingras, A. C. et al. A novel, evolutionarily conserved protein phosphatase\"\
+    ,\n    \"text\": \"complex involved in cisplatin sensitivity. Mol. Cell. Proteomics 4,\\n1725\\u20131740 (2005).\"\n \
+    \ },\n  {\n    \"name\": \"Pushpakom, S. et al. Drug repurposing: progress, challenges and\",\n    \"text\": \"recommendations.\
+    \ Nat. Rev. Drug Discovery 18, 41\\u201358 (2018).\"\n  },\n  {\n    \"name\": \"ICGC/TCGA Pan-Cancer Analysis of Whole\
+    \ Genomes Consortium\",\n    \"text\": \"Pan-cancer analysis of whole genomes. Nature 578, 82\\u201393 (2020).\"\n  },\n\
+    \  {\n    \"name\": \"Nowak-Sliwinska, P., Scapozza, L. & Altaba, A. R. I. Drug repurposing in\",\n    \"text\": \"oncology:\
+    \ compounds, pathways, phenotypes and computational approaches\\nfor colorectal cancer. Biochim. Biophys. Acta 1871, 434\\\
+    u2013454 (2019).\"\n  },\n  {\n    \"name\": \"Corsello, S. M. et al. Discovering the anticancer potential of non-oncology\"\
+    ,\n    \"text\": \"drugs by systematic viability profiling. Nat. Cancer 1, 235\\u2013248 (2020).\"\n  },\n  {\n    \"\
+    name\": \"Mimasu, S. et al. Structurally designed trans-2-phenylcyclopropylamine\",\n    \"text\": \"derivatives potently\
+    \ inhibit histone demethylase LSD1/KDM1. Biochemistry\\n49, 6494\\u20136503 (2010).\"\n  },\n  {\n    \"name\": \"Vashishta,\
+    \ A. & Hetman, M. Inhibitors of histone deacetylases enhance\",\n    \"text\": \"neurotoxicity of DNA damage. Neuromolecular\
+    \ Med. 16, 727\\u2013741 (2014).\"\n  },\n  {\n    \"name\": \"Wang, X. et al. Combined histone deacetylase and cyclooxygenase\
+    \ inhibition\",\n    \"text\": \"achieves enhanced antiangiogenic effects in lung cancer cells. Mol. Carcinog.\\n52, 218\\\
+    u2013228 (2013).\\nNature Biotechnology | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n701\\\
+    n\\nArticles\\nNaTUre BIoTeCHnoloGy\"\n  },\n  {\n    \"name\": \"Rafehi, H. & El-Osta, A. HDAC inhibition in vascular\
+    \ endothelial cells\",\n    \"text\": \"regulates the expression of ncRNAs. Noncoding RNA 2, 4 (2016).\"\n  },\n  {\n\
+    \    \"name\": \"Kalin, J. H. et al. Targeting the CoREST complex with dual histone\",\n    \"text\": \"deacetylase and\
+    \ demethylase inhibitors. Nat. Commun. 9, 53 (2018).\"\n  },\n  {\n    \"name\": \"Deshmukh, A. S. et al. Proteomics-based\
+    \ comparative mapping of the\",\n    \"text\": \"secretomes of human brown and white adipocytes reveals EPDR1 as a novel\\\
+    nbatokine. Cell Metab. 30, 963\\u2013975 (2019).\"\n  },\n  {\n    \"name\": \"Filbin, M. R. et al. Longitudinal proteomic\
+    \ analysis of severe COVID-19\",\n    \"text\": \"reveals survival-associated signatures, tissue-specific cell death,\
+    \ and cell\\u2013cell\\ninteractions. Cell Rep. Med. 2, 100287 (2021).\"\n  },\n  {\n    \"name\": \"Archer, T. C. et\
+    \ al. Proteomics, post-translational modifications, and\",\n    \"text\": \"integrative analyses reveal molecular heterogeneity\
+    \ within medulloblastoma\\nsubgroups. Cancer Cell 34, 396\\u2013410 (2018).\"\n  },\n  {\n    \"name\": \"Han, J., Alvarez-Breckenridge,\
+    \ C. A., Wang, Q.-E. & Yu, J. TGF-\\u03b2 signaling\",\n    \"text\": \"and its targeting for glioma treatment. Am. J.\
+    \ Cancer Res. 5, 945\\u2013955 (2015).\"\n  },\n  {\n    \"name\": \"Henke, E., Nandigama, R. & Erg\\u00fcn, S. Extracellular\
+    \ matrix in the tumor\",\n    \"text\": \"microenvironment and its impact on cancer therapy. Front. Mol. Biosci. 6,\\\
+    n160 (2020).\"\n  },\n  {\n    \"name\": \"M\\u00fcller, J. B. et al. The proteome landscape of the kingdoms of life.\
+    \ Nature\",\n    \"text\": \"582, 592\\u2013596 (2020).\"\n  },\n  {\n    \"name\": \"Baker, M. & Penny, D. Is there a\
+    \ reproducibility crisis? Nature 533,\",\n    \"text\": \"452\\u2013454 (2016).\"\n  },\n  {\n    \"name\": \"Reality\
+    \ check on reproducibility. Nature 533, 437 (2016)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Perez-Riverol, Y.\
+    \ & Spectrometry, E. B. CforM. Toward a sample metadata\",\n    \"text\": \"standard in public proteomics repositories.\
+    \ J. Proteome Res. 19,\\n3906\\u20133909 (2020).\"\n  },\n  {\n    \"name\": \"Geyer, P. E., Holdt, L. M., Teupser, D.\
+    \ & Mann, M. Revisiting biomarker\",\n    \"text\": \"discovery by plasma proteomics. Mol. Syst. Biol. 13, 942 (2017).\"\
+    \n  },\n  {\n    \"name\": \"Bonawitz, K. et al. Towards federated learning at scale: system design\",\n    \"text\":\
+    \ \"Preprint at https://arxiv.org/abs/1902.01046 (2019).\"\n  },\n  {\n    \"name\": \"Brisimi, T. S. et al. Federated\
+    \ learning of predictive models from\",\n    \"text\": \"federated electronic health records. Int. J. Med. Inform. 112,\\\
+    n59\\u201367 (2018).\"\n  },\n  {\n    \"name\": \"Mann, M., Kumar, C., Zeng, W.-F. & Strauss, M. T. Artificial\",\n \
+    \   \"text\": \"intelligence for proteomics and biomarker discovery. Cell Syst. 12,\\n759\\u2013770 (2021).\\nPublisher\\\
+    u2019s note Springer Nature remains neutral with regard to jurisdictional claims in\\npublished maps and institutional\
+    \ affiliations.\\nOpen Access This article is licensed under a Creative Commons\\nAttribution 4.0 International License,\
+    \ which permits use, sharing, adap-\\ntation, distribution and reproduction in any medium or format, as long\\nas you\
+    \ give appropriate credit to the original author(s) and the source, provide a link to\\nthe Creative Commons license,\
+    \ and indicate if changes were made. The images or other\\nthird party material in this article are included in the article\\\
+    u2019s Creative Commons license,\\nunless indicated otherwise in a credit line to the material. If material is not included\
+    \ in\\nthe article\\u2019s Creative Commons license and your intended use is not permitted by statu-\\ntory regulation\
+    \ or exceeds the permitted use, you will need to obtain permission directly\\nfrom the copyright holder. To view a copy\
+    \ of this license, visit http://creativecommons.\\norg/licenses/by/4.0/.\\n\\u00a9 The Author(s) 2022\\nNature Biotechnology\
+    \ | VOL 40 | May 2022 | 692\\u2013702 | www.nature.com/naturebiotechnology\\n702\\n\\nArticles\\nNaTUre BIoTeCHnoloGy\"\
+    \n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"Graph database. Graph databases are NoSQL databases that represent\
+    \ and store\\ndata using graph structures. The graph structure is a collection of nodes and edges\\nthat represent relationships\
+    \ between the nodes and properties. Storage of data in\\nsuch a structure facilitates access to densely connected data\
+    \ by providing graph\\ntraversal linear times. The CKG implements a graph database that contains close to\\n20 million\
+    \ nodes (36 labels) and more than 200 million relationships (47 different\\ntypes). The database is built using Neo4j\
+    \ Community Edition (https://neo4j.com/),\\na scalable native graph database that allows storage, management and analysis\
+    \ of\\ninterconnected data. Neo4j provides a query language specific for graph structures,\\nCypher, and an extensive\
+    \ library of procedures and functions (APOC library and\\nthe Data Science library) that can be used for data integration,\
+    \ data conversion\\nor graph analysis. Furthermore, Neo4j makes the database available via several\\nprotocols (bolt,\
+    \ http or https) and provides a mission control center that interfaces\\nwith the database and helps manage it.\\nData\
+    \ integration. Ontologies. To build the CKG database, we selected the different\\nnode labels (36 labels) and relationship\
+    \ types (47 types) between them to design\\nthe graph data model (Fig. 1c). These nodes and relationships were defined\
+    \ based\\non the type of biological or clinical questions or the problems set out to respond to\\nor solve. For each node\
+    \ label, we defined the identifiers by using commonly used\\nbiomedical ontologies or standard terminologies. Ontologies\
+    \ denote concepts,\\nin this case nodes (for example, diseases), and provide an acyclic graph structure\\nthat describes\
+    \ how these concepts are related. We benefited from this underlying\\nstructure to integrate these concepts and relationships\
+    \ (\\u2018is_a\\u2019 relationships) directly\\ninto the knowledge graph. Likewise, we integrated the terms and relationships\\\
+    nstandardized in terminologies such as SNOMED-CT, which defines clinical terms\\nand their associative relationships.\\\
+    nSome of the nodes in our graph data model could not be described using\\nontologies or existing terminologies, and they\
+    \ needed to be standardized using\\nidentifiers from the selected biomedical databases (for example, UniProt for\\nproteins,\
+    \ HMDB for metabolites and DrugBank for drugs) (Supplementary Table 1).\\nDuring the update of the knowledge graph database\
+    \ (graphdb_builder), the\\nreference ontologies, terminologies and databases are updated first and generate\\ndynamically\
+    \ mapping files that are used to standardize the rest of the data. These\\nmapping files are basically dictionaries built\
+    \ using external references (xref\\nattributes) or synonyms provided in the reference ontologies and databases.\\nThis\
+    \ system automatically standardizes the different data sources and facillitates\\nupdates.\\nDatabases. Once the graph\
+    \ data model and the node label identifiers were defined,\\nwe selected multiple well-known and used biomedical databases\
+    \ (25 databases)\\n(Supplementary Table 1) to feed the CKG. The selection of databases to be\\nintegrated responded to\
+    \ the type of nodes and relationships in the model and\\nwas also based on criteria such as access, usability, stability\
+    \ and acceptance by the\\nresearch community. However, the flexible design of the graph database and the\\nCKG platform\
+    \ allows quick integration of new databases, ontologies, terminologies\\nor even modifications in the original data model\
+    \ (new nodes or relationships) (see\"\n  },\n  {\n    \"name\": \"Methods, \\u2018graphdb_builder\\u2019 section)\",\n\
+    \    \"text\": \"We purposely built in some redundancy by including biomedical databases\\n(for example, DISEASES73 and\
+    \ DisGeNET74) that provide the same type of\\nrelationships, which we used to assess overlap and disagreement of sources\\\
+    n(Supplementary Fig. 3b).\\nExperiments. The CKG database models multiple node types, which, in principle,\\nallows integration\
+    \ of different data types: genomics, transcriptomics, proteomics\\nor metabolomics. However, the focus of the graph is\
+    \ initially the integration of\\nquantitative MS-based proteomics data. This might have influenced the structure\\nof\
+    \ the data model specifically on how experimental projects are defined and stored.\\nSimilarly, the clinical context in\
+    \ which the database was built limits the data to\\nhuman, whereas other species are not covered by the graph yet.\\nProteomics\
+    \ data can be integrated by creating a new project, which requires\\ndefining new nodes in the database: enrolled individuals,\
+    \ biological samples\\ncollected from these individuals and analytical samples extracted from those\\nbiological samples.\
+    \ Analytical samples correspond to the actual sample analyzed\\nin the mass spectrometer. All these nodes will have external\
+    \ identifiers, and they\\nwill be mapped to unique internal identifiers in the knowledge graph. Internal\\nidentifiers\
+    \ will then be used to integrate experimental and clinical data seamlessly.\\nThe relationship between analyzed samples\
+    \ and proteins ((Analytical_sample)-\\n[:HAS_QUANTIFIED]-(protein)) will have the quantification (that is, label-free\\\
+    nquantification (LFQ) intensity) stored as a property/attribute of the relationship\\n(value). Currently, MaxQuant, Spectronaut,\
+    \ FragPipe, DIA-NN output files and\\nmzTab format or tabular files can be automatically loaded into the database using\
+    \ a\\nspecific configuration (YAML file) for each format.\\nSimilarly, clinical data\\u2014clinical variables collected\
+    \ for each individual or\\nbiological sample (in case of longitudinal studies or multi-specimen studies)\\u2014can\\nalso\
+    \ be automatically loaded into the database using SDRF68 or in tabular format.\\nWhen the data are provided in tabular\
+    \ format, all clinical variables need to follow\\nthe SNOMED-CT standard.\\nCKG platform. Software architecture. The CKG\
+    \ platform was designed using a\\nmodular architecture that divides the platform into functional compartments:\\ngraphdb_connector,\
+    \ graphdb_builder, report_manager and analytics_core\\n(Fig. 1a). Each module can be used independently, which provides\
+    \ a flexible\\nenvironment to cover different scenarios and different needs: direct programmatic\\ninteraction with the\
+    \ database, deployment of a local knowledge graph database,\\nvisualization of automatically analyzed data from the database\
+    \ or just data analysis\\nand visualization through Jupyter notebooks.\\nIn combination, all modules provide a full workflow\
+    \ from project ideation\\nand creation to analysis and visualization of results (Supplementary Fig. 2).\\nAdditionally,\
+    \ we included Jupyter notebooks as another layer of functionality,\\nwhich allow further and specific analyses and serve\
+    \ as a playground for continuous\\nimprovement of the analysis and visualization functionality. Furthermore,\\nnotebooks\
+    \ will support replicability, reproducibility and reusability of analysis in\\nthe CKG.\\nAll modules were developed in\
+    \ Python 3.7.9. Some of the analyses are\\nperformed using R packages (for example, SAMR and WGCNA) called from\\nPython\
+    \ using the Rpy2 library. The library version used in the CKG (rpy2\\u2009==\\n3.0.5) is not compatible with Windows,\
+    \ and these analyses are not available in\\ninstallations on this operating system. Alternatively, we created a Dockerfile,\\\
+    nwhich holds all the necessary instructions to generate a complete container with\\nall the requirements. In this setup,\
+    \ Windows users have all analyses available.\\nWhen running the Docker container, four ports will be available: (1) Neo4j\
+    \ HTTP\\nport (7474); (2) Neo4j bolt port (7687); (3) CKG Dash server (8050); and (4)\\nJupyterHub server (8090) (Supplementary\
+    \ Fig. 8). The entry point to the container\\n(docker_entrypoint.sh) defines all the steps needed: start the required\
+    \ services\\n(Neo4j, JupyterHub, redis and celery) and run the report manager dash app. This\\ninstallation is the easiest\
+    \ and can be used to quickly set up a server version of the\\nCKG with all its components (Python, Neo4j and JupyterHub).\
+    \ Admin users can\\nstill customize these services by modifying how the container is built.\\nAll the code can be accessed\
+    \ at https://github.com/MannLabs/CKG, and the\\ndocumentation is available at https://CKG.readthedocs.io.\\ngraphdb_connector.\
+    \ The graphdb_connector provides functionality to connect\\nand query the CKG database. This module is Neo4j dependent.\
+    \ It uses the Python\\nlibrary py2neo, but it is independent from the other functionality in the platform,\\nwhich allows\
+    \ an agnostic interaction with the database and facilitates adaptation\\nand scalability. Likewise, queries to the database\
+    \ in Cypher language across the\\nplatform have been defined as YAML objects with a structure that makes them\\nfindable\
+    \ (name, involved nodes and relationships), understandable (description)\\nand easily replaceable.\\ngraphdb_builder.\
+    \ This functional module can be used to generate the CKG\\ndatabase. It is divided into two steps: importing and loading.\
+    \ The import (importer.\\npy) downloads the ontologies, terminologies and biomedical databases into the\\ndata directory\
+    \ (Supplementary Fig. 6) and formats the data into tabular files (nodes\\nand relationships). The tabular files created\
+    \ by the importer are also stored in the\\ndata directory under the Imports folder and organized into ontologies, databases\\\
+    nand experiments. Furthermore, the import step generates some statistics (HDF)\\nregarding the number of nodes and relationships\
+    \ formatted as well as file sizes\\nfor each ontology, database or experiment. These statistics can be used to track\\\
+    npossible errors in the import process (Data/Imports/Stats).\\nOnce the import process finishes, data can be loaded into\
+    \ the graph database\\nby the loader (loader.py), which runs several Cypher queries defined as YAML\\nobjects (cypher.yml)\
+    \ and loads the tabular files located in the import folder into\\nthe running database. To facilitate this two-step process,\
+    \ we implemented a module\\ncalled builder (builder.py), which can be used to perform either both steps or one\\nor the\
+    \ other. This module also allows importing or loading of specific ontologies,\\ndatabases or experiments. After running\
+    \ the two steps, the running database\\nshould contain all the nodes and relationships harmonized from the different\\\
+    nsources of data.\\nAnalytics core. The analytics core is divided into two main functionalities: analytics\\nand visualization.\
+    \ Both modules are independent of the CKG database and can\\nbe used to analyze and/or visualize data. The analytics functionality\
+    \ uses Python\\nstatistics and Data Science libraries to implement the state-of-the-art analyses of\\nproteomics data\
+    \ (Supplementary Table 2) and incorporates some recent relevant\"\n  },\n  {\n    \"name\": \"methods, such as WGCNA or\
+    \ Similarity Network Fusion analysis. Moreover,\",\n    \"text\": \"to ensure the correct use of these functions, they\
+    \ are designed to identify the\\nexperimental design automatically and, consequently, define the appropriate\\nstatistical\
+    \ analysis to perform. The visualization library (viz) uses Plot.ly, an\\ninteractive graphing library for Python and\
+    \ R, which opens the possibility to save\\nplots in a format compatible with both programming languages (JSON format).\\\
+    nReport manager. The report manager is a tool to interface with the existing projects\\nin the CKG database. This functional\
+    \ module makes use of the analytics core to\\nanalyze the project data and generate interactive graphs and then to create\
+    \ detailed\\nreports with these analyses. These reports can be accessed through dashboard apps\\nimplemented in Plot.ly\
+    \ Dash (https://plot.ly/dash/). The Dash server can be started\\nNature Biotechnology | www.nature.com/naturebiotechnology\\\
+    n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nby running the index module (index.py) and accessed at http://localhost:5000.\\\
+    nThe initial app (Home) redirects to the login page, and, once logged in, it shows\\nthe current data model and statistics\
+    \ about the database, such as the number of\\nnodes and relationships of each type. Furthermore, this app also links to\
+    \ the other\\nexisting pages\\u2014Admin, Project Creation, Data Upload and Imports\\u2014and lists all\\nthe existing\
+    \ projects in the database. The Admin page helps to create new users\\nand update the database by running the importing\
+    \ and loading steps\\n(Supplementary Fig. 9).\\nWhen a link to an existing project is accessed for the first time, the\
+    \ report\\nmanager runs the automated analyses for each data type in the project using the\\ndefault configuration. Reports\
+    \ for each data type are shown in tabs in the Project\\napp, and two extra tabs are also present: the multiomics tab,\
+    \ if there is more than\\none data type (for example, clinical and proteomics data), and the knowledge graph\\ntab, which\
+    \ shows a summarization figure of all the other tabs.\\nNew report pipelines can be defined using configuration files\
+    \ (YAML format)\\ndescribing the arguments to be used in the data processing, as well as the sequence\\nof analyses to\
+    \ be performed. The structure requires the user, for each analysis\\u2019\\nconfiguration, to specify which data to use\
+    \ (name of the dataframe(s)), a list of\\nanalyses and plots to visualize results (functions in the analytics core: analytics\
+    \ and\\nviz, respectively), whether to store the results as dataframes and the arguments\\nneeded for analysis and visualization.\\\
+    nOnce generated, project reports are stored in HDF5 format so that they can be\\nquickly shown when accessed again. Project\
+    \ reports can be regenerated either with\\ndefault configuration or by providing specific configuration files using the\
+    \ \\u2018Change\\nAnalysis\\u2019 Configuration\\u2019 option in the Project app. The saved reports can also be\\neasily\
+    \ accessed programmatically with functionality within the report manager\\n(project.load_project_report()) or using the\
+    \ R library rhdf5 (see \\u2018Notebooks\\u2019\\nsection).\\nReports can be downloaded in a compressed file (zip), which\
+    \ contains one\\nfolder for each generated tab, and, inside, all the dataframes created during the\\nanalyses (tab separated\
+    \ format, tsv), all the plots as vector and png format and all\\nnetworks in Graph Modeling Language compatible with Cytoscape\
+    \ and JSON75,\\nJSON or the nodes and edges tables.\\nNotebooks. We included Jupyter notebooks as another component of\
+    \ the CKG\\nplatform. This component serves three purposes: (1) a playground to test and\\ndevelop new analyses and visualizations;\
+    \ (2) a collection of recipes that explain\\nhow to use CKG\\u2019s Python library; and (3) a repository of reanalyses\
+    \ of already\\npublished case studies that can be shared, reproduced and reused. The structure\\nof the notebook directory\
+    \ (Supplementary Fig. 6) distinguishes these purposes\\ndefining three folders: development, recipes and reports. In the\
+    \ recipes folder, you\\ncan find several Jupyter notebooks showing simple functionality and analyses using\\nCKG\\u2019s\
+    \ library: how to work with reports in R; how to build a project and generate\\nand visualize a report; how to download\
+    \ and analyze data from PRIDE; how to run\\npower analyses; how to perform batch correction; or how to extract data from\
+    \ the\\ngraph database. In the reports directory (Supplementary Fig. 6), we included the\\nsequence of analyses to reproduce\
+    \ the NAFLD and the urachal carcinoma study\\nstudies described in the Results.\\nDefault analytical pipeline. The initial\
+    \ data preparation step structures the\\nquantified measurements (filtering, imputation, formatting, and normalization),\\\
+    nstarting with filtering out proteins identified in only a few of the samples\\n(Supplementary Table 2). This filtering\
+    \ step can be specified as a maximum\\npercentage of missing values (default) or as a minimum number of values present\\\
+    nper condition (group) or in the entire dataset. For imputation, we implemented\\nseveral methods that account for missing\
+    \ values of different nature, including the\\nk-nearest neighbors (KNN) imputation method, which assumes that the values\\\
+    nare missing completely at random (MCAR), and the probabilistic minimum\\nimputation (MinProb) approach for missing values\
+    \ that are considered missing\\nnot at random (MNAR) (default)76. These two methods can also be combined in\\na mixed\
+    \ imputation method that considers the percentage of missing values to\\nassume missingness due to MCAR (that is, missingnes\
+    \ <50%) or MNAR otherwise\\nand applies KNN or MinProb, respectively. This step results in a complete matrix\\ncalled\
+    \ the \\u2018processed data frame\\u2019 and forms the basis for downstream analysis.\\nNext, we implemented the data\
+    \ exploration step into the workflow to collect\\nsummary statistics from the original data (such as number of proteins\
+    \ and\\npeptides). Additionally, it ranks identified proteins according to their average\\nquantified intensity (LFQ77)\
+    \ and calculates protein CVs, which can serve as a\\nquality metric.\\nThe subsequent data analysis part includes a dimensionality\
+    \ reduction step\\nand enables visualization of the high-dimensional proteomic datasets using two-\\nor three-dimensional\
+    \ representations. We implemented linear dimensionality\\nreduction (principal component analysis (default)) and nonlinear\
+    \ approaches\\n(t-distributed stochastic neighbor embedding (t-SNE)) and uniform manifold\\napproximation and projection.\\\
+    nThe analytics core enables hypothesis testing, particularly methods for\\nidentifying proteins changing significantly\
+    \ between conditions (groups). The\\ndefault method is ANOVA, but others, such as ANOVA for repeated measurements\\n(ANOVA-rm),\
+    \ t-test (independent or paired) or significance analysis of\\nmicroarrays (SAM), are also available21. By default, the\
+    \ analytics core identifies\\nthe appropriate test based on the experimental design (for example, independent\\nversus\
+    \ paired and ANOVA versus ANOVA-rm). We also implemented several\"\n  },\n  {\n    \"name\": \"methods to correct for\
+    \ multiple hypothesis testing, such as Benjamini\\u2013Hochberg\",\n    \"text\": \"(BH) FDR (default) or permutation-based\
+    \ FDR, which is used only if the\\nnumber of permutations specified (default set to 250) is sufficiently large to avoid\\\
+    noverestimating false positives.\\nStrategies for global protein\\u2013protein correlation analysis include as default\\\
+    nPearson correlation analysis corrected for multiple testing, which returns a network\\nwith identified clusters of correlating\
+    \ proteins (Louvain clustering method).\\nFurthermore, functional enrichment analysis (Gene Ontology and Pathways)\\nenables\
+    \ extraction of potential hypothesis-generating information regarding the\\nfunctional consequences of proteomics perturbation\
+    \ as an ultimate step in the\\nproteomics analysis (Supplementary Table 2).\\nMachine learning on graphs. The CKG provides\
+    \ functionality to apply machine\\nlearning algorithms based on the relationships existing in the knowledge graph.\\nOn\
+    \ the one hand, the CKG provides a library of optimized graph algorithms\\nthat run within the database framework (using\
+    \ the NetworkX Python library).\\nThese algorithms efficiently implement graph analysis tools such as path finding,\\\
+    ncentrality measurements, community detection and similarity functions, among\\nothers. All these algorithms are either\
+    \ directly available in the CKG or through the\\nGraph Data Science library in Neo4j and can be used to effectively identify\
+    \ hidden\\npatterns and generate predictions based on the connected data. Graph-based\\npredictions have been used in\
+    \ multiple scenarios, including drug repurposing,\\nprotein\\u2013protein interaction (PPI) prediction, disease comorbidity\
+    \ risks or\\ndiet-based cancer therapy associations78\\u201380. All the types of relationships mined\\nin those studies\
+    \ are part of the CKG and can repeatedly be modeled in the same\\nmanner every time new data are integrated. For instance,\
+    \ we used this functionality\\nto map Gene Ontology biological processes to metabolic pathways (Supplementary\\nTable\
+    \ 3). This helps to better interpret functional enrichment results or to\\nconnect currently disconnected nodes and extend\
+    \ their annotations\\u2014that is,\\n(Biological_processes-[:ASSOCIATED_WITH]-(Metabolite)).\\nAdditionally, application\
+    \ of machine learning algorithms directly on CKG\\u2019s\\ngraph structure can improve prediction and classification tasks,\
+    \ for instance by\\nusing Graph Representation Learning algorithms37. To provide an example of\\nthe potential of these\
+    \ methods on the CKG\\u2019s structure, we used the embedding\\nalgorithm Node2Vec (dimensions\\u2009=\\u2009100, walk\
+    \ length = 30, number of walks =\\n200, P\\u2009=\\u20091, Q\\u2009=\\u20092.0, weight key = score) to represent disease\
+    \ nodes81. For that,\\nwe first obtained disease-specific subgraphs connecting disease nodes to their\\nassociated proteins,\
+    \ modified proteins, metabolites and genomic variants and\\ntheir relationships (that is, PPIs) from the CKG. We then\
+    \ applied the embedding\\nalgorithm to obtain high-dimensional vectors, preserving the properties of\\nthese subgraphs\
+    \ for each disease node. When visualizing these embedding\\nrepresentations using t-SNE, diseases cluster according to\
+    \ the Disease Ontology\\nanatomical entities that they are annotated to, showing that biological meaning is\\npreserved\
+    \ in these representations (Supplementary Fig. 10). These representations\\ncould be used in a variety of machine learning\
+    \ problems, such as node and link\\nprediction, graph classification or graph similarity. When applied to biomedicine,\\\
+    nthese learning techniques can help stratify patients, build comorbidity networks or\\nrepurpose drugs.\\nCase studies.\
+    \ NAFLD study. We use a previously published internal proteomics\\ndataset41 (PXD011839) as a showcase of the capabilities\
+    \ of the CKG. In this\\npublication, Niu et al. studied the plasma proteome profiles of 48 patients with and\\nwithout\
+    \ cirrhosis or NAFLD and identified several statistically significantly changing\\nproteins, some of which were already\
+    \ linked to liver disease. We aimed to reproduce\\nthe results obtained using the automated default analysis pipeline\
+    \ of the CKG.\\nDownstream rapid proteomics analysis. We used a previously published internal\\nproteomics dataset2 (PXD008713).\
+    \ This study presents a rapid proteomics analysis\\nthat identified a possible alternative treatment for a patient with\
+    \ end-stage cancer.\\nWe built a downstream analysis pipeline to accelerate and prioritize alternative\\ncandidate drug\
+    \ treatments using the CKG. We provide a Jupyter notebook to show\\nhow functionality implemented in the graphdb_connector\
+    \ module (query_utils.py)\\ncan be used to single out queries that can help find known links between identified\\nupregulated\
+    \ proteins and inhibitory drugs and between those drugs and known\\nside effects and publications as well as how to use\
+    \ this knowledge to prioritize drug\\ncandidates.\\nMulti-level proteomics analysis. We reanalyzed and extended a multi-level\\\
+    nproteomics study, including interactomics and phosphoproteomics, that provides\\ninsights into the mechanisms of resistance\
+    \ to platinum-based chemotherapy in\\nhigh-grade ovarian serus adenocarcinoma3 (PXD010372). The CKG reproduces\\nthe findings\
+    \ and extends them with deeper analysis of the protein complexes\\nidentified82 and substrate and PhosphoSite-specific\
+    \ annotations83,84.\\nCKG update. Databases and ontologies integrated in the CKG can be updated\\nusing the graphdb_builder.\
+    \ There are two options: full update or partial update. A\\nNature Biotechnology | www.nature.com/naturebiotechnology\\\
+    n\\nArticles\\nNaTUre BIoTeCHnoloGy\\nfull update, which will regenerate the entire database with newly downloaded data\\\
+    nfrom the sources, the number of nodes and relationships, will vary from version to\\nversion according to changes in\
+    \ these data. On a partial update, the sources to be\\nimported and loaded into the graph need to be specified. The partial\
+    \ update can\\nalso be used to extend the graph when a new database or ontology is added. When\\nrunning a full update,\
+    \ it is recommended to create a different graph database,\\nconfirm that the generated graph is correct and then switch\
+    \ to the new database.\\nExperiments can be updated using the \\u2018Data Upload\\u2019 functionality in the\\ndashboard\
+    \ app by indicating the project identifier and uploading the new data.\\nWhen a full update is performed in the CKG\\\
+    u2019s graph, which involves upgrading\\nthe version of essential databases, such as UniProt85, it is highly recommended\
+    \ to\\nprocess the raw proteomics data, searching with the new version of the proteome,\\nand to generate again all the\
+    \ project reports with the new data. When this is not\\npossible, we provide a Jupyter notebook to generate a mapping\
+    \ between UniProt\\nversions based on sequence alignment (CKG mapping from fasta.ipynb).\\nThe CKG is an open-source project,\
+    \ and its code will continue to grow and\\nimprove through version control in the GitHub repository (https://github.com/\\\
+    nMannLabs/CKG). Currently, version 1.0.0 is available, and new releases will\\nbe made available in a controlled manner\
+    \ and named following the PEP 440\\nspecification (https://www.python.org/dev/peps/pep-0440/). Because the CKG\\nis an\
+    \ open-source project, contributions can help the framework grow with\\nadditional ontology, database or experimental\
+    \ parsers, improved documentation,\\nincreased testing and feedback. Specific details on how to contribute can be found\\\
+    nin the CKG\\u2019s documentation.\\nInstallation and hardware requirements. The CKG\\u2019s purpose and architecture\\\
+    ndefine it as a multi-user platform that requires installation in a server-like setup\\nand with systems administration\
+    \ knowledge. However, individual users can\\nhave a local installation, making sure hardware and software requirements\
+    \ are\\nfullfiled. The simplest installation is by using the Docker container and running\\nthe \\u2018minimal\\u2019\
+    \ update in the Admin app (https://ckg.readthedocs.io/en/latest/intro/\\ngetting-started-with-docker.html). This installation\
+    \ requires getting access to the\\nlicensed databases (SNOMED-CT, DrugBank and PhosphoSitePlus). For specific\\nrequirements\
+    \ and installation steps, consult the CKG\\u2019s documentation at https://\\nckg.readthedocs.io/en/latest/intro/getting-started-with-requirements.html.\\\
+    nReporting Summary. Further information on research design is available in the\\nNature Research Reporting Summary linked\
+    \ to this article.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"The MS-based proteomics data analyzed\
+    \ in this study were downloaded from\\nthe PRIDE database: PXD011839, PXD008713, PXD010372 and PXD008541\\n(PRIDE database\
+    \ identifiers). Data used in the glioblastoma study were provided\\nby the Clinical Proteomic Tumor Analysis Consortium\
+    \ (NCI/NIH) (https://\\ncptac-data-portal.georgetown.edu/study-summary/S048). The Olink proteomics\\ndata were provided\
+    \ by the Massachusetts General Hospital at https://www.olink.\\ncom/mgh-covid-study/. A version of our Clinical Knowledge\
+    \ Graph database\\nis at Mendeley Data (https://data.mendeley.com/datasets/mrcf7f4tc2/3) and\\nthe Max Planck Institute\
+    \ of Biochemistry (https://datashare.biochem.mpg.de/s/\\nkCW7uKZYTfN8mwg).\\nThe databases and ontologies used in the\
+    \ Clinical Knowledge Graph are listed in\"\n  },\n  {\n    \"name\": \"Supplementary Table 1\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"All code is accessible at https://github.com/MannLabs/CKG,\
+    \ and detailed\\ndocumentation can be found at https://CKG.readthedocs.io.\"\n  },\n  {\n    \"name\": \"References\"\
+    ,\n    \"text\": \"73.\\tPletscher-Frankild, S., Pallej\\u00e0, A., Tsafou, K., Binder, J. X. & Jensen, L. J.\\nDISEASES:\
+    \ text mining and data integration of disease\\u2013gene associations.\"\n  },\n  {\n    \"name\": \"Methods 74, 83\\\
+    u201389 (2015)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Pi\\u00f1ero, J. et al. The DisGeNET knowledge platform\
+    \ for disease genomics:\",\n    \"text\": \"2019 update. Nucleic Acids Res. 48, D845\\u2013D855 (2019).\\n75.\\tChristmas,\
+    \ R. et al. Cytoscape: a software environment for integrated models\\nof biomolecular interaction networks. AACR Educ.\
+    \ B. 2005, 12 (2005).\"\n  },\n  {\n    \"name\": \"Lazar, C., Gatto, L., Ferro, M., Bruley, C. & Burger, T. Accounting\
+    \ for the\",\n    \"text\": \"multiple natures of missing values in label-free quantitative proteomics data\\nsets to\
+    \ compare imputation strategies. J. Proteome Res. 15, 1116\\u20131125 (2016).\"\n  },\n  {\n    \"name\": \"Nahnsen, S.,\
+    \ Bielow, C., Reinert, K. & Kohlbacher, O. Tools for label-free\",\n    \"text\": \"peptide quantification. Mol. Cell.\
+    \ Proteomics 12, 549\\u2013556 (2013).\"\n  },\n  {\n    \"name\": \"Halu, A., De Domenico, M., Arenas, A. & Sharma, A.\
+    \ The multiplex network\",\n    \"text\": \"of human diseases. NPJ Syst. Biol. Appl. 5, 15 (2019).\\n79.\\tVeselkov, K.\
+    \ et al. Hyperfoods: machine intelligent mapping of cancer-beating\\nmolecules in foods. Sci. Rep. 9, 9237 (2019).\"\n\
+    \  },\n  {\n    \"name\": \"Cheng, F. et al. Network-based approach to prediction and population-based\",\n    \"text\"\
+    : \"validation of in silico drug repurposing. Nat. Commun. 9, 2691 (2018).\\n81.\\tGrover, A. & Leskovec, J. node2vec:\
+    \ scalable feature learning for networks. In\\nProc. ACM SIGKDD Int. Conf. on Knowledge Discovery and Data Mining (eds\\\
+    nKrishnapuram, B. & Shah, M.) 855\\u2013864 (ACM, 2016); https://doi.\\norg/10.1145/2939672.2939754\"\n  },\n  {\n   \
+    \ \"name\": \"Giurgiu, M. et al. CORUM: the comprehensive resource of mammalian\",\n    \"text\": \"protein complexes\\\
+    u20142019. Nucleic Acids Res. 47, D559\\u2013D563 (2019).\"\n  },\n  {\n    \"name\": \"Hornbeck, P. V. et al. PhosphoSitePlus,\
+    \ 2014: mutations, PTMs and\",\n    \"text\": \"recalibrations. Nucleic Acids Res. 43, D512\\u2013D520 (2015).\"\n  },\n\
+    \  {\n    \"name\": \"Perfetto, L. et al. SIGNOR: a database of causal relationships between\",\n    \"text\": \"biological\
+    \ entities. Nucleic Acids Res. 44, D548\\u2013D554 (2016).\"\n  },\n  {\n    \"name\": \"UniProt Consortium, T. UniProt:\
+    \ the universal protein knowledgebase\",\n    \"text\": \"Nucleic Acids Res. 46, 2699\\u20132699 (2018).\"\n  },\n  {\n\
+    \    \"name\": \"Acknowledgements\",\n    \"text\": \"We thank all members of the Proteomics and Signal Transduction Group\
+    \ (Max Planck\\nInstitute) and the Clinical Proteomics Group (Novo Nordisk Foundation Center for\\nProtein Research),\
+    \ especially E. Voytik, L. Schweizer, L. Drici, N. Skotte and P. Treit,\\nas well as A. Deshmukh and D. Samodova from\
+    \ the Novo Nordisk Foundation Center\\nfor Basic Metabolic Research, and P. Charles (Oxford Big Data Institute) for their\
+    \ help\\ntesting the code and providing feedback. Data for the COVID-19 study were provided\\nby the Massachusetts General\
+    \ Hospital Emergency Department COVID-19 Cohort\\n(Filbin, Goldberg and Hacohen) with Olink Proteomics: https://www.olink.com/\\\
+    nmgh-covid-study/. Data used in the glioblastoma study were provided by the Clinical\\nProteomic Tumor Analysis Consortium\
+    \ (NCI/NIH). This project was supported by Novo\\nNordisk Foundation grants (NNF14CC0001 and NNF15CC0001). F.C. acknolwedges\\\
+    nthe European Union\\u2019s Horizon 2020 Research and Innovation Program (Marie\\nSk\\u0142odowska-Curie individual fellowship\
+    \ under grant agreement 846795). We thank the\\nPython community for the excellent scientific libraries developed and\
+    \ maintained and\\nalso Neo4j for providing a community version of their graph database and its community\\nfor helping\
+    \ improve the platform. The authors thank Life Science Editors for their help\\nwith the editing of the manuscript.\"\n\
+    \  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"A.S., A.R.C., A.B.N. and M.S. implemented the CKG\
+    \ code. A.S. and M.M. conceived and\\ndesigned the framework. A.S., A.R.C., L.N., P.E.G., F.C. and A.B.N. contributed\
+    \ to the\\ndata analysis for the case studies presented. L.J.J., N.J.W.A., P.E.G. and F.M. contributed\\nwith data and\
+    \ expertise on how to integrate them. A.S., A.R.C., A.B.N. and M.M. wrote\\nand edited the manuscript and the figures.\
+    \ A.S. and M.M. directed the study.\"\n  },\n  {\n    \"name\": \"Funding\",\n    \"text\": \"Open access funding provided\
+    \ by Max Planck Society.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"The authors declare no\
+    \ competing interests.\\nAdditional information\"\n  },\n  {\n    \"name\": \"Supplementary information The online version\
+    \ contains supplementary material\",\n    \"text\": \"available at https://doi.org/10.1038/s41587-021-01145-6.\\nCorrespondence\
+    \ and requests for materials should be addressed to\\nAlberto Santos or Matthias Mann.\\nPeer review information Nature\
+    \ Biotechnology thanks Eric Deutsch and the other,\\nanonymous, reviewer(s) for their contribution to the peer review\
+    \ of this work.\\nReprints and permissions information is available at www.nature.com/reprints.\\nNature Biotechnology\
+    \ | www.nature.com/naturebiotechnology\"\n  }\n]"
+  author_contributions: 'A.S., A.R.C., A.B.N. and M.S. implemented the CKG code. A.S. and M.M. conceived and
+
+    designed the framework. A.S., A.R.C., L.N., P.E.G., F.C. and A.B.N. contributed to the
+
+    data analysis for the case studies presented. L.J.J., N.J.W.A., P.E.G. and F.M. contributed
+
+    with data and expertise on how to integrate them. A.S., A.R.C., A.B.N. and M.M. wrote
+
+    and edited the manuscript and the figures. A.S. and M.M. directed the study.'
+  acknowledgments: 'We thank all members of the Proteomics and Signal Transduction Group (Max Planck
+
+    Institute) and the Clinical Proteomics Group (Novo Nordisk Foundation Center for
+
+    Protein Research), especially E. Voytik, L. Schweizer, L. Drici, N. Skotte and P. Treit,
+
+    as well as A. Deshmukh and D. Samodova from the Novo Nordisk Foundation Center
+
+    for Basic Metabolic Research, and P. Charles (Oxford Big Data Institute) for their help
+
+    testing the code and providing feedback. Data for the COVID-19 study were provided
+
+    by the Massachusetts General Hospital Emergency Department COVID-19 Cohort
+
+    (Filbin, Goldberg and Hacohen) with Olink Proteomics: https://www.olink.com/
+
+    mgh-covid-study/. Data used in the glioblastoma study were provided by the Clinical
+
+    Proteomic Tumor Analysis Consortium (NCI/NIH). This project was supported by Novo
+
+    Nordisk Foundation grants (NNF14CC0001 and NNF15CC0001). F.C. acknolwedges
+
+    the European Union’s Horizon 2020 Research and Innovation Program (Marie
+
+    Skłodowska-Curie individual fellowship under grant agreement 846795). We thank the
+
+    Python community for the excellent scientific libraries developed and maintained and
+
+    also Neo4j for providing a community version of their graph database and its community
+
+    for helping improve the platform. The authors thank Life Science Editors for their help
+
+    with the editing of the manuscript.'
+  funding: Open access funding provided by Max Planck Society.
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n    \"\
+    page\": 4\n  },\n  {\n    \"id\": \"fig_p4_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_2.png\",\n   \
+    \ \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_3.png\",\n\
+    \    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p6_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_2.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\"\
+    ,\n    \"page\": 15\n  }\n]"
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://www.olink.\",\n    \"accession\": \"\",\n    \"database\": \"\",\n  \
+    \  \"description\": \"\"\n  },\n  {\n    \"url\": \"https://data.mendeley.com/datasets/mrcf7f4tc2/3\",\n    \"accession\"\
+    : \"\",\n    \"database\": \"\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://datashare.biochem.mpg.de/s/\"\
+    ,\n    \"accession\": \"\",\n    \"database\": \"\",\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/MannLabs/CKG\",\n    \"description\": \"\"\n  }\n]"

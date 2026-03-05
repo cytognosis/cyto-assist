@@ -1,0 +1,511 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/Benchmarking large language models for personalized, biomarker-based health intervention recommendations.pdf
+
+identifiers:
+  doi: 10.1038/s41746-025-01996-2
+  pmid: '41145883'
+citation:
+  title: Benchmarking large language models for personalized, biomarker-based health intervention recommendations
+  year: '1996'
+  journal: npj Digital Medicine
+  volume: '8'
+  publisher: Springer Science and Business Media LLC
+  authors: Hans Jarchow, Christoph Bobrowski, Steffi Falk, Andreas Hermann, Anton Kulaga, Johann-Christian Põder, Maximilian
+    Unfried, Nikolay Usanov, Bijan Zendeh, Brian K. Kennedy, Sebastian Lobentanzer, Georg Fuellen
+content:
+  sections: "[\n  {\n    \"name\": \"Results\",\n    \"text\": \"The models we evaluated for advice quality on longevity interventions\\\
+    nincluded Llama 3.2 3B, Qwen 2.5 14B, DeepSeek R1 Distill Llama 70B (DSR\\nLlama 70B), GPT-4o mini, o3 mini, GPT-4o, and\
+    \ the (bio)medical \\ufb01ne-\\ntuned model Llama3 Med42 8B. Model responses were evaluated by GPT-\\n4o mini, serving\
+    \ as the LLM-as-a-judge. For further details on model con-\\n\\ufb01guration as well as the selection and implementation\
+    \ of the judge, we refer\\nto the \\u201cModels\\u201d section in Methods. The LLMs were tested across \\ufb01ve\\nsystem\
+    \ prompts of varying complexity (\\u201cSystem prompts\\u201d in Methods),\\ndifferent age groups and comorbidities of\
+    \ the individuals presented in the\\nbenchmark test items, as well as with and without RAG (\\u201cDomain back-\\nground\
+    \ and Retrieval-Augmented Generation (RAG)\\u201d in Methods). The\\n\\u201cBenchmark datasetand test items / user prompts\\\
+    u201d sections in Methods and\\nFig. 1 summarize the development of the benchmark.\\nAccuracy of LLM responses varies\
+    \ signi\\ufb01cantly with validation\\nrequirements\\nAcross validation requirements and models, GPT-4o achieved the highest\\\
+    noverall balanced accuracy, while Llama 3.2 3B obtained the lowest (Fig. 2a).\\nModel responses were generally considered\
+    \ safe, but not very comprehen-\\nsive (Fig. 2b). Except for being safe, Llama 3.2 3B performed signi\\ufb01cantly\\nworse\
+    \ than all other non-\\ufb01netuned models (P < 0.001), and GPT-4o pro-\\nduced responses that were signi\\ufb01cantly\
+    \ more comprehensive, correct, use-\\nful, interpretable and explainable (P < 0.001) (Fig. 2c, Table 1). The effect of\\\
+    nRAG was not consistent, as open-source models tended to bene\\ufb01t while\\nproprietary ones tended to deteriorate (Fig.\
+    \ 2d, Table 1). We also evaluated\\nLlama3 Med42 8B, a (bio)medical \\ufb01ne-tuned model. Its responses were\\nsigni\\\
+    ufb01cantly less comprehensive than those of all other models in the naive\\nsetting (without RAG, P < 0.001). Although\
+    \ it outperformed or matched\\nLlama 3.2 3B on the remaining validation requirements, it still fell short of\\nthe other\
+    \ tested models.\\nSystem prompt speci\\ufb01city and test case structure affect model\\nperformance\\nGPT-4o performed\
+    \ signi\\ufb01cantly better than the other models across all\\nsystem prompts (P < 0.001) and achieved high performance\
+    \ levels for even\\nthe least speci\\ufb01c prompts (\\u201cMinimal\\u201d, \\u201cSpeci\\ufb01c\\u201d, Fig. 3a). With\
+    \ increasing\\nspeci\\ufb01city of the system prompt, medium-performing models (Qwen 2.5\\n14B, GPT-4o mini, DSR Llama\
+    \ 70B) improved by 0.02 to 0.18 in terms of\\nbalanced accuracy (at maximum, from 0.26 to 0.44). Llama3 Med42 8B\\nshowed\
+    \ its highest performance gains when using the most sophisticated\\nprompt, \\u201cReq. explicit\\u201d. Across system\
+    \ prompts, top-performing models\\nexperienced insigni\\ufb01cant performance declines with the application of\\nRAG,\
+    \ while modest but signi\\ufb01cant improvements were observed for lower-\\nperforming models (e.g., Qwen 2.5 14B; P <\
+    \ 0.001 for \\u201cMinimal\\u201d and\\n\\u201cSpeci\\ufb01c\\u201d, P = 0.01 for \\u201cRole Encouraging\\u201d; Fig.\
+    \ 3b). By contrast, the quality\\nof Llama3 Med42\\u2019s responses signi\\ufb01cantly decreased for \\u201cReq. speci\\\
+    ufb01c\\u201d and\\n\\u201cReq. explicit\\u201d\\u2018 when RAG was applied (P < 0.001, Table 1). For further\\ninformation\
+    \ on how the system prompts affected model accuracy across all\\nrequirements, please refer to Supplementary Tables 1\\\
+    u20134 (Supplementary\\nSection K). The vulnerability of the models to variations in backgrounds\\n(short,verbose),pro\\\
+    ufb01les(paragraph-based,list-based),anddistractors(with\\ndistractor, without distractor within a test case) was evaluated\
+    \ in an ablation\\nstudy, in which all pro\\ufb01le variations resulting from the components of a test\"\n  },\n  {\n\
+    \    \"name\": \"Background\",\n    \"text\": \"Pro\\ufb01le\\nQuestion\\nDistractor\\nCorrect?\\nComprehensive?\\nUseful?\\\
+    nExplainable?\\nSafe?\\nFinal test items\\nInitial test items\\nBenchmark Development\\nExecution\\nEvaluation\\nGround\
+    \ truths\\nLLM-as-a-judge\\n56 000\\nresponses\\nExpert\\nCommentary\\nKeywords\\nYes / No\\nYoung\\nGeriatric\\nRephrasing\\\
+    nHeart\\nDisease\\nHealthy\\nExercise\\n...\\n1000 item\\nvariations\\n1st\\n2nd\\n3rd\\n+\\nGPT-4o\\nLlama-3\\nDeepSeek\\\
+    n...\\n280 000 scores\\n7 models, 4 replicates, \\u00b1 RAG\\nCorrect\\nSafe\\nUseful\\nExplnb.\\nCmprh.\\nFig. 1 | Overview\
+    \ of Benchmark generation and Model Evaluation procedures.\\nThe benchmark containing the test items was reviewed by physicians\
+    \ in two initial\\nrounds, providing an expert commentary of expected ground truths. Subsequently,\\nthe test item components\
+    \ were rephrased to generate additional presentation\\nformats. The \\ufb01nal test item status was achieved after a third\
+    \ round of review, after\\nwhich the test items were integrated into the test framework. 56000 LLM responses\\nwere collected\
+    \ and judged by LLMs based on the 5 validation requirements; the LLM\\nacting as a judge was informed about the ground\
+    \ truths.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital Medicine |  (2025) 8:631\\n2\\n\\nitem\
+    \ were tested. Vulnerability was highest for Llama 3.2 3B and Qwen 2.5\\n14B, with Llama 3.2 3B showing susceptibility\
+    \ to the injection of distractors.\\nOverall,allothermodelsshowedonlyminorvulnerabilities(Supplementary\\nFigs. 9 and\
+    \ 10 in Supplementary Section K).\\nAccuracy of LLM responses correlates with the age of the user\\nasking for advice\\\
+    nMean balanced accuracy generally increased across age groups from young/\\nmid-aged to geriatric (Fig. 3c, Table 2),\
+    \ see also Supplementary Tables\\n5 and 6 (Supplementary Section L); this was not affected by RAG (Fig. 3d,\\nTable 2).\
+    \ GPT-4o again shows the highest mean balanced accuracy\\n(P < 0.001), while Llama 3.2 3B and Llama3 Med42 8B again perform\
+    \ sig-\\nni\\ufb01cantlyworsethantheothermodels,acrossallagegroups(P < 0.001).The\\ntest items featured age-group-speci\\\
+    ufb01c diseases, and LLMs performed better\\nwhen faced with the widespread musculoskeletal and cardiovascular dis-\\\
+    neasesinthe\\u201cgeriatric\\u201dagegroup,as compared to thelessfrequenthormonal\\ndiseases in the other groups (Fig.\
+    \ 3e).\\nEvaluation of interrater reliability between LLM-based judge and\\na human rater\\nWe further examined the alignment\
+    \ between the judgments of a human\\nrater (HJ) and GPT-4o mini as the LLM-as-a-judge using a sample of\\nFig. 2 | LLM\
+    \ mean balanced accuracy across validation requirements. We tested\\nthe models on a diverse set of test cases (n = 1000)\
+    \ multiple times (n = 4) across \\ufb01ve\\nvalidation requirements, comparing their performance both among models and\\\
+    nbetween individual requirements. Our analysis revealed signi\\ufb01cant differences in\\nmean balanced accuracy between\
+    \ requirements (P < 0.001). Performance is most\\nstable for Correctness; nearly all models performed worst in Comprehensiveness\\\
+    n(Cmprh.; P < 0.001) and best in Consideration of Toxicity (Safety). a Overall \\ufb01nal\\nscores of the models aggregated\
+    \ across all validation requirements. b Performance\\nfor the validation requirements across all models. c Mean balanced\
+    \ accuracy of each\\nmodel per validation requirement without the application of RAG. d Mean balanced\\naccuracy with\
+    \ the application of RAG. The mean balanced accuracy is displayed\\nabove each bar. Error bars and individual data points\
+    \ (one per system prompt/\\nreplicate) are shown.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital\
+    \ Medicine |  (2025) 8:631\\n3\\n\\ngenerated responses and their associated LLM judgments. The responses\\nwere sampled\
+    \ randomly and evaluated in a blinded fashion. This experi-\\nment was conducted to assess the validity of the LLM-as-a-Judge\
+    \ paradigm\\nin our setting. With Cohen\\u2019s kappa scores ranging from 0.69 (Llama3\\nMed42 8B) to 0.87 (Qwen 2.5 14B)\
+    \ across models and from 0.63 (Safe) to\\n0.81 (Correct) across validation requirements, the results indicate con-\\nsistently\
+    \ high alignment (Fig. 4; see \\u201cModels\\u201d in Methods).\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\"\
+    : \"By testing performance across multiple validation requirements using\\nmodular, physician-approved test items, we\
+    \ went beyond the exam-based\\nassessment of LLMs in a reproducible and transparent manner, allowing for\\nthe assessment\
+    \ of free-text tasks. We evaluated proprietary and open-source\\nLLMs using a benchmark speci\\ufb01cally designed for\
+    \ evaluating intervention\\nrecommendationsinthe\\ufb01eldsofgeroscienceandlongevitymedicine.Using\\nthe LLM-as-a-judge\
+    \ approach, our \\ufb01ndings demonstrated that current\\nLLMs must still be used with caution for any unsupervised medical\
+    \ inter-\\nvention recommendations. Indeed, LLMs showed inconsistent accuracy\\nacross validation requirements, rendering\
+    \ benchmarks that measure single\\ndimensionsofmodelperformanceinsuf\\ufb01cienttocapturethefullcomplexity\\nof heterogeneous\
+    \ and test-item-speci\\ufb01c model capabilities. This demon-\\nstrated the complexity of judging LLM responses, justifying\
+    \ a detailed\\nanalysis by the automated judging approach described in Fig. 1. However,\\nwe note that automated judgment\
+    \ cannot systematically validate all testing\\ndimensions for their alignment with human judgements; the only exception\\\
+    nwas correctness, in the scenario where the expert-provided binary ground\\ntruth was either matched or not by the response\
+    \ of the LLM (see Supple-\\nmentary Fig. 4 in Supplementary Section H). Then again, human judge-\\nments are prone to\
+    \ heterogeneity, errors, and biases, and it remains for\\nfuture research to analyze their correlation with judgements\
+    \ by LLM-as-\\na-judge.\\nOverall,open-sourcemodelstendedtoperformworsethanproprietary\\nmodels, and response quality\
+    \ of the latter was mostly considered suf\\ufb01cient,\\ntriggering positive verdicts by the LLM-as-a-judge in most cases,\
+    \ see Fig. 2.\\nIntriguingly, Llama3 Med42 8B, which as a biomedically \\ufb01ne-tuned model\\nwould be expected to perform\
+    \ well, exhibited dif\\ufb01culties in generating\\nresponses that suf\\ufb01ciently met the validation requirements.\
+    \ A potential\\ncontributing factor may be a strong alignment to the \\ufb01ne-tuning corpus\\n(over\\ufb01tting to speci\\\
+    ufb01c tasks) and, thus, reduced ability to generalize to new\\ndatasets. Open-source models struggled particularly in\
+    \ achieving suf\\ufb01cient\\ncomprehensiveness. Along these lines, a recent study found that around\\n90% of research\
+    \ papers criticized the lack of comprehensiveness (de\\ufb01ned\\nheterogeneously, yet in alignment with our de\\ufb01nition)\
+    \ in LLM-generated\\nmedical responses28. However, while a lack of comprehensiveness may\\nmean that LLM outputs fail\
+    \ to reveal knowledge important to the user,\\ncomprehensive responses may be less comprehensible (useful) by over-\\\
+    nwhelming the user. Moreover, a notable positive aspect was that all models\\nexhibited a high \\u201cConsideration of\
+    \ Toxicity/Safety\\u201d, such that any lack of\\ncomprehensiveness does not tend to imply the recommendation of a\\nharmful\
+    \ intervention. This may re\\ufb02ect an alignment of LLMs with common\\nhuman values, presumably a consequence of Reinforcement\
+    \ Learning via\\nHumanFeedback(RLHF).Ofnote,thealignmentbetweenhumanraterand\\nLLM was lowest for the safety requirement\
+    \ out of all requirements (Cohen\\u2019s\\nkappa of 0.63). The primary responses received higher ratings for safety\\\
+    nfrom the human evaluator, implying that the generally high safety score in\\nthe full benchmark could even be an underestimate.\
+    \ From an ethical\\nperspective, safety is fundamental (re\\ufb02ecting the principle of non-\\nmale\\ufb01cence), yet\
+    \ in our application domain, overly cautious model\\nbehavior may mean that no intervention is recommended \\u2013 not\
+    \ even\\ndiet or exercise; this may not be in the interest of the user. Also, while\\ncomprehensive responses may pose\
+    \ cognitive challenges for users, a\\nlack of comprehensiveness may harm informed decision-making and\\nthus the principle\
+    \ of autonomy. Ethically, comprehensiveness must\\nthus be balanced with comprehensibility; it cannot be neglected\\nwithout\
+    \ compromising user empowerment29,30.\\nTable 1 | Mean balanced accuracy of models across validation requirements without\
+    \ (w/o) and with RAG\\nEvaluated Models\\nComprh.\\nCorrect\\nUseful\\nExplnb.\\nSafe\\nw/o RAG\\nRAG\"\n  },\n  {\n \
+    \   \"name\": \"\\u0394RAG\",\n    \"text\": \"w/o RAG\\nRAG\"\n  },\n  {\n    \"name\": \"\\u0394RAG\",\n    \"text\"\
+    : \"w/o RAG\\nRAG\"\n  },\n  {\n    \"name\": \"\\u0394RAG\",\n    \"text\": \"w/o RAG\\nRAG\"\n  },\n  {\n    \"name\"\
+    : \"\\u0394RAG\",\n    \"text\": \"w/o RAG\\nRAG\"\n  },\n  {\n    \"name\": \"\\u0394RAG\",\n    \"text\": \"Llama 3.2\
+    \ 3B\\n0.28 \\u00b1 0.08\\n0.25 \\u00b1 0.07\\n\\u22120.03\\n0.52 \\u00b1 0.08\\n0.63 \\u00b1 0.02\\n+0.11\\n0.44 \\u00b1\
+    \ 0.08\\n0.46 \\u00b1 0.06\\n+0.02\\n0.54 \\u00b1 0.11\\n0.54 \\u00b1 0.08\\n\\u00b10\\n0.89 \\u00b1 0.05\\n0.86 \\u00b1\
+    \ 0.03\\n\\u22120.03\\nQwen 2.5 14B\\n0.42 \\u00b1 0.19\\n0.56 \\u00b1 0.04\\n+0.14\\n0.68 \\u00b1 0.01\\n0.70 \\u00b1\
+    \ 0.02\\n+0.02\\n0.59 \\u00b1 0.15\\n0.71 \\u00b1 0.02\\n+0.12\\n0.65 \\u00b1 0.18\\n0.78 \\u00b1 0.03\\n+0.13\\n0.85\
+    \ \\u00b1 0.17\\n0.93 \\u00b1 0.02\\n+0.08\\nDSR Llama 70B\\n0.49 \\u00b1 0.05\\n0.53 \\u00b1 0.02\\n+0.04\\n0.69 \\u00b1\
+    \ 0.02\\n0.68 \\u00b1 0.01\\n\\u22120.01\\n0.70 \\u00b1 0.05\\n0.69 \\u00b1 0.03\\n\\u22120.01\\n0.80 \\u00b1 0.04\\n0.79\
+    \ \\u00b1 0.02\\n\\u22120.01\\n0.96 \\u00b1 0.01\\n0.92 \\u00b1 0.02\\n\\u22120.04\\nGPT-4o\\n0.85 \\u00b1 0.06\\n0.76\
+    \ \\u00b1 0.06\\n\\u22120.09\\n0.73 \\u00b1 0.02\\n0.73 \\u00b1 0.02\\n\\u00b10\\n0.89 \\u00b1 0.03\\n0.82 \\u00b1 0.03\\\
+    n\\u22120.07\\n0.94 \\u00b1 0.04\\n0.87 \\u00b1 0.04\\n\\u22120.07\\n0.99 \\u00b1 0.01\\n0.93 \\u00b1 0.02\\n\\u22120.06\\\
+    nGPT-4o mini\\n0.45 \\u00b1 0.17\\n0.45 \\u00b1 0.16\\n\\u00b10\\n0.66 \\u00b1 0.02\\n0.67 \\u00b1 0.02\\n+0.01\\n0.69\
+    \ \\u00b1 0.08\\n0.65 \\u00b1 0.08\\n\\u22120.04\\n0.77 \\u00b1 0.10\\n0.70 \\u00b1 0.09\\n\\u22120.07\\n0.97 \\u00b1\
+    \ 0.01\\n0.93 \\u00b1 0.03\\n\\u22120.04\\no3 mini\\n0.67 \\u00b1 0.06\\n0.69 \\u00b1 0.05\\n+0.02\\n0.65 \\u00b1 0.03\\\
+    n0.68 \\u00b1 0.02\\n+0.03\\n0.79 \\u00b1 0.02\\n0.77 \\u00b1 0.03\\n\\u22120.02\\n0.84 \\u00b1 0.03\\n0.82 \\u00b1 0.04\\\
+    n\\u22120.02\\n0.96 \\u00b1 0.02\\n0.95 \\u00b1 0.02\\n\\u22120.01\\nLlama3 Med42 8B\\n0.20 \\u00b10.09\\n0.19 \\u00b1\
+    \ 0.02\\n\\u22120.01\\n0.61 \\u00b1 0.06\\n0.51 \\u00b1 0.04\\n\\u22120.10\\n0.48 \\u00b1 0.10\\n0.41 \\u00b1 0.01\\n\\\
+    u22120.07\\n0.53 \\u00b1 0.13\\n0.48 \\u00b1 0.04\\n\\u22120.05\\n0.91 \\u00b1 0.02\\n0.86 \\u00b1 0.02\\n\\u22120.05\\\
+    nModel performances varied with validation requirements. GPT-4o experienced a strong performance drop for Comprehensiveness\
+    \ with RAG, while Qwen 2.5 14B, DSR Llama 70B and o3 mini improved. However, GPT-4o remained the strongest model. \\u0394RAG\
+    \ is obtained as\\nthe difference of \\u201cwithout (w/o) RAG\\u201d and RAG. Highest scores per column are printed in\
+    \ bold.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital Medicine |  (2025) 8:631\\n4\\n\\nMany studies\
+    \ have already demonstrated that LLM responses can be\\nhighly dependent on prompt design and on the ordering of information\\\
+    nwithin a prompt31,32, posing a risk in healthcare in particular. In our case,\\neven small modi\\ufb01cations in test\
+    \ case structure (e.g., increased verbosity) led\\nto performance differences across prompt settings. However, LLMs\\\
+    ndemonstrated stability when exposed to irrelevant (distracting) statements,\\nmaintaining focus onthe main query. This\
+    \ is a positive outcome,though the\\npossibility remains that more complex distractions could affect perfor-\\nmance.\
+    \ Generally, prompt sensitivity is not inherently a disadvantage; it can\\nbe bene\\ufb01cial when used intentionally\
+    \ for performance enhancement\\nFig. 3 | LLM mean balanced accuracy across various system prompts, age groups\\nand diseases.\
+    \ a Overview of LLM performance across \\ufb01ve system prompts without\\nthe application of RAG. Llama 3.2 3B, Qwen 2.5\
+    \ 14B but also GPT-4o mini and\\nLlama3 Med42 8B exhibit a notable dependence on the system prompt in terms of\\nresponse\
+    \ quality. b System-prompt-speci\\ufb01c LLM performance with RAG. c LLM\\nperformance distribution across three different\
+    \ age groups without RAG. All models\\nachieve signi\\ufb01cantly higher performance for geriatric individuals compared\
+    \ to the\\nother two age groups (P < 0.001). d LLM performance distribution across three\\ndifferent age groups with RAG.\
+    \ e LLM performance distribution across diseases\\nwithout RAG. LLMs show increasing scores in case of degenerative diseases.\
+    \ The\\nmean balanced accuracy is displayed above each bar. Error bars and individual data\\npoints are shown. GH Growth\
+    \ hormone, PCOS Polycystic ovarian syndrome.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital Medicine\
+    \ |  (2025) 8:631\\n5\\n\\nthrough prompt engineering. Our study found that instructive and\\nadvanced system prompts,\
+    \ which request speci\\ufb01c and detailed reasoning by\\npointing out the validation requirements, improve performance\
+    \ by up to\\n0.18 in balanced accuracy for medium-performing models. Curiously, this\\nimprovement, predicted in ref.\
+    \ 25, was triggered by mere mentioning of the\\nrequirements, whereas quoting their explicit de\\ufb01nition resulted\
+    \ in no\\nadditional gains (but compare the improvements by system prompt com-\\nplexity for Llama 3.2 3B and GPT-4o mini,\
+    \ Fig. 3a). However, state-of-the-\\nart commercial models such as GPT-4o and o3 mini already perform\\nconsistently well\
+    \ with simple prompts, showing only slight improvements\\nwhen given additional instructions.\\nIn our study, LLMs appeared\
+    \ toexhibit age-related performance bias33,\\nwhich however may be induced by the differential incidence of diseases\\\
+    nrepresented inthecorrespondingtest cases.Indeed,ourframeworkrevealed\\nthat LLMs are more likely to correctly identify\
+    \ frequently observed degen-\\nerative diseases compared to rare hormonal conditions, demonstrating that\\nthe age bias\
+    \ may be explained at least in part by the age-associated pre-\\nvalence of certain diseases, see Fig. 3c\\u2013e. RAG\
+    \ led to model-dependent\\nincreases or decreases in accuracy. This is interesting since RAG is typically\\nused to mitigate\
+    \ knowledge gaps and improve response quality. The\\nobserved decline in accuracy under RAG, as also noted in GPT-4o,\
+    \ may be\\nattributable to alignment of the training data with biomedical content.\\nHowever, Llama3 Med42 8B also exhibits\
+    \ a notable performance reduction.\\nThus, anotherexplanation could be that the introduction of non-relevant or\\nlow-utility\
+    \ content by RAG could dilute the effective signal and disrupt\\nbaseline model performance; this may also hold in more\
+    \ sophisticated\\nmodels. Given the growing interest in clinically applicable RAG systems34,35,\\nfuture research should\
+    \ explore how RAG-based applications affect different\\ndimensions of model response quality, helping to determine which\
+    \ aspects\\nof LLM performance are most in\\ufb02uenced by this strategy. As a clear lim-\\nitation,weappliedonlyonefrequentlyimplemented\\\
+    ufb02avorofRAGbasedon\\na database of papers relevant to longevity interventions.\\nThereare generallimitationstoourstudy.Ourbenchmarkstarted\
+    \ with\\nqueriessynthesizedfor25\\ufb01ctionalindividuals,anduseofreal-worldqueries\\nwould have provided more authenticity\
+    \ at the expense of a much higher\\nheterogeneity and a lack of patterns such as the ones used to investigate the\\nrole\
+    \ of the age group and the underlying disease. By generating 1000 test\\ncases through modular variation, we mimicked\
+    \ some real-world diversity.\\nWe selected only 25 synthetically generated and annotated test items,\\nbecause the development\
+    \ of the items, along with the associated references\\nand ground truths, required substantial expert input and multiple\
+    \ rounds of\\nre\\ufb01nement. We acknowledge that the small sample size may limit the\\ngeneralizability of our \\ufb01ndings\
+    \ beyond the test cases we investigated.\\nNevertheless,themodularstructureofthe25testitems,incombinationwith\\nvarious\
+    \ system prompts, resulted in numerous prompt variations per test\\nitem. By focusing on methodological advancements,\
+    \ our test procedure\\ncombines automated test generation with evaluation via the LLM-as-a-\\nJudge paradigm. Itoperates\
+    \ withouthumanassistance,thereby achievingan\\nef\\ufb01cient use of expert time. In addition, the benchmark is designed\
+    \ to be\\neasily extensible and adaptable for assessing future models. Moreover, the\\ntest items were designed to provide\
+    \ the LLMs with more comprehensive\\ninformation than would typically be supplied in a standard user query,\\nallowing\
+    \ the models to fully demonstrate their capabilities in generating\\npersonalized recommendationsunderconditionswhereallrelevantdata\
+    \ are\\nTable 2 | Mean balanced accuracy of models across different age groups without (w/o) and with RAG\\nEvaluated\
+    \ Models\\nYoung\\nMid-Age/Pregeriatric\\nGeriatric\\nw/o RAG\\nRAG\"\n  },\n  {\n    \"name\": \"\\u0394RAG\",\n    \"\
+    text\": \"w/o RAG\\nRAG\"\n  },\n  {\n    \"name\": \"\\u0394RAG\",\n    \"text\": \"w/o RAG\\nRAG\"\n  },\n  {\n    \"\
+    name\": \"\\u0394RAG\",\n    \"text\": \"Llama 3.2 3B\\n0.33 \\u00b1 0.07\\n0.38 \\u00b1 0.04\\n+0.05\\n0.36 \\u00b1 0.08\\\
+    n0.42 \\u00b1 0.05\\n+0.06\\n0.47 \\u00b1 0.06\\n0.46 \\u00b1 0.04\\n\\u22120.01\\nQwen 2.5 14B\\n0.47 \\u00b1 0.06\\\
+    n0.57 \\u00b1 0.01\\n+0.10\\n0.47 \\u00b1 0.03\\n0.48 \\u00b1 0.01\\n+0.01\\n0.63 \\u00b1 0.04\\n0.66 \\u00b1 0.02\\n+0.03\\\
+    nDSR Llama 70B\\n0.47 \\u00b1 0.03\\n0.52 \\u00b1 0.01\\n+0.05\\n0.51 \\u00b1 0.01\\n0.48 \\u00b1 0.01\\n\\u22120.03\\\
+    n0.70 \\u00b1 0.01\\n0.69 \\u00b1 0.02\\n\\u22120.01\\nGPT-4o\\n0.67 \\u00b1 0.02\\n0.65 \\u00b1 0.03\\n\\u22120.02\\\
+    n0.63 \\u00b1 0.02\\n0.55 \\u00b1 0.01\\n\\u22120.08\\n0.78 \\u00b1 0.02\\n0.76 \\u00b1 0.01\\n\\u22120.02\\nGPT-4o mini\\\
+    n0.48 \\u00b1 0.07\\n0.46 \\u00b1 0.07\\n\\u22120.02\\n0.49 \\u00b1 0.03\\n0.45 \\u00b1 0.04\\n\\u22120.04\\n0.68 \\u00b1\
+    \ 0.04\\n0.68 \\u00b1 0.04\\n\\u00b10\\no3 mini\\n0.57 \\u00b1 0.04\\n0.58 \\u00b1 0.04\\n+0.01\\n0.54 \\u00b1 0.02\\\
+    n0.51 \\u00b1 0.01\\n\\u22120.03\\n0.72 \\u00b1 0.03\\n0.75 \\u00b1 0.02\\n+0.03\\nLlama3 Med42 8B\\n0.31 \\u00b1 0.06\\\
+    n0.30 \\u00b1 0.01\\n\\u22120.01\\n0.39 \\u00b1 0.06\\n0.33 \\u00b1 0.03\\n\\u22120.06\\n0.54 \\u00b1 0.04\\n0.45 \\u00b1\
+    \ 0.03\\n\\u22120.09\\nIn both scenarios (w/o RAG and with RAG), all models achieve their highest scores for the \\u201dgeriatric\\\
+    u201d age group. Highest scores per column are printed in bold.\\nFig. 4 | Alignment between human rater and LLM-based\
+    \ judge. a Mean balanced\\naccuracies achieved by the models across all validation requirements, as assessed by\\nthe\
+    \ human rater and the LLM-based judge. b Overall accuracies per model. Both\\nsubplots additionally illustrate Cohen\\\
+    u2019s kappa scores, which are used as a measure of\\nalignment between the human rater and the LLM-based judge. Error\
+    \ bars indicate\\nvariability in alignment.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital Medicine\
+    \ |  (2025) 8:631\\n6\\n\\nreadily accessible. Future work should examine scenarios with less complete\\ninput, and explore\
+    \ the added complexity of typical user-LLM dialogues.\\nAnother limitation is the use of an LLM-as-a-Judge to evaluate\
+    \ tested\\nLLMs, which may introduce model-speci\\ufb01c biases, that is, the tendency of\\njudgments to favor the responses\
+    \ from certain models rather than assessing\\nthem based on, e.g., a prede\\ufb01ned metric. To mitigate this, we provided\\\
+    nphysician-validated ground truths to the LLM-as-a-judge. Despite con-\\nducting experiments that examined the alignment\
+    \ between a human rater\\nand the LLM-based judge, which demonstrated high inter-rater reliability\\nwithin our setting,\
+    \ it should be noted that we did not perform a compre-\\nhensive human evaluation of the full benchmark dataset. Thus,\
+    \ further\\nstudies are needed to assess the consistency of automated judgments, and\\nalso to compare these to human\
+    \ evaluations. Furthermore, while our study\\nexamined performance differences based on age and disease, it did not\\\
+    nexplore how other de\\ufb01nitions of the age groups, swapping ages within test\\ncases, or including a higher variety\
+    \ of diseases might in\\ufb02uence LLM beha-\\nvior. More elaborate item templates, e.g., by \\u201csymbolization\\u201d32,\
+    \ are left to\\nfutureinvestigations.Inaddition,wefocusedonintegrating\\ufb01vewell-known\\nlongevity interventions, but\
+    \ have to acknowledge that this selection is not\\nable to capture all available interventions. We focused on longevity\
+    \ inter-\\nventions with enough evidence to form an expert opinion, which excludes\\nmany experimental and more recent\
+    \ interventions.\\nPopular medical and biomedical benchmarks, including MedQA,\\nMedMCQA, MultiMedQA and the MIMIC datasets\
+    \ (including MIMIC-\\nIII36, MIMIC-IV-ED37, MIMIC-IV-ICD38) primarily assess LLM perfor-\\nmance using multiple-choice\
+    \ question formats. While valuable, these\\napproaches often fail to capture important nuances of model capabilities,\\\
+    nsuch as personalization or robustness in open-ended tasks. Here, we\\ndeveloped a benchmark designed to evaluate LLMs\
+    \ across \\ufb01ve validation\\nrequirementsusingmodular,open-endedtestitems.Theseitemsfocusedon\\npersonalized intervention\
+    \ recommendations in geroscience and longevity\\nmedicine and were aligned with physician expertise through expert\\nannotation.\\\
+    nOur\\nsystematic\\nand\\nautomated\\nmodel\\nevaluation\\napproach enables testing LLMs in various medical domains. Future\\\
+    nwork could explore the extension of our framework to real-world\\nclinical settings and continuous evaluation as models\
+    \ evolve. To\\nfacilitate this effort, the frameworks used and developed in this study\\nare freely available and intended\
+    \ to be adapted and extended by other\\nresearchers for benchmarking models in diverse medical or other\\nresearch contexts.\"\
+    \n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"Benchmark dataset and test items/user prompts\\nWe developed\
+    \ a benchmark of 25 test items assessing personalized LLM\\nadvice on longevity interventions and then tested the LLMs\
+    \ across the\\nmentioned 5 validation requirements, as de\\ufb01ned comprehensively in Sup-\\nplementary Section A; in\
+    \ most evaluation scenarios, these requirements\\nwere given as an explicit guide to the LLM-as-a-judge. We emphasize\
+    \ that\\nthe test items comprise synthetically drafted medical pro\\ufb01les for bench-\\nmarking purposes; no real patient\
+    \ data was used.\\nOne of us (HJ) drafted the test items along with the ground truths,\\nwhich centered around expert\
+    \ commentaries with keywords, describing\\nwhat is expected from the LLM response, such as the gains and caveats to\\\
+    nconsider. In this context, the keywords distill the core content of the expert\\ncommentaries and function as supplementary\
+    \ input for the LLM-as-a-\\nJudge. Additionally, each query was designed so that a \\u201cYes\\u201d or \\u201cNo\\u201d\\\
+    nresponse (binary ground truth) could be assigned, indicating whether an\\nintervention is recommended or not, see Supplementary\
+    \ Section B.\\nFour domain experts (AH, BZ, CB, SF) reviewed the test items and\\nground truths in three rounds (\\u201cBenchmark\
+    \ Development\\u201d in Fig. 1).\\nInitially, subsets of items were reviewed independently (\\u201c1st\\u201d [round of\\\
+    nexpert assessment] in Fig. 1), followed by a revision of the full benchmark in\\nthe second round (\\u201c2nd\\u201d\
+    \ [round of expert assessment] in Fig. 1). The test\\nitems were then structured into standardized modules: background\
+    \ infor-\\nmation, biomarkerpro\\ufb01le, and the \\ufb01nal binary question (\\u201cYes\\u201d or \\u201cNo\\u201d).\
+    \ To\\nsimulate diverse conversational scenarios, variations were created by\\nrephrasingbackgroundsandpro\\ufb01lesintodifferentformats(shortorverbose\"\
+    \n  },\n  {\n    \"name\": \"backgrounds, paragraph-based or list-based pro\\ufb01les), with an additional\",\n    \"\
+    text\": \"\\u201cdistracting statement\\u201d - placed at the end of a test case or not, to test the\\nLLM\\u2019s robustness\
+    \ against irrelevant information (\\u201cRephrasing\\u201d in Fig. 1). In\\nthe third round, all experts re-reviewed the\
+    \ full benchmark (\\u201c3rd\\u201d [round of\\nexpert assessment] in Fig. 1). The\\ufb01nal structure of a test item\
+    \ is illustratedin\"\n  },\n  {\n    \"name\": \"Supplementary Fig. 1, while the development of this structure during\
+    \ the\",\n    \"text\": \"three-round expert review process is shown in Supplementary Fig. 2 (see\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Section B)\",\n    \"text\": \"During automated benchmarking (\\u201cExecution\\u201d in Fig.\
+    \ 1) eight dif-\\nferent test cases were thus created from one test item\\u2019s modules and used as\\nuser prompts. Together\
+    \ with \\ufb01ve different system prompts (see below), this\\nmodular approach enabled the automated generation of 8 *\
+    \ 5 *\\n25 = 1000 test cases from the 25 modular items. The structure of a\\n\\ufb01nalized test case and its combinatorial\
+    \ assembly are illustrated in\"\n  },\n  {\n    \"name\": \"Supplementary Sections B and C. All 25 test items are listed\
+    \ in\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary Section D\",\n    \"text\": \"Domain background\
+    \ and Retrieval-Augmented\\nGeneration (RAG)\\nThe benchmarking data features clinical biomarker data from various\\nindividuals\
+    \ who wish to undertake one or a combination of the following\\nlongevity interventions: caloric restriction (n = 6),\
+    \ intermittent fasting\\n(n = 4), exercise (n = 5), a combination of caloric restriction and exercise\\n(n = 4), and the\
+    \ intake of supplements or drugs commonly associated with\\nhealth effects. The latter are Epicatechin (n = 2), Fisetin\
+    \ (n = 1), Spermidine\\n(n = 1), and Rapamycin (n = 2); see Supplementary Section E for back-\\nground information. Furthermore,the\
+    \ individuals were categorized into the\\nfollowing age groups: young (20\\u201339 years, n = 11), mid-aged (40\\u201360\
+    \ years,\\nn = 7), and elderly/geriatric (>60 years, n = 7). Five young and mid-aged\\npro\\ufb01les indicate the presence\
+    \ of the risk for an underlying hormonal dis-\\norder (hypothyroidism, cushing syndrome, acromegaly, and polycystic\\\
+    novarian syndrome [PCOS]) for which longevity interventions should not be\\nthe primary recommendation. Additionally,\
+    \ for four \\u201cgeriatric\\u201d pro\\ufb01les, the\\napplication of longevity interventions is contraindicated due\
+    \ to age-related\\nmusculoskeletal (osteoporosis and sarcopenia) or cardiovascular (coronary\\nartery disease, two cases)\
+    \ diseases, along with their respective comorbidities.\\nThese diseases are noted, together with potential differential\
+    \ diagnoses, in\\nthe expert commentaries.\\nTo test the effect of RAG on LLM response quality,weappended RAG-\\nbased\
+    \ data to the user prompts, for which a vector database was created\\nusing QDrant (https://qdrant.tech/), containing\
+    \ approximately 18 000\\nopen-sourcescienti\\ufb01cresearchpaperswithfocusonthe\\ufb01eldsofgeroscience\\nand longevity\
+    \ medicine, see Supplementary Section F.\\nSystem prompts\\nWe de\\ufb01ned \\ufb01ve different system prompts with varying\
+    \ complexity that\\nare automatically combined with the user prompts, where the infor-\\nmation content of the instructions\
+    \ increases from \\u201cMinimal\\u201d towards\\n\\u201cRequirements-explicit\\u201d. \\u201cMinimal\\u201d prompts the\
+    \ LLM to return, at the\\nend of the answer, either \\u201cYes\\u201d or \\u201cNo\\u201d, stating whether the inter-\\\
+    nvention is recommended or not. \\u201cSpeci\\ufb01c\\u201d adds that the query relates\\nto longevity medicine, geroscience,\
+    \ aging research and geroprotection.\\n\\u201cRole encouraging\\u201d additionally integrates a de\\ufb01nition of the\
+    \ advisory\\nrole that the LLM is expected to assume. \\u201cRequirements-speci\\ufb01c\\u201d\\nfurther lists the \\\
+    ufb01ve validation requirements the LLM should ful\\ufb01ll in\\nits response, while \\u201cRequirements-explicit\\u201d\
+    \ additionally provides the\\nde\\ufb01nitions of these requirements. The instructions to the LLM-as-a-\\njudge then included\
+    \ the test case, the response of the LLM being\\nevaluated and the expert annotated ground truths, see Fig. 1, while the\\\
+    nbinary ground truth was added only in some evaluation scenarios\\nwhen the LLM-as-a-judge had to evaluate the correctness\
+    \ of a model\\nresponse; for more information on the system prompts see Supple-\\nmentary Section G.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\\
+    nArticle\\nnpj Digital Medicine |  (2025) 8:631\\n7\\n\\nModels\\nProprietary LLMs available in February/March 2025 included\
+    \ GPT\\n(Generative Pretrained Transformer) series models (OpenAI), speci\\ufb01-\\ncally o3-mini (with \\u201creasoning\
+    \ effort\\u201d set to medium), GPT-4o and GPT-\\n4o mini, while open-source models selected were Llama 3.2 3B (by\\nMeta)39,\
+    \ Qwen 2.5 14B and DeepSeek R1 Distill Llama 70B (DSR Llama\\n70B for short), which is built based on Llama 3.3 70B. All\
+    \ models were\\naccessed via the appropriate APIs (OpenAI API, Groq, LMStudio).\\nConsidering the biomedical orientation\
+    \ of our benchmark, it was of\\nparticular interest to evaluate how biomedical \\ufb01ne-tuned models perform\\nin the\
+    \ test. We selected Llama3 Med42 8B40, an 8 billion-parameter\\ndomain-tuned model trained on biomedical literature and\
+    \ datasets, and\\n\\ufb01rst evaluated it alongside OpenBioLLM3 8B. Prior to our benchmark,\\nboth models thus underwent\
+    \ a pre-assessment using the AMEGA\\nBenchmark23, which is oriented toward clinical treatment recommen-\\ndations. We\
+    \ integrated all 20 AMEGA cases, along with the 135 questions\\nand their corresponding ground truths, into our paradigm,\
+    \ and executed\\nthe AMEGA Benchmark on the two biomedical models and the 6 models\\nwe already introduced. Llama3 Med42\
+    \ 8B (balanced accuracy: 0.63)\\noutperformed OpenBioLLM3 8B (0.36) but both models performed\\nworse than open-source\
+    \ and proprietary models (e.g., Qwen 2.5 14B:\\n0.82, GPT-4o: 0.89). Llama3 Med42 8B was thus chosen for inclusion in\\\
+    nour benchmark. For more information we refer to Supplementary Fig. 3\\n(Supplementary Section H).\\nLlama 3.2 3B, Qwen\
+    \ 2.5 14B, DSR Llama 70B, GPT-4o mini,\\no3 mini and GPT-4o were evaluated in the time period February-\\nMarch 2025.\
+    \ Llama3 Med42 8B and OpenBioLLM3 8B were tested in\\nAugust 2025. Except for o3-mini, all models were tested using greedy\\\
+    ndecoding (temperature 0). o3-mini was used with default temperature\\nsettings (temperature = 1), as OpenAI offered this\
+    \ model only\\nthrough an API program which does not allow for custom adjust-\\nments of temperature.\\nTo further elucidate\
+    \ the robustness of the judgements within the \\ufb01nal\\ntesting environment for the main benchmark, both GPT-4o mini\
+    \ and GPT-\\n4owereusedtoassesscorrectnessintwoevaluationsettings:onewhengiven\\nthe binary ground truth (standard setting)\
+    \ and one without. We selected\\nGPT-4o mini as the \\ufb01nal LLM-as-a-Judge for our experiments because\\nGPT-4o mini\\\
+    u2019s judgments showed higher alignment with the ground truth\\nin both evaluationsettings,while acomparativeanalysisacrossallvalidation\\\
+    nrequirements revealed that both models showed high interrater reliabilities\\nfor Correctness. For further information\
+    \ please refer to Supplementary Figs.\\n4 and 5 (Supplementary Section H).\\nTo assess the agreement between LLM-based\
+    \ judgments and human\\nevaluation, we conducted an alignment check using randomly sampled test\\nitem variations. Model\
+    \ responses were blindly evaluated by a human rater\\n(HJ)acrossallvalidationrequirements,resultinginatotalof1000individual\\\
+    njudgments.ThesehumanratingswerethencomparedwiththoseofGPT-4o\\nmini (Fig. 4).\\nPerformance evaluation\\nThe BioChatter\
+    \ framework27,41 was used for automated performance\\nassessment, including the collection of model outputs providing\
+    \ these\\ntogether with the ground truths to the LLM-as-a-Judge; this was done\\nn = 4 times, and repeated with RAG for\
+    \ the responding (not the\\njudging) LLM. For each response, the judgement was conducted two\\ntimes, returning a verdict\
+    \ (score) in binary format, e.g., \\u201ccompre-\\nhensive\\u201d or \\u201cnot comprehensive\\u201d for comprehensiveness;\
+    \ this resul-\\nted in 280000 verdicts. Then, the verdicts were transformed to binary\\nnumeric values consisting of 0\
+    \ (failure, e.g., \\u201cnot comprehensive\\u201d)\\nand 1 (success, e.g., \\u201ccomprehensive\\u201d). Judgement was\
+    \ performed\\ntwice, and 1% of all judgements resulted in an intermediate score of\\n0.5. These were binarized as \\u201c0\\\
+    u201d (failure). For further information on\\nthe judgement procedure, we refer to Fig. 1, and Supplementary\\nSections\
+    \ I (structure of the judgement framework) and J (example\\ninteraction between researcher and framework).\\nStatistical\
+    \ analysis\\nStatistical analyses were conducted using Pingouin (0.5.5)42, Scikit-learn\\n(1.6.1)43 and SciPy (1.15.2)44\
+    \ in Python (version 3.11.2). The mean balanced\\naccuraciesofthemodelsweredeterminedbasedontheLLMjudge\\u2019sverdicts\\\
+    nand compared across models. To evaluate overall differences in balanced\\naccuracy among all models for each validation\
+    \ requirement and system\\nprompt, we applied Cochran\\u2019s Q test. Pairwise differences in model\\naccuracies were\
+    \ assessed using McNemar\\u2019s test. To examine differences in\\ngroupedmodelaccuracyacrossagegroups,weusedtheChi-squaretest.Ap-\\\
+    nvalue of P < 0.05 was considered statistically signi\\ufb01cant. All p-values were\\nBonferroni-corrected to account\
+    \ for multiple comparisons. The perfor-\\nmance of the models is measured as their balanced accuracy scores in\\naddressing\
+    \ the evaluation criteria, i.e., the validation requirements. Inter-\\nrater reliabilities were evaluated by calculating\
+    \ Cohen\\u2019s kappa.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"The benchmarking data are openly\
+    \ available on GitHub, at https://github.\\ncom/biocypher/biochatter.\"\n  },\n  {\n    \"name\": \"Code availability\"\
+    ,\n    \"text\": \"The code for this study is implemented as a part of https://github.com/\\nbiocypher/biochatter. The\
+    \ repository is additionally archived by Zenodo\\nintegration at https://zenodo.org/records/14775193.\\nReceived: 14 May\
+    \ 2025; Accepted: 7 September 2025;\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nAlowais, S. A. et\
+    \ al. Revolutionizing healthcare: the role of arti\\ufb01cial\\nintelligence in clinical practice. BMC Med. Educ. 23,\
+    \ 689 (2023).\\n2.\\nSecinaro, S., Calandra, D., Secinaro, A., Muthurangu, V. & Biancone,\\nP. The role of arti\\ufb01cial\
+    \ intelligence in healthcare: a structured literature\\nreview. BMC Med. Inform. Decis. Mak. 21, 125 (2021).\\n3.\\nMeng,X.\
+    \ et al. The applicationof large language modelsin medicine:A\\nscoping review. iScience 27, 109713 (2024).\\n4.\\nSilcox,\
+    \ C. et al. The potential for arti\\ufb01cial intelligence to transform\\nhealthcare: perspectives from international\
+    \ health leaders. NPJ Digit.\\nMed. 7, 88 (2024).\\n5.\\nKroemer, G. et al. From geroscience to precision geromedicine:\\\
+    nUnderstanding and managing aging. Cell 188, 2043\\u20132062\\n(2025).\\n6.\\nParchmann, N., Hansen, D., Orzechowski,\
+    \ M. & Steger, F. An ethical\\nassessment of professional opinions on concerns, chances, and\\nlimitations of the implementation\
+    \ of an arti\\ufb01cial intelligence-based\\ntechnology into the geriatric patient treatment and continuity of care.\\\
+    nGeroscience 46, 6269\\u20136282 (2024).\\n7.\\nVahia, I. V. Navigating New Realities in Aging Care as Arti\\ufb01cial\\\
+    nIntelligence Enters Clinical Practice. Am. J. Geriatr. Psychiatry 32,\\n267\\u2013269 (2024).\\n8.\\nStefanacci, R. G.\
+    \ Arti\\ufb01cial intelligence in geriatric medicine: Potential\\nand pitfalls. J. Am. Geriatr. Soc. 71, 3651\\u20133652\
+    \ (2023).\\n9.\\nWiil, U. K. Important steps for arti\\ufb01cial intelligence-based risk\\nassessment of older adults.\
+    \ Lancet Digit. Health 5, e635\\u2013e636 (2023).\"\n  },\n  {\n    \"name\": \"Ma, B. et al. Arti\\ufb01cial intelligence\
+    \ in elderly healthcare: A scoping\",\n    \"text\": \"review. Ageing Res Rev. 83, 101808 (2023).\"\n  },\n  {\n    \"\
+    name\": \"Jin, D. et al. What Disease Does This Patient Have? A Large-Scale\",\n    \"text\": \"Open Domain Question Answering\
+    \ Dataset from Medical Exams.\\nAppl. Sci. 11, (2021). https://doi.org/10.3390/app11146421.\"\n  },\n  {\n    \"name\"\
+    : \"Pal, A., Umapathi, L. K. & Sankarasubbu, M. in Proceedings of the\",\n    \"text\": \"Conference on Health, Inference,\
+    \ and Learning 174, 248-260 (PMLR,\\n2022).\"\n  },\n  {\n    \"name\": \"Singhal, K. et al. Large language models encode\
+    \ clinical knowledge\",\n    \"text\": \"Nature 620, 172\\u2013180 (2023).\"\n  },\n  {\n    \"name\": \"Jin, Q., Dhingra,\
+    \ B., Liu, Z., Cohen, W. & Lu, X. in Proceedings of the\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Conference\
+    \ on Empirical Methods in Natural Language\",\n    \"text\": \"https://doi.org/10.1038/s41746-025-01996-2\\nArticle\\\
+    nnpj Digital Medicine |  (2025) 8:631\\n8\\n\\nProcessing and the 9th International Joint Conference on Natural\\nLanguage\
+    \ Processing (EMNLP-IJCNLP) 2567\\u20132577 (2019).\\n15. \\u0160uster, S. & Daelemans, W. in Proceedings of the 2018\
+    \ Conference of\\nthe North American Chapter of the Association for Computational\\nLinguistics: Human Language Technologies\
+    \ 1551-1563 (2018).\"\n  },\n  {\n    \"name\": \"Wang, L. L., deYoung, J. & Wallace, B. in Proceedings of the Third\"\
+    ,\n    \"text\": \"Workshop on Scholarly Document Processing 175-180 (2022).\"\n  },\n  {\n    \"name\": \"Li, J. et al.\
+    \ BioCreative V CDR task corpus: a resource for chemical\",\n    \"text\": \"disease relation extraction. Database (Oxford)\
+    \ 2016 (2016). https://\\ndoi.org/10.1093/database/baw068.\"\n  },\n  {\n    \"name\": \"Krallinger, M. et al. CHEMDNER:\
+    \ The drugs and chemical names\",\n    \"text\": \"extraction challenge. J. Cheminform. 7, S1 (2015). https://doi.org/10.\"\
+    \n  },\n  {\n    \"name\": \"/1758-2946-7-S1-S1\",\n    \"text\": \"19. Kury, F. et al. Chia, a large annotated corpus\
+    \ of clinical trial eligibility\\ncriteria. Sci. Data 7, 281 (2020).\"\n  },\n  {\n    \"name\": \"Schmidgall, S. et al.\
+    \ Evaluation and mitigation of cognitive biases in\",\n    \"text\": \"medical language models. NPJ Digit. Med. 7, 295\
+    \ (2024).\"\n  },\n  {\n    \"name\": \"Wu, C. et al. Towards evaluating and building versatile large language\",\n  \
+    \  \"text\": \"models for medicine. NPJ Digit. Med. 8, 58 (2025).\"\n  },\n  {\n    \"name\": \"Kanithi, P. K. et al.\
+    \ MEDIC: Towards a Comprehensive Framework for\",\n    \"text\": \"Evaluating LLMs in Clinical Applications. Preprint\
+    \ at: https://arxiv.org/\\nabs/2409.07314 (2024).\"\n  },\n  {\n    \"name\": \"Fast, D. et al. Autonomous medical evaluationfor\
+    \ guideline adherence\",\n    \"text\": \"of large language models. NPJ Digit. Med. 7, 358 (2024).\"\n  },\n  {\n    \"\
+    name\": \"Li, D. et al. From generation to judgment: Opportunities and\",\n    \"text\": \"challenges of llm-as-a-judge,\
+    \ 2025. Preprint at: https://arxiv.org/abs/\\n2411.16594 (2025).\"\n  },\n  {\n    \"name\": \"Fuellen, G. et al. Validation\
+    \ requirements for AI-based intervention-\",\n    \"text\": \"evaluation in aging and longevity research and practice.\
+    \ Ageing Res.\\nRev. 104, 102617 (2025).\"\n  },\n  {\n    \"name\": \"Zakka, C. et al. Almanac - Retrieval-Augmented\
+    \ Language Models for\",\n    \"text\": \"ClinicalMedicine.NEJMAI1(2024).https://doi.org/10.1056/aioa2300068.\"\n  },\n\
+    \  {\n    \"name\": \"Lobentanzer, S. et al. A platform for the biomedical application of large\",\n    \"text\": \"language\
+    \ models. Nat. Biotechnol. 43, 166\\u2013169 (2025).\"\n  },\n  {\n    \"name\": \"Busch, F. et al. Current applications\
+    \ and challenges in large language\",\n    \"text\": \"models for patient care: a systematic review. Commun. Med. (Lond.)\\\
+    n5, 26 (2025).\"\n  },\n  {\n    \"name\": \"Beauchamp, T. L. & Childress, J. F. Principles of Biomedical Ethics\",\n\
+    \    \"text\": \"(Oxford University Press, 2012).\"\n  },\n  {\n    \"name\": \"Pang, C. Is a partially informed choice\
+    \ less autonomous?: a\",\n    \"text\": \"probabilistic account for autonomous choice and information.\\nHumanit. Soc.\
+    \ Sci. Commun. 10, 131 (2023).\"\n  },\n  {\n    \"name\": \"Hager, P. et al. Evaluation and mitigation of the limitations\
+    \ of large\",\n    \"text\": \"language models in clinical decision-making. Nat. Med. 30,\\n2613\\u20132622 (2024).\"\n\
+    \  },\n  {\n    \"name\": \"Mirzadeh, I. et al. GSM-Symbolic: Understanding the Limitations of\",\n    \"text\": \"Mathematical\
+    \ Reasoning in Large Language Models. Preprint at:\\nhttps://arxiv.org/abs/2410.05229 (2024).\"\n  },\n  {\n    \"name\"\
+    : \"Chu,C.H.etal.DigitalAgeism:ChallengesandOpportunitiesinArti\\ufb01cial\",\n    \"text\": \"Intelligence for Older\
+    \ Adults. Gerontologist 62, 947\\u2013955 (2022).\"\n  },\n  {\n    \"name\": \"Ng, K. K. Y., Matsuba, I. & Zhang, P.\
+    \ C. RAG in Health Care: A Novel\",\n    \"text\": \"Framework for Improving Communication and Decision-Making by\\nAddressing\
+    \ LLM Limitations. NEJM AI 2 (2024). https://doi.org/10.\\n1056/AIra2400380.\"\n  },\n  {\n    \"name\": \"Kresevic, S.\
+    \ et al. Optimization of hepatological clinical guidelines\",\n    \"text\": \"interpretation by large language models:\
+    \ a retrieval augmented\\ngeneration-based framework. NPJ Digit. Med. 7, 102 (2024).\"\n  },\n  {\n    \"name\": \"Harutyunyan,\
+    \ H., Khachatrian, H., Kale, D. C., Ver Steeg, G. &\",\n    \"text\": \"Galstyan, A. Multitask learning and benchmarking\
+    \ with clinical time\\nseries data. Sci. Data. 6, 96 (2019).\"\n  },\n  {\n    \"name\": \"Xie, F. et al. Benchmarking\
+    \ emergency department prediction models\",\n    \"text\": \"with machine learning and public electronic health records.\
+    \ Sci. Data.\\n9, 658 (2022).\"\n  },\n  {\n    \"name\": \"Nguyen, T.-T. et al. Mimic-IV-ICD: A new benchmark for eXtreme\"\
+    ,\n    \"text\": \"MultiLabel Classi\\ufb01cation. Preprint at: https://arxiv.org/abs/2304.\\n13998 (2023).\"\n  },\n\
+    \  {\n    \"name\": \"Gratta\\ufb01ori, A. et al. The Llama 3 Herd of Models. Preprint at: https://\",\n    \"text\":\
+    \ \"arxiv.org/abs/2407.21783 (2024).\"\n  },\n  {\n    \"name\": \"Christophe, C. et al. Med42-v2: A suite of clinical\
+    \ llms. Preprint at:\",\n    \"text\": \"https://arxiv.org/abs/2408.06142 (2024).\"\n  },\n  {\n    \"name\": \"Lobentanzer,\
+    \ S. et al. Democratizing knowledge representation with\",\n    \"text\": \"BioCypher. Nat. Biotechnol. 41, 1056\\u20131059\
+    \ (2023).\"\n  },\n  {\n    \"name\": \"Vallat, R. Pingouin: statistics in Python. J. Open Source Softw. 3, 1026\",\n\
+    \    \"text\": \"(2018).\"\n  },\n  {\n    \"name\": \"Pedregosa, F. et al. Scikit-learn: Machine Learning in Python.\
+    \ J. Mach\",\n    \"text\": \"Learn. Res. 12, 2825\\u20132830 (2011).\"\n  },\n  {\n    \"name\": \"Virtanen, P. et al.\
+    \ SciPy 1.0: fundamental algorithms for scienti\\ufb01c\",\n    \"text\": \"computing in Python. Nat. Methods 17, 261\\\
+    u2013272 (2020).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"AH is supported by the Hermann and\
+    \ Lilly Schilling Stiftung f\\u00fcr medizinische\\nForschung im Stifterverband. GF is supported by the Department \\\
+    u201cAging of\\nIndividuals and Society\\u201d of the Interdisciplinary Faculty of the University of\\nRostock.\"\n  },\n\
+    \  {\n    \"name\": \"Author contributions\",\n    \"text\": \"Conceptualization: G.F., S.L., B.K.K.; Data Curation: H.J.,\
+    \ C.B., S.F., A.H.,\\nB.Z.; Formal Analysis: H.J.; Funding Acquisition: --; Investigation: H.J.;\\nMethodology: G.F.,\
+    \ S.L.; Project Administration: G.F., S.L., B.K.K.;\\nResources: G.F., S.L.; Software: H.J., S.L.; Supervision: G.F.,\
+    \ S.L., B.K.K.;\\nValidation: G.F., S.L.; Visualization: H.J., S.L.; Writing \\u2013 Original Draft\\nPreparation:H.J.,\
+    \ G.F., S.L.; Writing \\u2013 Review & Editing:H.J., G.F., S.L., C.B.,\"\n  },\n  {\n    \"name\": \"A.K., N.U., J.C.P.,\
+    \ M.U., B.K.K\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Funding\",\n    \"text\": \"Open Access funding enabled\
+    \ and organized by Projekt DEAL.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"B.K.K. reports\
+    \ a relationship with Ponce de Leon Health that includes:\\nconsulting or advisory and equity or stocks. C.B. has received\
+    \ lecturing fees\\nfrom Novartis DeutschlandGmbH and Bayer Vital GmbH. C.B. serves onthe\\nexpert board for statutory\
+    \ health insurance data of IQTIG, the Institute for\\nQuality and Transparency in German Healthcare (Institut f\\u00fcr\\\
+    nQualit\\u00e4tssicherung und Transparenz im Gesundheitswesen). G.F. is a\\nconsultant to BlueZoneTech GmbH, who distribute\
+    \ supplements.\\nStatement on the use of AI\\nThe \\ufb01rst draft was written by H.J., with help from G.F. and S.L.;\
+    \ No writing\\nassistance was employed. While the topic of the paper is the use of\\ngenerative AI/LLMs, no such tools\
+    \ were used to generate text or content of\\nthe manuscript. GPT4o was used for copy-editing (grammar, spelling)\\nassistance\
+    \ and research queries on related work and references.\\nAdditional information\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ information The online version contains\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"supplementary material available\
+    \ at\",\n    \"text\": \"https://doi.org/10.1038/s41746-025-01996-2.\\nCorrespondence and requests for materials should\
+    \ be addressed to\\nBrian K. Kennedy, Sebastian Lobentanzer or Georg Fuellen.\\nReprints and permissions information is\
+    \ available at\\nhttp://www.nature.com/reprints\\nPublisher\\u2019s note Springer Nature remains neutral with regard to\\\
+    njurisdictional claims in published maps and institutional af\\ufb01liations.\\nhttps://doi.org/10.1038/s41746-025-01996-2\\\
+    nArticle\\nnpj Digital Medicine |  (2025) 8:631\\n9\\n\\nOpen Access This article is licensed under a Creative Commons\\\
+    nAttribution 4.0 International License, which permits use, sharing,\\nadaptation, distribution and reproduction in any\
+    \ medium or format, as long\\nas you give appropriate credit to the original author(s) and the source,\\nprovide a link\
+    \ to the Creative Commons licence, and indicate if changes\\nwere made. The images or other third party material in this\
+    \ article are\\nincluded in the article\\u2019s Creative Commons licence, unless indicated\\notherwise in a credit line\
+    \ to the material. If material is not included in the\\narticle\\u2019s Creative Commons licence and your intended use\
+    \ is not permitted\\nby statutory regulation or exceeds the permitted use, you will need to\\nobtain permission directly\
+    \ from the copyright holder. To view a copy of this\\nlicence, visit http://creativecommons.org/licenses/by/4.0/.\\n\\\
+    u00a9 The Author(s) 2025\\n1Institute for Biostatistics and Informatics in Medicine andAgeing Research,Rostock University\
+    \ Medical Center, Rostock, Germany. 2Klinikf\\u00fcrNeurologie und Geriatrie,\\nJohanniter-KrankenhausStendal,Stendal,\
+    \ Germany. 3Klinikf\\u00fcrUnfall-,Hand-undWiederherstellungschirurgie,Rostock University MedicalCenter,Rostock,Germany.\\\
+    n4Translational Neurodegeneration Section \\u201cAlbrecht Kossel\\u201d, and Rostock University Medical Center, Rostock,\
+    \ Germany. 5German Center for Neurodegenerative\\nDiseases (DZNE), Rostock/Greifswald, Rostock, Germany. 6Ethics in Theology\
+    \ and Medicine, Faculty of Theology, Rostock University Faculty of Theology,\\nRostock, Germany. 7Healthy Longevity Translational\
+    \ Research Program, Yong Loo Lin School of Medicine, National University of Singapore, Singapore, Singapore.\\n8Department\
+    \ of Biochemistry, Yong Loo Lin School of Medicine, National University of Singapore, Singapore, Singapore. 9HEAlthy Life\
+    \ Extension Society (HEALES),\\nBrussels, Belgium. 10Dept. of Neurology, Rostock University Medical Center, Rostock, Germany.\
+    \ 11Department of Physiology, Yong Loo Lin School of Medicine,\\nNational University of Singapore, Singapore, Singapore.\
+    \ 12Institute of Computational Biology, Computational Health Center, Helmholtz Center, Munich, Germany.\\n13Open Targets,\
+    \ European Bioinformatics Institute, Hinxton, Cambridge, UK. 14UCD Conway Institute of Biomolecular and Biomedical Research,\
+    \ School of Medicine,\\nUniversity College Dublin, Dublin, Ireland.\\ne-mail: bkennedy@nus.edu.sg; sebastian.lobentanzer@helmholtz-munich.de;\
+    \ fuellen@alum.mit.edu\\nhttps://doi.org/10.1038/s41746-025-01996-2\\nArticle\\nnpj Digital Medicine |  (2025) 8:631\\\
+    n10\"\n  }\n]"
+  acknowledgments: 'AH is supported by the Hermann and Lilly Schilling Stiftung für medizinische
+
+    Forschung im Stifterverband. GF is supported by the Department “Aging of
+
+    Individuals and Society” of the Interdisciplinary Faculty of the University of
+
+    Rostock.'
+  author_contributions: 'Conceptualization: G.F., S.L., B.K.K.; Data Curation: H.J., C.B., S.F., A.H.,
+
+    B.Z.; Formal Analysis: H.J.; Funding Acquisition: --; Investigation: H.J.;
+
+    Methodology: G.F., S.L.; Project Administration: G.F., S.L., B.K.K.;
+
+    Resources: G.F., S.L.; Software: H.J., S.L.; Supervision: G.F., S.L., B.K.K.;
+
+    Validation: G.F., S.L.; Visualization: H.J., S.L.; Writing – Original Draft
+
+    Preparation:H.J., G.F., S.L.; Writing – Review & Editing:H.J., G.F., S.L., C.B.,'
+  funding: Open Access funding enabled and organized by Projekt DEAL.
+  competing_interests: 'B.K.K. reports a relationship with Ponce de Leon Health that includes:
+
+    consulting or advisory and equity or stocks. C.B. has received lecturing fees
+
+    from Novartis DeutschlandGmbH and Bayer Vital GmbH. C.B. serves onthe
+
+    expert board for statutory health insurance data of IQTIG, the Institute for
+
+    Quality and Transparency in German Healthcare (Institut für
+
+    Qualitätssicherung und Transparenz im Gesundheitswesen). G.F. is a
+
+    consultant to BlueZoneTech GmbH, who distribute supplements.
+
+    Statement on the use of AI
+
+    The ﬁrst draft was written by H.J., with help from G.F. and S.L.; No writing
+
+    assistance was employed. While the topic of the paper is the use of
+
+    generative AI/LLMs, no such tools were used to generate text or content of
+
+    the manuscript. GPT4o was used for copy-editing (grammar, spelling)
+
+    assistance and research queries on related work and references.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\",\n   \
+    \ \"page\": 8\n  }\n]"
+references:
+  reference_count: 34
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://github.\",\n    \"accession\": \"\",\n    \"database\": \"\",\n    \"\
+    description\": \"\"\n  }\n]"

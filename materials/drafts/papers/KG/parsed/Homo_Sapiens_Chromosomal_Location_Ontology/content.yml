@@ -1,0 +1,437 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Homo Sapiens Chromosomal Location Ontology.pdf
+
+identifiers:
+  doi: 10.1038/s41597-024-04358-x
+  pmid: '39799122'
+citation:
+  title: 'Homo Sapiens Chromosomal  Location Ontology: A Framework  for Genomic Data in Biomedical  Knowledge Graphs'
+  year: '2025'
+  journal: Scientific Data
+  volume: '12'
+  publisher: Springer Science and Business Media LLC
+  authors: Taha Mohseni Ahooyi, Benjamin Stear, J. Alan Simmons, Christopher M. Nemarich, Jonathan C. Silverstein, Deanne
+    M. Taylor
+content:
+  abstract: "2464: Gabriella Miller Kids First Data Resource Center: Harmonizing clinical and genomic data to support \nchildhood\
+    \ cancer and structural birth defect research. vol. 79 2464–2464 (American Association for Cancer Research, 2019).\n\t\
+    12.\t James, W. et al. The Human Genome Browser at UCSC. Genome Research 12(6), 996–1006, https://doi.org/10.1101/gr.229102\
+    \ \n(2002).\n\t13.\t Posit team. RStudio: Integrated Development Environment for R. (Posit Software, PBC, Boston, MA,\
+    \ 2022).\n\t14.\t R Development Core Team, R. & Others. R: A language and environment for statistical computing (2011).\n\
+    \t15.\t Zhou, Y. et al. Metascape provides a biologist-oriented resource for the analysis of systems-level datasets. Nat.\
+    \ Commun. 10 (2019).\n\t16.\t Harrow, J. et al. GENCODE: the reference human genome annotation for the ENCODE Project.\
+    \ Genome Res. 22 (2012).\nAcknowledgements\nFunding for this project is acknowledged from the NIH Common Fund through\
+    \ the Office of Strategic \nCoordination/Office of the NIH Director under awards R03OD030600 and OT2OD030162 (DMT), and\
+    \ \nOT2OD026663, OT2OD026675 (JCS); The Department of Biomedical Informatics at The Children’s Hospital of \nPhiladelphia\
+    \ (DMT)."
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Knowledge graphs (KGs) have become important tools in\
+    \ integrating and analyzing heterogeneous biomedi-\\ncal data, enabling the linkage of diverse datasets in a structured\
+    \ and semantically enriched manner. However,\\nintegrating genomic feature data into KGs presents significant challenges\
+    \ due to the need for precise alignment\\nacross varying chromosomal resolutions, from entire chromosomes to individual\
+    \ base pairs. Current methods\\nfor identifying overlapping genomic features can involve computationally intensive searches,\
+    \ particularly when\\napplied to large-scale biomedical knowledge graphs containing millions of data nodes. This highlights\
+    \ the need\\nfor an ontological framework that could readily be integrated and utilized in knowledge graphs (in the form\
+    \ of\\nsubject/predicate/object triples) that standardizes the representation of chromosomal locations and reduces\\ncomputational\
+    \ complexity during data integration.\\nIn biomedical research, analyzing chromosomal locations of genomic features and\
+    \ their positional relationships\\nis critical for understanding disease mechanisms, guiding therapeutic development,\
+    \ and personalizing medical treat-\\nments. An ontology that systematically catalogs and categorizes chromosomal positions\
+    \ is essential for supporting\\nthese research endeavors. For example, a researcher may wish to rapidly interrogate a\
+    \ knowledge graph for all genomic\\nfeatures and annotations that are proximal to a chromosomal variant. Such a framework\
+    \ would enable these queries\\nby linking variants to associated genes, regulatory elements, or chromatin interaction\
+    \ data across different resolution\\nlevels, thereby expediting complex analyses and supporting hypothesis generation\
+    \ and experimental validation.\\nExisting ontologies have contributed significantly to the standardization of genomic\
+    \ data, particularly in\\nannotating specific genomic features or chromosomal structures1\\u20134. However, these ontologies\
+    \ are not optimized\\nfor integrating positional information at multiple chromosomal resolutions within KGs, with a standing\
+    \ gap in\\nthe ability to link genomic data across different resolution scales efficiently.\\n1The Department of Biomedical\
+    \ and Health Informatics, The Children\\u2019s Hospital of Philadelphia, Philadelphia, PA,\\nUSA. 2Department of Biomedical\
+    \ Informatics, School of Medicine, The University of Pittsburgh, Pittsburgh, PA, USA.\\n3Department of Pediatrics, University\
+    \ of Pennsylvania Perelman Medical School, Philadelphia, PA, USA. \\u2709e-mail:\\ntaylordm@chop.edu\\nArticle\"\n  },\n\
+    \  {\n    \"name\": \"OPEN\",\n    \"text\": \"2\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nTo address this gap, we introduce the Homo sapiens Chromosomal\
+    \ Location Ontology (HSCLO), developed\\nfor the GRCh375 (HSCLO37)\\u00a0and GRCh386 \\u00a0(HSCLO38)\\u00a0genome assemblies\\\
+    u00a0(Fig. 1). HSCLO is specifically\\ndesigned to facilitate the integration of positional information into biomedical\
+    \ knowledge graphs, support-\\ning rapid querying and efficient data linkage across diverse experimental datasets. In\
+    \ this study, we detail the\\nconstruction of HSCLO, present its application in a knowledge graph environment, and demonstrate\
+    \ its utility\\nthrough a case study involving high-resolution chromatin interaction data integration.\\nThe HSCLO is\
+    \ currently utilized in two knowledge graph projects, Petagraph7 and the Common Fund Data\\nEcosystem\\u2019s Data Distillery\
+    \ Project8. In the Data Distillery project, HSCLO has been indispensable in integrating\\nCommon Fund genomic datasets\
+    \ across different resolution levels, for example, in connecting 4DN chromo-\\nsomal loop data9 to individual genes or\
+    \ variants from sources such as GTEx10 or Kids First11.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"Building\
+    \ HSCLO versions.\\nTo construct the HSCLO versions for GRCh37 and GRCh38, we downloaded\\neach genomic coordinate file\
+    \ from the UCSC website (https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/\\nhg19.chrom.sizes and https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes).\
+    \ We parsed\\nthem into binned location nodes that were organized by chromosome size and scale using custom R scripts\
+    \ (https://\\ngithub.com/TaylorResearchLab/HSCLO/blob/main/Codes/HSCLO38.R). The nodes were defined at five resolution\\\
+    nlevels (1\\u2009kbp, 10\\u2009kbp, 100\\u2009kbp, 1\\u2009Mb, chromosome) and connected through hierarchical relationships\
+    \ reflecting their\\nchromosomal positioning. Each level in the ontology was linked to both its parent level and neighboring\
+    \ nodes\\nusing specific edge names (e.g., \\u201cabove_1Mbp_band,\\u201d \\u201cprecedes_10kbp_band\\u201d). Nodes were\
+    \ named using\\na UCSC coordinate format-like structure12\\u00a0as for example HSCLO38:chrN:nnnn-nnnn. The preprocessing\
+    \ scripts\\nare available on GitHub (https://github.com/TaylorResearchLab/HSCLO/blob/main/Codes/HSCLO38.R).\\nUse-case\
+    \ methodology.\\nFor our use case, we show how we establish the intersection between the 4DN\\ndataset and Gencode to\
+    \ profile the overlap between 4DN loops and human genes in GRCh38.\\u00a0Once ingested in a\\nknowledge graph in the Neo4j\
+    \ database management environment (Neo4j Desktop Community Edition 1.5.7),\\nwe used the Cypher query language to query\
+    \ ENSEMBL nodes\\u00a0in Gencode12 and their corresponding HSCLO\\nHuman\\nGenome\\nchr#\\nChr#:1-1000000\\nChr#:\\n1000001-2000000\\\
+    nChr#:1-100000\\nChr#:\\n100001-200000\\nChr#:1-10000\\nChr#:\\n10001-20000\\nChr#:1-1000\\nChr#:\\n1001-2000\\nabove_1Mbp_band\\\
+    nabove_100kbp_band\\nabove_10kbp_band\\nabove_1kbp_band\\nabove_100kbp_band\\nabove_10kbp_band\\nabove_1kbp_band\\nprecedes\\\
+    nabove_1Mbp_band\\nEntity X\\noverlaps\\noverlaps\\noverlaps\\nhg38\\nor hg19\\nchr\\n|\\n1M\\n|\\n100k\\n|\\n10k\\n|\\\
+    n1k\\nprecedes\\nprecedes\\nprecedes\\noverlaps\\nFig. 1\\u2002  Graphical Schema of HSCLO. Entity X could be any chromosomal\
+    \ feature, including chromosomal\\nbands, genes, exons, introns, regulatory elements, QTLs, variants, accessible chromatin\
+    \ regions, viral integration\\nsites, human endogenous retroviruses, transposons, tandem repeats, chromosomal contact\
+    \ regions, TADs,\\ntelomere, centromeres, and any other type.\\n\\n3\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nnodes at 1kbp resolution using the query in Fig.\\u00a02.\
+    \ \\u00a0The query utilizes the mapping of ENSEMBL genes and tran-\\nscript onto the HSCLO38 through the GENCODE_HSCLO\
+    \ mapping dataset:\\n//Query1: GENCODE Overlap with HSCLO38 at 1kbp\\nMATCH (o1:Code {SAB:'ENSEMBL'})<-[:CODE]-(c1:Concept)-[r1:us_5_prime]->\\\
+    n(c2:Concept)-[:CODE]->(o2:Code{SAB:\\u2019HSCLO\\u2019}),(c1:Concept)-\\n[r2:ds_3_prime]->(c3:Concept)-[:CODE]->(o3:Code\
+    \ {SAB:\\u2019HSCLO\\u2019}),\\n\\u0007p\\u2009=\\u2009shortestPath((c2)-[:precedes_1kbp_band*]->(c3)) WHERE ((c2)<>(c3))\"\
+    \n  },\n  {\n    \"name\": \"RETURN * LIMIT 1\",\n    \"text\": \"Loop dotcall files of the following 4DN datasets were\
+    \ obtained from the 4D Nucleome project website data\\nrepository (https://data.4dnucleome.org). The dataset URLs and\
+    \ descriptions are provided in Table\\u00a03. The follow-\\ning query can identify 4DN loops and their anchor coordinates\
+    \ along HSCLO38 at 1kbp resolution.\\n//Query2: 4DN Overlap with HSCLO38 at 1kbp\\nMATCH (o1:Code {SAB:'4DNL'})<-[a:CODE]-(c1:Concept)-[r1]->\\\
+    n(c2:Concept)-[b:CODE]->(o2:Code {SAB:'HSCLO'}),(c1:Concept)-[r2]->\\n(c3:Concept)-[c:CODE]->(o3:Code {SAB:'HSCLO'}),p=shortestPath((c2)-\\\
+    n[:precedes_1kbp_band*]->(c3)) WHERE ((c2)\\u2009<>\\u2009(c3)) RETURN * LIMIT 1\\nNote that the query uses the Neo4j\
+    \ shortestPath procedure to extract HSCLO38 nodes connected using\\nthe \\u201cprecedes_1kbp_band\\u201d relationship.\
+    \ Subsequently, genes that partially or entirely overlapped with\\nhuman loops were identified through querying for shared\
+    \ links to HSCLO38:\\n//Query3: 4DN Overlap with GENCODE through HSCLO at 1 kbp resolution\\nMATCH (o1:Code {SAB:'4DNL'})<-[a:CODE]-(c1:Concept)-\\\
+    n[r1:loop_us_start]->(c2:Concept)-[b:CODE]->(o2:Code {SAB:'HSCLO'})\\nMATCH (c1:Concept)-[r2:loop_ds_end]->(c3:Concept)-[c:CODE]->(o3:Code\\\
+    nChromosome\\n1Mbp\\nnodes\\n100kbp\\nnodes\\n10kbp\\nnodes\\n1kbp nodes\\nabove_\\n1Mbp_band\\nabove_\\n100kbp_band\\\
+    nabove_\\n10kbp_band\\nabove_\\n1kbp_band\\nprecedes_\\n1Mbp_band\\nprecedes_\\n100kbp_band\\nprecedes_\\n10kbp_band\\\
+    npreceedes_\\n1kbp_band\\n1\\n249\\n2490\\n24896\\n248957\\n249\\n2490\\n24896\\n248957\\n248\\n2489\\n24895\\n248956\\\
+    n2\\n243\\n2422\\n24220\\n242194\\n243\\n2422\\n24220\\n242194\\n242\\n2421\\n24219\\n242193\\n3\\n199\\n1983\\n19830\\\
+    n198296\\n199\\n1983\\n19830\\n198296\\n198\\n1982\\n19829\\n198295\\n4\\n191\\n1903\\n19022\\n190215\\n191\\n1903\\n19022\\\
+    n190215\\n190\\n1902\\n19021\\n190214\\n5\\n182\\n1816\\n18154\\n181539\\n182\\n1816\\n18154\\n181539\\n181\\n1815\\n18153\\\
+    n181538\\n6\\n171\\n1709\\n17081\\n170806\\n171\\n1709\\n17081\\n170806\\n170\\n1708\\n17080\\n170805\\n7\\n160\\n1594\\\
+    n15935\\n159346\\n160\\n1594\\n15935\\n159346\\n159\\n1593\\n15934\\n159345\\n8\\n146\\n1452\\n14514\\n145139\\n146\\\
+    n1452\\n14514\\n145139\\n145\\n1451\\n14513\\n145138\\n9\\n139\\n1384\\n13840\\n138395\\n139\\n1384\\n13840\\n138395\\\
+    n138\\n1383\\n13839\\n138394\\n10\\n134\\n1338\\n13380\\n133798\\n134\\n1338\\n13380\\n133798\\n133\\n1337\\n13379\\n133797\\\
+    n11\\n136\\n1351\\n13509\\n135087\\n136\\n1351\\n13509\\n135087\\n135\\n1350\\n13508\\n135086\\n12\\n134\\n1333\\n13328\\\
+    n133276\\n134\\n1333\\n13328\\n133276\\n133\\n1332\\n13327\\n133275\\n13\\n115\\n1144\\n11437\\n114365\\n115\\n1144\\\
+    n11437\\n114365\\n114\\n1143\\n11436\\n114364\\n14\\n108\\n1071\\n10705\\n107044\\n108\\n1071\\n10705\\n107044\\n107\\\
+    n1070\\n10704\\n107043\\n15\\n102\\n1020\\n10200\\n101992\\n102\\n1020\\n10200\\n101992\\n101\\n1019\\n10199\\n101991\\\
+    n16\\n91\\n904\\n9034\\n90339\\n91\\n904\\n9034\\n90339\\n90\\n903\\n9033\\n90338\\n17\\n84\\n833\\n8326\\n83258\\n84\\\
+    n833\\n8326\\n83258\\n83\\n832\\n8325\\n83257\\n18\\n81\\n804\\n8038\\n80374\\n81\\n804\\n8038\\n80374\\n80\\n803\\n8037\\\
+    n80373\\n19\\n59\\n587\\n5862\\n58618\\n59\\n587\\n5862\\n58618\\n58\\n586\\n5861\\n58617\\n20\\n65\\n645\\n6445\\n64445\\\
+    n65\\n645\\n6445\\n64445\\n64\\n644\\n6444\\n64444\\n21\\n47\\n468\\n4671\\n46710\\n47\\n468\\n4671\\n46710\\n46\\n467\\\
+    n4670\\n46709\\n22\\n51\\n509\\n5082\\n50819\\n51\\n509\\n5082\\n50819\\n50\\n508\\n5081\\n50818\\nX\\n157\\n1561\\n15605\\\
+    n156041\\n157\\n1561\\n15605\\n156041\\n156\\n1560\\n15604\\n156040\\nY\\n58\\n573\\n5723\\n57228\\n58\\n573\\n5723\\\
+    n57228\\n57\\n572\\n5722\\n57227\\nmtDNA\\n0\\n0\\n2\\n17\\n\\u2014\\n\\u2014\\n\\u2014\\n17\\n\\u2014\\n-\\n1\\n16\\\
+    nTable 1.\\u2002 Node and relationship statistics for HSCLO38, detailing the hierarchical organization of chromosomal\\\
+    nlocations in the GRCh38 genome assembly. The table includes counts for nodes at each genomic resolution level\\n(1 Mbp,\
+    \ 100 kbp, 10 kbp, and 1 kbp) and their corresponding hierarchical (\\u201cabove\\u201d) and positional (\\u201cprecedes\\\
+    u201d)\\nrelationships for chromosomes 1\\u201322, X, Y, and mtDNA.\\n\\n4\\nScientific Data |           (2025) 12:52\
+    \  | https://doi.org/10.1038/s41597-024-04358-x\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n{SAB:'HSCLO'}),p\\\
+    u2009=\\u2009shortestPath((c2)-[:precedes_1kbp_band*]->(c3))\\nWITH o1.CODE AS loop, nodes(p) AS P MATCH (o1:Code\\n\\\
+    u0007{\\u0007SAB:'ENSEMBL'})<-[:CODE]-(c1:Concept)-[r1]->(c2:Concept) WHERE (c2 in P)\\nRETURN loop, o1.CODE\\nFig. 2\\\
+    u2002 Chromosomal features annotated with HSCLO.\\u00a0Example query results derived from Queries 1 and 2\\noutlined in\
+    \ the Methods section depict a 4DN loop upstream anchor (A) and a human gene transcript (B) as\\nspanned along the HSCLO38.\\\
+    nChromosome\\n1Mbp\\nnodes\\n100kbp\\nnodes\\n10kbp\\nnodes\\n1kbp nodes\\nabove_\\n1Mbp_band\\nabove_\\n100kbp_band\\\
+    nabove_\\n10kbp_band\\nabove_\\n1kbp_band\\nprecedes_\\n1Mbp_band\\nprecedes_\\n100kbp_band\\nprecedes_\\n10kbp_band\\\
+    nprecedes_\\n1kbp_band\\n1\\n250\\n2493\\n24926\\n249251\\n250\\n2493\\n24926\\n249251\\n249\\n2492\\n24925\\n249250\\\
+    n2\\n244\\n2432\\n24320\\n243200\\n244\\n2432\\n24320\\n243200\\n243\\n2431\\n24319\\n243199\\n3\\n199\\n1981\\n19803\\\
+    n198023\\n199\\n1981\\n19803\\n198023\\n198\\n1980\\n19802\\n198022\\n4\\n192\\n1912\\n19116\\n191155\\n192\\n1912\\n19116\\\
+    n191155\\n191\\n1911\\n19115\\n191154\\n5\\n181\\n1810\\n18092\\n180916\\n181\\n1810\\n18092\\n180916\\n180\\n1809\\n18091\\\
+    n180915\\n6\\n172\\n1712\\n17112\\n171116\\n172\\n1712\\n17112\\n171116\\n171\\n1711\\n17111\\n171115\\n7\\n160\\n1592\\\
+    n15914\\n159139\\n160\\n1592\\n15914\\n159139\\n159\\n1591\\n15913\\n159138\\n8\\n147\\n1464\\n14637\\n146365\\n147\\\
+    n1464\\n14637\\n146365\\n146\\n1463\\n14636\\n146364\\n9\\n142\\n1413\\n14122\\n141214\\n142\\n1413\\n14122\\n141214\\\
+    n141\\n1412\\n14121\\n141213\\n10\\n136\\n1356\\n13554\\n135535\\n136\\n1356\\n13554\\n135535\\n135\\n1355\\n13553\\n135534\\\
+    n11\\n136\\n1351\\n13501\\n135007\\n136\\n1351\\n13501\\n135007\\n135\\n1350\\n13500\\n135006\\n12\\n134\\n1339\\n13386\\\
+    n133852\\n134\\n1339\\n13386\\n133852\\n133\\n1338\\n13385\\n133851\\n13\\n116\\n1152\\n11517\\n115170\\n116\\n1152\\\
+    n11517\\n115170\\n115\\n1151\\n11516\\n115169\\n14\\n108\\n1074\\n10735\\n107350\\n108\\n1074\\n10735\\n107350\\n107\\\
+    n1073\\n10734\\n107349\\n15\\n103\\n1026\\n10254\\n102532\\n103\\n1026\\n10254\\n102532\\n102\\n1025\\n10253\\n102531\\\
+    n16\\n91\\n904\\n9036\\n90355\\n91\\n904\\n9036\\n90355\\n90\\n903\\n9035\\n90354\\n17\\n82\\n812\\n8120\\n81196\\n82\\\
+    n812\\n8120\\n81196\\n81\\n811\\n8119\\n81195\\n18\\n79\\n781\\n7808\\n78078\\n79\\n781\\n7808\\n78078\\n78\\n780\\n7807\\\
+    n78077\\n19\\n60\\n592\\n5913\\n59129\\n60\\n592\\n5913\\n59129\\n59\\n591\\n5912\\n59128\\n20\\n64\\n631\\n6303\\n63026\\\
+    n64\\n631\\n6303\\n63026\\n63\\n630\\n6302\\n63025\\n21\\n49\\n482\\n4813\\n48130\\n49\\n482\\n4813\\n48130\\n48\\n481\\\
+    n4812\\n48129\\n22\\n52\\n514\\n5131\\n51305\\n52\\n514\\n5131\\n51305\\n51\\n513\\n5130\\n51304\\nX\\n156\\n1553\\n15528\\\
+    n155271\\n156\\n1553\\n15528\\n155271\\n155\\n1552\\n15527\\n155270\\nY\\n60\\n594\\n5938\\n59374\\n60\\n594\\n5938\\\
+    n59374\\n59\\n593\\n5937\\n59373\\nmtDNA\\n0\\n0\\n2\\n17\\n0\\n0\\n0\\n17\\n0\\n0\\n1\\n16\\nTable 2.\\u2002 Node and\
+    \ relationship statistics for HSCLO37, detailing the hierarchical organization of chromosomal\\nlocations in the GRCh37\
+    \ genome assembly. The table includes counts for nodes at each genomic resolution level\\n(1 Mbp, 100 kbp, 10 kbp, and\
+    \ 1 kbp) and their corresponding hierarchical (\\u201cabove\\u201d) and positional (\\u201cprecedes\\u201d)\\nrelationships\
+    \ for chromosomes 1\\u201322, X, Y, and mtDNA.\\n\\n5\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nAfter merging with the list of loops that overlap genes\
+    \ (reciprocal of Query 3), the complete list of human\\ngenes and overlapping loops was obtained. Analysis for density\
+    \ estimation was performed in R (RStudio\\n2022.12.0.35313,14 and R v4.2.214). Functional annotation of the gene list\
+    \ associated with the chromosomal loop\\nwith the highest number of genes per 100kbp loop length used Metascape15.\"\n\
+    \  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"HSCLO effectively maps chromosomal locations across five genomic\
+    \ resolution levels: whole chromosome, 1\\nMbp, 100 kbp, 10 kbp, and 1 kbp. Over 3.4 million nodes are interconnected\
+    \ to enable detailed mapping and\\nquerying within the knowledge graph environment. The hierarchical relationships allow\
+    \ seamless transitions\\nbetween different scales of genomic data, supporting complex queries such as those involving\
+    \ 1 kbp nodes and\\ntheir positional relationships within larger chromosomal contexts (Table\\u00a01).\\nHSCLO38 defines\
+    \ chromosomal locations within the GRCh38 release for chr 1\\u201322, X, Y, and mtDNA (Fig.\\u00a01).\\nIt provides hierarchical\
+    \ relationships across five genomic resolution levels: whole chromosome, 1 megabase pair\\n(Mbp), 100 kilobase pairs (kbp),\
+    \ 10 kbp, and 1 kbp. Each node within these class levels is interconnected to its\\nscale parent and the immediate neighbors\
+    \ on either side to support mapping and association between genomic\\ndatasets and features. For example, the 1kbp element\
+    \ HSCLO38:chr1.20517001\\u201320518000 is connected to its\\n\\u201cscale parent\\u201d at a lower resolution, HSCLO38:chr1.20510001\\\
+    u201320520000 through the \\u201cbelow_1kbp_band\\u201d\\nrelationship as well as to its immediate neighbors: its 5\\\
+    u2032 neighbor HSCLO38:chr1.20516001\\u201320517000 and 3\\u2032\\nneighbor HSCLO38:chr1.20518001\\u201320519000 through\
+    \ \\u201cprecedes_1kbp_band\\u201d relationships. Using\\nhuman genome version GRCh38, the HSCLO38 schema results in 3,431,155\
+    \ nodes and 6,862,195 relationships\\n(Table\\u00a01). Similarly, the summary statistics of GRCh37 are provided in Table\\\
+    u00a02.\\nWe provide a use case for linking biodata at different resolutions to demonstrate the practical application\
+    \ of\\nHSCLO38 in knowledge organization and discovery. A researcher may be interested in identifying genes found\\nFile\
+    \ Accession\\nDataset Description\\nURL\"\n  },\n  {\n    \"name\": \"DNFIEY8UT8A\",\n    \"text\": \"in situ Hi-C on\
+    \ HCT-116 (HCT-116-RAD21-\\nmAC)\\nhttps://data.4dnucleome.org/files-processed/4DNFIEY8UT8A/\"\n  },\n  {\n    \"name\"\
+    : \"DNFIOQLL854\",\n    \"text\": \"Replicates of in situ Hi-C on untreated HCT116\\nWAPL-mAID2 cells\\nhttps://data.4dnucleome.org/files-processed/4DNFIOQLL854/\"\
+    \n  },\n  {\n    \"name\": \"DNFILP7BD5H\",\n    \"text\": \"Replicates of in situ Hi-C on Auxin treated\\nHCT116 WAPL-mAID2\
+    \ cells\\nhttps://data.4dnucleome.org/files-processed/4DNFILP7BD5H/\"\n  },\n  {\n    \"name\": \"DNFILKW1NH2\",\n   \
+    \ \"text\": \"Hi-C experiments on H1-hESC crosslinked with\\nboth FA and DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFILKW1NH2/\"\
+    \n  },\n  {\n    \"name\": \"DNFI3GNGT17\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with\\nboth FA and\
+    \ DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI3GNGT17/\"\n  },\n  {\n    \"name\": \"\
+    DNFIEEF14ST\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with\\nboth FA and DSG, digested with DpnII.\\\
+    nhttps://data.4dnucleome.org/files-processed/4DNFIEEF14ST/\"\n  },\n  {\n    \"name\": \"DNFI4PMUZNU\",\n    \"text\"\
+    : \"Hi-C experiments on H1-hESC crosslinked with\\nboth FA and DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI4PMUZNU/\"\
+    \n  },\n  {\n    \"name\": \"DNFI8NCHTIR\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFI8NCHTIR/\"\
+    \n  },\n  {\n    \"name\": \"DNFIVO3FNLK\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIVO3FNLK/\"\
+    \n  },\n  {\n    \"name\": \"DNFIY71465K\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIY71465K/\"\
+    \n  },\n  {\n    \"name\": \"DNFILSK2QNY\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFILSK2QNY/\"\
+    \n  },\n  {\n    \"name\": \"DNFIWEN3L7Y\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIWEN3L7Y/\"\
+    \n  },\n  {\n    \"name\": \"DNFIIQP46FO\",\n    \"text\": \"MicroC Libraries from HFFc6 cells with 3\\nbiological replicates,\
+    \ FA and DSG cross-linked,\\nMNase digestion\\nhttps://data.4dnucleome.org/files-processed/4DNFIIQP46FO/\"\n  },\n  {\n\
+    \    \"name\": \"DNFI212GCZW\",\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with\\nboth FA and DSG, digested\
+    \ with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI212GCZW/\"\n  },\n  {\n    \"name\": \"DNFI2K9STD5\"\
+    ,\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with\\nboth FA and DSG, digested with DdeI.\\nhttps://data.4dnucleome.org/files-processed/4DNFI2K9STD5/\"\
+    \n  },\n  {\n    \"name\": \"DNFIQ48U7UJ\",\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with both\\nFA and\
+    \ DSG, digested with DdeI and DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFIQ48U7UJ/\"\n  },\n  {\n    \"\
+    name\": \"DNFI3RMWQ85\",\n    \"text\": \"MicroC Libraries from H1ESC cells from 2\\nbiological replicates, FA and DSG\
+    \ cross-linked,\\nMNase digestion\\nhttps://data.4dnucleome.org/files-processed/4DNFI3RMWQ85/\"\n  },\n  {\n    \"name\"\
+    : \"DNFI3O1OTN4\",\n    \"text\": \"in situ Hi-C on H1-hESC (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFI3O1OTN4/\"\
+    \n  },\n  {\n    \"name\": \"DNFI49A9Z1K\",\n    \"text\": \"Micro-C experiments on H1 derived endoderm,\\ndifferentiated\
+    \ using the 4DN protocol.\\nhttps://data.4dnucleome.org/files-processed/4DNFI49A9Z1K/\"\n  },\n  {\n    \"name\": \"DNFIPTEIICR\"\
+    ,\n    \"text\": \"Hi-C experiments on H1 derived endoderm,\\ndifferentiated using the 4DN protocol. Cells\\ncrosslinked\
+    \ with FA and digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFIPTEIICR/\"\n  },\n  {\n    \"name\"\
+    : \"DNFIW5Z7XD3\",\n    \"text\": \"Hi-C experiments on H1 derived endoderm,\\ndifferentiated using the protocol from\
+    \ Rene Maehr\\nlab. Cells crosslinked with FA and digested w\\u2026\\nhttps://data.4dnucleome.org/files-processed/4DNFIW5Z7XD3/\\\
+    nTable 3.\\u2002 List of the 4DN dot calls files\\u00a0used in the examples shown in Figs. 2 and 3, their descriptions\
+    \ and\\ndownload URLs.\\n\\n6\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nwithin large-scale chromatin organization features,\
+    \ such as Hi-C data hosted by the 4DN project9. We began\\nby importing HSCLO38 into Petagraph, our custom biomedical\
+    \ KG7, and then creating edges in the KG to link\\nall gene nodes from GENCODE v4116 to their respective 1 kbp HSCLO38\
+    \ nodes. We then created edges for\\nthe chromosomal loops from a set of files at the 4DN project9 to their respective\
+    \ 1 kbp locations in HSCLO38.\\nUsing a Cypher query in the Neo4j v5 environment, we retrieved the overlap in 1 kbp nodes\
+    \ between the spans\\nof the GENCODE gene definitions and the start and end points of the 4DN loops. Figure\\u00a02 depicts\
+    \ the example\\nquery results outlined above. Figure\\u00a02A provides a sequence of HSCLO38 connecting the start and\
+    \ end of a 4DN\\nloop upstream anchor. Figure\\u00a02B shows how HSCLO38 can extract the corresponding 1 kbp nodes, such\
+    \ as for\\na human transcript location. Figure\\u00a03A illustrates the frequency distribution of human genes overlapping\
+    \ the\\n4DN loops provided by the 4DN dot call dataset 4DNFIIQP46FO as a function of chromosome 1 coordinates\\nas an\
+    \ example of how HSCLO38 could be utilized to bridge independent datasets in a knowledge graph context.\\nFigure\\u00a03\
+    \ shows the distribution of 4DN loop sizes (Fig.\\u00a03B) and the number of GENCODE-defined genes over-\\nlapping the\
+    \ 4DN dataset loops in 4DNFIIQP46FO (Fig.\\u00a03C,D, respectively). Further analysis of this data reveals\\n~36,000 loops\
+    \ (from 4DNFIIQP46FO) that overlap at least one gene. To explore the biological relevance of this\\nanalysis, we performed\
+    \ functional annotation of the gene list from the loop 4DNFIIQP46FO.chr12.3050000\\u2013\\n3060000.chr12.10310000\\u201310320000,\
+    \ which was identified as having the highest number of overlapping genes\\n(173). The analysis provides the top 10 enriched\
+    \ pathways (Table\\u00a04), top 10 DisGenNet diseases (Table\\u00a05), and\\ntop 10 MSigDB cell types (Table\\u00a06),\
+    \ implying the disruption in the loop structure and, subsequently, the expres-\\nsion regulation of the overlapping genes\
+    \ could be associated with developmental disorders primarily related to\\nmuscular development.\"\n  },\n  {\n    \"name\"\
+    : \"Discussion\",\n    \"text\": \"The HSCLO is a structured ontological framework essential for organizing and categorizing\
+    \ information on\\nthe precise physical positions of genes, genetic markers, and other genomic elements along chromosomes\
+    \ in\\ntwo human genome versions (GRCh37 and GRCh38). This ontology establishes a standardized vocabulary and\\nhierarchical\
+    \ structure for accurately describing chromosomal positions\\u00a0in knowledge graphs, ensuring uniform-\\nity in data\
+    \ representation and sharing across diverse databases and research endeavors. Given the sizable and\\nheterogeneous character\
+    \ of genomic data from multiple sources and studies, HSCLO functions as a unifying\\nframework to enable the integration\
+    \ of datasets based on chromosomal coordinates.\\nHSCLO offers several advantages that enhance its utility for graphs\\\
+    u00a0in biomedical research. The design spe-\\ncifically addresses the challenge of integrating genomic data across multiple\
+    \ resolution levels within knowledge\\ngraphs, which supports accurate data alignment across scales, from entire chromosomes\
+    \ to\\u00a01kbp segments. This\\nFig. 3\\u2002 Use case distributions.\\u00a0(A) Frequency distribution of genes overlapping\
+    \ the 4DN-computed loops in the\\n4DN dot call dataset 4DNFIIQP46FO ingested in Petagraph plotted for human chromosome\
+    \ 1 as a function\\nof loop midpoints. (B) Loop size distribution according to 4DNFIIQP46FO dataset (in base-pairs), (C)\
+    \ gene\\ncount per loop distribution and (D) distribution of averaged gene count per 100\\u2009kbp of loop span derived\
+    \ from\\nthe intersection of 4DN loops recorded in 4DNFIIQP46FO and GENCODE genes identified through their\\nconnection\
+    \ to HSCLO38.\\n\\n7\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nPathway ID\\nCategory\\nDescription\\nCount\\n%\\nlog10(p)\\nlog10(q)\"\n  },\n  {\n\
+    \    \"name\": \"M5880\",\n    \"text\": \"Canonical Pathways\"\n  },\n  {\n    \"name\": \"NABA ECM AFFILIATED\",\n \
+    \   \"text\": \"14\\n9.86\\n\\u221213.11\\n\\u22128.77\"\n  },\n  {\n    \"name\": \"GO:0061760\",\n    \"text\": \"GO\
+    \ Biological Processes\\nantifungal innate immune response\\n6\\n4.23\\n\\u22129.77\\n\\u22125.9\"\n  },\n  {\n    \"\
+    name\": \"GO:0045087\",\n    \"text\": \"GO Biological Processes\\ninnate immune response\\n17\\n11.97\\n\\u22126.83\\\
+    n\\u22123.28\"\n  },\n  {\n    \"name\": \"R-HSA-198933\",\n    \"text\": \"Reactome Gene Sets\\nImmunoregulatory interactions\
+    \ between a\\nLymphoid and a non-Lymphoid cell\\n7\\n4.93\\n\\u22125.49\\n\\u22122.22\"\n  },\n  {\n    \"name\": \"GO:0002831\"\
+    ,\n    \"text\": \"GO Biological Processes\\nregulation of response to biotic stimulus\\n12\\n8.45\\n\\u22125.14\\n\\\
+    u22121.91\\nhsa04610\\nKEGG Pathway\\nComplement and coagulation cascades\\n5\\n3.52\\n\\u22124.27\\n\\u22121.27\"\n \
+    \ },\n  {\n    \"name\": \"WP534\",\n    \"text\": \"WikiPathways\\nGlycolysis and gluconeogenesis\\n4\\n2.82\\n\\u22124.23\\\
+    n\\u22121.27\"\n  },\n  {\n    \"name\": \"R-HSA-1296072\",\n    \"text\": \"Reactome Gene Sets\\nVoltage gated Potassium\
+    \ channels\\n3\\n2.11\\n\\u22122.96\\n\\u22120.46\"\n  },\n  {\n    \"name\": \"WP4172\",\n    \"text\": \"WikiPathways\\\
+    nPI3K Akt signaling pathway\\n7\\n4.93\\n\\u22122.95\\n\\u22120.46\"\n  },\n  {\n    \"name\": \"GO:0045601\",\n    \"\
+    text\": \"GO Biological Processes\\nregulation of endothelial cell differentiation\\n3\\n2.11\\n\\u22122.88\\n\\u22120.43\\\
+    nTable 4.\\u2002 Top 10 pathways associated with genes overlapping loop 4DNFIIQP46FO.chr12.3050000\\u20133060000.\\nchr12.10310000\\\
+    u201310320000. Count represents the number of genes overlapping the loop that are associated\\nwith the specified ontology\
+    \ term. Percent indicates the percentage of the total genes that are associated with\\nthe ontology term (calculations\
+    \ include only genes with at least only one ontology term annotation). Column\\nlog10(p) is the p-value expressed in base\
+    \ 10 logarithm, while log10(q) denotes the Metascape provided multi-\\ntest corrected p-value.\"\n  },\n  {\n    \"name\"\
+    : \"UMLS ID\",\n    \"text\": \"DisGenNet\\u00a0Description\\nCount\\n%\\nlog10(p)\\nlog10(q)\"\n  },\n  {\n    \"name\"\
+    : \"C0205852\",\n    \"text\": \"Neoplasms, Embryonal and Mixed\\n7\\n4.9\\n\\u221213\\n\\u22128.4\"\n  },\n  {\n    \"\
+    name\": \"C0751365\",\n    \"text\": \"Cancer, Embryonal and Mixed\\n7\\n4.9\\n\\u221213\\n\\u22128.4\"\n  },\n  {\n \
+    \   \"name\": \"C0751364\",\n    \"text\": \"Cancer, Embryonal\\n7\\n4.9\\n\\u221212\\n\\u22127.8\"\n  },\n  {\n    \"\
+    name\": \"C0027658\",\n    \"text\": \"Neoplasms, Germ Cell and Embryonal\\n8\\n5.6\\n\\u221212\\n\\u22127.6\"\n  },\n\
+    \  {\n    \"name\": \"C0740345\",\n    \"text\": \"Germ Cell Cancer\\n8\\n5.6\\n\\u221211\\n\\u22126.7\"\n  },\n  {\n\
+    \    \"name\": \"C0027654\",\n    \"text\": \"Embryonal Neoplasm\\n8\\n5.6\\n\\u22129.6\\n\\u22125.8\"\n  },\n  {\n  \
+    \  \"name\": \"C4310681\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"EHLERS-DANLOS SYNDROME, PERIODONTAL TYPE, 2\"\
+    ,\n    \"text\": \"3\\n2.1\\n\\u22127\\n\\u22123.3\"\n  },\n  {\n    \"name\": \"C1290884\",\n    \"text\": \"Inflammatory\
+    \ disorder\\n12\\n8.5\\n\\u22126.5\\n\\u22122.9\"\n  },\n  {\n    \"name\": \"C2363741\",\n    \"text\": \"HIV-1 infection\\\
+    n15\\n11\\n\\u22126\\n\\u22122.5\"\n  },\n  {\n    \"name\": \"C0008373\",\n    \"text\": \"Cholesteatoma\\n7\\n4.9\\\
+    n\\u22125.4\\n\\u22122\\nTable 5.\\u2002 Top 10 DisGenNet abnormalities associated with genes overlapping loop 4DNFIIQP46FO.\\\
+    nchr12.3050000\\u20133060000.chr12.10310000\\u201310320000 \\u00a0Count represents the number of genes overlapping the\\\
+    nloop that are associated with the specified ontology term. Percent indicates the percentage of the total genes\\nthat\
+    \ are associated with the ontology term (calculations include only genes with at least only one ontology\\nterm annotation).\
+    \ Column log10(p) is the p-value expressed in base 10 logarithm, while log10(q) denotes the\\nMetascape provided multi-test\
+    \ corrected p-value.\\nMSigDB Systematic Name\\nDescription\\nCount\\n%\\nlog10(p)\\nlog10(q)\"\n  },\n  {\n    \"name\"\
+    : \"M40264\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DESCARTES FETAL PANCREAS MYELOID CELLS\",\n    \"text\"\
+    : \"8\\n5.6\\n\\u22124.8\\n\\u22121.5\"\n  },\n  {\n    \"name\": \"M39193\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"HAY BONE MARROW CD8 T CELL\",\n    \"text\": \"5\\n3.5\\n\\u22124.7\\n\\u22121.4\"\n  },\n  {\n    \"name\": \"M39050\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MANNO MIDBRAIN NEUROTYPES HPERIC\",\n    \"text\": \"14\\n9.9\\n\\u22124.6\\\
+    n\\u22121.4\"\n  },\n  {\n    \"name\": \"M40196\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DESCARTES FETAL HEART\
+    \ MYELOID CELLS\",\n    \"text\": \"6\\n4.2\\n\\u22124.4\\n\\u22121.3\"\n  },\n  {\n    \"name\": \"M40221\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"DESCARTES FETAL KIDNEY MYELOID CELLS\",\n    \"text\": \"7\\n4.9\\n\\u22124.2\\\
+    n\\u22121.2\"\n  },\n  {\n    \"name\": \"M39116\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"AIZARANI LIVER C12\
+    \ NK NKT CELLS 4\",\n    \"text\": \"4\\n2.8\\n\\u22124.1\\n\\u22121.1\"\n  },\n  {\n    \"name\": \"M39266\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"HU FETAL RETINA MICROGLIA\",\n    \"text\": \"9\\n6.3\\n\\u22124.1\\n\\u22121.1\"\
+    \n  },\n  {\n    \"name\": \"M39051\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MANNO MIDBRAIN NEUROTYPES HMGL\"\
+    ,\n    \"text\": \"11\\n7.7\\n\\u22124\\n\\u22121.1\"\n  },\n  {\n    \"name\": \"M39306\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"CUI DEVELOPING HEART C9 B T CELL\",\n    \"text\": \"6\\n4.2\\n\\u22124\\n\\u22121.1\"\n  },\n \
+    \ {\n    \"name\": \"M41697\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TRAVAGLINI LUNG EREG DENDRITIC CELL\",\n\
+    \    \"text\": \"11\\n7.7\\n\\u22124\\n\\u22121.1\\nTable 6.\\u2002 Using HSCLO38, we found 10 single cell types from\
+    \ MSigDB c8 gene sets most associated with the\\nset of genes overlapping 4DN chromosomal loop 4DNFIIQP46FO.chr12.3050000\\\
+    u20133060000.chr12.10310000\\u2013\\n10320000 Count represents the number of genes overlapping the loo Count represents\
+    \ the number of genes\\noverlapping the loop that are associated with the specified ontology term. Percent indicates the\
+    \ percentage of\\nthe total genes that are associated with the ontology term (calculations include only genes with at\
+    \ least only\\none ontology term annotation). Column log10(p) is the p-value expressed in base 10 logarithm, while log10(q)\\\
+    ndenotes the Metascape provided multi-test corrected p-value.\\n\\n8\\nScientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\ncapability is particularly valuable when integrating\\\
+    u00a0large-scale studies where different datasets must be linked\\nat varying feature\\u00a0resolutions. HSCLO\\u2019s\
+    \ hierarchical structure also enables rapid querying and efficient data\\nretrieval, which are essential for handling\
+    \ the vast amounts of data typically involved in genomic studies.\\nDespite these strengths, HSCLO does have certain limitations.\
+    \ The only currently available versions are based\\non GRCh37 and GRCh38 genome assemblies, which may limit its applicability\
+    \ for other assemblies until an\\nupdate is made to accommodate additional reference genomes. Another limitation inherent\
+    \ to large reference\\ndatasets in graphs is the computational demand associated with maintaining and querying the large\
+    \ number of\\nnodes and relationships, especially at HSCLO\\u2019s finer resolution of 1 kbp. Large-scale analyses at\
+    \ a finer resolu-\\ntion can be resource-intensive and may pose challenges for researchers working in environments with\
+    \ limited\\ncomputational infrastructure.\\nAnother potential\\u00a0limitation of employing HSCLO is inherent to the complexity\
+    \ involved in its implemen-\\ntation and use. While HSCLO is designed to facilitate data integration, the initial setup\
+    \ process\\u00a0to annotate a\\nnew dataset\\u00a0\\u2014such as mapping and linking\\u00a0data coordinates to the ontology\\\
+    u2014can require data preparation\\nand standardization efforts. To address these challenges, future developments will\
+    \ focus on creating more\\nuser-friendly tools and documentation and releasing prepared datasets that simplify the process\
+    \ of using HSCLO.\\nIn clinical and biomedical research contexts, understanding the chromosomal locations of genes associated\\\
+    nwith diseases or genetic variants assumes critical importance. HSCLO38 and HSCLO37 facilitate the systematic\\ncataloging\
+    \ and classification of such pertinent genetic information, thereby supporting investigations into dis-\\nease genetics\
+    \ and personalized medicine applications. Furthermore, due to the reliance of computational tools\\nand algorithms on\
+    \ structured data, HSCLO can be a foundational resource for developing robust computational\\nmethodologies for genomic\
+    \ analysis and interpretation. Thus, HSCLO can play a pivotal role in harmoniz-\\ning, integrating, and standardizing\
+    \ genomic data, enhancing data interoperability, fostering interdisciplinary\\nresearch collaborations, and catalyzing\
+    \ advancements in computational tools essential for fundamental research\\nand applied biomedical applications.\\nHSCLO\
+    \ stands out from earlier ontologies by focusing on ontologized genomic coordinate binning, facili-\\ntating integration\
+    \ across various resolution levels in biomedical knowledge graphs. It addresses the challenge of\\nhandling genomic data\
+    \ with differing experimental resolutions while ensuring compatibility with the GRCh38\\nand GRCh37\\u00a0genome assemblies.\
+    \ HSCLO can be a valuable tool for researchers and data scientists aiming to\\nintegrate and analyze genomic data in large-scale\
+    \ biomedical knowledge environments.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"Knowledge-graph-ready\
+    \ edgelists (triple format) can be found on the HSCLO project page at the OSF website:\\nhttps://osf.io/pe8v7/, https://doi.org/10.17605/OSF.IO/PE8V7.\"\
+    \n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"The code used to generate and query HSCLO is available\
+    \ in a public repository: https://github.com/\\nTaylorResearchLab/HSCLO/tree/main/HSCLO38.\\nReceived: 21 February 2024;\
+    \ Accepted: 20 December 2024;\\nPublished: xx xx xxxx\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\\
+    t Eilbeck, K. et al. The Sequence Ontology: a tool for the unification of genome annotations. Genome Biol. 6, R44 (2005).\\\
+    n2.\\t Baran, J. et al. GFVO: the Genomic Feature and Variation Ontology. PeerJ 3, e933 (2015).\\n3.\\t Mungall, C. J.,\
+    \ Emmert, D. B. & FlyBase Consortium. A Chado case study: an ontology-based modular schema for representing\\ngenome-associated\
+    \ biological information. Bioinformatics 23, i337\\u201346 (2007).\\n4.\\t Feng, F. et al. GenomicKB: a knowledge graph\
+    \ for the human genome. Nucleic Acids Res. 51, D950\\u2013D956 (2023).\\n5.\\t Church, D. M. et al. Modernizing reference\
+    \ genome assemblies. PLoS Biol 9, e1001091, https://doi.org/10.1371/journal.pbio.1001091\\n(2011).\\n6.\\t Schneider,\
+    \ V. A. Evaluation of GRCh38 and de novo haploid genome assemblies demonstrates the enduring quality of the reference\\\
+    nassembly. Genome Research 27, 849\\u2013864 (2017).\\n7.\\t Stear, B. J. et al. Petagraph: A large-scale unifying knowledge\
+    \ graph framework for integrating biomolecular and biomedical data. Sci\\nData 11, 1338, https://doi.org/10.1038/s41597-024-04070-w\
+    \ (2024).\\n8.\\t NIH Common Fund Data Ecosystem Data Distillery Partnership Repository. GitHub https://github.com/nih-cfde/data-distillery.\\\
+    n9.\\t Dekker, J. et al. Spatial and temporal organization of the genome: Current state and future aims of the 4D nucleome\
+    \ project. Mol. Cell\\n83, 2624\\u20132640 (2023).\\n10.\\t Lonsdale, J. et al. The Genotype-Tissue Expression (GTEx)\
+    \ project. Nat. Genet. 45, 580\\u2013585 (2013).\\n11.\\t Heath, A. P. et al. Abstract 2464: Gabriella Miller Kids First\
+    \ Data Resource Center: Harmonizing clinical and genomic data to support\\nchildhood cancer and structural birth defect\
+    \ research. vol. 79 2464\\u20132464 (American Association for Cancer Research, 2019).\\n12.\\t James, W. et al. The Human\
+    \ Genome Browser at UCSC. Genome Research 12(6), 996\\u20131006, https://doi.org/10.1101/gr.229102\\n(2002).\\n13.\\t\
+    \ Posit team. RStudio: Integrated Development Environment for R. (Posit Software, PBC, Boston, MA, 2022).\\n14.\\t R Development\
+    \ Core Team, R. & Others. R: A language and environment for statistical computing (2011).\\n15.\\t Zhou, Y. et al. Metascape\
+    \ provides a biologist-oriented resource for the analysis of systems-level datasets. Nat. Commun. 10 (2019).\\n16.\\t\
+    \ Harrow, J. et al. GENCODE: the reference human genome annotation for the ENCODE Project. Genome Res. 22 (2012).\"\n\
+    \  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Funding for this project\
+    \ is acknowledged from the NIH Common Fund through the Office of Strategic\",\n    \"text\": \"Coordination/Office of\
+    \ the NIH Director under awards R03OD030600 and OT2OD030162 (DMT), and\\nOT2OD026663, OT2OD026675 (JCS); The Department\
+    \ of Biomedical Informatics at The Children\\u2019s Hospital of\\nPhiladelphia (DMT).\\n\\n9\\nScientific Data |     \
+    \      (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\"\
+    \n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"T.M.A. wrote the code, and provided analyses and\
+    \ figures. T.M.A., D.M.T. and B.J.S. wrote and edited the paper.\\nT.M.A., D.M.T. and B.J.S. designed the\\u00a0HSCLO\
+    \ schema. T.M.A. and B.J.S. implemented\\u00a0HSCLO in the knowledge\\ngraphs. C.M.N. was the project manager. J.C.S.\
+    \ and J.A.S. were involved in the overall design of the knowledge\\ngraph environment around\\u00a0HSCLO and advised on\
+    \ its initial design. D.M.T. conceived of, guided, and funded\\nwork on HSCLO.\"\n  },\n  {\n    \"name\": \"Competing\
+    \ interests\",\n    \"text\": \"The authors declare no competing interests.\\nAdditional information\\nCorrespondence\
+    \ and requests for materials should be addressed to D.M.T.\\nReprints and permissions information is available at www.nature.com/reprints.\\\
+    nPublisher\\u2019s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and\\ninstitutional\
+    \ affiliations.\\nOpen Access This article is licensed under a Creative Commons Attribution-NonCommercial-\\nNoDerivatives\
+    \ 4.0 International License, which permits any non-commercial use, sharing, distribu-\\ntion and reproduction in any medium\
+    \ or format, as long as you give appropriate credit to the original author(s)\\nand the source, provide a link to the\
+    \ Creative Commons licence, and indicate if you modified the licensed mate-\\nrial. You do not have permission under this\
+    \ licence to share adapted material derived from this article or parts of\\nit. The images or other third party material\
+    \ in this article are included in the article\\u2019s Creative Commons licence,\\nunless indicated otherwise in a credit\
+    \ line to the material. If material is not included in the article\\u2019s Creative\\nCommons licence and your intended\
+    \ use is not permitted by statutory regulation or exceeds the permitted\\nuse, you will need to obtain permission directly\
+    \ from the copyright holder. To view a copy of this licence, visit\\nhttp://creativecommons.org/licenses/by-nc-nd/4.0/.\\\
+    n\\n\\u00a9 The Author(s) 2025\"\n  }\n]"
+  funding: 'Coordination/Office of the NIH Director under awards R03OD030600 and OT2OD030162 (DMT), and
+
+    OT2OD026663, OT2OD026675 (JCS); The Department of Biomedical Informatics at The Children’s Hospital of
+
+    Philadelphia (DMT).
+
+
+    9
+
+    Scientific Data |           (2025) 12:52  | https://doi.org/10.1038/s41597-024-04358-x
+
+    www.nature.com/scientificdata
+
+    www.nature.com/scientificdata/'
+  author_contributions: 'T.M.A. wrote the code, and provided analyses and figures. T.M.A., D.M.T. and B.J.S. wrote and edited
+    the paper.
+
+    T.M.A., D.M.T. and B.J.S. designed the HSCLO schema. T.M.A. and B.J.S. implemented HSCLO in the knowledge
+
+    graphs. C.M.N. was the project manager. J.C.S. and J.A.S. were involved in the overall design of the knowledge
+
+    graph environment around HSCLO and advised on its initial design. D.M.T. conceived of, guided, and funded
+
+    work on HSCLO.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information
+
+    Correspondence and requests for materials should be addressed to D.M.T.
+
+    Reprints and permissions information is available at www.nature.com/reprints.
+
+    Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+
+    institutional affiliations.
+
+    Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-
+
+    NoDerivatives 4.0 International License, which permits any non-commercial use, sharing, distribu-
+
+    tion and reproduction in any medium or format, as long as you give appropriate credit to the original author(s)
+
+    and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed mate-
+
+    rial. You do not have permission under this licence to share adapted material derived from this article or parts of
+
+    it. The images or other third party material in this article are included in the article’s Creative Commons licence,
+
+    unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative
+
+    Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted
+
+    use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit
+
+    http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+
+    © The Author(s) 2025'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n    \"\
+    page\": 4\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\",\n   \
+    \ \"page\": 6\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\",\n\
+    \    \"page\": 8\n  }\n]"
+references:
+  reference_count: 16
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://osf.io/pe8v7/\",\n    \"accession\": \"\",\n    \"database\": \"\",\n\
+    \    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://doi.org/10.17605/OSF.IO/PE8V7.\",\n    \"accession\": \"\
+    \",\n    \"database\": \"\",\n    \"description\": \"\"\n  }\n]"

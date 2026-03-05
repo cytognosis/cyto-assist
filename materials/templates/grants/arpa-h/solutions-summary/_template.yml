@@ -1,0 +1,197 @@
+# ARPA-H Solutions Summary — Template Specification
+#
+# Defines the structure of the ARPA-H Mission Office Solutions Summary,
+# which is the initial submission document for ARPA-H ISO responses.
+# This is based on Appendix A (Solutions Summary Template, Amendment 2).
+#
+# Source: Appendix+A+-+ARPA-H+Solutions+Summary+Template-Amend-2.docx
+# Schema Version: 1.0
+
+template:
+  name: "ARPA-H Mission Office Solutions Summary"
+  version: "1.0-amend2"
+  description: "Solutions Summary submission for ARPA-H Mission Office ISOs"
+  output_formats: [docx, pdf, html]
+  footer: "NOTE: All Solution Summary submissions must be submitted in English with sans serif font type NO smaller than 11-point font."
+
+sections:
+  # ─── Cover Page ─────────────────────────────────────────────────────────
+  - id: cover_page
+    title: "Solution Summary Cover Page"
+    note: "Cover page with key metadata. Must include organization logo (optional)."
+    fields:
+      - id: iso_title
+        label: "Innovative Solutions Opening Title"
+        type: text
+        required: true
+        hint: "Title of the ISO being responded to"
+
+      - id: solution_summary_title
+        label: "Solution Summary Title"
+        type: text
+        required: true
+
+      - id: submitter_org
+        label: "Submitter Organization"
+        type: text
+        required: true
+
+      - id: submitter_org_type
+        label: "Submitter Organization Type"
+        type: choice
+        required: true
+        options:
+          - "Large Business"
+          - "Small Disadvantaged Business (SDB)"
+          - "Other Small Business"
+          - "Historically Black College or University (HBCU)"
+          - "Minority Institution (MI)"
+          - "Other Educational"
+          - "Other Nonprofit"
+          - "FFRDC"
+          - "Government Entity"
+
+      - id: tech_poc_name
+        label: "Technical POC Name"
+        type: text
+        required: true
+
+      - id: tech_poc_email
+        label: "Technical POC Email"
+        type: email
+        required: true
+
+      - id: tech_poc_phone
+        label: "Technical POC Phone"
+        type: phone
+        required: true
+
+      - id: admin_poc_name
+        label: "Administrative POC Name"
+        type: text
+        required: true
+
+      - id: admin_poc_email
+        label: "Administrative POC Email"
+        type: email
+        required: true
+
+      - id: admin_poc_phone
+        label: "Administrative POC Phone"
+        type: phone
+        required: true
+
+  # ─── Concept Summary ───────────────────────────────────────────────────
+  - id: concept_summary
+    title: "Concept Summary"
+    fields:
+      - id: concept
+        label: "Describe the solution summary concept"
+        type: section
+        required: true
+        hint: "Describe with minimal jargon; explain how it addresses the ISO interest areas or technical challenges and why the proposed concept is promising"
+
+  # ─── Innovation and Impact ──────────────────────────────────────────────
+  - id: innovation_impact
+    title: "Innovation and Impact"
+    fields:
+      - id: outcomes
+        label: "Outcomes sought and/or problems to be solved"
+        type: section
+        required: true
+        hint: "Clearly identify the outcomes sought and/or the problems to be solved with the proposed technology."
+
+      - id: technical_challenges
+        label: "Technical challenges progression"
+        type: section
+        required: true
+        hint: "A progression of increasingly complex technical challenges."
+
+      - id: state_of_art
+        label: "State of the art / emerging technology baseline"
+        type: section
+        required: true
+        hint: "Describe the state of the art and emerging technology baselines."
+
+      - id: metrics
+        label: "Aggressive metrics for each year"
+        type: section
+        required: true
+        hint: "Aggressive metrics for each year of the proposed project."
+
+      - id: specific_outcomes
+        label: "Summary of specific outcomes"
+        type: section
+        required: true
+        hint: "Summary of specific outcomes from the proposed project or concept."
+
+  # ─── Proposed Work ──────────────────────────────────────────────────────
+  - id: proposed_work
+    title: "Proposed Work"
+    fields:
+      - id: deliverables
+        label: "Final deliverables, milestones, and technical approach"
+        type: section
+        required: true
+        hint: "Describe the final deliverable(s) for the project, key interim milestones, and the overall technical approach."
+
+      - id: new_developments
+        label: "New technical developments required"
+        type: section
+        required: true
+        hint: "Does the approach require one or more entirely new technical developments to succeed?"
+
+      - id: risk_mitigation
+        label: "Technical risk mitigation"
+        type: section
+        required: true
+        hint: "How will technical risk be mitigated?"
+
+      - id: use_cases
+        label: "Use cases, capabilities, or demonstrations"
+        type: section
+        required: true
+        hint: "What use cases, capabilities, or demonstrations will be featured?"
+
+  # ─── Team Organization ─────────────────────────────────────────────────
+  - id: team
+    title: "Team Organization and Capabilities"
+    fields:
+      - id: team_roles
+        label: "Roles and responsibilities of organizations and key personnel"
+        type: section
+        required: true
+        hint: "Indicate the roles of organizations and key personnel that comprise the Proposing Team."
+
+      - id: key_personnel
+        label: "Key team members"
+        type: section
+        required: true
+        hint: "Name, position, institution of each key member with 1-2 sentence description of relevant expertise."
+
+      - id: sub_awardees
+        label: "Sub-Awardee and Consultant Team Members"
+        type: textarea
+        required: false
+        hint: "Table with Organization Name, Technical POC, POC Email, POC Phone for each sub-awardee."
+
+  # ─── Basis of Estimate ─────────────────────────────────────────────────
+  - id: boe
+    title: "Basis of Estimate (BOE)"
+    fields:
+      - id: cost_estimate
+        label: "Cost estimate for entire proposed project team"
+        type: section
+        required: true
+        hint: "Identify a BOE that encompasses all costs and resources for the entire proposed project team."
+
+      - id: total_amount
+        label: "Total BOE Amount ($)"
+        type: number
+        required: true
+
+      - id: resource_sharing
+        label: "Resource Sharing Amount ($)"
+        type: number
+        required: false
+        hint: "If applicable — resource sharing applies."

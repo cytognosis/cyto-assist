@@ -1,0 +1,66 @@
+# Baker's Lab Slide Deck — Template Specification
+#
+# Standard pitch deck structure for investor/funder presentations.
+# Source: Grant_writing_frameworks.md
+#
+# Schema Version: 1.0
+
+template:
+  name: "Baker's Lab Pitch Deck"
+  version: "1.0"
+  output_formats: [html, pdf, pptx]
+
+sections:
+  # ─── Mission & Problem ──────────────────────────────────────────────────
+  - id: mission
+    title: "Mission & Problem"
+    fields:
+      - id: mission_statement
+        label: "Company mission, significance of the problem to be solved"
+        type: section
+        required: true
+
+  # ─── Technology ─────────────────────────────────────────────────────────
+  - id: technology
+    title: "Technology"
+    fields:
+      - id: tech_overview
+        label: "Overview of technology and IP status"
+        type: section
+        required: true
+
+  # ─── Data & Proof ───────────────────────────────────────────────────────
+  - id: data
+    title: "Supporting Data"
+    fields:
+      - id: poc_data
+        label: "Preliminary supporting data or proof of concept"
+        type: section
+        required: true
+
+  # ─── Commercialization ──────────────────────────────────────────────────
+  - id: commercialization
+    title: "Commercialization"
+    fields:
+      - id: strategy
+        label: "Commercialization strategy and competitive landscape"
+        type: section
+        required: true
+
+  # ─── Milestones ─────────────────────────────────────────────────────────
+  - id: milestones
+    title: "Milestones"
+    fields:
+      - id: two_year_plan
+        label: "Business and research milestones in the coming 2 years"
+        type: section
+        required: true
+
+  # ─── Team ───────────────────────────────────────────────────────────────
+  - id: team
+    title: "Team"
+    fields:
+      - id: team_advisors
+        label: "Description of team and advisors"
+        type: section
+        required: true

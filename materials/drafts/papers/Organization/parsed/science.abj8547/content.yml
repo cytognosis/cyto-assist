@@ -1,0 +1,220 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/Organization/science.abj8547.pdf
+
+identifiers:
+  doi: 10.1126/science.abj8547
+  pmid: '34244402'
+citation:
+  title: T
+  year: '2022'
+  journal: Science
+  volume: '373'
+  pages: 165-167
+  publisher: American Association for the Advancement of Science (AAAS)
+  authors: Francis S. Collins, Tara A. Schwetz, Lawrence A. Tabak, Eric S. Lander
+content:
+  sections: "[\n  {\n    \"name\": \"(NIH)\",\n    \"text\": \"\\u201cto\\ndevelop\\nbreakthroughs\\u2014to\\nprevent, detect,\
+    \ and treat diseases like Al-\\nzheimer\\u2019s, diabetes, and cancer,\\u201d requesting\\n$6.5 billion in the fiscal\
+    \ year 2022 budget\\n(1). The idea is inspired by the Defense Ad-\\nvanced Research Projects Agency (DARPA),\\nwhich follows\
+    \ a flexible and nimble strat-\\negy, undeterred by the possibility of fail-\\nure, and has driven breakthrough advances\\\
+    nfor the Department of Defense (DOD) for\\nmore than 60 years. To design ARPA-H, it is\\ncritical to understand what is\
+    \ working well\\nwithin the biomedical ecosystem, where\\nthere are crucial gaps, and the key princi-\\nples of DARPA\\\
+    u2019s success.\"\n  },\n  {\n    \"name\": \"WHEN IDEAS DON\\u2019T FIT MECHANISMS\",\n    \"text\": \"Progress in medicine\
+    \ and health in recent\\ndecades has been driven by two powerful\\nforces: pathbreaking fundamental research\\nand a vibrant\
+    \ commercial biotechnology\\nsector. Fundamental research is typically\\nperformed in university, nonprofit, and\\ngovernment\
+    \ labs. In the United States, it is\\nmostly funded by the federal government,\\nlargely through the NIH. By steadily\
+    \ pur-\\nsuing important fundamental questions in\\nbiology and medicine, scientists have made\\ngreat progress in discovering\
+    \ the molecu-\\nlar and cellular mechanisms underlying\\nhealth and disease\\u2014often suggesting new\\nideas for clinical\
+    \ treatment. Such funda-\\nmental research is what economists term a\\npublic good, in that it produces knowledge\\navailable\
+    \ to everyone and thus requires\\npublic investment. Some have estimated\\nthat every dollar of federal investment\\nyields\
+    \ at least $8 in economic growth, and\\nsuggested that every new therapeutic ap-\\nproved by the US Food and Drug Admin-\\\
+    nistration (FDA) can be traced, in part, to\\nfundamental discoveries supported by\\nNIH (2, 3). Given its outsized impact,\
+    \ ro-\\nbust federal investment in fundamental\\nresearch remains crucial to health and to\\nthe economy.\\nThe commercial\
+    \ sector is largely focused\\non research, development, and marketing\\nof specific products, to bring sophisticated\\\
+    ntherapies and devices to patients. Biotech-\\nnology companies have access to abundant\\ncapital to develop products\\\
+    u2014provided they\\ncan protect their intellectual property and\\nrecoup the costs by generating sufficient\\nprofit\
+    \ in a short enough period of time. Cur-\\nrently, more than 8000 medicines are in de-\\nvelopment, including 1300 for\
+    \ cancer (4, 5).\\nIn many cases, these two components\\nare all that is needed to drive progress to-\\nward clinical\
+    \ benefit\\u2014though subsequent\\nregulatory approvals, reimbursement, and\\nadoption in health care systems can also\\\
+    nbe optimized. It\\u2019s becoming clear, though,\\nthat some of the most innovative project\\nideas, which could yield\
+    \ breakthroughs,\\ndon\\u2019t always fit existing support mecha-\\nnisms: NIH support for science tradition-\\nally favors\
+    \ incremental, hypothesis-driven\\nresearch, whereas business plans require\\nan expected return on investment in a\\\
+    nreasonable time frame that is sufficient to\\nattract investors. As a result, some of the\\nmost promising ideas may\
+    \ never mature,\\nrepresenting substantial lost opportunity.\\nBold ideas may not fit existing mecha-\\nnisms because\
+    \ (i) the risk is too high; (ii)\\nthe cost is too large; (iii) the time frame\\nis too long; (iv) the focus is too applied\\\
+    nfor academia; (v) there is a need for com-\\nplex coordination among multiple parties;\\n(vi) the near-term market opportunity\\\
+    nis too small to justify commercial invest-\\nment, given the expected market size or\\nchallenges in adoption by the\
+    \ health care\\nsystem; or (vii) the scope is so broad that\\nno company can realize the full economic\\nbenefit, resulting\
+    \ in underinvestment rela-\\ntive to the potential impact. Evaluations by\\ncompanies also may not consider the im-\\\
+    npact of projects on inequities that persist\\nin our health ecosystem. In short, projects\\nwith a potentially transformative\
+    \ impact\\non the ecosystem may not yet be economi-\\ncally compelling or sufficiently feasible for\\na company to move\
+    \ forward. At the same\\ntime, there are no public mechanisms to\\npropel these public goods at rapid speed.\\nMany such\
+    \ bold ideas involve creating\\nplatforms, capabilities, and resources that\\ncould be applicable across many diseases.\\\
+    nWhereas most NIH proposals are \\u201ccurios-\\nity-driven,\\u201d these ideas are largely \\u201cuse-\\ndriven\\u201d\
+    \ research\\u2014that is, research directed\\nat solving a practical problem.\"\n  },\n  {\n    \"name\": \"DARPA AS AN\
+    \ INSPIRATION\",\n    \"text\": \"DARPA was launched in the wake of Sput-\\nnik with a singular mission: to make pivotal\\\
+    ninvestments in breakthrough technologies\\nfor national security. DARPA has played a\\nkey role in generating bold advances\
+    \ that\\nhave shaped the world\\u2014such as the inter-\\nnet, Global Positioning Systems, and self-\\ndriving cars\\\
+    u2014and has contributed to the\\ndevelopment of many others, including\\nmessenger RNA vaccines. However, failure,\\\
+    nespecially failing early, and learning from\\nthat failure are also hallmarks of DARPA.\\nDARPA has a distinctive organization\\\
+    nand culture that contrasts with traditional\\napproaches in biomedical research. It is a\\nflat and nimble organization\
+    \ whose work\\nis driven by approximately 100 program\\nmanagers (PMs) and office directors. The\\nPMs are often recruited\
+    \ from industry or\\ntop research universities, and they come\\nfor limited terms of 3 to 5 years. They\\ntypically bring\
+    \ bold, risky ideas, and they\\nare given the independence and sufficient\\nresources to pursue them, mitigating risk\\\
+    nthrough\\nmetric-driven\\naccountability\\nand by pursuing multiple approaches to\\nachieve a quantifiable goal.\\nDARPA\
+    \ can support research at three\\nstages (basic research, applied research,\\nand advanced technology development);\"\n\
+    \  },\n  {\n    \"name\": \"RESEARCH POLICY\",\n    \"text\": \"ARPA-H: Accelerating biomedical breakthroughs\\nA DARPA-like\
+    \ culture at NIH can drive biomedical and health advances\\n1National Institutes of Health, Bethesda, MD 20892,\\nUSA.2Office\
+    \ of Science and Technology Policy,\\nExecutive Office of the President, Washington, DC 20502,\\nUSA.  Email: eric.s.lander@ostp.eop.gov\"\
+    \n  },\n  {\n    \"name\": \"POLICY FORUM\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"JULY 2021 \\u2022 VOL 373\
+    \ ISSUE 6551    165\",\n    \"text\": \"Published by AAAS\\nDownloaded from https://www.science.org at Massachusetts Institute\
+    \ of Technology on January 26, 2026\\n\\nsciencemag.org  SCIENCE\"\n  },\n  {\n    \"name\": \"INSIGHTS  |  POLICY FORUM\"\
+    ,\n    \"text\": \"can fund efforts in multiple sectors (indus-\\ntry, university, national labs, and consortia\\nacross\
+    \ these sectors); can provide the criti-\\ncal mass of funding needed to tackle bold\\ngoals; and is empowered to promote\
+    \ collab-\\noration and integration across performers.\\nDARPA does not perform its own internal\\nresearch. Although\
+    \ proposals are reviewed\\non a competitive basis, PMs have authority\\nto select a portfolio of projects intended to\\\
+    nachieve a particular program goal.\\nDARPA has long encouraged a culture\\nthat values a relentless drive for transfor-\\\
+    nmative technical results and a willingness\\nto take risks. Notably, it does not focus on\\nmerely accelerating ordinary\
+    \ products to\\nthe market or making incremental prog-\\nress, but on creating true breakthroughs.\\nTo act in this way,\
+    \ DARPA makes broad use\\nof flexible hiring, procurement, and con-\\ntracting authorities, provided by law.\\nAlthough\
+    \ DARPA is an excellent inspira-\\ntion for ARPA-H, it is not a perfect model\\nfor biomedical and health research. It\\\
+    nserves the needs of a single customer, the\\nDOD, and its mission is focused on na-\\ntional security. Its projects typically\
+    \ involve\\nengineered systems. By contrast, health\\nbreakthroughs (i) interact with biological\\nsystems that are much\
+    \ more complex and\\nmore poorly understood than engineered\\nsystems, requiring close coupling to a vast\\nbody of biomedical\
+    \ knowledge and expe-\\nrience; (ii) interact with a complex world\\nof many customers and users\\u2014including\\npatients,\
+    \ hospitals, physicians, biopharma\\ncompanies, and payers; (iii) interact in\\ncomplex ways with human behavior and\\\
+    nsocial factors; and (iv) require navigating\\na complex regulatory landscape. ARPA-H\\ncan learn from DARPA but will\
+    \ need to pio-\\nneer new approaches.\"\n  },\n  {\n    \"name\": \"DARPA-LIKE APPROACHES AT NIH\",\n    \"text\": \"\
+    NIH has some experience with running\\nlarge, complex programs using DARPA-like\\napproaches to drive highly managed,\
+    \ use-\\ninspired, breakthrough research. A classic\\nexample was the Human Genome Project,\\naimed at reading out the\
+    \ complete 3 bil-\\nlion\\u2013nucleotide human genetic code. When\\nthe project began in 1990, the technology to\\naccomplish\
+    \ the goal hadn\\u2019t been invented.\\nBy driving innovation, it was completed\\nahead of schedule and ultimately decreased\\\
+    nthe cost of sequencing a human genome\\nfrom $3 billion at the outset to $500 today\\n(6). Though estimates vary, it\
+    \ is clear that\\nthe overall economic return on investment\\nhas been enormous, with notable analyses\\nestimating a\
+    \ nearly 180-fold return (7, 8).\\nA very recent example is the NIH\\u2019s re-\\nsponse to the COVID-19 pandemic. Within\\\
+    nweeks, NIH created two programs. The Ac-\\ncelerating COVID-19 Therapeutic Interven-\\ntions and Vaccines (ACTIV) program\
+    \ is an\\nunprecedented partnership with govern-\\nment, industry, nonprofits, and academia to\\ndrive preclinical and\
+    \ clinical therapeutics,\\ndeveloping master protocols for testing pri-\\noritized compounds in rigorous random-\\nized\
+    \ clinical trials. These efforts accelerated\\nthe development and testing of several\\nof the vaccines that are now being\
+    \ widely\\nused. The Rapid Acceleration of Diagnostics\\n(RADx) program used an \\u201cinnovation fun-\\nnel\\u201d approach\
+    \ to identify promising ideas\\nfor COVID-19 tests and support 32 new\\ntechnology platforms that collectively are\\ncontributing\
+    \ 2 million tests per day, mostly\\nat point of care (9).\\nAlthough these programs have been\\nsuccessful, they required\
+    \ bespoke solu-\\ntions and herculean efforts to get them off\\nthe ground. Because NIH lacks a regular\\nframework for\
+    \ such projects, many bold\\nideas are hard to realize. That\\u2019s where\\nARPA-H can help.\"\n  },\n  {\n    \"name\"\
+    : \"ARPA-H MISSION\",\n    \"text\": \"ARPA-H should have a clear mission.\\nBuilding on DARPA\\u2019s mission statement,\\\
+    nan initial mission could be: \\u201cTo make piv-\\notal investments in breakthrough tech-\\nnologies and broadly applicable\
+    \ platforms,\\ncapabilities, resources, and solutions that\\nhave the potential to transform important\\nareas of medicine\
+    \ and health for the bene-\\nfit of all patients and that cannot readily be\\naccomplished through traditional research\\\
+    nor commercial activity.\\u201d\\nNotably, ARPA-H\\u2019s focus should be\\nbroad\\u2014ranging from molecular to soci-\\\
+    netal\\u2014because breakthrough technologies\\nare needed and are possible at many lev-\\nels (see the box). When President\
+    \ Biden\\nchallenges researchers to \\u201cend cancer as\\nwe know it,\\u201d many basic scientists natu-\\nrally think\
+    \ about solutions at the labora-\\ntory bench: powerful ways to enlist DNA\\nand RNA readouts, genetic regulation,\\nnovel\
+    \ chemistry, and the immune system\\nto prevent, detect, and treat cancers. Tech-\\nExamples of potential projects that\
+    \ ARPA-H could drive\\nThe Advanced Research Projects Agency for Health (ARPA-H) will have a broad focus, and\\nthese\
+    \ projects are meant to illustrate the breadth of potential projects that it could support.\\nCancer and other chronic\
+    \ diseases\\n\\u2022 Vaccines that can prevent most cancers. Use messenger RNA vaccines to teach the\\nimmune system to\
+    \ recognize 50 common genetic mutations that drive cancers, so that\\nthe body will wipe out cancer cells when they first\
+    \ arise.\\n\\u2022 New manufacturing processes to create patient-specific T cells to search and\\ndestroy malignant cells,\
+    \ decreasing costs from $100,000s to $1000s to make these\\ntherapies widely available.\\n\\u2022 Molecular \\u201czip\
+    \ codes\\u201d that target a drug or gene therapy vector to any specific tissue and\\ncell type, to make treatments much\
+    \ more effective by treating diseases at their source\\nand eliminating side effects due to impacts on other tissues or\
+    \ cells.\\n\\u2022 Small, highly accurate, inexpensive, nonintrusive, wearable 24/7 monitors (e.g., smart\\nwatches) for\
+    \ blood pressure and blood sugar.\\n\\u2022 New approaches to accelerate discovery of brain imaging and blood biomarkers\
+    \ capable\\nof measuring synaptic loss, neuronal death, and glial inflammatory pathways, as a means\\nof tracking responses\
+    \ to potential Alzheimer\\u2019s disease therapies.\\nInfectious diseases\\n\\u2022 Ability to design, test, and approve\
+    \ a vaccine against any newly emerging\\nhuman virus in 100 days.\\n\\u2022 Ability to administer vaccines through a skin\
+    \ patch or oral spray to allow rapid,\\nmassive vaccination campaigns.\\nHealth care access, equity, and quality\\n\\\
+    u2022 Platforms to reduce health disparities in maternal morbidity and mortality, which are\\namong the highest in the\
+    \ world, by identifying those at highest risk for pregnancy com-\\nplications and providing ethically integrated, regular\
+    \ virtual house calls by nurses and\\nmidwives, from early in pregnancy through at least 6 months postpartum.\\n\\u2022\
+    \ Platforms to promote better health outcomes through substantially improving how\\nmedication is taken, as recommended,\
+    \ on a regular basis or over a standard course\\n(e.g., for hypertension, diabetes, or infections), by engaging community\
+    \ health workers\\naided by privacy-preserving smart devices and telehealth.\"\n  },\n  {\n    \"name\": \"9 JULY 2021\
+    \ \\u2022 VOL 373 ISSUE 6551\",\n    \"text\": \"Published by AAAS\\nDownloaded from https://www.science.org at Massachusetts\
+    \ Institute of Technology on January 26, 2026\\n\\nSCIENCE  sciencemag.org\\nnologists think about new sensors and\\nartificial\\\
+    nintelligence\\u2013assisted\\nmedical\\ndecision-making. As importantly, though,\\nthere are also opportunities for highly\
+    \ im-\\npactful breakthroughs at the macro level\\nto ensure equity in health care access and\\nhealth outcomes for all\
+    \ patients. Equity\\nconsiderations (including race, ethnicity,\\ngender/gender identity, sexual orientation,\\ndisability,\
+    \ and income level) must be wo-\\nven throughout the ARPA-H mission\\u2014with\\nsome projects focused directly on address-\\\
+    ning equity and all projects considering eq-\\nuity in their design. Breakthroughs aimed\\nat the most vulnerable groups\
+    \ are not only\\njust and necessary; they will likely improve\\ncare for all patients.\\nARPA-H\\u2019s mission will clearly\
+    \ be differ-\\nent from the mission of the existing NIH\\nInstitute and Centers (ICs). For example,\\nthe name and mission\
+    \ of the National\\nCenter for Advancing Translational Sci-\\nences (NCATS), an NIH institute created\\nin 2011, might\
+    \ suggest some overlap. How-\\never, NCATS\\u2019 primary focus is to support\\na national network of clinical research\\\
+    ncenters and a drug screening hub. These\\ntwo programs account for nearly 90% of\\nits resources. A modestly sized component\\\
+    nwithin NCATS, the Cures Acceleration Net-\\nwork, is aligned with the general direc-\\ntions of ARPA-H.\\nSimilarly,\
+    \ the NIH Common Fund, a pro-\\ngram created by law in 2007, is aimed at\\na different goal from ARPA-H\\u2019s use-driven\\\
+    nobjective: It supports programs to explore\\nnew areas of foundational research that cut\\nacross multiple ICs\\u2014for\
+    \ example, the hu-\\nman microbiome effort. ARPA-H would also\\nbe distinct from other existing agencies,\\nsuch as the\
+    \ Biomedical Advanced Research\\nand Development Authority (BARDA),\\nwhich focuses on medical countermeasures\\nfor public\
+    \ health security threats.\"\n  },\n  {\n    \"name\": \"DESIGNING ARPA-H: A DISTINCT DIVISION,\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"CULTURE, AND ORGANIZATION AT NIH\",\n    \"text\": \"ARPA-H should be housed as a division\\\
+    nwithin NIH, rather than being a stand-alone\\nentity, for two reasons.  First, the goals of\\nARPA-H fall squarely within\
+    \ NIH\\u2019s mission\\n(\\u201cto seek fundamental knowledge about the\\nnature and behavior of living systems and\\\
+    nthe application of that knowledge to enhance\\nhealth, lengthen life, and reduce illness and\\ndisability\\u201d). Second,\
+    \ ARPA-H will need to\\ndraw on the vast range of biomedical and\\nhealth knowledge, expertise, and activities at\\nNIH.\
+    \ Setting up ARPA-H within NIH will en-\\nsure scientific collaboration and productivity\\nand avoid unproductive duplication\
+    \ of scien-\\ntific and administrative effort.\\nIt is important to acknowledge, however,\\nthat a DARPA-like approach\
+    \ is radically dif-\\nferent from NIH\\u2019s standard mechanisms\\nof operation and will require a new way of\\nthinking.\
+    \ The creation of ARPA-H will ben-\\nefit from transparency, accountability, and a\\nhealthy skepticism to ensure that\
+    \ the entity\\ndoes not become a typical NIH institute.\\nTaking many features from the DARPA\\nmodel, ARPA-H needs to\
+    \ have a distinc-\\ntive culture, organization, authorities,\\nleadership, and autonomy (10, 11) . ARPA-\\nH\\u2019s organization\
+    \  should be  flat, lean, and\\nnimble. The culture should value bold\\ngoals with big potential impact over incre-\\\
+    nmental progress. The organization should\\nlure a diverse cohort of extraordinary PMs\\nfrom industry or leading universities,\
+    \ for\\nlimited terms, with the chance to make a\\nhuge impact. They should be empowered to\\ntake risks, assemble portfolios\
+    \ of projects,\\nmake connections across organizations,\\nhelp clear roadblocks, establish aggres-\\nsive milestones,\
+    \ monitor progress closely,\\nand take responsibility for the project\\u2019s\\nprogress and outcomes. Projects should\\\
+    nbe bounded in time, typically a few years,\\nwith longer periods allowed for efforts that\\nare highly complex. ARPA-H\
+    \ should expect\\nthat a sizable fraction of its efforts will fail;\\nif not, the organization is being too risk-\\naverse.\
+    \ The best approach is to fail early\\nin the process, by addressing key risks up\\nfront. To determine which risks should\
+    \ be\\ntaken and to evaluate proposed programs\\nand projects, ARPA-H should adopt an ap-\\nproach similar to DARPA\\\
+    u2019s \\u201cHeilmeier Cat-\\nechism,\\u201d a set of principles that assesses\\nthe challenge, approach, relevance,\
+    \ risk,\\nduration, and metrics of success (12).\\nThe ARPA-H director should have sub-\\nstantial authority and independence\
+    \ to\\nact. To keep the entity vibrant, the direc-\\ntor should typically serve a single term of 5\\nyears, with the possibility\
+    \ of a single exten-\\nsion in rare cases. For ARPA-H to accom-\\nplish its goals, it will need to be provided\\nby Congress\
+    \ with certain authorities paral-\\nlel to those provided to DARPA, including\\nthe authority to recruit, attract with\
+    \ com-\\npetitive pay, and quickly hire for a set term\\nextraordinary PMs.  Unlike DARPA\\u2019s focus\\non a single\
+    \ customer, ARPA-H will need to\\ncreate breakthrough innovations that serve\\nan entire ecosystem and all populations.\\\
+    nARPA-H should have a senior leader re-\\nsponsible for ensuring that issues of equity\\nare considered in all aspects\
+    \ of ARPA-H\\u2019s\\nwork\\u2014from scientific program develop-\\nment to staff recruitment and hiring.\\nWithin the\
+    \ Department of Health and\\nHuman Services, it will be important for\\nARPA-H to collaborate with other key\\nagencies\
+    \ such as the FDA, the Centers for\\nDisease Control and Prevention, BARDA,\\nand the Centers for Medicare and Medic-\\\
+    naid Services\\u2014to identify critical needs and\\nopportunities and to partner on complex\\nprojects that interact,\
+    \ for example, with\\npublic health infrastructure or medical\\nregulation. DARPA should also play a role\\nin advising\
+    \ ARPA-H on its experiences in\\ndriving breakthrough innovation and col-\\nlaborating on specific projects of shared\
+    \ in-\\nterest. And it would be valuable to engage\\nscience-based agencies and departments,\\nsuch as the National Science\
+    \ Foundation,\\nthe National Institute of Standards and\\nTechnology, and the Department of Energy.\\nIt will be critical\
+    \ for ARPA-H to engage\\nwith the broader biomedical community,\\nincluding patients and their caregivers, re-\\nsearchers,\
+    \ industry, and others, to under-\\nstand the full range of problems and the\\npractical considerations that need to be\\\
+    naddressed for all groups and populations.\\nThe potential opportunity is extraordi-\\nnary. Through bold, ambitious ideas\
+    \ and\\napproaches, ARPA-H can help shape the\\nfuture of health and medicine by trans-\\nforming the seemingly impossible\
+    \ into re-\\nality. The time to do this is now. j\"\n  },\n  {\n    \"name\": \"REFERENCES AND NOTES\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Remarks by President Biden in Address to a Joint\",\n    \"text\": \"Session of Congress\
+    \ (2021), www.whitehouse.gov/\\nbriefing-room/speeches-remarks/2021/04/29/\\nremarks-by-president-biden-in-address-to-a-joint-\\\
+    nsession-of-congress/.\"\n  },\n  {\n    \"name\": \"A. A. Toole, J. Law Econ. 50, 81 (2007)\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"E. Galkina Cleary, J. M. Beierlein, N. S. Khanuja, L. M\",\n    \"text\": \"McNamee, F. D.\
+    \ Ledley, Proc. Natl. Acad. Sci. U.S.A. 115,\\n2329 (2018).\"\n  },\n  {\n    \"name\": \"G. Long, \\u201cThe Biopharmaceutical\
+    \ Pipeline:\",\n    \"text\": \"Innovative Therapies in Clinical Development\\u201d (The\\nPharmaceutical Research and\
+    \ Manufacturers of\\nAmerica, 2017).\"\n  },\n  {\n    \"name\": \"Pharmaceutical Research and Manufacturers of\",\n \
+    \   \"text\": \"America ,\\u201cMedicines in Development for Cancer 2020\\nReport\\u201d (2020).\"\n  },\n  {\n    \"\
+    name\": \"National Human Genome Research Institute,\",\n    \"text\": \"\\u201cDNA Sequencing Costs: Data\\u201d (2020);\
+    \ www.\\ngenome.gov/about-genomics/fact-sheets/\\nDNA-Sequencing-Costs-Data.\"\n  },\n  {\n    \"name\": \"S. Tripp, M.\
+    \ Grueber, \\u201cThe Economic Impact and\",\n    \"text\": \"Functional Applications of Human Genetics and\\nGenomics\\\
+    u201d (American Society of Human Genetics,\\n2021).\\n8.  \\u201cThe Impact of Genomics on the U.S. Economy\\u201d (Batelle\\\
+    nTechnology Partnership Practice, for United for Medical\\nResearch 2013).\"\n  },\n  {\n    \"name\": \"National Institute\
+    \ of Biomedical Imaging and\",\n    \"text\": \"Bioengineering, \\u201cRADx diversifies COVID-19 test port-\\nfolio with\
+    \ four new contracts, including one to detect\\nvariants\\u201d (2021); www.nibib.nih.gov/news-events/\\nnewsroom/radx-diversifies-covid-19-test-portfolio-\\\
+    nfour-new-contracts-including-one-detect-variants.\"\n  },\n  {\n    \"name\": \"A. Prabhakar, \\u201cHow to Unlock the\
+    \ Potential of the\",\n    \"text\": \"Advanced Research Projects Agency Model\\u201d (Day One\\nProject 2021).\"\n  },\n\
+    \  {\n    \"name\": \"R. E. Dugan, K. J. Gabriel, in Harvard Business Review\",\n    \"text\": \"(Harvard Business Publishing,\
+    \ 2013).\"\n  },\n  {\n    \"name\": \"Defense Advanced Research Projects Agency, \\u201cThe\",\n    \"text\": \"Heilmeier\
+    \ Catechism\\u201d (2021); www.darpa.mil/\\nwork-with-us/heilmeier-catechism.\"\n  },\n  {\n    \"name\": \"ACKNOWLEDGMENTS\"\
+    ,\n    \"text\": \"The authors thank R. Fleurence and A. Hallett for helpful input.\\nPublished online 22 June 2021\\\
+    n10.1126/science.abj8547\"\n  },\n  {\n    \"name\": \"JULY 2021 \\u2022 VOL 373 ISSUE 6551    167\",\n    \"text\": \"\
+    Published by AAAS\\nDownloaded from https://www.science.org at Massachusetts Institute of Technology on January 26, 2026\"\
+    \n  }\n]"
+  acknowledgments: 'The authors thank R. Fleurence and A. Hallett for helpful input.
+
+    Published online 22 June 2021
+
+    10.1126/science.abj8547'

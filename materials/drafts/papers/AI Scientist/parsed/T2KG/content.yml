@@ -1,0 +1,457 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/T2KG.pdf
+
+identifiers:
+  doi: 10.21105/joss.05553
+citation:
+  title: 'T 2B  T 2K G : AI -'
+  year: '2025'
+  journal: Journal of Open Source Software
+  volume: '8'
+  pages: '5553'
+  publisher: The Open Journal
+  authors: Frank T. Bergmann
+content:
+  abstract: 'In this study, we present Talk2Biomodels (T2B) and Talk2KnowledgeGraphs
+
+    (T2KG) as open-source1, user-friendly, large language model-based agentic AI
+
+    platforms designed to democratize access to computational models of disease pro-
+
+    cesses using natural language. T2B and T2KG eschew the traditional graphical
+
+    user interface (GUI) and minimally adaptable workflow in favour of a modern
+
+    agentic framework to provide a dynamic and immersive experience to explore
+
+    the biology of disease in silico and how different treatment options can be effi-
+
+    cacious in different virtual patient populations. T2B supports models encoded in
+
+    the open-source community format Systems Biology Markup Language (SBML)
+
+    for quantitative prediction of patient biomarkers and integrates with biomedical
+
+    knowledge graphs to provide qualitative insights not captured in the computational
+
+    model. A use case in precision medicine is presented to demonstrate how experts
+
+    and non-experts in computational biology and data science can benefit from T2B
+
+    and T2KG.
+
+    1'
+  sections: "[\n  {\n    \"name\": \"TALK2BIOMODELS AND TALK2KNOWLEDGEGRAPHS:\",\n    \"text\": \"AI\"\n  },\n  {\n    \"\
+    name\": \"AGENT-BASED\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"APPLICATION\",\n    \"text\": \"FOR\"\n  },\n\
+    \  {\n    \"name\": \"PREDICTION\",\n    \"text\": \"OF\"\n  },\n  {\n    \"name\": \"PATIENT\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"BIOMARKERS\",\n    \"text\": \"AND\"\n  },\n  {\n    \"name\": \"REASONING\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"OVER\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"BIOMEDICAL KNOWLEDGE GRAPHS\"\
+    ,\n    \"text\": \"Gurdeep Singh\\u2217, Lilija Wehling\\u2217, Ahmad Wisnu Mulyadi\\u2217,\\nRakesh Hadne Sreenath &\
+    \ Douglas McCloskey\\u2020\\nVirtual Patient Engine\\nBioMed X GmbH\\nHeidelberg, 69115, Germany\\n{gsingh, wehling, mulyadi,\
+    \ hadnesreenath, mccloskey}@bio.mx\\nThomas Klabunde & Tommaso Andreani\\nTranslational Medicine Unit (TMU)\\nDisease\
+    \ Modeling, Sanofi R&D\\nFrankfurt am Main, Germany\\n{Thomas.Klabunde, Tommaso.Andreani}@sanofi.com\"\n  },\n  {\n  \
+    \  \"name\": \"INTRODUCTION\",\n    \"text\": \"Recent developments in generative artificial intelligence (AI), particularly\
+    \ in large language models\\n(LLMs), have demonstrated substantial progress. Noteworthy advances in both algorithmic inno-\\\
+    nvation and data-driven biomedical discovery are showcased by the advent of foundational learning\\nmodels for protein\
+    \ structure, single cell omics and genomic data across species, such as, AlphaFold,\\nscGPT, and Evo 2, to name a few\
+    \ (Brixi et al., 2025; Cui et al., 2024; Jumper et al., 2021). While\\nLLMs\\u2019 role is currently confined to narrow,\
+    \ task-specific applications, efforts are underway to en-\\nable open-source LLM-driven agentic workflows in biomedical\
+    \ discovery (Lobentanzer et al., 2025).\\nCollaborative AI agents, with their task orchestration, reflective learning\
+    \ and sophisticated reason-\\ning capabilities, have the potential to revolutionize biomedical research and patient treatment\
+    \ (Gao\\net al., 2024; Zou & Topol, 2025).\\n\\u2217These authors contributed equally to this work.\\n\\u2020Corresponding\
+    \ author.\\n1Source code available at: https://github.com/VirtualPatientEngine/AIAgents4Pharma\\n1\\n\\nPublished as a\
+    \ workshop paper at MLGenX 2025\\nComputational models and biomedical knowledge graphs have become an essential component\\\
+    nin enhancing our understanding of complex disease processes. The most common computational\\nmodeling frameworks in systems\
+    \ biology modeling include kinetic, constraint-based, logic, and\\nagent-based modeling. The present study specifically\
+    \ focuses on ordinary differential equations\\n(ODE) models, a subset of kinetic models, due to their widespread application\
+    \ and significance in\\nthe field. ODE models represent the most popular modeling approach, with approximately 1,662\\\
+    nmodels2 currently deposited in the BioModels database (Malik-Sheriff et al., 2019) and a multi-\\ntude of models not\
+    \ systematically stored in the scientific literature. These models cover a wide\\nrange of domains, as demonstrated by\
+    \ their use in precision medicine (e.g., inflammatory bowel\\ndisease treatment) (Dwivedi et al., 2014), COVID-19 pandemic\
+    \ studies (Tang et al., 2020), and\\ntheoretical analysis of dynamic systems (Markevich et al., 2004). Furthermore, ODEs\
+    \ are a stan-\\ndard tool in pharmaceutical research, particularly in the development of physiologically based phar-\\\
+    nmacokinetic/pharmacodynamic (PBPK/PD) and quantitative systems pharmacology and toxicology\\n(QSP/QST) models (Chan et\
+    \ al., 2024; Kuepfer et al., 2016). In addition, the regulatory authorities,\\nsuch as the U.S. Food and Drug Administration\
+    \ (FDA), recognize these computational models as\\na well-established and increasingly significant body of evidence in\
+    \ drug approval decision-making\\nprocesses (Morrison et al., 2018). While computational models provide quantitative predictions\\\
+    nwithin a limited biological scope, biomedical knowledge graphs offer qualitative reasoning across a\\nbroader biological\
+    \ spectrum. Biomedical knowledge graphs also play a critical role in pharmaceuti-\\ncal research (Bonner et al., 2022)\
+    \ where they are used to identify new drug targets (Middleton et al.,\\n2024), repurpose existing drugs (Huang et al.,\
+    \ 2024), explore the effects of drug-drug interactions\\n(Zitnik et al., 2018), and refine patient endotypes that would\
+    \ most benefit from an existing or new\\ntherapy (Geleta et al., 2021).\\nTo interact with mathematical models of biological\
+    \ systems, several popular graphical user interface\\n(GUI)-based ODE modelling frameworks exist for biological and translational\
+    \ applications. These\\ninclude proprietary options such as the MATLAB toolbox SimBiology (The MathWorks Inc, 2024)\\\
+    nand Berkley Madonna (Marcoline et al., 2022), as well as open-source alternatives like COPASI\\n(Hoops et al., 2006)\
+    \ and the Open Systems Pharmacology Suite (Kuepfer et al., 2016). However,\\nboth proprietary and open-source solutions\
+    \ typically require software installation, specialized train-\\ning, and domain knowledge for effective simulation and\
+    \ analysis of models.\\nTo overcome the limitations of existing modelling frameworks, and to expand the biological scope\\\
+    nof computational models, we propose Talk2BioModels (T2B) and Talk2KnowledgeGraphs (T2KG)\\nas easily accessible agentic\
+    \ AI applications. T2B and T2KG users do not need to possess expert\\nknowledge in programming nor systems biology to\
+    \ simulate and perform basic analyses of ODE\\nmodels, and qualitatively reason over and contextualize the results in\
+    \ the broader understanding of\\nbiology and disease captured in biomedical knowledge graphs. The platform supports the\
+    \ import and\\nexport of open and closed-source models encoded in SBML (Keating et al., 2020), and connectors\\nto open\
+    \ and closed-source biomedical knowledge graphs such as the publicly available PrimeKG\\ndataset (Chandak et al., 2023).\\\
+    nBy using an agentic AI framework, T2B and T2KG democratize access to expert knowledge cap-\\ntured in computational models\
+    \ of disease and biomedical knowledge graphs. T2B and T2KG pro-\\nmote accurate and explainable science by grounding LLM\
+    \ responses in computational modeling\\nsimulation results or in extracted biomedical knowledge graph subsets. Graph Retrieval-Augmented\\\
+    nGeneration (GraphRAG) (Lewis et al., 2020; He et al., 2024; Edge et al., 2025) provides the neces-\\nsary explainability\
+    \ for deployment in regulated industries, including healthcare and pharmaceutical\\nindustries.\\n2\"\n  },\n  {\n   \
+    \ \"name\": \"METHODS\",\n    \"text\": \"We developed a multi-agent hierarchical system using the LangGraph library (v0.3.2)3,\
+    \ which pro-\\nvides a framework for constructing stateful computational graphs. In this architecture, each node\\nrepresents\
+    \ a discrete computational step, while the edges define the relationships between these\\nsteps. Each agent within the\
+    \ system maintains a state, a snapshot of its application, which is propa-\\ngated and updated throughout the execution\
+    \ process (Fig. 1).\\n2Viewed on 24.02.2025\\n3https://github.com/langchain-ai/langgraph\\n2\\n\\nPublished as a workshop\
+    \ paper at MLGenX 2025\\nUser\\nPrompt\\nHandoff\\nHandoff\\nAgent\\nOutput\\nResponse\\nMain Agent\\nT2B Agent\\nT2KG\
+    \ Agent\\nAgent States\\nExternal Sources\\nT2B Tools\\nPrimeKG\\nKG Sources\\nResponse with resulted States\\nStore\\\
+    nStore\\nInvoke Tool\\nInvoke Tool\\nT2KG Tools\\nSubsequent\\nInvoking\\nSubsequent\\nInvoking\\nGet Annotations\\nSearch\
+    \ Models\\nGet Model Info\\nSimulate Model\\nAsk Questions\\nCustom Plotter\\nSteady State\\nParameter Scan\\nQuery Article\\\
+    nSubgraph\\nExtraction\\nSubgraph\\nSummarization\\nGraphRAG\\nReasoning\\nBioModels\\nUniProt\\nEMBL-EBI Ontology\\nLookup\
+    \ Service (OLS)\\nFigure 1: Architecture diagram of Talk2Biomodels and Talk2KnowledgeGraphs orchestrated by the\\nmain\
+    \ agent. Users can interact with T2B and T2KG agents via the main agent. The main agent acts\\nas a supervisor agent and\
+    \ determines which agent (and its respective tools) to invoke based on the\\nuser input. The T2B agent specializes in\
+    \ quantitative analysis, including model search, simulation,\\nplotting, parameter scanning, steady-state stability analysis,\
+    \ annotation extraction, and RAG for\\nuploaded scientific articles. Meanwhile, the T2KG agent focuses on providing quantitative\
+    \ insights,\\nsuch as subgraph extraction, summarization, and GraphRAG reasoning on the knowledge graph.\\nThese agentic\
+    \ AI tools interactively engage with resources, including BioModels, OLS, and UniProt\\ndatabases as external databases\
+    \ and PrimeKG as a knowledge graph resource. Each agent maintains\\nits state independently throughout the chat history.\\\
+    nFor both T2B and T2KG agents, the computational nodes consist of a prebuilt reasoning and action\\n(ReAct)-based agent,\
+    \ implemented following the ReAct paradigm (Yao et al., 2023), and a suite of\\ntools available (Fig. 1). A central main\
+    \ agent developed using the LangGraph-Supervisor library\\n(v0.0.4)4, manages task delegation and communication, dynamically\
+    \ invoking T2B and/or T2KG\\nbased on task context. Directed edges within the graph facilitate structured interactions\
+    \ between\\nagents and their tools. Agents autonomously select and execute tool invocations in response to user\\ninput,\
+    \ updating their internal state accordingly. The system tracks key-value pairs storing messages,\\nanalysis outputs, and\
+    \ intermediate results, ensuring consistency across computational steps. Upon\\ncompletion, the final state is parsed\
+    \ to extract relevant outputs for rendering.\\nT2B executes operations on models using the BASICO library (v0.78)(Bergmann,\
+    \ 2023). T2KG\\nextracts subgraphs from an initial biomedical knowledge graph based on user queries, employing\\nthe Prize\
+    \ Collecting Steiner Tree (PCST) algorithm (Hegde et al., 2015) to guarantee a connected\\nsubgraph. The retrieved subgraph\
+    \ in the form of a textualized subgraph (i.e., textual information of\\nthe selected nodes and triples) is further incorporated\
+    \ for RAG (He et al., 2024) to enhance response\\nquality. We used PrimeKG (Chandak et al., 2023) as the knowledge graph\
+    \ dataset, enriching its\\nnodes and edges with a set of textual information from Stark (Wu et al., 2024). Textual embeddings\\\
+    nwere generated using the nomic-embed-text model (Nussbaum et al., 2025) retrieved from Ollama5.\\nThe processed graph\
+    \ was stored using NetworkX6 (Hagberg et al., 2008) and efficiently manipulated\\nwith the PyTorch Geometric7 library\
+    \ (Fey & Lenssen, 2019).\\nFor configuring agent-based text generation tasks, users can select between two LLMs: OpenAI\\\
+    u2019s\\nGPT-4o-mini (OpenAI et al., 2024) and NVIDIA NIM-optimized Meta/Llama-3.3-70B-Instruct\\n8. For text-to-embedding\
+    \ transformations, the application supports two embedding models: Ope-\\nnAI\\u2019s text-embedding-ada-002 and NVIDIA\
+    \ NIM-optimized Llama-3.2-NV-EmbedQA-1B-V29.\\nThe backend of the system is implemented in Python 3.12, while the front\
+    \ end was developed using\\n4https://github.com/langchain-ai/langgraph-supervisor-py\\n5https://ollama.com/\\n6https://networkx.org/\\\
+    n7https://pytorch-geometric.readthedocs.io/\\n8https://build.nvidia.com/meta/llama-3 3-70b-instruct/modelcard\\n9https://build.nvidia.com/nvidia/llama-3\
+    \ 2-nv-embedqa-1b-v2\\n3\\n\\nPublished as a workshop paper at MLGenX 2025\\na\\nb\\nc\\nd\\ne\\nf\\nFigure 2: An example\
+    \ of the search models tool in the Talk2BioModels GUI. This GUI supports both\\nopen and closed-source LLMs, enabling\
+    \ users to upload SBML-format mathematical models and\\nPDF-format scientific articles (a). T2B allows natural language\
+    \ prompts via the chat box interface\\n(b). The GUI features a chat history window (c) displaying question-and-answer\
+    \ conversations (d,\\ne). Additionally, T2B\\u2019s GUI allows dynamic user feedback through upvote and downvote buttons.\\\
+    n(f). We exemplify search models tool for keyword-based searches in the BioModels database (e).\\nStreamlit (v1.39.0)10,\
+    \ Plotly (v5.24.1)11, and Gravis (v0.1.0)12 for an interactive and user-friendly\\ninterface.\\nThe T2B, T2KG, and their\
+    \ unified version (Talk2AIAgents4Pharma) applications are open-source\\nand available on GitHub13, supporting community\
+    \ contributions and discussions.\\n3\"\n  },\n  {\n    \"name\": \"RESULTS AND DISCUSSION\",\n    \"text\": \"T2B offers\
+    \ a comprehensive suite of functions for biological and translational ODE models. Users\\ncan upload ODE models in SBML\
+    \ format or retrieve curated models from the BioModels database\\nusing the search models tool (Fig. 2). The get model\
+    \ information tool extracts model details, includ-\\ning species, parameters, and model abstract. Concurrently, the get\
+    \ annotations tool retrieves and\\ndisplays model species\\u2019 identifiers by dynamically accessing Ontology Lookup\
+    \ Service (OLS) and\\nUniProt data bases (Jupp et al., 2015; The UniProt Consortium, 2024) over APIs. This capability\\\
+    nenables researchers to thoroughly explore and interpret the specific nomenclature of the model.\\nIn T2B, SBML models\
+    \ can be directly accessed, simulated, and analyzed. The platform supports\\ntime-course simulations with adjustable time\
+    \ steps, initial concentrations and durations (simulate\\nmodel tool), presenting results in dynamic tables and graphs\
+    \ that can be interactively modified to\\nsuit the users\\u2019 needs (custom plotter tool). Additionally, users can interrogate\
+    \ model description and\\nsimulation results (ask questions tool) and alter model parameters using natural language.\\\
+    nMoreover, T2B offers several tools for model analysis: the steady-state tool determines whether a\\nmodel reaches equilibrium,\
+    \ while the parameter scan tool performs multiple simulations by sys-\\ntematically varying model initial conditions or\
+    \ parameter values within user-specified range and\\nintervals (Fig. A1). Finally, the query article tool leverages the\
+    \ RAG framework (Lewis et al.,\\n2020) to extract supplementary information from user-uploaded research articles, enhancing\
+    \ model\\nunderstanding.\\n10https://streamlit.io/\\n11https://plotly.com/\\n12https://robert-haas.github.io/gravis-docs/\\\
+    n13https://github.com/VirtualPatientEngine/AIAgents4Pharma\\n4\\n\\nPublished as a workshop paper at MLGenX 2025\\nTo\
+    \ promote greater explainability and contextualization of quantitative computational biology sim-\\nulation predictions,\
+    \ users can invoke the T2KG to qualitatively reason over T2B results using a\\nbroader scope of disease biology captured\
+    \ in biomedical knowledge graphs. Specifically, users can\\nextract out one or more subgraphs using the subgraph extraction\
+    \ tool based on the textual embedding\\nsimilarity between the user\\u2019s query and the embedded textual features of\
+    \ the biomedical knowledge\\ngraph. The textualized and summarized subgraph is then used for RAG in conjunction with previous\\\
+    ncomputational biology model simulation results using the graph RAG reasoning tool. The results\\nare presented to the\
+    \ user in natural language with citations to the entities and relations in the biomed-\\nical knowledge graph along with\
+    \ a dynamic widget of the extracted subgraph for interactive visual\\ninspection.\\nOverall, this suite of agentic AI-driven\
+    \ tools offers a unique platform for working with biological\\nmodels of disease, combining user-friendliness and interactive\
+    \ features.\\n3.1\"\n  },\n  {\n    \"name\": \"USE-CASE IN PRECISION MEDICINE\",\n    \"text\": \"The use cases in precision\
+    \ medicine14 utilizes a multiscale model of interleukin 6 (IL-6) mediated\\nimmune regulation in Crohn\\u2019s disease\
+    \ to examine drug-disease interaction mechanisms and drug\\ntreatment prediction (Dwivedi et al., 2014). The model was\
+    \ validated using clinical trial biomarker\\ndata from patients treated with tocilizumab, an anti IL6 receptor monoclonal\
+    \ antibody drug.\\nUsers can interrogate model annotations, adjust the dosage of a drug, simulate drug administration\\\
+    nat intervals of either 2 or 4 weeks, and view the value of the clinical readout parameter (C-reactive\\nprotein (CRP)\
+    \ in serum) at any given time point. Users can determine the time required for the\\ndepletion of serum anti-IL6Ralpha\
+    \ concentration by replicating the published figure (Dwivedi et al.,\\n2014). The effect on CRP suppression can also be\
+    \ compared by simulating different antibodies\\nwith varying dissociation affinities, thereby performing in silico tests\
+    \ for potential antibodies. Ad-\\nditionally, users can explore alternative drugs that target IL-6 or even alternative\
+    \ targets of Crohn\\u2019s\\ndiseases as a basis for follow-up studies. Users can qualitatively reason over the simulated\
+    \ results by\\ndeveloping a rational grounded in curated biomedical knowledge of genes and pathways associated\\nwith\
+    \ Crohn\\u2019s disease for why certain treatments work and others do not. A snapshot of a use case\\non extracting subgraph\
+    \ that captures the IL6 node along with its interconnections to other relevant\\nnodes (e.g., gene/protein, disease, pathway)\
+    \ within subsets of PrimeKG is presented in Fig. A2.\\n4\"\n  },\n  {\n    \"name\": \"CONCLUSIONS\",\n    \"text\": \"\
+    T2B and T2KG are open-source, user-friendly agentic AI platform designed to democratize access\\nto computational models\
+    \ and biomedical knowledge graphs of disease. By integrating a natural\\nlanguage interface with agentic AI, these platforms\
+    \ lower the barrier for non-experts to leverage\\nexpert knowledge captured in computational biology models and biomedical\
+    \ knowledge graphs. A\\nuse case in precision medicine was presented to demonstrate the ease which the users can reproduce\\\
+    nand explore questions of clinical translatable of drug assets.\\nAs the user base of these platforms continues to grow\
+    \ and the complexity of agentic tools and\\nworkflows increases, ensuring transparency and validation of results becomes\
+    \ increasingly critical.\\nMinimizing hallucinations through model simulation-specific tool calling is essential and must\
+    \ be\\nrigorously tested using comprehensive testing suites. Further, we aim to extend T2KG\\u2019s current\\nfunctionality\
+    \ to support multi-modal embeddings for small molecules, proteins, and other biological\\nentities, enhancing its utility\
+    \ in biomedical applications. Additionally, as new LLMs are developed\\nand incorporated into the framework, it is important\
+    \ to continuously assess and validate their rea-\\nsoning capabilities.\\nWe would greatly appreciate contributions to\
+    \ our open-source project from the community.\"\n  },\n  {\n    \"name\": \"ACKNOWLEDGMENTS\",\n    \"text\": \"We acknowledge\
+    \ the contributions of Anil Kumar Kanasani and Maryam Najafian during the \\u201cAI\\nAgents for Life Sciences\\u201d\
+    \ hackathon on October 14-15 2024. We acknowledge Rahuman S. Malik\\n14https://virtualpatientengine.github.io/AIAgents4Pharma/talk2biomodels/cases/Case\
+    \ 1/\\n5\\n\\nPublished as a workshop paper at MLGenX 2025\\nSheriff and the rest of the BioModels team for support in\
+    \ and discussions when developing T2B.\\nWe acknowledge Mohammed H. Mosa, Henrik Cordes, and Thomas Klabunde from Sanofi\
+    \ for test-\\ning T2B. We acknowledge the technical support from Dror Hilman, Jake Valsamis, Conor Mohan,\\nand Ben Evan\
+    \ Tsur, gracious donations of computing resources during our hackathon from Sha-\\nhar Frunkin, and Daniel Koster, and\
+    \ an going support and facilitation from Simon Adar, all from\\nCodeOcean15. We acknowledge funding support for our Hackathons\
+    \ from the AI Health Innovation\\nCluster16 and particular the help received from Daniela Beyer and the rest of the AIH\
+    \ Coordina-\\ntion Team. We thank Ornella Kossi, Ann-Kristin Mueller, and Stefanie Schimmel from BioLabs\\nHeidelberg17,\
+    \ for hosting our hackathons. We thank Isabel Wilkinson, Uwe Samer, Nick Venanzi,\\nand David Ruau from NVIDIA for assisting\
+    \ with our integration of NVIDIA NIMs for chat and\\nembedding inference and graciously providing free credits for use\
+    \ with T2B. We thank Vultr18 for\\ngraciously providing free credits for deploying T2B.\"\n  },\n  {\n    \"name\": \"\
+    AUTHOR CONTRIBUTIONS\",\n    \"text\": \"LW, GS, AWM, and DM conceptualized the study. GS developed the agentic AI framework\
+    \ and the\\nagentic AI tools for T2B. AWM contributed to the development of the agentic AI framework, agentic\\nAI tools\
+    \ for T2KG, and created the figures and icons. RHS implemented get annotations tool. GS\\nand AWM developed the user interface.\
+    \ DM and LW conceptualized the precision medicine use\\ncase. LW wrote the manuscript. DM supervised the writing of the\
+    \ manuscript and the development\\nof the agentic AI framework. All authors contributed to testing T2B and T2KG and reviewing\
+    \ the\\nmanuscript.\"\n  },\n  {\n    \"name\": \"FUNDING\",\n    \"text\": \"This study was funded by Sanofi.\"\n  },\n\
+    \  {\n    \"name\": \"CONFLIC INTERESTS\",\n    \"text\": \"TK and TA are Sanofi employees and may hold shares and/or\
+    \ stock options in the company.\"\n  },\n  {\n    \"name\": \"REFERENCES\",\n    \"text\": \"Frank T. Bergmann. Basico:\
+    \ A simplified python interface to COPASI. Journal of Open Source\\nSoftware, 8(90):5553, 2023. doi: 10.21105/joss.05553.\\\
+    nStephen Bonner, Ian P Barrett, Cheng Ye, Rowan Swiers, Ola Engkvist, Andreas Bender, Charles Ta-\\npley Hoyt, and William\
+    \ L Hamilton. A review of biomedical datasets relating to drug discovery:\\na knowledge graph perspective. Briefings in\
+    \ Bioinformatics, 23(6):bbac404, 2022.\\nGaryk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel\
+    \ Chang,\\nGabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, Mohsen Naghipourfar,\\nEric Nguyen, Chiara\
+    \ Ricci-Tam, David W. Romero, Gwanggyu Sun, Ali Taghibakshi, Anton\\nVorontsov, Brandon Yang, Myra Deng, Liv Gorton, Nam\
+    \ Nguyen, Nicholas K. Wang, Etowah\\nAdams, Stephen A. Baccus, Steven Dillmann, Stefano Ermon, Daniel Guo, Rajesh Ilango,\
+    \ Ken\\nJanik, Amy X. Lu, Reshma Mehta, Mohammad R.K. Mofrad, Madelena Y. Ng, Jaspreet Pannu,\\nChristopher R\\u00b4e,\
+    \ Jonathan C. Schmok, John St. John, Jeremy Sullivan, Kevin Zhu, Greg Zynda,\\nDaniel Balsam, Patrick Collison, Anthony\
+    \ B. Costa, Tina Hernandez-Boussard, Eric Ho, Ming-\\nYu Liu, Thomas McGrath, Kimberly Powell, Dave P. Burke, Hani Goodarzi,\
+    \ Patrick D. Hsu, and\\nBrian L. Hie. Genome modeling and design across all domains of life with Evo 2. bioRxiv, 2025.\\\
+    ndoi: 10.1101/2025.02.18.638918.\\nJason R. Chan, Richard Allen, Britton Boras, Antonio Cabal, Valeriu Damian, Francis\
+    \ D. Gib-\\nbons, Abhishek Gulati, Iraj Hosseini, Jeffrey D. Kearns, Ryuta Saito, Lourdes Cucurull-Sanchez,\\nJangir Selimkhanov,\
+    \ Andrew M. Stein, Kenichi Umehara, Guanyu Wang, Weirong Wang, and\\n15https://codeocean.com/\\n16https://www.aih-cluster.ai/\\\
+    n17https://www.biolabs.io/heidelberg\\n18https://www.vultr.com/\\n6\\n\\nPublished as a workshop paper at MLGenX 2025\\\
+    nSusana Neves-Zaph.\\nCurrent practices for QSP model assessment: an IQ consortium sur-\\nvey.\\nJournal of Pharmacokinetics\
+    \ and Pharmacodynamics, 51(5):543\\u2013555, Oct 2024.\\ndoi:\\n10.1007/s10928-022-09811-1.\\nPayal Chandak, Kexin Huang,\
+    \ and Marinka Zitnik. Building a knowledge graph to enable precision\\nmedicine. Scientific Data, 10(1):67, Feb 2023.\
+    \ doi: 10.1038/s41597-023-01960-3.\\nHaotian Cui, Chloe Wang, Hassaan Maan, Kuan Pang, Fengning Luo, Nan Duan, and Bo\
+    \ Wang.\\nscGPT: Toward building a foundation model for single-cell multi-omics using generative AI.\\nNature Methods,\
+    \ 21(8):1470\\u20131480, Aug 2024. doi: 10.1038/s41592-024-02201-0.\\nG Dwivedi, L Fitz, M Hegen, SW Martin, J Harrold,\
+    \ A Heatherington, and C Li. A multiscale\\nmodel of interleukin-6\\u2013mediated immune regulation in crohn\\u2019s disease\
+    \ and its application in drug\\ndiscovery and development. CPT: Pharmacometrics & Systems Pharmacology, 3(1):89, 2014.\\\
+    ndoi: https://doi.org/10.1038/psp.2013.64.\\nDarren Edge, Ha Trinh, Newman Cheng, Joshua Bradley, Alex Chao, Apurva Mody,\
+    \ Steven Truitt,\\nDasha Metropolitansky, Robert Osazuwa Ness, and Jonathan Larson. From local to global: A\\ngraph RAG\
+    \ approach to query-focused summarization, 2025. URL https://arxiv.org/\\nabs/2404.16130.\\nMatthias Fey and Jan Eric\
+    \ Lenssen. Fast graph representation learning with pytorch geometric,\"\n  },\n  {\n    \"name\": \"URL https://arxiv.org/abs/1903.02428\"\
+    ,\n    \"text\": \"Shanghua Gao, Ada Fang, Yepeng Huang, Valentina Giunchiglia, Ayush Noori, Jonathan Richard\\nSchwarz,\
+    \ Yasha Ektefaie, Jovana Kondic, and Marinka Zitnik. Empowering biomedical discovery\\nwith AI agents. Cell, 187(22):6125\\\
+    u20136151, Oct 2024. doi: 10.1016/j.cell.2024.09.022.\\nDavid Geleta, Andriy Nikolov, Gavin Edwards, Anna Gogleva, Richard\
+    \ Jackson, Erik Jansson,\\nAndrej Lamov, Sebastian Nilsson, Marina Pettersson, Vladimir Poroshin, Benedek Rozember-\\\
+    nczki, Timothy Scrivener, Michael Ughetto, and Eliseo Papa.\\nBiological insights knowledge\\ngraph: an integrated knowledge\
+    \ graph to support drug development.\\nbioRxiv, 2021.\\ndoi:\\n10.1101/2021.10.28.466262.\\nAric Hagberg, Pieter J. Swart,\
+    \ and Daniel A. Schult. Exploring network structure, dynamics, and\\nfunction using networkx. Los Alamos National Laboratory\
+    \ (LANL), Los Alamos, NM (United\\nStates), 01 2008. URL https://www.osti.gov/biblio/960616.\\nXiaoxin He, Yijun Tian,\
+    \ Yifei Sun, Nitesh Chawla, Thomas Laurent, Yann LeCun, Xavier Bresson,\\nand Bryan Hooi. G-retriever: Retrieval-augmented\
+    \ generation for textual graph understanding\\nand question answering. In Advances in Neural Information Processing Systems,\
+    \ volume 37, pp.\\n132876\\u2013132907, 2024.\\nChinmay Hegde, Piotr Indyk, and Ludwig Schmidt. A nearly-linear time framework\
+    \ for graph-\\nstructured sparsity.\\nIn International Conference on Machine Learning, pp. 928\\u2013937. PMLR,\\n2015.\\\
+    nStefan Hoops, Sven Sahle, Ralph Gauges, Christine Lee, J\\u00a8urgen Pahle, Natalia Simus, Mudita Sing-\\nhal, Liang\
+    \ Xu, Pedro Mendes, and Ursula Kummer. COPASI\\u2014a COmplex PAthway SImulator.\\nBioinformatics, 22(24):3067\\u20133074,\
+    \ 10 2006. doi: 10.1093/bioinformatics/btl485.\\nKexin Huang, Payal Chandak, Qianwen Wang, Shreyas Havaldar, Akhil Vaid,\
+    \ Jure Leskovec,\\nGirish N. Nadkarni, Benjamin S. Glicksberg, Nils Gehlenborg, and Marinka Zitnik. A foun-\\ndation model\
+    \ for clinician-centered drug repurposing. Nature Medicine, 30(12):3601\\u20133613, Dec\\n2024. doi: 10.1038/s41591-024-03233-x.\\\
+    nJohn Jumper, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Olaf Ronneberger,\\nKathryn Tunyasuvunakool,\
+    \ Russ Bates, Augustin \\u02c7Z\\u00b4\\u0131dek, Anna Potapenko, Alex Bridgland,\\nClemens Meyer, Simon A. A. Kohl, Andrew\
+    \ J. Ballard, Andrew Cowie, Bernardino Romera-\\nParedes, Stanislav Nikolov, Rishub Jain, Jonas Adler, Trevor Back, Stig\
+    \ Petersen, David Reiman,\\nEllen Clancy, Michal Zielinski, Martin Steinegger, Michalina Pacholska, Tamas Berghammer,\
+    \ Se-\\nbastian Bodenstein, David Silver, Oriol Vinyals, Andrew W. Senior, Koray Kavukcuoglu, Push-\\nmeet Kohli, and\
+    \ Demis Hassabis. Highly accurate protein structure prediction with AlphaFold.\\nNature, 596(7873):583\\u2013589, Aug\
+    \ 2021. doi: 10.1038/s41586-021-03819-2.\\n7\\n\\nPublished as a workshop paper at MLGenX 2025\\nSimon Jupp, Tony Burdett,\
+    \ Catherine Leroy, and Helen E Parkinson. A new Ontology Lookup\\nService at EMBL-EBI. SWAT4LS, 2:118\\u2013119, 2015.\\\
+    nSarah M Keating, Dagmar Waltemath, Matthias K\\u00a8onig, Fengkai Zhang, Andreas Dr\\u00a8ager, Claudine\\nChaouiya,\
+    \ Frank T Bergmann, Andrew Finney, Colin S Gillespie, Tom\\u00b4a\\u02c7s Helikar, Stefan Hoops,\\nRahuman S Malik-Sheriff,\
+    \ Stuart L Moodie, Ion I Moraru, Chris J Myers, Aur\\u00b4elien Naldi, Brett G\\nOlivier, Sven Sahle, James C Schaff,\
+    \ Lucian P Smith, Maciej J Swat, Denis Thieffry, Leandro\\nWatanabe, Darren J Wilkinson, Michael L Blinov, Kimberly Begley,\
+    \ James R Faeder, Harold F\\nG\\u00b4omez, Thomas M Hamm, Yuichiro Inagaki, Wolfram Liebermeister, Allyson L Lister, Daniel\\\
+    nLucio, Eric Mjolsness, Carole J Proctor, Karthik Raman, Nicolas Rodriguez, Clifford A Shaf-\\nfer, Bruce E Shapiro, Joerg\
+    \ Stelling, Neil Swainston, Naoki Tanimura, John Wagner, Martin\\nMeier-Schellersheim, Herbert M Sauro, Bernhard Palsson,\
+    \ Hamid Bolouri, Hiroaki Kitano, Akira\\nFunahashi, Henning Hermjakob, John C Doyle, Michael Hucka, null null, Richard\
+    \ R Adams,\\nNicholas A Allen, Bastian R Angermann, Marco Antoniotti, Gary D Bader, Jan \\u02c7Cerven\\u00b4y, M\\u00b4elanie\\\
+    nCourtot, Chris D Cox, Piero Dalle Pezze, Emek Demir, William S Denney, Harish Dharuri, Julien\\nDorier, Dirk Drasdo,\
+    \ Ali Ebrahim, Johannes Eichner, Johan Elf, Lukas Endler, Chris T Evelo,\\nChristoph Flamm, Ronan MT Fleming, Martina\
+    \ Fr\\u00a8ohlich, Mihai Glont, Emanuel Gonc\\u00b8alves,\\nMartin Golebiewski, Hovakim Grabski, Alex Gutteridge, Damon\
+    \ Hachmeister, Leonard A Har-\\nris, Benjamin D Heavner, Ron Henkel, William S Hlavacek, Bin Hu, Daniel R Hyduke, Hidde\\\
+    nde Jong, Nick Juty, Peter D Karp, Jonathan R Karr, Douglas B Kell, Roland Keller, Ilya Kiselev,\\nSteffen Klamt, Edda\
+    \ Klipp, Christian Kn\\u00a8upfer, Fedor Kolpakov, Falko Krause, Martina Kutmon,\\nCamille Laibe, Conor Lawless, Lu Li,\
+    \ Leslie M Loew, Rainer Machne, Yukiko Matsuoka, Pe-\\ndro Mendes, Huaiyu Mi, Florian Mittag, Pedro T Monteiro, Kedar\
+    \ Nath Natarajan, Poul MF\\nNielsen, Tramy Nguyen, Alida Palmisano, Jean-Baptiste Pettit, Thomas Pfau, Robert D Phair,\\\
+    nTomas Radivoyevitch, Johann M Rohwer, Oliver A Ruebenacker, Julio Saez-Rodriguez, Martin\\nScharm, Henning Schmidt, Falk\
+    \ Schreiber, Michael Schubert, Roman Schulte, Stuart C Sealfon,\\nKieran Smallbone, Sylvain Soliman, Melanie I Stefan,\
+    \ Devin P Sullivan, Koichi Takahashi, Bas\\nTeusink, David Tolnay, Ibrahim Vazirabad, Axel von Kamp, Ulrike Wittig, Clemens\
+    \ Wrzodek,\\nFinja Wrzodek, Ioannis Xenarios, Anna Zhukova, and Jeremy Zucker. SBML Level 3: An exten-\\nsible format\
+    \ for the exchange and reuse of biological models. Molecular Systems Biology, 16(8):\\ne9110, 2020. doi: https://doi.org/10.15252/msb.20199110.\\\
+    nL Kuepfer, C Niederalt, T Wendl, J-F Schlender, S Willmann, J Lippert, M Block, T Eissing, and\\nD Teutonico. Applied\
+    \ Concepts in PBPK Modeling: How to Build a PBPK/PD Model. CPT:\\nPharmacometrics & Systems Pharmacology, 5(10):516\\\
+    u2013531, 2016. doi: https://doi.org/10.1002/\\npsp4.12134.\\nPatrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni,\
+    \ Vladimir Karpukhin, Naman Goyal,\\nHeinrich K\\u00a8uttler, Mike Lewis, Wen-tau Yih, Tim Rockt\\u00a8aschel, et al.\
+    \ Retrieval-augmented genera-\\ntion for knowledge-intensive NLP tasks. Advances in neural information processing systems,\
+    \ 33:\\n9459\\u20139474, 2020.\\nSebastian Lobentanzer, Shaohong Feng, Noah Bruderer, Andreas Maier, Adri\\u00b4an G.\
+    \ D\\u00b4\\u0131az, Amy\\nStrange, Anis Ismail, Anton Kulaga, Aurelien Dugourd, Barbara Zdrazil, Bastien Chassag-\\nnol,\
+    \ Cyril Pommier, Daniele Lucarelli, Ellen M. McDonagh, Emma Verkinderen, Fernando M.\\nDelgado-Chaves, Georg Fuellen,\
+    \ Hannah Sonntag, Jonatan Menger, Lionel Christiaen, Lud-\\nwig Geistlinger, Luna Zacharias Zetsche, Marlis Engelke, Megan\
+    \ McNutt, Melissa Harrison,\\nMelissa Hizli, Nikolai Usanov, Patrick Baracho, Sebastian Beier, Stefan Boeing, Taru A.\
+    \ Mu-\\nranen, Trang T. Le, Valeriia Dragan, Xiao-Ran Zhou, Yasmin Nielsen-Tehranchian, Yuyao Song,\\nCankun Wang, Jan\
+    \ Baumbach, Jorge Abreu-Vicente, Nils Krehl, Qin Ma, Thomas Lemberger,\\nJulio Saez-Rodriguez, and The BioChatter Consortium.\\\
+    nA platform for the biomedical ap-\\nplication of large language models.\\nNature Biotechnology, 43(2):166\\u2013169,\
+    \ Feb 2025.\\ndoi:\\n10.1038/s41587-024-02534-3.\\nRahuman S Malik-Sheriff, Mihai Glont, Tung V N Nguyen, Krishna Tiwari,\
+    \ Matthew G Roberts,\\nAshley Xavier, Manh T Vu, Jinghao Men, Matthieu Maire, Sarubini Kananathan, Emma L Fair-\\nbanks,\
+    \ Johannes P Meyer, Chinmay Arankalle, Thawfeek M Varusai, Vincent Knight-Schrijver,\\nLu Li, Corina Due\\u02dcnas-Roca,\
+    \ Gaurhari Dass, Sarah M Keating, Young M Park, Nicola Buso,\\nNicolas Rodriguez, Michael Hucka, and Henning Hermjakob.\
+    \ Biomodels\\u201415 years of sharing\\ncomputational models in life science. Nucleic Acids Research, 48(D1):D407\\u2013D415,\
+    \ 11 2019. doi:\\n10.1093/nar/gkz1055.\\n8\\n\\nPublished as a workshop paper at MLGenX 2025\\nFrank V. Marcoline, John\
+    \ Furth, Smita Nayak, Michael Grabe, and Robert I. Macey. Berkeley\\nMadonna Version 10\\u2013A simulation package for\
+    \ solving mathematical models. CPT: Pharma-\\ncometrics & Systems Pharmacology, 11(3):290\\u2013301, 2022. doi: https://doi.org/10.1002/psp4.\\\
+    n12757.\\nNick I. Markevich, Jan B. Hoek, and Boris N. Kholodenko.\\nSignaling switches and bistability\\narising from\
+    \ multisite phosphorylation in protein kinase cascades. Journal of Cell Biology, 164\\n(3):353\\u2013359, 01 2004. doi:\
+    \ 10.1083/jcb.200308060.\\nLawrence Middleton, Ioannis Melas, Chirag Vasavda, Arwa Raies, Benedek Rozemberczki, Ryan S.\\\
+    nDhindsa, Justin S. Dhindsa, Blake Weido, Quanli Wang, Andrew R. Harper, Gavin Edwards,\\nSlav\\u00b4e Petrovski, and\
+    \ Dimitrios Vitsios. Phenome-wide identification of therapeutic genetic tar-\\ngets, leveraging knowledge graphs, graph\
+    \ neural networks, and UK Biobank data. Science Ad-\\nvances, 10(19):eadj1424, 2024. doi: 10.1126/sciadv.adj1424.\\nTina\
+    \ M. Morrison, Pras Pathmanathan, Mariam Adwan, and Edward Margerrison. Advancing Regu-\\nlatory Science With Computational\
+    \ Modeling for Medical Devices at the FDA\\u2019s Office of Science\\nand Engineering Laboratories. Frontiers in Medicine,\
+    \ 5, 2018. doi: 10.3389/fmed.2018.00241.\\nZach Nussbaum, John X. Morris, Brandon Duderstadt, and Andriy Mulyar. Nomic\
+    \ embed: Training\\na reproducible long context text embedder, 2025. URL https://arxiv.org/abs/2402.\\n01613.\\nOpenAI,\
+    \ Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Floren-\\ncia Leoni Aleman, Diogo Almeida, Janko\
+    \ Altenschmidt, Sam Altman, Shyamal Anadkat, Red\\nAvila, Igor Babuschkin, Suchir Balaji, Valerie Balcom, Paul Baltescu,\
+    \ Haiming Bao, Moham-\\nmad Bavarian, Jeff Belgum, Irwan Bello, Jake Berdine, Gabriel Bernadett-Shapiro, Christopher\\\
+    nBerner, Lenny Bogdonoff, Oleg Boiko, Madelaine Boyd, Anna-Luisa Brakman, Greg Brock-\\nman, Tim Brooks, Miles Brundage,\
+    \ Kevin Button, Trevor Cai, Rosie Campbell, Andrew Cann,\\nBrittany Carey, Chelsea Carlson, Rory Carmichael, Brooke Chan,\
+    \ Che Chang, Fotis Chantzis,\\nDerek Chen, Sully Chen, Ruby Chen, Jason Chen, Mark Chen, Ben Chess, Chester Cho, Casey\\\
+    nChu, Hyung Won Chung, Dave Cummings, Jeremiah Currier, Yunxing Dai, Cory Decareaux,\\nThomas Degry, Noah Deutsch, Damien\
+    \ Deville, Arka Dhar, David Dohan, Steve Dowling, Sheila\\nDunning, Adrien Ecoffet, Atty Eleti, Tyna Eloundou, David Farhi,\
+    \ Liam Fedus, Niko Felix,\\nSim\\u00b4on Posada Fishman, Juston Forte, Isabella Fulford, Leo Gao, Elie Georges, Christian\
+    \ Gib-\\nson, Vik Goel, Tarun Gogineni, Gabriel Goh, Rapha Gontijo-Lopes, Jonathan Gordon, Morgan\\nGrafstein, Scott Gray,\
+    \ Ryan Greene, Joshua Gross, Shixiang Shane Gu, Yufei Guo, Chris Hal-\\nlacy, Jesse Han, Jeff Harris, Yuchen He, Mike\
+    \ Heaton, Johannes Heidecke, Chris Hesse, Alan\\nHickey, Wade Hickey, Peter Hoeschele, Brandon Houghton, Kenny Hsu, Shengli\
+    \ Hu, Xin Hu,\\nJoost Huizinga, Shantanu Jain, Shawn Jain, Joanne Jang, Angela Jiang, Roger Jiang, Haozhun\\nJin, Denny\
+    \ Jin, Shino Jomoto, Billie Jonn, Heewoo Jun, Tomer Kaftan, \\u0141ukasz Kaiser, Ali Ka-\\nmali, Ingmar Kanitscheider,\
+    \ Nitish Shirish Keskar, Tabarak Khan, Logan Kilpatrick, Jong Wook\\nKim, Christina Kim, Yongjik Kim, Jan Hendrik Kirchner,\
+    \ Jamie Kiros, Matt Knight, Daniel\\nKokotajlo, \\u0141ukasz Kondraciuk, Andrew Kondrich, Aris Konstantinidis, Kyle Kosic,\
+    \ Gretchen\\nKrueger, Vishal Kuo, Michael Lampe, Ikai Lan, Teddy Lee, Jan Leike, Jade Leung, Daniel\\nLevy, Chak Ming\
+    \ Li, Rachel Lim, Molly Lin, Stephanie Lin, Mateusz Litwin, Theresa Lopez,\\nRyan Lowe, Patricia Lue, Anna Makanju, Kim\
+    \ Malfacini, Sam Manning, Todor Markov, Yaniv\\nMarkovski, Bianca Martin, Katie Mayer, Andrew Mayne, Bob McGrew, Scott\
+    \ Mayer McKinney,\\nChristine McLeavey, Paul McMillan, Jake McNeil, David Medina, Aalok Mehta, Jacob Menick,\\nLuke Metz,\
+    \ Andrey Mishchenko, Pamela Mishkin, Vinnie Monaco, Evan Morikawa, Daniel\\nMossing, Tong Mu, Mira Murati, Oleg Murk,\
+    \ David M\\u00b4ely, Ashvin Nair, Reiichiro Nakano, Ra-\\njeev Nayak, Arvind Neelakantan, Richard Ngo, Hyeonwoo Noh, Long\
+    \ Ouyang, Cullen O\\u2019Keefe,\\nJakub Pachocki, Alex Paino, Joe Palermo, Ashley Pantuliano, Giambattista Parascandolo,\
+    \ Joel\\nParish, Emy Parparita, Alex Passos, Mikhail Pavlov, Andrew Peng, Adam Perelman, Filipe\\nde Avila Belbute Peres,\
+    \ Michael Petrov, Henrique Ponde de Oliveira Pinto, Michael, Pokorny,\\nMichelle Pokrass, Vitchyr H. Pong, Tolly Powell,\
+    \ Alethea Power, Boris Power, Elizabeth Proehl,\\nRaul Puri, Alec Radford, Jack Rae, Aditya Ramesh, Cameron Raymond, Francis\
+    \ Real, Kendra\\nRimbach, Carl Ross, Bob Rotsted, Henri Roussez, Nick Ryder, Mario Saltarelli, Ted Sanders,\\nShibani\
+    \ Santurkar, Girish Sastry, Heather Schmidt, David Schnurr, John Schulman, Daniel Sel-\\nsam, Kyla Sheppard, Toki Sherbakov,\
+    \ Jessica Shieh, Sarah Shoker, Pranav Shyam, Szymon Sidor,\\n9\\n\\nPublished as a workshop paper at MLGenX 2025\\nEric\
+    \ Sigler, Maddie Simens, Jordan Sitkin, Katarina Slama, Ian Sohl, Benjamin Sokolowsky,\\nYang Song, Natalie Staudacher,\
+    \ Felipe Petroski Such, Natalie Summers, Ilya Sutskever, Jie Tang,\\nNikolas Tezak, Madeleine B. Thompson, Phil Tillet,\
+    \ Amin Tootoonchian, Elizabeth Tseng, Pre-\\nston Tuggle, Nick Turley, Jerry Tworek, Juan Felipe Cer\\u00b4on Uribe, Andrea\
+    \ Vallone, Arun Vi-\\njayvergiya, Chelsea Voss, Carroll Wainwright, Justin Jay Wang, Alvin Wang, Ben Wang, Jonathan\\\
+    nWard, Jason Wei, CJ Weinmann, Akila Welihinda, Peter Welinder, Jiayi Weng, Lilian Weng,\\nMatt Wiethoff, Dave Willner,\
+    \ Clemens Winter, Samuel Wolrich, Hannah Wong, Lauren Work-\\nman, Sherwin Wu, Jeff Wu, Michael Wu, Kai Xiao, Tao Xu,\
+    \ Sarah Yoo, Kevin Yu, Qiming\\nYuan, Wojciech Zaremba, Rowan Zellers, Chong Zhang, Marvin Zhang, Shengjia Zhao, Tianhao\\\
+    nZheng, Juntang Zhuang, William Zhuk, and Barret Zoph. GPT-4 technical report, 2024. URL\\nhttps://arxiv.org/abs/2303.08774.\\\
+    nBiao Tang, Xia Wang, Qian Li, Nicola Luigi Bragazzi, Sanyi Tang, Yanni Xiao, and Jianhong Wu.\\nEstimation of the Transmission\
+    \ Risk of the 2019-nCoV and Its Implication for Public Health\\nInterventions. Journal of Clinical Medicine, 9(2), 2020.\
+    \ doi: 10.3390/jcm9020462.\\nThe MathWorks Inc. SimBiology Toolbox version: 24.2 (R2024b) (Computer Software). 2024.\\\
+    nThe UniProt Consortium. UniProt: the universal protein knowledgebase in 2025. Nucleic Acids\\nResearch, 53(D1):D609\\\
+    u2013D617, 11 2024. doi: 10.1093/nar/gkae1010.\\nShirley Wu, Shiyu Zhao, Michihiro Yasunaga, Kexin Huang, Kaidi Cao, Qian\
+    \ Huang, Vassilis Ioan-\\nnidis, Karthik Subbian, James Y Zou, and Jure Leskovec. Stark: Benchmarking LLM retrieval on\\\
+    ntextual and relational knowledge bases. Advances in Neural Information Processing Systems, 37:\\n127129\\u2013127153,\
+    \ 2024.\\nShunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao.\\nReAct: Synergizing\
+    \ Reasoning and Acting in Language Models, 2023. URL https://arxiv.\\norg/abs/2210.03629.\\nMarinka Zitnik, Monica Agrawal,\
+    \ and Jure Leskovec. Modeling polypharmacy side effects with\\ngraph convolutional networks. Bioinformatics, 34(13):i457\\\
+    u2013i466, 2018.\\nJames Zou and Eric J. Topol. The rise of agentic AI teammates in medicine. The Lancet, 405\\n(10477):457,\
+    \ Feb 2025. doi: 10.1016/S0140-6736(25)00202-8.\\n10\\n\\nPublished as a workshop paper at MLGenX 2025\\nA\"\n  },\n \
+    \ {\n    \"name\": \"APPENDIX\",\n    \"text\": \"Figure A1: Parameter scan of a precision medicine model (Dwivedi et\
+    \ al., 2014) within the GUI.\\nA parameter \\u2018kIL6Unbind\\u2019 is varied in steps of 40 units from 2 to 242 to simulate\
+    \ an unbinding\\nevent of an antibody from its target interleukin 6 receptor (IL6R). Each curve represents a separate\\\
+    nsimulation of this model.\\ngene/protein,interacts with,cellular_component\\ngene/protein,interacts with,cellular_component\\\
+    ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\\
+    ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\\
+    ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\ngene/protein,associated with,disease\\\
+    ngene/protein,associated with,disease\\ngene/protein,interacts with,pathway\\ngene/protein,interacts with,pathway\\ngene/protein,associated\
+    \ with,disease\\ngene/protein,associated with,disease\\ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\\
+    ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\\
+    ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\\
+    ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\\
+    ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\ndisease,associated with,gene/protein\\\
+    ncellular_component,interacts with,gene/protein\\ncellular_component,interacts with,gene/protein\"\n  },\n  {\n    \"\
+    name\": \"DEFA6_(657)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DEFA6_(657)\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"IL6_(1567)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IL6_(1567)\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"JAK2_(1618)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"JAK2_(1618)\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"CCR6_(12740)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CCR6_(12740)\",\n    \"text\"\
+    : \"Andrographolide_(17594)\\nAndrographolide_(17594)\\nIL21-related infantile inflammatory bowel disease_(27269)\\nIL21-related\
+    \ infantile inflammatory bowel disease_(27269)\\ninflammatory bowel disease_(28158)\\ninflammatory bowel disease_(28158)\"\
+    \n  },\n  {\n    \"name\": \"IL21_(34967)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"IL21_(34967)\",\n    \"text\"\
+    : \"Crohn ileitis and jejunitis_(35814)\\nCrohn ileitis and jejunitis_(35814)\\nCrohn disease_(37784)\\nCrohn disease_(37784)\\\
+    nCrohn's colitis_(83770)\\nCrohn's colitis_(83770)\\nextracellular space_(124245)\\nextracellular space_(124245)\\nIL-6-type\
+    \ cytokine receptor ligand interactions_(128815)\\nIL-6-type cytokine receptor ligand interactions_(128815)\\ndrug,target,gene/protein\\\
+    ndrug,target,gene/protein\\nFigure A2: Extracted subgraph of IL-6 association with Crohn\\u2019s Disease within the GUI.\
+    \ Nodes\\nrepresent biological entities such as genes or pathways, and links represent relations between bi-\\nological\
+    \ entities such as gene interaction with pathways or disease association with a gene. Note\\nthe disease association between\
+    \ IL-6 and Crohn\\u2019s Disease shown on the bottom left and induced\\ncytokine/chemokine network on the middle and right.\\\
+    n11\"\n  }\n]"
+  acknowledgments: 'We acknowledge the contributions of Anil Kumar Kanasani and Maryam Najafian during the “AI
+
+    Agents for Life Sciences” hackathon on October 14-15 2024. We acknowledge Rahuman S. Malik
+
+    14https://virtualpatientengine.github.io/AIAgents4Pharma/talk2biomodels/cases/Case 1/
+
+    5
+
+
+    Published as a workshop paper at MLGenX 2025
+
+    Sheriff and the rest of the BioModels team for support in and discussions when developing T2B.
+
+    We acknowledge Mohammed H. Mosa, Henrik Cordes, and Thomas Klabunde from Sanofi for test-
+
+    ing T2B. We acknowledge the technical support from Dror Hilman, Jake Valsamis, Conor Mohan,
+
+    and Ben Evan Tsur, gracious donations of computing resources during our hackathon from Sha-
+
+    har Frunkin, and Daniel Koster, and an going support and facilitation from Simon Adar, all from
+
+    CodeOcean15. We acknowledge funding support for our Hackathons from the AI Health Innovation
+
+    Cluster16 and particular the help received from Daniela Beyer and the rest of the AIH Coordina-
+
+    tion Team. We thank Ornella Kossi, Ann-Kristin Mueller, and Stefanie Schimmel from BioLabs
+
+    Heidelberg17, for hosting our hackathons. We thank Isabel Wilkinson, Uwe Samer, Nick Venanzi,
+
+    and David Ruau from NVIDIA for assisting with our integration of NVIDIA NIMs for chat and
+
+    embedding inference and graciously providing free credits for use with T2B. We thank Vultr18 for
+
+    graciously providing free credits for deploying T2B.'
+  author_contributions: 'LW, GS, AWM, and DM conceptualized the study. GS developed the agentic AI framework and the
+
+    agentic AI tools for T2B. AWM contributed to the development of the agentic AI framework, agentic
+
+    AI tools for T2KG, and created the figures and icons. RHS implemented get annotations tool. GS
+
+    and AWM developed the user interface. DM and LW conceptualized the precision medicine use
+
+    case. LW wrote the manuscript. DM supervised the writing of the manuscript and the development
+
+    of the agentic AI framework. All authors contributed to testing T2B and T2KG and reviewing the
+
+    manuscript.'
+  funding: This study was funded by Sanofi.
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n    \"\
+    page\": 3\n  },\n  {\n    \"id\": \"fig_p3_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_2.png\",\n   \
+    \ \"page\": 3\n  },\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n\
+    \    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  }\n]"
+references:
+  reference_count: 45

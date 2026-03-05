@@ -1,0 +1,285 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/OLS4.pdf
+
+identifiers:
+  doi: 10.5281/zenodo.14960290
+citation:
+  title: 'OLS4: a new Ontology Lookup Service for a growing  interdisciplinary knowledge ecosystem'
+  year: '2006'
+content:
+  abstract: 'Summary: The Ontology Lookup Service (OLS) is an open source search engine for ontologies which is used extensively
+    in the bioinformatics and
+
+    chemistry communities to annotate biological and biomedical data with ontology terms. Recently, there has been a significant
+    increase in the size and
+
+    complexity of ontologies due to new scales of biological knowledge, such as spatial transcriptomics, new ontology development
+    methodologies, and
+
+    curation on an increased scale. Existing Web-based tools for ontology browsing such as BioPortal and OntoBee do not support
+    the full range of defini­
+
+    tions used by today’s ontologies. In order to support the community going forward, we have developed OLS4, implementing
+    the complete OWL2
+
+    specification, internationalization support for multiple languages, and a new user interface with UX enhancements such
+    as links out to external data­
+
+    bases. OLS4 has replaced OLS3 in production at EMBL-EBI and has a backward compatible API supporting users of OLS3 to
+    transition.
+
+    Availability and implementation: The source code of OLS is available at https://github.com/EBISPOT/ols4 and DOI 10.5281/zenodo.14960290
+
+    with Apache 2.0 License. A freely available implementation is accessible at https://www.ebi.ac.uk/ols4.'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"The Ontology Lookup Service (OLS) is a search engine\
+    \ for\\nontologies, first released in 2006 (C^ot\\u0013e et al. 2006). It supports\\nusers to search for ontology terms\
+    \ during knowledge curation\\nrequired by the Findable, Accessible, Interoperable, and\\nReusable principles. Users of\
+    \ OLS include high-throughput phe\\u00ad\\nnotyping centers producing and exporting their data, such as\\nmembers of the\
+    \ International Mouse Phenotyping Consortium\\n(IMPC) (Groza et al. 2023); data integration initiatives such as\\nthe\
+    \ OpenTargets Platform for drug target identification and pri\\u00ad\\noritization (Ochoa et al. 2023); and curators of\
+    \ databases in\\u00ad\\ncluding the Genome-Wide Association Study (GWAS) Catalog\\n(Cerezo et al. 2025), Expression Atlas\
+    \ (Moreno et al. 2022),\\nEuropean Genome\\u2013Phenome Archive (Freeberg et al. 2022),\\nPolygenic Score Catalog (Lambert\
+    \ et al. 2021), ChEMBL\\n(Gaulton et al. 2012), WormBase (Harris et al. 2010),\\nEuropePMC (Gou et al. 2014), PRIDE (Perez-Riverol\
+    \ et al.\\n2025), Ensembl (Dyer et al. 2025), IntAct (Hermjakob et al.\\n2004), CancerModels.org (Perova et al. 2024),\
+    \ BioStudies\\n(Sarkans et al. 2018), and the BioImage Archive (Hartley et al.\\n2022). Recent applications of OLS include\
+    \ harmonization and\\nstandardization of data, for example protocols across phenotyp\\u00ad\\ning centers; quality control\
+    \ checks on raw data, e.g. correction\\nof data submission errors and detection of baseline drift due to\\ninstrumentation;\
+    \ and tracking the progress of phenotyping\\nefforts by funding bodies.\\nSuccessive iterations of OLS have evolved in\
+    \ response to user\\nneeds, e.g. as standards for Application Programming Interfaces\\n(APIs) changed from SOAP to REST\
+    \ (C^ot\\u0013e et al. 2010) and\\nwhen new OBO and Web Ontology Language (OWL) version 2\\n(OWL2) (https://www.w3.org/2007/OWL/draft/ED-owl2-new-\\\
+    nfeatures-20081202/all.pdf) standards for ontologies were intro\\u00ad\\nduced (Jupp et al. 2015). Recently, the scale\
+    \ and complexity of\\nbiological and chemical knowledge have increased dramatically.\\nNew methodologies such as spatial\
+    \ transcriptomics have changed\\nthe resolution of data to single cell; e.g. OLS is used in the\\nHuman BioMolecular Atlas\
+    \ Program (B\\u20acorner et al. 2025); and\\nhigh performance computing has become more abundant. In\\nturn, ontologies\
+    \ have grown significantly in scale: in December\\n2016, OLS indexed 158 ontologies with 4 862 923 classes. In\\nDecember\
+    \ 2024, OLS indexed 266 ontologies with 8 682 322\\nclasses. New authoring tools such as ROBOT templates (Jackson\\net\
+    \ al. 2019) and Dead Simple OWL Design Patterns (DOSDP)\\n(Osumi-Sutherland et al. 2017) have expedited this process by\\\
+    nmaking the development of ontologies more automated enabling\\nnew terms to be added in large quantities. The complexity\
+    \ of\\nontologies has also increased; e.g. internationalization to support\\nthe translation of ontologies into different\
+    \ languages to support a\\ndiverse and international user base (Gargano et al. 2024), and\\nfeatures from the OWL2 specification\
+    \ such as disjointness state\\u00ad\\nments and property chains. So far none of the existing open-\\nsource solutions\
+    \ [OLS3, BioPortal (Noy et al. 2009), OntoBee\\n(Ong et al. 2017), and AgroPortal (Jonquet et al. 2018)] are able\\nto\
+    \ comprehensively support these use cases.\"\n  },\n  {\n    \"name\": \"Materials and methods\",\n    \"text\": \"OLS4\
+    \ is the new version of the Ontology Lookup Service.\\nThe OLS4 data-load and backend are implemented in Java\\nReceived:\
+    \ 23 January 2025; Revised: 24 March 2025; Editorial Decision: 23 April 2025; Accepted: 1 May 2025\\n\\u00a9 The Author(s)\
+    \ 2025. Published by Oxford University Press.\\nThis is an Open Access article distributed under the terms of the Creative\
+    \ Commons Attribution License (https://creativecommons.org/licenses/by/4.0/), which\\npermits unrestricted reuse, distribution,\
+    \ and reproduction in any medium, provided the original work is properly cited.\\nBioinformatics, 2025, 41(5), btaf279\\\
+    nhttps://doi.org/10.1093/bioinformatics/btaf279\\nAdvance Access Publication Date: 5 May 2025\\nApplications Note\\nDownloaded\
+    \ from https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017 by guest on 04 March 2026\\n\\n11 and Spring\
+    \ Boot. OLS4 uses Neo4j as a graph database\\nand Solr for full text search. We use Neo4j rather than an\\nRDF triplestore\
+    \ as Neo4j has strong support for recursive\\nqueries, used in the OLS tree view and API to retrieve all\\nancestors and\
+    \ descendants of an ontology node. The labeled\\nproperty graph (LPG) structure used by Neo4j also enables\\nprovenance\
+    \ and reference information attached to OWL axi\\u00ad\\noms to be represented as properties of graph edges. In future,\\\
+    nthis LPG representation could enable OLS data to be repre\\u00ad\\nsented and queried using the emerging KGX standard\
+    \ for\\nknowledge graph interoperability (Caufield et al. 2023) and\\nincorporated into wider biomedical knowledge graphs\
+    \ such\\nas BioCypher (Lobentanzer et al. 2023).\\nThe architecture has been simplified from OLS3; Neo4j is\\nnow used\
+    \ as a standalone server rather than an embedded data\\u00ad\\nbase, and ontology metadata is also stored in Solr removing\
+    \ the\\nneed for a MongoDB instance. The motivation for this simplifi\\u00ad\\ncation was to reduce the complexity of\
+    \ deploying OLS outside\\nof its primary instance at EMBL-EBI, for use cases such as the\\nMONARCH Initiative OLS and\
+    \ the NFDI4Chem Terminology\\nService (Steinbeck et al. 2023). The ETL pipeline has also been\\nsimplified by eliminating\
+    \ redundant processing to improve scal\\u00ad\\ning of the dataload. OLS4 dataloads for the complete set of\\nontologies\
+    \ take on average 6% of the time used by OLS3.\\nThese faster dataloads allow users to see updates to ontologies\\nmore\
+    \ quickly and reflect changes in knowledge, particularly im\\u00ad\\nportant when biological knowledge develops rapidly\
+    \ which is\\nan important issue for pandemic preparedness; OLS is currently\\nbeing used as part of the European Viral\
+    \ Outbreak Response\\nAlliance project.\\nIn OLS4, the Neo4j and Solr schemas are dynamic and de\\u00ad\\npend on the\
+    \ annotation properties used in the OWL entities\\nin the source ontologies. OWL entities are translated from\\nRDF to\
+    \ a lossless JSON representation, which is then stored\\ncomplete and unmodified in both Neo4j and Solr alongside\\nthe\
+    \ extracted queryable properties. Queries to Neo4j and Solr\\ninclude this JSON representation which is used to generate\\\
+    nAPI responses and the frontend pages. In order to maintain\\nbackward compatibility, the API is implemented using view\\\
+    nclasses which match the previous OLS3 data model, but ab\\u00ad\\nstract from the underlying OLS4 data model. The use\
+    \ of ab\\u00ad\\nstract views enables multiple API versions to be built over the\\nsame underlying data model, and changes\
+    \ to the API without\\nreloading data each time to deliver updates delivering new\\nAPI use cases more quickly to users.\\\
+    nThe OLS4 frontend has been rewritten to communicate\\nwith the backend exclusively using HTTP APIs rather than\\nby directly\
+    \ accessing the internal data model, offering an op\\u00ad\\ntion to build new front ends for an OLS4 backend instance,\\\
+    nsuch as third party interfaces tailored to specific ontologies/\\nuse cases. Custom instances of OLS3 such as the\\nNFDI4Chem\
+    \ terminology service, which previously had to\\nrun divergent OLS instances with locally modified backend\\ncode, will\
+    \ in future be able to use the latest OLS backend\\ncode coupled to a customized frontend reducing the overhead\\nof keeping\
+    \ the backend code synchronized.\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"OLS4 has many new features\
+    \ including full implementation of\\nthe OWL2 specification; annotations on annotations; interna\\u00ad\\ntionalization\
+    \ support; cross-references between ontology terms;\\nand BioRegistry (Hoyt et al. 2022) integration. The OWL2\\nspecification\
+    \ has been implemented comprehensively and tested\\nusing a suite of test cases based on both the OWL2 Primer and\\nexample\
+    \ test-cases extracted from biological and biomedical\\nontologies, including the Experimental Factor Ontology (EFO)\\\
+    n(Malone et al. 2009) and the MONDO Disease Ontology\\n(Vasilevsky et al. 2022). OLS4 is therefore able to support ontol\\\
+    u00ad\\nogies using OWL2 features; e.g. in the MONDO disease ontol\\u00ad\\nogy\\nwhere\"\n  },\n  {\n    \"name\": \"\
+    OWL2\",\n    \"text\": \"disjointness\\nis\\nasserted\\nbetween\\nextrapulmonary tuberculosis (MONDO:0000368) versus pulmo\\\
+    u00ad\\nnary tuberculosis (MONDO:0006052); and in the Relation\\nOntology (RO) where the OWL2 property chain regula\\\
+    u00ad\\ntes\\u00bcdirectly regulates ->directly regulates is de\\u00ad\\nfined to describe transitive regulation relations.\
+    \ These OWL2\\ndefinitions are now visible in the OLS browser and API. In addi\\u00ad\\ntion to OWL2 ontologies, OLS4\
+    \ loads schemas defined using\\nrdfs: Class hierarchies, providing users with a standard API to ac\\u00ad\\ncess both\
+    \ OWL ontologies and commonly used schemas such as\\nDublin\\nCore\\n(https://www.rfc-editor.org/rfc/rfc2413)\\nand\\\
+    nSchema.org (Guha et al. 2016), which are in turn used by\\nOWL2 ontologies.\\nOLS4 improves annotation support by implementing\
+    \ anno\\u00ad\\ntations on annotations (sometimes termed reification), mak\\u00ad\\ning references and provenance associated\
+    \ with ontology\\naxioms visible in the web interface. For example, UBERON\\n(Mungall et al. 2012) is a widely used multispecies\
+    \ anatomy\\nontology. The UBERON term for \\u201clung\\u201d contains homology\\nnotes derived from The evolution of organ\
+    \ systems (Schmidt-\\nRhaesa 2007), a link which is now visible in the correspond\\u00ad\\ning OLS page for attribution\
+    \ and cross-referencing. Full\\ninternationalization of annotations has also been added in\\nOLS4; ontologies are browsable\
+    \ in multiple languages and\\nOLS4 displays a language picker listing all languages present\\nin the ontology. When a\
+    \ language is selected, annotations are\\ndisplayed in the language selected by the user where possible.\\nThis functionality\
+    \ has been demonstrated in the Human\\nPhenotype Ontology (HPO) (Gargano et al. 2024) which is\\nnow accessible in multiple\
+    \ languages in the main OLS in\\u00ad\\nstance, enabling curators to map to consistent phenotype\\nterms across language\
+    \ barriers.\\nAnother significant development in OLS4 is the handling\\nof cross-references between ontology terms. The\
+    \ majority of\\nthe ontologies indexed by OLS do not exist in isolation, but\\nreuse terms from other ontologies. For\
+    \ example, the EFO\\nimports chemical terms from the Chemical Entities of\\nBiological Interest ontology. In OLS4, such\
+    \ imported terms\\nare labeled in the tree with a tag linking to the defining ontol\\u00ad\\nogy (Fig. 1). This functionality\
+    \ is critical to support the\\nUnified Phenotype Ontology (uPheno) (Matentzoglu et al.\\n2024), which aggregates terms\
+    \ from multiple phenotype\\nontologies often with the same name; without the defining\\nontology tags it would be unclear\
+    \ the difference between, e.g.\\nHPO and MP (Smith et al. 2005) terms, in the tree view. In\\naddition to cross-references\
+    \ between ontology terms, OLS4\\nalso automatically creates external links using the Bioregistry\\n(Hoyt et al. 2022),\
+    \ enabling users to easily navigate from\\nontologies to external databases, e.g. from a gene to a ge\\u00ad\\nnome sequence\
+    \ in GenBank (Sayers et al. 2023).\\nAltogether these features allow OLS4 to deliver a range of\\nnew use cases for the\
+    \ ontology community, and to make\\nontologies more interoperable with other biological and\\nchemical resources. OLS4\
+    \ is now in production at EMBL-EBI\\nand served approximately 50 million requests from\\n2\\nMcLaughlin et al.\\nDownloaded\
+    \ from https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017 by guest on 04 March 2026\\n\\napproximately\
+    \ 200 000 unique hosts between November\\n2023 and February 2024.\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"\
+    text\": \"Future work will include support for the Simple Standard for\\nSharing Ontological Mappings (SSSOM) (Matentzoglu\
+    \ et al.\\n2022). Mappings between ontology terms are used, e.g. to\\nmap phenotype terms between human phenotypes and\
+    \ model\\norganisms such as mouse and zebrafish. While some map\\u00ad\\npings are present in ontologies, often represented\
+    \ as\\nhasDbXref properties, SSSOM allows multiple different map\\u00ad\\nping sets to be defined with associated mapping\
+    \ metadata,\\nwhich is important as mappings are often subjective and\\nproject-dependent. We plan to add support to load\
+    \ and dis\\u00ad\\nplay alternative sets of mappings depending on user prefer\\u00ad\\nence, e.g. to allow users to choose\
+    \ between different HPO to\\nMP mappings provided by MGI, IMPC, and Pistoia Alliance.\\nIn future, we also plan to implement\
+    \ more sophisticated\\nsearch capabilities, such as searching for a specific annotation\\nwith a specific value and searching\
+    \ in a specific branch of an\\nontology. For example, EFO terms used to annotate studies\\nin the GWAS Catalog are annotated\
+    \ with a property gwas\\ntrait\\u00bctrue. Searching for terms with this annotation\\nwould allow the impact of deprecating\
+    \ or moving a term on\\nannotated datasets to be assessed. Limiting a search to a spe\\u00ad\\ncific branch of an ontology\
+    \ would allow users interested in, e.\\ng. cardiology to limit their searches to terms underneath\\n\\u201cheart disease\\\
+    u201d in MONDO or \\u201cheart\\u201d in UBERON.\\nOLS serves curators, annotators, data resource producers,\\nand ontology\
+    \ developers. It has been designed to meet the\\nneeds of these user groups as well as to scale for larger and\\nmore\
+    \ complex ontologies. For curators and annotators,\\nOLS4 provides a richer view of terms including complete\\nOWL2 axiomatization\
+    \ to help users select appropriate terms\\nand navigate between terms, a unique feature of OLS4 among\\nopen source ontology\
+    \ browsers. OLS4 also adds multiple lan\\u00ad\\nguage support which enables bio-curators to search for terms\\nusing\
+    \ labels in their native languages, a feature so far only\\nsupported by AgroPortal but useful for human disease com\\\
+    u00ad\\nmunities who also need common names. For data resource\\nproducers, the faster dataload will enable resources\
+    \ to load\\nand link to the latest versions of ontology terms in days with\\u00ad\\nout waiting several weeks for OLS\
+    \ to update. For ontology\\ndevelopers, the new display features of OLS will enable new\\nuse cases to be delivered in\
+    \ ontologies with visibility to users,\\nas has been demonstrated for HPO and MP internationalized\\neditions. OLS4 will\
+    \ also help to prevent the proliferation of\\nterms across multiple ontologies re-defining the same con\\u00ad\\ncepts\
+    \ in different contexts, by adding ontology tags to make\\nFigure 1. An ontology term from the Experimental Factor Ontology\
+    \ (EFO) viewed in OLS4. References to terms in different ontologies are tagged with\\nlinks to the corresponding defining\
+    \ ontologies for easy navigation.\"\n  },\n  {\n    \"name\": \"OLS4\",\n    \"text\": \"3\\nDownloaded from https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017\
+    \ by guest on 04 March 2026\\n\\nthe presentation of the relationship between ontologies more\\nprominent and easier to\
+    \ navigate.\"\n  },\n  {\n    \"name\": \"Acknowledgments\",\n    \"text\": \"The authors would like to thank Nicolas\
+    \ Matentzoglu\\n(Semanticly Ltd), David Osumi-Sutherland (Wellcome Trust\\nSanger Institute), and the OBO Foundry Community\
+    \ for test\\u00ad\\ning and feedback.\\nConflict of interest: None declared.\"\n  },\n  {\n    \"name\": \"Funding\",\n\
+    \    \"text\": \"J.M., J.L., H.I., H.P., and H.H. are supported in part by\\nEMBL-EBI Core Funds. J.M., H.I., H.P., and\
+    \ H.H. are sup\\u00ad\\nported by European Union\\u2019s HORIZON program grant num\\u00ad\\nber 101131959. J.M. was supported\
+    \ by the Chan\\u2013Zuckerberg\\nInitiative award for the Human Cell Atlas Data Coordination\\nPlatform from 2020 to 2023;\
+    \ Office of the Director, National\\nInstitutes of Health (R24-OD011883, OT2OD033756); and\\nNIH National Human Genome\
+    \ Research Institute Phenomics\\nFirst Resource, NIH-NHGRI # 5RM1 HG010860, a Center\\nof Excellence in Genomic Science.\
+    \ H.H. was supported by the\\nEuropean Union\\u2019s Horizon 2020 research, and innovation\\nprogram grant numbers 824087\
+    \ (European Open Science\\nCloud Life from June 2020 to August 2023) and 825575\\n(European Joint Programme on Rare Diseases\
+    \ from June 2020\\nto December 2023). J.M., H.I. and H.H are supported in part\\nby EVORA. The EVORA project has received\
+    \ funding from\\nthe European Union's HORIZON programme under grant\\nagreement No 101131959.\"\n  },\n  {\n    \"name\"\
+    : \"References\",\n    \"text\": \"B\\u20acorner K, Blood PD, Silverstein JC et al. Human biomolecular atlas program\\\
+    n(hubmap): 3D human reference atlas construction and usage. Nat\"\n  },\n  {\n    \"name\": \"Methods 2025;22:845\\u201360.\
+    \ https://doi.org/10.1038/s41592-024-02563-5\",\n    \"text\": \"Caufield JH, Putman T, Schaper K et al. KG-Hub-building\
+    \ and ex\\u00ad\\nchanging biological knowledge graphs. Bioinformatics 2023;39:\\nbtad418. https://doi.org/10.1093/bioinformatics/btad418\\\
+    nCerezo M, Sollis E, Ji Y et al. The NHGRI-EBI GWAS catalog: stand\\u00ad\\nards for reusability, sustainability and diversity.\
+    \ Nucleic Acids Res\"\n  },\n  {\n    \"name\": \";53:D998\\u20131005\",\n    \"text\": \"C^ot\\u0013e R, Reisinger F,\
+    \ Martens L et al. The ontology lookup service: big\\u00ad\\nger and better. Nucleic Acids Res, 2010;38:W155\\u201360.\\\
+    nC^ot\\u0013e RG, Jones P, Apweiler R et al. The Ontology Lookup Service, a\\nlightweight cross-platform tool for controlled\
+    \ vocabulary queries.\\nBMC Bioinformatics 2006;7:W155\\u201360.\\nDyer SC, Austine-Orimoloye O, Azov AG et al. Ensembl\
+    \ 2025. Nucleic\\nAcids Res 2025;53:D948\\u201357. https://doi.org/10.1093/nar/gkae1071\\nFreeberg MA, Fromont LA, D\\\
+    u2019Altri T et al. The European Genome\\u2013\\nPhenome Archive in 2021. Nucleic Acids Res 2022;50:D980\\u20137.\\nGargano\
+    \ MA, Matentzoglu N, Coleman B et al. The human phenotype\\nontology in 2024: phenotypes around the world. Nucleic Acids\
+    \ Res\"\n  },\n  {\n    \"name\": \";52:D1333\\u201346\",\n    \"text\": \"Gaulton A, Bellis LJ, Bento AP et al. Chembl:\
+    \ a large-scale bioactivity\\ndatabase for drug discovery. Nucleic Acids Res 2012;40:D1100\\u20137.\\nGou Y, Graff F,\
+    \ Rossiter P, et al. Europe PMC: a full-text literature\\ndatabase for the life sciences and platform for innovation.\
+    \ Nucleic\\nAcids Res 2014;43:D1042\\u20138.\\nGroza T, Gomez FL, Mashhadi HH et al. The international mouse phe\\u00ad\\\
+    nnotyping consortium: comprehensive knockout phenotyping under\\u00ad\\npinning the study of human disease. Nucleic Acids\
+    \ Res 2023;51:\\nD1038\\u201345. https://doi.org/10.1093/nar/gkac972\\nGuha R, Brickley D, Macbeth S. Schema.org: evolution\
+    \ of structured\\ndata on the web. Commun ACM 2016;59:44\\u201351.\\nHarris TW, Antoshechkin I, Bieri T et al. Wormbase:\
+    \ a comprehensive re\\u00ad\\nsource for nematode research. Nucleic Acids Res 2010;38:D463\\u201367.\\nHartley M, Kleywegt\
+    \ G, Patwardhan A et al. The bioimage archive\\u2014building\\na home for life-sciences microscopy data. J Mol Biol 2022;434:167505.\\\
+    nHermjakob H, Montecchi-Palazzi L, Lewington C et al. Intact: an open\\nsource molecular interaction database. Nucleic\
+    \ Acids Res 2004;\"\n  },\n  {\n    \"name\": \":D452\\u201355\",\n    \"text\": \"Hoyt CT, Balk M, Callahan TJ et al.\
+    \ Unifying the identification of bio\\u00ad\\nmedical entities with the bioregistry. Scientific Data 2022;9:714.\\nJackson\
+    \ R, Balhoff J, Douglass E et al. Robot: a tool for automating on\\u00ad\\ntology workflows. BMC Bioinformatics 2019;20:407.\\\
+    nJonquet C, Toulet A, Arnaud E et al. Agroportal: a vocabulary and on\\u00ad\\ntology repository for agronomy. Comput\
+    \ Electron Agric 2018;\\n144:126\\u201343.\\nJupp S, Burdett T, Leroy C et al. A new ontology lookup service at EMBL-\\\
+    nEBI. In: Proceedings of the 8th International Conference on Semantic\\nWeb Applications and Tools for Life Sciences,\
+    \ Cambridge, 2015. p.\\n118\\u20139. Cambridgeshire, UK: CEUR Workshop Proceedings, 2015.\\nLambert SA, Gil L, Jupp S\
+    \ et al. The polygenic score catalog as an open\\ndatabase for reproducibility and systematic evaluation. Nat Genet\\\
+    n2021;53:420\\u20135.\\nLobentanzer S, Aloy P, Baumbach J et al. Democratizing knowledge\\nrepresentation with biocypher.\
+    \ Nat Biotechnol 2023;41:1056\\u20139.\\nMalone J, Adamusiak T, Holloway E et al. Developing an application on\\u00ad\\\
+    ntology for annotation of experimental variables\\u2014experimental factor\\nontology. Nat Prec 2009. https://doi.org/10.1038/npre.2009.3806.1\\\
+    nMatentzoglu N, Balhoff JP, Bello SM et al. A simple standard for shar\\u00ad\\ning ontological mappings (SSSOM). Database\
+    \ 2022;2022:baac035.\\nhttps://doi.org/10.1093/database/baac035\\nMatentzoglu N, Bello S, Stefancsik R et al. The unified\
+    \ phenotype ontol\\u00ad\\nogy (uPheno): a framework for cross-species integrative phenomics.\\nGenetics 2025;229:yaf027.\
+    \ https://doi.org/10.1093/genetics/iyaf027\\nMoreno P, Fexova S, George N et al. Expression atlas update: gene and pro\\\
+    u00ad\\ntein expression in multiple species. Nucleic Acids Res 2022;50:D129\\u201340.\\nMungall C, Torniai C, Gkoutos\
+    \ G et al. Uberon, an integrative multi-\\nspecies anatomy ontology. Genome Biol 2012;13:R5.\\nNoy NF, Shah NH, Whetzel\
+    \ PL et al. Bioportal: ontologies and inte\\u00ad\\ngrated data resources at the click of a mouse. Nucleic Acids Res\"\
+    \n  },\n  {\n    \"name\": \";37:W170\\u20133\",\n    \"text\": \"Ochoa D, Hercules A, Carmona M et al. The next-generation\
+    \ open tar\\u00ad\\ngets platform: reimagined, redesigned, rebuilt. Nucleic Acids Res\"\n  },\n  {\n    \"name\": \";51:D1353\\\
+    u201359\",\n    \"text\": \"Ong E, Xiang Z, Zhao B et al. Ontobee: a linked ontology data server\\nto support ontology\
+    \ term dereferencing, linkage, query and integra\\u00ad\\ntion. Nucleic Acids Res 2017;45:D347\\u201352.\\nOsumi-Sutherland\
+    \ D, Courtot M, Balhoff J et al. Dead simple owl de\\u00ad\\nsign patterns. J Biomed Semantics 2017;8:18.\\nPerez-Riverol\
+    \ Y, Bandla C, Kundu DJ et al. The pride database at 20\\nyears: 2025 update. Nucleic Acids Res 2025;53:D543\\u201353.\\\
+    nPerova Z, Martinez M, Mandloi T et al. Abstract 6910: cancermodels.\\norg: an open global cancer research platform for\
+    \ patient-derived\\ncancer models. Cancer Res 2024;84:6910. https://doi.org/10.1158/\\n1538-7445.am2024-6910\\nSarkans\
+    \ U, Gostev M, Athar A et al. The biostudies database-one stop\\nshop for all data supporting a life sciences study. Nucleic\
+    \ Acids Res\"\n  },\n  {\n    \"name\": \";46:D1266\\u201370\",\n    \"text\": \"Sayers EW, Cavanaugh M, Clark K et al.\
+    \ Genbank 2024 update. Nucleic\\nAcids Res 2023;52:D134\\u20137. https://doi.org/10.1093/nar/gkad903\\nSchmidt-Rhaesa\
+    \ A. The Evolution of Organ Systems. London,\\nEngland: Oxford University Press, 2007.\\nSmith C, Goldsmith C-A, Eppig\
+    \ J. The mammalian phenotype ontology\\nas a tool for annotating, analyzing and comparing phenotypic infor\\u00ad\\nmation.\
+    \ Genome Biol 2005;6:R7.\\nSteinbeck C, Koepler O, Herres-Pawlis S et al. Nfdi4chem\\u2014a research\\ndata network for\
+    \ international chemistry. Chem Int 2023;45:8\\u201313.\\nVasilevsky N, Matentzoglu N, Toro S et al. Mondo: unifying diseases\\\
+    nfor the world, by the world. bioRxiv, https://doi.org/10.1101/2022.\\n04.13.22273750, 2022, preprint: not peer reviewed.\\\
+    n4\\nMcLaughlin et al.\\nDownloaded from https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017 by guest\
+    \ on 04 March 2026\\n\\n\\u00a9 The Author(s) 2025. Published by Oxford University Press.\\nThis is an Open Access article\
+    \ distributed under the terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0/),\
+    \ which permits\\nunrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly\
+    \ cited.\\nBioinformatics, 2025, 41, 1\\u20134\\nhttps://doi.org/10.1093/bioinformatics/btaf279\\nApplications Note\\\
+    nDownloaded from https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017 by guest on 04 March 2026\"\n  }\n\
+    ]"
+  acknowledgments: 'The authors would like to thank Nicolas Matentzoglu
+
+    (Semanticly Ltd), David Osumi-Sutherland (Wellcome Trust
+
+    Sanger Institute), and the OBO Foundry Community for test­
+
+    ing and feedback.
+
+    Conflict of interest: None declared.'
+  funding: 'J.M., J.L., H.I., H.P., and H.H. are supported in part by
+
+    EMBL-EBI Core Funds. J.M., H.I., H.P., and H.H. are sup­
+
+    ported by European Union’s HORIZON program grant num­
+
+    ber 101131959. J.M. was supported by the Chan–Zuckerberg
+
+    Initiative award for the Human Cell Atlas Data Coordination
+
+    Platform from 2020 to 2023; Office of the Director, National
+
+    Institutes of Health (R24-OD011883, OT2OD033756); and
+
+    NIH National Human Genome Research Institute Phenomics
+
+    First Resource, NIH-NHGRI # 5RM1 HG010860, a Center
+
+    of Excellence in Genomic Science. H.H. was supported by the
+
+    European Union’s Horizon 2020 research, and innovation
+
+    program grant numbers 824087 (European Open Science
+
+    Cloud Life from June 2020 to August 2023) and 825575
+
+    (European Joint Programme on Rare Diseases from June 2020
+
+    to December 2023). J.M., H.I. and H.H are supported in part
+
+    by EVORA. The EVORA project has received funding from
+
+    the European Union''s HORIZON programme under grant
+
+    agreement No 101131959.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n    \"\
+    page\": 3\n  }\n]"
+references:
+  reference_count: 2

@@ -1,0 +1,202 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Open Targets.pdf
+
+identifiers:
+  doi: 10.1038/d41573-024-00204-2
+  pmid: '39690268'
+citation:
+  title: 'Open Targets: 10 years of  partnership in target discovery'
+  year: '2025'
+  journal: Nature Reviews Drug Discovery
+  volume: '24'
+  pages: 153-154
+  publisher: Springer Science and Business Media LLC
+  authors: David G. Hulcoop, Gosia Trynka, Ellen M. McDonagh
+content:
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Many candidate medicines fail during clinical trials,\
+    \ when the safety and\\nefficacy of the therapeutic approach is tested. These failures increase the\\ncost of bringing\
+    \ new treatments to patients. They stem from our incom-\\nplete knowledge of how drug targets are linked to disease and\
+    \ our limited\\nability to predict the effect of modulating a target on disease.\\nAs one potential solution to this problem,\
+    \ studies have indicated\\nthat drug targets supported by genetic evidence have a higher prob-\\nability of success in\
+    \ drug development1. The Open Targets consortium\\nwas founded in 2014 to harness insights from genetics and functional\\\
+    ngenomics and transform target identification and prioritization. Indus-\\ntry and academic scientists work together to\
+    \ shape the Open Targets\\nresearch programme, which has awarded 95 projects to date. The\\nconsortium comprises the founding\
+    \ partners \\u2014 the Wellcome Sanger\\nInstitute, EMBL\\u2019s European Bioinformatics Institute (EMBL-EBI) and\\nthe\
+    \ pharmaceutical company GSK \\u2014 and more recent members, the\\ncompanies Genentech, MSD, Pfizer, and Sanofi. Throughout\
+    \ its his-\\ntory, the companies Biogen, Takeda and Celgene (now BMS) have also\\ncounted amongst the Open Targets partners.\
+    \ Consortium findings are\\nshared within the partnership before publication, then contributed to\\nthe public domain.\\\
+    nEstablishing the Open Targets research programme\\nDrug target identification is a complex problem. Multiple evidence\\\
+    ntypes must be integrated to understand disease biology and there are\\nmany gaps in our knowledge. The Open Targets research\
+    \ programme\\ntakes a systematic approach to two overarching but interconnected\\nthemes: first, to generate new data\
+    \ that associate targets with disease;\\nand second, to integrate new and existing disease association evidence\\ninto\
+    \ a central informatic framework.\\nOpen Targets initially hosted industry\\u2013academic workshops to\\nunderstand the\
+    \ key questions asked in target discovery and the evi-\\ndence required to address these questions. The focus was on integrat-\\\
+    ning genetics, genomics and other relevant evidence to systematically\\nassess target\\u2013disease associations.\\nNow,\
+    \ the core themes of the research programme are built through\\nactive discussion between all the academic and industry\
+    \ partners.\\nProjects are developed within common areas of therapeutic and\\ntechnological interest and are conducted\
+    \ collaboratively through the\\nentire project lifecycle. To establish research projects, expressions of\\ninterest from\
+    \ both academia and industry are sought, then discussions\\nheld between groups with related interests to build project\
+    \ proposals\\nfor collective review. Each new round of project generation builds\\nupon the interests and expertise of\
+    \ partners and the lessons learned\\nfrom active projects.\\nExamples and evolution of projects\\nOpen Targets projects\
+    \ systematically generate causal data that associ-\\nate genes to disease or build foundational understanding of disease\\\
+    nprocesses. Early projects harnessed the expertise and advanced tech-\\nnologies available at the Wellcome Sanger Institute,\
+    \ such as CRISPR\\ngene perturbation and single-cell transcriptomics, to generate new\\ndata at scale. For example, an\
+    \ initial project involved conducting\\ngenome-wide CRISPR gene knockout screens across 324 cancer cell\\nlines. This\
+    \ dataset contributed to the causal evidence supporting the\\nDNA helicase WRN as a promising target in microsatellite-unstable\
+    \ colo-\\nrectal cancers2. Another early project created foundational resources\\nby using single-cell transcriptomics\
+    \ to generate atlases of airway and\\nlung tissue from patients with asthma and those in remission.\\nProjects focussed\
+    \ on new data generation are centred around\\ntherapy areas of common interest to the consortium partners: oncol-\\nogy,\
+    \ immunology and neurodegeneration. This focus enables projects\\nto learn from each other, share resources and take aligned\
+    \ approaches\\n(for example, using the same induced pluripotent stem cell line back-\\nground across projects). It also\
+    \ enables the collective analysis of mul-\\ntiple project outputs. Causal target\\u2013disease association studies in\\\
+    nhuman cellular models of disease have expanded to more complex\\ndisease-relevant assays. For example, these assays investigate\
+    \ the\\nimpact of co-culturing immune cells and cancer cells, the role of mul-\\ntiple immune cell phenotypes in immune\
+    \ and neurodegenerative\\ndiseases, as well as aspects of neuronal function and the cellular stress\\nresponse. With the\
+    \ emergence of new technologies and an expanded\\nperturbation toolbox, the latest projects aim to generate hypotheses\\\
+    nfor precision therapeutics by integrating systematic combination\\nscreening in cancer, or base-editing in more complex\
+    \ systems, with\\nsingle-cell readouts.\\nMore recent foundational studies run by Open Targets increasingly\\nfocus on\
+    \ insights from patients to aid translation of findings to drug\\ndiscovery decision-making. Projects in inflammatory\
+    \ bowel disease\\n(IBD) and systemic lupus erythematosus use single-cell approaches to\\nbuild detailed tissue maps in\
+    \ disease and generate cell-specific maps\\nof quantitative trait loci to deconvolute genetic influences at cellular\\\
+    nresolutions. A project in non-small-cell lung cancer profiles disease tis-\\nsue using single-cell and spatial techniques,\
+    \ and another in metabolic\\ndysfunction-associated steatohepatitis investigates disease progres-\\nsion, with both projects\
+    \ generating foundational datasets in diseases\\nwith high unmet need3.\\nCheck for updates\\n\\nVolume 24 | March 2025\
+    \ | 153\\u2013154 | 154\\nnature reviews drug discovery\\ntheme, Open Targets has recently launched Open-IBD, the consortium\\\
+    u2019s\\nmost ambitious project to date, following 1,000 patients with IBD from\\ndiagnosis through to the early years\
+    \ of disease and treatment.\\nThe research themes of Open Targets\\u2019 programme have differ-\\nent impact profiles\
+    \ for drug target identification and prioritization\\ndepending on the nature of the findings. Causal target\\u2013disease\
+    \ asso-\\nciations, such as genetic perturbations that impact a disease-relevant\\nphenotype, directly inform the decisions\
+    \ and investments of industry\\npartners\\u2019 pipeline of targets. Foundational knowledge, such as a disease\\ntissue\
+    \ map or detailed characterization of a disease-relevant process,\\ninforms decision making less directly but more broadly,\
+    \ with such\\ndata being used many times across a class of targets or therapy area.\\nInformatic infrastructure and resources\
+    \ are widely adopted to sup-\\nport overall decision making and target\\u2013disease research and provide\\nsustainability\
+    \ for new knowledge generated. Open Targets\\u2019 systematic\\napproach produces lists of targets associated with disease,\
+    \ and further\\nprioritization is required to build therapeutic hypotheses and for\\neffective decision-making. Therefore,\
+    \ a later focus of the research\\nprogramme has been target prioritization. Tools are being developed\\nto assess the\
+    \ tractability, safety and feasibility of progressing potential\\ndrug targets, as well as to assess the novelty of targets\
+    \ and the potential\\ntherapeutic effect5.\\nLooking ahead, Open Targets will continue to bring together aca-\\ndemic\
+    \ and industry parties around ambitious projects to understand\\nand treat disease. This approach should aid the translation\
+    \ of knowl-\\nedge and technology from academic frontiers to industry applications\\nand ultimately catalyse the development\
+    \ of safe and effective new\\ntherapies.\\nDavid G. Hulcoop1,2,3\\n, Gosia Trynka1,3 & Ellen M. McDonagh1,2,3\\n1Open\
+    \ Targets, Wellcome Genome Campus, Hinxton, Cambridgeshire,\\nUK. 2European Molecular Biology Laboratory, European Bioinformatics\\\
+    nInstitute (EMBL-EBI), Wellcome Genome Campus, Hinxton,\\nCambridgeshire, UK. 3Wellcome Sanger Institute, Wellcome Genome\\\
+    nCampus, Hinxton, Cambridgeshire, UK.\\ne-mail: dhulcoop@ebi.ac.uk\\nPublished online: 17 December 2024\"\n  },\n  {\n\
+    \    \"name\": \"References\",\n    \"text\": \"1.\\t Nelson, M. et al. The support of human genetic evidence for approved\
+    \ drug indications.\\nNat. Genet. 47, 856\\u2013860 (2015).\\n2.\\t Behan, F. M. et al. Prioritization of cancer therapeutic\
+    \ targets using CRISPR\\u2013Cas9 screens.\\nNature 568, 511\\u2013516 (2019).\\n3.\\t Gribben, C. et al. Acquisition\
+    \ of epithelial plasticity in human chronic liver disease. Nature\\n630, 166\\u2013173 (2024).\\n4.\\t Buniello, A. et\
+    \ al. Open Targets Platform: facilitating therapeutic hypotheses building in\\ndrug discovery. Open Nucleic Acids Res.\
+    \ https://doi.org/10.1093/nar/gkae1128 (2024).\\n5.\\t McDonagh, E. M. et al. Human genetics and genomics for drug target\
+    \ identification and\\nprioritization: Open Targets\\u2019 perspective. Annu. Rev. Biomed. Data Sci. 7, 59\\u201381 (2024).\"\
+    \n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"G.T. consults for BMS, Genentech, GSK and Relation\
+    \ Tx, and serves on the scientific advisory\\nboard of Variant Bio.\\nDatasets for assessing target\\u2013disease associations\
+    \ were initially\\nidentified within global, public data repositories, such as ChEMBL and\\nUniProt hosted at EMBL-EBI.\
+    \ An ontology \\u2014 a controlled vocabulary of\\ndiseases and phenotypes and the relationships between them \\u2014\
+    \ was\\nrequired to map trait and disease terms across resources to bring the\\nevidence into a common framework. Working\
+    \ closely with the EMBL-EBI\\nSamples, Phenotypes and Ontologies Team, the Experimental Factor\\nOntology was selected\
+    \ due to its flexibility to incorporate terms and\\nmap across to other ontologies. A new informatics resource was then\\\
+    ncreated to integrate and score the evidence from each different data\\ntype, providing overall a systematic assessment\
+    \ of target\\u2013disease\\nassociations based on evidence in a high-quality user interface: the\\nOpen Targets Platform4.\\\
+    nNew informatic projects build on the initial data pipelines that\\nsupported the Open Targets Platform, which required\
+    \ high degrees\\nof manual oversight. Workflows have been refined and automated,\\nwhile expanding coverage and knowledge\
+    \ extraction through more\\ncomplex entity recognition, specific curation efforts and application\\nof machine learning\
+    \ (ML). Open Targets has focused on a systematic\\napproach to analysing genetic evidence for common traits and dis-\\\
+    neases, an approach supported by additional research demonstrating\\nthe impact of human genetic evidence on success rates\
+    \ in drug discov-\\nery. Collaborative projects with the NHGRI-EBI catalogue of human\\ngenome-wide association studies\
+    \ (GWAS Catalogue) enabled full sum-\\nmary statistics from GWAS to be available for Open Targets and the\\ncommunity.\
+    \ Open Targets then addressed the challenge of assigning\\ncausal genes to GWAS loci at scale by creating a new focussed\
+    \ resource:\\nOpen Targets Genetics. This companion to the Open Targets Platform\\nprovides large-scale genetic evidence\
+    \ on the relationships between\\ndisease-associated genetic loci and candidate causal variants, in order\\nto predict\
+    \ drug target genes. The open-source resources provided by\\nthe Open Targets Platform have been adopted by academic and\
+    \ indus-\\ntry communities exploring target\\u2013disease associations. Significant\\nefforts are underway to re-develop\
+    \ Open Targets Genetics pipelines\\nto power future versions of the Open Targets informatics ecosystem,\\nalongside applications\
+    \ of ML, to enable new modes of interacting with\\nand making predictions from data.\"\n  },\n  {\n    \"name\": \"Conclusion\
+    \ and outlook\",\n    \"text\": \"The founding and successful development of Open Targets exemplifies\\neffective pre-competitive\
+    \ collaboration between multiple commercial\\nentities and academia, providing a model for consideration in other are-\\\
+    nnas. Feedback from Open Targets partners is that the most successful\\ncollaborations have maintained a strong, ongoing\
+    \ connection between\\nacademia and industry, driven by early engagement in project design\\nand discussion of drug discovery\
+    \ questions throughout the project\\nlife cycle. The partners also highlight that the larger, more ambitious\\nprojects,\
+    \ applying new technology at scale, are of the highest scientific\\nimpact and enable multiple lines of analysis for drug\
+    \ discovery deci-\\nsion making through the richness of data generated. Building on that\"\n  }\n]"
+  competing_interests: 'G.T. consults for BMS, Genentech, GSK and Relation Tx, and serves on the scientific advisory
+
+    board of Variant Bio.
+
+    Datasets for assessing target–disease associations were initially
+
+    identified within global, public data repositories, such as ChEMBL and
+
+    UniProt hosted at EMBL-EBI. An ontology — a controlled vocabulary of
+
+    diseases and phenotypes and the relationships between them — was
+
+    required to map trait and disease terms across resources to bring the
+
+    evidence into a common framework. Working closely with the EMBL-EBI
+
+    Samples, Phenotypes and Ontologies Team, the Experimental Factor
+
+    Ontology was selected due to its flexibility to incorporate terms and
+
+    map across to other ontologies. A new informatics resource was then
+
+    created to integrate and score the evidence from each different data
+
+    type, providing overall a systematic assessment of target–disease
+
+    associations based on evidence in a high-quality user interface: the
+
+    Open Targets Platform4.
+
+    New informatic projects build on the initial data pipelines that
+
+    supported the Open Targets Platform, which required high degrees
+
+    of manual oversight. Workflows have been refined and automated,
+
+    while expanding coverage and knowledge extraction through more
+
+    complex entity recognition, specific curation efforts and application
+
+    of machine learning (ML). Open Targets has focused on a systematic
+
+    approach to analysing genetic evidence for common traits and dis-
+
+    eases, an approach supported by additional research demonstrating
+
+    the impact of human genetic evidence on success rates in drug discov-
+
+    ery. Collaborative projects with the NHGRI-EBI catalogue of human
+
+    genome-wide association studies (GWAS Catalogue) enabled full sum-
+
+    mary statistics from GWAS to be available for Open Targets and the
+
+    community. Open Targets then addressed the challenge of assigning
+
+    causal genes to GWAS loci at scale by creating a new focussed resource:
+
+    Open Targets Genetics. This companion to the Open Targets Platform
+
+    provides large-scale genetic evidence on the relationships between
+
+    disease-associated genetic loci and candidate causal variants, in order
+
+    to predict drug target genes. The open-source resources provided by
+
+    the Open Targets Platform have been adopted by academic and indus-
+
+    try communities exploring target–disease associations. Significant
+
+    efforts are underway to re-develop Open Targets Genetics pipelines
+
+    to power future versions of the Open Targets informatics ecosystem,
+
+    alongside applications of ML, to enable new modes of interacting with
+
+    and making predictions from data.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  }\n]"
+references:
+  reference_count: 5

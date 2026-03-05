@@ -1,6 +1,8 @@
 import sys
+
 import pytest
 from loguru import logger
+
 
 def test_python_version():
     """Verify the environment Python version matches expectations."""

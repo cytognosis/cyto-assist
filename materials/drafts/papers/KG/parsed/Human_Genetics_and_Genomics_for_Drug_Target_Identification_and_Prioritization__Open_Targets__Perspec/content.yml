@@ -1,0 +1,847 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Human Genetics and Genomics for Drug Target Identification and Prioritization (Open Targets' Perspective).pdf
+
+identifiers:
+  doi: 10.1146/annurev-biodatasci-102523-
+citation:
+  year: '2024'
+content:
+  abstract: "Open Targets, a consortium among academic and industry partners, focuses\non using human genetics and genomics\
+    \ to provide insights to key questions\nthat build therapeutic hypotheses. Large-scale experiments generate foun-\ndational\
+    \ data, and open-source informatic platforms systematically integrate\nevidence for target–disease relationships and provide\
+    \ dynamic tooling for\ntarget prioritization. A locus-to-gene machine learning model uses evidence\nfrom genome-wide association\
+    \ studies (GWAS Catalog, UK BioBank, and\nFinnGen), functional genomic studies, epigenetic studies, and variant effect\n\
+    prediction to predict potential drug targets for complex diseases. These\n59\n, .•·\x05-\nReview in Advance. Changes may\n\
+    still occur before final publication.\n\nBD07_Art05_McDonagh\nARjats.cls\nMarch 13, 2024\n12:34\npredictions are combined\
+    \ with genetic evidence from gene burden analyses, rare disease genetics,\nsomatic mutations, perturbation assays, pathway\
+    \ analyses, scientific literature, differential expres-\nsion, and mouse models to systematically build target–disease\
+    \ associations (https://platform.\nopentargets.org). Scored target attributes such as clinical precedence, tractability,\
+    \ and safety\nguide target prioritization. Here we provide our perspective on the value and impact of human\ngenetics\
+    \ and genomics for generating therapeutic hypotheses."
+  sections: "[\n  {\n    \"name\": \"THE OPEN TARGETS CONSORTIUM\",\n    \"text\": \"The overall success rates in drug discovery\
+    \ are low; 90% of drugs that enter phase 1 clinical trials\\ndo not reach the market due to insufficient efficacy or safety\
+    \ issues that surface in later, expensive\\nclinical trials. This failure rate drives the overall cost of drug development,\
+    \ which is currently\\nestimated at between $1 billion and $2 billion for each approved medicine (1\\u20133).\\nDrug discovery\
+    \ begins with the selection of a target that is proposed to be involved in the\\ndisease process and the construction\
+    \ of a therapeutic hypothesis around that target describing an\\nintervention that will benefit the patient. Target identification\
+    \ and prioritization are a complex\\nproblem encompassing how we understand disease processes, how we predict the impact\
+    \ of per-\\nturbing our complex biology, and how we select from a range of potential options the approach\\nwith the highest\
+    \ chance of success in new drug discovery. The rate of late-stage clinical failures\\nshows that there is a huge opportunity\
+    \ to improve our capabilities to select the targets that can\\nlead to safe and effective medicines.\\nIn 2014 discussions\
+    \ between the Wellcome Sanger Institute,European Molecular Biology Lab-\\noratory\\u2019s European Bioinformatics Institute\
+    \ (EMBL-EBI), and GSK led to the founding of the\\nCentre for Therapeutic Target Validation. This innovative, large-scale,\
+    \ multiyear, public\\u2013private\\npartnership was created to use human genetic and genomic data for systematic drug\
+    \ target iden-\\ntification and prioritization. Rebranded as Open Targets in 2016, the partnership has grown and\\nnow\
+    \ brings together the expertise of EMBL-EBI and the Wellcome Sanger Institute with industry\\npartners GSK, Pfizer, Sanofi,\
+    \ Bristol Myers Squibb, and Genentech to enhance the translational\\nimpact of academic science on human health and the\
+    \ capabilities of industry to envision new, safe,\\nand effective medicines (Figure 1a).\\nWorking in partnership across\
+    \ academia and industry is one of Open Targets\\u2019 core philoso-\\nphies, bringing together the best of academic and\
+    \ industrial approaches. Projects are designed\\nand executed and results analyzed by teams of academic and industry scientists\
+    \ who stay con-\\nnected through the life cycle of each project to deliver impactful insights that improve the target\\\
+    nidentification and prioritization landscapes (Figure 1b). Open Targets research is made available\\nto the community\
+    \ through publication, and our approach to target identification and prioriti-\\nzation is exemplified by our flagship\
+    \ open-source informatics platforms, Open Targets Platform\\n(https://platform.opentargets.org) and Open Targets Genetics\
+    \ (https://genetics.opentargets.\\norg) (4, 5). We and others have shown the enrichment of targets supported by genetic\
+    \ evidence\\nin successful drug discovery programs (6\\u20138). Genetic evidence for a target\\u2013disease association\
+    \ is\\nfundamental to building a strong therapeutic hypothesis. In this review we outline our perspective\\non using human\
+    \ genetics and genomics for drug target identification.\"\n  },\n  {\n    \"name\": \"THE OPEN TARGETS RESEARCH PROGRAM\"\
+    ,\n    \"text\": \"To achieve the vision of Open Targets, the consortium research program focuses on systematically\\\
+    ngenerating and understanding relevant data that enables us to identify and prioritize targets for\\n60\\nMcDonagh et\
+    \ al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\\
+    nARjats.cls\\nMarch 13, 2024\\n12:34\\ndrug discovery. This requires the generation of causal target\\u2013disease evidence\
+    \ alongside founda-\\ntional disease and biological process understanding so that we can decipher the role of potential\\\
+    ndrug targets through the life cycle of disease processes. To build therapeutic hypotheses from\\ntarget\\u2013disease\
+    \ relationships, we need to be able to understand them in the context of the biology\\nof the pathways, cells, and tissues\
+    \ involved in disease and then propose specific targeted inter-\\nventions that will be beneficial for the disease state\
+    \ in question (Figure 2). The Open Targets\\napproach is aimed at understanding the data that connect targets to disease,\
+    \ through contextual\\nWRN preclinical\\nprograms initiate\\nPublication cited\\n900+ times\\nExample: Timeline for Werner\
+    \ Syndrome ATP-dependent Helicase (WRN), identified as a target for tumors with microsatellite instability\\nGeneral Open\
+    \ Targets project framework to facilitate systematic target identification and prioritization for safer and more effective\
+    \ treatment of disease\\nAll Open Targets partners collectively actively design, prioritize, and participate in the research\
+    \ program\\nPublic data\\nCollaborative\\ntherapy area\\nprojects\\nIntegrative data\\nplatforms and\\npipelines\\nCausal\
+    \ target\\u2013\\ndisease evidence\\nOpen Targets\\nValidation Lab\\nPartner drug discovery\\nScientific community\\nFoundational\\\
+    nknowledge\\n2016\\u20132018 \\u2014 Genome-wide CRISPR knockout screens are performed\\nacross 330 cancer cell lines\
+    \ (900+ individual experiments)\\n2015 \\u2014 Open\\nTargets partners\\ndesign Project\\nScore (OTAR015)\\nScreening\
+    \ data is\\nanalyzed as the\\nproject progresses\\nWRN is identified as\\na promising target\\nfor MSI cancer\\nWRN results\
+    \ are\\nverified and WRN is\\nmechanistically\\nvalidated\\n2019 \\u2014 Results are\\npublished and data\\nmade available\\\
+    nthrough Project\\nScore website and\\nOpen Targets\\nPlatform\\na\\nb\\nc\\n(Caption appears on following page)\\nwww.annualreviews.org\
+    \ \\u2022 Open Targets\\u2019 Perspective on Genetics\\n61\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\\
+    nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\nFigure 1 (Figure\
+    \ appears on preceding page)\\nAn overview of how the Open Targets consortium works. (a) The Open Targets academic partners\
+    \ [European Molecular Biology\\nLaboratory\\u2019s European Bioinformatics Institute (EMBL-EBI) and Wellcome Sanger Institute]\
+    \ and industry partners [GSK, Bristol\\nMyers Squibb, Sanofi, Pfizer, and Genentech (a member of the Roche group)] work\
+    \ together to collectively design and prioritize the\\nresearch program and actively participate in projects and platforms\
+    \ that are developed. The collective vision of the consortium is to\\nsystematically identify and prioritize targets for\
+    \ the development of safer and more effective treatment of disease. (b) An illustration of\\nthe Open Targets project\
+    \ framework. We bring together publicly available data with data generated through the collaborative research\\nprogram\\\
+    u2019s projects to provide causal evidence for target\\u2013disease associations as well as foundational knowledge related\
+    \ to genes and\\ndiseases. This knowledge is integrated into our open-source informatics platforms. Potential targets\
+    \ are fed into our validation lab for\\nfurther mechanistic insights. This workflow at each step of the way helps feed\
+    \ into our industry partners\\u2019 drug discovery pipelines and,\\nonce publicly available, into the wider scientific\
+    \ and drug discovery community, with the ultimate aim of helping to develop safer and\\nmore effective medicines. (c)\
+    \ An example of an Open Targets research project showing the emergence and journey of a potential target\\nlead through\
+    \ the workflow. Project Score was designed as a collaborative research project to comprehensively knock out genes in\\\
+    n330 different cancer cell lines. Analysis and target prioritization revealed WRN as a promising novel candidate in microsatellite\
+    \ instable\\n(MSI) colorectal cancer. This was further mechanistically validated. The results from the study were published\
+    \ (20), made open source\\nthrough the Project Score website (https://score.depmap.sanger.ac.uk) (23), and integrated\
+    \ into the Open Targets Platform to\\nprovide target\\u2013disease associations (https://platform.opentargets.org/), feeding\
+    \ into preclinical drug discovery programs in industry\\nand providing knowledge to the broader scientific community.\\\
+    nknowledge that helps build therapeutic hypotheses and ultimately catalyzes systematic, evidence-\\nbased decision-making\
+    \ that will lead to new, safe, and effective therapies.\\nThe Open Targets research program comprises two intertwined\
+    \ pillars, spanning experimen-\\ntal and informatics activities with a focus on systematically generating and interpreting\
+    \ data that\\nenable us to enhance the target nomination for drug discovery. The initial step in this process is\\nbuilding\
+    \ a confident causal gene\\u2013disease linkage (Figure 2b). To achieve this, we systematically\\ningest, harmonize, and\
+    \ integrate foundational publicly available datasets together with the data\\ngenerated through internal projects (9\\\
+    u201312) (Figure 1b). The target\\u2013disease link is then contex-\\ntualized to provide information on cell type and\
+    \ tissue expression as well as biological processes\\n(13). The complementarity of the information captured through these\
+    \ processes enables us to\\ntake a systematic approach from genetic association toward developing a therapeutic hypothesis\\\
+    n(Figure 2c). Finally, the emerging hypotheses are evaluated through the lens of drug discovery,\\ndefining what can be\
+    \ done with the available drug modalities, what option will be both efficacious\\nand safe, and what option is best positioned\
+    \ against current standards of care and other treatments\\nin development (Figure 2c).\\nThe field of drug discovery has\
+    \ undergone a profound transformation with the advent of\\ngenomics. Traditional drug discovery approaches often relied\
+    \ on phenotypic screens, but the in-\\ntegration of genomic data into this process has shifted the paradigm toward a more\
+    \ informed\\nand targeted process. The generation of foundational genetic and functional genomic data cou-\\npled with\
+    \ genetic engineering screens and subsequent analyses promises accelerated insights into\\ndisease mechanisms and identification\
+    \ of novel therapeutic targets. The process can involve large-\\nscale sequencing of genomes, transcriptomes, and epigenomes\
+    \ from individuals with the target\\ndisease and/or healthy controls or patient-derived cells that are systematically\
+    \ studied in vitro in\\nthe context of specific disease-relevant cellular processes.\\nGenome-wide association studies\
+    \ (GWAS) have been instrumental in identifying genetic vari-\\nants associated with various diseases. Systematic ingestion\
+    \ and harmonization of GWAS results\\nform the core of our ability to formulate causal gene\\u2013trait links (5, 9, 14,\
+    \ 15). For diseases of\\nstrategic interest to our consortium, such as inflammatory bowel disease (IBD), we further un-\\\
+    ndertake dedicated efforts to systematically fine-map GWAS variants to increase our confidence in\\ndefining causal genes\
+    \ (16). Furthermore, we develop novel approaches that enable us to experi-\\nmentally fine-map variants, such as an arrayed\
+    \ CRISPR screening method referred to as genome\\n62\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance.\
+    \ Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\\
+    nCausal and supporting evidence\\nConsiderations for target\\u2013disease association and\\nunderstanding direction of\
+    \ effect and mechanism to\\nenable therapeutic hypothesis construction\\nPrecision and context\\nConsiderations for the\
+    \ precision and personalization\\nneeded for effective therapy for defined biological\\nhypothesis, disease stage, and\
+    \ defined patient group\\nincluding tissue and cellular context, cell and cell state,\\ndisease subtype and state, and\
+    \ patient stratification\\nHypothesis progressability\\nConsiderations for the potential to progress a drug\\ndiscovery\
+    \ program, including clinical prededence,\\nmodality and tractability, doability, and safety around\\nthe therapeutic\
+    \ hypothesis\\nWhat evidence associates this target to this disease?\\nWhat targets have genetic evidence?\\nWhat evidence\
+    \ is there from other sources?\\nWhat are the likely causal\\ngenes underlying\\nassociations for my disease\\nof interest\
+    \ from a large\\npopulation biobank\\ngenome-wide association\\nstudy?\\nWhat targets are\\ndifferentially expressed\\\
+    nbetween normal and\\ndisease tissue?\\nIs there evidence from rare\\nvariation (gene burden\\nanalysis)?\\nIs there genetic\
+    \ evidence\\nfrom clinical sources?\\nIs there evidence from\\npertubation screens to\\nsuggest a role of this gene\\\
+    nin this disease?\\nWhat targets are extracted\\nfrom the scientific literature\\nand patent information\\nwith an association\
+    \ to my\\ndisease/trait of interest?\\nAre there proteins in the\\nsame pathway or\\ninteraction network as a\\nknown\
+    \ target?\\nBy broadening the disease\\nontology landscape, can I\\nidentify new targets?\\nIs there any evidence from\\\
+    nanimal models?\\nIf my disease of interest is\\noncology related, is there\\nsomatic mutation evidence\\nor evidence\
+    \ this target is a\\ncancer hallmark/driver?\\nTractability\\nSafety\\nClinical precedence\\nDoability\\nTherapeutic hypothesis\
+    \ generation\\nWhat type of modulator\\nwould be best?\\nAre there predicted or known\\nbinding pockets in this target?\\\
+    nIs the target accessible?\\nWhich cell types are relevant\\nfor this disease and is my target\\nspecific for this cell\
+    \ state?\\nWhere should I modulate the\\ntarget to get the most benefit\\nfor this disease?\\nShould I inhibit or activate\\\
+    nthe target?\\nIs there a probe that\\nbinds my target?\\nIs there a suitable assay or\\ncell model for measuring\\ntarget\
+    \ effect?\\nIs there homology for\\nmy gene and similar\\nexpression in preclinical\\nmodel species?\\nIs there a suitable\
+    \ animal\\nmodel for my target and\\ndisease of interest?\\nIs there a biomarker I can\\nuse to measure target\\nmodulation\
+    \ or effect on\\nthe disease?\\nWhat are the possible risks\\nin modulating this target?\\nHave genetic variants in\\\
+    nthis target been associated\\nwith adverse drug events\\n(pharmacogenetics)?\\nAre there alternative targets\\nin the\
+    \ same biological\\npathway that would be safer?\\nAre there fewer loss of\\nfunction variants than\\nwould be expected\
+    \ (genetic\\nconstraint)?\\nWhat is the effect of\\nmodulating this target on\\nthe system as a whole?\\nHave adverse\
+    \ drug events\\nbeen reported for drugs\\nthat modulate this target\\n(pharmacovigilance)?\\nWhich patients are likely\
+    \ to\\nrespond/have side effects?\\nIs this gene specifically\\nexpressed in the relevant\\ntissue or cell type of\\ninterest?\\\
+    nHave unwanted/severe\\nphenotypes been reported\\nin a mouse model\\nassociated with this target?\\nIs this gene essential?\\\
+    nWhy do nonresponders to\\ncurrent drug treatment\\nfail to respond?\\nAre there already drugs\\nfor my target/for my\\\
+    ndisease of interest?\\nAre there compounds in\\nclinical trials that modulate\\nthis target?\\nWhat is the unmet clinical\\\
+    nneed for this disease?\\nWould this be a novel\\ntarget/novel mechanism?\\nAdditional considerations\\nWhy do nonresponders\
+    \ to\\ncurrent drug treatment\\nfail to respond?\\nWhich targets are relevant\\nfor early-onset disease\\nversus late\
+    \ onset?\\nAre there suitable targets\\non a different pathway\\nthat could be used in\\ncombination therapy to\\navoid\
+    \ resistance?\\nb   Target identification\\nc   Target prioritization\\na   Therapeutic hypothesis concepts\\n(Caption\
+    \ appears on following page)\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\n63\\n, .\\\
+    u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\\
+    nARjats.cls\\nMarch 13, 2024\\n12:34\\nFigure 2 (Figure appears on preceding page)\\nThe Open Target therapeutic hypothesis-building\
+    \ framework. (a) The Open Targets framework for building therapeutic hypotheses is\\ncomposed of three overarching concepts\
+    \ that all contribute to a fuller picture of evidence and context to help in the decision-making\\nprocess for taking\
+    \ a potential target forward for drug discovery. In blue are considerations for target\\u2013disease association and\\\
+    nunderstanding the causality of disease, mechanism, and direction of effect. In yellow are considerations for effective\
+    \ therapy that include\\ncell and tissue context, disease subtype and state, and patient stratification factors. In red\
+    \ are considerations for the progressability of a\\ntarget, which include how tractable a target is, suitable modalities,\
+    \ how safe it may be to modulate it, whether there are tools available\\nfor the next stages of validation or preclinical\
+    \ studies (doability), and the clinical precedence for the therapeutic hypothesis that is being\\ndeveloped, for example,\
+    \ whether known drugs for the target are in current clinical trials or have been approved. Throughout this\\nframework,\
+    \ answers to questions provide evidence to help build up a therapeutic hypothesis, first by identifying targets associated\
+    \ with a\\ngiven disease of interest (b), then through questions that help further prioritize these targets (c). Through\
+    \ the Open Targets research\\nprogram and informatics resources we generate evidence and evaluate the evidence to help\
+    \ answer the questions that are important for\\ntarget identification and prioritization for drug discovery. In this figure\
+    \ we provide some examples of the types of questions we try to\\naddress in order to help build therapeutic hypotheses.\
+    \ This framework enables the construction of therapeutic hypotheses such as\\n\\u201cinhibition of target X will be beneficial\
+    \ in the treatment of disease Y for patients of disease subtype Z, in cell type A, in tissue B, with\\ndrug modality of\
+    \ C. Effective modulation of Target X can be monitored by biomarker D.\\u201d An example from results of Project Score\
+    \ is:\\n\\u201cinhibition of WRN may be beneficial in the treatment of colorectal cancer, for patients with a microsatellite\
+    \ instable tumor subtype\\u201d\\n(20, 23). In the main text we provide more detail on how genetics and genomics help\
+    \ provide answers to these questions, and how we\\nhave developed the Open Targets Platform to aid therapeutic hypothesis\
+    \ construction. (b) Target identification is the first step in\\nbuilding a therapeutic hypothesis and involves evaluating\
+    \ the evidence for target\\u2013disease associations. Example questions that may be\\nasked are outlined here; answers\
+    \ to these questions can be explored in the Open Targets Platform utilizing human genetics and\\ngenomics along with other\
+    \ data types (https://platform.opentargets.org/). (c) Once a list of targets for a given disease has been\\nestablished\
+    \ and prioritized based on weighing up of different evidence types, questions related to precision for effective therapy\
+    \ and\\nprogressability of targets become important for prioritizing targets and developing a full therapeutic hypothesis.\\\
+    nengineering\\u2013based interrogation of enhancers (GenIE), which assesses the effects of defined al-\\nleles on transcription\
+    \ or splicing when introduced in their endogenous genomic locations (17).\\nWe applied GenIE to screen the 99% credible\
+    \ set of Alzheimer\\u2019s disease (AD) GWAS variants\\nclustering at a locus to identify a subset of likely causal variants\
+    \ in human induced pluripotent\\nstem cells (iPSCs) (12).\\nDisease-associated variants highlight gene and biological\
+    \ pathways that play a critical role\\nin disease development, and leveraging genetic signals can help pinpoint the cell\
+    \ type and cell\\nstates most relevant for a disease and identify causal genes. For example, variants associated\\nwith\
+    \ immune-mediated diseases have been implicated in regulating gene expression in T cells\\n(18). We have systematically\
+    \ profiled chromatin activity in naive and memory CD4+ T cells and\\nmonocyte-derived macrophages exposed to different\
+    \ cytokine conditions mimicking proinflam-\\nmatory states. Using this dataset of 55 cell states, we developed a novel\
+    \ statistical framework for\\ntesting single nucleotide polymorphism enrichment within chromatin regulatory elements.\
+    \ We\\nidentified that immune-disease variants were especially enriched in the early activation of mem-\\nory T cells\
+    \ (19). Homing down on this disease causal process, we then generated a single-cell\\nRNA sequencing (scRNA-seq) map of\
+    \ expression quantitative trait loci (eQTLs) during a time\\ncourse of T cell activation. This approach enabled us to\
+    \ identify 127 causal genes whose expres-\\nsion is regulated by immune-disease-associated variants (11). The findings\
+    \ from this study have\\nimplications for drug target discovery. Proof-of-concept examples include immune-disease vari-\\\
+    nants regulating the expression of genes such as CTLA4 and TYK2, which are targets of existing\\ntherapeutic interventions.\\\
+    nThe emergence of CRISPR-based genetic screening technologies has started a new era in\\nmapping regulators of cell functions\
+    \ and, as such, offers an accelerator for drug discovery. By sys-\\ntematically interrogating the function of individual\
+    \ genes, CRISPR screens enable researchers to\\nuncover crucial genetic dependencies and vulnerabilities within various\
+    \ diseases, providing valu-\\nable insights that were previously inaccessible. CRISPR screens have empowered researchers\
+    \ to\\n64\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\\
+    n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\ncomprehensively catalog genetic dependencies across diverse\
+    \ cellular contexts. These screens,\\nspanning CRISPR knockout and activation libraries, have elucidated essential genes,\
+    \ signaling\\npathways, and molecular networks critical for cell function regulation. This understanding forms\\nan important\
+    \ milestone for targeted drug development. Perturbation screens generated through\\nour research program complement other\
+    \ publicly available large-scale screens in the Open Tar-\\ngets Platform such as CRISPRbrain (https://crisprbrain.org)\
+    \ to provide target\\u2013disease evidence\\nand inform on target modulation and safety.\\nProject Score is an exemplar\
+    \ of how Open Targets research projects are created, managed,\\nand ultimately shared with the scientific community (Figure\
+    \ 1c) (20). In 2015 Open Targets\\nheld a call for projects in which a team of academic researchers and industry scientists\
+    \ de-\\nsigned an ambitious program of genome-wide CRISPR knockout screening in cancer cell lines\\nto systematically\
+    \ identify synthetically lethal targets across different cancer types. Capability was\\nbuilt both experimentally and\
+    \ informatically to perform and analyze more than 900 individ-\\nual screening experiments conducted across 330 cancer\
+    \ lines between 2015 to 2018. Academic\\nand industry consortium partners worked together to analyze and interpret the\
+    \ results and\\nbuild an overall landscape of targets that incorporated the synthetic lethality results with other\\navailable\
+    \ data as a prioritization score assessed against the predicted tractability of the targets\\n(20).\\nAs the project generated\
+    \ data over time and the analysis progressed, the screens identified\\nthe critical role of WRN, a gene encoding a RecQ\
+    \ family DNA helicase, as a potential thera-\\npeutic target in microsatellite instable (MSI) colorectal cancer. Open\
+    \ Targets partners worked\\ntogether to define a validation plan for WRN to verify these finding and undertake mechanis-\\\
+    ntic validation of the mode of action (Figure 1c). These studies discovered that WRN depletion\\ninduces DNA double-strand\
+    \ breaks, cell cycle arrest, and apoptosis, specifically in MSI+ cells.\\nWRN was independently identified as a promising\
+    \ target simultaneously by another group (21),\\nand the findings are now being further followed up in preclinical investigations\
+    \ outside of\\nthe Open Targets consortium to develop potential therapies targeting WRN\\u2019s helicase activ-\\nity,\
+    \ providing promising avenues for novel cancer therapies. The project was published in 2019\\n(20), and the data were\
+    \ shared interactively with the scientific community as the Project Score\\ndatabase providing integrated CRISPR screen\
+    \ data, genetic biomarkers, and target tractabil-\\nity assessments (https://score.depmap.sanger.ac.uk) (22, 23). These\
+    \ data are incorporated into\\nthe Open Targets Platform, and the Project Score database has since progressed independently\\\
+    nwithin the DepMap Consortium to integrate similar screening results performed by other groups\\n(https://depmap.org/portal).\
+    \ This project demonstrates how Open Targets works together\\nwith its academic and industry partners to design, execute,\
+    \ and ultimately make available to\\nthe community large-scale, systematic studies to inform target identification and\
+    \ prioritization\\n(Figure 1c).\\nOpen Targets\\u2019 approach encompasses systematic large-scale experiments and focused\
+    \ studies\\ngenerating in-depth knowledge in our strategically important therapy areas (oncology, immunol-\\nogy and inflammation,\
+    \ and neurodegeneration). Incorporating genomic data into drug discovery\\nis revolutionizing the field by providing a\
+    \ solid foundation of genetic knowledge and enabling\\nfunctional insights into disease mechanisms. The combination of\
+    \ foundational genetic data and\\nfunctional analyses empowers researchers to identify and prioritize novel therapeutic\
+    \ targets with\\na higher likelihood of success. The Open Targets approach is aimed at helping interpretation\\nof the\
+    \ data that connects targets to diseases through contextual knowledge, moving the drug\\ndiscovery dial from genetic discovery\
+    \ toward building therapeutic hypotheses, and ultimately cat-\\nalyzing systematic, evidence-based decision-making that\
+    \ will lead to new, safe, and more effective\\ntherapies.\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective\
+    \ on Genetics\\n65\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\\
+    n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\"\n  },\n  {\n    \"name\": \"VARIANT TO GENE TO FUNCTION\
+    \ FOR TARGET IDENTIFICATION\",\n    \"text\": \"Drugs that have been developed to modulate a target that have supporting\
+    \ GWAS evidence are\\ntwice as likely to succeed and be approved, and those with underlying Mendelian genetic evidence\\\
+    nare up to eight times more likely to succeed (6, 24). We have shown that two-thirds of the drugs\\napproved by the US\
+    \ Food and Drug Administration (FDA) in 2021 have underlying genetic ev-\\nidence for the target\\u2013disease association\
+    \ (7), and that this trend extends across the past decade\\n(8). Genetic evidence for the association between a target\
+    \ and a disease is therefore of key im-\\nportance for identifying and prioritizing targets for novel drug development;\
+    \ the challenge arises\\nwith connecting evidence from GWAS to a target. The majority of associations from GWAS are\\\
+    nbetween genetic variants that are not in a coding region; the reported lead variant may be in link-\\nage disequilibrium\
+    \ with the true causative genetic variant, or the variant may be influencing gene\\nregulatory mechanisms. Furthermore,\
+    \ the genetic association comes with no effector cell type or\\ntissue context. There is therefore a need to connect GWAS\
+    \ to the likely disease-causing gene; to\\ndo this in a systematic way for all GWAS loci is complex.\\nOur approach at\
+    \ Open Targets has been to develop a machine learning (ML) model to provide\\na predictive locus-to-gene (L2G) score for\
+    \ the most likely causative genes underlying each GWAS\\nassociation (14). We provide a summary of the complex analysis\
+    \ pipeline below; however, more de-\\ntailed documentation and an illustration are available at https://genetics-docs.opentargets.org/\\\
+    nour-approach/prioritising-causal-genes-at-gwas-loci-l2g and are described in our method-\\nology publication (14). In\
+    \ total, 57 locus-level predictive features are defined for ML, providing a\\nscored rank of likely causative genes (targets)\
+    \ underlying each GWAS locus. The main categories\\nof evidence sources for the predictive features are the following:\\\
+    n1. Gene distance to credible set variants (weighed by their fine-mapping probabilities)\"\n  },\n  {\n    \"name\": \"\
+    Molecular quantitative trait locus (QTL) colocalization\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Chromatin interaction\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Predicted variant pathogenicity\",\n    \"text\": \"A fundamental foundation\
+    \ for the L2G pipeline is the integration and harmonization of large-\\nscale genetic and functional genomic datasets\
+    \ and subsequent statistical analyses, which provide\\nthe evidence input for the predictive features of the ML model.\
+    \ GWAS data from EMBL-EBI\\u2019s\\nGWAS Catalog (9), UK Biobank (25) (https://www.nealelab.is/uk-biobank), and FinnGen\\\
+    n(https://www.finngen.fi/en) are harmonized and processed [including mapping of all traits to\\nEMBL-EBI\\u2019s Experimental\
+    \ Factor Ontology (EFO) (26)]. Systematic fine-mapping is performed\\nfrom available summary statistics to generate credible\
+    \ sets of causal variants across all the lead\\nvariant-associated loci (FinnGen fine-mapping is provided separately).\
+    \ Trait\\u2013trait colocalization\\nanalysis is carried out for GWAS datasets with summary statistics, which are provided\
+    \ by the\\nGWAS Catalog (9, 27). Tissue and cell type\\u2013specific molecular (QTL) datasets are integrated and\\nused\
+    \ to carry out trait\\u2013molecular trait colocalization. These include eQTLs (10, 28, 29), protein\\nQTLs (30\\u201336),\
+    \ and splice QTLs (10). In total, over 3.7 million colocalization tests are performed\\nand provided. The trait\\u2013molecular\
+    \ trait colocalizations are used as a predictive feature for the ML\\nmodel. In silico functional predictions from Ensembl\
+    \ Variant Effect Predictor (37) and PolyPhen,\\nepigenomic information including promoter capture Hi-C and DNase hypersensitivity\
+    \ sites (38\\u2013\\n40), and gene distance to credible set variants weighed by their fine-mapping probabilities also\\\
+    nprovide data inputs for the predictive features.\\nTo create a gold standard set of genes from solved GWAS loci that\
+    \ can be used as a training\\nset for the ML model, our approach was to manually curate a set of gene\\u2013disease or\
+    \ gene\\u2013\\ntrait associations of high confidence level. High confidence for the initial gold standard GWAS\\ngene\
+    \ assignment list of 445 genes for the first release was classified based upon known drug\\n66\\nMcDonagh et al.\\n, .\\\
+    u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\\
+    nARjats.cls\\nMarch 13, 2024\\n12:34\\ntarget\\u2013disease pairs (41, 42), experimental alterations from literature reports\
+    \ (for example, nu-\\ncleotide editing), and observational functional data (for example, colocalizing molecular QTLs,\\\
+    ncolocalizing epigenetic marks, reporter assays) (43); it also included expert domain knowledge of\\nstrong orthogonal\
+    \ evidence or biological plausibility, curation from the T2D Knowledge Portal\\n(https://t2d.hugeamp.org), and Open Targets\
+    \ curated associations. We continue to update this\\nlist with new knowledge and include known target\\u2013disease associations\
+    \ for approved drugs and as-\\nsociations sourced from the scientific community. The gold standard list is made publicly\
+    \ available\\nfor the community to utilize and feeds back into community efforts to establish known effector\\ngenes in\
+    \ disease (https://github.com/opentargets/genetics-gold-standards).\\nThe L2G model produces a score ranging from 0 to\
+    \ 1; a gene scored with 0.5 can be interpreted\\nas having a 50% chance of being the causal gene at the locus (under the\
+    \ assumption that the\\ncharacteristics of the observed locus are similar to those in the positive gold standard set).\
+    \ The\\nintegrated data, analyses, and L2G score are made available in Open Targets Genetics, which\\nserves as a comprehensive\
+    \ publicly available source for post-GWAS analyses (5).\"\n  },\n  {\n    \"name\": \"Data availability for post-GWAS\
+    \ analysis is a challenge, and the first issue we wanted to\",\n    \"text\": \"overcome was the availability of summary\
+    \ statistics from GWAS, required in order to carry out\\nfine-mapping and colocalization. Summary statistics provide aggregate\
+    \ p values and association\\ndata for every variant analyzed in a study. With EMBL-EBI being one of the Open Targets part-\\\
+    nners, we were able to collaborate closely with the GWAS Catalog team to establish a pipeline for\\nthe submission of\
+    \ full summary statistics from GWAS, which are available via an application pro-\\ngramming interface (API) or download\
+    \ from the GWAS Catalog (27). This involved harnessing\\nthe scientific as well as the publishing community to advocate\
+    \ for the submission of full sum-\\nmary statistics, not only for use by Open Targets, but for the community as a whole.\
+    \ This has\\nhad a large impact; since the release of the author submission system in 2020, studies with sum-\\nmary statistics\
+    \ have grown from approximately 1,000 studies to over 55,000 studies in the GWAS\\nCatalog (27). Similar challenges exist\
+    \ for using population biobank resources, where genotype-\\nlevel data are not readily made available for fine-mapping,\
+    \ for example. Our approach has been\\nto collaborate closely with FinnGen, which provides its own fine-mapping for us\
+    \ to use internally\\n(https://www.finngen.fi/en).\\nThere is a gap in available funding opportunities for new databases\
+    \ and bioinformatics tooling,\\nand one of the advantages of the Open Targets consortium is the ability to identify the\
+    \ need and\\ncollect the requirements for a new resource from our own target identification and prioritization\\nperspective,\
+    \ as well as within the wider scientific community. We are able to support the genera-\\ntion of new open-source resources\
+    \ that help bridge an existing gap in the scientific community. An\\nexample is the EMBL-EBI eQTL Catalogue, which was\
+    \ developed to ingest and uniformly com-\\npute gene expression and splicing QTLs from different published studies (10).\
+    \ This enables us to\\nefficiently utilize the harmonized data for colocalization with GWAS loci as part of Open Targets\\\
+    nGenetics pipelines, which ultimately allows us to prioritize targets from large-scale GWAS data.\\nThis useful resource\
+    \ is also available to our partners as well as to the scientific community as a\\nwhole. We continue to support and expand\
+    \ the scope of the eQTL Catalogue as the functional ge-\\nnomic research field develops in complexity, working with the\
+    \ single-cell eQTLGen Consortium\\ntoward harmonizing the integration and representation of single-cell eQTL data (44).\"\
+    \n  },\n  {\n    \"name\": \"SYSTEMATIC INTEGRATION OF TARGET\\u2013DISEASE EVIDENCE\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"FOR TARGET PRIORITIZATION\",\n    \"text\": \"There is an ever expanding and wide range of different\
+    \ human genetic and genomic data that\\ncan be used to inform on the role of a potential drug target in a given disease.\
+    \ Integration,\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\n67\\n, .\\u2022\\u00b7\\\
+    u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\\
+    nMarch 13, 2024\\n12:34\\nharmonization, and interpretation of this wealth of big data for target discovery and prioritization\\\
+    nare complex. Our approach at Open Targets has been to create a comprehensive open-source\\nresource that would bring\
+    \ together relevant publicly available data in an intuitive way to help\\nidentify and prioritize targets for drug discovery\
+    \ (4). The Open Targets Platform systematically\\nprioritizes targets [represented as genes (45)] across all diseases\
+    \ [mapped to EFO (26)] and\\nweighs evidence within and across different data types using a harmonized sum (4). Weights\\\
+    nof the contributing evidence sources can be adjusted according to user requirements, which in\\nturn dynamically adjust\
+    \ the prioritization of targets. Due to the importance of genetic evidence\\nfor supporting successful drugs, resources\
+    \ that provide germline genetic associations (including\\nthe L2G score for target\\u2013disease associations from Open\
+    \ Targets Genetics) form a data type\\nprioritization category and are a key contributor to the overall prioritization\
+    \ score. Associations\\nfrom somatic mutations also form a separate data type category. Other data source type categories\\\
+    ninclude known drugs, pathways/systems biology, text mining, RNA expression data, and animal\\nmodels. Each data type\
+    \ can be selected as required, allowing users, for example, to require\\ncontributing genetic evidence for target\\u2013disease\
+    \ associations. This enables users to answer the\\ntypes of questions outlined in Figure 2b for target identification\
+    \ and the initial prioritization of\\na list of targets for their disease of interest, presenting the underlying evidence\
+    \ from each data\\ntype.\\nThere is a growing wealth of curated data for associations between genes and rare diseases.\
+    \ Our\\napproach has been to harness this knowledge in several ways to provide insights into complex mul-\\ntifactorial\
+    \ diseases. In the Open Targets Platform we integrate gene\\u2013disease validity assessments\\nfrom multiple resources\
+    \ (ClinGen, PanelApp, Gene2Phenotype, Orphanet) (46\\u201349), using Gene\\nCuration Coalition terminology where possible\
+    \ (50), and use the assessment of evidence to weigh\\nthe contributing association score. The increasing number of clinical\
+    \ whole exome and genome\\nsequencing studies has enabled the development of gene burden analysis methods to assess the\\\
+    ncontribution of rare variation across a given gene to complex traits. We have integrated the results\\nof gene burden\
+    \ analysis from multiple studies in the Open Targets Platform, continually updated\\nwith major published studies that\
+    \ are released (51\\u201361). We have investigated the integration of\\ngene burden analysis results both into the gold\
+    \ standard list and as a feature in the L2G model for\\nOpen Targets Genetics.\\nThe evidence from rare disease curated\
+    \ sources is combined with the complex disease genetic\\nevidence from the Open Targets Genetics L2G score and gene burden\
+    \ analyses to provide ge-\\nnetic association scores for target\\u2013disease associations in the Open Targets Platform.\
+    \ This allows\\nquestions as exemplified in Figure 2b to be explored through contributing evidence types. All\\ndiseases/traits\
+    \ are mapped to EFO, enabling the exploration of evidence for similar traits or dis-\\neases. Evidence for target\\u2013disease\
+    \ associations from somatic mutation resources (the Catalog of\\nSomatic Mutations in Cancer\\u2019s Cancer Gene Census,\
+    \ IntOGen, ClinVar) is categorized separately\\n(62\\u201365). As a result, the role and pathologic mechanism of a particular\
+    \ target in particular diseases\\nbecome apparent; for example, KRAS has strong germline genetic evidence (rare disease\
+    \ resources\\nand L2G) and no somatic mutation evidence for the association with RASopathies, whereas the\\nopposite is\
+    \ true for the association with non\\u2013small cell lung carcinoma, lung adenocarcinoma, and\\ncolorectal adenocarcinoma\
+    \ (for which inhibitors targeted at a specific somatic residue in KRAS\\nhave been developed). In the future, we hope\
+    \ to extract more information on the direction of ef-\\nfect involved from these genetic resources, in order to inform\
+    \ on the mechanism of action suitable\\nfor a particular therapeutic and to inform on potential drug repurposing opportunities\
+    \ for diseases\\nof unmet clinical need. This can also be valuable knowledge in the prediction of possible side ef-\\\
+    nfects. For example, knowing that loss-of-function variation in a particular gene results in a severe\\nphenotype may\
+    \ provide caution as to the use of an inhibitor.\\n68\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance.\
+    \ Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\"\
+    \n  },\n  {\n    \"name\": \"ENABLING THERAPEUTIC HYPOTHESIS BUILDING\",\n    \"text\": \"The foundation for enabling\
+    \ therapeutic hypothesis building in the Open Targets Platform is the\\nassociation between a gene (target) and a given\
+    \ disease and the extent of the evidence for this\\n(Figure 2b). We are then building upon this to provide a comprehensive\
+    \ picture to enable the\\ndevelopment of therapeutic hypotheses based upon answers to questions that lead to further\\\
+    nknowledge around disease mechanism, context, and progressability (Figure 2a,c). This allows fur-\\nther prioritization\
+    \ of targets to indicate whether it is sensible to move this target forward into drug\\ndiscovery pipelines, as well as\
+    \ what therapeutic type it may be most suitable for.\\nThe Link Between Disease Mechanism and Therapeutic Modality\\nGenetic\
+    \ data can inform on the likely direction of effect of the disease association and provide\\ninsight into the mechanism.\
+    \ This in turn can inform on the likely desired direction of effect of a\\ngiven therapeutic agent, such as the use of\
+    \ an inhibitor against a target in which gain-of-function\\nvariants cause disease (66). This goes hand in hand with assessing\
+    \ safety because it also provides\\ninformation about the possible undesired effects of inhibiting the target where there\
+    \ is evidence\\nfrom human cases of loss of function resulting in a severe rare disease phenotype, in vitro per-\\nturbation\
+    \ assays, or in vivo animal knockout models. We plan to build upon this through our\\nresearch program to provide dose\
+    \ response curves for targets across a range of phenotypes. The\\ndirection of effect is phenotype-specific, so weighing\
+    \ these attributes with regard to the ther-\\napy area becomes important. For oncology, for example, the ultimate goal\
+    \ is to kill the cancer\\ncells, and because of the usually urgent and short-term treatment protocol for patients, adverse\\\
+    neffects are often tolerated more than with chronic inflammatory diseases, which require long-\\nterm treatments along\
+    \ with a need to dampen down damage to tissue and help restore cellular\\nfunction.\\nTarget Tractability\\nIn the Open\
+    \ Targets Platform, we provide tractability assessments of targets for the suitability of\\nmodulating a target with a\
+    \ small molecule, antibody, or proteolysis-targeting chimera (PROTAC)\\nusing different key attributes that would be required\
+    \ for each type of modality (67). For example,\\nif there is a high-quality binding pocket a small molecule may be a suitable,\
+    \ a location on the\\ncell surface is important for the use of an antibody, and ubiquination is important if considering\\\
+    na PROTAC. Clinical precedence feeds into these assessments, such as whether a therapeutic of\\nthat modality has already\
+    \ been developed and what clinical trial phase this has reached. As the\\nexpanding range of new modalities opens up new\
+    \ therapeutic possibilities, in accordance with\\nthe theory that no target is undruggable, we will continue to identify\
+    \ key features that help\\nevaluate the suitability of a target for a particular modality to expand our tractability assessments\\\
+    nin the Open Targets Platform. We also will enhance the use of data such as binding pockets\\nutilizing structural protein\
+    \ predictions from AlphaFold (68, 69). New regulatory pathways\\nfor drug approval make drugs designed for a particular\
+    \ patient subgroup more attractive and\\nfeasible, and genetics can be utilized for patient stratification or for target\
+    \ strategy. A key recent\\nexample in oncology is Sotorasib, which targets KRASG12C to treat non\\u2013small cell lung\
+    \ cancer\\npatients with this mutation (7). In rare disease there is an expanding portfolio of antisense\\noligonucleotides\
+    \ that target the underlying causal genetic variant in the pre-mRNA, for ex-\\nample, in the treatment of subgroups of\
+    \ Duchenne muscular dystrophy patients with variants\\namenable to exon 45 (casimersen), 51 (eteplirsen), or 53 (golodirsen\
+    \ and viltolarsen) skipping\\n(8, 70).\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\n69\\\
+    n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\\
+    nARjats.cls\\nMarch 13, 2024\\n12:34\\nDoability\\nAt Open Targets, doability involves features that enable a drug discovery\
+    \ program to be readily\\npursued through validation, for example, the existence of a publicly available chemical probe,\
+    \ a\\nmouse ortholog, or a knockout model that can provide the basis of further study of the function of\\nthe target.\
+    \ Expansion of the pharmacological tool kit through efforts such as Target2035, which\\naims to provide a chemical and/or\
+    \ biological probe for the entire human genome by 2035, will\\nopen up the ability to explore a wider range of targets\
+    \ (71). A known biomarker for assessing\\ntarget engagement and effect on biological mechanism is important for being\
+    \ able to take a target\\nforward, and we plan to provide this information where available.\\nSafety\\nThe potential safety\
+    \ of modulating a target is a key factor for prioritizing some targets over others,\\nand if there is evidence that could\
+    \ cause major concern, a target will not be taken forward. There\\nare many different sources of evidence for whether\
+    \ it would be safe to modulate a target (and to\\nwhat extent) that can be considered prior to carrying out extensive\
+    \ and expensive preclinical stud-\\nies. At Open Targets, the approach has been to establish an informatics research project\
+    \ around\\nsafety and toxicity evaluation for targets, for which different workstreams feed useful annotations\\ninto\
+    \ the Open Targets Platform (Figure 1b) and help answer questions such as those outlined\\nin Figure 2c. This includes\
+    \ curated assessments from key published reviews, publicly available\\nsafety-related databases, and adverse outcome pathways\
+    \ (72\\u201377). From these resources, the safety\\nevent associated with modulation of the target, the reported affected\
+    \ biosystem, the direction, and\\nthe dosing effect on the target (for example, activation or inhibition, acute or general)\
+    \ are pro-\\nvided. Genetics is also informative for safety assessment (78), and we have several approaches to\\nprovide\
+    \ genetic-related information for target safety assessment in the Open Targets Platform.\\nPossible safety effects of\
+    \ perturbing or inhibiting a target can also be inferred from the gene es-\\nsentiality and genetic constraint. On target\
+    \ pages in the Open Target Platform, we provide gene\\nessentiality assessments across 28 tissues based upon cell fitness\
+    \ after CRISPR knockout of the\\ngene in different cell lines from the Cancer DepMap (22). A gene is considered a core\
+    \ essential\\ngene if the majority of cell lines do not survive after target knockdown; this provides an indication\\\
+    nof how target inhibition is likely tolerated. Whether a target is a known cancer driver or a tumor\\nsuppressor gene\
+    \ can also provide important information to assess whether modulation would be\\nappropriate. These are potentially good\
+    \ targets in cancer; however, inhibition of core essential\\ngenes and tumor suppressors has likely consequences for adverse\
+    \ effects. The genetic constraint\\nassessment from the Genome Aggregation Database (https://gnomad.broadinstitute.org)\
+    \ (79,\\n80) provides a natural population-level perspective of how safe it may be to perturb a target; tar-\\ngets that\
+    \ have very high genetic constraint (with much less loss-of-function variation than would\\nbe expected) may be more risky\
+    \ to perturb than those with low constraint, which have shown tol-\\nerance to loss-of-function variation over evolution.\
+    \ Comparative genomics can also provide safety\\ninformation; knowing whether there are human paralogs with strong homology\
+    \ to a given target\\ncan provide an indication of the risk of interference with other targets. The specificity and dis-\\\
+    ntribution of the target are important considerations for the likelihood of on-target effects beyond\\nthe disease-causing\
+    \ tissue and the possible severity of these (such as effects on the central nervous\\nsystem or cardiovascular system\
+    \ versus liver toxicity). The likelihood of such effects is indicated\\nby assessments from RNA baseline expression across\
+    \ tissues, which are provided by Expression\\nAtlas and GTEx (28, 81).\\nAt a whole organism level, we provide an assessment\
+    \ of the severity of knocking out the gene\\nbased upon classification of phenotypes from mouse models available in the\
+    \ Mouse Genome\\n70\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before\
+    \ final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\nInformatics database, which gives\
+    \ an indication of the severity of possible side effects when mod-\\nulating the target (82). On a drug level, we also\
+    \ provide pharmacovigilance assessments analyzed\\nusing data from the FDA Adverse Event Reporting System (https://open.fda.gov/data/faers)\\\
+    nand black box warnings from drug labels (41, 42, 83). Though these may be off-target events,\\nthey can provide useful\
+    \ real-world clinical and systemic safety information regarding the effect\\nof modulating a given target in humans.\\\
+    nOur Approach to Artificial Intelligence and Machine Learning\\nOpen Targets uses artificial intelligence (AI) to address\
+    \ specific scientific challenges such as iden-\\ntifying the most likely target genes underlying GWAS associations; for\
+    \ this, we developed the\\nL2G ML pipeline to provide predictive scoring of candidate genes (14). We apply AI to knowl-\\\
+    nedge extraction in several ways; for instance, named entity recognition and deep learning are\\nused to extract publications\
+    \ and patents related to genes, diseases, drug entities, and relation-\\nships that can be explored through the Open Targets\
+    \ Platform in collaboration with Europe\\nPMC (https://europepmc.org/) (84). We also have developed natural language processing\
+    \ to\\ncategorize why clinical trials have failed (informing on target\\u2013disease\\u2013drug associations that have\\\
+    nresulted in lack of efficacy or safety issues) (85), and to mine drug label information for clinical\\nindications in\
+    \ collaboration with EMBL-EBI\\u2019s ChEMBL database (41). This provides informa-\\ntion on clinical precedence and safety\
+    \ (Figure 2c). We explore new technology and applications\\nacross our research program and platforms, for example, by\
+    \ using OpenAI\\u2019s large language model\\nto provide a contextual summary of the relationship between a target and\
+    \ a disease in a given\\npublication.\\nOpen Targets is actively developing its dataset into a unique repository of high-quality\
+    \ data\\nwith well-established data provenance, often linking it to other datasets using unified identifiers\\nto facilitate\
+    \ downstream analyses. Our datasets are utilized externally as a gold standard for a wide\\narray of AI applications,\
+    \ such as ML to identify novel target\\u2013disease associations (86), building\\nknowledge graphs for a range of different\
+    \ biological insights and to assist with drug develop-\\nment (87\\u201390), and benchmarking new computational methods\
+    \ for drug target prioritization (91,\\n92). There are examples of pharmaceutical companies beyond Open Targets partners\
+    \ who have\\nutilized data sourced from Open Targets to build their own target prioritization and drug repur-\\nposing\
+    \ pipelines (93). Additionally, the data from Open Targets play a central role in establishing\\nthe foundations of research\
+    \ data and are soon set to become the backbone of foundation model\\ndevelopment. Furthermore, the data and pipelines\
+    \ empower the creation of various data lakes\\nand the development of end-to-end pipelines for ingesting/generating, integrating,\
+    \ and analyzing\\nmultiomics data.\\nThe Benefits of Being Embedded Within EMBL-EBI and the Wellcome\\nSanger Institute\\\
+    nBecause data are integrated into Open Targets resources using a consistent mapping of traits/\\ndiseases to EFO, we can\
+    \ integrate different data sources and collate evidence for the same disease\\nthat otherwise would not have been connected.\
+    \ This also enables the exploration of associations\\nwith targets up or down the ontology hierarchy [for example,connecting\
+    \ all targets related to small\\nbowel Crohn\\u2019s disease (CD) to immune system disease]. We work closely with other\
+    \ EMBL-EBI\\nresources to develop the requirements for this systematic integration. This includes the expansion\\nof terms\
+    \ in the EFO (26) and the development of specific data feeds or data formats from resources\\nsuch as EMBL-EBI\\u2019s\
+    \ ChEMBL database (for drug label indications and clinical trial information)\\n(41, 42), the European Variation Archive\
+    \ (for ClinVar annotations) (94), and the Expression Atlas\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective\
+    \ on Genetics\\n71\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\\
+    n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\n(95). We are able to request focused curation for disease\
+    \ areas of particular interest to our partners\\nand harness our scientific community to help review and provide feedback\
+    \ to the resources. An\\nexample of this is Reactome\\u2019s in-depth curation of the autophagy pathway, chosen due to\
+    \ its role\\nin Open Targets\\u2019 key therapeutic areas and the need for a comprehensive view of the mechanistic\\nrole\
+    \ of proteins involved in the process and interaction with other pathways (96). Through the\\nOpen Targets consortium\
+    \ community, we were able to harness expert review of the pathway and\\nprovide useful connections to Reactome through\
+    \ the Open Targets Platform. Being embedded\\nwithin the Wellcome Sanger Institute, we have access to high-throughput\
+    \ experimental platforms\\nas well as vital patient samples through close collaborations with clinical networks within\
+    \ the Na-\\ntional Health Service England. This also provides the infrastructure to store, process, and analyze\\nsamples\
+    \ safely.\"\n  },\n  {\n    \"name\": \"PARTNER AND COMMUNITY IMPACT\",\n    \"text\": \"The Open Targets consortium is\
+    \ an innovative partnership between academia and industry fea-\\nturing continuous collaboration and knowledge exchange\
+    \ between all partners. Academic partners\\ncontribute deep expertise and innovation in genetic and genomic research,\
+    \ while industry partners\\nprovide an understanding of real-world applications and challenges faced in drug discovery\
+    \ and\\ndevelopment. A robust and responsive feedback loop ensures strategic alignment and maximizes\\nimpact for industry\
+    \ partners and the broader scientific community.\\nOpen Targets generates impact through several avenues. First, it supports\
+    \ the collation of\\npublicly available data into large databases of harmonized datasets (e.g., through supporting the\\\
+    ndevelopment of the summary statistic submission portal of the GWAS Catalog and establishing\\nthe eQTL Catalogue) (9,\
+    \ 10, 27). This addresses a major gap in the scientific community in which\\nthe abundance of data available in the public\
+    \ space is often dwarfed by the effort needed to process\\nand store the data in a format that enables broader use.\\\
+    nSecond, Open Targets academics push the boundaries of science by developing novel exper-\\nimental and in silico approaches.\
+    \ This is achieved through bespoke Open Targets projects that\\nare formulated jointly by all partners (Figure 1). These\
+    \ projects leverage the unique capabil-\\nities of Open Targets, particularly the cutting-edge genomic and bioinformatic\
+    \ capabilities of\\nthe Wellcome Sanger Institute and EMBL-EBI, and influence target discovery and validation\\nwork in\
+    \ industry partners. Prepublication access to data and results from several Open Targets\\nprojects has been crucial for\
+    \ specific drug discovery efforts. One of these projects generated a\\nlarge-scale scRNA-seq dataset from the terminal\
+    \ ileum of CD patients. Uniquely, this study also\\nhas germline genotype data on these CD patients (15).In addition to\
+    \ the in-depth analyses done by\\nthe project team, this allowed partners to do their own bespoke analyses, which included\
+    \ running\\nadditional methods to integrate scRNA-seq with genetic data to further elucidate the mechanisms\\ncontributing\
+    \ to IBD risk at the cellular level.\\nFinally, all insights are integrated into the comprehensive, open-access Open Targets\
+    \ Platform,\\nwhich is extensively used in industry to facilitate more efficient decision-making, from the iden-\\ntification\
+    \ of drug targets to the design of clinical studies (Figure 2). Efficient access to multiple\\nharmonized data sources\
+    \ is an extremely valuable resource for target discovery and validation ef-\\nforts in the industry setting. Information\
+    \ about a disease-relevant target is heterogeneous and\\noften spread across multiple databases, publications, and supplemental\
+    \ materials. The complex\\nlandscape of data around a target is typically best captured through a multiview approach (97,\
+    \ 98).\\nFor example, the data related to a target can include open, proprietary, and private data. Open\\nTargets, with\
+    \ its various delivery modalities, including software, data, and projects, provides end-\\nto-end capabilities for understanding\
+    \ the diverse aspects of a target and enables extensive content\\n72\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview\
+    \ in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\\
+    n12:34\\ncustomization,which brings the three streams of data classes into a unified view to offer a consider-\\nably\
+    \ broader perspective on a target. As an example, Sanofi\\u2019s Precision Medicine & Computational\\nBiology function\
+    \ has internalized both Open Targets Genetics and Open Targets Platform, incor-\\nporating them into end-to-end drug discovery\
+    \ workflows. This includes integrating novel internal\\nalgorithms and creating custom views designed using internal datasets.While\
+    \ there are other tools,\\nboth open source and proprietary, with similar functionality, the Open Targets knowledge feed-\\\
+    nback loop is unique in that insights from the data directly impact further data generation efforts\\nwhose results feed\
+    \ back into the Open Targets Platform. This knowledge loop creates an ever-\\nevolving ecosystem of information that improves\
+    \ and refines industry partners\\u2019 ability not only\\nto link targets to diseases but also to decipher the mechanisms\
+    \ by which specific perturbations\\ncontribute to disease etiologies.\\nAnother impactful use for the Open Targets Platform\
+    \ is the rapid triage of a list of genes,\\nproteins, diseases, or pathways under a specific therapeutic hypothesis (Figure\
+    \ 2). An example\\nof this is a case where a partner has a list of hundreds or even thousands of genes that are likely\\\
+    ntractable because of their biochemical properties, predicted protein structure, or existing propri-\\netary chemical\
+    \ matter. From this list, the goal is to identify a smaller set of genes causally linked to\\nhuman disease traits via\
+    \ genetic or experimental perturbation. The Open Targets Platform allows\\nusers to efficiently prioritize targets for\
+    \ a deeper informatics dive and/or appropriate experimental\\nfollow-up. Notably, the data in Open Targets also help to\
+    \ build these deep dives (directionality\\nvia genetics, safety, animal model findings, existing drugs, supporting literature)\
+    \ and experimen-\\ntal study designs (relevant cell types, disease relevant readouts). The approach for Open Targets\\\
+    nGenetics and Open Targets Platform has been to ensure the open-source nature of both the data\\nand the software through\
+    \ a CC0 Creative Commons license and to develop the tools and means\\nfor users with different skill sets and requirements\
+    \ both across our partners and within the scien-\\ntific community to gain access. For example, simple searches for variants,\
+    \ genes, traits, or drugs\\nof interest can be conducted through an intuitive user interface, and users with more complex\
+    \ use\\ncases can query through the API or Google BigQuery or download the data.\"\n  },\n  {\n    \"name\": \"CHALLENGES\
+    \ AND THE FUTURE\",\n    \"text\": \"The mission of Open Targets is to identify and prioritize therapeutic targets that\
+    \ will translate into\\nsafe and effective medicines. Central to this mission is the use of human genetics and genomics\
+    \ to\\ngenerate robust mechanistic hypotheses about the drivers of human disease. In the future, there-\\nfore, much of\
+    \ Open Targets\\u2019 activity will continue, as now, to focus on teasing out the causal\\nthreads that connect the natural\
+    \ experiments of genetic perturbation provided by human genetics\\nto the pharmaceutical perturbations that enable treatments,\
+    \ preventions, and cures.\\nTo date, almost all analyses of natural experiments of genetic perturbation have concentrated\\\
+    non disease risk, generally through the comparison of genotype frequencies between cases and con-\\ntrols. Yet most therapeutics\
+    \ for the treatment of common, late-onset diseases are given to those\\nwith established disease: Rather than aiming to\
+    \ halt the processes that lead to the initiation of dis-\\nease, the clinical goal is typically (where full restoration\
+    \ of the premorbid state is not feasible) to\\narrest or slow progression. Until recently, the paucity of data on the\
+    \ genetics of disease progression\\nhad sustained the assumption that the genetics of risk and progression are sufficiently\
+    \ similar for\\nthe former to guide therapeutic strategies for the latter. Indeed, the evidence that targets enriched\\\
+    nfor the genetics of risk are more likely to result in safe and effective medicines provides reassurance\\nin this regard\
+    \ (6, 24, 85). However, as more longitudinal datasets have become available, examples\\nare emerging of marked divergence\
+    \ in the genetics of risk and progression (99). To address this\\ndivergence, Open Targets will increasingly need to be\
+    \ able to define and model disease as a process\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\\
+    n73\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\\
+    nARjats.cls\\nMarch 13, 2024\\n12:34\\nthrough time. By doing so, it will support the community\\u2019s need to adapt\
+    \ to this emerging under-\\nstanding of the overlap and differences between the processes involved in disease initiation,\
+    \ those\\ninvolved in progression, and therapeutic response, and use this knowledge to optimize the design\\nof effective\
+    \ therapeutic strategies. As AI/ML approaches become increasingly available to explore\\npredictive genetic and molecular\
+    \ biomarkers of disease risk and clinical outcome, this is a pivotal\\nand timely opportunity to expand the acquisition\
+    \ of AI-ready data from clinical cohorts, enabling\\nthe concurrent collection of longitudinal molecular data encompassing\
+    \ genetics, cell-specific mul-\\ntiomics with corresponding clinical information including symptoms, diagnostic laboratory\
+    \ tests,\\ntreatments, response, and more.\\nThat most of the variants implicated by human genetic analysis of common\
+    \ complex diseases\\nmap to regulatory sequence is now widely appreciated, but the challenge of connecting those\\nvariants\
+    \ to their effector genes and pathophysiological mechanisms through which they exert their\\nimpact on disease (risk or\
+    \ progression) remains. Open Targets will focus on addressing this using\\nfour complementary approaches.\\nFirst, the\
+    \ rapid expansion of the corpus of genetic data, fueled by the interrogation of datasets\\nthat are larger, more diverse,\
+    \ and feature richer clinical information and a more complete inven-\\ntory of genetic variation, will continue to add\
+    \ layers of human genetic evidence. By integrating\\nthese data, Open Targets will refine appreciation of the relationship\
+    \ between genetic variation and\\nphenotype, improving fine-mapping, revealing coding alleles that decipher effector gene\
+    \ identi-\\nfication, and generating allelic series that provide confidence in effect direction and titration of\\neffect\
+    \ magnitude (100). The shift to sequence-based discovery improves access to rare variants,\\nsome of them annotated as\
+    \ having a major impact on gene function or expression. These high-\\nimpact variants also open up a path to representing\
+    \ impactful negative evidence within Open\\nTargets (101). An obvious example of such evidence of the absence of genetic\
+    \ effect would be the\\nfailure, despite adequate power, to detect an anticipated phenotypic signal attributable to a\
+    \ loss-\\nof-function allele in a putative therapeutic target, an observation that casts serious doubt on the\\ncredibility\
+    \ of that target.\\nSecond, the path to mechanistic inference around genetic associations (essentially efforts to\\nsolve\
+    \ the variant-to-gene-to-function challenge) will increasingly run through integration with\\nrich multiomics datasets\
+    \ generated from healthy and diseased tissues (including organoids) and\\nfrom engineered models (most obviously, iPSC-derived\
+    \ cell lines). The increasing scale and\\nrange of single-cell datasets and the development of high-resolution spatial\
+    \ profiling methods\\nwill increasingly power insights into the specific cell types and cell states through which associ-\\\
+    nated genetic variants (collectively and individually) act. This information represents an essential\\ncomponent to the\
+    \ generation of robust mechanistic hypotheses and ensures that downstream func-\\ntional work is performed in the relevant\
+    \ cellular systems and models. Open Targets is well-placed\\nto act as a central resource for the integration of these\
+    \ data, building on existing methods within\\nOpen Targets Genetics that power current L2G approaches. To date, most of\
+    \ this integration has\\nbeen based on the overlay of genomic annotations onto genetic association datasets, but these\\\
+    nindirect methods are increasingly being augmented by experimental approaches that provide di-\\nrect examination of the\
+    \ impact of genetic variation on single-cell phenotypes. Examples include\\nlarge-scale single cell\\u2013eQTL generation\
+    \ in peripheral blood mononuclear cells (44) and the devel-\\nopment of so-called village-in-a-dish strategies based on\
+    \ pooled iPSC differentiation approaches\\n(102).\\nThird, while the integration of genetics and genomics is powerful,\
+    \ it generally offers correla-\\ntive, rather than causal, inference about mechanism. For example, the accuracy of inference\
+    \ based\\non the colocalization of a GWAS variant and a cis-eQTL signal is limited by rampant molecular\\npleiotropy (103,104)\
+    \ and by the effects of the cell state.Perturbation studies in appropriate cellular\\n74\\nMcDonagh et al.\\n, .\\u2022\\\
+    u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\\
+    nMarch 13, 2024\\n12:34\\nand model systems are now seen as an essential step in establishing the causal thread from variant\
+    \ to\\ngene to disease, but this only works when they capture phenotypes that are relevant to the disease\\nin question\
+    \ or, alternatively, collect high-content molecular or image-based data that can be mined\\nfor pertinent signatures of\
+    \ the disease state. Open Targets is already undertaking several pertur-\\nbation screens in disease-relevant cellular\
+    \ systems, but the time is right to invest for the project to\\nensure that these data, together with the growing corpus\
+    \ of perturbation data being generated in\\nthe global research community, can be collated and cataloged in support of\
+    \ robust causal inference.\\nUltimately the strongest mechanistic and therapeutic hypotheses will emerge when the evi-\\\
+    ndence from human genetics, molecular and spatial profiling, and perturbation studies aligns in\\nestablishing the causal\
+    \ contribution of a given target or pathway to the disease of interest. The core\\ncompetences of EMBL-EBI and Sanger\
+    \ ensure that Open Targets is well positioned to build in-\\nference from these diverse data types as they increase in\
+    \ scale, diversity, and complexity. Crucially,\\nrather than tackling the variant-to-gene-to-disease challenge one variant\
+    \ at a time, inferential im-\\npact is most likely to emerge from approaches that model the biology of health and disease\
+    \ on a\\ngenome-wide and systematic scale. Open Targets is already heavily invested in the development\\nof gene regulatory\
+    \ and protein interaction networks and is increasingly focused on the opportu-\\nnities provided by more flexible approaches\
+    \ to data integration and data-driven inference, such as\\nthose provided by knowledge graphs and large language models.\
+    \ The architecture of Open Tar-\\ngets\\u2019 open-source platforms supports the expansion of data types, visuals, and\
+    \ tooling to allow for\\nthe development of layering of multiple biological systems to provide users with the ability\
+    \ to ex-\\nplore and discover new insights across this wealth of data. In addition, the corpus of external and\\ninternal\
+    \ data accessible to Open Targets, ranging from the text of published papers and preprints,\\npopulation-scale genetics\
+    \ and real-world data from biobanks, and atlases of single-cell expression\\nin health and disease to genome-scale perturbation\
+    \ and beyond, opens the door to efforts to gen-\\nerate rich foundational models that, over time, will evolve into a systematic,\
+    \ robust, and predictive\\ndescription of the biology of health and disease.\\nAs we learn more about disease pathophysiology,\
+    \ the number of processes causally contributing\\nto the risk and/or progression of any given disease (especially multifactorial\
+    \ disease) is set to grow,\\nand with it the number of putative targets. Here, we define putative targets as any gene\
+    \ that has\\nbeen mapped into one of those processes and for which it is reasonable to assume that perturbation\\nof function\
+    \ or expression could have a material effect on disease. The time and effort required\\nto undertake detailed follow-up\
+    \ of each such putative target place a massive premium on careful\\ntarget prioritization. In part, that prioritization\
+    \ will be driven by the strength of the causal biology,\\nbut it also needs to take account of other factors that contribute\
+    \ to the likelihood that a given target\\ncan be translated into a safe and effective medicine.\\nThese include factors\
+    \ that relate to safety: What is the evidence, from human genetics, from\\nperturbation studies in cellular systems and\
+    \ preclinical models, from tissue expression profiles,\\nfrom biological knowledge, and from experience with related drugs,\
+    \ that the target can be safely\\nperturbed by therapeutics? They include factors related to druggability and tractability:\
+    \ How\\nlikely is it that the target will be amenable to perturbation with small molecules, antibodies, or the\\ngrowing\
+    \ panoply of available therapeutic modalities? How many of the tools (chemical probes,\\nassays, cellular and animal models)\
+    \ required to advance a drug discovery program are already\\nin place? They also include factors related to biomarker\
+    \ availability: How much do we know\\nabout the downstream biology that would make it possible to develop the biomarkers\
+    \ of target\\nengagement or clinical benefit that are essential elements for drug development?\\nAbove and beyond these\
+    \ target-related considerations, there are questions concerning the clin-\\nical impact of a given drug development program\
+    \ that influence decision-making. How novel is\\nthe therapeutic hypothesis? How many other programs are targeting the\
+    \ same mechanism? What\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\n75\\n, .\\u2022\\\
+    u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\\
+    nMarch 13, 2024\\n12:34\\nis the unmet clinical need in the patient population? To what extent could stratification of\
+    \ the\\npatient population (e.g., into disease subtypes or on the basis of polygenic risk) expose subsets for\\nwhom the\
+    \ proposed therapeutic could be particularly valuable?\\nThe ongoing challenge is to make possible the systematic and\
+    \ comprehensive integration of\\nthese disparate data types to inform decisions about the targets, the pathways, the indications,\
+    \ and\\nthe patient populations that will maximize therapeutic success and clinical benefit. One obvious\\nopportunity\
+    \ involves target prioritization within a causal pathway of interest. In situations where a\\ntarget first revealed through\
+    \ human genetics proves problematic because of safety concerns arising\\nfrom broad expression and/or tractability challenges,\
+    \ the systematic exploration of other targets\\nin the biological vicinity of that original target may lead to alternative\
+    \ therapeutic strategies with\\na higher probability of success. Open Targets is uniquely positioned to assemble data\
+    \ that capture\\nall of these dimensions, and more, and thereby to support pharmaceutical companies in making\\nmore informed\
+    \ and successful decisions about the targets they pursue.\"\n  },\n  {\n    \"name\": \"DISCLOSURE STATEMENT\",\n    \"\
+    text\": \"E.M. is an employee of Open Targets/EMBL-EBI, an affiliate worker for the Sanger Wellcome\\nInstitute, a member\
+    \ of steering committee for UK Pharmacogenetics and Stratified Medicine\\nNetwork, and member of the scientific advisory\
+    \ committee for ELIXIR UK. G.T. is funded in\\npart by Open Targets (grants OTAR2063, OTAR2064, OTAR2069, OTAR2076, OTAR2086),\\\
+    nand has received financial compensation for consulting for GSK, Pfizer, Genentech, and Relation\\nTX. M.M. is an employee\
+    \ of Genentech, and a holder of Roche stock. E.R.H. is an employee\\nand stockholder at Bristol Myers Squibb. S.K. is\
+    \ an employee of Sanofi, a previous employee of\\nAstraZeneca, and owns Sanofi and AstraZeneca stock. N.N. is an employee\
+    \ of GlaxoSmithKline.\\nX.H. is an employee of Pfizer Inc. H.C. is an employee of Open Targets/EMBL-EBI. D.H. is an\\\
+    nemployee of Open Targets/EMBL-EBI and an affiliate worker for the Sanger Wellcome Institute.\"\n  },\n  {\n    \"name\"\
+    : \"ACKNOWLEDGMENTS\",\n    \"text\": \"We would like to thank the Open Targets Core Team and all partners and collaborators\
+    \ who have\\ncontributed to the Open Targets consortium past and present. We would like to thank Irene Lopez\\nand Yakov\
+    \ Tsepilov for their critical reading of the manuscript. G.T. is cofunded by Open Targets\\nand Wellcome grant 220540/Z/20/A.\"\
+    \n  },\n  {\n    \"name\": \"LITERATURE CITED\",\n    \"text\": \"1. DiMasi JA, Wilkinson M. 2020. The financial benefits\
+    \ of faster development times: integrated formu-\\nlation development, real-time manufacturing, and clinical testing.\
+    \ Ther. Innov. Regul. Sci. 54(6):1453\\u2013\\n60\\n2. Hay M, Thomas DW, Craighead JL, Economides C, Rosenthal J. 2014.\
+    \ Clinical development success\\nrates for investigational drugs. Nat. Biotechnol. 32(1):40\\u201351\\n3. Deloitte Cent.\
+    \ Health Solut. 2022. Nurturing growth: measuring the return from pharmaceutical innova-\\ntion 2021. Rep., Deloitte Cent.\
+    \ Health Solut., London. https://www2.deloitte.com/content/dam/\\nDeloitte/uk/Documents/life-sciences-health-care/Measuring-the-return-of-pharmaceutical-\\\
+    ninnovation-2021-Deloitte.pdf\\n4. Ochoa D, Hercules A, Carmona M, Suveges D, Gonzalez-Uriarte A, et al. 2021. Open Targets\
+    \ Platform:\\nsupporting systematic drug\\u2013target identification and prioritisation. Nucleic Acids Res. 49(D1):D1302\\\
+    u201310\\n5. Ghoussaini M, Mountjoy E, Carmona M, Peat G, Schmidt EM, et al. 2021. Open Targets Genetics:\\nsystematic\
+    \ identification of trait-associated genes using large-scale genetics and functional genomics.\\nNucleic Acids Res. 49(D1):D1311\\\
+    u201320\\n76\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final\
+    \ publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\n6. Nelson MR, Tipney H, Painter JL, Shen\
+    \ J, Nicoletti P, et al. 2015. The support of human genetic\\nevidence for approved drug indications. Nat. Genet. 47(8):856\\\
+    u201360\\n7. Ochoa D, Karim M, Ghoussaini M, Hulcoop DG, McDonagh EM, Dunham I. 2022. Human genetics\\nevidence supports\
+    \ two-thirds of the 2021 FDA-approved drugs. Nat. Rev. Drug Discov. 21(8):551\\n8. Rusina PV, Falaguera MJ, Romero JMR,\
+    \ McDonagh EM, Dunham I, Ochoa D. 2023. Genetic support\\nfor FDA-approved drugs over the past decade. Nat. Rev. Drug\
+    \ Discov. 22(11):864\\n9. Buniello A, MacArthur JAL, Cerezo M, Harris LW, Hayhurst J, et al. 2019. The NHGRI-EBI GWAS\\\
+    nCatalog of published genome-wide association studies, targeted arrays and summary statistics 2019.\\nNucleic Acids Res.\
+    \ 47(D1):D1005\\u201312\\n10. Kerimov N, Hayhurst JD, Peikova K, Manning JR, Walter P, et al. 2021. A compendium of uniformly\\\
+    nprocessed human gene expression and splicing quantitative trait loci. Nat. Genet. 53(9):1290\\u201399\\n11. Soskic B,\
+    \ Cano-Gamez E, Smyth DJ, Ambridge K, Ke Z, et al. 2022. Immune disease risk variants\\nregulate gene expression dynamics\
+    \ during CD4+ T cell activation. Nat. Genet. 54(6):817\\u201326\\n12. Schwartzentruber J, Cooper S, Liu JZ, Barrio-Hernandez\
+    \ I, Bello E, et al. 2021. Genome-wide meta-\\nanalysis, fine-mapping and integrative prioritization implicate new Alzheimer\\\
+    u2019s disease risk genes. Nat.\\nGenet. 53(3):392\\u2013402\\n13. Barrio-Hernandez I, Schwartzentruber J, Shrivastava\
+    \ A, Del-Toro N, Gonzalez A, et al. 2023. Network\\nexpansion of genetic associations defines a pleiotropy map of human\
+    \ cell biology. Nat. Genet. 55(3):389\\u2013\\n98\\n14. Mountjoy E, Schmidt EM, Carmona M, Schwartzentruber J, Peat G,\
+    \ et al. 2021. An open approach to\\nsystematically prioritize causal variants and genes at all published human GWAS trait-associated\
+    \ loci.\\nNat. Genet. 53(11):1527\\u201333\\n15. Krzak M, Alegbe T, Taylor DL, Ghouraba M, Strickland M, et al. 2023.\
+    \ Single-cell RNA sequencing re-\\nveals dysregulated cellular programmes in the inflamed epithelium of Crohn\\u2019s\
+    \ disease patients. medRxiv\\n2023.09.06.23295056. https://doi.org/10.1101/2023.09.06.23295056\\n16. Huang H, Fang M,\
+    \ Jostins L, Umi\\u00b4cevi\\u00b4c Mirkov M, Boucher G, et al. 2017. Fine-mapping inflammatory\\nbowel disease loci to\
+    \ single-variant resolution. Nature 547(7662):173\\u201378\\n17. Cooper SE, Schwartzentruber J, Bello E, Coomber EL, Bassett\
+    \ AR. 2020. Screening for functional\\ntranscriptional and splicing regulatory variants with GenIE. Nucleic Acids Res.\
+    \ 48(22):e131\\n18. Trynka G, Sandor C, Han B, Xu H, Stranger BE, et al. 2013. Chromatin marks identify critical cell\
+    \ types\\nfor fine mapping complex trait variants. Nat. Genet. 45(2):124\\u201330\\n19. Soskic B, Cano-Gamez E, Smyth\
+    \ DJ, Rowan WC, Nakic N, et al. 2019. Chromatin activity at GWAS\\nloci identifies T cell states driving complex immune\
+    \ diseases. Nat. Genet. 51(10):1486\\u201393\\n20. Behan FM, Iorio F, Picco G, Gon\\u00e7alves E, Beaver CM, et al. 2019.\
+    \ Prioritization of cancer therapeutic\\ntargets using CRISPR-Cas9 screens. Nature 568(7753):511\\u201316\\n21. Chan EM,\
+    \ Shibue T, McFarland JM, Gaeta B, Ghandi M, et al. 2019. WRN helicase is a synthetic lethal\\ntarget in microsatellite\
+    \ unstable cancers. Nature 568(7753):551\\u201356\\n22. Pacini C, Dempster JM, Boyle I, Gon\\u00e7alves E, Najgebauer\
+    \ H, et al. 2021. Integrated cross-study datasets\\nof genetic dependencies in cancer. Nat. Commun. 12(1):1661\\n23. Dwane\
+    \ L, Behan FM, Gon\\u00e7alves E, Lightfoot H, Yang W, et al. 2021. Project Score database: a re-\\nsource for investigating\
+    \ cancer cell dependencies and prioritizing therapeutic targets. Nucleic Acids Res.\"\n  },\n  {\n    \"name\": \"(D1):D1365\\\
+    u201372\",\n    \"text\": \"24. King EA, Davis JW, Degner JF. 2019. Are drug targets with genetic support twice as likely\
+    \ to be ap-\\nproved? Revised estimates of the impact of genetic support for drug mechanisms on the probability of\\ndrug\
+    \ approval. PLOS Genet. 15(12):e1008489\\n25. Zhou W, Nielsen JB, Fritsche LG, Dey R, Gabrielsen ME, et al. 2018. Efficiently\
+    \ controlling for\\ncase-control imbalance and sample relatedness in large-scale genetic association studies. Nat. Genet.\\\
+    n50(9):1335\\u201341\\n26. Malone J, Holloway E, Adamusiak T, Kapushesky M, Zheng J, et al. 2010. Modeling sample variables\\\
+    nwith an Experimental Factor Ontology. Bioinformatics 26(8):1112\\u201318\\n27. Sollis E, Mosaku A, Abid A, Buniello A,\
+    \ Cerezo M, et al. 2023. The NHGRI-EBI GWAS Catalog:\\nknowledgebase and deposition resource. Nucleic Acids Res. 51(D1):D977\\\
+    u201385\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective on Genetics\\n77\\n, .\\u2022\\u00b7\\u0005-\\\
+    nReview in Advance. Changes may\\nstill occur before final publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch\
+    \ 13, 2024\\n12:34\\n28. GTEx Consort. 2020. The GTEx Consortium atlas of genetic regulatory effects across human tissues.\\\
+    nScience 369(6509):1318\\u201330\\n29. V\\u00f5sa U, Claringbould A, Westra H-J, Bonder MJ, Deelen P, et al. 2018. Unraveling\
+    \ the polygenic archi-\\ntecture of complex traits using blood eQTL metaanalysis. bioRxiv 447367. https://doi.org/10.1101/\\\
+    n447367\\n30. Sun BB, Maranville JC, Peters JE, Stacey D, Staley JR, et al. 2018. Genomic atlas of the human plasma\\\
+    nproteome. Nature 558(7708):73\\u201379\\n31. Folkersen L, Fauman E, Sabater-Lleal M, Strawbridge RJ, Fr\\u00e5nberg M,\
+    \ et al. 2017. Mapping of 79 loci\\nfor 83 plasma protein biomarkers in cardiovascular disease. PLOS Genet. 13(4):e1006706\\\
+    n32. Hillary RF, McCartney DL, Harris SE, Stevenson AJ, Seeboth A, et al. 2019. Genome and epigenome\\nwide studies of\
+    \ neurological protein biomarkers in the Lothian Birth Cohort 1936. Nat. Commun.\\n10(1):3160\\n33. Ahola-Olli AV, W\\\
+    u00fcrtz P, Havulinna AS, Aalto K, Pitk\\u00e4nen N, et al. 2017. Genome-wide association\\nstudy identifies 27 loci influencing\
+    \ concentrations of circulating cytokines and growth factors. Am. J.\\nHum. Genet. 100(1):40\\u201350\\n34. Pietzner M,\
+    \ Stewart ID, Raffler J, Khaw K-T, Michelotti GA, et al. 2021. Plasma metabolites to profile\\npathways in noncommunicable\
+    \ disease multimorbidity. Nat. Med. 27(3):471\\u201379\\n35. Suhre K, Arnold M, Bhagwat AM, Cotton RJ, Engelke R, et al.\
+    \ 2017. Connecting genetic risk to disease\\nend points through the human blood plasma proteome. Nat. Commun. 8(1):14357\\\
+    n36. Folkersen L, Gustafsson S, Wang Q, Hansen DH, Hedman \\u02daAK, et al. 2020. Genomic and drug target\\nevaluation\
+    \ of 90 cardiovascular proteins in 30,931 individuals. Nat. Metab. 2(10):1135\\u201348\\n37. McLaren W, Gil L, Hunt SE,\
+    \ Riat HS, Ritchie GRS, et al. 2016. The Ensembl Variant Effect Predictor.\\nGenome Biol. 17(1):122\\n38. Javierre BM,\
+    \ Burren OS, Wilder SP, Kreuzhuber R, Hill SM, et al. 2016. Lineage-specific genome\\narchitecture links enhancers and\
+    \ non-coding disease variants to target gene promoters. Cell 167(5):1369\\u2013\\n84.e19\\n39. Andersson R,Gebhard C,Miguel-Escalada\
+    \ I,Hoof I,Bornholdt J,et al.2014.An atlas of active enhancers\\nacross human cell types and tissues. Nature 507(7493):455\\\
+    u201361\\n40. Thurman RE, Rynes E, Humbert R, Vierstra J, Maurano MT, et al. 2012. The accessible chromatin\\nlandscape\
+    \ of the human genome. Nature 489(7414):75\\u201382\\n41. Davies M, Nowotka M, Papadatos G, Dedman N, Gaulton A, et al.\
+    \ 2015. ChEMBL web services:\\nstreamlining access to drug discovery data and utilities. Nucleic Acids Res. 43(W1):W612\\\
+    u201320\\n42. Mendez D, Gaulton A, Bento AP, Chambers J, De Veij M, et al. 2019. ChEMBL: towards direct\\ndeposition of\
+    \ bioassay data. Nucleic Acids Res. 47(D1):D930\\u201340\\n43. Stacey D, Fauman EB, Ziemek D, Sun BB, Harshfield EL, et\
+    \ al. 2019. ProGeM: a framework for the\\nprioritization of candidate causal genes at molecular quantitative trait loci.\
+    \ Nucleic Acids Res. 47(1):e3\\n44. van der Wijst M, de Vries DH, Groot HE, Trynka G, Hon CC, et al. 2020. The single-cell\
+    \ eQTLGen\\nconsortium. eLife 9:e52155\\n45. Martin FJ, Amode MR, Aneja A, Austine-Orimoloye O, Azov AG, et al. 2023.\
+    \ Ensembl 2023.\\nNucleic Acids Res. 51(D1):D933\\u201341\\n46. Strande NT, Riggs ER, Buchanan AH, Ceyhan-Birsoy O, DiStefano\
+    \ M, et al. 2017. Evaluating the\\nclinical validity of gene-disease associations: an evidence-based framework developed\
+    \ by the Clinical\\nGenome Resource. Am. J. Hum. Genet. 100(6):895\\u2013906\\n47. Martin AR, Williams E, Foulger RE,\
+    \ Leigh S, Daugherty LC, et al. 2019. PanelApp crowdsources expert\\nknowledge to establish consensus diagnostic gene\
+    \ panels. Nat. Genet. 51(11):1560\\u201365\\n48. Thormann A, Halachev M, McLaren W, Moore DJ, Svinti V, et al. 2019. Flexible\
+    \ and scalable diagnostic\\nfiltering of genomic variants using G2P with Ensembl VEP. Nat. Commun. 10(1):2373\\n49. Maiella\
+    \ S, Rath A, Angin C, Mousson F, Kremp O. 2013. Orphanet et son r\\u00e9seau: o\\u00f9 trouver une in-\\nformation valid\\\
+    u00e9e sur les maladies rares [Orphanet and its consortium: where to find expert-validated\\ninformation on rare diseases].\
+    \ Rev. Neurol. 169(Suppl. 1):S3\\u20138\\n50. DiStefano MT, Goehringer S, Babb L, Alkuraya FS, Amberger J, et al. 2022.\
+    \ The Gene Curation\\nCoalition: a global effort to harmonize gene\\u2013disease evidence resources. Genet. Med. 24(8):1732\\\
+    u201342\\n78\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final\
+    \ publication.\\n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\n51. Wang Q, Dhindsa RS, Carss K, Harper\
+    \ AR, Nag A, et al. 2021. Rare variant contribution to human\\ndisease in 281,104 UK Biobank exomes. Nature 597(7877):527\\\
+    u201332\\n52. Backman JD, Li AH, Marcketta A, Sun D, Mbatchou J, et al. 2021. Exome sequencing and analysis of\\n454,787\
+    \ UK Biobank participants. Nature 599(7886):628\\u201334\\n53. Karczewski KJ, Solomonson M, Chao KR, Goodrich JK, Tiao\
+    \ G, et al. 2022. Systematic single-\\nvariant and gene-based association testing of thousands of phenotypes in 394,841\
+    \ UK Biobank exomes.\\nCell Genom. 2(9):100168\\n54. Zhou X, Feliciano P, Shu C, Wang T, Astrovskaya I, et al. 2022. Integrating\
+    \ de novo and inherited\\nvariants in 42,607 autism cases identifies mutations in new moderate-risk genes. Nat. Genet.\
+    \ 54(9):1305\\u2013\\n19\\n55. Singh T, Poterba T, Curtis D, Akil H, Al Eissa M, et al. 2022. Rare coding variants in\
+    \ ten genes confer\\nsubstantial risk for schizophrenia. Nature 604(7906):509\\u201316\\n56. Satterstrom FK, Kosmicki\
+    \ JA, Wang J, Breen MS, De Rubeis S, et al. 2020. Large-scale exome sequenc-\\ning study implicates both developmental\
+    \ and functional changes in the neurobiology of autism. Cell\\n180(3):568\\u201384.e23\\n57. Epi25 Collab. 2019. Ultra-rare\
+    \ genetic variation in the epilepsies: a whole-exome sequencing study of\\n17,606 individuals. Am. J. Hum. Genet. 105(2):267\\\
+    u201382\\n58. Bomba L, Walter K, Guo Q, Surendran P, Kundu K, et al. 2022. Whole-exome sequencing identifies\\nrare genetic\
+    \ variants associated with human plasma metabolites. Am. J. Hum. Genet. 109(6):1038\\u201354\\n59. Akbari P, Sosina OA,\
+    \ Bovijn J, Landheer K, Nielsen JB, et al. 2022. Multiancestry exome sequenc-\\ning reveals INHBE mutations associated\
+    \ with favorable fat distribution and protection from diabetes.\\nNat. Commun. 13(1):4844\\n60. Makarious MB, Lake J,\
+    \ Pitz V, Ye Fu A, Guidubaldi JL, et al. 2023. Large-scale rare variant burden\\ntesting in Parkinson\\u2019s disease.\
+    \ Brain 146(11):4622\\u201332\\n61. Riveros-Mckay F, Oliver-Williams C, Karthikeyan S, Walter K, Kundu K, et al. 2020.\
+    \ The influence of\\nrare variants in circulating metabolic biomarkers. PLOS Genet. 16(3):e1008605\\n62. Futreal PA, Coin\
+    \ L, Marshall M, Down T, Hubbard T, et al. 2004. A census of human cancer genes.\\nNat. Rev. Cancer 4(3):177\\u201383\\\
+    n63. Tate JG, Bamford S, Jubb HC, Sondka Z, Beare DM, et al. 2019. COSMIC: the Catalogue Of Somatic\\nMutations In Cancer.\
+    \ Nucleic Acids Res. 47(D1):D941\\u201347\\n64. Mart\\u00ednez-Jim\\u00e9nez F, Mui\\u00f1os F, Sent\\u00eds I, Deu-Pons\
+    \ J, Reyes-Salazar I, et al. 2020. A compendium of\\nmutational cancer driver genes. Nat. Rev. Cancer 20(10):555\\u201372\\\
+    n65. Landrum MJ, Lee JM, Benson M, Brown GR, Chao C, et al. 2018. ClinVar: improving access to variant\\ninterpretations\
+    \ and supporting evidence. Nucleic Acids Res. 46(D1):D1062\\u201367\\n66. Ghoussaini M, Nelson MR, Dunham I. 2023. Future\
+    \ prospects for human genetics and genomics in\\ndrug discovery. Curr. Opin. Struct. Biol. 80:102568\\n67. Schneider M,\
+    \ Radoux CJ, Hercules A, Ochoa D, Dunham I, et al. 2021. The PROTACtable genome.\\nNat. Rev. Drug Discov. 20(10):789\\\
+    u201397\\n68. Jumper J, Evans R, Pritzel A, Green T, Figurnov M, et al. 2021. Highly accurate protein structure\\nprediction\
+    \ with AlphaFold. Nature 596(7873):583\\u201389\\n69. Tunyasuvunakool K, Adler J, Wu Z, Green T, Zielinski M, et al. 2021.\
+    \ Highly accurate protein structure\\nprediction for the human proteome. Nature 596(7873):590\\u201396\\n70. Roberts TC,\
+    \ Wood MJA, Davies KE. 2023. Therapeutic approaches for Duchenne muscular dystrophy.\\nNat. Rev. Drug Discov. 22(11):917\\\
+    u201334\\n71. M\\u00fcller S, Ackloo S, Al Chawaf A, Al-Lazikani B, Antolin A, et al. 2022. Target 2035 - update on the\\\
+    nquest for a probe for every protein. RSC Med. Chem. 13(1):13\\u201321\\n72. Bowes J, Brown AJ, Hamon J, Jarolimek W,\
+    \ Sridhar A, et al. 2012. Reducing safety-related drug attrition:\\nthe use of in vitro pharmacological profiling. Nat.\
+    \ Rev. Drug Discov. 11(12):909\\u201322\\n73. Force T, Kolaja KL. 2011. Cardiotoxicity of kinase inhibitors: the prediction\
+    \ and translation of\\npreclinical models to clinical outcomes. Nat. Rev. Drug Discov. 10(2):111\\u201326\\n74. Richard\
+    \ AM, Judson RS, Houck KA, Grulke CM, Volarath P, et al. 2016. ToxCast chemical landscape:\\npaving the road to 21st century\
+    \ toxicology. Chem. Res. Toxicol. 29(8):1225\\u201351\\nwww.annualreviews.org \\u2022 Open Targets\\u2019 Perspective\
+    \ on Genetics\\n79\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\\
+    n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\n75. Lamore SD, Ahlberg E, Boyer S, Lamb ML, Hortigon-Vinagre\
+    \ MP, et al. 2017. Deconvoluting kinase\\ninhibitor induced cardiotoxicity. Toxicol. Sci. 158(1):213\\u201326\\n76. Lynch\
+    \ JJ, Van Vleet TR, Mittelstadt SW, Blomme EAG. 2017. Potential functional and pathological\\nside effects related to\
+    \ off-target pharmacological activity. J. Pharmacol. Toxicol. Methods 87:108\\u201326\\n77. Urban L, Whitebread S, Hamon\
+    \ J, Mikhailov D, Azzaoui K. 2012. Screening for safety-relevant off-\\ntarget activities. In Polypharmacology in Drug\
+    \ Discovery, ed. J-U Peters, pp. 15\\u201346. Hoboken, NJ: Wiley\\n78. Carss KJ, Deaton AM, Del Rio-Espinola A, Diogo\
+    \ D, Fielden M, et al. 2023. Using human genetics to\\nimprove safety assessment of therapeutics. Nat. Rev. Drug Discov.\
+    \ 22(2):145\\u201362\\n79. Chen S, Francioli LC, Goodrich JK, Collins RL, Kanai M, et al. 2022. A genome-wide mutational\
+    \ con-\\nstraint map quantified from variation in 76,156 human genomes. bioRxiv 2022.03.20.485034. https://\\ndoi.org/10.1101/2022.03.20.485034\\\
+    n80. Karczewski KJ, Francioli LC, Tiao G, Cummings BB, Alf\\u00f6ldi J, et al. 2020. The mutational constraint\\nspectrum\
+    \ quantified from variation in 141,456 humans. Nature 581:434\\u201343\\n81. Papatheodorou I, Moreno P, Manning J, Fuentes\
+    \ AM-P, George N, et al. 2020. Expression Atlas update:\\nfrom tissues to single cells. Nucleic Acids Res. 48(D1):D77\\\
+    u201383\\n82. Blake JA, Baldarelli R, Kadin JA, Richardson JE, Smith CL, et al. 2021. Mouse Genome Database\\n(MGD): knowledgebase\
+    \ for mouse-human comparative biology. Nucleic Acids Res. 49(D1):D981\\u201387\\n83. Maciejewski M, Lounkine E, Whitebread\
+    \ S, Farmer P, DuMouchel W, et al. 2017. Reverse translation\\nof adverse event reports paves the way for de-risking preclinical\
+    \ off-targets. eLife 6:e25818\\n84. Ochoa D, Hercules A, Carmona M, Suveges D, Baker J, et al. 2023. The next-generation\
+    \ Open Targets\\nPlatform: reimagined, redesigned, rebuilt. Nucleic Acids Res. 51(D1):D1353\\u201359\\n85. Razuvayevskaya\
+    \ O, Lopez I, Dunham I, Ochoa D. 2023. Why clinical trials stop: the role of genetics.\\nmedRxiv 2023.02.07.23285407.\
+    \ https://doi.org/10.1101/2023.02.07.23285407\\n86. Han Y, Klinger K, Rajpal DK, Zhu C, Teeple E. 2022. Empowering the\
+    \ discovery of novel target-disease\\nassociations via machine learning approaches in the Open Targets platform. BMC Bioinform.\
+    \ 23(1):232\\n87. Gogleva A, Polychronopoulos D, Pfeifer M, Poroshin V, Ughetto M, et al. 2022. Knowledge graph-\\nbased\
+    \ recommendation framework identifies drivers of resistance in EGFR mutant non-small cell lung\\ncancer. Nat. Commun.\
+    \ 13(1):1667\\n88. Ye C, Swiers R, Bonner S, Barrett I. 2022. A knowledge graph-enhanced tensor factorisation model for\\\
+    ndiscovering drug targets. IEEE/ACM Trans. Comput. Biol. Bioinform. 19(6):3070\\u201380\\n89. Fern\\u00e1ndez-Torras A,\
+    \ Duran-Frigola M, Bertoni M, Locatelli M, Aloy P. 2022. Integrating and format-\\nting biomedical data as pre-calculated\
+    \ knowledge graph embeddings in the Bioteque. Nat. Commun.\\n13(1):5304\\n90. Geleta D, Nikolov A, Edwards G, Gogleva\
+    \ A, Jackson R, et al. 2021. Biological Insights Knowl-\\nedge Graph: an integrated knowledge graph to support drug development.\
+    \ bioRxiv 2021.10.28.466262.\\nhttps://doi.org/10.1101/2021.10.28.466262\\n91. Paliwal S, de Giorgio A, Neil D, Michel\
+    \ J-B, Lacoste AM. 2020. Preclinical validation of therapeutic\\ntargets predicted by tensor factorization on heterogeneous\
+    \ graphs. Sci. Rep. 10(1):18250\\n92. Failli M, Paananen J, Fortino V. 2019. Prioritizing target-disease associations\
+    \ with novel safety and\\nefficacy scoring methods. Sci. Rep. 9(1):9852\\n93. Lee C, Lin J, Prokop A, Gopalakrishnan V,\
+    \ Hanna RN, et al. 2022. StarGazer: a hybrid intelligence\\nplatform for drug target prioritization and digital drug repositioning\
+    \ using Streamlit. Front. Genet.\\n13:868015\\n94. Cezard T, Cunningham F, Hunt SE, Koylass B, Kumar N, et al. 2022. The\
+    \ European Variation Archive:\\na FAIR resource of genomic variation for all species. Nucleic Acids Res. 50(D1):D1216\\\
+    u201320\\n95. Moreno P, Fexova S, George N, Manning JR, Miao Z, et al. 2022. Expression Atlas update: gene and\\nprotein\
+    \ expression in multiple species. Nucleic Acids Res. 50(D1):D129\\u201340\\n96. Varusai TM, Jupe S, Sevilla C, Matthews\
+    \ L, Gillespie M, et al. 2021. Using Reactome to build an\\nautophagy mechanism knowledgebase. Autophagy 17(6):1543\\\
+    u201354\\n97. Shameer K, Badgeley MA, Miotto R, Glicksberg BS, Morgan JW, Dudley JT. 2017. Translational bioin-\\nformatics\
+    \ in the era of real-time biomedical, health care and wellness data streams. Brief. Bioinform.\\n18(1):105\\u201324\\\
+    n80\\nMcDonagh et al.\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\nstill occur before final publication.\\\
+    n\\nBD07_Art05_McDonagh\\nARjats.cls\\nMarch 13, 2024\\n12:34\\n98. Weissler EH, Naumann T, Andersson T, Ranganath R,\
+    \ Elemento O, et al. 2021. The role of machine\\nlearning in clinical research: transforming the future of evidence generation.\
+    \ Trials 22(1):537\\n99. Int. Mult. Scler. Genet. Consort., MultipleMS Consort. 2023. Locus for severity implicates CNS\\\
+    nresilience in progression of multiple sclerosis. Nature 619(7969):323\\u201331\\n100. Dendrou CA, Cortes A, Shipman L,\
+    \ Evans HG, Attfield KE, et al. 2016. Resolving TYK2 locus\\ngenotype-to-phenotype differences in autoimmunity. Sci. Transl.\
+    \ Med. 8(363):363ra149\\n101. McGregor TL, Hunt KA, Yee E, Mason D, Nioi P, et al. 2020. Characterising a healthy adult\
+    \ with a\\nrare HAO1 knockout to support a therapeutic strategy for primary hyperoxaluria. eLife 9:e54363\\n102. Jerber\
+    \ J, Seaton DD, Cuomo ASE, Kumasaka N, Haldane J, et al. 2021. Population-scale single-cell\\nRNA-seq profiling across\
+    \ dopaminergic neuron differentiation. Nat. Genet. 53(3):304\\u201312\\n103. Tambets R, Kolde A, Kolberg P, Love MI, Alasoo\
+    \ K. 2023. Extensive co-regulation of neighbouring\\ngenes complicates the use of eQTLs in target gene prioritization.\
+    \ bioRxiv 2023.09.29.560109. https://\\ndoi.org/10.1101/2023.09.29.560109\\n104. Ndungu A, Payne A, Torres JM, van de\
+    \ Bunt M, McCarthy MI. 2020. A multi-tissue transcriptome\\nanalysis of human metabolites guides interpretability of associations\
+    \ based on multi-SNP models for\\ngene expression. Am. J. Hum. Genet. 106(2):188\\u2013201\\nwww.annualreviews.org \\\
+    u2022 Open Targets\\u2019 Perspective on Genetics\\n81\\n, .\\u2022\\u00b7\\u0005-\\nReview in Advance. Changes may\\\
+    nstill occur before final publication.\"\n  }\n]"
+  acknowledgments: 'We would like to thank the Open Targets Core Team and all partners and collaborators who have
+
+    contributed to the Open Targets consortium past and present. We would like to thank Irene Lopez
+
+    and Yakov Tsepilov for their critical reading of the manuscript. G.T. is cofunded by Open Targets
+
+    and Wellcome grant 220540/Z/20/A.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n    \"\
+    page\": 3\n  },\n  {\n    \"id\": \"fig_p3_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_2.png\",\n   \
+    \ \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_3.png\",\n\
+    \    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_4.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_5.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_6.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_7.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_8.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_9.png\"\
+    ,\n    \"page\": 3\n  }\n]"
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://www.finngen.fi/en\",\n    \"accession\": \"\",\n    \"database\": \"\"\
+    ,\n    \"description\": \"\"\n  }\n]"

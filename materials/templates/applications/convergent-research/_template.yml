@@ -1,0 +1,112 @@
+# Convergent Research FRO Proposal — Template Specification
+#
+# Defines the structure of a Convergent Research / Focused Research
+# Organization (FRO) proposal submission.
+# Source: Grant_writing_frameworks.md + convergentresearch.org
+#
+# Schema Version: 1.0
+
+template:
+  name: "Convergent Research FRO Proposal"
+  version: "1.0"
+  source: "https://www.convergentresearch.org/get-involved"
+  output_formats: [html, pdf, docx]
+
+sections:
+  # ─── Executive Summary ──────────────────────────────────────────────────
+  - id: executive_summary
+    title: "Executive Summary"
+    fields:
+      - id: summary
+        label: "Executive Summary"
+        type: section
+        required: true
+        hint: "High-level overview of the FRO concept, mission, and expected impact"
+
+  # ─── The Gap ────────────────────────────────────────────────────────────
+  - id: gap
+    title: "The Gap"
+    fields:
+      - id: gap_description
+        label: "The Gap"
+        type: section
+        required: true
+        hint: "What critical scientific/engineering bottleneck exists? Why can't academia, startups, or industry solve it?"
+
+  # ─── Our Solution ───────────────────────────────────────────────────────
+  - id: solution
+    title: "Our Solution"
+    fields:
+      - id: solution_description
+        label: "Our Solution"
+        type: section
+        required: true
+        hint: "Technical approach, methodology, and key innovations"
+
+  # ─── Why a FRO is Essential ─────────────────────────────────────────────
+  - id: why_fro
+    title: "Why a FRO is Essential"
+    fields:
+      - id: fro_justification
+        label: "Why a FRO is Essential"
+        type: section
+        required: true
+        hint: "Why this problem requires a Focused Research Organization rather than traditional models"
+
+  # ─── Team & Timeline ───────────────────────────────────────────────────
+  - id: team_timeline
+    title: "Team & Timeline"
+    fields:
+      - id: team
+        label: "Team"
+        type: section
+        required: true
+        hint: "Key personnel, roles, and qualifications"
+
+      - id: timeline
+        label: "Timeline"
+        type: section
+        required: true
+        hint: "Milestones, phases, and expected duration (typically 5-7 years)"
+
+  # ─── Impact & Open Science ──────────────────────────────────────────────
+  - id: impact
+    title: "Impact & Open Science Commitment"
+    fields:
+      - id: impact_description
+        label: "Impact"
+        type: section
+        required: true
+        hint: "Expected outcomes, downstream effects, and public benefit"
+
+      - id: open_science
+        label: "Open Science Commitment"
+        type: section
+        required: true
+        hint: "Data sharing, open-source, and public goods strategy"
+
+  # ─── Funding & Sustainability ───────────────────────────────────────────
+  - id: funding
+    title: "Funding Request & Sustainability"
+    fields:
+      - id: funding_request
+        label: "Funding Request"
+        type: section
+        required: true
+        hint: "Total budget, phased allocation, and justification"
+
+      - id: sustainability
+        label: "Sustainability Plan"
+        type: section
+        required: true
+        hint: "How the infrastructure/outputs persist after FRO funding ends"
+
+  # ─── The Convergent Opportunity ─────────────────────────────────────────
+  - id: convergent_opportunity
+    title: "The Convergent Opportunity"
+    fields:
+      - id: convergent_fit
+        label: "The Convergent Opportunity"
+        type: section
+        required: true
+        hint: "Why Convergent Research is the right partner and how this FRO fits their portfolio"

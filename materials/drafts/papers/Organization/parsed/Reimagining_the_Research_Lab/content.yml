@@ -1,0 +1,133 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/Organization/Reimagining the Research Lab.pdf
+
+citation:
+  title: Reimagining the Research Lab
+  year: '2021'
+content:
+  sections: "[\n  {\n    \"name\": \"FEBRUARY 24, 2021\",\n    \"text\": \"Reimagining the Research Lab\\nMusings on building\
+    \ an independent research lab\\nI\\u2019ve got a few friends interested in building research labs right now. Matt Webb\
+    \ is the\\nmost visible:\\n@intrcnnctd\\nTowards the Orthogonal Technology Lab, v0.1\\nGo to text \\u2192\\nMatt goes\
+    \ on to ponder what it would take:\\n@intrcnnctd\\nTowards the Orthogonal Technology Lab, v0.1\\nGo to text \\u2192\\\
+    nThis is a fine way to structure and fund a research lab. It might be the best way! It\\u2019s\\ncertainly the most well\
+    \ understood.\\nThese are notes towards setting up a research lab that doesn\\u2019t yet exist. It doesn\\u2019t need\
+    \ to exist;\\nI\\u2019m learning by writing, and what I learn might lead anywhere (or nowhere).\\nIn my Thingscon talk\
+    \ I ended with this call:\\nWhat we need are visions of the future of technology that are values-driven, but we don\\\
+    u2019t need\\njust design fictions. We need business model fictions, engineering feasibility study fictions,\\ninterop\
+    \ protocol specification fictions,\\nTalking about the team is a long way downstream from what matters - the outcomes\
+    \ - but it\\u2019s\\nworth sketching out. What is this\\u2026 8-10 people plus a strong commissioning budget?\"\n  },\n\
+    \  {\n    \"name\": \"TOM CRITCHLOW\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"/29/25, 12:12 AM\",\n    \"text\"\
+    : \"Reimagining the Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\n1/7\\n\\nBut what about some\
+    \ other ways?\\nI\\u2019m inspired by Nadia\\u2019s post reimagining the PhD, essentially creating a personal\\nassemblage\
+    \ of learning funded by a mixture of sources:\\nNadia Eghbal\\nReimagining the PhD\\nGo to text \\u2192\\nAnd by Andy\\\
+    u2019s notes on life as an independent researcher:\\nAndy Matuschak\\nReflections on 2020 as an independent researcher\\\
+    nGo to text \\u2192\\nThese models are great - bridging self-directed work, working in public and\\nsubscription revenue\
+    \ from individuals - but we\\u2019ve yet to see many examples of this\\nworking beyond the individual.\\nWell, actually\
+    \ that\\u2019s not quite true.\\nI\\u2019d describe my time from 2015-2020 (when the book will be published) in three\
+    \ distinct phases:\\nPhase I: 2015-2016: Discovery, exploration, initial research, hypothesis generation (funded\\nby\
+    \ the Ford Foundation)\\nPhase II: 2016-2018: Experience, experimenting, hypothesis testing (working at GitHub)\\nPhase\
+    \ III: 2018-2020: Refining, summarizing, consolidation (funded by Protocol Labs)\\nWhen I left Khan Academy in early 2019,\
+    \ my (very understanding) wife and I made a rough plan:\\nin 2019, I\\u2019d focus on the work and avoid thinking about\
+    \ funding at all; in 2020, I\\u2019d figure out\\nsome plan for sustainability and begin moving towards it; hopefully\
+    \ by the end of 2021, we\\u2019d\\nstop burning cash. My collaborator Michael Nielsen suggested we set up a Patreon to\
+    \ solicit\"\n  },\n  {\n    \"name\": \"funding for our work, and I agreed, not thinking much of it. He\\u2019s now moved\
+    \ on, but I\\u2019m quite\",\n    \"text\": \"grateful to him for that early nudge.\\nLess than two years later, my patrons\
+    \ have crowdfunded roughly a graduate student\\u2019s\\nfellowship grant. It\\u2019s not lucrative, but it\\u2019s enough\
+    \ to cover my living expenses. That\\u2019s an\\nimportant milestone! So long as this income stream continues, my runway\
+    \ has been extended\\nindefinitely\\u2014or at least until I start getting nervous about not being able to save. My goal\
+    \ was\\nto end 2020 with a plan for how to eventually fund my work, but I\\u2019m astonished to now find\\nmyself ending\
+    \ 2020 with solid funding in hand.\"\n  },\n  {\n    \"name\": \"/29/25, 12:12 AM\",\n    \"text\": \"Reimagining the\
+    \ Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\n2/7\\n\\nWe\\u2019re beginning to see individual\
+    \ creators bundling together (e.g. the everything\\nbundle), and there are examples of companies that are at least partially\
+    \ audience-\\nfunded (e.g. are.na\\u2019s investment campaign).\\nBuilding an Independent Research Lab\\nSo, what if we\
+    \ combined these ideas to imagine an independent research lab that\\u2019s\\nfunded (at least partially) by their audience?\\\
+    nPhase 1: Audience-research fit. I\\u2019m imagining that the best way to get started is to\\nannounce a paid subscription\
+    \ newsletter. It\\u2019s essentially proving there\\u2019s an audience-\\nresearch fit for the work. Thinking about, exploring\
+    \ and sketching ideas and thoughts.\\nMatt already blogs like a machine so this should be easy. Importantly at this step\
+    \ - it\\u2019s\\nabout gathering subscribers that want the research notes but also want to pre-fund the\\nresearch lab.\\\
+    nPhase 2: Small artefacts. Just like NPR does a pledge drive I think you could run some\\nsmall crowd-funding campaigns\
+    \ to fund the work against some deliberate research\\nstreams. Matt has some ideas already (\\u201ca proof of concept\
+    \ of a zero-data connected\\nproduct platform\\u201d!) and I think you could easily imagine these being self-contained\\\
+    nenough to run a small crowd-funding campaign around. Those funds would essentially\\nallow you to bring together a small\
+    \ team to focus on the problem for a defined length of\\ntime. Nice.\\nPhase 3: Team assemblage. Here\\u2019s where the\
+    \ analogy to the everything bundle starts\\nto get interesting. If phase 1 & 2 work then you may end up in the situation\
+    \ where you\\ncould actually assemble a few different independent researchers together. This is\\nwhere you begin to move\
+    \ from independent researcher to independent research lab.\\nWhat if there\\u2019s a handful of folks all doing step 1?\
+    \ If you\\u2019re far enough along you might\\nrealistically bundle together a few and.. hey presto you have a research\
+    \ lab!\\nA crazy idea? Perhaps. But folks like Matt who already have blogging skillz and a proven\\ntrack record might\
+    \ be able to pull it off.\"\n  },\n  {\n    \"name\": \"/29/25, 12:12 AM\",\n    \"text\": \"Reimagining the Research\
+    \ Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\n3/7\\n\\nMixing Individual & Institutional Backers\\nOne\
+    \ unresolved tension here is how to mix individual backers with institutional backers.\\nAndy covered his first year\\\
+    u2019s expenses via a grant from Emergent Ventures for\\nexample. This might be a strong argument for a more sophisticated\
+    \ platform than\\nSubstack to run the subscriptions through - ideally you\\u2019d like some nice way to combine\\nindividual\
+    \ backers and institutional backers.\\nAnd maybe there\\u2019s a way to put consulting inside this research frame also?\
+    \ Ben\\nPieratt\\u2019s live pre-brand experiments are intriguing as as a new model of funding work\\nand working in public.\\\
+    nResearch Director as Showrunner\\nThis whole idea works because I think there\\u2019s a strong analogy between the research\\\
+    ndirector of a research lab and a showrunner / worldbuilder. I\\u2019m no expert but I have a\\nhunch that research labs\
+    \ only succeed with a strong willed, opinionated research\\ndirector at the helm who can steer the vision, create worlds\
+    \ before they\\u2019re ready and\\nsecure funding.\\nWhy not do that in public with a mixture of individual and institutional\
+    \ backers?\\n\\u2013\\nMatt - how long would it take you to raise 7 figures of funding to get your research lab\\noff\
+    \ the ground? Compared with how long it would take you to raise 6 figures from\\nsubscribers willing to make a few initial\
+    \ bets?\\nJust a thought.\\n\\u2013\\nUpdate #1: Andy points me to Martin\\u2019s blog where he says this:\"\n  },\n \
+    \ {\n    \"name\": \"/29/25, 12:12 AM\",\n    \"text\": \"Reimagining the Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\\
+    n4/7\\n\\nMartin Kleppmann\\nBuilding the future of computing, with your help \\u2014 Martin Kleppmann\\u2019s blog\\\
+    nGo to text \\u2192\\nInteresting!\\nUpdate #2: Perhaps a more interesting and relevant model for organizations being\\\
+    ncrowd-funded is not Are.na but Athens Research which has a full community-funding\\nmodel in place\\u2026.\\nUpdate #3:\
+    \ Peter has some great thoughts in his response:\\n@thewavingcat\\nPublic Interest Independent Research Labs\\nGo to text\
+    \ \\u2192\\nUpdate #4: Matt has blogged some inspiration and collected 14 research studios he\\u2019s\\nkeeping an eye\
+    \ on: http://interconnected.org/home/2021/03/15/labs\\nYou might be wondering: even if I get enough Patreon funding to\
+    \ cover my own living\\nexpenses, it seems unlikely that I will be able to crowdfund a team of five to ten people.\\nFortunately,\
+    \ I have found over the last years that collaboration does not require all team\\nmembers to be funded out of the same\
+    \ purse. I constantly collaborate with people without\\nbeing responsible for their payroll. In open source, it is common\
+    \ for contributors to a project to\\nbe employed by several different organisations, and indeed such diversity makes projects\
+    \ better\\nand more resilient.\\nI work closely with the Ink & Switch lab, who have their own funding. Some of my collaborators\\\
+    nare PhD students who have their own stipends, or research fellows who have their own grants.\\nWe come together because\
+    \ of our common interests, and because nobody is trying to profit\\nfrom the others. We have a vision of the future that\
+    \ we want to realise, and the funding just lets\\nus pay the bills as we work towards the greater goal.\\nIf you attempt\
+    \ to approach an area of research with the wrong type of funding, it will\\ninvariably fail. Any money isn\\u2019t necessarily\
+    \ better than no money. The right type of money\\nis better than no money.\\nIn other words:\\nI think there\\u2019s a\
+    \ real and important role to play for publicly funded, but largely\\nindependent research labs.\"\n  },\n  {\n    \"name\"\
+    : \"/29/25, 12:12 AM\",\n    \"text\": \"Reimagining the Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\\
+    n5/7\"\n  },\n  {\n    \"name\": \"ADD COMMENT\",\n    \"text\": \"Upvotes\\nNewest\\nOldest\\n?\\nUpdate #5: Sam posted\
+    \ a great little list of research studios and Ben too.\\nUpdate #6: This Hacker News thread is worth a read: Ask HN: Anybody\
+    \ Started a\\nResearch Institute?\\nMore blog posts:\\nFeatured on People & Blogs\\nAugust 22, 2025\\nTaking Blogging\
+    \ Seriously\\nJune 27, 2025\\nGoogle is Grounded and Needs to Learn How to Soar\\nMarch 21, 2025\\nThis post was written\
+    \ by Tom Critchlow - blogger and independent consultant. Subscribe to\\njoin my occassional newsletter:\\nEmail Address\\\
+    nSubscribe\\nLogin\"\n  },\n  {\n    \"name\": \"M \\u2193 \\u00a0 MARKDOWN\",\n    \"text\": \"Anonymous\\nAdd a comment\"\
+    \n  },\n  {\n    \"name\": \"COMMENT ANONYMOUSLY\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"/29/25, 12:12 AM\"\
+    ,\n    \"text\": \"Reimagining the Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\n6/7\\n\\nT\\\
+    n-1 points\\u00a0\\u00a0\\u00b7\\u00a0\\u00a05 years ago\\nI think this creates another biased research model. Only this\
+    \ is biased towards producing popular blog posts.\\nValuable and important work may not correlate with this. Actually,\
+    \ I'll make a stronger statement. It doesn't\\ncorrelate.\\nYou have Eric Drexler with zero patreon supporters. Even his\
+    \ personal website (formerly at e-drexler.com and\\nmetamodern.com) has been apparently taken down. And yet, he inspired\
+    \ and foreseen a revolution. If your\\nmodel doesn't work for Drexler, it doesn't work. Another case (a casket case) is\
+    \ Doug Engelbart. People loved\\nhis ideas, but did they support him while he was alive? No.\\nWe don't need more somewhat\
+    \ intelligent and somewhat creative researchers but great self-promoters and\\nwriters like Andy Matuschak (nothing against\
+    \ him, but his work is crap compared with really valuable stuff that\\nEngelbart so clearly envisaged), we need mechanisms\
+    \ to fund breakthroughs.\\nPeople like Drexler, like Aubrey de Grey need funding. People like Unitsky. And the substack\
+    \ or patreon\\nsubscription is not a working model for our bright future.\\nTom Critchlow\\n1 point\\u00a0\\u00a0\\u00b7\\\
+    u00a0\\u00a05 years ago\\nI'm not sure this is exactly helpful - yes of course this model of funding is biased. The medium\
+    \ is the message.\\nThe funding is the features. I get it. But it's also potentially opening up a new way of doing things.\\\
+    nAnd I don't really appreciate the side swipes at Andy.\\nThis model is of course not a good fit for all research labs\
+    \ - but perhaps for some.\\nPowered by Commento\"\n  },\n  {\n    \"name\": \"/29/25, 12:12 AM\",\n    \"text\": \"Reimagining\
+    \ the Research Lab\\nhttps://tomcritchlow.com/2021/02/24/research-studios/\\n7/7\"\n  }\n]"
+  funding: 'grateful to him for that early nudge.
+
+    Less than two years later, my patrons have crowdfunded roughly a graduate student’s
+
+    fellowship grant. It’s not lucrative, but it’s enough to cover my living expenses. That’s an
+
+    important milestone! So long as this income stream continues, my runway has been extended
+
+    indefinitely—or at least until I start getting nervous about not being able to save. My goal was
+
+    to end 2020 with a plan for how to eventually fund my work, but I’m astonished to now find
+
+    myself ending 2020 with solid funding in hand.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n   \
+    \ \"page\": 2\n  },\n  {\n    \"id\": \"fig_p2_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_2.png\",\n\
+    \    \"page\": 2\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_2.png\"\
+    ,\n    \"page\": 5\n  }\n]"

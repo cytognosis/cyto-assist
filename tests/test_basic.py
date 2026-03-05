@@ -18,8 +18,9 @@ def test_package_import() -> None:
 
 def test_basic_benchmark() -> None:
     """Test standard array allocations and basic math for naive benchmarking."""
-    import numpy as np
     import time
+
+    import numpy as np
 
     start = time.time()
     arr = np.random.randn(1000, 1000)

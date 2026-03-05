@@ -1,0 +1,149 @@
+---
+title: "{{< meta _template.title >}}"
+subtitle: "Standards & Requirements Specification"
+author:
+  - name: "{{< var author.name >}}"
+    affiliation: "{{< var author.affiliation >}}"
+date: last-modified
+date-format: "MMMM D, YYYY"
+version: "{{< var doc.version >}}"
+status: "{{< var doc.status >}}"
+
+# --- Template Parameters (override in _variables.yml or per-document) ---
+params:
+  doc_version: "1.0"
+  doc_status: "Draft"
+
+# --- Output Formats ---
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+  pdf:
+    documentclass: article
+    papersize: letter
+    fontsize: 11pt
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+  gfm:
+    toc: true
+
+# --- Cross-reference configuration ---
+crossref:
+  tbl-prefix: "Table"
+  fig-prefix: "Figure"
+---
+
+<!-- 
+================================================================================
+REQUIREMENTS DOCUMENT TEMPLATE
+================================================================================
+This is a reusable Quarto template for writing formal requirements specifications.
+
+INSTRUCTIONS:
+1. Copy this file and rename it for your specific requirements document.
+2. Replace all placeholders wrapped in {{ PLACEHOLDER }} with your content.
+3. Add/remove requirement rows as needed in each category table.
+4. Update the evaluation criteria if your scoring methodology differs.
+5. Render via: quarto render <filename>.qmd --to html,pdf,docx
+================================================================================
+-->
+
+# Purpose {#sec-purpose}
+
+<!-- Describe what this requirements document is for. What problem/decision will it inform? -->
+
+{{ PURPOSE_DESCRIPTION }}
+
+---
+
+# Requirements Classification {#sec-classification}
+
+Requirements are classified into three tiers:
+
+| Tier | Label | Weight | Meaning |
+|------|-------|--------|---------|
+| **R** | Required | Must-have | Candidate is disqualified without this capability |
+| **SP** | Strongly Preferred | High priority | Significant penalty for absence |
+| **P** | Preferred | Nice-to-have | Positive differentiator when present |
+
+---
+
+# Requirements {#sec-requirements}
+
+<!-- 
+  Organize requirements into logical categories.
+  Each category gets its own subsection with a table of requirements.
+  Copy/paste the category template below as needed.
+-->
+
+## {{ CATEGORY_1_NAME }} {#sec-cat-1}
+
+<!-- Brief description of what this category covers. -->
+
+| ID | Tier | Requirement |
+|----|------|-------------|
+| **R-1** | **{{ TIER }}** | {{ REQUIREMENT_DESCRIPTION }} |
+| **R-2** | **{{ TIER }}** | {{ REQUIREMENT_DESCRIPTION }} |
+
+## {{ CATEGORY_2_NAME }} {#sec-cat-2}
+
+| ID | Tier | Requirement |
+|----|------|-------------|
+| **R-3** | **{{ TIER }}** | {{ REQUIREMENT_DESCRIPTION }} |
+| **R-4** | **{{ TIER }}** | {{ REQUIREMENT_DESCRIPTION }} |
+
+<!-- Add more categories as needed following the same pattern. -->
+
+---
+
+# Evaluation Criteria {#sec-evaluation}
+
+Each candidate will be scored on a **0–3** scale per requirement:
+
+| Score | Meaning |
+|-------|---------|
+| **3** | Fully supported natively |
+| **2** | Supported with minimal configuration or first-party plugin |
+| **1** | Achievable via third-party OSS tools/chaining |
+| **0** | Not supported or prohibitively difficult |
+
+## Weighted Scoring
+
+Scores are multiplied by tier weight:
+
+| Tier | Multiplier |
+|------|------------|
+| Required (**R**) | ×3 |
+| Strongly Preferred (**SP**) | ×2 |
+| Preferred (**P**) | ×1 |
+
+**Maximum possible score:** {{ CALCULATED_MAX_SCORE }}
+
+<!-- Formula: Σ (count_per_tier × tier_weight × max_score_per_req) -->
+
+---
+
+# Known Candidates {#sec-candidates}
+
+<!-- List pre-identified candidates for evaluation. -->
+
+1. **{{ CANDIDATE_1 }}** — {{ SHORT_DESCRIPTION }}
+2. **{{ CANDIDATE_2 }}** — {{ SHORT_DESCRIPTION }}
+
+<!-- Additional candidates will be identified through research. -->
+
+---
+
+# Deliverables {#sec-deliverables}
+
+<!-- What artifacts will be produced from this requirements process? -->
+
+1. **This document** — Formal requirements specification
+2. {{ ADDITIONAL_DELIVERABLE }}

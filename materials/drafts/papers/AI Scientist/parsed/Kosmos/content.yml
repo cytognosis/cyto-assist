@@ -1,0 +1,1533 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/Kosmos.pdf
+
+identifiers:
+  doi: 10.1096/fj.202002774R
+  pmid: '33811688'
+citation:
+  title: 'Kosmos:   An   AI   Scientist   for   Autonomous Discovery'
+  journal: The FASEB Journal
+  year: '2021'
+  volume: '35'
+  publisher: Wiley
+  authors: Yumeng Huang, Xiaoxi Xu, Peter Arvan, Ming Liu
+content:
+  abstract: 'Data-driven scientific discovery requires iterative cycles of literature search, hypothesis generation, and data
+
+    analysis. Substantial progress has been made towards AI agents that can automate scientific research, but all
+
+    such agents remain limited in the number of actions they can take before losing coherence, thus limiting the
+
+    depth of their findings. Here we present Kosmos, an AI scientist that automates data-driven discovery. Given an
+
+    open-ended objective and a dataset, Kosmos runs for up to 12 hours performing cycles of parallel data analysis,
+
+    literature search, and hypothesis generation before synthesizing discoveries into scientific reports. Unlike prior
+
+    systems, Kosmos uses a structured world model to share information between a data analysis agent and a
+
+    literature search agent. The world model enables Kosmos to coherently pursue the specified objective over
+
+    200 agent rollouts, collectively executing an average of 42,000 lines of code and reading 1,500 papers per run.
+
+    Kosmos cites all statements in its reports with code or primary literature, ensuring its reasoning is traceable.
+
+    Independent scientists found 79.4% of statements in Kosmos reports to be accurate, and collaborators reported
+
+    that a single 20-cycle Kosmos run performed the equivalent of 6 months of their own research time on
+
+    average. Furthermore, collaborators reported that the number of valuable scientific findings generated scales
+
+    linearly with Kosmos cycles (tested up to 20 cycles). We highlight seven discoveries made by Kosmos that
+
+    span metabolomics, materials science, neuroscience, and statistical genetics. Three discoveries independently
+
+    reproduce findings from preprinted or unpublished manuscripts that were not accessed by Kosmos at runtime,
+
+    while four make novel contributions to the scientific literature.
+
+    1Edison Scientific Inc., San Francisco, CA, USA
+
+    2University of Oxford, Oxford, UK
+
+    3UK Dementia Research Institute at University College London, London, UK
+
+    4Queen Square Institute of Neurology, University College London, London, UK
+
+    5Consortium for Biomedical Research and Artificial Intelligence in Neurodegeneration (C-BRAIN)
+
+    6Department of Neurology, Washington University School of Medicine, St. Louis, MO, USA
+
+    7FutureHouse Inc., San Francisco, CA, USA
+
+    8Eric and Wendy Schmidt Center, Broad Institute of MIT and Harvard, Cambridge, MA, USA
+
+    9Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA, USA
+
+    10Division of Cardiovascular Medicine, Stanford University, CA, USA
+
+    11Department of Chemistry, Washington University, St. Louis, MO, USA
+
+    12Center for Mass Spectrometry and Metabolic Tracing, Washington University, St. Louis, MO, USA
+
+    13Division of Nutritional Science and Obesity Medicine, Washington University, St. Louis, MO, USA
+
+    14Department of Pathology and Immunology, Washington University, St. Louis, MO, USA
+
+    15Growth Factors, Nutrients and Cancer Group, Molecular Oncology Programme, Spanish National Cancer Research Center,
+
+    Madrid, Spain
+
+    16St. Louis VA Medical Center, St Louis, MO, USA
+
+    17Department of Microbiology and Immunology, Tulane University School of Medicine, New Orleans, LA, USA
+
+    18Tulane Center for Aging, Tulane University School of Medicine, New Orleans, LA, USA
+
+    19Tulane Brain Institute, Tulane University School of Medicine, New Orleans, LA, USA
+
+    20Centre d’Electronique et de Microtechnique (CSEM), Neuchâtel, Switzerland
+
+    ∗These authors contributed equally.
+
+    ‡These authors jointly supervise work at Edison.
+
+    †These authors jointly supervised this work.
+
+    Correspondence to {andrew,sam}@edisonscientific.com
+
+    1
+
+    arXiv:2511.02824v2  [cs.AI]  5 Nov 2025
+
+
+    1'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Data-driven discovery consists of iterative steps of\
+    \ literature search, hypothesis generation, and data analysis to draw\\nnew scientific conclusions from datasets. Due\
+    \ to their proficiency in programming and interdisciplinary reasoning,\\nlarge language model (LLM) agents have the potential\
+    \ to automate data-driven discovery across domains.\\nRobin [1], a system we previously reported, performs automated cycles\
+    \ of literature search and data analysis to\\npropose evidence-based hypotheses, but has limited context sharing between\
+    \ its agents and is primarily tailored for\\ntherapeutics development. Sakana\\u2019s AI Scientist [2] autonomously forms\
+    \ hypotheses, iteratively conducts computa-\\ntional experiments, and writes and reviews manuscripts about its results,\
+    \ but remains limited to machine learning\\nresearch. Google\\u2019s AI co-scientist [3] conducts iterative cycles of\
+    \ reasoning to generate scientific hypotheses, but\\ndoes not perform or analyze experiments. The Virtual Lab [4] successfully\
+    \ designed novel nanobodies that neutralize\\nSARS-CoV-2, and may be extensible to other domains, but lacks exploratory\
+    \ data analysis capabilities.\\nHere, we present Kosmos, an AI scientist that automates data-driven discovery across a\
+    \ wide range of scientific\\ndisciplines. Given an open-ended objective and a dataset, Kosmos performs iterative cycles\
+    \ of parallel data analysis,\\nliterature search, and hypothesis generation, and summarizes its discoveries in scientific\
+    \ reports (Figure 1a). At each\\ncycle, Kosmos launches several parallel instances of two general-purpose Edison Scientific\
+    \ agents, a data analysis\\nagent [5] and a literature search agent [6], with each instance assigned to a specific task\
+    \ that is aligned with the\\nend objective. Kosmos shares and synthesizes information among these agents by continuously\
+    \ updating a structured\\nworld model, which enables Kosmos to execute an average of 42,000 lines of code across 166 data\
+    \ analysis agent\\nrollouts and read 1,500 full-length scientific papers across 36 literature review agent rollouts per\
+    \ run (Figure 1b).\\nThis is a 9.8x increase in code generation compared to Robin. Consolidating information in the world\
+    \ model further\\nallows every claim in a Kosmos scientific report to be directly linked to the data analysis or source\
+    \ from which it\\noriginated, ensuring that Kosmos\\u2019 reasoning is traceable.\\nWe report seven discoveries made by\
+    \ Kosmos: three discoveries made by Kosmos reproduce findings from preprinted\\nor unpublished manuscripts, while the\
+    \ remaining four make novel contributions to the scientific literature. Each\\ndiscovery is derived from a unique data\
+    \ type and field and is corroborated by independent analysis from a domain\\nexpert. Among the examples below, Kosmos\
+    \ identified a novel, clinically relevant mechanism of neuronal aging, and\\ngenerated novel statistical evidence that\
+    \ high circulating levels of superoxide dismutase 2 (SOD2) may causally reduce\\nmyocardial fibrosis in humans. Together,\
+    \ these discoveries illustrate a system that can autonomously reproduce, refine,\\nand generate data-driven discoveries\
+    \ with the rigor and transparency essential for advancing scientific understanding.\\n2\"\n  },\n  {\n    \"name\": \"\
+    Results\",\n    \"text\": \"2.1\\nKosmos system and architecture\\nThe core advancement in Kosmos is the use of a structured\
+    \ world model to manage the output of a large number\\nof agents running in parallel. Kosmos is initiated with a research\
+    \ objective and a dataset, which are specified by a\\nscientist. Kosmos attempts to complete the research objective by\
+    \ using LLMs, data analysis agents, literature search\\nagents, and the world model to perform iterative discovery cycles.\
+    \ In each cycle, Kosmos executes up to ten literature\\nsearch and analysis tasks, and subsequently updates the world\
+    \ model with summaries of the task outputs. Kosmos\\nthen queries the world model to propose literature search and data\
+    \ analysis tasks to be completed in the next cycle.\\nThis context management strategy allows Kosmos to explore many different\
+    \ research avenues simultaneously, and\\nrun for eight times as many iterations than existing systems [1, 2, 7]. Once\
+    \ Kosmos believes it has completed the\\nresearch objective, it synthesizes key discoveries into three or four scientific\
+    \ reports. Each statement and figure in\\nthe report cites either a publication found by the literature search agent or\
+    \ a Jupyter notebook created by the data\\nanalysis agent.\\nTo assess the overall accuracy of Kosmos reports, we first\
+    \ extracted 102 statements from three representative reports\\nand determined whether the statements originated from the\
+    \ scientific literature, a data analysis, or an interpretation\\nbetween the two. We then asked expert scientist evaluators\
+    \ to classify the accuracy of each statement as \\u201cSupported\\u201d\\nor \\u201cRefuted\\u201d. The scientist evaluators\
+    \ were instructed to classify the statement as \\u201cSupported\\u201d if they could reproduce\\nthe statement with their\
+    \ own analysis or find support for the statement in the literature, or \\u201cRefuted\\u201d if their analyses\\nor literature\
+    \ search produced a different result (see Methods). The original code or cited paper(s) supporting the\\n2\\n\\nReasoning\\\
+    nDepth\\nNovelty\\n50%\\n50%\\n62%\\n25%\\n12%\\n5\\n10\\n15\\n20\\nKosmos Cycle Number\\n0\\n4\\n8\\n12\\n16\\nNumber\
+    \ of Valuable Findings\\n5.8\\n7.5\\n11.0\\n5\\n10\\n15\\n20\\nKosmos Cycle Number\\n0\\n2\\n4\\n6\\n8\\n10\\nEstimated\
+    \ Expert Time (months)\\n3.9\\n4.4\\n6.2\\nData analysis\\nLiterature review\\nInterpretation\\nOverall\\n0\\n20\\n40\\\
+    n60\\n80\\n100\\nAccuracy (%)\\n85%\\n(n = 55)\\n82%\\n(n = 28)\\n58%\\n(n = 19)\\n79%\\n(n = 102)\\na\\nb\\nc\\nd\\ne\\\
+    nf\\ng\\nData Analyses\\nRead Papers\\nFig. 2\\nFig. 3\\nFig. 4\\nFig. 5\\nFig. 6\\nFig. 7\\nFig. 8\\nAverage\\n0\\n1\\\
+    n2\\n3\\n4\\n5\\n6\\nPredicted Expert Time (months)\\n4.3\\n4.0\\n3.2\\n5.0\\n5.1\\n2.5\\n4.4\\n4.1\\nDiscovery 3\\nDiscovery\
+    \ 1\\nDiscovery 2\\nEstablished Finding\\nLiterature Review Agent\\nData Analysis Agent\\nInput\\nKosmos World Model\\\
+    nOutput\\nLines of Code\\nPapers Read\\nKosmos\\nRobin\\nFinch\\nPaperQA2\\n42,500\\n\\u00b17,280\\n4,310\\n\\u00b1344\\\
+    n301\\n\\u00b136\\n0\\n\\u00b10\\n1,500\\n\\u00b11,120\\n1,530\\n\\u00b1289\\n0\\n\\u00b10\\n33\\n\\u00b129\\nAgent\\\
+    nCompletely novel (n=1)\\nLargely novel (n=2)\\nModerately novel (n=5)\\nNot novel (n=0)\\nHigh depth (n=4)\\nModerate\
+    \ depth (n=4)\\nShallow depth (n=0)\\nNo depth (n=0)\\nResearch objective:\\nIdentify validated Type 2\\ndiabetes protective\
+    \ mechanisms\\nDataset:\\nAnnotated multi-omics data\\nFigure 1: Kosmos workflow and performance. a) Overall workflow\
+    \ for Kosmos. (left) Kosmos is provided with an initial\\ndataset and broad research objective specified by a scientist.\
+    \ (middle) The Kosmos world model coordinates data analysis and\\nliterature search agents to identify key discoveries.\
+    \ (right) Each discovery is presented in a scientific report. b) Statistics for\\nlines of code written and papers read\
+    \ for an average run across scientific agents [5, 6]. c) Accuracy of Kosmos across data\\nanalysis, literature review,\
+    \ and interpretation statement types, as evaluated by expert scientists from 102 statements across\\nthree representative\
+    \ reports. d) Predicted equivalent expert time for the seven Kosmos runs described in this report, assuming\\nit takes\
+    \ an expert 15 minutes to read a full paper and 2 hours to complete a Jupyter notebook of data analysis at 174 hours\\\
+    nof work per month. e) Equivalent expert time was estimated by leading academic groups about the time required to achieve\\\
+    nfindings for Kosmos at cycles 5, 10, and 20, showing scaling in expert-equivalent research time with Kosmos runtime.\
+    \ Shaded\\nregion denotes \\u00b11 SD. f) The number of valuable findings generated at different steps of a Kosmos run\
+    \ scales with Kosmos\\nruntime, as estimated by leading academic groups. Shaded region denotes \\u00b11 SD. g) Academic\
+    \ groups\\u2019 evaluations of valuable\\nfindings from Kosmos cycle 20 indicate moderate to complete novelty (top) and\
+    \ high to moderate reasoning depth (bottom).\\n3\\n\\nstatements were not made available to the evaluating scientist during\
+    \ this process. Overall, 79.4% of the statements in\\nthe report were accurate, with differing results by type: 85.5%\
+    \ of the data analysis-based statements were reproducible,\\n82.1% of literature review-based statements were validated\
+    \ with primary sources, and 57.9% of synthesis statements\\nwere accurate (Figure 1c).\\nWe then evaluated the time it\
+    \ would take for a human scientist to complete the work that Kosmos performs in\\nan individual run. We first calculated\
+    \ this value by tallying the number of data analysis and papers included in a\\ngiven Kosmos run and estimating the time\
+    \ it would take a human researcher to complete the same number of tasks.\\nWe estimated each Kosmos run performs approximately\
+    \ 4.1 expert-months of research (n=6, \\u03c3=0.85; Figure 1d),\\nassuming an expert scientist takes 15 minutes to read\
+    \ a full paper and 2 hours to complete a data analysis task using\\na Jupyter notebook [8] at 174 hours of work per month.\\\
+    nTo obtain an orthogonal estimate of the amount of work done by Kosmos, we collaborated with leading academic\\ngroups\
+    \ to evaluate Kosmos at cycles 5, 10, and 20 of its run. These groups estimated that the findings from a 20-cycle\\nKosmos\
+    \ run would have taken them 6.14 months of research to complete (n=7, \\u03c3=2.49), much higher than our\\nestimated\
+    \ time savings given their runs (Figure 1e). Furthermore, they report that expert-equivalent research time\\nscales with\
+    \ Kosmos runtime, roughly doubling from cycle 5 to cycle 20 (Figure 1e). Similarly, when asked about the\\nnumber of valuable\
+    \ findings that Kosmos generated across the run, experts report that the number of valuable findings\\nscales with the\
+    \ amount of cycles in the Kosmos run (Figure 1f). Lastly, when asked about Kosmos\\u2019 reasoning depth\\nand novelty,\
+    \ expert scientists report that valuable findings from cycle 20 demonstrate high to moderate reasoning\\ndepth and moderate\
+    \ to complete novelty (Figure 1g). Together, these results suggest scaling between computational\\ninvestment and scientific\
+    \ output.\\nIn the following sections, we present seven studies illustrating discoveries made by Kosmos during these collaborations.\\\
+    nWe group these Kosmos discoveries into the following categories:\\n1. Two runs that reproduce existing discoveries that\
+    \ were either unpublished, or published after the cutoff of the\\nrelevant language models and not accessed by Kosmos\
+    \ at runtime.\\n2. One run that reproduces a published finding not accessed by Kosmos at runtime using independent reasoning.\"\
+    \n  },\n  {\n    \"name\": \"Two runs that establish additional, novel support for existing discoveries\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"One run that independently develops a new analytical method\",\n    \"text\": \"5.\
+    \ One run that makes a novel, clinically-relevant discovery not previously identified by human researchers.\\nThe prompts\
+    \ and datasets given to Kosmos for each of these discoveries can be found in Supplementary Information\\n1. The Kosmos\
+    \ reports describing these discoveries can be viewed at the links in Supplementary Table 1. In the main\\nfigures of this\
+    \ report, any plots or results generated by Kosmos are highlighted in blue \\u201cKosmos\\u201d sections. Plots\\ngenerated\
+    \ by human scientists to validate Kosmos\\u2019 results are highlighted in orange \\u201cHuman Validation\\u201d sections.\\\
+    nThe Jupyter notebooks Kosmos wrote to generate these plots or results are linked in the figure captions. We improved\\\
+    nthe legibility of these plots for publication, but did not change the plot content.\\n2.2\\nKosmos replicates human findings\
+    \ from different fields\\n2.2.1\\nDiscovery 1: Nucleotide metabolism as the dominant pathway altered under hypothermic\
+    \ conditions\\nin brain\\nWe tested whether Kosmos could reproduce an unpublished discovery using metabolomics data (Figure\
+    \ 2a). The data\\nused in this run was originally collected to help identify the metabolic mechanisms underlying cooling-induced\
+    \ neuro-\\nprotection. While the Kosmos run was performed on the unpublished dataset, this work has since been preprinted\
+    \ [9].\\nSpecifically, the original experiment investigated whether activating a specific brain circuit that regulates\
+    \ body tem-\\nperature in mice could induce a controlled, torpor-like state that protects the brain from injury. Using\
+    \ chemogenetic\\ntools, Kamal et al. selectively activated kappa opioid receptor\\u2013expressing (KOR+) neurons in the\
+    \ medial preoptic\\narea (POA), a key center for thermoregulation [9].\\n4\\n\\nDataset: Brain metabolomics data from\\\
+    nmice treated with hypothermia by activation\\nof KOR+ POA neurons.\\nHuman Validation\\nb\\nRelative Abundance\\n0.0\\\
+    n0.4\\n0.8\\n1.2\\nControl\\nNormothermic\\nHypothermic\\nAdenosine\\nAdenine\\nIMP\\nCytidine\\nCMP\\nUMP\\na\\nResearch\
+    \ objective (Abbr.): Identify the\\nspecific metabolic adaptations that enable\\nKOR-induced cerebroprotection during\\\
+    nhypothermia.\\nd\\ng\\ne\\nKosmos\\nHuman Validation\\n30 minutes later:\\nCollection of brain tissue\\nUntargeted metabolomics\\\
+    nand lipidomics\\nInduction of Hypothermic-POAKOR+,\\nNormothermic-POAKOR+,\\nControl conditions to mice\\nc\\nNumber\
+    \ of Metabolites\\nNucleotide Metabolism\\nAmino Acid Metabolism\\nPyrimidine Metabolism\\nPurine Metabolism\\nOne-Carbon\
+    \ Metabolism\\nEnergy Metabolism\\nTCA Cycle\\nNeurotransmitter Metabolism\\nLipid Metabolism\\nAntioxidant Systems\\\
+    n0\\n2\\n4\\n6\\n8\\nUpregulated\\nDownregulated\\nKosmos\\nKosmos performs pathway enrichment analysis\\nAdenine \\u2192\
+    \ AMP\\nAdenosine \\u2192 AMP\\nGuanine \\u2192 GMP\\nGuanosine \\u2192 GMP\\nHypoxanthine \\u2192 IMP\\nInosine \\u2192\
+    \ IMP\\nCytidine \\u2192 CMP\\nUridine \\u2192 UMP\\nThymidine \\u2192 TMP\\nSalvage\\nPrecursor\\nSynthesis\\nProduct\\\
+    nLog2 Fold Change\\n0.2\\n0.0\\n-0.2\\n-0.4\\n-0.6\\nKosmos tests nucleotide salvage pathway activation\\nf\\nDiscovery\
+    \ synthesis\\n\\u201cHypothermic neuroprotection engages a\\nbrain-wide shift toward nucleotide salvage while\\nconstraining\
+    \ the conversion of CMP to\\nCDP-choline. This reprogramming preserves\\nenergetic homeostasis, sustains nucleotide\\\
+    npools, and couples pyrimidine handling to\\nregulated membrane precursor flux.\\u201d\\nKosmos rules out de novo synthesis\
+    \ pathways\\nAspartate\\nGlutamine\\nGlycine\\nL-Serine\\nDe novo Pyrimidine Synthesis Substrates\\nCMP\\nUMP\\nPyrimidine\
+    \ Products\\n0.537\\n0.475\\n0.067\\n0.452\\n0.361\\n0.340\\n-0.080\\n0.089\\nPyrimidine Nucleotide-Substrate\\nCorrelations\
+    \ in Hypothermia\\n\\u22120.5\\n0.0\\n0.5\\nPearson Correlation (r)\\n\\u22120.1\\n0.0\\n0.1\\nManuscript log10FC\\n\\\
+    u22120.1\\n0.0\\n0.1\\nKosmos log10FC\"\n  },\n  {\n    \"name\": \"R\\u00b2 = 0.998\",\n    \"text\": \"Comparing Kosmos\
+    \ findings with original results\\nHuman identifies upregulation of nucleotide salvage\\nFigure 2: Kosmos reproduces unpublished\
+    \ discovery in neuroprotection metabolomics. a) Research objective and dataset\\ndescription provided to Kosmos and experimental\
+    \ design for untargeted metabolomic profiling of mouse brains. b) Barplot\\nshowing up-regulation of purine and pyrimidine\
+    \ salvage products after activation of POAKOR+ neurons. Relative abundance\\nis expressed as mean \\u00b1 SEM. c) Top\
+    \ enriched pathways among metabolites that differed significantly between hypothermic\\nand normothermic conditions [Trajectory\
+    \ r2]. d) Heatmap showing average log2 fold-change for nucleotide-salvage precursor-\\nproduct pairs. Blue = increase\
+    \ in hypothermia relative to normothermia, and red = decrease [Trajectory r11]. e) Heatmap\\nshowing Pearson correlations\
+    \ between pyrimidine-synthesis substrates and products. Blue = positive correlation, red = negative\\ncorrelation [Trajectory\
+    \ r15]. f) Kosmos discovery report excerpt. g) Scatter plot comparing Kosmos vs. original analysis:\\naverage log10 fold\
+    \ change for top 15 metabolites (hypothermic vs. control). a and b reproduced with permission from [9].\\n5\\n\\nThree\
+    \ groups of mice were studied after this neural activation: a control group (N = 6), a group allowed to cool\\nnaturally\
+    \ (hypothermic-POAKOR+; ~22 \\u25e6C, N = 6), and a group kept warm to prevent cooling (normothermic-\\nPOAKOR+; 36 \\\
+    u25e6C, N = 5). Only the hypothermic group showed significantly smaller brain injuries and preserved\\nmotor performance\
+    \ compared to controls.\\nIn contrast, normothermic activation provided no behavioral benefit,\\nindicating that the cerebroprotective\
+    \ effect depends on the development of hypothermia.\\nTo understand the underlying biological mechanisms accompanying\
+    \ this protective state, Kamal et al. performed un-\\ntargeted metabolomics on whole brains collected 30 minutes after\
+    \ activation, capturing early circuit-driven metabolic\\nchanges independent of ischemic injury (Figure 2a). The analysis\
+    \ revealed coordinated shifts in energy-related metabo-\\nlites, particularly those involved in nucleotide, phospholipid,\
+    \ and sphingolipid metabolism (Figure 2b), suggesting that\\nbrain cooling triggers a rapid, energy-conserving metabolic\
+    \ program. In particular, Kamal et al. noted in their Dis-\\ncussion that \\u201cenhanced purine and pyrimidine salvage\
+    \ could support energy conservation and macromolecular repair\\nby maintaining Adenosine Triphosphate (ATP) levels and\
+    \ nucleotide pools\\u201d [9].\\nKosmos was provided with the same liquid chromatography\\u2013mass spectrometry (LC\\\
+    u2013MS) dataset used in the orig-\\ninal study, consisting of polar metabolite intensities from mouse brains in three\
+    \ conditions (control, normothermic-\\nPOAKOR+, and hypothermic-POAKOR+). The research objective supplied to Kosmos was\
+    \ to identify which metabolic\\nchanges might explain why the hypothermic state is protective (Figure 2a).\\nDuring its\
+    \ exploratory analysis, Kosmos verified balanced group design and acceptable variance among biological\\nreplicates, then\
+    \ determined that the wide dynamic range required a log10 transformation to stabilize variance before\\nstatistical testing.\
+    \ Differential abundance analysis identified metabolites differing most strongly under hypothermic\\nconditions, including\
+    \ several nucleotides and amino-acid derivatives. Kosmos performed pathway enrichment analysis,\\nwhich revealed nucleotide\
+    \ metabolism as the most affected pathway (Figure 2c). These results were then followed by\\niterative hypothesis exploration\
+    \ proposing that nucleotide turnover could underlie the hypothermic state\\u2019s protective\\neffects (Figure 2d,e).\\\
+    nKosmos concentrated on nucleotide metabolites and detected an inversion pattern: precursor bases and nucleosides\\ndecreased,\
+    \ while phosphorylated nucleotide products increased, consistent with activation of nucleotide-salvage path-\\nways (Figure\
+    \ 2d). In parallel, the literature-review agent conducted a literature search and it confirmed that nucleotide\\nsalvage\
+    \ is a conserved, energy-efficient strategy during hypoxia and hypothermia, reinforcing Kosmos\\u2019s emerging hy-\\\
+    npothesis [10, 11, 12, 13]. Kosmos then tested competing explanations by correlating nucleotide products with de\\nnovo\
+    \ synthesis substrates. Finding no strong relationships, it ruled out substrate-driven increases and concluded that\\\
+    nthe data most likely reflected upregulated salvage activity rather than new synthesis (Figure 2e). Finally, Kosmos\\\
+    nsynthesized its mechanistic interpretation of the engagement of a nucleotide-salvage pathway (Figure 2f).\\nKosmos\\\
+    u2019s analysis closely reproduced the reasoning, results, and conclusions reached by the original study [9]. Both\\nanalyses\
+    \ identified nucleotide metabolism as the dominant pathway altered under hypothermic conditions, with nearly\\nidentical\
+    \ effect sizes and directional changes across key metabolites. Kosmos independently highlighted increases in\\ninosine\
+    \ monophosphate (IMP), cytidine monophosphate (CMP), and uridine monophosphate (UMP) and decreases in\\nadenine, cytidine,\
+    \ and Guanosine diphosphate (GDP)-mannose, reproducing the same precursor-to-product inversion\\npattern described by\
+    \ the authors as evidence of activated nucleotide salvage. Quantitatively, nine of the top fifteen\\nmetabolites identified\
+    \ by Kosmos overlapped exactly with those reported in the original analysis, and the log10\\nfold-change estimates of\
+    \ the top 15 metabolites is nearly indistinguishable (R2 = 0.998, Figure 2g).\\nKosmos also extended the human analysis\
+    \ by attempting to rule out contributions from de novo nucleotide-synthesis\\npathways. While this step demonstrated initiative\
+    \ in its reasoning, it also highlighted a key limitation: the dataset\\ncontained only steady-state metabolite levels\
+    \ rather than the time-resolved flux data required to assess pathway\\nactivity, so its conclusion regarding de novo synthesis\
+    \ cannot be considered definitive. These results demonstrate\\nthat Kosmos not only replicated the quantitative outcomes\
+    \ of the human analysis but also arrived at the same\\nmechanistic conclusion: activation of POAKOR+ neurons produces\
+    \ a torpor-like hypothermic state characterized by\\nselective engagement of energy-efficient metabolic programs, notably\
+    \ the nucleotide-salvage pathway, which supports\\ncellular energy balance and macromolecular maintenance under reduced\
+    \ thermometabolic demand.\\n6\\n\\nKosmos\\nHuman Validation\\nResearch Objective (Abbr.): Determine\\nhow environmental\
+    \ parameters during spin\\ncoating and thermal annealing affect\\nperovskite solar-cell efficiency.\\ne\\n\\u201cThis\
+    \ study disentangles how ambient temperature, absolute\\nhumidity, and solvent vapor act across spincoating and thermal\\\
+    nannealing to shape perovskite solar cell performance. Thermal\\nannealing humidity emerges as the dominant, threshold-like\\\
+    n\\u201cfatal filter\\u201d.\\u201d\\nc\\nd\\nf\\nDiscovery synthesis\\na\\nAmbient\\ntemperature\\nGaussian process\\\
+    n\\u03bc(x) \\u00b1 \\u03c3(x)\\nregressor\\nExperiment planning\\nAcquisition\\nfunction\\nNext conditions\\narg max\
+    \ \\u03b1(x)\\nExperimental state space\\nSpin coating\\nAnnealing\\nSurrogate model\\nAbsolute\\nhumidity\\nSolvent\\\
+    npartial\\npressure\\nAmbient\\ntemperature\\nAbsolute\\nhumidity\\nb\\ng\\nh\\n0\\n20\\n40\\n60\\n80 100\\n55\\n60\\\
+    n65\\n70\\n75\\n80\\n8\\n12\\n16\\n20\\n24\\nPredicted PCE (%)\"\n  },\n  {\n    \"name\": \"TA T (\\u00b0C)\",\n    \"\
+    text\": \"TA AH (g/m3)\\nJsc [mA/cm2]\\nSolvent Partial Pressure [ppm]\\nLinear fit (r = -0.708)\\n24.8\\n24.0\\n23.2\\\
+    n22.4\"\n  },\n  {\n    \"name\": \"FAILURE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"REGION\",\n    \"text\"\
+    : \"0.7\"\n  },\n  {\n    \"name\": \"OPTIMAL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"REGION\",\n    \"text\"\
+    : \"0.3\\n0.3\\nTA AH [g/m3]\"\n  },\n  {\n    \"name\": \"TA T [\\u00b0C]\",\n    \"text\": \"20\\n40\\n60\\n80\\n60\\\
+    n64\\n68\\n72\\n76\\n0.15\\n0.35\\n0.55\\n0.75\\nHigh Performance Probability\\nKosmos performs exploratory analysis\\\
+    nSPP\"\n  },\n  {\n    \"name\": \"TA T\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SC AH\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"SC T\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TA AH\",\n    \"text\": \"Mean SHAP\
+    \ Value\\n0.00\\n0.05\\n0.10\\nSC T x TA T\\nTA AH x TA T\\nSC AH x SC T\\nTA AH x SC AH\\nSC T x TA AH\\nMean SHAP Interaction\
+    \ Value\\n0.00\\n0.01\\nKosmos further investigates feature importance\\nJsc [mA/cm2]\\nSolvent Partial Pressure [ppm]\\\
+    n0\\n500\\n25.5\\n24.5\\n23.5\\n22.5\\n21.5\\nr = -0.71, p < 0.001\\nKosmos identifies linear decrease in Jsc\\nDataset:\
+    \ Environmental sensor measure-\\nments from spin-coating and annealing.\\n\\u221210\\n\\u22125\\n0\\n5\\nImpact on device\
+    \ PCE (%)\"\n  },\n  {\n    \"name\": \"TA T (\\u00b0C)\",\n    \"text\": \"SC SPP (ppm)\"\n  },\n  {\n    \"name\": \"\
+    SC T (\\u00b0C)\",\n    \"text\": \"Low\\nHigh\\nFeature value\\nTA AH (g/m3)\\nSC AH (g/m3)\\n2D partial dependence plot\\\
+    nSHAP summary from original study\\nValidation of Kosmos results\\nFigure 3: Kosmos reproduces perovskite solar cell fabrication\
+    \ findings. a) Research objective and dataset supplied to\\nKosmos. Schematic of modeling approach from original preprint.\
+    \ b) 2D partial dependence plot showing the predicted high\\nperformance probability (color scale) as a function of thermal\
+    \ annealing temperature and absolute humidity, based on a random\\nforest model. [Trajectory r31]. c) Mean absolute SHAP\
+    \ values for (left) single variables and (right) their top interaction effects\\non device performance [Trajectory r44].\
+    \ SPP, solvent partial pressure of DMF; TA T, thermal annealing temperature; SC AH,\\nspin-coating absolute humidity;\
+    \ SC T, spin-coating temperature; TA AH, thermal annealing absolute humidity. d) Short-circuit\\ncurrent density (JSC)\
+    \ decreases linearly with increasing DMF SPP for non-failure devices (n=23) [Trajectory r81]. e) Kosmos\\ndiscovery report\
+    \ excerpt. f) Joint influence of temperature and absolute humidity during thermal annealing. Average PCE\\n(colour scale)\
+    \ predicted by Gaussian process regressor. g) Influence of environmental variables on PSC PCEs, SHAP values\\nderived\
+    \ from Gaussian process regressor. h) Scatter plot and a linear fit for JSC and DMF SPP values for a subset of devices.\\\
+    n7\\n\\n2.2.2\\nDiscovery 2: Thermal annealing humidity as critical determinant for perovskite solar-cell perfor-\\nmance\\\
+    nHaving demonstrated Kosmos\\u2019 ability to reproduce published findings using metabolomics data, we next explored\\\
+    nwhether Kosmos could be extended beyond biological datasets. We provided Kosmos with a material science dataset\\nfrom\
+    \ Liu et al., arXiv 2025 [14] describing environmental parameters from fabrication of solar cells with an open-ended\\\
+    nresearch objective (Figure 3a).\\nRepeatable device performance of perovskite solar cells remains a major challenge,\
+    \ with small variations in environmen-\\ntal conditions during fabrication\\u2014such as temperature, humidity, and solvent\
+    \ partial pressure\\u2014strongly influencing\\nhow the material crystallizes and how well the final device performs.\
+    \ However, the combined effects of these factors\\nare not yet fully understood. Liu et al. introduces a systematic approach\
+    \ to study how individual and interacting\\nenvironmental variables affect perovskite film formation and device efficiency.\
+    \ The researchers developed a fabrica-\\ntion platform that allows precise, independent control of ambient temperature,\
+    \ absolute humidity, and solvent partial\\npressure during key processing steps [14]. Using this platform, a closed-loop\
+    \ Bayesian optimization strategy was ap-\\nplied to efficiently explore and map how these variables influence device outcomes\
+    \ (Figure 3a, right). These findings\\ndemonstrate that integrated environmental control is essential for producing reproducible\
+    \ perovskite solar cells, and\\nhighlight the value of interpretable machine learning to navigate complex processing environments.\\\
+    nThe results demonstrate that ambient temperature, absolute humidity, and solvent partial pressure during perovskite\\\
+    nfilm formation strongly affect solar cell efficiency. Liu et al. quantified and ranked the influence of each parameter,\\\
+    nrevealing both individual and coupled non-linear interactions that govern device performance. Analysis by Kosmos\\ncorroborated\
+    \ these findings, identifying absolute humidity during thermal annealing as the most dominant factor\\ndetermining device\
+    \ efficiency under single-variable analysis, while also exhibiting interaction effects (Figure 3b).\\nThis dominance is\
+    \ evident in the SHapley Additive exPlanations (SHAP) plots from Kosmos (Figure 3c) and from\\nthe original study (Figure\
+    \ 3g).\\nWhile the original study emphasizes the complex and interdependent nature of\\nenvironmental parameters during\
+    \ synthesis, highlighting the importance of environmental control for reproducible\\nfabrication, Kosmos\\u2019 extended\
+    \ analysis further delineates performance regimes and quantifies their effects on specific\\ndevice metrics.\\nTogether,\
+    \ these insights define environmental guidelines for optimizing perovskite film growth using the experimental\\napparatus\
+    \ described in Liu et al. Both analyses identified thermal annealing humidity as a critical determinant, acting\\nas a\
+    \ \\u201cfatal filter\\u201d beyond which devices fail. The 2D partial dependence plot (Figure 3b) shows this discrete\
+    \ failure\\nboundary occurring above ~60 g/m3 absolute humidity and within a critical temperature window above ~70 \\\
+    u25e6C,\\nwith optimal performance at low humidity and moderate temperatures. This trend is independently confirmed in\\\
+    nthe human-made plot from the Liu et al.\\npreprint (Figure 3f).\\nAdditionally, Kosmos revealed a linear decrease\\nin\
+    \ short-circuit current density (JSC) with rising Dimethylformamide (DMF) solvent partial pressure during spin-\\ncoating\
+    \ (Figure 3d)\\u2014a previously unreported relationship that was later independently validated by the researchers\\n(Figure\
+    \ 3h).\\n2.2.3\\nDiscovery 3: Log-normal connectivity distributions in neuronal networks\\nWe next investigated whether\
+    \ Kosmos could independently reproduce findings from an existing preprint when given\\nan open-ended research objective.\
+    \ To do this, we provided Kosmos with the same data used in Piazza et al., bioRxiv\\n2025 [15]: Neuron morphology data\
+    \ from eight separate connectome reconstructions from five different species\\n(Figure 4a). Each connectome dataset contained\
+    \ detailed information about neuronal wire length, the number of\\nconnecting partners (degree), total number of synapses,\
+    \ and local measures of synaptic density. We asked Kosmos\\nto investigate how these measures relate from a neuroscientific\
+    \ perspective in order to propose universal principles\\namong them. Specifically, we aimed to see whether this broad\
+    \ prompt was sufficient to capture the major findings\\nof the preprint: (1) degree distributions cannot be captured by\
+    \ the well-established random or scale-free models,\\nrather all morphological metrics are well approximated by lognormal\
+    \ distributions, and (2) the metrics can be related\\nthrough power law distributions, suggesting that (3) multiplicative\
+    \ processes drive the development of neurons, and\\nthus the emergence of all lognormals.\\nIn an initial analysis, Kosmos\
+    \ normalized wire length, degree, and synapse density distributions by dividing by its\\nmedian and standard deviation,\
+    \ which collapsed the distributions from different species onto a single curve (Figure 4b).\\nWhile distribution collapse\
+    \ is commonly interpreted as a qualitative metric for assessing distribution similarity, Kosmos\\n8\\n\\na\\nb\\nc\\ne\\\
+    nKosmos synthesis recapitulates human discovery\\nd\\nLog-normal distributions\\nScaling laws\\nKosmos: \\u201cNeuron-level\
+    \ degree and\\nsynapse counts are...most parsimo-\\nniously described by log-normal\\n[distributions]. [r3]\\u201d\\nKosmos:\
+    \ \\u201cLog\\u2013log regressions of\\nsynapse count versus neurite length\\nshowed robust power-law scaling in\\nseven\
+    \ of eight datasets. [r9]\\u201d\\nPreprint: \\u201cNode degrees and\\nstrengths are well approximated by\\nlognormal\
+    \ distributions.\\u201d\\nPreprint: \\u201cIn each of the eight\\ndatasets the scaling [between neurite\\nlength and synapse\
+    \ count] holds.\\u201d\\nMedian\\nMedian\\nSynapses (Normalized by Median)\\nLength (Normalized by Median)\\n10-1\\n100\\\
+    n101\\n10-1\\n100\\n101\\nProbability Density\\n0\\n1\\n2\\n3\\nSynapse Number \\u03bc\\nr = 0.77\\nKosmos Value\\n2\\\
+    n4\\n6\\n8\\nPreprint Value\\n2.5\\n5.0\\n7.5\\nC. elegans\\nFly Larva\\nFly Hemibrain\\nFly MANC\\nFly FlyWire\\nZebrafish\\\
+    nMouse MM3\\nHuman H01\\nr = 0.46\\n2\\n4\\n6\\n0\\nPreprint Value\\n2.5\\n5.0\\nDegree Number \\u03bc\\nKosmos Value\\\
+    nHuman Validation\\nKosmos\\nSynapses (count)\\nLength (\\u03bcm)\\n101\\n102\\n103\\n104\\n105\\n102\\n103\\n104\\n105\\\
+    nNetwork Degree\\nSynapses (count)\\n101\\n102\\n103\\n104\\n100\\n102\\n103\\n104\\n101\\n105\\nDiscovery Synthesis\\\
+    nKosmos: Log-normal connectivity\\ndistributions [lead] to geometric rather\\nthan linear scaling in neural network\\\
+    nformation [r3]. The consistency of strong\\ncorrelations across phylogenetically\\ndiverse organisms, [...] aligns with\\\
+    ntheoretical predictions about wiring\\noptimization and metabolic constraints in\\nneural networks [r1].\\nComparison\
+    \ of lognormal fits identified by Kosmos and original human findings\\nKosmos collapses length and synapses distributions\\\
+    nKosmos supports conserved neuronal scaling\\nDataset: 8 connectomes across 5 species.\\nResearch objective (Abbr.): Investigate\\\
+    nsimilarities and differences across connec-\\ntomes and species.\\nFigure 4: Kosmos reproduces findings on log-normal\
+    \ connectivity distributions in neural networks.\\na) Kosmos was\\nprovided with a brief research objective and preprocessed\
+    \ connectomic data from eight separate reconstructions, spanning\\n5 species. b) Kosmos normalized neuronal wire length\
+    \ (left) and neuronal synapse count (right) [Trajectory r7]. Plots are\\nKosmos\\u2019 visualization with colors corresponding\
+    \ to datasets as per legend in (e). c) Kosmos investigated correlations between\\nLength, Synapses and Degree [Trajectory\
+    \ r1]. Plots show correlations for the fruit fly\\u2019s central nervous system (FlyWire),\\nalthough Kosmos analyzed\
+    \ all animals. d) (left) Kosmos finds that despite canonical expectations of power law scaling in\\nneuron degree, the\
+    \ neuron synapse number and neuron degree overall are best fit by lognormal distributions [Trajectory r3],\\nrecapitulating\
+    \ preprint Figure 2A and 2D. (middle) Kosmos confirms [Trajectory r1]\\u2019s proposal of a power law relationship\\nbetween\
+    \ synapses and Length [Trajectory r9] , mirroring Figure 3a of the preprint. (right) Beyond reproducing the key findings\\\
+    nof the preprint, Kosmos proposes neuroscientific underpinnings of its conclusions, which correctly identify the final\
+    \ major result\\nof the preprint, that multiplicative processes can govern neuronal properties, leading to the observed\
+    \ lognormal distributions\\n(preprint Figure 4). e) The lognormal fits for synapse number (left) and degree number (right)\
+    \ found by Kosmos have high\\nconcordance with the values measured in the preprint. Bars around dots indicate standard\
+    \ deviations reported in the preprint.\\n9\\n\\napplied a conservative approach by performing pairwise Kolmogorov-Smirnov\
+    \ tests between all distributions, which\\nled to an erroneous rejection of distributional similarity despite the clear\
+    \ visual collapse onto a single curve, which\\nsuccessfully mirrors Figures 2B,E,H,K of the preprint [15].\\nIn parallel,\
+    \ Kosmos investigated correlations between wire length, total synapses, and degree across all datasets\\n(Figure 4c).\
+    \ The analysis revealed strong positive correlations between these neuronal properties in all datasets, with\\nthe linear\
+    \ pattern evident in log-log plots. These results strongly supported the hypothesis of conserved neuronal\\nproperty scaling\
+    \ across species, successfully reproducing the core findings shown in Figure 3A,G of Piazza [15].\\nGiven these initial\
+    \ data analyses, Kosmos then successfully validated the two main findings of the preprint.\\nFirst, Kosmos examined the\
+    \ underlying distributions for neuronal morphology metrics. Having observed that the\\ndatasets were heavy-tailed, it\
+    \ fit exponential, power law and lognormal distributions to synapse number and de-\\ngree, concluding that \\u201cneuron-level\
+    \ degree and synapse counts are...most parsimoniously described by log-normal\\u201d\\ndistributions (Figure 4d), thereby\
+    \ recapitulating the results presented in Figure 2A,D of Piazza et al. [15].\\nSecond, having identified patterns indicating\
+    \ power-law scaling between synapses, length and degree (Figure 4c),\\nKosmos finds that \\u201cLog-log regressions of\
+    \ synapse count versus neurite length showed robust power-law scaling in\\nseven of eight datasets,\\u201d thus capturing\
+    \ Figure 3A,G, as well as equation 5, of the preprint [15] (Figure 4d).\\nIn order to validate these findings, the researchers\
+    \ compared the mean (\\u00b5) of the lognormals fitted by Kosmos with\\nthe values reported in the preprint, and found\
+    \ high concordance between the two, with most estimates falling within\\none standard deviation of the published values\
+    \ (Pearson\\u2019s r = 0.77 for Synapses, r = 0.46 for Degrees) (Figure 4e).\\nHowever, the powerlaw fitting package employed\
+    \ by Kosmos, while popular in network science applications, has known\\nfailure modes [16] that underpin observed large\
+    \ deviations and missing values. For instance, the researchers chose\\nto ignore cases where the algorithm fitted negative\
+    \ \\u00b5 values (Hemibrain and Flywire for Synapse Number, Mouse\\nand FlyWire for Degree), as a negative \\u00b5 would\
+    \ nonsensically indicate that the center of the distribution is orders of\\nmagnitude lower than any observed datapoint.\\\
+    nIn summary, when given morphological measurements of neurons and a broad missive to investigate universal prin-\\nciples,\
+    \ Kosmos reproduced the two major quantitative results of the underlying preprint (Figure 4b-e). In addition,\\nKosmos\
+    \ properly contextualized its results, first noting that the lognormal fits refuted the universal hypothesis of\\npower\
+    \ law degree distributions in [r3], then capturing the third, qualitative result of the source material (preprint\\nFigure\
+    \ 4), proposing that multiplicative processes in neurodevelopment can be causative of the observed distributions\\n(Figure\
+    \ 4d). Thus, Kosmos could not only capture expected findings, but also can connect empirical results to novel\\ninterpretations\
+    \ for network science and neurodevelopment.\\nWe note that the source preprint Piazza et al. was posted on bioRxiv on\
+    \ February 27, 2025 and therefore accessible\\nto the literature search agent and possibly included in the training data\
+    \ for the models used in the data analysis agent\\nduring this run. As a control, we reran Kosmos with models that have\
+    \ a cutoff date prior to the preprint, and the\"\n  },\n  {\n    \"name\": \"results reproduced both the lognormal and\
+    \ scaling findings. Further, in the Kosmos results reported in Figure 4, we do\",\n    \"text\": \"not see evidence of\
+    \ Kosmos having \\u201cmemorized\\u201d the results reported here, nor did the literature search agent access\\nPiazza\
+    \ et al., bioRxiv 2025. Instead, we observe Kosmos following a chain of independent analysis and reasoning to\\nreach\
+    \ the same conclusion as reported in Piazza et al.\\n2.3\\nKosmos adds additional support to existing findings with novel\
+    \ methods\\n2.3.1\\nDiscovery 4: SOD2 as a driver of myocardial fibrosis in humans\\nAfter demonstrating that Kosmos can\
+    \ replicate recent published and unpublished discoveries, we next sought to test\\nif Kosmos could analyze public datasets\
+    \ using a recently developed analysis pipeline (Reddy et al., manuscript in\\npreparation) (Figure 5a).\\nCardiac fibrosis\
+    \ is a major pathological contributor to heart failure, affecting tens of millions of patients worldwide.\\nCardiac fibrosis\
+    \ increases ventricular stiffness and impairs contractility, yet therapeutic interventions directly targeting\\nfibrotic\
+    \ pathways remain elusive [17]. Mendelian randomization (MR) leverages the random allocation of genetic\\nvariants at\
+    \ conception to infer causal relationships between exposures and outcomes.\\nBy using genetic variants\\nas instrumental\
+    \ variables for protein levels, MR eliminates confounding and reverse causation.\\nThe approach is\\nparticularly powerful\
+    \ for identifying causal biomarkers and therapeutic targets from large-scale genomic datasets.\\n10\\n\\nFibrosis\\nT1\
+    \ relaxation time\\nmiR-222-3p\\n3'\\n5'\"\n  },\n  {\n    \"name\": \"SOD2\",\n    \"text\": \"3'UTR variant\\nT1 relaxation\
+    \ time\\nCirculating SOD2\\nOverlapping\\nHuman only\"\n  },\n  {\n    \"name\": \"SOD2\",\n    \"text\": \"Effect Size\
+    \ (\\u03b2)\\n-log10(p-value)\\n0\\n5\\n10\\n15\\n20\\n25\\n-0.4\\n-0.2\\n0.0\\n0.2\\n0.4\\na\\nResearch objective (Abbr.):\
+    \ Identify causal\\nproteins in myocardial fibrosis and propose\\nmechanism of action.\\n\\u201cThe directional enrichment\
+    \ across credible sets, the LD-aware fine-mapping of SOD2, and the consistent protective\\nassociations with T1 converge\
+    \ on a model in which increased SOD2 lowers T1, consistent with reduced myocardial fibrosis\\nthrough antioxidant pathways\
+    \ for SOD2. It nominates distal enhancer perturbation and miRNA-mediated regulation as\\nactionable mechanisms for follow-up.\\\
+    u201d\\nb\\nc\\nd\\ne\\nKosmos develops mechanistic hypothesis\\nDiscovery synthesis\\nEffect Size (\\u03b2)\\n-log10(p-value)\\\
+    n0\\n5\\n10\\n15\\n20\\n25\\n-0.4\\n-0.2\\n0.0\\n0.2\\n0.4\"\n  },\n  {\n    \"name\": \"SOD2\",\n    \"text\": \"Overlapping\\\
+    nKosmos only\\nf\\nKosmos MR Effect size (\\u03b2)\\n-0.3\\n-0.2\\n-0.1\\n0.0\\n0.1\\n0.2\"\n  },\n  {\n    \"name\":\
+    \ \"SOD2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"R2 = 0.9983\",\n    \"text\": \"Human MR Effect Size (\\u03b2)\\\
+    n-0.2\\n0.0\\n0.2\\nKosmos\\nHuman Validation\\nKosmos performs Mendelian Randomization\\nHuman validation of Mendelian\
+    \ Randomization\\nDataset: GWAS summary statistics for T1\\nrelaxation time and cis-acting plasma pQTLs.\\nComparison\
+    \ of Kosmos and human results\\nFigure 5: Kosmos identifies SOD2 as a driver of myocardial fibrosis in humans. a) Research\
+    \ objective and dataset descrip-\\ntion given to Kosmos. All datasets provided are publicly available. Native T1 relaxation\
+    \ times measured by cardiac magnetic\\nresonance imaging reflect myocardial tissue composition, with elevations indicating\
+    \ increased interstitial volume from fibrosis\\nor edema. (Diagram Created in https://BioRender.com) b) Mendelian randomization\
+    \ (MR) analysis performed by Kosmos.\\nVolcano plot showing beta coefficient and associated p-values for Mendelian Randomization.\
+    \ Red dotted line indicates the\\nsignificance threshold. Red dot shows proteins identified by Kosmos and manually, and\
+    \ blue indicates proteins identified by Kos-\\nmos only [Trajectory r11]. c) Kosmos proposes the hypothesis that a variant\
+    \ in the 3\\u2032 UTR of SOD2 alters post-transcriptional\\nregulation by disrupting miRNA (miR-222) binding [Trajectory\
+    \ r41]. (Diagram Created in https://BioRender.com) d) Kos-\\nmos consolidates the SOD2 results into a discovery. e) Volcano\
+    \ plot showing manual Mendelian randomization results. SOD2\\nwas the most significant target. Red indicates overlapping\
+    \ proteins identified and blue indicates protein identified in human\\nanalysis only. Red dotted line indicates the significance\
+    \ threshold. f) Scatter plot showing the Mendelian Randomization effect\\nsizes (\\u03b2) as determined manually by humans\
+    \ and by Kosmos for the 31 overlapping proteins between the two sets.\\n11\\n\\nReddy et al. applied a proteome-wide MR\
+    \ framework to investigate causal proteins in cardiac structure and function\\nusing native T1 mapping as a quantitative\
+    \ proxy for myocardial fibrosis (Reddy et al., manuscript in preparation).\\nNative T1 relaxation times measured by cardiac\
+    \ magnetic resonance imaging reflect myocardial tissue composition,\\nwith elevations indicating increased interstitial\
+    \ volume from fibrosis or edema.\\nThe same dataset, the myocardial T1 Genome Wide Association Study (GWAS) and cis-protein\
+    \ quantitative trait\\nloci (pQTL) data, was provided to Kosmos with instructions to use R packages TwoSampleMR for Mendelian\
+    \ ran-\\ndomization, coloc for colocalization, and susieR for fine-mapping (Figure 5a). Kosmos autonomously executed the\\\
+    nanalytical pipeline to identify protein candidates and propose mechanistic hypotheses.\\nThe colocalization analysis\
+    \ failed due to cascading technical issues: many p-values stored as 0 caused Kosmos to\\nmisidentify thousands of variants\
+    \ as lead SNPs, column name collisions during merging led to mismatched vector\\nlengths, and missing standard deviation\
+    \ and MAF information prevented proper coloc execution [r12]. Rather than\\nattempting to repair the failed colocalization\
+    \ pipeline, Kosmos proceeded to SuSiE fine-mapping.\\nThis analysis\\nidentified a credible set of directionally consistent\
+    \ variants for superoxide dismutase 2 (SOD2) (PP.H4 = 1.00),\\nresolving the conflicting colocalization results and providing\
+    \ strong evidence for pleiotropic effects.\\nBoth Kosmos and human MR analyses independently identified superoxide dismutase\
+    \ 2 (SOD2) as the primary\\ncausal protein for myocardial fibrosis, with remarkably concordant effect estimates. Kosmos\
+    \ reported \\u03b2 = \\u22120.231\\n(p = 4.23\\u00d710\\u221213) (Figure 5b) while human analysis yielded \\u03b2 = \\\
+    u22120.258 (p = 1.22\\u00d710\\u221222) (Figure 5e), representing\\nnearly identical effect sizes with the same protective\
+    \ direction. Both approaches found near-certain colocalization\\nevidence (KOSMOS PP.H4 = 0.9999; manual PP.H4 = 0.999999),\
+    \ confirming a shared causal variant between SOD2\\nprotein levels and myocardial T1. Both Kosmos and human analysis applied\
+    \ Bonferroni correction to MR p-values\\nand identified 32 proteins meeting the stringent significance threshold (p <\
+    \ 3.52 \\u00d7 10\\u22125). Of these 32 proteins, 31\\nwere identified by both approaches, representing 96.9% overlap.\
+    \ Effect sizes for these 31 shared proteins showed\\nnear-perfect correlation (Pearson r = 0.9991, p = 1.42 \\u00d7 10\\\
+    u221241, R2 = 0.9983), with consistent directionality across\\nall overlapping proteins (Figure 5f).\\nLastly, Kosmos\
+    \ proposed a potential post-transcriptional mechanism for SOD2 regulation (Figure 5c), identifying\\nrs4555948 within\
+    \ the SOD2 3\\u2019UTR as a credible-set variant predicted to disrupt a hsa-miR-222-3p binding site\\n(Figure 5d). However,\
+    \ this site does not overlap with any predicted miR-222 binding sites based on current target\\nprediction databases,\
+    \ highlighting a limitation in Kosmos\\u2019s automated annotation. Literature supports that miR-222\\nbinds the SOD2\
+    \ 3\\u2019UTR and regulates SOD2 protein expression [18], but without specifying the exact position of\\nbinding. Thus,\
+    \ while the variant itself may not directly alter a miR-222 site, the SOD2 3\\u2019UTR remains a regulatory\\nhotspot,\
+    \ and post-transcriptional mechanisms cannot be excluded.\\nKosmos further integrated literature implicating SOD2 in vascular\
+    \ redox homeostasis, proposing a plausible hemo-\\ndynamic pathway linking SOD2 to cardiac remodeling through effects\
+    \ on blood pressure and endothelial func-\\ntion [19, 20, 21]. This hypothesis is novel, as existing evidence for SOD2\
+    \ primarily derives from its intracellular\\nantioxidant role in murine studies [22]. Nevertheless, since other SOD isoforms\
+    \ have demonstrated functional ac-\\ntivity in circulation [23, 24], the concept of circulating SOD2 contributing to myocardial\
+    \ fibrosis reduction remains\\nbiologically reasonable. Downstream wet-lab validation experiments are currently underway\
+    \ to test these mechanistic\\npredictions.\\nThis analysis advances prior observational findings into causal inference.\
+    \ Nauffal et al. [25] reported correlation,\\nbut not causation between SOD2 protein levels and myocardial fibrosis. Both\
+    \ analyses suggested that genetically-\\npredicted circulating SOD2 levels may causally reduce myocardial fibrosis. This\
+    \ discovery of SOD2 demonstrates\\nKosmos\\u2019s ability to identify a target through alternative methods (statistical\
+    \ analysis through GWAS), and suggest a\\npotential molecular mechanism of action.\\n2.3.2\\nDiscovery 5: Cis-regulation\
+    \ of SSR1 by a protective GWAS variant in Type 2 Diabetes in humans\\nAfter demonstrating that Kosmos can follow user-provided\
+    \ analytical pipelines and methodological instructions, we\\nnext assessed whether Kosmos could independently prioritize\
+    \ and justify likely causal mechanisms from a GWAS of\\nType 2 Diabetes (T2D) without external guidance.\\nGWAS have identified\
+    \ thousands of common variants associated with T2D risk [26]. Converting these statistical\\nassociations into mechanistic\
+    \ insights remains a central challenge in human genetics, requiring integration across\\nmultiple molecular data modalities.\
+    \ Over 1,000 genes have genetically inferred transcript levels associated with T2D\\n12\\n\\nHuman Validation\\nKosmos\\\
+    nResearch objective (Abbr.): Identify\\nvalidated Type 2 Diabetes protective\\nmechanisms\\nf\\n\\u201crs9379084-A connects\
+    \ a missense-tagged\\nregulatory sequence to increased ATF3\\nbinding, islet-selective chromatin closure, and\\ndirectionally\
+    \ coherent (though variably\\npowered) expression changes for SSR1 [...]\\nproviding a plausible protective pathway that\\\
+    nreprograms stress-responsive regulatory\\ncircuits in pancreatic islet cells to reduce type\\n2 diabetes risk.\\u201d\\\
+    nc\\nh\\nKosmos develops mechanistic hypothesis\\nDiscovery synthesis\\na\\nrs9379084 Hub Effect: TF-Target Gene Regulatory\
+    \ Network\\nSignificant (p<0.05)\\nNon-significant\"\n  },\n  {\n    \"name\": \"ATF3\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \"MYBL2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"NR1I3\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"PPARA\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"KLF6\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"RREB1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SSR1\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"RIOK1\",\n    \"text\": \"DSP\"\n  },\n  {\n    \"name\": \"SNRNP48\",\n    \"text\": \"Disrupted TFs\\nTarget\
+    \ Genes\\nrs9379084\\n0.6\\n0.8\\n1.0\\nCausality Score\\n3\\n4\\n5\\n6\\nMechanism Rank Score\\nProtective\\nRisk\\n1.0\\\
+    n1.5\\n2.0\\n2.5\\n3.0\\n3.5\\n4.0\\nConcordance Score\\nQ1\\nQ2\\nQ3\\nQ4\\nQ5\\nMechanism Rank Score Quintiles\\n0\\\
+    n10\\n20\\n30\\n40\\nReMap ChIP-seq Validation (%)\\n0\\n2\\n4\\n6\\nMechanism Rank Score\"\n  },\n  {\n    \"name\":\
+    \ \"RP11-69L16.4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RREB1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"MAN1A2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SSR1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    RIOK1\",\n    \"text\": \"DSP\"\n  },\n  {\n    \"name\": \"SNRNP48\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    PTGFRN\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"BTBD9\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RAB11FIP1\"\
+    ,\n    \"text\": \"rs9379084 locus\\nOther loci\\ng\\nd\\ne\\nb\\nDataset: Annotated multi-omics table\\nsummarizing 10x\
+    \ multiome samples\\n7,100 kb\\n7,200 kb\\n7,300 kb\\n4.4\\n0\"\n  },\n  {\n    \"name\": \"RREB1\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"SSR1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"CAGE1\",\n    \"text\": \"DNase\
+    \ Signal\\n(ENCODE pancreas)\\nE2G Predictions\\nElements\"\n  },\n  {\n    \"name\": \"T2D GWAS\",\n    \"text\": \"\
+    Pancreas multiome\\nscRNAseq + snATACseq\"\n  },\n  {\n    \"name\": \"BMP6\",\n    \"text\": \"DSP\"\n  },\n  {\n   \
+    \ \"name\": \"RIOK1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RREB1 SNRNP48 SSR1 TXNDC5\",\n    \"text\": \"\
+    Genes\\n\\u22128\\n\\u22126\\n\\u22124\\n\\u22122\\n0\\n2\\n4\\nT2D TWAS Z-scores (Xue et al. 2018)\\n|Z| \\u2265 5 (Significant)\\\
+    nEvidence supports proposed regulatory mechanism\\nTWAS links SSR1 levels to T2D risk\\nKosmos establishes ranking schema\\\
+    nKosmos validates MRS\\nKosmos identifies top SNP-gene pairs\\nFigure 6: Kosmos identifies cis-regulation of SSR1 by a\
+    \ protective GWAS variant in Type 2 Diabetes. a) Research\\nobjective and dataset description provided to Kosmos.\\n(Diagram\
+    \ Created in https://BioRender.com) b) Relationships\\nbetween causality score (identical to the PIP) and Mechanism rank\
+    \ Score (MRS)[Trajectory r2]. c) The Q5 bin of MRS has a\\n3.3-fold higher ChIP-seq validation rate than Q1 (p-value <\
+    \ 0.001) [Trajectory r23]. d) The highest MRS across the dataset is\\nfor rs9379084 locus (blue, MRS = 6), while the other\
+    \ red bars correspond to other protective T2D loci. e) Kosmos conducts\\nan over-representation analysis: the 5 gene set\
+    \ from the highlighted locus in d was tested against Enrichr TF-target datasets\\n[Trajectory r53]. The gene set was enriched\
+    \ for targets of ATF3 (p = 0.042), which regulates two of the five genes (SSR1 and\\nSNRNP48). f) Kosmos consolidates\
+    \ the analyses into a coherent mechanistic hypothesis on how the variant rs9379084 confers\\nreduced T2D risk. g) An IGV\
+    \ screenshot of E2G data accessed here: http://e2g.stanford.edu/variant/6_7231610_G_A.\\nThe green lines correspond to\
+    \ the location of the missense variant rs9379084 and the predicted cis-regulatory effect on RREB1\\nand SSR1. h) A reflection\
+    \ plot of the TWAS Z-scores from the TWAS hub (http://twas-hub.org) showing that in the\\nlocus of interest, only the\
+    \ genetically-inferred SSR1 levels are associated with T2D risk at a transcriptome-wide significant\\nlevel (Z = \\u22127.2).\\\
+    n13\\n\\nrisk [26], yet functional characterization of these loci has been hindered by locus complexity, linkage disequilibrium,\\\
+    nand limited cell-type resolution.\\nTo address this problem at scale, we provided Kosmos with a variant-level input dataset\
+    \ that integrated multi-omic\\nannotations from publicly available sources, including T2D GWAS summary stats with fine-mapping\
+    \ posterior inclusion\\nprobabilities (PIPs) [27], computational prediction for Transcription Factor Binding Sites (TFBS)\
+    \ overlap, chromatin\\naccessibility (ATAC-seq) [28], expression (eQTL) [29], and protein (pQTL) [30] data (Figure 6a).\
+    \ Kosmos was tasked\\nwith generating mechanistic hypotheses for protective T2D variants, which were defined as biallelic\
+    \ variants where\\nthe alternative allele confers reduced T2D risk relative to the reference allele (Figure 6a).\\nWithout\
+    \ explicit instruction, Kosmos established a mechanistic ranking schema termed the Mechanistic Ranking Score\\n(MRS),\
+    \ defined as: MRS = PIP \\u00d7(1+Concordance Score+Experimental Evidence Score) (Figure 6b) where: PIP\\nrepresents the\
+    \ posterior inclusion probability from fine-mapping; Concordance Score quantifies the number of QTL\\ndata types (ATAC-seq,\
+    \ eQTL, pQTL) showing directionally consistent effects with the GWAS signal (e.g., decreased\\nexpression or chromatin\
+    \ accessibility for protective alleles); Experimental Evidence Score adds 1 point for predicted\\ntranscription-factor\
+    \ binding disruption and 1 additional point for supporting ChIP-seq evidence from ReMap [31]. The\\nhighest MRS quantile\
+    \ was 3.3-fold enriched for ChIP-seq validation of the TFBS prediction relative to lowest quantile\\n(p-value < 1 \\u00d7\
+    \ 10\\u22123, Figure 6c), confirming that Kosmos\\u2019s prioritization aligned with experimentally supported\\nregulatory\
+    \ elements. Across 7,925 GWAS variants, the highest observed MRS was 6.0 for rs9379084. Notably, 6 of\\nthe 10 top-scoring\
+    \ SNP\\u2013gene pairs corresponded to the same variant (Figure 6d), prompting Kosmos to focus on the\\nrs9379084 locus.\\\
+    nTo test whether the protein-coding genes in the rs9379084 locus (RREB1, SSR1, RIOK1, DSP, and SNRNP48) are\\nsignificantly\
+    \ regulated by the 12 TFs predicted to be disrupted by the same SNP, Kosmos called the gseapy library\\u2019s\\nEnrichr\
+    \ function for an over-representation analysis. The 5-gene set was tested against several Enrichr TF-target\\ndatabases\
+    \ (including TRRUST_Transcription_Factors_2019, ENCODE_and_ChEA_Consensus_TFs_from_ChIP-X,\\nChEA_2022, ENCODE_TF_ChIP-seq_2015,\
+    \ and TF_Perturbations_Followed_by_Expression). Enrichr output\\nwas then filtered for terms (regulator TFs) matching\
+    \ one of the 12 predicted rs9379084-disrupted TF binding sites.\\nThe analysis identified one significant enrichment (p\
+    \ < 0.05): the gene set was enriched for targets of ATF3\\n(p = 0.042), which regulates two of the five genes (SSR1 and\
+    \ SNRNP48). This significant finding originated from\\nthe ATF3 GM12878 hg19 database term. A separate, non-significant\
+    \ (p = 0.31) database match was also found\\nbetween ATF3 and RREB (Figure 6e). Finally the synthesis of this finding\
+    \ was: \\u201cIn aggregate, rs9379084-A connects\\na missense-tagged regulatory sequence to increased ATF3 binding, islet-selective\
+    \ chromatin closure, and directionally\\ncoherent (though variably powered) expression changes for SSR1 [...], providing\
+    \ a plausible protective pathway that\\nreprograms stress-responsive regulatory circuits in pancreatic islet cells to\
+    \ reduce type 2 diabetes risk\\u201d (Figure 6f).\\nIndependent validation of this mechanistic hypothesis identified supporting\
+    \ evidence in the pancreas-specific enhancer-\\ntarget data [32] which shows that the missense SNP rs9379084-A overlaps\
+    \ with a cis-regulatory element that is pre-\\ndicted to regulate SSR1 and RREB1 (Figure 6g). Additionally, the transcriptome-wide\
+    \ association analyses (TWAS)\\nhub data [33] shows that SSR1 is the only gene in the locus with a significant association\
+    \ with T2D (TWAS |Z| > 5,\\nFigure 6h), suggesting that genetically-inferred levels of SSR1 are associated with higher\
+    \ risk of T2D. Lastly, pre-\\nvious studies have demonstrated that SSR1 levels are causally linked to circulating insulin\
+    \ in cell [34] and animal\\nmodels [35].\\nThis discovery demonstrated Kosmos\\u2019 ability to autonomously develop a\
+    \ target prioritization strategy for likely causal\\nmechanisms in T2D, followed by proposing a specific mechanistic hypothesis\
+    \ that is supported by independent data\\nsources and literature.\\n2.4\\nKosmos independently develops new methods\\\
+    n2.4.1\\nDiscovery 6: Temporal ordering of disease-related events in Alzheimer\\u2019s Disease\\nBeyond replicating published\
+    \ findings or executing suggested analyses, Kosmos can propose novel analytical ap-\\nproaches. Here, we demonstrate how\
+    \ Kosmos proposed a data-science-driven approach to pinpoint when a given\\ncellular process was affected in a disease\
+    \ continuum.\\nAlzheimer\\u2019s disease (AD) is the most common form of dementia. Brain pathology reflects the accumulation\
+    \ of ex-\\ntracellular protein aggregates in the form of amyloid plaques and intracellular aggregates of the microtubule-binding\\\
+    n14\\n\\nHuman Validation\\na\\nDataset: Proteomics dataset of\\nmini-pools of 20 neurons each,\\ncollected from 10 different\
+    \ Alzheimer\\u2019s\\ndisease cases.\\nb\\nc\\nd\\ng\\nA\\nRationale: Continuous analysis along pseudotime could\\npinpoint\
+    \ timing of ECM decline.\\nbreakpoint would be a\\nquantitative marker for key events along the timeline\\nHypothesis:\
+    \ ECM proteins exhibit a non-linear pattern with\\na breakpoint along pseudotime\\nAnalysis: Segmented regression model\\\
+    nECM pathway\\nwas enriched in\\ndown-regulated\\nproteins in late\\npseudotime.\\ni\\nminipools\\n(20 neurons each)\\\
+    npTau (AT8)\\nh\\nKosmos\\nLog2 Fold Change\\n-Log10(p-value)\\n0.0\\n2.0\\n4.0\\n-5.0\\n5.0\\n0.0\\ne\"\n  },\n  {\n\
+    \    \"name\": \"LAMA2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HSPG2\",\n    \"text\": \"Pseudotime\"\n  },\n\
+    \  {\n    \"name\": \"NID2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"NID1\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"LAMA4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LAMC1\",\n    \"text\": \"\"\n  },\n  {\n  \
+    \  \"name\": \"COL4A2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ITGA7\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"LAMB2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"COL6A3\",\n    \"text\": \"2.5\\n0.0\\n-2.5\\nKosmos\
+    \ curates ECM proteins\\nECM score\\n(protein abundance)\\nPseudotime\\n9.0\\n10.5\\n12.0\\n13.5\\n15.0\\n0.0\\n0.25\\\
+    n0.50\\n0.75\\n1.00\\nR2 Value\\n0.0\\n0.2\\n0.4\\n0.6\\n0.8\\np = 0.017\\nLinear\\nSegmented\\nECM Breakpoint\\nDensity\\\
+    n0\\n1\\n2\\n3\\n4\\n0.00\\n0.25\\n0.50\\n0.75\\n1.00\\nPseudotime\\nSliding Window\\nCorrelation Coefficient\\n-1.0\\\
+    n-0.8\\n-0.6\\n-0.4\\n-0.2\\n0.0\\n0.6\\n0.4\\n0.2\\nECM Score (gene expression)\\n0.0\\n0.2\\n0.6\\n0.8\\nNon-NFT\\nNFT\\\
+    np < 0.001\\n0.4\\nf\\nKosmos identifies breakpoint\\nModels comparison\\nKosmos performs exploratory analysis\\nKosmos\
+    \ proposes novel analysis method\\nBootstrapping evaluation\\nOrthogonal approach validation\\nBiological extrapolation\\\
+    nResearch objective (Abbr.): Investigate\\nproteome differences between cells with\\npositive and negative tau status.\\\
+    nFigure 7: Kosmos develops temporal ordering method for disease-related events in Alzheimer\\u2019s Disease. a) Research\\\
+    nobjective and dataset description given to Kosmos.\\nRepresentative image of phosphorylated-tau (AT8) staining showing\\\
+    na positive cell (red) and a neighbouring negative cell (blue). Minipools of 20 positive and negative cells were collected\
+    \ for\\nproteomic analysis. (Diagram created in https://BioRender.com) b) Volcano plot showing an exploratory analysis\
+    \ by Kosmos\\ncomparing early and late pseudotime samples, identifying extracellular matrix (ECM) pathway (yellow dots)\
+    \ as significantly\\nenriched in down-regulated proteins (blue dots). Red dots indicate up-regulated proteins [Trajectory\
+    \ r17]. c) Kosmos reasoned\\non an analytical method to identify timing of pathway decline. d) Heatmap showing levels\
+    \ (z-scored) of ECM proteins curated\\nby Kosmos along pseudotime. e) Scatter plot of the ECM composite score versus pseudotime\
+    \ (red: Tau+, blue: Tau\\u2212) fitted\\nwith a segmented regression model (yellow line) and a linear model (blue line).\
+    \ The model identifies a breakpoint (yellow\\ndotted line) at 0.58 units.\\nf) R2 values of linear and segmented models\
+    \ (Davies test - p = 0.017) [Trajectory r26].\\ng)\\nStability of breakpoint was assessed by bootstrapping. Shaded area:\
+    \ kernel density estimate. Red dotted line: breakpoint.\\nh) Sliding window correlation between ECM composite score and\
+    \ pseudotime with LOWESS fit reveals an inflection point at\\nECM breakpoint. i) Validation: ECM score decline is also\
+    \ observed at the transcriptome level in an independent dataset: tau\\u2212\\nneurons (non-NFT AD) and tau+ (NFT AD) (adj.\
+    \ p = 2.75\\u00d710\\u221292, pairwise Mann\\u2013Whitney U test, Bonferroni-corrected).\\n15\\n\\nprotein tau into structures\
+    \ known as neurofibrillary tangles (NFTs). Despite the broad and constitutive expression\\nof tau across the brain, NFTs\
+    \ form in a remarkably selective and stereotyped pattern, affecting distinct neuronal\\npopulations and brain regions\
+    \ in a predictable sequence. This phenomenon, known as selective neuronal vulnerability,\\nremains one of the most enigmatic\
+    \ features of diseases with NFT pathology. To investigate the underlying molecular\\nmechanisms of neuronal vulnerability,\
+    \ Foiani et al. combined laser-capture microdissection with ultrasensitive mass\\nspectrometry to profile protein abundance\
+    \ in affected neurons (i.e. neurons positive for phosphorylated tau accumu-\\nlation detected by antibody AT8) alongside\
+    \ neighboring unaffected neurons in the same brain. Prior to providing\\nthis data to Kosmos, quality control was performed\
+    \ and samples were ordered on a pseudotime axis closely reflecting\\nintracellular tau accumulation (Foiani et al. in\
+    \ preparation).\\nThe primary research objective given to Kosmos was to propose mechanisms contributing to tau accumulation\
+    \ and\\na temporal sequence of these events (Methods and Figure 7a). Kosmos initially performed a differential abundance\\\
+    nanalysis by comparing minipools in the earliest 33% of the pseudotime to those in the latest 33% (Figure 7b). The\\ndown-regulated\
+    \ proteins were enriched in proteins involved in the extracellular matrix (ECM), closely replicating\\nindependent human\
+    \ analyses (Foiani et al. in preparation) and in agreement with previous studies reporting reduced\\nexpression of ECM\
+    \ proteins and upregulation of metalloproteinases [36].\\nAs the research objective required Kosmos to propose a sequence\
+    \ of events, the timing of the events would have to\\nbe determined. Kosmos rationalized that although the binned analysis\
+    \ showed differences in early and late stages,\\na continuous analysis could pinpoint the timing of pathway changes more\
+    \ precisely. Kosmos hypothesised that the\\ndecline in ECM proteins would exhibit a non-linear pattern with a breakpoint\
+    \ that indicates the timing of ECM\\nfailure (Figure 7c). To test this hypothesis, Kosmos first selected 10 ECM proteins\
+    \ and calculated a composite ECM\\nabundance score using the mean abundance of those 10 proteins (Figure 7d). Then, segmented\
+    \ regression models\\nwere fitted to the ECM score against pseudotime. The best fit was determined by optimizing for residual\
+    \ sum of\\nsquares (RSS) (Figure 7e). The resulting model provided a significantly better fit than a simple linear model\
+    \ (Davies\\ntest, p = 0.017, Figure 7f), and pinpointed a breakpoint at 0.58 units of pseudotime. Of interest, the proposed\\\
+    nbreakpoint is later than the transition between tau-negative and tau-positive (around 0.5), suggesting that ECM\\nfailure\
+    \ is downstream of tau accumulation. This approach can be expanded towards other affected cellular pathways\\nto reconstruct\
+    \ the sequence of events leading to tau pathology formation.\\nTo assess the computational replicability, we repeated\
+    \ the analysis across multiple independent trials with the data\\nanalyst agent, obtaining consistent support for Kosmos\\\
+    u2019 proposed breakpoint (see Methods). Of interest, during this\\nprocess, the agent proposed alternative computational\
+    \ approaches that further strengthened the finding and were\\nmanually validated. The agent implemented a bootstrapping\
+    \ approach (Figure 7g) and an orthogonal breakpoint\\nanalysis (by identifying the inflection point of a sliding window\
+    \ correlation, Figure 7h), which both gave the identical\"\n  },\n  {\n    \"name\": \"conclusions\",\n    \"text\": \"\
+    To validate the biological relevance of this finding, we calculated the ECM composite score in the same manner in\\npreviously\
+    \ published single-soma transcriptomic data [37]. A similar decrease of ECM gene expression was observed in\\nthis dataset\
+    \ between neurons from AD patients without neurofibrillary tangles (NFT) and those with NFT (Figure 7i),\\nthus suggesting\
+    \ a possible adaptation to tau accumulation. The complete study will be reported in an upcoming\\nmanuscript (Foiani et\
+    \ al., in preparation).\\nThis discovery highlighted Kosmos\\u2019 ability to not only execute standard analyses, such\
+    \ as differential expression or\\npathway enrichment analysis, but also to reason and propose unconventional methods to\
+    \ address research objectives.\\nWhile optimizing a segmented model to fit data is prevalent in data sciences [38], this\
+    \ approach, to the best of our\\nknowledge, has not been previously applied within a biological context to investigate\
+    \ molecular events along a cellular\\ntimeline.\\n2.5\\nKosmos makes novel clinical discoveries not identified by human\
+    \ researchers\\n2.5.1\\nDiscovery 7: Mechanism of entorhinal cortex vulnerability in aging\\nHere, we demonstrate how\
+    \ Kosmos was able to uncover a clinically relevant mechanism of neuronal aging that was\\nnot identified by the researchers\
+    \ who originally created and analyzed the dataset.\\nAging is the most common risk factor for dementia but we still do\
+    \ not understand the molecular mechanisms involved.\\nTau pathology first emerges in specific vulnerable cell-types and\
+    \ brain regions, such as supragranular excitatory neurons\\n16\\n\\n1.0\\n1.5\\n2.0\\nAdult\\nAged\\nAtp10a expression\
+    \ (log1p)\\na\\nResearch objective (Abbr.): Propose\\nmechanisms of vulnerability of ENT\\nneurons in aging.\\nd\\nVentroposterior\\\
+    ncortex\\nHippocampus\\nAging entorhinal (ENT) neurons downregulate multiple P4-ATPase flippases, weakening membrane phospholip-\\\
+    nid asymmetry and increasing phosphatidylserine exposure precisely as microglia upregulate PS-sensing phago-\\ncytic receptors.\\\
+    nHypothesis 1: Down-regulation of Atp10a is\\ncompensated by up-regulation of other flippases\\nHypothesis 2: Aged ENT\
+    \ neurons with impaired\\nflippase expression exhibit higher rates of engulf-\\nment by microglia\\nRejected: Global downregulation\
+    \ of P4-ATPases\\nSupported: Flippases are downregulated in aged ENT\\nneurons, while microglia showed upregulation of\\\
+    nphagocytic markers\\nb\\nAtp10a decreases with age in ENT\\nAtp10a is significantly upregulated\\nc\\ne\\nf\\ng\\nAge\
+    \ (months)\\n6\\n28\\n...\\nDiscovery synthesis\\n2\\n****\\nns\\n0.0\\n1.0\\n2.0\\nEC\\nSFG\\nNeurons\\nMean expression\
+    \ (log(x+1))\\nBraak\\n0\\nFlippases\\n****\\n**\\n0.0\\n0.5\\n1.0\\nEC\\nSFG\\nMicroglia\\nMean expression (log(x+1))\\\
+    nBraak\\n0\\n2\\nPhagocytosis\\nAtp10a\\n200\\n0\\n-10\\n0\\n10\\nLog2 Fold Change\\n-log10(adj. p)\\nHuman validates\
+    \ results\\nHuman evaluates clinical relevance of the discovery\\nKosmos explores ENT vs. CTX in Aged Mice\\nKosmos further\
+    \ investigates Atp10a\\nDataset: snRNAseq of mouse brain\\nfrom different ages.\\nHuman Validation\\nKosmos\\n\\u22120.5\
+    \ 0.0\\n0.5\\n1.0\\nValidation\\nReplication\\nKosmos\\nValidation\\nReplication\\nKosmos\\nMean log2FC (Aged/Adult)\\\
+    nFlippases\\nPhagocytosis\\nFigure 8: Kosmos makes novel discovery of entorhinal cortex vulnerability mechanism in aging.\
+    \ a) Research objective and\\ndataset description given to Kosmos. Mice aged 6 to 28 months were used in this study. 3D\
+    \ brain schematic highlights brain\\nregions (hippocampal formation and ventroposterior cortex, including entorhinal cortex)\
+    \ dissected for nuclei isolation b) Volcano\\nplot showing differential expression analysis between ENT vs CTX in aged\
+    \ mice, and identifying Atp10a as significantly up-\\nregulated. Red: up-regulated genes; blue: down-regulated genes.\
+    \ [Trajectory r2]. c) Box plot showing that Atp10a decreases\\nwith age in ENT neurons. Literature search suggested functional\
+    \ and clinical relevance of Atp10a to the research objective\\n[Trajectory r32]. d) Iterative hypothesis exploration.\
+    \ The flowchart shows representative hypotheses generated and tested to\\narrive at the discovery. e) An excerpt from\
+    \ the discovery report generated by Kosmos relating to the reported discovery. f)\\nDownregulation of flippase and upregulation\
+    \ of microglial activation genes in original Kosmos run, a replication analysis with\\nthe same data (replication) and\
+    \ a validation analysis using an independent published dataset (validation). g) Validation of\\nclinical significance\
+    \ in Alzheimer\\u2019s disease Braak 0 vs 2 stage cases. (left) Flippases expression (ATP8A1, ATP8A2, ATP8B1\\u2013\\\
+    n4, ATP9A\\u2013B, ATP10A\\u2013D, ATP11A\\u2013C). (right) Phagocytosis related genes (CD68, TREM2, TYROBP, C1QA\\u2013C,\
+    \ CSF1R,\\nCX3CR1, P2RY12, TMEM119, HEXB, CTSD, LAMP1\\u20132). (Diagrams in a,f,g were created with https://BioRender.com)\\\
+    n17\\n\\nfrom the entorhinal cortex [39]. This pattern of early vulnerability is consistently observed in both human patients\
+    \ and\\ncorresponding mouse models [40, 41], providing a powerful system for investigation. Bourdenx et al. (in preparation)\\\
+    nhypothesized that investigating the specific mechanisms that make entorhinal neurons vulnerable during aging will\\nprovide\
+    \ critical insights into the initial stages of Alzheimer\\u2019s disease (AD).\\nKosmos was directed to identify mechanisms\
+    \ of vulnerability in aging by comparing vulnerable Layer 2/3 entorhinal\\ncortex (ENT) neurons against resilient Layer\
+    \ 2/3 isocortex cortex (CTX) neurons, given single-nuclei RNA-sequencing\\ndata derived from brains of mice aged 6\\u201328\
+    \ months (Figure 8a). Kosmos first conducted a high-level exploration\\nof the transcriptomic dataset. Differential expression\
+    \ analysis in aged mice revealed that Atp10a expression was\\nsignificantly higher in ENT compared to CTX neurons (Figure\
+    \ 8b). Kosmos then conducted a literature review,\\nidentifying Atp10a as a phospholipid flippase implicated in the survival\
+    \ of glutamatergic neurons and genetically\\nlinked to neurodegenerative diseases (OpenTargets).\\nFurther analysis by\
+    \ Kosmos showed that Atp10a expression in ENT was downregulated with age (Figure 8c). Kosmos\\nexplored a loss-of-function\
+    \ mechanism, investigating whether the age-related downregulation of Atp10a in ENT was\\ncompensated by other P4-ATPase\
+    \ flippases. This hypothesis was also refuted, as the analysis revealed a concurrent\\ndownregulation of nine other flippase\
+    \ family members (Figure 8d). This widespread loss of flippase activity led Kosmos\\nto propose a novel mechanism of vulnerability:\
+    \ the reduction in flippase activity resulting in increased exposure of\\nphosphatidylserine (PS) on the outer neuronal\
+    \ membrane, which is an established \\u201ceat-me\\u201d signal that triggers\\nmicroglial phagocytosis [42]. Consistent\
+    \ with this model, Kosmos performed subsequent analysis that confirmed a\\nconcurrent significant downregulation of flippase\
+    \ genes in neurons and the upregulation of PS-sensing phagocytic\\npathway genes in microglia, providing a plausible mechanism\
+    \ for the targeted removal of vulnerable neurons in the\\naging entorhinal cortex (Figure 8e).\\nThese findings were validated\
+    \ through two independent methods. First, we tested the validity of the finding in an\\nindependent dataset generated\
+    \ by another research group [43]. Then, we assessed computational replicability by\\nprompting our data analyst agent\
+    \ to confirm the claim made by Kosmos (see Methods) over multiple runs. Both\\napproaches confirmed the observation of\
+    \ an age-dependent collapse of the flippase machinery in the entorhinal cortex\\njointly with an upregulation of the pro-phagocytosis\
+    \ axis in microglia (Figure 8f). Of note, the validation dataset was\\nsingle-cell RNA sequencing (as opposed to single-nuclei\
+    \ for the discovery dataset), likely contributing to the observed\\ndifference in effect size, with the validation dataset\
+    \ showing more modest changes.\\nTo evaluate the clinical relevance of this discovery, we analyzed an external single-cell\
+    \ RNA sequencing dataset from\\nhuman AD cases [44], where a comparable trend was observed (Figure 8fg). We observed a\
+    \ decrease in flippase\\nexpression in supragranular neurons from the entorhinal cortex at Braak stage II compared to\
+    \ a cortical-free stage\\n(Braak 0), indicating that such decrease coincides with the appearance of tau pathology in that\
+    \ region. Notably, this\\ndecrease was not observed in a later affected region (i.e. superior frontal gyrus, SFG). In\
+    \ addition, microglia from\\nthe EC and to a lesser extent the SFG demonstrated concurrent upregulation of phagocytosis\
+    \ markers, confirming\\nthe coordinated modulation of this pro-phagocytosis axis.\\nWhile the exposure of PS as an \\\
+    u201ceat-me\\u201d signal is a recognized mechanism for cellular and synaptic clearance in\\nthe brain [42, 45], this\
+    \ discovery establishes a novel mechanism for ENT neuron vulnerability in aging and AD.\\nFlippases are essential for\
+    \ the maintenance of membrane asymmetry, signaling, or vesicular trafficking [46].\\nOf\\ninterest, A\\u03b2 oligomers\
+    \ have been shown to induce PS exposure and hyperactivity [45]. The observed age- and tau-\\nrelated downregulation of\
+    \ flippases in ENT neurons could further amplify this phenomenon and contribute to the\\nearly loss of entorhinal to hippocampal\
+    \ connectivity in AD observed in preclinical patients [47] and indicate novel\\npotential areas for intervention. This\
+    \ discovery demonstrates that, through iterative exploration, Kosmos can identify\\ndisease-relevant overlooked mechanisms\
+    \ in existing datasets.\\n3\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"To our knowledge, Kosmos is the\
+    \ first example of an AI Scientist that can carry out months of work in a single run,\\ncombining closed-loop literature\
+    \ search, data analysis, and world model updates to autonomously make discoveries\\nin multiple fields. Kosmos does this\
+    \ by using structured world models to manage context between agents, allowing\\nit to deploy hundreds of agent rollouts,\
+    \ write tens of thousands of lines of code, and read thousands of papers to\\ncomplete a single research objective. Kosmos\
+    \ performs large-scale, unbiased exploration of high-dimensional datasets\\nto successfully reproduce known work (Figures\
+    \ 2-4), refine and synthesize existing knowledge (Figures 5-7), and make\\n18\\n\\nnovel discoveries (Figure 8). Because\
+    \ Kosmos uses a dynamically updated world model to deploy two general-purpose\\nscientific agents, Kosmos is able to operate\
+    \ in any domain. While we have demonstrated its utility in metabolomics\\n(Figure 2), materials science (Figure 3), connectomics\
+    \ (Figure 4), statistical genetics (Figures 5, 6), proteomics\\n(Figure 7), and transcriptomics (Figure 8), we anticipate\
+    \ that Kosmos can be applied to diverse data-rich fields.\\nFinally, each statement in a Kosmos report is supported by\
+    \ a piece of code or primary literature citation. This allows\\nthe entire discovery process to be transparent and facilitates\
+    \ independent verification or replication of any finding, as\\npresented for the discoveries here.\\n3.1\\nScientist-in-the-loop\\\
+    nKosmos is designed not to replace human scientists, but to augment and accelerate their work. A Kosmos-integrated\\npipeline\
+    \ begins with human-generated and -curated high-quality dataset and ends with human interpretation and\\ncritical evaluation\
+    \ of the results. Thus, the quality and format of input datasets have a significant impact on the\\noutput discoveries.\
+    \ For instance, preliminary runs for discoveries in Figures 2, 5 and 6 yielded different focuses and\"\n  },\n  {\n  \
+    \  \"name\": \"results depending on the type of input data pre-processing (data not shown). Throughout our testing, collaborators\"\
+    ,\n    \"text\": \"found Kosmos provided the best scientific insight when given clearly labeled, well-formatted, and properly\
+    \ normalized\\ndata.\\nFollowing a Kosmos run, the scientist\\u2019s role shifts to evaluation and interpretation of results.\
+    \ This human oversight\\nis crucial, as independent evaluators noted that Kosmos tends to make excessively strong claims\
+    \ and can sometimes\\nveer in unexpected trajectories (Figure 1c). Together, scientists and Kosmos form a rapid feedback\
+    \ loop where initial\\nhuman findings feed AI-generated hypotheses which are then refined to guide subsequent searches,\
+    \ ensuring Kosmos\\u2019\\nanalytical power remains directed toward accurate and meaningful scientific goals.\\n3.2\\\
+    nLimitations and Future Work\\nKosmos has several limitations that highlight opportunities for future development. First,\
+    \ although 85% of statements\\nderived from data analyses were accurate, our evaluations do not capture if the analyses\
+    \ Kosmos chose to execute\\nwere the ones most likely to yield novel or interesting scientific insights. Kosmos has a\
+    \ tendency to invent unorthodox\\nquantitative metrics in its analyses that, while often statistically sound, can be conceptually\
+    \ obscure and difficult\\nto interpret. Similarly, Kosmos was found to be only 57% accurate in statements that required\
+    \ interpretation of\"\n  },\n  {\n    \"name\": \"results, likely due to its propensity to conflate statistically significant\
+    \ results with scientifically valuable ones. Given\",\n    \"text\": \"these limitations, the central value proposition\
+    \ is therefore not that Kosmos is always correct, but that its extensive,\\nunbiased exploration can reliably uncover\
+    \ true and interesting phenomena. We anticipate that training Kosmos may\\nbetter align these elements of \\u201cscientific\
+    \ taste\\u201d with those of expert scientists and subsequently increase the number\\nof valuable insights Kosmos generates\
+    \ in each run.\\nSecond, identifying valuable discoveries Kosmos made is a time-intensive process that relies on human\
+    \ scientists\\nwith significant domain expertise. An average Kosmos report contains 3-4 discovery narratives, and each\
+    \ discovery\\nnarrative contains 25 claims based on 8-9 agent trajectories. While the provenance of each claim is traceable,\
+    \ there\\nexists no automated method to reliably evaluate if a claim is accurate, novel, and significant. Thus, although\
+    \ Kosmos\\nperforms data-driven discovery at scale, identifying meaningful discoveries at scale remains a challenge.\\\
+    nFinally, the current implementation of Kosmos faces several technical limitations. Kosmos can only manage datasets\\\
+    nup to approximately 5GB, and does not currently excel in the analysis of raw data, such as images or raw sequencing\\\
+    nfiles. Kosmos cannot autonomously access publicly available data from external sources to use as a reference or in\\\
+    northogonal validations. Furthermore, as Kosmos is stochastic, multiple independent runs may not consistently con-\\nverge\
+    \ on the same discoveries. The system\\u2019s research directions are currently sensitive to the phrasing of the research\\\
+    nobjectives. Finally, the current implementation does not allow for scientists to interact with Kosmos in intermediate\\\
+    ncycles, limiting opportunities for scientists to nudge Kosmos down fruitful research avenues. We anticipate addressing\\\
+    nthese challenges in future work.\\n19\\n\\n3.3\"\n  },\n  {\n    \"name\": \"Conclusion\",\n    \"text\": \"Taken together,\
+    \ our results demonstrate an AI scientist that can autonomously conduct extended research investiga-\\ntions that produce\
+    \ discoveries validated by domain experts across multiple scientific fields. The world model enables\\ncoordination of\
+    \ parallel agent trajectories at scales that would require months of human effort, while maintaining\\ncomplete traceability\
+    \ of all scientific claims. With further training, Kosmos has the potential to significantly scale\\ndata-driven discovery.\\\
+    n4\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"4.1\\nFigure 1 Methods\\n4.1.1\\nExpert evaluations of Kosmos\
+    \ accuracy\\nExpert scientists were asked to evaluate a sample of Kosmos statements to determine if it is accurate and/or\
+    \ repro-\\nducible. Initially, these experts were asked to mark the statements as \\\"SUPPORTED\\\", \\\"REFUTED\\\",\
+    \ or \\\"UNSURE\\\".\\nThe instructions for evaluation are shown in Supplementary Information 3. Upon submission, all\
+    \ answers that were\\nmarked as \\\"UNSURE\\\" were reviewed to determine if the expert was unable to perform the analysis\
+    \ or if the state-\\nment was malformed or insufficient. In the latter case, the statement was clarified or additional\
+    \ relevant information\\nwas provided, and the evaluator was asked to determine definitively if the statement was \\\"\
+    SUPPORTED\\\" or \\\"RE-\\nFUTED\\\". Examples of both \\\"SUPPORTED\\\" and \\\"REFUTED\\\" evaluations for Data Analysis,\
+    \ Literature Review, and\\nInterpretation statements are provided in Supplementary Information 4.\\n4.2\\nFigure 2 Methods\\\
+    n4.2.1\\nin vivo experiment\\nAll experiments used adult KOR-Cre mice (9\\u201310 weeks old) maintained on a 12-hour light/dark\
+    \ cycle with ad libitum\\naccess to food and water. All procedures were approved by the Washington University Animal Studies\
+    \ Committee,\\nand experimenters were blinded to the treatment group.\\nFor chemogenetic activation, mice received bilateral\
+    \ stereotactic injections of AAV8-hSyn-DIO-hM3Dq-mCherry (or\\ncontrol AAV8-hSyn-DIO-mCherry) into the medial preoptic\
+    \ area (POA). Viral expression was verified at least three\\nweeks later by a test dose of clozapine-N-oxide (CNO; 0.5\
+    \ mg/kg, intraperitoneal). Animals failing to show a decrease\\nin core body temperature of at least 3\\u00b0C were excluded.\\\
+    nSeventeen validated mice were then assigned to one of three experimental conditions. Control mice received the\\ncontrol\
+    \ virus and were housed at room temperature (\\u223c22\\u00b0C). Hypothermic-POAKOR+ mice received the DREADD\\nvirus\
+    \ and were housed at room temperature (\\u223c22\\u00b0C) to allow the development of a torpor-like hypothermic state.\\\
+    nNormothermic-POAKOR+ mice also received the DREADD virus but were housed at 36\\u00b0C to prevent cooling and\\nmaintain\
+    \ normothermia.\\nThirty minutes after CNO administration, animals were euthanized by live decapitation. Whole brains\
+    \ were rapidly\\nremoved, flash-frozen in liquid nitrogen, and stored at \\u221280\\u00b0C. Polar and lipid metabolites\
+    \ were extracted as described\\npreviously [9]: tissue was homogenized in a 2:2:1 acetonitrile:methanol:water mixture\
+    \ (40 \\u00b5 L per mg tissue) using\\na bead mill, incubated at \\u221220\\u00b0C for 1 hour, and centrifuged at 10,000\
+    \ rpm for 10 minutes at 4\\u00b0C. The supernatant\\nwas transferred to autosampler vials and stored at \\u221280\\u00b0C\
+    \ until analysis.\\n4.2.2\\nMetabolomic profiling and data preprocessing\\nMetabolomic profiling was performed on a Thermo\
+    \ Scientific Vanquish Flex UHPLC system coupled to a Thermo\\nScientific Orbitrap ID-X mass spectrometer. Polar metabolites\
+    \ were separated on a HILICON iHILIC-(P) Classic\\nHILIC column, and lipids were separated on an Acquity UPLC HSS T3 column\
+    \ using the solvent gradients described\\nin the original study. Data were acquired in both positive and negative ion\
+    \ modes.\\n20\\n\\nRaw spectra were processed in XCMS, Compound Discoverer (v3.3), and Skyline for peak detection, retention-time\\\
+    nalignment, and compound identification. The resulting normalized peak-intensity matrix served as the input dataset\\\
+    nfor Kosmos analyses. Statistical comparisons between hypothermia and control groups were performed using unpaired\\nt-tests\
+    \ (Figure 2B).\\nThe results of Kosmos run were validated by comparing to the preprinted statistical results.\\n4.3\\\
+    nFigure 3 Methods\\nTo investigate how the ambient environment during the synthesis of FAPbI3 perovskite thin films influences\
+    \ solar\\ncell performance, two custom-built environmental enclosures were used to enable independent control of ambient\\\
+    nconditions during the spin-coating and thermal annealing steps.\\nIn the spin-coating chamber, we independently\\nregulated\
+    \ temperature, absolute humidity (AH), and the dimethylformamide (DMF) solvent partial pressure (SPP)\\nvia CDA, a humidifier/water\
+    \ boiler, and a DMF bubbler, with resistive heating and local sensors for feedback. In\\nthe annealing chamber, AH was\
+    \ actively controlled; temperature was set by the hotplate (no separate chamber\\ntemperature control), although it was\
+    \ measured and included in our regressor.\\nPerovskite films for n\\u2013i\\u2013p solar\\ncell devices were fabricated\
+    \ using a one-step antisolvent spin-coating method followed by thermal annealing. The\\nresulting devices were characterized\
+    \ for short-circuit current density (JSC), open-circuit voltage (VOC), fill factor\\n(FF), and power conversion efficiency\
+    \ (PCE). To efficiently explore the multidimensional process space, we employed\\nBayesian Optimization (BO) in iterative\
+    \ learning cycles. Experimental results from each cycle informed the algorithm\\u2019s\\nsuggestion for the next set of\
+    \ synthesis conditions. Full experimental details can be found in Liu et al., 2025 [14].\\nThe results of Kosmos run were\
+    \ validated by comparing to the preprinted figures and reported trends.\\n4.4\\nFigure 4 Methods\\nAll data analyzed in\
+    \ this study originate from a preprint [15] that integrated eight publicly available connectome\\nreconstructions, providing\
+    \ single-neuron\\u2013resolution synaptic connectivity across five species (C. elegans, Drosophila\\nlarva, adult Drosophila,\
+    \ zebrafish, mouse, and human). The datasets encompass the complete C. elegans connec-\\ntome [48, 49], and adult Drosophila\
+    \ central nervous system [50, 51] and ventral nerve cord [52] reconstructions, the\\nlarval zebrafish brainstem [53],\
+    \ a millimeter-scale volume of mouse visual cortex [54], and a human temporal cortex\\nsample [55]. The preprint harmonized\
+    \ these datasets by standardizing neuron and synapse formats and rescaling spa-\\ntial coordinates to account for imaging\
+    \ resolution and section thickness, allowing cross-species comparison of neuron\\nmorphology and connectivity. From this\
+    \ preprocessed data, for which full details are provided in the preprint [15],\\nwe downloaded morphological details of\
+    \ fully reconstructed neurons and all synapses associated with them. Specifi-\\ncally, we utilized neuronal size L (total\
+    \ path length of each neuron\\u2019s reconstructed skeleton), synapse count S (total\\nnumber of pre- and post-synaptic\
+    \ contacts per neuron), and local synapse density \\u03c1 (estimated using a random-walk\\napproach that samples local\
+    \ synapse-per-micron density around each synapse), and neuronal degree k (number of\\nunique partner neurons per cell).\\\
+    nThe results of Kosmos runs were validated by comparing to the preprinted figures and reported fit parameters.\\n4.5\\\
+    nFigure 5 Methods\\n4.5.1\\nData description and preprocessing\\nPublicly available datasets were utilized. Genetic variants\
+    \ that influence protein levels (known as cis-protein quantita-\\ntive trait loci or cis-pQTLs) were used as the exposure\
+    \ data. GWAS summary statistics from plasma proteomics [31].\\nThese genetic variants were located within 500 kilobases\
+    \ of the protein-coding gene, a region defined as \\\"cis\\\" in this\\ncontext. To ensure the genetic instruments were\
+    \ independent from each other, linkage disequilibrium (LD) clumping\\nwas performed to retain only variants with minimal\
+    \ correlation (r2 < 0.01). Independent variants were retained after\\nLD-based clumping (r2 < 0.01). Myocardial T1 relaxation\
+    \ time GWAS summary statistics from Nauffal et al. was\\nused as the outcome data [25].\\n21\\n\\n4.5.2\\nDiscovery validation\\\
+    nTo validate Kosmos results, Mendelian Randomization with the inverse-variance weighted (IVW) method was con-\\nducted\
+    \ independently on the same dataset. The MR workflow was implemented using the MendelianRandomization\\nR package [56].\
+    \ The number of SNPs used as instruments was recorded for each protein-outcome pair. Results were\\nconsidered statistically\
+    \ significant if they achieved a p-value below the Bonferroni-corrected threshold (0.05 divided\\nby the number of tests\
+    \ performed within each analysis type).\\n4.6\\nFigure 6 Methods\\n4.6.1\\nData description and preprocessing\\nPublicly\
+    \ available datasets were utilized. The 10x multiome data from the Wang et al study [28] was accessed via GEO\\n(accession\
+    \ IDs: GSE124742 and GSE164875). The T2D GWAS summary statistics were accessed on the DIAGRAM\\nconsortium website (https://diagram-consortium.org/downloads.html).\
+    \ The snRNAseq and snATAC-seq data from\\nall of the available cell clusters were processed as previously described [28].\
+    \ Cell clusters with less than 1000 cells\\nwere excluded from the analysis. The R package motifbreakR [31] was used to\
+    \ predict transcription factor binding\\nsites (TFBS) that overlap with the fine-mapped GWAS variants. The ReMap lookup\
+    \ function was used when running\\nmotifbreakR to include validated predicted TFBS with ChIP-seq validation. The ATAC-seq\
+    \ and the snRNAseq counts\\nwere converted into pseudobulk counts using harmony [28]. The ATAC peak\\ntranscript level\
+    \ associations were\\nconducted using a linear regression model which adjusted for sex, BMI, and disease status (since\
+    \ we were interested\\nin a disease-agnostic association between ATAC peaks and transcript levels). eQTL and pQTL summary\
+    \ stats were\\nprovided from pancreas-specific GTEx data [29] and blood-specific proteome data [30], respectively. Lastly,\
+    \ we queried\\nGene Ontology for annotations for all of the putative target genes and the transcription factors that were\
+    \ predicted\\nto have their binding sites disrupted by the GWAS variants. The resulting table contained 68K SNP-TF pairs\
+    \ from\\n7,925 unique GWAS SNPs. A data dictionary that explained the significance of each column was also generated.\\\
+    nThe table and the data dictionary were both used as input for Kosmos.\\n4.6.2\\nDiscovery validation\\nThe IGV plot with\
+    \ the enhancer-to-gene (E2G) tracks were downloaded on 10/24/2025 here:\\nhttps://e2g.\\nstanford.edu/variant/6_7231610_G_A\\\
+    nThe TWAS reflection plot was generated using Finch: https://platform.edisonscientific.com/trajectories/\\naa8f203a-a27c-454e-b4be-25c1ed67c965\\\
+    n4.7\\nFigure 7 Methods\\n4.7.1\\nData collection and preprocessing\\nFormalin-fixed paraffin embedded (FFPE) sections\
+    \ (8 \\u00b5m) were collected from 10 cases on slides compatible with\\nlaser-capture microdissection. Sections were stained\
+    \ for phosphorylated Tau (Ser202/Thr205 - AT8) and minipools of\\n20 positive and neighboring negative cells were collected\
+    \ and submitted to ultrasensitive mass spectrometry. Following\\ndata collection, standard quality control and imputation\
+    \ were used. Minipools were ordered on a pseudotime axis\\nusing the palantir package [57]. The complete method and dataset\
+    \ will be reported in an upcoming publication\\n(Foiani, et al., in preparation).\\n4.7.2\\nInitial discovery\\nThe dataset\
+    \ and prompt (Supplementary Table 1) were provided to Kosmos, which was run for 35 iterations. Discovery\\nreports were\
+    \ generated after iterations 8 and 35. Upon review, the discoveries from iteration 8 presented a more\\ncohesive narrative.\\\
+    nTo refine the final output, we manually-curated these discoveries by writing new titles and\\nsummaries based on the\
+    \ iteration 8 report. A final, consolidated discovery report was then generated using these\\ncurated descriptions and\
+    \ the complete set of trajectories from all 35 iterations.\\n22\\n\\n4.7.3\\nECM composite score\\nPathway enrichment\
+    \ analysis of down-regulated proteins identified a significant overrepresentation of proteins involved\\nin pathways such\
+    \ as extracellular matrix (ECM). Protein-Protein-Interaction network analysis identified fibronectin\\n(FN1) as a high\
+    \ centrality protein linking ECM to other affected pathways. The top ten ECM proteins with highest\\ncorrelation with\
+    \ FN1 (LAMA2, HSPG2, NID2, NID1, LAMA4, LAMC1, COL4A2, ITGA7, LAMB2, COL6A3) were\\nconsidered the most tightly co-regulated\
+    \ ECM protein networks. Their mean expressions were defined as \\u201ccomposite\\nECM score\\u201d for downstream analysis.\\\
+    n4.7.4\\nDiscovery Validations\\nFor replication runs, the data analysis agent was provided the same dataset and prompted\
+    \ to test Kosmos claim:\\n\\u201cAn ECM composite score (mean of LAMA2, HSPG2, NID2, NID1, LAMA4, LAMC1, COL4A2, ITGA7,\
+    \ LAMB2,\\nCOL6A3) declined nonlinearly with pseudotime, with a significant breakpoint at 0.5754 where decline accelerated\\\
+    n3.47-fold\\u201d. This process was repeated over 5 independent trajectories, which all strongly supported the claim.\\\
+    nTo validate the identified breakpoint, we performed a sliding window correlation analysis. Pearson correlation was\\\
+    ncalculated in a sliding window of 20 samples, with step size of one sample along the pseudotime axis. A Locally\\nWeighted\
+    \ Scatterplot Smoothing (LOWESS) fit to the resulting correlation coefficients revealed a distinct inflection\\npoint\
+    \ at a pseudotime of 0.57, which coincided with the Kosmos-defined breakpoint. This method was adapted from\\na data analysis\
+    \ trajectory from another discovery of the same Kosmos output.\\nFor further validation, we used a publicly available\
+    \ single-soma transcriptomics dataset from neurofibrillary tangles\\n(NFT) bearing and non-NFT bearing samples from AD\
+    \ and controls37. The data analysis agent was prompted to\\n\\u201cCalculate a ECM score using the genes LAMA2, HSPG2,\
+    \ NID2, NID1, LAMA4, LAMC1, COL4A2, ITGA7, LAMB2,\\nCOL6A3. Compare the ECM score between control, non-NFT bearing and\
+    \ NFT bearing samples.\\u201d All 5 independent\\ntrajectories supported the initial discovery where ECM scores decrease\
+    \ from control to non-NFT to NFT bearing\\nsamples.\\nTable 1: Links to validation data analysis trajectories\\nAnalysis\
+    \ Type\\nTrajectory Links\\nReplication (original data)\\nhttps://platform.edisonscientific.com/trajectories/\\n4d948f9c-7402-48c5-a0f3-41daff09f737\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\nd40c1133-2e28-452f-b92e-75d4ba87d2e4\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n13fee7fd-b5ef-4a61-bebf-cb2dcec678f0\\nhttps://platform.edisonscientific.com/trajectories/\\n627619c1-b726-4c4c-bbed-743e55f456b6\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\nd8ef5055-113d-4fb4-91a0-42a9e53e7c98\\nValidation (Single soma\
+    \ RNA-seq)\\nhttps://platform.edisonscientific.com/trajectories/\\ne2ebf0d3-74b3-484a-a821-906d23109c94\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n9e50daec-4670-45ce-bb20-9e1e6ff6e5fb\\nhttps://platform.edisonscientific.com/trajectories/\\n06ed2bf0-9ecd-4a54-bec9-40f4826c42bb\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\n68980a3b-5510-43bf-8f81-68a5d2367a37\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n51d8ac2b-ae00-4bd6-a595-5696faec19b7\\nSliding window correlation\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n5b0c9346-0070-45a4-b058-fffb77aef062\\n23\\n\\n4.8\\nFigure 8 Methods\\n4.8.1\\nData collection and preprocessing\\nTo\
+    \ characterize aging-associated changes in the mouse brain, the ventral-posterior part of the cortex (i.e. containing\\\
+    nentorhinal cortex) and the hippocampal formation were dissected out from and prepared for single-nuclei multiome\\nanalysis\
+    \ (n=23 - Age range: 6months - 28months). Both RNA and ATAC libraries were sequenced with a target\\nof 30,000 and 50,000\
+    \ reads per nucleus, respectively. Reads were demultiplexed to FASTQ files using bcl2fastq and\\nthen mapped to the mouse\
+    \ reference genome (mm10). UMIs per genes were counted using cellranger-arc using\\nthe \\u2013include-intron parameter.\
+    \ Count matrices were processed in R and Python for quality control and filtering.\\nCell-type annotation was performed\
+    \ using RNAseq data by combining alignment with the Allen Brain Atlas mouse\\nbrain taxonomy [58] and de-novo clustering,\
+    \ and then extended to the ATACseq data. Note that only RNAseq data\\nwas used in Kosmos. The complete dataset will be\
+    \ made available in a separate publication (Bourdenx et al., in\\npreparation).\\n4.8.2\\nDiscovery Validations\\nFor\
+    \ replication runs, the data analysis agent was provided the same dataset and prompted to test Kosmos claim:\\n\\u201cThe\
+    \ core hypothesis is that an integrated \\\"pro-phagocytic axis\\\" is activated in the aged entorhinal cortex, involving\\\
+    ncoordinated changes in both neurons and microglia.\\nL2/3 IT ENT neurons exhibit a systemic flippase collapse,\\nimplying\
+    \ increased surface \\\"eat-me\\\" signals. Simultaneously, microglia become primed for phagocytosis, coupled with\\ndownregulation\
+    \ of the \\\"don\\u2019t-eat-me\\\" signal.\\u201d. This process was repeated over 5 independent trajectories, which all\\\
+    nstrongly supported the claim.\\nFor further validation, we used a previously published independent dataset of single\
+    \ cell (as opposed to single\\nnuclei in the discovery dataset) RNA sequencing from mouse whole brain ageing41.\\nThe\
+    \ data analysis agent\\nwas provided a subsetted dataset only containing ENT, CTX neurons and microglia (downloaded from:\
+    \ https:\\n//assets.nemoarchive.org/dat-61kfys3) with same prompt as before, over 5 independent trajectories, which\\\
+    nalso strongly supported the initial discovery.\\nFinally, to assess the clinical relevance of the discovery, we used\
+    \ a publicly available single nuclei RNA sequencing\\ndataset from human AD in an early (EC) and late (SFG) affected regions\
+    \ at various stages (Braak 0, II, and VI).\\nIn order to capture the earliest changes in flippase expression, we focused\
+    \ on the comparison between Braak 0 and\\nII, which is the first stage when tau pathology appears in this region. The\
+    \ dataset was subset for supragranular\\npopulations (EC:Exc.s1, EC:Exc.s2, EC:Exc.s4, SFG:Exc.s4 and SFG:Exc.s2). The\
+    \ same prompt was used, 4 out of\\n5 independent trajectories supported the initial discovery.\\n5\"\n  },\n  {\n    \"\
+    name\": \"Data availability statement\",\n    \"text\": \"Data for Figures 2-4 are available from respective preprints\
+    \ Piazza et al., 2025 [15], Liu et al., 2025 [14] and Kamal\\net al., 2025[9]. Figure 5 utilized publicly available datasets,\
+    \ with plasma proteome GWAS available at https://www.\\nsynapse.org/Synapse:syn51365303 and myocardial T1 relaxation GWAS\
+    \ available at https://cvd.hugeamp.\\norg/dinspector.html?dataset=Nauffal2024_Fibrosis_EU&phenotype=MyocardialT1. For\
+    \ Discovery 5, the\\n10x multiome data from the Wang et al. [28] can be accessed via GEO (Accession IDs: GSE124742 and\
+    \ GSE164875).\\nThe GWAS summary statistics are available on the DIAMANTE consortium website. Data for Discovery 6 will\
+    \ be\\navailable in a forthcoming publication (Foiani et al., in preparation). Similarly, data for Discovery 7 will be\
+    \ made\\navailable in a separate publication (Bourdenx et al., in preparation).\\nAll Kosmos reports for the discoveries\
+    \ reported here can be found in Supplementary Data 1-7 in pdf format, and on\\nEdison platform (Supplementary Table 1).\
+    \ Jupyter notebooks supporting data analysis and literature citations can\\nbe found within the report accessible through\
+    \ the hyperlinks. All scripts used for data analysis and figure generation\\nare available on GitHub at https://github.com/EdisonScientific/kosmos-figures.\\\
+    n24\\n\\nTable 2: Links to validation data analysis trajectories\\nAnalysis Type\\nTrajectory Links\\nReplication (original\
+    \ data)\\nhttps://platform.edisonscientific.com/trajectories/\\n6b22ad5a-06f1-4375-903a-0aff5179ce3b\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n152952fb-71a5-4d49-a44d-222142116e0c\\nhttps://platform.edisonscientific.com/trajectories/\\n024b969f-fc41-4c69-83ef-4f493c9b0a9d\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\n9b31fb26-beb0-46f3-a93f-f5613ecfa646\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n205e0b9d-d3e7-40b6-9e8a-5bb190763fca\\nValidation\\n(mouse\\nwhole\\nbrain\\nscR-\\nNAseq)\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n7c53ea61-f52a-48b6-839d-0c935ea37d3e\\nhttps://platform.edisonscientific.com/trajectories/\\n9a60b3fe-8ddb-455c-902b-3950c8cbe44c\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\n77804eec-6c99-4c76-a165-efa9bf30683f\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    nefd47388-34b6-4573-a9b7-f8e14e5175af\\nhttps://platform.edisonscientific.com/trajectories/\\n674572eb-cef9-49c1-9279-fb6c4f7021c9\\\
+    nValidation (human AD snRNAseq)\\nhttps://platform.edisonscientific.com/trajectories/\\n72bcc9f2-4a53-468a-93ba-3e22065616ab\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\n48c87183-3056-4d63-924b-534983ee3ca8\\nhttps://platform.edisonscientific.com/trajectories/\\\
+    n1d007ced-cefb-42ff-8f80-6bfe2da5bb9b\\nhttps://platform.edisonscientific.com/trajectories/\\n08197da6-5d82-4849-9b36-7b44221b7f23\\\
+    nhttps://platform.edisonscientific.com/trajectories/\\n11d414a9-a95e-4596-af46-3f6aec0a4f7e\\n25\\n\\n6\\nStatement of\
+    \ contributions\\nL.M. and A.Y. conceived and designed the overall project. L.M. and M.M.H. supervised the project. L.M.\
+    \ led the\\noverall design and engineering of the core system. B.C. led the design of the discovery review system and\
+    \ evaluations\\nof Kosmos system performance. B.C., S.N., A.D.W., L.M., and A.B. contributed to investigating Kosmos\\\
+    u2019 behavior\\nand performance, research, software development and code optimization. T.N., M.S., M.C., A.D.W., and\
+    \ E.M.G.\\ndeveloped and maintained the platform infrastructure for the project. A.D.W. developed the world model concept.\\\
+    nL.M., A.Y. and M.M.H. led coordination across collaborating research groups. M.B., E.C.L., D.L.B., N.E., A.S.,\\nS.R.,\
+    \ B.G., M.F., A.K., and L.P.S. provided, curated, and pre-processed the datasets used for the case studies.\\nM.B., E.C.L.,\
+    \ D.L.B., N.E., B.G., and A.S. designed the case study methodologies and evaluated Kosmos-generated\\ndiscoveries. A.Y.,\
+    \ M.B., A.S., A.T.W. and S.R. conducted discovery validations. A.Y., M.B., A.S., F.C., B.G.,\\nand M.M.H. provided critical\
+    \ user feedback during the system\\u2019s development cycle. B.G., D.L.B., E.C.L., M.B.,\\nK.F.R., S.Z., T.C.O., M.E.O.,\
+    \ K.J.Z., and M.M.H. provided scientific evaluation of Kosmos output. B.C. and J.L.\\ncoordinated with scientific experts\
+    \ for evaluation. A.Y., B.C., L.M., M.B., A.T.W., E.C.L., D.L.B., N.E., A.S., and\\nM.M.H. prepared the initial draft\
+    \ of the manuscript. A.Y., M.B., B.C., A.S., A.T.W., E.C.L., D.L.B., and N.E.\\nprepared the figures and tables. All authors\
+    \ contributed to the final version of the manuscript. A.D.W. and S.R.\\nsupervise research at Edison Scientific, Inc.\\\
+    n7\"\n  },\n  {\n    \"name\": \"Funding information\",\n    \"text\": \"Work undertaken by R.J.B., E.C.L., A.K., and\
+    \ L.P.S. is supported by the National Institute of Neurological Disorders\\nand Stroke of the National Institutes of Health\
+    \ under award number R01 NS133365 (to E.C.L.). Work undertaken\\nby K.E.D., M.F. and M.B. is supported by the UK Dementia\
+    \ Research Institute through UK DRI Ltd, principally\\nfunded by the Medical Research Council, and by funding from the\
+    \ Cure Alzheimer\\u2019s Fund (K.E.D. and M.B.). N.E.\\nand T.B. acknowledge a CIFAR catalyst award through the Accelerated\
+    \ Decarbonization Program and the Toyota\\nResearch Institute\\u2019s Synthesis Advanced Research Challenge (SARC) challenge.\
+    \ T.R. is supported by the UK EPSRC\\ngrant EP/Y037200/1.\\n26\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\"\
+    : \"[1] Ali Essam Ghareeb, Benjamin Chang, Ludovico Mitchener, Angela Yiu, Caralyn J. Szostkiewicz, Jon M. Laurent,\\\
+    nMuhammed T. Razzak, Andrew D. White, Michaela M. Hinks, and Samuel G. Rodriques. Robin: A multi-agent\\nsystem for automating\
+    \ scientific discovery, May 2025. arXiv:2505.13400 [cs].\\n[2] Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Foerster,\
+    \ Jeff Clune, and David Ha. The AI Scientist: Towards\\nFully Automated Open-Ended Scientific Discovery, September 2024.\
+    \ arXiv:2408.06292 [cs].\\n[3] Juraj Gottweis, Wei-Hung Weng, Alexander Daryin, Tao Tu, Anil Palepu, Petar Sirkovic, Artiom\
+    \ Myaskovsky, Fe-\\nlix Weissenberger, Keran Rong, Ryutaro Tanno, Khaled Saab, Dan Popovici, Jacob Blum, Fan Zhang, Katherine\\\
+    nChou, Avinatan Hassidim, Burak Gokturk, Amin Vahdat, Pushmeet Kohli, Yossi Matias, Andrew Carroll, Kavita\\nKulkarni,\
+    \ Nenad Tomasev, Yuan Guan, Vikram Dhillon, Eeshit Dhaval Vaishnav, Byron Lee, Tiago R. D. Costa,\\nJos\\u00e9 R. Penad\\\
+    u00e9s, Gary Peltz, Yunhan Xu, Annalisa Pawlosky, Alan Karthikesalingam, and Vivek Natarajan.\\nTowards an AI co-scientist,\
+    \ February 2025. arXiv:2502.18864 [cs].\\n[4] Kyle Swanson, Wesley Wu, Nash L. Bulaong, John E. Pak, and James Zou. The\
+    \ Virtual Lab of AI agents designs\\nnew SARS-CoV-2 nanobodies. Nature, 646(8085):716\\u2013723, October 2025. Publisher:\
+    \ Nature Publishing Group.\\n[5] Ludovico Mitchener, Jon M. Laurent, Alex Andonian, Benjamin Tenmann, Siddharth Narayanan,\
+    \ Geemi P.\\nWellawatte, Andrew White, Lorenzo Sani, and Samuel G. Rodriques. BixBench: a Comprehensive Benchmark\\nfor\
+    \ LLM-based Agents in Computational Biology, October 2025. arXiv:2503.00096 [q-bio].\\n[6] Michael D. Skarlinski, Sam\
+    \ Cox, Jon M. Laurent, James D. Braza, Michaela Hinks, Michael J. Hammerling,\\nManvitha Ponnapati, Samuel G. Rodriques,\
+    \ and Andrew D. White.\\nLanguage agents achieve superhuman\\nsynthesis of scientific knowledge, September 2024. arXiv:2409.13740\
+    \ [cs].\\n[7] Yunheng Zou, Austin H. Cheng, Abdulrahman Aldossary, Jiaru Bai, Shi Xuan Leong, Jorge Arturo Campos-\\nGonzalez-Angulo,\
+    \ Changhyeok Choi, Cher Tian Ser, Gary Tom, Andrew Wang, Zijian Zhang, Ilya Yakavets, Han\\nHao, Chris Crebolder, Varinia\
+    \ Bernales, and Al\\u00e1n Aspuru-Guzik. El Agente: An autonomous agent for quantum\\nchemistry. Matter, 8(7), July 2025.\
+    \ Publisher: Elsevier.\\n[8] Thomas Kwa, Ben West, Joel Becker, Amy Deng, Katharyn Garcia, Max Hasin, Sami Jawhar, Megan\
+    \ Kinniment,\\nNate Rush, Sydney Von Arx, Ryan Bloom, Thomas Broadley, Haoxing Du, Brian Goodrich, Nikola Jurkovic,\\\
+    nLuke Harold Miles, Seraphina Nix, Tao Lin, Neev Parikh, David Rein, Lucas Jun Koba Sato, Hjalmar Wijk,\\nDaniel M. Ziegler,\
+    \ Elizabeth Barnes, and Lawrence Chan. Measuring AI Ability to Complete Long Tasks, March\\n2025. arXiv:2503.14499 [cs].\\\
+    n[9] Aizad Kamal, Juan Liu, Ernesto R. Gonzales, Khairunisa Mohamad Ibrahim, Fan Zhang, Hannah E. Skelton,\\nJavier Kelly\
+    \ Cuenca, Carla Yuede, Gary J. Patti, Leah P. Shriver, Jin-Moo Lee, Aaron J. Norris, and Eric C. Land-\\nsness. Preoptic\
+    \ activation induces a torpor-like hypothermic and hypometabolic state that is cerebroprotective,\\nOctober 2025. ISSN:\
+    \ 2692-8205 Pages: 2025.10.24.684192 Section: New Results.\\n[10] Lisa Ohler, Sandra Niopek-Witz, Samuel E. Mainguet,\
+    \ and Torsten M\\u00f6hlmann. Pyrimidine Salvage: Physiological\\nFunctions and Interaction with Chloroplast Biogenesis.\
+    \ Plant Physiology, 180(4):1816\\u20131828, August 2019.\\n[11] Bettina Thauerer, Stephanie zur Nedden, and Gabriele Baier-Bitterlich.\
+    \ Purine nucleosides: endogenous neuro-\\nprotectants in hypoxic brain. Journal of Neurochemistry, 121(3):329\\u2013342,\
+    \ May 2012.\\n[12] Hui Shen, Guann-Juh Chen, Brandon K. Harvey, Paula C. Bickford, and Yun Wang. Inosine reduces ischemic\\\
+    nbrain injury in rats. Stroke, 36(3):654\\u2013659, March 2005.\\n[13] L. I. Benowitz, D. E. Goldberg, J. R. Madsen, D.\
+    \ Soni, and N. Irwin. Inosine stimulates extensive axon collateral\\ngrowth in the rat corticospinal tract after injury.\
+    \ Proceedings of the National Academy of Sciences of the United\\nStates of America, 96(23):13486\\u201313490, November\
+    \ 1999.\\n[14] Tianran Liu, Nicky Evans, Kangyu Ji, Ronaldo Lee, Aaron Zhu, Vinn Nguyen, James Serdy, Elizabeth Wall,\\\
+    nYongli Lu, Florian A. Formica, Moungi G. Bawendi, Quinn C. Burlingame, Yueh-Lin Loo, Vladimir Bulovic, and\\nTonio Buonassisi.\
+    \ Disentangling the Effects of Simultaneous Environmental Variables on Perovskite Synthesis\\nand Device Performance via\
+    \ Interpretable Machine Learning, August 2025. arXiv:2509.09022 [cond-mat].\\n27\\n\\n[15] Ben Piazza, D\\u00e1niel L.\
+    \ Barab\\u00e1si, Andr\\u00e9 Ferreira Castro, Giulia Menichetti, and Albert-L\\u00e1szl\\u00f3 Barab\\u00e1si. Physical\\\
+    nNetwork Constraints Define the Lognormal Architecture of the Brain\\u2019s Connectome, February 2025. Pages:\\n2025.02.27.640551\
+    \ Section: New Results.\\n[16] Pim van der Hoorn, Ivan Voitalov, Remco van der Hofstad, and Dmitri Krioukov. Problems\
+    \ with classification,\\nhypothesis testing, and estimator convergence in the analysis of degree distributions in networks,\
+    \ March 2020.\\narXiv:2003.14012 [physics].\\n[17] Rachad Ghazal, Min Wang, Duan Liu, Daniel J. Tschumperlin, and Naveen\
+    \ L. Pereira. Cardiac Fibrosis in the\\nMulti-Omics Era: Implications for Heart Failure. Circulation Research, 136(7):773\\\
+    u2013802, March 2025.\\n[18] Emilie Dubois-Deruy, Marie Cuvelliez, Jan Fiedler, Henri Charrier, Paul Mulder, Eleonore\
+    \ Hebbar, Angelika\\nPfanne, Olivia Beseme, Maggy Chwastyniak, Philippe Amouyel, Vincent Richard, Christophe Bauters,\
+    \ Thomas\\nThum, and Florence Pinet. MicroRNAs regulating superoxide dismutase 2 are new circulating biomarkers of\\nheart\
+    \ failure. Scientific Reports, 7(1):14747, November 2017. Publisher: Nature Publishing Group.\\n[19] Willaim J. Arendshorst,\
+    \ Aleksandr E. Vendrov, Nitin Kumar, Santhi K. Ganesh, and Nageswara R. Madamanchi.\\nOxidative Stress in Kidney Injury\
+    \ and Hypertension. Antioxidants, 13(12):1454, December 2024. Publisher:\\nMultidisciplinary Digital Publishing Institute.\\\
+    n[20] Tohru Fukai and Masuko Ushio-Fukai. Superoxide Dismutases: Role in Redox Signaling, Vascular Function, and\\nDiseases.\
+    \ Antioxidants & Redox Signaling, 15(6):1583\\u20131606, September 2011. Publisher: Mary Ann Liebert,\\nInc., publishers.\\\
+    n[21] Atinuke Dosunmu-Ogunbi, Shuai Yuan, and Adam C Straub. The Role of Endothelial Superoxide Dismutase 2\\nin Modulating\
+    \ Sickle Pathology. Blood, 138(Supplement 1):190, November 2021.\\n[22] Sudha Sharma, Susmita Bhattarai, Hosne Ara, Grace\
+    \ Sun, Daret K. St Clair, Md Shenuarin Bhuiyan, Christo-\\npher Kevil, Megan N. Watts, Paari Dominic, Takahiko Shimizu,\
+    \ Kevin J. McCarthy, Hong Sun, Manikandan\\nPanchatcharam, and Sumitra Miriyala.\\nSOD2 deficiency in cardiomyocytes defines\
+    \ defective mitochondrial\\nbioenergetics as a cause of lethal dilated cardiomyopathy. Redox Biology, 37:101740, October\
+    \ 2020.\\n[23] Corrine R. Kliment, Hagir B. Suliman, Jacob M. Tobolewski, Crystal M. Reynolds, Brian J. Day, Xiaodong\
+    \ Zhu,\\nCharles F. McTiernan, Kenneth R. McGaffin, Claude A. Piantadosi, and Tim D. Oury. Extracellular superoxide\\\
+    ndismutase regulates cardiac function and fibrosis. Journal of Molecular and Cellular Cardiology, 47(5):730\\u2013742,\\\
+    nNovember 2009. Publisher: Elsevier.\\n[24] Xiu-Yun Jiang, Qing Chen, Xiao-Yu Chen, Qiu-Ying Sun, Fei Jing, Hai-Qing Zhang,\
+    \ Jin Xu, Xiao-Hong Li, and\\nQing-Bo Guan. Superoxide dismutases: marker in predicting reduced left ventricular ejection\
+    \ fraction in patients\\nwith type 2 diabetes and acute coronary syndrome. BMC Cardiovascular Disorders, 24(1):191, April\
+    \ 2024.\\n[25] Victor Nauffal, Paolo Di Achille, Marcus D. R. Klarqvist, Jonathan W. Cunningham, Matthew C. Hill, James\
+    \ P.\\nPirruccello, Lu-Chen Weng, Valerie N. Morrill, Seung Hoan Choi, Shaan Khurshid, Samuel F. Friedman, Mahan\\nNekoui,\
+    \ Carolina Roselli, Kenney Ng, Anthony A. Philippakis, Puneet Batra, Patrick T. Ellinor, and Steven A.\\nLubitz. Genetics\
+    \ of myocardial interstitial fibrosis in the human heart and association with disease. Nature\\nGenetics, 55(5):777\\\
+    u2013786, May 2023.\\n[26] Marijana Vujkovic, Jacob M. Keaton, Julie A. Lynch, Donald R. Miller, Jin Zhou, Catherine Tcheandjieu,\\\
+    nJennifer E. Huffman, Themistocles L. Assimes, Kim Lorenz, Xiang Zhu, Austin T. Hilliard, Renae L. Judy, Jie\\nHuang,\
+    \ Kyung M. Lee, Derek Klarin, Saiju Pyarajan, John Danesh, Olle Melander, Asif Rasheed, Nadeem H.\\nMallick, Shahid Hameed,\
+    \ Irshad H. Qureshi, Muhammad Naeem Afzal, Uzma Malik, Anjum Jalal, Shahid Abbas,\\nXin Sheng, Long Gao, Klaus H. Kaestner,\
+    \ Katalin Susztak, Yan V. Sun, Scott L. DuVall, Kelly Cho, Jennifer S.\\nLee, J. Michael Gaziano, Lawrence S. Phillips,\
+    \ James B. Meigs, Peter D. Reaven, Peter W. Wilson, Todd L.\\nEdwards, Daniel J. Rader, Scott M. Damrauer, Christopher\
+    \ J. O\\u2019Donnell, Philip S. Tsao, Kyong-Mi Chang,\\nBenjamin F. Voight, and Danish Saleheen.\\nDiscovery of 318 new\
+    \ risk loci for type 2 diabetes and related\\nvascular outcomes among 1.4 million participants in a multi-ethnic meta-analysis.\
+    \ Nature genetics, 52(7):680\\u2013\\n691, July 2020.\\n28\\n\\n[27] Anubha Mahajan, Cassandra N. Spracklen, Weihua Zhang,\
+    \ Maggie C. Y. Ng, Lauren E Petty, Hidetoshi Kitajima,\\nGrace Z. Yu, Sina R\\u00fceger, Leo Speidel, Young Jin Kim, Momoko\
+    \ Horikoshi, Josep M. Mercader, Daniel Taliun,\\nSanghoon Moon, Soo-Heon Kwak, Neil R. Robertson, Nigel W. Rayner, Marie\
+    \ Loh, Bong-Jo Kim, Joshua\\nChiou, Irene Miguel-Escalada, Pietro della Briotta Parolo, Kuang Lin, Fiona Bragg, Michael\
+    \ H. Preuss, Fumihiko\\nTakeuchi, Jana Nano, Xiuqing Guo, Amel Lamri, Masahiro Nakatochi, Robert A. Scott, Jung-Jin Lee,\
+    \ Alicia\\nHuerta-Chagoya, Mariaelisa Graff, Jin-Fang Chai, Esteban J Parra, Jie Yao, Lawrence F. Bielak, Yasuharu Tabara,\\\
+    nYang Hai, Valgerdur Steinthorsdottir, James P. Cook, Mart Kals, Niels Grarup, Ellen M. Schmidt, Ian Pan, Tamar\\nSofer,\
+    \ Matthias Wuttke, Chloe Sarnowski, Christian Gieger, Darryl Nousome, Stella Trompet, Jirong Long,\\nMeng Sun, Lin Tong,\
+    \ Wei-Min Chen, Meraj Ahmad, Raymond Noordam, Victor J. Y. Lim, Claudia H. T. Tam,\\nYoonjung Yoonie Joo, Chien-Hsiun\
+    \ Chen, Laura M. Raffield, C\\u00e9cile Lecoeur, Bram Peter Prins, Aude Nicolas,\\nLisa R. Yanek, Guanjie Chen, Richard\
+    \ A. Jensen, Salman Tajuddin, Edmond K. Kabagambe, Ping An, Anny H.\\nXiang, Hyeok Sun Choi, Brian E. Cade, Jingyi Tan,\
+    \ Jack Flanagan, Fernando Abaitua, Linda S. Adair, Adebowale\\nAdeyemo, Carlos A. Aguilar-Salinas, Masato Akiyama, Sonia\
+    \ S. Anand, Alain Bertoni, Zheng Bian, Jette Bork-\\nJensen, Ivan Brandslund, Jennifer A. Brody, Chad M. Brummett, Thomas\
+    \ A. Buchanan, Micka\\u00ebl Canouil, Juliana\\nC. N. Chan, Li-Ching Chang, Miao-Li Chee, Ji Chen, Shyh-Huei Chen, Yuan-Tsong\
+    \ Chen, Zhengming Chen,\\nLee-Ming Chuang, Mary Cushman, Swapan K. Das, H. Janaka de Silva, George Dedoussis, Latchezar\
+    \ Dimitrov,\\nAyo P. Doumatey, Shufa Du, Qing Duan, Kai-Uwe Eckardt, Leslie S. Emery, Daniel S. Evans, Michele K. Evans,\\\
+    nKrista Fischer, James S. Floyd, Ian Ford, Myriam Fornage, Oscar H. Franco, Timothy M. Frayling, Barry I.\\nFreedman,\
+    \ Christian Fuchsberger, Pauline Genter, Hertzel C. Gerstein, Vilmantas Giedraitis, Clicerio Gonz\\u00e1lez-\\nVillalpando,\
+    \ Maria Elena Gonz\\u00e1lez-Villalpando, Mark O. Goodarzi, Penny Gordon-Larsen, David Gorkin, Myron\\nGross, Yu Guo,\
+    \ Sophie Hackinger, Sohee Han, Andrew T. Hattersley, Christian Herder, Annie-Green Howard,\\nWilla Hsueh, Mengna Huang,\
+    \ Wei Huang, Yi-Jen Hung, Mi Yeong Hwang, Chii-Min Hwu, Sahoko Ichihara,\\nMohammad Arfan Ikram, Martin Ingelsson, Tariqul\
+    \ Islam, Masato Isono, Hye-Mi Jang, Farzana Jasmine, Guozhi\\nJiang, Jost B. Jonas, Marit E. J\\u00f8rgensen, Torben J\\\
+    u00f8rgensen, Yoichiro Kamatani, Fouad R. Kandeel, Anuradhani\\nKasturiratne, Tomohiro Katsuya, Varinderpal Kaur, Takahisa\
+    \ Kawaguchi, Jacob M. Keaton, Abel N. Kho, Chiea-\\nChuen Khor, Muhammad G. Kibriya, Duk-Hwan Kim, Katsuhiko Kohara, Jennifer\
+    \ Kriebel, Florian Kronenberg,\\nJohanna Kuusisto, Kristi L\\u00e4ll, Leslie A. Lange, Myung-Shik Lee, Nanette R. Lee,\
+    \ Aaron Leong, Liming Li, Yun Li,\\nRuifang Li-Gao, Symen Ligthart, Cecilia M. Lindgren, Allan Linneberg, Ching-Ti Liu,\
+    \ Jianjun Liu, Adam E. Locke,\\nTin Louie, Jian\\u2019an Luan, Andrea O. Luk, Xi Luo, Jun Lv, Valeriya Lyssenko, Vasiliki\
+    \ Mamakou, K. Radha Mani,\\nThomas Meitinger, Andres Metspalu, Andrew D. Morris, Girish N. Nadkarni, Jerry L. Nadler,\
+    \ Michael A. Nalls,\\nUma Nayak, Suraj S. Nongmaithem, Ioanna Ntalla, Yukinori Okada, Lorena Orozco, Sanjay R. Patel,\
+    \ Mark A.\\nPereira, Annette Peters, Fraser J. Pirie, Bianca Porneala, Gauri Prasad, Sebastian Preissl, Laura J. Rasmussen-\\\
+    nTorvik, Alexander P. Reiner, Michael Roden, Rebecca Rohde, Kathryn Roll, Charumathi Sabanayagam, Maike\\nSander, Kevin\
+    \ Sandow, Naveed Sattar, Sebastian Sch\\u00f6nherr, Claudia Schurmann, Mohammad Shahriar, Jinxiu\\nShi, Dong Mun Shin,\
+    \ Daniel Shriner, Jennifer A. Smith, Wing Yee So, Alena Stan\\u010d\\u00e1kov\\u00e1, Adrienne M. Stilp,\\nKonstantin\
+    \ Strauch, Ken Suzuki, Atsushi Takahashi, Kent D. Taylor, Barbara Thorand, Gudmar Thorleifsson,\\nUnnur Thorsteinsdottir,\
+    \ Brian Tomlinson, Jason M. Torres, Fuu-Jen Tsai, Jaakko Tuomilehto, Teresa Tusie-\\nLuna, Miriam S. Udler, Adan Valladares-Salgado,\
+    \ Rob M. van Dam, Jan B. van Klinken, Rohit Varma, Marijana\\nVujkovic, Niels Wacher-Rodarte, Eleanor Wheeler, Eric A.\
+    \ Whitsel, Ananda R. Wickremasinghe, Ko Willems van\\nDijk, Daniel R. Witte, Chittaranjan S. Yajnik, Ken Yamamoto, Toshimasa\
+    \ Yamauchi, Lo\\u00efc Yengo, Kyungheon\\nYoon, Canqing Yu, Jian-Min Yuan, Salim Yusuf, Liang Zhang, Wei Zheng, Leslie\
+    \ J. Raffel, Michiya Igase, Eli Ipp,\\nSusan Redline, Yoon Shin Cho, Lars Lind, Michael A. Province, Craig L. Hanis, Patricia\
+    \ A. Peyser, Erik Ingelsson,\\nAlan B. Zonderman, Bruce M. Psaty, Ya-Xing Wang, Charles N. Rotimi, Diane M. Becker, Fumihiko\
+    \ Matsuda,\\nYongmei Liu, Eleftheria Zeggini, Mitsuhiro Yokota, Stephen S. Rich, Charles Kooperberg, James S. Pankow,\\\
+    nJames C. Engert, Yii-Der Ida Chen, Philippe Froguel, James G. Wilson, Wayne H. H. Sheu, Sharon L. R. Kardia,\\nJer-Yuarn\
+    \ Wu, M. Geoffrey Hayes, Ronald C. W. Ma, Tien-Yin Wong, Leif Groop, Dennis O. Mook-Kanamori,\\nGiriraj R. Chandak, Francis\
+    \ S. Collins, Dwaipayan Bharadwaj, Guillaume Par\\u00e9, Mich\\u00e8le M. Sale, Habibul Ahsan,\\nAyesha A. Motala, Xiao-Ou\
+    \ Shu, Kyong-Soo Park, J. Wouter Jukema, Miguel Cruz, Roberta McKean-Cowdin,\\nHarald Grallert, Ching-Yu Cheng, Erwin\
+    \ P. Bottinger, Abbas Dehghan, E-Shyong Tai, Jos\\u00e9e Dupuis, Norihiro\\nKato, Markku Laakso, Anna K\\u00f6ttgen, Woon-Puay\
+    \ Koh, Colin N. A. Palmer, Simin Liu, Goncalo Abecasis,\\nJaspal S. Kooner, Ruth J. F. Loos, Kari E. North, Christopher\
+    \ A. Haiman, Jose C. Florez, Danish Saleheen,\\nTorben Hansen, Oluf Pedersen, Reedik M\\u00e4gi, Claudia Langenberg, Nicholas\
+    \ J. Wareham, Shiro Maeda, Takashi\\nKadowaki, Juyoung Lee, Iona Y. Millwood, Robin G. Walters, Kari Stefansson, Simon\
+    \ R. Myers, Jorge Ferrer,\\nKyle J. Gaulton, James B. Meigs, Karen L. Mohlke, Anna L. Gloyn, Donald W. Bowden, Jennifer\
+    \ E. Below,\\nJohn C. Chambers, Xueling Sim, Michael Boehnke, Jerome I. Rotter, Mark I. McCarthy, and Andrew P. Morris.\\\
+    n29\\n\\nMulti-ancestry genetic study of type 2 diabetes highlights the power of diverse populations for discovery and\\\
+    ntranslation. Nature genetics, 54(5):560\\u2013572, May 2022.\\n[28] Gaowei Wang, Joshua Chiou, Chun Zeng, Michael Miller,\
+    \ Ileana Matta, Jee Yun Han, Nikita Kadakia, Mei-\\nLin Okino, Elisha Beebe, Medhavi Mallick, Joan Camunas-Soler, Theodore\
+    \ dos Santos, Xiao-Qing Dai, Cara\\nEllis, Yan Hang, Seung K. Kim, Patrick E. MacDonald, Fouad R. Kandeel, Sebastian Preissl,\
+    \ Kyle J. Gaulton,\\nand Maike Sander. Integrating genetics with single-cell multiomic measurements across disease states\
+    \ identifies\\nmechanisms of beta cell dysfunction in type 2 diabetes. Nature Genetics, 55(6):984\\u2013994, June 2023.\
+    \ Publisher:\\nNature Publishing Group.\\n[29] The GTEx Consortium. The GTEx Consortium atlas of genetic regulatory effects\
+    \ across human tissues. Science,\\n369(6509):1318\\u20131330, September 2020. Publisher: American Association for the\
+    \ Advancement of Science.\\n[30] Benjamin B. Sun, Joshua Chiou, Matthew Traylor, Christian Benner, Yi-Hsiang Hsu, Tom\
+    \ G. Richardson, Praveen\\nSurendran, Anubha Mahajan, Chloe Robins, Steven G. Vasquez-Grinnell, Liping Hou, Erika M. Kvikstad,\
+    \ Oliver S.\\nBurren, Jonathan Davitte, Kyle L. Ferber, Christopher E. Gillies, \\u00c5sa K. Hedman, Sile Hu, Tinchi Lin,\
+    \ Rajesh\\nMikkilineni, Rion K. Pendergrass, Corran Pickering, Bram Prins, Denis Baird, Chia-Yen Chen, Lucas D. Ward,\\\
+    nAimee M. Deaton, Samantha Welsh, Carissa M. Willis, Nick Lehner, Matthias Arnold, Maria A. W\\u00f6rheide,\\nKarsten\
+    \ Suhre, Gabi Kastenm\\u00fcller, Anurag Sethi, Madeleine Cule, Anil Raj, Hyun Ming Kang, Lucy Burkitt-\\nGray, Eugene\
+    \ Melamud, Mary Helen Black, Eric B. Fauman, Joanna M. M. Howson, Hyun Min Kang, Mark I.\\nMcCarthy, Paul Nioi, Slav\\\
+    u00e9 Petrovski, Robert A. Scott, Erin N. Smith, S\\u00e1ndor Szalma, Dawn M. Waterworth,\\nLyndon J. Mitnaul, Joseph\
+    \ D. Szustakowski, Bradford W. Gibson, Melissa R. Miller, and Christopher D. Whelan.\\nPlasma proteomic associations with\
+    \ genetics and health in the UK Biobank. Nature, 622(7982):329\\u2013338, October\"\n  },\n  {\n    \"name\": \"Publisher:\
+    \ Nature Publishing Group\",\n    \"text\": \"[31] Simon G Coetzee and Dennis J Hazelett.\\nmotifbreakR v2: expanded variant\
+    \ analysis including indels and\\nintegrated evidence from transcription factor binding databases. Bioinformatics Advances,\
+    \ 4(1):vbae162, January\\n2024.\\n[32] Andreas R. Gschwind, Kristy S. Mualim, Alireza Karbalayghareh, Maya U. Sheth, Kushal\
+    \ K. Dey, Evelyn Jagoda,\\nRamil N. Nurtdinov, Wang Xi, Anthony S. Tan, Hank Jones, X. Rosa Ma, David Yao, Joseph Nasser,\
+    \ \\u017diga Avsec,\\nBenjamin T. James, Muhammad S. Shamim, Neva C. Durand, Suhas S. P. Rao, Ragini Mahajan, Benjamin\
+    \ R.\\nDoughty, Kalina Andreeva, Jacob C. Ulirsch, Kaili Fan, Elizabeth M. Perez, Tri C. Nguyen, David R. Kelley,\\nHilary\
+    \ K. Finucane, Jill E. Moore, Zhiping Weng, Manolis Kellis, Michael C. Bassik, Alkes L. Price, Michael A.\\nBeer, Roderic\
+    \ Guig\\u00f3, John A. Stamatoyannopoulos, Erez Lieberman Aiden, William J. Greenleaf, Christina S.\\nLeslie, Lars M.\
+    \ Steinmetz, Anshul Kundaje, and Jesse M. Engreitz. An encyclopedia of enhancer-gene regulatory\\ninteractions in the\
+    \ human genome, November 2023. Pages: 2023.11.09.563812 Section: New Results.\\n[33] Alexander Gusev, Arthur Ko, Huwenbo\
+    \ Shi, Gaurav Bhatia, Wonil Chung, Brenda W. J. H. Penninx, Rick\\nJansen, Eco J. C. de Geus, Dorret I. Boomsma, Fred\
+    \ A. Wright, Patrick F. Sullivan, Elina Nikkola, Marcus\\nAlvarez, Mete Civelek, Aldons J. Lusis, Terho Lehtim\\u00e4ki,\
+    \ Emma Raitoharju, Mika K\\u00e4h\\u00f6nen, Ilkka Sepp\\u00e4l\\u00e4,\\nOlli T. Raitakari, Johanna Kuusisto, Markku\
+    \ Laakso, Alkes L. Price, P\\u00e4ivi Pajukanta, and Bogdan Pasaniuc.\\nIntegrative approaches for large-scale transcriptome-wide\
+    \ association studies. Nature Genetics, 48(3):245\\u2013252,\\nMarch 2016.\\n[34] Yumeng Huang, Xiaoxi Xu, Peter Arvan,\
+    \ and Ming Liu. Deficient endoplasmic reticulum translocon-associated\\nprotein complex limits the biosynthesis of proinsulin\
+    \ and insulin. The FASEB Journal, 35(5):e21515, 2021.\\n_eprint: https://faseb.onlinelibrary.wiley.com/doi/pdf/10.1096/fj.202002774R.\\\
+    n[35] Xin Li, Jingxin Hu, Yumeng Huang, Hai Zhang, Ning Xu, Yang Liu, Xuan Liu, Yuanyuan Ye, Xinxin Zhang,\\nXiaoxi Xu,\
+    \ Yuxin Fan, Ziyue Zhang, Weiping J Zhang, Shusen Wang, Wenli Feng, Peter Arvan, and Ming Liu.\\nTrap\\u03b1 deficiency\
+    \ impairs the early events of insulin biosynthesis and glucose homeostasis. The Journal of clinical\\ninvestigation, 135(14):e179845,\
+    \ July 2025.\\n[36] Sophie Schmidt, Max Holzer, Thomas Arendt, Mandy Sonntag, and Markus Morawski. Tau Protein Modulates\\\
+    nPerineuronal Extracellular Matrix Expression in the TauP301L-acan Mouse Model. Biomolecules, 12(4):505,\\nApril 2022.\
+    \ Publisher: Multidisciplinary Digital Publishing Institute.\\n30\\n\\n[37] Marcos Otero-Garcia, Sameehan U. Mahajani,\
+    \ Debia Wakhloo, Weijing Tang, Yue-Qiang Xue, Samuel Morabito,\\nJie Pan, Jane Oberhauser, Angela E. Madira, Tamara Shakouri,\
+    \ Yongning Deng, Thomas Allison, Zihuai He,\\nWilliam E. Lowry, Riki Kawaguchi, Vivek Swarup, and Inma Cobos. Molecular\
+    \ signatures underlying neurofibril-\\nlary tangle susceptibility in Alzheimer\\u2019s disease. Neuron, 110(18):2929\\\
+    u20132948.e8, September 2022.\\n[38] A. K. Wagner, S. B. Soumerai, F. Zhang, and D. Ross-Degnan. Segmented regression\
+    \ analysis of interrupted\\ntime series studies in medication use research. Journal of Clinical Pharmacy and Therapeutics,\
+    \ 27(4):299\\u2013309,\\nAugust 2002.\\n[39] Dunja Mrdjen, Edward J. Fox, Syed A. Bukhari, Kathleen S. Montine, Sean C.\
+    \ Bendall, and Thomas J. Montine.\\nThe basis of cellular and regional vulnerability in Alzheimer\\u2019s disease. Acta\
+    \ Neuropathologica, 138(5):729\\u2013749,\\nNovember 2019.\\n[40] Naoto Watamura, Martha S. Foiani, Sumi Bez, Mathieu\
+    \ Bourdenx, Alessia Santambrogio, Claire Frodsham,\\nElena Camporesi, Gunnar Brinkmalm, Henrik Zetterberg, Saisha Patel,\
+    \ Naoko Kamano, Mika Takahashi, Javier\\nRueda-Carrasco, Loukia Katsouri, Stephanie Fowler, Emir Turkes, Shoko Hashimoto,\
+    \ Hiroki Sasaguri, Takashi\\nSaito, AFM Saiful Islam, Seico Benner, Toshihiro Endo, Katsuji Kobayashi, Chiho Ishida, Michele\
+    \ Vendruscolo,\\nMasahito Yamada, Karen E. Duff, and Takaomi C. Saido. In vivo hyperphosphorylation of tau is associated\
+    \ with\\nsynaptic loss and behavioral abnormalities in the absence of tau seeds. Nature Neuroscience, 28(2):293\\u2013307,\\\
+    nFebruary 2025. Publisher: Nature Publishing Group.\\n[41] Hongjun Fu, John Hardy, and Karen E. Duff. Selective vulnerability\
+    \ in neurodegenerative diseases. Nature\\nNeuroscience, 21(10):1350\\u20131358, October 2018. Publisher: Nature Publishing\
+    \ Group.\\n[42] Nicole Scott-Hewitt, Fabio Perrucci, Raffaella Morini, Marco Erreni, Matthew Mahoney, Agata Witkowska,\\\
+    nAlanna Carey, Elisa Faggiani, Lisa Theresia Schuetz, Sydney Mason, Matteo Tamborini, Matteo Bizzotto,\\nLorena Passoni,\
+    \ Fabia Filipello, Reinhard Jahn, Beth Stevens, and Michela Matteoli. Local externalization of\\nphosphatidylserine mediates\
+    \ developmental synaptic pruning by microglia. The EMBO Journal, 39(16):e105380,\\nAugust 2020. Publisher: John Wiley\
+    \ & Sons, Ltd.\\n[43] Kelly Jin, Zizhen Yao, Cindy T. J. van Velthoven, Eitan S. Kaplan, Katie Glattfelder, Samuel T.\
+    \ Barlow,\\nGabriella Boyer, Daniel Carey, Tamara Casper, Anish Bhaswanth Chakka, Rushil Chakrabarty, Michael Clark,\\\
+    nMax Departee, Marie Desierto, Amanda Gary, Jessica Gloe, Jeff Goldy, Nathan Guilford, Junitta Guzman, Daniel\\nHirschstein,\
+    \ Changkyu Lee, Elizabeth Liang, Trangthanh Pham, Melissa Reding, Kara Ronellenfitch, Augustin\\nRuiz, Josh Sevigny, Nadiya\
+    \ Shapovalova, Lyudmila Shulga, Josef Sulc, Amy Torkelson, Herman Tung, Boaz Levi,\\nSusan M. Sunkin, Nick Dee, Luke Esposito,\
+    \ Kimberly A. Smith, Bosiljka Tasic, and Hongkui Zeng. Brain-wide\\ncell-type-specific transcriptomic signatures of healthy\
+    \ ageing in mice. Nature, 638(8049):182\\u2013196, February\"\n  },\n  {\n    \"name\": \"Publisher: Nature Publishing\
+    \ Group\",\n    \"text\": \"[44] Kun Leng, Emmy Li, Rana Eser, Antonia Piergies, Rene Sit, Michelle Tan, Norma Neff, Song\
+    \ Hua Li,\\nRoberta Diehl Rodriguez, Claudia Kimie Suemoto, Renata Elaine Paraizo Leite, Alexander J. Ehrenberg, Car-\\\
+    nlos A. Pasqualucci, William W. Seeley, Salvatore Spina, Helmut Heinsen, Lea T. Grinberg, and Martin Kamp-\\nmann. Molecular\
+    \ characterization of selectively vulnerable neurons in Alzheimer\\u2019s disease. Nature Neuroscience,\\n24(2):276\\\
+    u2013287, February 2021. Publisher: Nature Publishing Group.\\n[45] Javier Rueda-Carrasco, Dimitra Sokolova, Sang-Eun\
+    \ Lee, Thomas Childs, Nat\\u00e1lia Jur\\u010d\\u00e1kov\\u00e1, Gerard Crowley,\\nSebastiaan De Schepper, Judy Z Ge,\
+    \ Joanne I Lachica, Christina E Toomey, Oliver J Freeman, John Hardy,\\nSamuel J Barnes, Tammaryn Lashley, Beth Stevens,\
+    \ Sunghoe Chang, and Soyon Hong.\\nMicroglia-synapse\\nengulfment via PtdSer-TREM2 ameliorates neuronal hyperactivity\
+    \ in Alzheimer\\u2019s disease models. The EMBO\\nJournal, 42(19):e113246, October 2023. Publisher: John Wiley & Sons,\
+    \ Ltd.\\n[46] Takaharu Sakuragi and Shigekazu Nagata. Regulation of phospholipid distribution in the lipid bilayer by\
+    \ flippases\\nand scramblases.\\nNature Reviews Molecular Cell Biology, 24(8):576\\u2013596, August 2023.\\nPublisher:\
+    \ Nature\\nPublishing Group.\\n[47] Travis R. Stoub, Leyla deToledo Morrell, Glenn T. Stebbins, Sue Leurgans, David A.\
+    \ Bennett, and Raj C. Shah.\\nHippocampal disconnection contributes to memory dysfunction in individuals at risk for Alzheimer\\\
+    u2019s disease.\\nProceedings of the National Academy of Sciences, 103(26):10041\\u201310045, June 2006. Publisher: Proceedings\
+    \ of\\nthe National Academy of Sciences.\\n31\\n\\n[48] J. G. White, E. Southgate, J. N. Thomson, and S. Brenner. The\
+    \ structure of the nervous system of the nematode\\nCaenorhabditis elegans. Philosophical Transactions of the Royal Society\
+    \ of London. Series B, Biological Sciences,\\n314(1165):1\\u2013340, November 1986.\\n[49] Michael Winding, Benjamin D.\
+    \ Pedigo, Christopher L. Barnes, Heather G. Patsolic, Youngser Park, Tom Kaz-\\nimiers, Akira Fushiki, Ingrid V. Andrade,\
+    \ Avinash Khandelwal, Javier Valdes-Aleman, Feng Li, Nadine Randel,\\nElizabeth Barsotti, Ana Correia, Richard D. Fetter,\
+    \ Volker Hartenstein, Carey E. Priebe, Joshua T. Vogel-\\nstein, Albert Cardona, and Marta Zlatic.\\nThe connectome of\
+    \ an insect brain.\\nScience (New York, N.Y.),\\n379(6636):eadd9330, March 2023.\\n[50] Sven Dorkenwald, Arie Matsliah,\
+    \ Amy R. Sterling, Philipp Schlegel, Szi-chieh Yu, Claire E. McKellar, Albert Lin,\\nMarta Costa, Katharina Eichler, Yijie\
+    \ Yin, Will Silversmith, Casey Schneider-Mizell, Chris S. Jordan, Derrick\\nBrittain, Akhilesh Halageri, Kai Kuehner,\
+    \ Oluwaseun Ogedengbe, Ryan Morey, Jay Gager, Krzysztof Kruk,\\nEric Perlman, Runzhe Yang, David Deutsch, Doug Bland,\
+    \ Marissa Sorek, Ran Lu, Thomas Macrina, Kisuk Lee,\\nJ. Alexander Bae, Shang Mu, Barak Nehoran, Eric Mitchell, Sergiy\
+    \ Popovych, Jingpeng Wu, Zhen Jia, Manuel A.\\nCastro, Nico Kemnitz, Dodam Ih, Alexander Shakeel Bates, Nils Eckstein,\
+    \ Jan Funke, Forrest Collman, Davi D.\\nBock, Gregory S. X. E. Jefferis, H. Sebastian Seung, and Mala Murthy. Neuronal\
+    \ wiring diagram of an adult\\nbrain. Nature, 634(8032):124\\u2013138, October 2024. Publisher: Nature Publishing Group.\\\
+    n[51] Louis K Scheffer, C Shan Xu, Michal Januszewski, Zhiyuan Lu, Shin-ya Takemura, Kenneth J Hayworth, Gary B\\nHuang,\
+    \ Kazunori Shinomiya, Jeremy Maitlin-Shepard, Stuart Berg, Jody Clements, Philip M Hubbard, William T\\nKatz, Lowell Umayam,\
+    \ Ting Zhao, David Ackerman, Tim Blakely, John Bogovic, Tom Dolafi, Dagmar Kain-\\nmueller, Takashi Kawase, Khaled A Khairy,\
+    \ Laramie Leavitt, Peter H Li, Larry Lindsey, Nicole Neubarth, Donald J\\nOlbris, Hideo Otsuna, Eric T Trautman, Masayoshi\
+    \ Ito, Alexander S Bates, Jens Goldammer, Tanya Wolff, Robert\\nSvirskas, Philipp Schlegel, Erika Neace, Christopher J\
+    \ Knecht, Chelsea X Alvarado, Dennis A Bailey, Samantha\\nBallinger, Jolanta A Borycz, Brandon S Canino, Natasha Cheatham,\
+    \ Michael Cook, Marisa Dreher, Octave\\nDuclos, Bryon Eubanks, Kelli Fairbanks, Samantha Finley, Nora Forknall, Audrey\
+    \ Francis, Gary Patrick Hopkins,\\nEmily M Joyce, SungJin Kim, Nicole A Kirk, Julie Kovalyak, Shirley A Lauchie, Alanna\
+    \ Lohff, Charli Maldon-\\nado, Emily A Manley, Sari McLin, Caroline Mooney, Miatta Ndama, Omotara Ogundeyi, Nneoma Okeoma,\\\
+    nChristopher Ordish, Nicholas Padilla, Christopher M Patrick, Tyler Paterson, Elliott E Phillips, Emily M Phillips,\\\
+    nNeha Rampally, Caitlin Ribeiro, Madelaine K Robertson, Jon Thomson Rymer, Sean M Ryan, Megan Sammons,\\nAnne K Scott,\
+    \ Ashley L Scott, Aya Shinomiya, Claire Smith, Kelsey Smith, Natalie L Smith, Margaret A Sobeski,\\nAlia Suleiman, Jackie\
+    \ Swift, Satoko Takemura, Iris Talebi, Dorota Tarnogorska, Emily Tenshaw, Temour Tokhi,\\nJohn J Walsh, Tansy Yang, Jane\
+    \ Anne Horne, Feng Li, Ruchi Parekh, Patricia K Rivlin, Vivek Jayaraman, Marta\\nCosta, Gregory SXE Jefferis, Kei Ito,\
+    \ Stephan Saalfeld, Reed George, Ian A Meinertzhagen, Gerald M Rubin,\\nHarald F Hess, Viren Jain, and Stephen M Plaza.\
+    \ A connectome and analysis of the adult Drosophila central\\nbrain. eLife, 9:e57443, September 2020. Publisher: eLife\
+    \ Sciences Publications, Ltd.\\n[52] Shin-ya Takemura, Kenneth J. Hayworth, Gary B. Huang, Michal Januszewski, Zhiyuan\
+    \ Lu, Elizabeth C. Marin,\\nStephan Preibisch, C. Shan Xu, John Bogovic, Andrew S. Champion, Han SJ Cheong, Marta Costa,\
+    \ Katharina\\nEichler, William Katz, Christopher Knecht, Feng Li, Billy J. Morris, Christopher Ordish, Patricia K. Rivlin,\
+    \ Philipp\\nSchlegel, Kazunori Shinomiya, Tomke St\\u00fcrner, Ting Zhao, Griffin Badalamente, Dennis Bailey, Paul Brooks,\\\
+    nBrandon S. Canino, Jody Clements, Michael Cook, Octave Duclos, Christopher R. Dunne, Kelli Fairbanks,\\nSiqi Fang, Samantha\
+    \ Finley-May, Audrey Francis, Reed George, Marina Gkantia, Kyle Harrington, Gary Patrick\\nHopkins, Joseph Hsu, Philip\
+    \ M. Hubbard, Alexandre Javier, Dagmar Kainmueller, Wyatt Korff, Julie Kovalyak,\\nDominik Krzemi\\u0144ski, Shirley A.\
+    \ Lauchie, Alanna Lohff, Charli Maldonado, Emily A. Manley, Caroline Mooney,\\nErika Neace, Matthew Nichols, Omotara Ogundeyi,\
+    \ Nneoma Okeoma, Tyler Paterson, Elliott Phillips, Emily M.\\nPhillips, Caitlin Ribeiro, Sean M. Ryan, Jon Thomson Rymer,\
+    \ Anne K. Scott, Ashley L. Scott, David Shepherd,\\nAya Shinomiya, Claire Smith, Natalie Smith, Alia Suleiman, Satoko\
+    \ Takemura, Iris Talebi, Imaan FM Tamimi,\\nEric T. Trautman, Lowell Umayam, John J. Walsh, Tansy Yang, Gerald M. Rubin,\
+    \ Louis K. Scheffer, Jan Funke,\\nStephan Saalfeld, Harald F. Hess, Stephen M. Plaza, Gwyneth M. Card, Gregory SXE Jefferis,\
+    \ and Stuart Berg.\\nA Connectome of the Male Drosophila Ventral Nerve Cord. eLife, 13, May 2024. Publisher: eLife Sciences\\\
+    nPublications Limited.\\n[53] Ashwin Vishwanathan, Alex Sood, Jingpeng Wu, Alexandro D. Ramirez, Runzhe Yang, Nico Kemnitz,\
+    \ Dodam Ih,\\nNicholas Turner, Kisuk Lee, Ignacio Tartavull, William M. Silversmith, Chris S. Jordan, Celia David, Doug\
+    \ Bland,\\nAmy Sterling, H. Sebastian Seung, Mark S. Goldman, and Emre R. F. Aksay. Predicting modular functions and\\\
+    n32\\n\\nneural coding of behavior from a synaptic wiring diagram. Nature Neuroscience, 27(12):2443\\u20132454, December\"\
+    \n  },\n  {\n    \"name\": \"Publisher: Nature Publishing Group\",\n    \"text\": \"[54] Casey M. Schneider-Mizell, Agnes\
+    \ L. Bodor, Derrick Brittain, JoAnn Buchanan, Daniel J. Bumbarger, Leila\\nElabbady, Clare Gamlin, Daniel Kapner, Sam\
+    \ Kinn, Gayathri Mahalingam, Sharmishtaa Seshamani, Shelby\\nSuckow, Marc Takeno, Russel Torres, Wenjing Yin, Sven Dorkenwald,\
+    \ J. Alexander Bae, Manuel A. Castro,\\nAkhilesh Halageri, Zhen Jia, Chris Jordan, Nico Kemnitz, Kisuk Lee, Kai Li, Ran\
+    \ Lu, Thomas Macrina, Eric\\nMitchell, Shanka Subhra Mondal, Shang Mu, Barak Nehoran, Sergiy Popovych, William Silversmith,\
+    \ Nicholas L.\\nTurner, William Wong, Jingpeng Wu, Jacob Reimer, Andreas S. Tolias, H. Sebastian Seung, R. Clay Reid,\\\
+    nForrest Collman, and Nuno Ma\\u00e7arico da Costa. Inhibitory specificity from a connectomic census of mouse visual\\\
+    ncortex. Nature, 640(8058):448\\u2013458, April 2025. Publisher: Nature Publishing Group.\\n[55] Alexander Shapson-Coe,\
+    \ Micha\\u0142 Januszewski, Daniel R. Berger, Art Pope, Yuelong Wu, Tim Blakely, Richard L.\\nSchalek, Peter H. Li, Shuohong\
+    \ Wang, Jeremy Maitin-Shepard, Neha Karlupia, Sven Dorkenwald, Evelina Sjost-\\nedt, Laramie Leavitt, Dongil Lee, Jakob\
+    \ Troidl, Forrest Collman, Luke Bailey, Angerica Fitzmaurice, Rohin Kar,\\nBenjamin Field, Hank Wu, Julian Wagner-Carena,\
+    \ David Aley, Joanna Lau, Zudi Lin, Donglai Wei, Hanspeter\\nPfister, Adi Peleg, Viren Jain, and Jeff W. Lichtman. A petavoxel\
+    \ fragment of human cerebral cortex recon-\\nstructed at nanoscale resolution. Science (New York, N.Y.), 384(6696):eadk4858,\
+    \ May 2024.\\n[56] Olena O. Yavorska and Stephen Burgess. MendelianRandomization: an R package for performing Mendelian\
+    \ ran-\\ndomization analyses using summarized data. International Journal of Epidemiology, 46(6):1734\\u20131739, December\\\
+    n2017.\\n[57] Manu Setty, Vaidotas Kiseliovas, Jacob Levine, Adam Gayoso, Linas Mazutis, and Dana Pe\\u2019er. Characterization\\\
+    nof cell fate probabilities in single-cell data with Palantir. Nature Biotechnology, 37(4):451\\u2013460, April 2019.\\\
+    n[58] Zizhen Yao, Cindy T. J. van Velthoven, Michael Kunst, Meng Zhang, Delissa McMillen, Changkyu Lee, Won\\nJung, Jeff\
+    \ Goldy, Aliya Abdelhak, Matthew Aitken, Katherine Baker, Pamela Baker, Eliza Barkan, Darren\\nBertagnolli, Ashwin Bhandiwad,\
+    \ Cameron Bielstein, Prajal Bishwakarma, Jazmin Campos, Daniel Carey, Tamara\\nCasper, Anish Bhaswanth Chakka, Rushil\
+    \ Chakrabarty, Sakshi Chavan, Min Chen, Michael Clark, Jennie Close,\\nKirsten Crichton, Scott Daniel, Peter DiValentin,\
+    \ Tim Dolbeare, Lauren Ellingwood, Elysha Fiabane, Timothy\\nFliss, James Gee, James Gerstenberger, Alexandra Glandon,\
+    \ Jessica Gloe, Joshua Gould, James Gray, Nathan\\nGuilford, Junitta Guzman, Daniel Hirschstein, Windy Ho, Marcus Hooper,\
+    \ Mike Huang, Madie Hupp, Kelly Jin,\\nMatthew Kroll, Kanan Lathia, Arielle Leon, Su Li, Brian Long, Zach Madigan, Jessica\
+    \ Malloy, Jocelin Malone,\\nZoe Maltzer, Naomi Martin, Rachel McCue, Ryan McGinty, Nicholas Mei, Jose Melchor, Emma Meyerdierks,\\\
+    nTyler Mollenkopf, Skyler Moonsman, Thuc Nghi Nguyen, Sven Otto, Trangthanh Pham, Christine Rimorin,\\nAugustin Ruiz,\
+    \ Raymond Sanchez, Lane Sawyer, Nadiya Shapovalova, Noah Shepard, Cliff Slaughterbeck, Josef\\nSulc, Michael Tieu, Amy\
+    \ Torkelson, Herman Tung, Nasmil Valera Cuevas, Shane Vance, Katherine Wadhwani,\\nKatelyn Ward, Boaz Levi, Colin Farrell,\
+    \ Rob Young, Brian Staats, Ming-Qiang Michael Wang, Carol L. Thomp-\\nson, Shoaib Mufti, Chelsea M. Pagan, Lauren Kruse,\
+    \ Nick Dee, Susan M. Sunkin, Luke Esposito, Michael J.\\nHawrylycz, Jack Waters, Lydia Ng, Kimberly Smith, Bosiljka Tasic,\
+    \ Xiaowei Zhuang, and Hongkui Zeng. A high-\\nresolution transcriptomic and spatial atlas of cell types in the whole mouse\
+    \ brain. Nature, 624(7991):317\\u2013332,\\nDecember 2023. Publisher: Nature Publishing Group.\\n33\"\n  },\n  {\n   \
+    \ \"name\": \"Supplementary Information\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary Table 1: Hyperlinks\
+    \ to Kosmos reports\",\n    \"text\": \"Discovery\\nHyperlinks\\n1: Nucleotide metabolism in hypothermia\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    nc4bdef64-5e9b-43b9-a365-592dd1ed7587\\n2: Determinant of perovskite solar-cell failure\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    n1fdbf827-be65-4d97-9b66-bf0da600091a\\n3: Log-normal connectivity in neural networks\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    n4fb3fbdb-c449-4064-9aa6-ff4ec53131d8\\n4: SOD2 as driver of myocardial fibrosis\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    nc6849232-5858-4634-adf5-83780afbe3db\\n5: Protective variant of SSR1 in type 2 diabetes\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    nabac07da-a6bb-458f-b0ba-ef08f1be617e\\n6: Temporal ordering in Alzheimer\\u2019s disease\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    na770052b-2334-4bbe-b086-5149e0f03d99\\n7: Mechanism of neuron vulnerability in aging\\nhttps://platform.edisonscientific.com/kosmos/\\\
+    n28c427d2-be31-48b5-b272-28d5a1e3ea5c\\n34\"\n  },\n  {\n    \"name\": \"Supplementary Information 1: Kosmos inputs for\
+    \ each discovery\",\n    \"text\": \"Discovery 1\\nResearch Objective\\nThe brain has long been conceptualized as a network\
+    \ of neurons connected by synapses. However, attempts to\\ndescribe the connectome using established network science models\
+    \ have yielded conflicting outcomes, leaving the\\narchitecture of neural networks unresolved. Here, we aggregate Degree\
+    \ Length (\\u00b5m), Synapses (count), and Density\\n(synapses/\\u00b5m, a local value, not Synapses/Length, except in\
+    \ the case of C. elegans, where we could not measure it) of\\nneurons from eight experimentally mapped connectomes. Consider\
+    \ how these measures relate from a neuroscientific\\nperspective and neurodevelopment time course in order to propose\
+    \ universal principles among them. Investigate\\nsimilarities and differences across connectomes and species in the distributions\
+    \ that characterize these metrics, and,\\nif possible, link metrics to each other in a cohesive narrative.\\nData Description\\\
+    nMultiple *_AggregatedData.csv files, each representing one connectome (\\u201cAnimal\\u201d): Celegans_AggregatedData.csv\\\
+    n(C. Elegans, which does not have local density data), Larva_LocalDensity_AggregatedData.csv (Fruit Fly Larva),\\nHemibrain_LocalDensity_AggregatedData.csv\
+    \ (Half of a Fruit Fly\\u2019s CNS), MANC_LocalDensity_AggregatedData.csv\\n(Fruit Fly Ventral Nerve Cord), FlyWire_LocalDensity_AggregatedData.csv\
+    \ (Fruit Fly CNS), Zebrafish_LocalDensity\\n_AggregatedData.csv (local reconstruction of zebrafish brain), MM3_LocalDensity_AggregatedData.csv\
+    \ (local re-\\nconstructions of mouse cortex), H01_LocalDensity_AggregatedData.csv (local reconstructions of human cortex).\\\
+    nSchema (exact column names): CellID, Length, Synapses, LocalDensity (absent for c. Elegans), and Degree\\nDiscovery 2\\\
+    nResearch Objective\\nThe study objective is to identify the impacts of various ambient environmental parameters (solvent\
+    \ partial pressure,\\nabsolute humidity, ambient temperature) on perovskite device efficiency, during a synthesis process\
+    \ consisting of two\\nsequential steps: a spin coating step, followed by a thermal annealing step.\\nData Description\\\
+    n# Description A structured dataset combining environmental sensor measurements from separate spin coating (ab-\\nsolute\
+    \ humidity, ambient temperature, solvent vapor partial pressure) and thermal annealing (absolute humidity,\\nambient temperature)\
+    \ enclosures, with perovskite solar-cell device performance metrics open-circuit voltage (VOC),\\nshort-circuit current\
+    \ (JSC), fill factor (FF), and power conversion efficiency (PCE). Environmental data were recorded\\nacross multiple fabrication\
+    \ rounds using custom-built, feedback-controlled enclosures with calibrated sensors and ac-\\ntuators. Inputs: Environmental\
+    \ sensor data includes two copies of each sample (redundancy).\\n# Data Processing Instructions\\n## Load Raw Data\\nRead\
+    \ all Excel files in the folder Inputs \\u2013 environmental sensor data. These are time-dependent readings of the sensor\\\
+    ndata. There are multiple tabs in each Excel file, labeled by sample ID number and process step (spin coating or\\nthermal\
+    \ annealing). There are two synthesis steps for each device: a spin coating step, where perovskite precursors\\ndissolved\
+    \ in dimethylformamide (DMF) are spun coat into a wet thin film, and a thermal annealing step, where the\\nsample is placed\
+    \ on a hotplate and annealed. Note the environmental sensor data records the temperature of the\\nambient gas, not the\
+    \ temperature of the hotplate. The ambient gas temperature in the thermal annealing stage was\\nmeasured, but not independently\
+    \ controlled, because it was dominated by the hotplate. Read all text files in the\\nfolder Outputs - full current-voltage\
+    \ curves. Treat these as raw illuminated J\\u2013V (current density vs. voltage) data\\ndirectly from the solar simulator.\\\
+    n## Load Summary Data\\nRead the file Summary table.xlsx, which nominally contains average values of the sensor data and\
+    \ extracted parameters\\nfrom the current-voltage curves. For each current-voltage curve, the following device metrics\
+    \ were extracted: open-\\ncircuit voltage (VOC), short-circuit current (JSC), fill factor (FF), power conversion efficiency\
+    \ (PCE).\\n35\\n\\n## Handle Fill Factor Discrepancies\\nBe aware that Kosmos previously miscalculated fill factors (FF)\
+    \ from raw J-V curves. If FF values differ between the\\nraw curve-derived results and the summary table, default to the\
+    \ summary table values. Only override this rule if the\\nroot cause of the discrepancy can be explicitly identified and\
+    \ justified through reproducible computation.\\n## Environmental Sensor Precision\\nFor all environmental sensor data,\
+    \ determine the minimum step size (i.e., smallest nonzero difference between consec-\\nutive values). Treat this as the\
+    \ measurement precision. Example: if the smallest increment in temperature readings\\nis 0.1 \\u00b0C, set temperature\
+    \ sensor resolution = 0.1 \\u00b0C.\\nDiscovery 3\\nResearch Objective\\nGiven that Preoptic area (POA) Kappa Opioid Receptor\
+    \ (KOR+) activation induces a torpor-like, hypothermic and\\nhypometabolic state that is cerebroprotective only under\
+    \ hypothermic conditions, identify the specific metabolic\\nadaptations that may support this effect.\\nData Description\\\
+    nPolar (Brain_Polar_C_ST_NT_245_2024.csv) and lipid (Brain_Lipids_C_ST_NT.csv) untargeted metabolomic\\nscreen of brain\
+    \ tissue from mice. The data is LC/MS peak intensities for three groups: control (N=6), hypothermia\\n(N=6) and normothermia\
+    \ (N=5). The hypothermic group is mice with chemogenetic activation of POA KOR+\\nneurons. The hypothermic group was allowed\
+    \ to undergo the full drop in body temperature (torpor-like hypothermia).\\nThe normothermia group has the same neuronal\
+    \ activation as above, but animals were housed at elevated ambient\\ntemperature to clamp core temperature near normal.\
+    \ The normothermia group isolates the effect of neural activation\\nwithout hypothermia, showing whether protection depends\
+    \ on temperature.\\nControls received control treatment\\nwithout POA KOR+ activation and served as baseline comparison\
+    \ for both hypothermia and normothermia groups.\\nDiscovery 4\\nResearch Objective\\nIdentify causal proteins in myocardial\
+    \ fibrosis with T1 as a proxy and propose mechanism of action. Use multiple\\napproaches such as pairwise colocalisation\
+    \ tests (using package coloc), statistical fine mapping (using package susieR)\\nand Mandelian Randomisation (using package\
+    \ MandelianRandomization or TwoSampleMR). Take into account link-\\nage disequilibrium (obtain LD matrix with LDlinkR).\
+    \ Use all available datasets, including T1 GWAS, cis-pQTLs,\\nsQTLs and eQTLs.\\nData Description\\nThere are four datasets\
+    \ available: GWAS summary statistics for myocardial T1, cis_pQTLs from proteomics GWAS\\nof the same European cohort patients\
+    \ as the myocardial T1 data, sQTLs and eQTLs of genotype-tissue expression\\ndata\\nDiscovery 5\\nResearch Objective\\\
+    nIdentify the most validated Type 2 Diabetes protective mechanisms by ranking SNP-gene pairs based on: (1) multiple\\\
+    nindependent QTL validations (ATAC, cell eQTL, GTEx eQTL, blood pQTL), (2) directional concordance between\\nGWAS and\
+    \ QTL effect sizes, (3) experimental evidence (ReMap ChIP-seq support), and (4) biological relevance (gene\\nexpression\
+    \ levels, posterior probability of causality). For each top mechanism, generate a complete mechanistic report\\nshowing:\
+    \ SNP allele \\u2014> TF binding change (with delta scores and cell-type expression) \\u2014> chromatin accessibility\\\
+    neffects (ATAC betas/ORs per cell type) \\u2014> gene/protein expression changes (with all QTL betas and p-values)\\n\\\
+    u2014> biological function \\u2014> hypothesized link to T2D pathophysiology.\\nPrioritize mechanisms where protective\\\
+    nalleles consistently decrease transcript or protein levels across multiple QTL sources, and provide publication-quality\\\
+    nvisualizations with all statistical evidence clearly labeled.\\nData Description\\n36\\n\\nYou are given two master files,\
+    \ MASTER_SNP_GENE_LEVEL_FINAL.csv with 12K SNP-gene pairs including ATAC,\\neQTL, GTEx, and blood pQTL data, and MASTER_ALL_CREDIBLE_SETS_WITH_QTLs_CORRECTED.csv\
+    \ with\\n68K SNP-TF disruptions including motifBreakR predictions and ReMap ChIP-seq validation, and a comprehensive\\\
+    nDATA_DICTIONARY.csv.\\nDiscovery 6\\nResearch Objective\\nThis is a proteomic dataset of mini pools of 10 neurons from\
+    \ Alzheimer\\u2019s disease cases. Investigate proteome differ-\\nences between cells with positive and negative tau status.\
+    \ You can also use MC1 (i.e. misfolded tau) quantification\\nto stratify tau positive cells or the precomputed pseudotime\
+    \ to order samples. Your task is to propose mechanisms\\ncontributing to the accumulation of tau and the link with cellular\
+    \ dysfunction, death, or survival. Propose a sequence\\nof events leading to tau accumulation.\\nData Description\\nIn\
+    \ the obs dataframe, you will find some metadata about samples (age at death, MC1 score, pseudotime), and the\\ntau status\
+    \ (positive/negative). Use robust statistical approaches accounting for the possible cofactors. Data are\\nalready log2\
+    \ transformed.\\nDiscovery 7\\nResearch Objective\\nInvestigate differences in transcriptional regulation, transcriptional\
+    \ entropy, transcriptional noise during ageing com-\\nparing subclass \\u2018008 L2/3 IT ENT Glut\\u2019 vs \\u2018007\
+    \ L2/3 IT CTX Glut\\u2019 and \\u2018003 L5/6 IT TPE-ENT Glut\\u2019 vs \\u2018005 L5\\nIT CTX Glut\\u2019, that could\
+    \ explain a higher propensity to accumulate proteins. Propose mechanisms of vulnerability\\nof ENT and mechanisms of resilience\
+    \ of CTX neurons.\\nData Description\\nThis is a single nuclei dataset from the ageing mouse brain. In the obs dataframe,\
+    \ you will find some metadata\\nabout samples (age, sex), manual cell-type annotation (celltype) and the cell-type annotation\
+    \ using the Allen Brain\\nInstitue MapMyCells algorithm (class_name, subclass_name, supertype_name) as well as the cell-typing\
+    \ confidence\\n(_bootstrapping_probability).\\n37\"\n  },\n  {\n    \"name\": \"Supplementary Information 2: Instructions\
+    \ for Evaluations from Academic Groups\",\n    \"text\": \"Comparing with prior research\\n1. Consider a claim you previously\
+    \ made similar in style and scope to the one from which Kosmos reproduced the\\ndiscovery. Describe the specific claim\
+    \ that you previously made.\\n2. How long did it take to produce that claim after you had collected the data? Please answer\
+    \ in terms of elapsed\\ncalendar time (days/weeks/months/years).\\nPlease review the following Kosmos report. Note that\
+    \ you can click any hyperlinked trajectory to review\\nthem.\\n3. Please list out the number of all findings in this report\
+    \ that you found to be valuable or significant.\\n4. Assume your lab received the data on January 1. Under your usual\
+    \ workflow without AI tools, how long would\\nit typically take your lab to generate findings like those in the report,\
+    \ including time spent reading the literature,\\ncoming up with ideas, performing the analyses? Please answer in terms\
+    \ of elapsed calendar time in terms of\\ndays/weeks/months/years.\\n5. How many full-time employees would you expect to\
+    \ be working on the project during that period? For example,\"\n  },\n  {\n    \"name\": \", 1.25, 1.7 FTE\",\n    \"\
+    text\": \"6. Assess the depth of those findings that you chose, in terms of whether they required deep multi-step reasoning\\\
+    nor more shallow ideation:\\n\\u2022 Shallow ideation based on surface-level observations\\n\\u2022 Light reasoning with\
+    \ a straightforward connection of ideas/observations\\n\\u2022 Moderate depth of reasoning involving several connected\
+    \ steps\\n\\u2022 Deep multi-step reasoning requiring synthesis across multiple ideas\\n7. Assess the quality of those\
+    \ findings that you chose in terms of novelty to the field:\\n\\u2022 Little novel insight, mostly restatement of known\
+    \ information\\n\\u2022 Moderate novelty; extends existing knowledge in meaningful ways\\n\\u2022 Largely novel with minor\
+    \ connections to existing knowledge\\n\\u2022 Completely novel insight with little precedent\\n38\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Information 3: Example Instructions for Expert Evaluations (Discovery 1)\",\n    \"text\": \"\
+    Thank you for evaluating our scientific findings! We are developing an AI scientist system that can generate novel\\ndiscoveries.\
+    \ In this project, we performed detailed analyses on the following metabolomics dataset to investigate\\nthe specific\
+    \ metabolic adaptations that may enable Preoptic area (POA) Kappa Opioid Receptor (KOR+)-induced\\ncerebroprotection under\
+    \ torpor-like hypothermia and hypometabolism.\\nThe output from the system is a brief report summarizing the main finding,\
+    \ with quantitative details and figures from\\nthe analyses. This report contains both results from direct analyses as\
+    \ well as scientific interpretations of the data.\\nWe have chosen a random sample of these statements (both based on\
+    \ data analysis and interpretations) for your\\nevaluation:\\n1. Read through the PDF of the discovery group. This report\
+    \ will provide context for the statements that you will\\nbe evaluating. The figures are there for your reference, but\
+    \ they will not be evaluated. Do not look through\\nthe hyperlinked citations or use those as evidence.\\n2. Familiarize\
+    \ yourself with the dataset provided. All analyses and discoveries in this discovery group were derived\\nfrom this dataset.\\\
+    n3. Each discovery group will have a sample of statements to be evaluated. These claims are either derived from\\ndata\
+    \ analysis on the dataset, literature review, or by synthesizing ideas across claims/conclusions. Conduct your\\nevaluation\
+    \ based on the type of claim it is. We tried our best to make each statement individually evaluable,\\nbut if something\
+    \ is confusing, feel free to refer back to the discovery group PDF.\\nDataset Information\\nThis dataset comprises untargeted\
+    \ metabolomic screens of mouse brain tissue, including a polar fraction\\n(Brain_Polar_C_ST_NT_245_2024.csv) and a lipid\
+    \ fraction (Brain_Lipids_C_ST_NT.csv). It contains LC/MS\\npeak intensity measurements for three experimental groups:\
+    \ control (N = 6), hypothermia (N = 6), and normothermia\\n(N = 5). The hypothermia group consists of mice with chemogenetic\
+    \ activation of POA KOR+ neurons that were\\nallowed to undergo a full drop in body temperature, producing a torpor-like\
+    \ hypothermic state. The normothermia\\ngroup received the same neuronal activation but was housed at an elevated ambient\
+    \ temperature to clamp core\\ntemperature near normal, thereby isolating the effects of neural activation without hypothermia\
+    \ and indicating whether\\nprotection depends on temperature. The control group received a control treatment without POA\
+    \ KOR+ activation\\nand serves as the baseline for comparison with both the hypothermia and normothermia groups.\\nEvaluation\
+    \ Rubrics\\nData Analysis Rubric: Attempt to replicate this claim using your own data analysis. Did your findings support\
+    \ or\\nrefute the claim? The exact numbers and results do not need to match exactly, but your analysis should address\
+    \ the\\ncentral idea behind the claim. Use your best judgement to determine if the claim is supported, based on the context\\\
+    nof the discovery. IMPORTANT: Do all data analysis in PYTHON.\\n\\u2022 Answer: [SUPPORTED, REFUTED, UNSURE]\\n\\u2013\
+    \ SUPPORTED: My data analysis is able to reproduce this claim.\\n\\u2013 REFUTED: My data analysis refutes this claim.\\\
+    n\\u2013 UNSURE: I do not know how to do this analysis, the results are unclear/insignificant, or the claim is\\nambiguous\
+    \ or missing key information.\\n\\u2022 Explanation: [Free response, backed by evidence.]\\n\\u2022 Your data analysis:\
+    \ [Jupyter notebook]\\nLiterature Review Rubric: Analyze this claim and attempt to verify it in the scientific literature.\
+    \ Does the literature\\nsupport or refute this claim? If any part of the claim is obviously wrong, it should be marked\
+    \ as refuted. If some\\n39\\n\\nparts are supported and others are ambiguous/inconclusive, you may mark it as supported\
+    \ but please use your best\\njudgement.\\n\\u2022 Answer: [SUPPORTED, REFUTED, UNSURE]\\n\\u2013 SUPPORTED: This claim\
+    \ is supported by the literature.\\n\\u2013 REFUTED: The claim is NOT supported by the literature.\\n\\u2013 UNSURE: The\
+    \ literature is completely inconclusive, the claim is ambiguous, or unable to be evaluated.\\n\\u2022 Explanation: [Free\
+    \ response, citing specific papers.]\\nInterpretation Rubric: Analyze the claim and determine if the claim is a scientifically\
+    \ accurate interpretation based\\nonly on the report context. This question is only evaluating if the claim\\u2019s interpretation\
+    \ of the results is accurate,\\nso you should not conduct any data analysis. A summary of relevant context is given for\
+    \ your reference, which you\\nshould assume is correct.\\n\\u2022 Answer: [SUPPORTED, REFUTED, UNSURE]\\n\\u2013 SUPPORTED:\
+    \ This claim is a logically reasonable inference given the report and context.\\n\\u2013 REFUTED: This claim is NOT a\
+    \ logically reasonable inference given the report and context.\\n\\u2013 UNSURE: The claim is ambiguous, missing key information,\
+    \ or unable to be evaluated.\\n\\u2022 Explanation: [Free response, based on the report and context.]\\n40\"\n  },\n \
+    \ {\n    \"name\": \"Supplementary Information 4: Examples of Kosmos evaluations across statement types\",\n    \"text\"\
+    : \"Data Analysis Statement Evaluation Examples\\nSupported\\nStatement: When controlling for D-xylitol, the correlation\
+    \ between betaine and carnosine lost significance and\\ndropped from r=0.910 to r=0.744 (p=0.149).\\nEvaluation: I was\
+    \ able to reproduce this claim exactly, including the correlation coefficients and p-values.\\nRefuted\\nStatement: In\
+    \ normothermia, PUFA-PC proportion was very strongly and significantly negatively correlated with\\ncarnosine.\\nEvaluation:\
+    \ It appears that the agent somehow mixed up values for some of the mice, leading the correlation to\\nlook a lot stronger\
+    \ than it is. In my analysis, there is a bit of a negative correlation, but it is not significant (p~0.3).\\nOverall,\
+    \ the incorrect values negate the claim.\\nLiterature Review Statement Evaluation Examples\\nSupported\\nStatement: ASPN-mimic\
+    \ peptides attenuate SMAD2/3 phosphorylation.\\nEvaluation: This has been demonstrated across multiple experimental models\
+    \ in both breast cancer and cardiac\\ntissue contexts. 10.1371/journal.pmed.1001871, doi.org/10.1371/journal.pmed.1001871.\\\
+    nRefuted\\nStatement: Carnosine has specialized roles at the bilayer as a transition-metal chelator and scavenger of secondary\\\
+    nnon-aldehyde reactive species arising in arachidonic acid peroxidation cascades.\\nEvaluation: It\\u2019s true that carnosine\
+    \ chelates transition metals. However, it does not seem fair to say that carnosine\\nhas specialized roles at the bilayer.\
+    \ First, carnosine is water soluble and its activity for chelating transition metal ions\\nto avoid PUFA (e.g. ARA) peroxidation\
+    \ is likely more about preventing these metals from getting into the membrane.\\nIt may be located near the membrane in\
+    \ some cases, though. It can also prevent soluble macromolecule peroxidation\\n(e.g. of proteins), which argues against\
+    \ a specialized role. Additionally, there does not seem to be much support for\\ncarnosine scavenging of NON-aldehyde\
+    \ reactive species. It seems key for scavenging aldehydes in particular. Even if\\nI\\u2019m overinterpreting the word\
+    \ \\u201cspecialized\\u201d here, there does not seem to be much evidence for carnosine scavenging\\nnon-aldehydes, so\
+    \ this claim is still not supported.\\nInterpretation Statement Evaluation Examples\\nSupported\\nGiven context: Hypothermia\
+    \ uniquely elevated betaine and carnosine and made them strongly coupled, while classic\\nTonEBP osmolytes (myo-inositol,\
+    \ taurine, creatine) did not change.\\nStatement: The strict state-specificity of this coupling in a design that controls\
+    \ for chemogenetic activation indicates\\na temperature-dependent metabolic program, rather than an effect of neuronal\
+    \ activation alone.\\nEvaluation: Given that both hypothermic and normothermic experimental groups received KOR+ activation,\
+    \ we can\\n41\\n\\nresonably conclude that any differences between these groups in metabolites are not due to chemogenetic\
+    \ activation.\\nGiven that the key difference is temperature, it is therefore reasonable to say that this coupling indicates\
+    \ temperature-\\ndependent metabolism.\\nRefuted\\nGiven context: Hypothermia indeed shifted PC composition toward PUFAs\
+    \ relative to normothermia, consistent\\nwith a strategic adaptation to maintain membrane fluidity at low temperature.\
+    \ In a targeted comparison, the PUFA-\\nPC proportion was significantly higher in hypothermia than normothermia, with\
+    \ hypothermia showing a mean PUFA\\nproportion of 0.3100 \\u00b1 0.0041 versus 0.2999 \\u00b1 0.0093 in normothermia;\
+    \ the control group was intermediate (0.3063\\n\\u00b1 0.0063) and not different from either treatment group.\\nStatement:\
+    \ This modest yet coherent shift implicates compositional remodeling\\u2014as opposed to wholesale lipid\\nturnover\\\
+    u2014as a thermoadaptive mechanism that could help preserve membrane function and provide precursors for\\nprotective\
+    \ lipid mediators during the hypometabolic state.\\nEvaluation: Despite the caveat of \\u201cmodest yet coherent\\u201d\
+    \ in the interpretation, it\\u2019s unclear to me without further\\nstatistics whether this difference is meaningful.\
+    \ The control group PUFA-PC proportion being intermediate addition-\\nally argues against this being a mechanistically\
+    \ meaningful change. There are many components to the lipid bilayer\\nand this change may not be very large relative to\
+    \ other changes, some of which could counteract this change. And\\nit may not be large enough to actually preserve membrane\
+    \ function at low temperatures. While PUFAs do maintain\\nmembrane fluidity at low temperature and that could preserve\
+    \ membrane function, I don\\u2019t think the context here\\nis sufficient to support this interpretation. Additionally,\
+    \ not all PUFAs equally contribute to supplying protective\\nlipid mediators, so without specific stratified analysis\
+    \ of different PUFA lipid types, it\\u2019s not possible to evaluate that\\nparticular part of this claim. However, it\\\
+    u2019s possible that, if these protective mediator species (ARA/DHA/EPA) are\\nincreasing, then this interpretation could\
+    \ be supported. We just don\\u2019t have enough information.\\n42\"\n  }\n]"
+  funding: 'Work undertaken by R.J.B., E.C.L., A.K., and L.P.S. is supported by the National Institute of Neurological Disorders
+
+    and Stroke of the National Institutes of Health under award number R01 NS133365 (to E.C.L.). Work undertaken
+
+    by K.E.D., M.F. and M.B. is supported by the UK Dementia Research Institute through UK DRI Ltd, principally
+
+    funded by the Medical Research Council, and by funding from the Cure Alzheimer’s Fund (K.E.D. and M.B.). N.E.
+
+    and T.B. acknowledge a CIFAR catalyst award through the Accelerated Decarbonization Program and the Toyota
+
+    Research Institute’s Synthesis Advanced Research Challenge (SARC) challenge. T.R. is supported by the UK EPSRC
+
+    grant EP/Y037200/1.
+
+    26'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n   \
+    \ \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_2.png\",\n\
+    \    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_2.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_3.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_4.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_5.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_6.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_7.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_2.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_3.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_2.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_3.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_4.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_5.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_6.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_7.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_8.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_9.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_10.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_2.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_3.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_4.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_5.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_6.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_7.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_8.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p13_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_1.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p13_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_2.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_2.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_3.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_4.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_2.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_3.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_4.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_5.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_6.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_7.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_8.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_9.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_10.png\"\
+    ,\n    \"page\": 17\n  }\n]"
+references:
+  reference_count: 31
+associated:
+  data_repositories: "[\n  {\n    \"accession\": \"syn51365303\",\n    \"database\": \"other\",\n    \"url\": \"\",\n    \"\
+    description\": \"\"\n  },\n  {\n    \"accession\": \"GSE124742\",\n    \"database\": \"GEO\",\n    \"url\": \"\",\n  \
+    \  \"description\": \"\"\n  },\n  {\n    \"accession\": \"GSE164875\",\n    \"database\": \"GEO\",\n    \"url\": \"\"\
+    ,\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://www.\",\n    \"accession\": \"\",\n    \"database\": \"\
+    \",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://cvd.hugeamp.\",\n    \"accession\": \"\",\n    \"database\"\
+    : \"\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://github.com/EdisonScientific/kosmos-figures.\",\n\
+    \    \"accession\": \"\",\n    \"database\": \"\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://platform.edisonscientific.com/trajectories/\"\
+    ,\n    \"accession\": \"\",\n    \"database\": \"\",\n    \"description\": \"\"\n  }\n]"

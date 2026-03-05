@@ -1,0 +1,82 @@
+# Y Combinator Application — Template Specification
+#
+# Defines the structure of a YC batch application.
+# Source: Grant_writing_frameworks.md + official YC application form
+#
+# Schema Version: 1.0
+
+template:
+  name: "Y Combinator Application"
+  version: "1.0"
+  source: "https://apply.ycombinator.com"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Company Basics ──────────────────────────────────────────────────────
+  - id: basics
+    title: "Company Basics"
+    fields:
+      - id: company_tagline
+        label: "Describe what your company does in 50 characters or fewer"
+        type: text
+        required: true
+        constraints:
+          maxChars: 50
+
+      - id: company_description
+        label: "What is your company going to make? Please describe your product and what it does or will do."
+        type: textarea
+        required: true
+
+      - id: tech_stack
+        label: "What tech stack are you using, or planning to use, to build this product? Include AI models and AI coding tools you use."
+        type: textarea
+        required: true
+
+      - id: launch_timeline
+        label: "When will you have a version people can use?"
+        type: textarea
+        required: true
+
+  # ─── Idea & Market ──────────────────────────────────────────────────────
+  - id: idea_market
+    title: "Idea & Market"
+    fields:
+      - id: why_this_idea
+        label: "Why did you pick this idea to work on? Do you have domain expertise in this area? How do you know people need what you're making?"
+        type: textarea
+        required: true
+
+      - id: competitors
+        label: "Who are your competitors? What do you understand about your business that they don't?"
+        type: textarea
+        required: true
+
+      - id: revenue_model
+        label: "How do or will you make money? How much could you make?"
+        type: textarea
+        required: true
+
+  # ─── Science & Product ──────────────────────────────────────────────────
+  - id: science_product
+    title: "Science & Product Development"
+    fields:
+      - id: scientific_basis
+        label: "Please describe the scientific basis for your product. How does it work?"
+        type: section
+        required: true
+
+      - id: development_stages
+        label: "Describe the next few stages in developing your product. For each stage, how much time and money will it take?"
+        type: section
+        required: true
+
+      - id: regulatory
+        label: "Does your product need regulatory approval (i.e., FDA)? If so, what is the approval process? What is your plan to get approved, and how much time and money will it take?"
+        type: section
+        required: false
+
+      - id: experimental_data
+        label: "What experimental data (if any) do you have showing that this would work?"
+        type: section
+        required: false

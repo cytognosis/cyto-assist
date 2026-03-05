@@ -1,0 +1,1110 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Improving Biomedical Knowledge Graph Quality.pdf
+
+identifiers:
+  doi: 10.1093/genetics/iyad031
+  pmid: '36866529'
+citation:
+  title: 'Improving Biomedical Knowledge Graph  Quality: A Community Approach'
+  journal: GENETICS
+  year: '2023'
+  volume: '224'
+  publisher: Oxford University Press (OUP)
+  authors: ', Suzi A Aleksander, James Balhoff, Seth Carbon, J Michael Cherry, Harold J Drabkin, Dustin Ebert, Marc Feuermann,
+    Pascale Gaudet, Nomi L Harris, David P Hill, Raymond Lee, Huaiyu Mi, Sierra Moxon, Christopher J Mungall, Anushya Muruganugan,
+    Tremayne Mushayahama, Paul W Sternberg, Paul D Thomas, Kimberly Van Auken, Jolene Ramsey, Deborah A Siegele, Rex L Chisholm,
+    Petra Fey, Maria Cristina Aspromonte, Maria Victoria Nugnes, Federica Quaglia, Silvio Tosatto, Michelle Giglio, Suvarna
+    Nadendla, Giulia Antonazzo, Helen Attrill, Gil dos Santos, Steven Marygold, Victor Strelets, Christopher J Tabone, Jim
+    Thurmond, Pinglei Zhou, Saadullah H Ahmed, Praoparn Asanitthong, Diana Luna Buitrago, Meltem N Erdol, Matthew C Gage,
+    Mohamed Ali Kadhum, Kan Yan Chloe Li, Miao Long, Aleksandra Michalak, Angeline Pesala, Armalya Pritazahra, Shirin C C
+    Saverimuttu, Renzhi Su, Kate E Thurlow, Ruth C Lovering, Colin Logie, Snezhana Oliferenko, Judith Blake, Karen Christie,
+    Lori Corbani, Mary E Dolan, Harold J Drabkin, David P Hill, Li Ni, Dmitry Sitnikov, Cynthia Smith, Alayne Cuzick, James
+    Seager, Laurel Cooper, Justin Elser, Pankaj Jaiswal, Parul Gupta, Pankaj Jaiswal, Sushma Naithani, Manuel Lera-Ramirez,
+    Kim Rutherford, Valerie Wood, Jeffrey L De Pons, Melinda R Dwinell, G Thomas Hayman, Mary L Kaldunski, Anne E Kwitek,
+    Stanley J F Laulederkind, Marek A Tutaj, Mahima Vedi, Shur-Jen Wang, Peter D’Eustachio, Lucila Aimo, Kristian Axelsen,
+    Alan Bridge, Nevila Hyka-Nouspikel, Anne Morgat, Suzi A Aleksander, J Michael Cherry, Stacia R Engel, Kalpana Karra, Stuart
+    R Miyasato, Robert S Nash, Marek S Skrzypek, Shuai Weng, Edith D Wong, Erika Bakker, Tanya Z Berardini, Leonore Reiser,
+    Andrea Auchincloss, Kristian Axelsen, Ghislaine Argoud-Puy, Marie-Claude Blatter, Emmanuel Boutet, Lionel Breuza, Alan
+    Bridge, Cristina Casals-Casas, Elisabeth Coudert, Anne Estreicher, Maria Livia Famiglietti, Marc Feuermann, Arnaud Gos,
+    Nadine Gruaz-Gumowski, Chantal Hulo, Nevila Hyka-Nouspikel, Florence Jungo, Philippe Le Mercier, Damien Lieberherr, Patrick
+    Masson, Anne Morgat, Ivo Pedruzzi, Lucille Pourcel, Sylvain Poux, Catherine Rivoire, Shyamala Sundaram, Alex Bateman,
+    Emily Bowler-Barnett, Hema Bye-A-Jee, Paul Denny, Alexandr Ignatchenko, Rizwan Ishtiaq, Antonia Lock, Yvonne Lussi, Michele
+    Magrane, Maria J Martin, Sandra Orchard, Pedro Raposo, Elena Speretta, Nidhi Tyagi, Kate Warner, Rossana Zaru, Alexander
+    D Diehl, Raymond Lee, Juancarlos Chan, Stavros Diamantakis, Daniela Raciti, Magdalena Zarowiecki, Malcolm Fisher, Christina
+    James-Zorn, Virgilio Ponferrada, Aaron Zorn, Sridhar Ramachandran, Leyla Ruzicka, Monte Westerfield, Suzi A Aleksander,
+    James Balhoff, Seth Carbon, J Michael Cherry, Harold J Drabkin, Dustin Ebert, Marc Feuermann, Pascale Gaudet, Nomi L Harris,
+    David P Hill, Raymond Lee, Huaiyu Mi, Sierra Moxon, Christopher J Mungall, Anushya Muruganugan, Tremayne Mushayahama,
+    Paul W Sternberg, Paul D Thomas, Kimberly Van Auken, Jolene Ramsey, Deborah A Siegele, Rex L Chisholm, Petra Fey, Maria
+    Cristina Aspromonte, Maria Victoria Nugnes, Federica Quaglia, Silvio Tosatto, Michelle Giglio, Suvarna Nadendla, Giulia
+    Antonazzo, Helen Attrill, Gil dos Santos, Steven Marygold, Victor Strelets, Christopher J Tabone, Jim Thurmond, Pinglei
+    Zhou, Saadullah H Ahmed, Praoparn Asanitthong, Diana Luna Buitrago, Meltem N Erdol, Matthew C Gage, Mohamed Ali Kadhum,
+    Kan Yan Chloe Li, Miao Long, Aleksandra Michalak, Angeline Pesala, Armalya Pritazahra, Shirin C C Saverimuttu, Renzhi
+    Su, Kate E Thurlow, Ruth C Lovering, Colin Logie, Snezhana Oliferenko, Judith Blake, Karen Christie, Lori Corbani, Mary
+    E Dolan, Harold J Drabkin, David P Hill, Li Ni, Dmitry Sitnikov, Cynthia Smith, Alayne Cuzick, James Seager, Laurel Cooper,
+    Justin Elser, Pankaj Jaiswal, Parul Gupta, Pankaj Jaiswal, Sushma Naithani, Manuel Lera-Ramirez, Kim Rutherford, Valerie
+    Wood, Jeffrey L De Pons, Melinda R Dwinell, G Thomas Hayman, Mary L Kaldunski, Anne E Kwitek, Stanley J F Laulederkind,
+    Marek A Tutaj, Mahima Vedi, Shur-Jen Wang, Peter D’Eustachio, Lucila Aimo, Kristian Axelsen, Alan Bridge, Nevila Hyka-Nouspikel,
+    Anne Morgat, Suzi A Aleksander, J Michael Cherry, Stacia R Engel, Kalpana Karra, Stuart R Miyasato, Robert S Nash, Marek
+    S Skrzypek, Shuai Weng, Edith D Wong, Erika Bakker, Tanya Z Berardini, Leonore Reiser, Andrea Auchincloss, Kristian Axelsen,
+    Ghislaine Argoud-Puy, Marie-Claude Blatter, Emmanuel Boutet, Lionel Breuza, Alan Bridge, Cristina Casals-Casas, Elisabeth
+    Coudert, Anne Estreicher, Maria Livia Famiglietti, Marc Feuermann, Arnaud Gos, Nadine Gruaz-Gumowski, Chantal Hulo, Nevila
+    Hyka-Nouspikel, Florence Jungo, Philippe Le Mercier, Damien Lieberherr, Patrick Masson, Anne Morgat, Ivo Pedruzzi, Lucille
+    Pourcel, Sylvain Poux, Catherine Rivoire, Shyamala Sundaram, Alex Bateman, Emily Bowler-Barnett, Hema Bye-A-Jee, Paul
+    Denny, Alexandr Ignatchenko, Rizwan Ishtiaq, Antonia Lock, Yvonne Lussi, Michele Magrane, Maria J Martin, Sandra Orchard,
+    Pedro Raposo, Elena Speretta, Nidhi Tyagi, Kate Warner, Rossana Zaru, Alexander D Diehl, Raymond Lee, Juancarlos Chan,
+    Stavros Diamantakis, Daniela Raciti, Magdalena Zarowiecki, Malcolm Fisher, Christina James-Zorn, Virgilio Ponferrada,
+    Aaron Zorn, Sridhar Ramachandran, Leyla Ruzicka, Monte Westerfield'
+content:
+  abstract: 'Biomedical knowledge graphs (KGs) are widely used across research and translational settings,
+
+    yet their design decisions and implementation are often opaque. Unlike ontologies that more
+
+    frequently adhere to established creation principles, biomedical KGs lack consistent practices
+
+    for construction, documentation, and dissemination. To address this gap, we introduce a set of
+
+    evaluation criteria grounded in widely accepted data standards and principles from related
+
+    fields. We apply these criteria to 16 biomedical KGs, revealing that even those that appear to
+
+    align with best practices often obscure essential information required for external reuse.
+
+    Moreover, biomedical KGs, despite pursuing similar goals and ingesting the same sources in
+
+    some cases, display substantial variation in models, source integration, and terminology for
+
+    node types. Reaping the potential benefits of knowledge graphs for biomedical research while
+
+    reducing duplicated effort requires community-wide adoption of shared criteria and maturation of
+
+    standards such as Biolink and KGX. Such improvements in transparency and standardization
+
+    are essential for creating long-term reusability, improving comparability across resources,
+
+    providing a rigorous foundation for artificial intelligence models, and enhancing the overall utility
+
+    of KGs within biomedicine.'
+  sections: "[\n  {\n    \"name\": \"TISLab, Department of Genetics, University of North Carolina at Chapel Hill\",\n    \"\
+    text\": \"4 Environmental Genomics and Systems Biology, Lawrence Berkeley National Laboratory\\n5 Curriculum in Bioinformatics\
+    \ and Computational Biology, University of North Carolina at Chapel Hill\"\n  },\n  {\n    \"name\": \"Department of Pediatrics,\
+    \ University of Chicago\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Renaissance Computing Institute, University\
+    \ of North Carolina at Chapel Hill\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Eshelman School of Pharmacy, University\
+    \ of North Carolina at Chapel Hill\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Background and Previous Work\",\n\
+    \    \"text\": \"Knowledge graphs (KGs) have gained popularity in recent years for their ability to connect\\ndifferent\
+    \ types and sources of data, offering a powerful computational framework to uncover\\nnovel biological hypotheses.  Biomedical\
+    \ KG entities consist of disease, gene, mechanism, and\\nother biological types. \\u201cProperties\\u201d linking entities\
+    \ include relationships such as \\u2018expressed in,\\u2019\\n\\u2018has phenotype\\u2019, or \\u2018interacts with.\\\
+    u2019 Biomedical KGs are typically constructed by aggregating and\\nharmonizing existing curated knowledge bases and ontologies,\
+    \ supplemented by additional\\ninformation that may come from text mining, data analyses, or case-level information. By\\\
+    ningesting and harmonizing many sources of knowledge, KGs are able to connect knowledge\\n\\n\\nacross biological domains\
+    \ leveraging existing research. For instance, the ROBOKOP\\n(Reasoning Over Biomedical Objects linked in Knowledge Oriented\
+    \ Pathways)[1,2] KG platform\\nenables researchers to query complex biomedical questions, such as \\u201cWhat environmental\\\
+    nexposures are associated with asthma through intermediate biological processes?\\u201d, by\\nintegrating data from curated\
+    \ databases like CTD, DrugBank, and gene ontology (GO)\\nannotations [3\\u20135]. KGs have gained particular traction\
+    \ in biomedical research domains including\\ndrug repurposing, disease mechanism discovery, and rare disease illumination.\
+    \ Previous\\napproaches have included using embeddings, vector representations of the nodes and edges\\nwhich can then\
+    \ be used as input for artificial intelligence (AI) algorithms, of these KGs[6\\u20139].\\nOther examples include the\
+    \ Monarch Initiative KG connects genotypic and phenotypic data\\nacross species to assist in the diagnosis of rare diseases,\
+    \ enabling clinicians to match patient\\nsymptoms with relevant genes even when traditional diagnostic methods fail [10,11].\
+    \ Similarly,\\nOpenTarget\\u2019s KG prioritizes drug targets by synthesizing genetic associations, expression data,\\\
+    nand pathway information [12]. Many methods have been proposed to link knowledge graphs\\nwith large language models (LLMs)\
+    \ to reduce hallucinations and improve scientific utility[13\\u201315].\\nAs LLMs become more widely used in biomedicine,\
+    \ KGs can further support them through\\nretrieval-augmented generation (KG-RAG), helping to normalize and ground generative\
+    \ outputs.\\nEarly efforts, such as pairing BioGPT and SciSpaCy[16,17] with structured KG-based retrieval,\\ndemonstrated\
+    \ how graphs could enhance scientific question answering and mechanistic\\nreasoning. Today, more advanced approaches,\
+    \ such as DRAGON-AI, OntoGPT, AMG-RAG,\\nDR.KNOWS, and KGARevion [18\\u201322], illustrate a new generation of agentic\
+    \ KG-LLM\\nintegrations. These systems extend beyond retrieval to provide reliability, provenance,\\nreasoning transparency,\
+    \ and medical context. Graph-based approaches offer scalable, efficient,\\nand cost-effective ways to generate testable\
+    \ hypotheses, often uncovering unexpected\\ncross-domain relationships that would be difficult to detect manually. By\
+    \ integrating structured\\nknowledge from genetics, clinical records, literature, pathways, and curated knowledge bases,\\\
+    nknowledge graphs (KGs) enable a more comprehensive and mechanistic understanding of\\nbiology and disease [7,8,23\\u201329].\\\
+    nThe biomedical knowledge graph (KG) landscape has been described as a \\u201cwild west\\u201d of\\ninconsistent standards\
+    \ and practices [30,31]. Many KGs are developed with bespoke methods\\nand evaluated using metrics specific to narrow\
+    \ applications, which severely limits interoperability\\nand reuse. This fragmentation leads to redundant reconstruction\
+    \ of many similar graphs,\\nrestricts feedback to upstream data providers, and diminishes opportunities for data\\nharmonization\
+    \ and quality improvement. Reuse is further constrained by incomplete\\ndocumentation, infrequent updates, and insufficient\
+    \ evaluation, factors that collectively\\nundermine confidence and incentivize the creation of new KGs, often as fundable\
+    \ but\\nduplicative deliverables.\\nOntologies provide a semantic hierarchical structure and vocabulary for integrating\
+    \ data. Using\\nontologies in KGs allows complex relationships and links to different concepts, such as genes,\\ntraits,\
+    \ or phenotypes, to be represented in a standardized and computable manner [4,32]. For\\nontology creation, there are\
+    \ defined standards and guidance such as OWL, DOS-DP and\\nROBOT templates[33\\u201335]. The OBO Foundry provides ontology\
+    \ best practice metrics such as\\nresponsiveness, maintenance, format, and others[36]. The Bioregistry is an open source\\\
+    ncurated database of prefixes and metadata for ontologies, controlled vocabularies, and other\\nsemantic types[37]. Bioportal\
+    \ encourages reuse of ontologies through an open source\\nrepository[38]. These resources have encouraged rigorous creation\
+    \ and maintenance of\\n\\n\\nontologies in order to ensure that data can be shared across projects. KGs, built from ontologies\\\
+    nand data sources, are now experiencing similar issues as ontologies were before these\\nstandards and resources were\
+    \ built. While the ontologies and data sources generally maintain\\nconsistent versioning, detailed documentation, and\
+    \ structured formatting, these features are not\\noften retained in the KGs assembled from these parts. It is time that\
+    \ we have the same level of\\nstandards for KGs.\\n\\nNon-biomedical KGs can also provide important lessons in data management\
+    \ and graph\\ncreation. Google, Facebook, IBM and others use KGs to organize and deliver information. The\\nsize of these\
+    \ KGs necessitates a consistent underlying schema or structure[39]. Without a\\nconsistent underlying structure, it would\
+    \ be nearly impossible to create reliable graphs of these\\nmagnitudes. Standards in KG development are similarly important\
+    \ in industry and other\\nscholarly domains [40,41], and although use cases vary, the principles are applicable to\\nbiological\
+    \ domains as well. Unlike social graphs such as Facebook\\u2019s, which are largely centered\\non people and their interactions,\
+    \ biomedical KGs must capture a far more complex landscape.\\nIn biomedicine, the same two entities can be linked by different\
+    \ types of relationships depending\\non the context, and those relationships may change as new evidence is discovered.\
+    \ In some\\ncases, the relationships may even appear contradictory but remain accurate within their specific\\nexperimental\
+    \ or biological setting. Additionally, biomedical KGs must also integrate across\\nmultiple biological scales (from molecules\
+    \ to cells to organisms to populations) and capture\\nqualifiers such as tissue, species, or regulatory direction. Combined\
+    \ with the need for high\\naccuracy, since an incorrect relation could directly influence scientific or clinical decisions,\
+    \ this\\nsemantic diversity and multi-scale integration make their construction and maintenance uniquely\\nchallenging.\\\
+    nTo address these limitations, a number of community efforts, prominently including contributions\\nfrom the Monarch Initiative,\
+    \ have developed resources to enhance the accessibility, reusability,\\nand standardization of biomedical KGs. KG-Hub\
+    \ provides community practices and tooling for\\nKG discovery, harmonization, and reuse, in a manner analogous to the\
+    \ role of the OBO Foundry\\nin ontology development [36]. Within this framework, the KG-Registry catalogs metadata\\ndescribing\
+    \ graph creators, data sources, organizations, and associated code, thereby facilitating\\nidentification and reuse of\
+    \ existing KGs[42]. Complementary initiatives include the (Re)usable\\nData Project, which evaluates and clarifies licensing\
+    \ to promote responsible distribution of\\nbiomedical data\\u2014an important consideration given that KGs typically integrate\
+    \ sources with\\nheterogeneous reuse conditions[43]. The Biolink Model is a standardized framework for\\nrepresenting\
+    \ biological entities, their attributes, and relationships[44]. Adoption of Biolink has\\nbeen critical to ensuring interoperability,\
+    \ and associated standards such as KGX exchange\\nformat leverage Biolink to enable subgraph extraction and integration\
+    \ across resources. Broader\\ncommunity efforts, including the NCATS Biomedical Data Translator Consortium[45], and\\\
+    nTranslator KGs such as RTX-KG2, ROBOKOP, Clinical KG, and SPOKE[1,46\\u201348], demonstrate\\nhow strong, schema-driven\
+    \ approaches based on shared formats and registries provide the\\nfoundation for disseminating standardized and reusable\
+    \ KGs.\\nVersioning is critical for the reliability and reuse of KGs. Lessons from ontologies illustrate this\\nneed:\
+    \ a longitudinal study of the Gene Ontology (GO) showed that annotation changes over a\\ndecade produced divergent interpretations\
+    \ of biological experiments, with enrichment results\\ndiffering substantially between earlier and later GO releases[49].\
+    \ Such discrepancies arose from\\nbiases including annotation and literature bias, underscoring the dynamic nature of\
+    \ biological\\n\\n\\ndata and the necessity of regular updates. Outdated KGs risk propagating obsolete or\\nmisleading\
+    \ results, particularly when based on stale source data. To support reproducibility, it is\\ndesirable for past KG versions\
+    \ to remain accessible for comparison with newer iterations.\\nHowever, practical barriers\\u2014most notably the large\
+    \ size of KGs and the resource demands of\\nhosting and bandwidth\\u2014make comprehensive version archiving difficult.\\\
+    nGuidance can be drawn from standards used in other data domains. The FAIR, TRUST, and O3\\nprinciples provide frameworks\
+    \ for sustainable, interoperable data resources[50\\u201352],. FAIR is\\nFindability, Accessibility, Interoperability,\
+    \ and Reusability, and its recommendations include use\\nof controlled vocabularies for metadata, schematic interoperability\
+    \ across sources, and modular\\ndesign to enhance flexibility. Vogt et al. (2024) argue that modularity-oriented approaches\
+    \ to KG\\nconstruction improve compatibility, findability, and reproducibility[50]. TRUST principles extend\\nFAIR by\
+    \ emphasizing long-term stewardship of digital repositories, while O3 highlights\\nsustainability through open data, code,\
+    \ and infrastructure. Yet, none of these frameworks fully\\naddress the unique requirements of KG assembly and reuse.\
+    \ For this reason, we defined\\ncriteria tailored to KGs and applied them to a set of prominent, publicly available graphs.\\\
+    nSeveral biomedical KG reviews have focused on KG use cases and methods; but not their\\ncreation and reusability [6,53\\\
+    u201355]. We were inspired by Bonner et. al [54], where they examined\\nschema, relations and data mappings, and licensure\
+    \ for six drug discovery KGs, but not KG\\nevaluation and examples on their intended purpose. They concluded that three\
+    \ main things\\nmissing from these KGs are sufficient documentation, regular updates, and consistent dataset\\nversioning.\
+    \ In response, we present a systematic approach and set of KG metrics designed to\\nimprove interoperability, rigor, reuse,\
+    \ and reproducibility. By addressing these foundational\\nissues, we aim to foster more collaborative and modular development\
+    \ across the community\\nand to enable researchers to focus on applying KGs to drive new discoveries and achieve\\nreal-world\
+    \ impact.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"Here, we review a subset of 16 biomedical KGs[1,7\\\
+    u201310,23,46\\u201348,56\\u201362] with a focus on\\nreusability, data standards and openness. All metrics are evaluated\
+    \ through the lens of \\u201cis it\\npublicly accessible/true?\\u201d  Features only accessible through subscription or\
+    \ membership in a\\nspecific group are not counted. The features were assessed as a strictly \\u201cyes\\u201d or \\u201cno\\\
+    u201d system;\\npartial compliance counted as a full \\u201cyes.\\u201d Only features that were completely missing or\
+    \ could\\nnot be found were counted as a \\u201cno.\\u201d Due to the variation in how KGs define, represent and\\napproach\
+    \ concepts we kept our criteria intentionally broad to avoid penalizing approaches\\nfollowing different standards. Our\
+    \ goal was to give credit for efforts towards implementing or\\nadhering to standards.\\n\\nKGs were evaluated manually\
+    \ by domain-expert curators addressing specific subcriteria for\\neach Principle (see below). For each KG, one of a team\
+    \ of six reviewers retrieved the most\\nrecently available version of the KG\\u2019s website as well as the contents of\
+    \ any associated\\nsoftware repositories (e.g., from GitHub) and scholarly publications. The review was then\\nsecondarily\
+    \ reviewed by another team member. A critical review of KG code and files is outside\\nthe scope of this work and was\
+    \ not performed (e.g., we did not determine how much time was\\nrequired to build any KG). As with the OBO Dashboard and\
+    \ the ReusableData initiatives[36,43]\\n\\n\\n24,33, it is our hope that this review process will encourage KG stewards\
+    \ to improve their\\ndocumentation and promote reuse and interoperability.\\nPrinciples\\nWe developed specific evaluation\
+    \ criteria to assess the accessibility, reusability, and\\nstandardization of publicly-accessible KGs. The primary goal\
+    \ of these principles is to determine\\nif one can easily access and gain specific information about a given KG so as\
+    \ to determine its\\nutility for reuse. Our criteria are arranged according to six principles:\\nA.\\u200b Access Level\
+    \ and Type\\nB.\\u200b Provenance of Nodes and Edges\\nC.\\u200b Documented Standards, Schema, and Construction\\nD.\\\
+    u200b Update Frequency and Versioning\\nE.\\u200b Evaluation by Metrics and Fitness for Purpose\\nF.\\u200b Licensing\\\
+    nA. Access Level and Type\\nWe evaluated each KG\\u2019s ability to be accessed easily and without barriers by members\
+    \ of the\\ngreater scientific community. We considered direct access to the KG and its code as well as\\nadjacent interfaces\
+    \ (e.g., a REST API) and derived products (e.g., embeddings, paths). The\\nsubcriteria are:\\nA.1 Additional KG product\
+    \ accessible such as embeddings or paths\\nA.2 API, Neo4j or other online hosted graph database accessible\\nA.3 Multiple\
+    \ ways to download or access\\nA.4 Source code for making the KG is publicly accessible\\nA.5 KG is downloadable in its\
+    \ entirety\\nB. Provenance of Nodes and Edges\\nKG sources can vary noticeably in structure and information content. Having\
+    \ access to original\\ndata sources can help users understand the importance of different edges and nodes,\\nincreasing\
+    \ biological plausibility and classification for drug repurposing tasks[63]. Knowledge of\\ndata sources can also inform\
+    \ choices about a KG\\u2019s reusability: some data sources may be more\\nor less stringent than a user may prefer, so\
+    \ documentation of the process from source to KG\\ncan help users to evaluate the graph\\u2019s suitability for new purposes.\
+    \ The subcriteria are:\\nB.1 List of sources provided\\nB.2 Sources have versions/dates/file names used\\nB.3 Import dependencies\
+    \ declared\\nB.4 Nodes and edges have source information\\nB.5 Duplicate edge management taken into consideration\\nB.6\
+    \ Provenance of edge creation\\nB.7 Schema for how edge types are created; where are they coming from\\n\\n\\nC. Documented\
+    \ Standards, Schema, and Construction\\nKGs gain much of their value from being reusable across different applications\
+    \ and research\\ncontexts. For this to happen, the KG\\u2019s identifiers need to be resolvable in the greater biomedical\\\
+    ndomain. In addition, how the graph is created may change the way a user employs it. Here, we\\nassess how the documentation\
+    \ of the KG best supports this. The subcriteria are:\\nC.1 Entities and nodes are human readable and usable in biological\
+    \ applications outside of\\nKG\\nC.2 Identifiers support entity resolution (external identity links such as Ensembl\\\
+    nIDs[64])\\nC.3 Documentation on construction is provided\\nC.4 Documented data transforms (for example, removed general\
+    \ terms from ontologies)\\nC.5 Uses a documented schema for construction\\nD. Update Frequency and Versioning\\nAs KGs\
+    \ are created from current \\u201cknown\\u201d knowledge, they risk missing new information if not\\nupdated regularly;\
+    \ timely, well-documented updates are necessary. This is analogous to\\nsoftware versioning in that knowledge of the version\
+    \ used in a given process encourages\\nreproducibility and more informative evaluation of the resource\\u2019s reuse in\
+    \ new applications. The\\nsubcriteria are:\\nD.1 Clearly identified stable versions\\nD.2 Public tracker for requests\\\
+    nD.3 Contact indicated for the KG; either organization or person\\nD.4 Updated more than once per year\\nD.5 Prior versions\
+    \ accessible with clearly documented changes\\nE. Evaluation by Metrics and Fitness for Purpose\\nMany KGs claim they\
+    \ will help scientists in the broader biological community in a spectrum of\\nuse cases. Formal evaluations, detailed\
+    \ examples, and quantifiable measures of confidence are\\nnecessary to establish the community\\u2019s trust in the KG\\\
+    u2019s value and applicability to its intended\\nuse cases. The subcriteria are:\\nE.1 Case study/example of use provided\\\
+    nE.2 KG utility evaluated against other methods (can include other KGs)\\nE.3 Clearly defined scope\\nE.4 Multiple types\
+    \ of evaluation methods\\nE.5 One or more ways of measuring accuracy/confidence\\nF. Licensing\\nKnowledge Graph data\
+    \ licensing is important because it clearly defines what users are legally\\nallowed to do with the data, such as reuse,\
+    \ redistribution, or modification. Without proper\\nlicensing, even openly available data may not be legally reusable,\
+    \ creating barriers to\\ncollaboration and scientific innovation. Clear licenses enable interoperability, sharing, and\
+    \ the\\ncreation of tools and resources that advance research and improve human health.\\n\\nF.1 KG licensing is clearly\
+    \ stated and unambiguous\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"KG Evaluation\\nThe sixteen chosen\
+    \ KGs are shown below in Figure 1 along with how they did on the criteria\\nfrom above. We chose biomedical KGs of varying\
+    \ purposes, sizes, and creators, including those\\nthat have been widely cited such as Hetionet and Bioteque and those\
+    \ already in our\\nKG-Registry. The reviewers for the Monarch Initiative\\u2019s KG, were experts outside of the\\nMonarch\
+    \ Initiative in order to reduce bias.\\n\\n\\n\\n\\n\\nFigure 1. The left side lists the KGs reviewed.The top indicates\
+    \ the different criteria by category with\\neach color referring to a different category. The criteria are numbered A.1,\
+    \ B.1,.... according to the\\nnumbering above. Blue squares indicate the KG met this principle, red indicates it did not.\
+    \ Licensing is\\nnot shown as it is not a binary category. Find a detailed breakdown of why each KG was assigned\\nblue/red\
+    \ in the Supplemental Table Detailed Principle Analysis tab.\\n\\n\\n\\nFigure 2. The x-axis shows the number of update\
+    \ frequency and versioning principles that a KG\\nfollowed out of a five. The y-axis shows the number of KGs that we reviewed\
+    \ for each criteria in\\ncategory D.\\n\\n\\nOf note, KGs such as EmBiology and SPOKE are largely accessible only through\
+    \ a paywall,\\nwhich has resulted in lower scores. RTX-KG2 was the only knowledge graph that scored yes on\\nevery criteria.\\\
+    n\\nFigure 2 shows how many KGs follow principles of update frequency and versioning. Only\\nMonarch KG, Clinical KG,\
+    \ and RTX-KG2 scored yes on all update frequency and version\\nprinciples. All KGs except for GNBR have a contact person\
+    \ or organization indicated. The\\nprinciples which were followed the least are having a public tracker for requests (7/16)\
+    \ followed\\nby clearly identified stable versions and having prior versions accessible with clearly\\ndocumented changes\
+    \ (9/16). This creates a lack of transparency in how KGs are maintained\\nand improved, and contributes to problems with\
+    \ reproducible workflows.\\nKG Nodes Types\\nFrom the 16 KGs we reviewed the number of node types included ranged from\
+    \ many (52) to\\nvery few (3) with many KGs falling somewhere in between (Figure 3). Common node types\\nwere chemicals/drugs,\
+    \ genes and diseases. Some KGs had more custom node types such as\\nHRA KG which used digital objects (DOs) instead of\
+    \ standard nodes. This design enables HRA\\nKG to incorporate experimental data, research settings, and even 3D spatial\
+    \ references, giving\\nit a distinct focus compared with KGs that limit themselves to curated biomedical entities such\\\
+    nas genes, proteins, and diseases, without experimental data. In the case of EmBiology, publicly\\navailable information\
+    \ is limited: based on their website we infer that their KG includes genes,\\nproteins, and diseases, but the details\
+    \ remain inaccessible because of a paywall. To better\\ncompare what kinds of nodes are used across KGs, we leveraged\
+    \ ChatGPT to map each node\\nlabel supplied by the different KGs to the Biolink Model\\u2019s node types. The full list\
+    \ is provided in\\nthe Supplemental Table Node Types tab. Figure 3B shows how the different KGs cluster,\\naccording to\
+    \ seaborn clustermap, when node types have been mapped to BioLink. For example,\\nthe node type \\u201cTissues\\u201d,\
+    \ present in GenomicKB, Bioteque and NCATS GARD was mapped to\\n\\u201canatomical entity\\u201d, these KGs did not have\
+    \ node type \\u201canatomical entity\\u201d in their original list.\\n\\n\\nThis mapping allows us to compare KG content\
+    \ as RTX-KG2, ROBOKOP and Monarch all had\\n\\u201canatomical entity\\u201d.\\nKG Sources\\nJust as the number of node\
+    \ types varied, the number and diversity of sources also differed\\nwidely across KGs, encompassing both primary sources\
+    \ (original databases or ontologies) and\\naggregated sources (resources that themselves integrate multiple databases).\
+    \ As most KGs did\\nnot differentiate between primary and aggregated sources they are counted equally. Of the KGs\\nthat\
+    \ we evaluated (Figure 4), Monarch ingested the most number of sources at 87, with the next\\nhighest being RTX-KG2, ROBOKOP\
+    \ and SPOKE with 63, 50 and 47, respectively. PharmKG\\nand GNBR had the fewest sources with seven and one. Due to EmBiology\\\
+    u2019s paywall it is unclear\\nexactly how many sources they ingest, although we can deduce there are at least six. GNBR\
+    \ is\\na literature based knowledge graph, although constructed from many sources (papers) we\\nclassify it as having\
+    \ one source \\u201cother\\u201d. Some KGs included experimental data or text mined\\ndata not found in a database, which\
+    \ we classified under the source type \\u201cother.\\u201d. KGs that\\nincluded \\u201cother\\u201d source data include\
+    \ ROBOKOP, Bioteque, DrugMechDB, EmBiology, and\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"Figure 3. (A) X-axis\
+    \ shows the KG, y-axis shows the number of node types reported by each\\nrespective KG. EmBiology is not included in this\
+    \ figure as their node types are not publicly available.\\nSee Supplemental Table Node Types tab for more info. (B) Heatmap\
+    \ showing the KGs and their\\nnode types after BioLink mapping. The columns represent the KGs, the rows represent the\
+    \ BioLink\\nnode types. Darker blue indicates KG has more of the specific node type while green indicates the KG\\ndoes\
+    \ not have the node type. Dendrogram across the top shows which KGs are more similar based on\\nbinomial clustering.\\\
+    n\\n\\n\\n\\n\\nFigure 4. (A) x-axis shows the KG, y-axis shows the corresponding number of sources the KG ingests.\\\
+    nSources have been divided into two categories: ontologies (in purple) and non-ontology data sources\\n(in blue). (B)\
+    \ The right side of the table shows the different KGs, the top indicates the top 10 most\\ningested ontology sources.\
+    \ A blue check indicated the KG ingested the source. (C) The right side of the\\ntable shows the different KGs, the top\
+    \ indicates the top 10 most ingested non ontology sources. A blue\\ncheck indicated the KG ingested the source. More information\
+    \ about the KG Sources can be found in\\nthe Supplemental Table Sources tab.\"\n  },\n  {\n    \"name\": \"Discussion\"\
+    ,\n    \"text\": \"When a researcher is deciding to use a knowledge graph for an analysis or experiment, they\\nface a\
+    \ decision: to create a custom graph tailored to their purpose or use an existing resource\\n\\n\\nand try to adapt it\
+    \ to fit their use case. There are advantages and disadvantages to each\\napproach; however, given the rapidly growing\
+    \ number of biomedical KGs and lack of apparent\\nreuse, it appears that there is a tendency to create one\\u2019s own.\
+    \ There are several reasons for\\nthis, despite the high overlap in content and sources across existing graphs. First,\
+    \ it is often\\nconsidered easier to make something from scratch and fully understand how it works and\\nensure compatibility\
+    \ with existing or planned workflows. This need for understanding is why\\ndocumentation on KG construction is so important\
+    \ - and based on our evaluation, often not\\nsufficient - to convince users to trust the creators enough to reuse. A commonly\
+    \ encountered\\nchallenge is that the necessary information is not consolidated or easy to find. When assessing\\na KG\
+    \ and its principles, the reviewers often had to look in multiple places such as publications,\\nwebsites, and github\
+    \ repositories to find the relevant information. Even if the KG scored \\u2018yes\\u2019 on\\na principle does not mean\
+    \ it was easily scored. Second, creating novel KGs is more compatible\\nwith the way research is funded and rewarded.\
+    \ It may be more impressive to say \\u201cwe made a\\nthing\\u201d than it is to say \\u201cwe adapted this existing data\
+    \ and framework\\u201d, unless there is prior\\nevidence that reuse has a measurable benefit, research tends to follow\
+    \ funding priorities that\\nincentivize creation rather than reuse or validation. As such, there has been a steady stream\
+    \ of\\nsimilar KGs being built. While this expansion might seem productive, it often comes at the\\nexpense of exploring\
+    \ novel methods that could make better use of existing KGs or evaluation of\\napplying existing KGs to novel areas of\
+    \ exploration. The result is a cycle of effort duplication\\nrather than innovation. If the field eventually turns away\
+    \ from KGs due to limited meaningful\"\n  },\n  {\n    \"name\": \"results, the real loss will be the missed opportunity\
+    \ to advance methods and applications that\",\n    \"text\": \"could have demonstrated their value. By continually rebuilding\
+    \ what we already have, we risk\\nexhausting interest before KGs reach their full potential.\\n\\nAs a community, we are\
+    \ not generating the evidence needed that reuse actually helps advance\\nthe field because of the lack of trust in any\
+    \ given KG. This paper aims to help build a set of\\ncriteria to evaluate the trustworthiness of KGs in order to help\
+    \ researchers better build upon\\neach other's work. Each KG was assessed against our criteria with a simple \\u201cyes/no\\\
+    u201d scoring\\nsystem, where the number of \\u201cyes\\u201d answers provides an overall score of transparency and\\\
+    nreusability. Well documented code and explicit descriptions of the data structure encourages\\nmethodological innovation\
+    \ by computational biologists. Additionally, being able to contact the\\nauthors to ask for clarity or suggestions offers\
+    \ another layer of trust. A good way to build trust\\nwould be for KGs to have a machine readable overview file dictating\
+    \ things about the KG such\\nas date updated, authors, size, sources, etc. In this study, we do not set a strict cutoff\
+    \ for what\\nconstitutes a \\u201ctrusted\\u201d KG (e.g., requiring a minimum number of \\u201cyes\\u201d scores), but\
+    \ we propose\\nthat higher scores across these criteria reflect greater trustworthiness. We also report scores\\nacross\
+    \ the criteria in Figure 1 to enable head-to-head comparison.\\n\\nEven if users do trust existing KGs, the next question\
+    \ is which one do they pick? Not all KGs are\\ncreated equal for all biomedical tasks. In order to confidently choose\
+    \ a KG or set of them,\\nresearchers need to know the different data types in the graph and the data sources used to\\\
+    nbuild it. As shown in Figure 3 and 4, KGs have a varying number of node types and sources\\ningested. When an outside\
+    \ user looks to repurpose an existing KG, it needs to be clear which\\ninformation is already represented and where it\
+    \ came from. Data transparency enables a user to\\ntake an existing KG and add or remove their own data sources in a compatible\
+    \ way, making it\\neasier to repurpose. Figure 4 shows that many KGs ingest similar sources. However, this does\\nnot\
+    \ guarantee that the content is of equal quality once it is aggregated into a KG. An equally\\nimportant aspect of KG\
+    \ trustworthiness is the accuracy of resource ingestion. Even when two\\n\\n\\nKGs draw from the same source, they may\
+    \ ingest and represent the dataset in different ways.\\nFor instance, while both ROBOKOP and Monarch KG ingest some of\
+    \ the same sources, they\\noften pull from different tables within those sources, leading to differences in coverage and\\\
+    nemphasis. In another instance, PharmKG focuses on diseases above the fifth hierarchical level\\nin MeSH while Monarch\
+    \ KG makes use of all diseases in MONDO. While cutting more general\\nterms could be useful in specific tasks it would\
+    \ lose information content inherent to the source\\nontologies. Knowing these KG design choices, influences the choice\
+    \ of both KG and methods to\\nuse for a specific use case.\\n\\nEmbedding KGs may be a useful strategy for data that cannot\
+    \ be publicly available, such as\\nsensitive clinical data. However, without excellent documentation, frequent updates,\
+    \ and robust\\nevaluation and validation, embeddings as the sole shareable artifact have little practical value..\\nEmbeddings\
+    \ are constrained to the version of information and embedding strategy used at the\\ntime of creation. There is no way\
+    \ for an outside user to add new information or generate\\nembeddings using alternative techniques. Additionally, embeddings\
+    \ also lose the data\\nprovidence and explainability that are inherent to well constructed KGs.  We urge the community\\\
+    nto further define best practices and approaches to sharing and validating embeddings, much in\\nthe same way that is\
+    \ currently done for bringing models to data[65,66].\\n\\nWhen evaluations of biomedical KGs are provided, they vary greatly\
+    \ in scope, application and\\nrigour. More general evaluations of a KG, such as agreement with other sources, can increase\\\
+    ntrust in the information contained, but do not provide insights into how the KG may be useful for\\nspecific analysis.\
+    \ Conversely, some evaluations only consider a specific use case, for example,\\ninsights into a specific disease (e.g.,\
+    \ Alzheimer's, epilepsy) or drug. This level of specificity\\ninherently limits what the KG is likely to be used for in\
+    \ the future. A robust analysis that includes\\nboth general domain-agnostic evaluations and nuanced use-cases comparing\
+    \ a novel KG to\\nexisting methods or knowledge sources will generate more trust and opportunities for reuse.\\n\\nWhen\
+    \ assessing performance of KGs on machine learning applications like drug repurposing,\\nfairness in evaluation is critical.\
+    \ Using a validation set drawn from one of the KGs inevitably\\nskews results towards that KG, since the topological structure\
+    \ of each KG differs. This bias is\\nparticularly pronounced in machine learning tasks such as link prediction, where\
+    \ the KG that\\nsupplied the validation set will closely resemble the topology of the known connected pairs. The\\nother\
+    \ KG, by contrast, may appear to underperform simply because its structure reflects\\ndifferent sources and ingestion\
+    \ protocols. To mitigate this bias and enable more meaningful\\ncomparisons, external validation sets curated independently\
+    \ of either KG should be used.\\n\\nMany of the KGs have overlaps in sources and node types, as expected. However, there\
+    \ is no\\nguarantee that the node type in KG (a) is the same as node type in KG(b) even if they have the\\nsame name.\
+    \ Conversely, node type \\u2018a\\u2019 in KG(a) may have a different name than node type \\u2018b\\u2019 in\\nKG(b) but\
+    \ be essentially the same data. The same source can also be ingested differently\\nmaking two seemingly similar graphs\
+    \ more different than one would expect. Two KGs can ingest\\nthe same data but from two different places such as a primary\
+    \ data source (the original\\nontology) vs an aggregated source that has many ontologies. For example, one can ingest\
+    \ the\\nprimary source such as the Basic Formal Ontology (BFO) as opposed to OBO Foundry which\\ningests many ontologies\
+    \ including BFO. Primary vs aggregated source reporting could make\\ntwo KGs look different on the surface when in fact\
+    \ they are quite similar. As KGs follow different\\nstandards and data models, there is not a good way to compare the\
+    \ sources and nodes in\\n\\n\\ndifferent KGs in a robust non biased way. Currently it is nontrivial to compare different\\\
+    nknowledge graphs however, if all KGs followed similar construction methods and were in the\\nsame format such as KGX\
+    \ with the same metadata stored in machine readable files,\\ncomparison would not only be easier, but standard.\"\n  },\n\
+    \  {\n    \"name\": \"Conclusion\",\n    \"text\": \"In conclusion, for KGs to reach their full potential in the biomedical\
+    \ landscape we must shift from\\nthe fragmented landscape of reinvention and come together as a community towards collective\\\
+    nstewardship. Strengthening existing KGs through rigorous documentation, transparent\\nstandards, and shared evaluation\
+    \ frameworks will make reuse not just possible, but preferable\\nto building yet another graph with overlapping content.\
+    \ By embracing common principles of\\nconstruction and machine-readable metadata, researchers will be empowered to compare,\\\
+    nadapt, and extend KGs with confidence. The result will not only be greater trust in individual\\nKGs, but also a fertile\
+    \ ecosystem where innovation flourishes because energy is spent\\nadvancing methods and applications, rather than duplicating\
+    \ what already exists. Only by\\nuniting around shared standards can we ensure that KGs mature into reliable, reusable,\
+    \ and\\nindispensable infrastructure for the biomedical sciences.\"\n  },\n  {\n    \"name\": \"Funding\",\n    \"text\"\
+    : \"This research is generously supported by the\\n\\u25cf\\u200b National Institutes of Health (NIH) Office of the Director\
+    \ Grant #5R24OD011883\\n\\u25cf\\u200b NIH National Human Genome Research Institute Phenomics First Resource (NHGRI)\"\
+    \n  },\n  {\n    \"name\": \"#7RM1HG010860\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\u25cf\\u200b NIH #5T15LM009451-19\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\u25cf\\u200b NIH R35 GM128765\",\n    \"text\": \"\\u25cf\\u200b Simons\
+    \ Foundation 1017799\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1. \\u200b Morton K, Wang P, Bizon C,\
+    \ Cox S, Balhoff J, Kebede Y, et al. ROBOKOP: an abstraction\\nlayer and user interface for knowledge graphs to support\
+    \ question answering.\\nBioinformatics. 2019;35: 5382\\u20135384.\\n2. \\u200b Bizon C, Cox S, Balhoff J, Kebede Y, Wang\
+    \ P, Morton K, et al. ROBOKOP KG and KGB:\\nIntegrated Knowledge Graphs from Federated Sources. J Chem Inf Model. 2019;59:\\\
+    n4968\\u20134973.\\n3. \\u200b Davis AP, Wiegers TC, Johnson RJ, Sciaky D, Wiegers J, Mattingly CJ. Comparative\\nToxicogenomics\
+    \ Database (CTD): update 2023. Nucleic Acids Res. 2023;51:\"\n  },\n  {\n    \"name\": \"D1257\\u2013D1262\",\n    \"\
+    text\": \"4. \\u200b Gene Ontology Consortium, Aleksander SA, Balhoff J, Carbon S, Cherry JM, Drabkin HJ, et\\nal. The\
+    \ Gene Ontology knowledgebase in 2023. Genetics. 2023;224.\\ndoi:10.1093/genetics/iyad031\\n5. \\u200b Knox C, Wilson\
+    \ M, Klinger CM, Franklin M, Oler E, Wilson A, et al. DrugBank 6.0: The\\nDrugBank knowledgebase for 2024. Nucleic Acids\
+    \ Res. 2024;52: D1265\\u2013D1275.\\n\\n\\n6. \\u200b Peng C, Xia F, Naseriparsa M, Osborne F. Knowledge graphs: Opportunities\
+    \ and\\nchallenges. Artif Intell Rev. 2023; 1\\u201332.\\n7. \\u200b Sosa DN, Derry A, Guo M, Wei E, Brinton C, Altman\
+    \ RB. A Literature-Based Knowledge\\nGraph Embedding Method for Identifying Drug Repurposing Opportunities in Rare\\nDiseases.\\\
+    n8. \\u200b Sanjak J, Zhu Q, Math\\u00e9 EA. Clustering rare diseases within an ontology-enriched\\nknowledge graph. doi:10.1101/2023.02.15.528673\\\
+    n9. \\u200b Fern\\u00e1ndez-Torras A, Duran-Frigola M, Bertoni M, Locatelli M, Aloy P. Integrating and\\nformatting biomedical\
+    \ data as pre-calculated knowledge graph embeddings in the Bioteque.\\nNat Commun. 2022;13: 5304.\\n10. \\u200bPutman\
+    \ TE, Schaper K, Matentzoglu N, Rubinetti VP, Alquaddoomi FS, Cox C, et al. The\\nMonarch Initiative in 2024: an analytic\
+    \ platform integrating phenotypes, genes and diseases\\nacross species. Nucleic Acids Res. 2024;52: D938\\u2013D949.\\\
+    n11. \\u200bVestito L, Jacobsen JOB, Walker S, Cipriani V, Harris NL, Haendel MA, et al. Efficient\\nreinterpretation\
+    \ of rare disease cases using Exomiser. NPJ Genom Med. 2024;9: 65.\\n12. \\u200bBuniello A, Suveges D, Cruz-Castillo C,\
+    \ Llinares MB, Cornu H, Lopez I, et al. Open Targets\\nPlatform: facilitating therapeutic hypotheses building in drug\
+    \ discovery. Nucleic Acids Res.\"\n  },\n  {\n    \"name\": \";53: D1467\\u2013D1475\",\n    \"text\": \"13. \\u200bSoman\
+    \ K, Rose PW, Morris JH, Akbas RE, Smith B, Peetoom B, et al. Biomedical\\nknowledge graph-optimized prompt generation\
+    \ for large language models. Bioinformatics.\\n2024;40. doi:10.1093/bioinformatics/btae560\\n14. \\u200bKim Y. Foundation\
+    \ model for biomedical graphs: Integrating knowledge graphs and protein\\nstructures to large language models. Fu X, Fleisig\
+    \ E, editors. Annu Meet Assoc Comput\\nLinguistics. 2024; 346\\u2013355.\\n15. \\u200bFeng Y, Zhou L, Ma C, Zheng Y, He\
+    \ R, Li Y. Knowledge graph-based thought: a knowledge\\ngraph-enhanced LLM framework for pan-cancer question answering.\
+    \ Gigascience. 2025;14.\\ndoi:10.1093/gigascience/giae082\\n16. \\u200bLuo R, Sun L, Xia Y, Qin T, Zhang S, Poon H, et\
+    \ al. BioGPT: generative pre-trained\\ntransformer for biomedical text generation and mining. Brief Bioinform. 2022;23.\\\
+    ndoi:10.1093/bib/bbac409\\n17. \\u200bNeumann M, King D, Beltagy I, Ammar W. ScispaCy: Fast and robust models for\\nbiomedical\
+    \ natural language processing. arXiv [cs.CL]. 2019. Available:\\nhttps://www.aclweb.org/anthology/W19-5034.pdf\\n18. \\\
+    u200bGao Y, Li R, Croxford E, Caskey J, Patterson BW, Churpek M, et al. Leveraging medical\\nknowledge graphs into Large\
+    \ Language Models for diagnosis prediction: Design and\\napplication study. arXiv [cs.CL]. 2023. Available: http://arxiv.org/abs/2308.14321\\\
+    n19. \\u200bSu X, Wang Y, Gao S, Liu X, Giunchiglia V, Clevert D-A, et al. KGARevion: An AI Agent for\\nKnowledge-Intensive\
+    \ Biomedical QA. arXiv [cs.AI]. 2024. Available:\\nhttp://arxiv.org/abs/2410.04660\\n20. \\u200bAdaptive knowledge graphs\
+    \ enhance medical question answering: Bridging the gap\\nbetween LLMs and evolving medical knowledge. arXiv. Available:\\\
+    nhttps://arxiv.org/html/2502.13010v1\\n\\n\\n21. \\u200bYasunaga M, Bosselut A, Ren H, Zhang X, Manning CD, Liang P, et\
+    \ al. Deep Bidirectional\\nLanguage-Knowledge Graph Pretraining. arXiv [cs.CL]. 2022.\\ndoi:10.48550/ARXIV.2210.09338\\\
+    n22. \\u200bCaufield JH, Hegde H, Emonet V, Harris NL, Joachimiak MP, Matentzoglu N, et al.\\nStructured Prompt Interrogation\
+    \ and Recursive Extraction of Semantics (SPIRES): a\\nmethod for populating knowledge bases using zero-shot learning.\
+    \ Bioinformatics. 2024;40.\\ndoi:10.1093/bioinformatics/btae104\\n23. \\u200bChandak P, Huang K, Zitnik M. Building a\
+    \ knowledge graph to enable precision medicine.\\nSci Data. 2023;10: 67.\\n24. \\u200bWang S, Xu F, Li Y, Wang J, Zhang\
+    \ K, Liu Y, et al. KG4SL: Knowledge graph neural network\\nfor synthetic lethality prediction in human cancers. Bioinformatics.\
+    \ 7 2021;37: I418\\u2013I425.\\n25. \\u200bHofmann-Apitius M, Romacker M, Wolstencroft SK, Zhu Q. Rare disease-based scientific\\\
+    nannotation knowledge graph. Available: https://neooj.com/\\n26. \\u200bZhu Q, Nguyen DT, Grishagin I, Southall N, Sid\
+    \ E, Pariser A. An integrative knowledge\\ngraph for rare diseases, derived from the Genetic and Rare Diseases Information\
+    \ Center\\n(GARD). J Biomed Semantics. 12 2020;11. doi:10.1186/s13326-020-00232-y\\n27. \\u200bWang T, Duan L, He C, Deng\
+    \ G, Qin R, Zhang Y. ATOM: Construction of Anti-tumor\\nBiomaterial Knowledge Graph by Biomedicine Literature. 2019 IEEE\
+    \ International\\nConference on Bioinformatics and Biomedicine (BIBM). IEEE; 2019. pp. 1256\\u20131258.\\n28. \\u200bHasan\
+    \ SMS, Rivera D, Wu X-C, Durbin EB, Christian JB, Tourassi G. Knowledge\\nGraph-Enabled Cancer Data Analytics. IEEE J\
+    \ Biomed Health Inform. 2020;24: 1952\\u20131967.\\n29. \\u200bXing H, Zhang D, Cai P, Zhang R, Hu QN. RDBridge: a knowledge\
+    \ graph of rare diseases\\nbased on large-scale text mining. Bioinformatics. 7 2023;39.\\ndoi:10.1093/bioinformatics/btad440\\\
+    n30. \\u200bD\\u2019Souza J. Taming the Generative AI Wild West: Integrating Knowledge Graphs in Digital\\nLibrary Systems.\
+    \ Available: https://journal.code4lib.org/articles/18277\\n31. \\u200bKnowledge graphs and exploration: How to find your\
+    \ way in the data wilderness. [cited 15\\nAug 2025]. Available: https://projet.liris.cnrs.fr/bd/?q=node/358\\n32. \\u200bStefancsik\
+    \ R, Balhoff JP, Balk MA, Ball RL, Bello SM, Caron AR, et al. The Ontology of\\nBiological Attributes (OBA)-computational\
+    \ traits for the life sciences. Mamm Genome.\\n2023;34: 364\\u2013378.\\n33. \\u200bDean M, McGuinness DL. OWL web ontology\
+    \ language reference. [cited 21 Aug 2025].\\nAvailable: https://www.w3.org/TR/owl-ref/\\n34. \\u200bOsumi-Sutherland D,\
+    \ Courtot M, Balhoff JP, Mungall C. Dead simple OWL design patterns.\\nJ Biomed Semantics. 2017;8: 18.\\n35. \\u200bJackson\
+    \ RC, Balhoff JP, Douglass E, Harris NL, Mungall CJ, Overton JA. ROBOT: A tool for\\nautomating ontology workflows. BMC\
+    \ Bioinformatics. 2019;20: 407.\\n36. \\u200bJackson R, Matentzoglu N, Overton JA, Vita R, Balhoff JP, Buttigieg PL, et\
+    \ al. OBO Foundry\\nin 2021: operationalizing open data principles to evaluate ontologies. Database (Oxford).\\n2021;2021.\
+    \ doi:10.1093/database/baab069\\n37. \\u200bHoyt CT, Balk M, Callahan TJ, Domingo-Fern\\u00e1ndez D, Haendel MA, Hegde\
+    \ HB, et al.\\n\\n\\nUnifying the identification of biomedical entities with the Bioregistry. Sci Data. 2022;9: 714.\\\
+    n38. \\u200bVendetti J, Harris NL, Dorf MV, Skrenchuk A, Caufield JH, Gon\\u00e7alves RS, et al. BioPortal:\\nan open\
+    \ community resource for sharing, searching, and utilizing biomedical ontologies.\\nNucleic Acids Res. 2025;53: W84\\\
+    u2013W94.\\n39. \\u200bNoy N, Gao Y, Jain A, Narayanan A, Patterson A, Taylor J. Industry-scale knowledge\\ngraphs: Lessons\
+    \ and challenges. In: Communications of the ACM [Internet]. 1 Aug 2019\\n[cited 26 Jun 2025]. Available:\\nhttps://cacm.acm.org/practice/industry-scale-knowledge-graphs/\\\
+    n40. \\u200bJawad MS, Dhawale C, Ramli AAB, Mahdin H. Adoption of knowledge-graph best\\ndevelopment practices for scalable\
+    \ and optimized manufacturing processes. MethodsX.\\n2023;10: 102124.\\n41. \\u200bVerma S, Bhatia R, Harit S, Batish\
+    \ S. Scholarly knowledge graphs through structuring\\nscholarly communication: a review. Complex Intell Syst. 2023;9:\
+    \ 1059\\u20131095.\\n42. \\u200bKG-registry. [cited 27 Aug 2025]. Available: https://kghub.org/kg-registry/\\n43. \\u200bCarbon\
+    \ S, Champieux R, McMurry JA, Winfree L, Wyatt LR, Haendel MA. An analysis and\\nmetric of reusable data licensing practices\
+    \ for biomedical resources. PLoS One. 2019;14:\\ne0213090.\\n44. \\u200bUnni DR, Moxon SAT, Bada M, Brush M, Bruskiewich\
+    \ R, Caufield JH, et al. Biolink Model: A\\nuniversal schema for knowledge graphs in clinical, biomedical, and translational\
+    \ science.\\nClin Transl Sci. 2022;15: 1848\\u20131855.\\n45. \\u200bBiomedical Data Translator Consortium. The Biomedical\
+    \ Data Translator Program:\\nConception, Culture, and Community. Clin Transl Sci. 2019;12: 91\\u201394.\\n46. \\u200bWood\
+    \ EC, Glen AK, Kvarfordt LG, Womack F, Acevedo L, Yoon TS, et al. RTX-KG2: a\\nsystem for building a semantically standardized\
+    \ knowledge graph for translational\\nbiomedicine. BMC Bioinformatics. 2022;23: 400.\\n47. \\u200bSantos A, Cola\\u00e7o\
+    \ AR, Nielsen AB, Niu L, Geyer PE, Coscia F, et al. Clinical Knowledge\\nGraph Integrates Proteomics Data into Clinical\
+    \ Decision-Making. bioRxiv. 2020. p.\\n2020.05.09.084897. doi:10.1101/2020.05.09.084897\\n48. \\u200bMorris JH, Soman\
+    \ K, Akbas RE, Zhou X, Smith B, Meng EC, et al. The scalable precision\\nmedicine open knowledge engine (SPOKE): a massive\
+    \ knowledge graph of biomedical\\ninformation. Bioinformatics. 2023;39. doi:10.1093/bioinformatics/btad080\\n49. \\u200bTomczak\
+    \ A, Mortensen JM, Winnenburg R, Liu C, Alessi DT, Swamy V, et al. Interpretation\\nof biological experiments changes\
+    \ with evolution of the Gene Ontology and its annotations.\\nSci Rep. 2018;8: 5115.\\n50. \\u200bVogt L, Kuhn T, Hoehndorf\
+    \ R. Semantic units: organizing knowledge graphs into\\nsemantically meaningful units of representation. J Biomed Semantics.\
+    \ 2024;15: 7.\\n51. \\u200bLin D, Crabtree J, Dillo I, Downs RR, Edmunds R, Giaretta D, et al. The TRUST Principles\\\
+    nfor digital repositories. Sci Data. 2020;7: 144.\\n52. \\u200bHoyt CT, Gyori BM. The O3 guidelines: open data, open code,\
+    \ and open infrastructure for\\nsustainable curated scientific resources. Sci Data. 2024;11: 547.\\n53. \\u200bLu Y, Goi\
+    \ SY, Zhao X, Wang J. Biomedical knowledge graph: A survey of domains, tasks,\\n\\n\\nand real-world applications. arXiv\
+    \ [cs.CL]. 2025. Available: http://arxiv.org/abs/2501.11632\\n54. \\u200bBonner S, Barrett IP, Ye C, Swiers R, Engkvist\
+    \ O, Bender A, et al. A review of biomedical\\ndatasets relating to drug discovery: a knowledge graph perspective. Brief\
+    \ Bioinform.\\n2022;23. doi:10.1093/bib/bbac404\\n55. \\u200bPerdomo-Quinteiro P, Belmonte-Hern\\u00e1ndez A. Knowledge\
+    \ Graphs for drug repurposing: a\\nreview of databases and methods. Brief Bioinform. 2024;25. doi:10.1093/bib/bbae461\\\
+    n56. \\u200bZheng S, Rao J, Song Y, Zhang J, Xiao X, Fang EF, et al. PharmKG: A dedicated\\nknowledge graph benchmark\
+    \ for bomedical data mining. Brief Bioinform. 7 2021;22.\\ndoi:10.1093/bib/bbaa344\\n57. \\u200bHimmelstein DS, Lizee\
+    \ A, Hessler C, Brueggeman L, Chen SL, Hadley D, et al. Systematic\\nintegration of biomedical knowledge prioritizes drugs\
+    \ for repurposing. 2017.\\ndoi:10.7554/eLife.26726.001\\n58. \\u200bBueckle A, Herr BW 2nd, Hardi J, Quardokus EM, Musen\
+    \ MA, B\\u00f6rner K. Construction,\\ndeployment, and usage of the Human Reference Atlas Knowledge Graph. Sci Data.\\\
+    n2025;12: 1100.\\n59. \\u200bStear BJ, Mohseni Ahooyi T, Simmons JA, Kollar C, Hartman L, Beigel K, et al. Petagraph:\\\
+    nA large-scale unifying knowledge graph framework for integrating biomolecular and\\nbiomedical data. Sci Data. 2024;11:\
+    \ 1338.\\n60. \\u200bGenomicKB. [cited 18 Aug 2025]. Available: https://gkb.dcmb.med.umich.edu/\\n61. \\u200bUs PW. EmBiology\
+    \ explainer video. Elsevier; 2023. Available:\\nhttps://www.elsevier.com/products/embiology\\n62. \\u200bGonzalez-Cavazos\
+    \ AC, Tanska A, Mayers M, Carvalho-Silva D, Sridharan B, Rewers PA, et\\nal. DrugMechDB: A curated database of drug mechanisms.\
+    \ Sci Data. 2023;10: 632.\\n63. \\u200bVlietstra WJ, Vos R, Sijbers AM, van Mulligen EM, Kors JA. Using predicate and\\\
+    nprovenance information from a knowledge graph for drug efficacy screening. J Biomed\\nSemantics. 2018;9: 23.\\n64. \\\
+    u200bDyer SC, Austine-Orimoloye O, Azov AG, Barba M, Barnes I, Barrera-Enriquez VP, et al.\\nEnsembl 2025. Nucleic Acids\
+    \ Res. 2025;53: D948\\u2013D957.\\n65. \\u200bBergquist T, Yan Y, Schaffter T, Yu T, Pejaver V, Hammarlund N, et al. Piloting\
+    \ a\\nmodel-to-data approach to enable predictive analytics in health care through patient\\nmortality prediction. J Am\
+    \ Med Inform Assoc. 2020;27: 1393\\u20131400.\\n66. \\u200bGuinney J, Saez-Rodriguez J. Alternative models for sharing\
+    \ confidential biomedical data.\\nNat Biotechnol. 2018;36: 391\\u2013392.\\n\\n\\nDetailed Principle Analysis\\nA. Access\
+    \ Level and Types\\nB. Provenance of Nodes and Edges\\nC. Documented standards, schema, construction\\nD. Update frequency\
+    \ and versioning\\nE. Evaluation - Metrics and Fitness for Purpose\\nF. License Information\\nA.1\\nA.2\\nA.3\\nA.4\\\
+    nA.5\\nB.1\\nB.2\\nB.3\\nB.4\\nB.5\\nB.6\\nB.7\\nC.1\\nC.2\\nC.3\\nC.4\\nC.5\\nD.1\\nD.2\\nD.3\\nD.4\\nD.5\\nE.1\\nE.2\\\
+    nE.3\\nE.4\\nE.5\\nCan Access something that\\nisnt original KG (embedding,\\npaths)\\nCan access by API or Neo4j or\\\
+    nother online hosted graph\\ndatabase\\nMultiple ways to download/\\naccess\\nCan access source code for\\nmaking KG\\\
+    nCan download KG\\nList of sources provided\\n(record sources if yes)\\nSources have\\nversions/dates/file names used\\\
+    nImport dependencies declared\\nNodes and Edges have source\\ninformation\\nDuplicate edge management\\ntaken into consideration\\\
+    nSource specifics for what\\ntriples are created\\nSchema for how edge types\\nare created; where they are\\ncoming from\\\
+    nData is human readable and\\nusable in biological\\napplications outside of KGG\\nIdentifiers are resolvable for\\nentity\
+    \ resolution (external\\nidentity links such as Ensembl\\nIDs)\\nDocumentation on\\nconstruction is provided (did\\nthey\
+    \ make an effort?)\\nDocumented data transforms\\n(ex: removed general terms\\nfrom ontologies\\nUses a documented schema\\\
+    nfor construction\\nClearly Identified Stable\\nVersions\\nPublic tracker for requests\\nIs there a contact indicated\
+    \ for\\nthe KG either org or person\\nUpdated more than once per\\nyear\\nPrior versions accessible with\\nclearly documented\
+    \ changes\\nDo they have a case\\nstudy/example of use\\nKG utility evaluated against\\nother methods (can include\\nother\
+    \ KGs)\\nClearly defined scope\\nMultiple different evaluation\"\n  },\n  {\n    \"name\": \"methods\",\n    \"text\"\
+    : \"One or more ways of\\nmeasuring accuracy/\\nconfidence\\nPharmKG\\nYes - PharmKG provides\\nembeddings, learned low-\\\
+    ndimensional representations for\\nentities and relations via KGE\\nmodels. It also provides top predicted\\npaths for\
+    \ mechanistic interpretation\\n(Fig 6) and t-SNE visualizations\\nshowing semantic structure (Fig 5).\\nN\\nN\\nYes -\
+    \ The full source code for KG\\nconstruction, processing, and the\\nHeterogeneous Graph Attention\\nNetwork (HRGAT) embedding\
+    \ model\\nis provided on the GitHub repository\\nhttps://github.com/MindRank-\\nBiotech/PharmKG/tree/master\\nYes - The\
+    \ benchmark KG is\\ndownloadable. They also provide\\nboth the clean version (final\\nbenchmark) and the raw version (with\\\
+    nmore entities and relations); the KG\\ndataset is guarded by Google Drive\\npermissions to access it\\nYes \\u2014 An\
+    \ integration of 6 sources\\n(OMIM, DrugBank, PharmGKB, TTD,\\nSIDER, HumanNet); plus entity\\nfeatures from MeSH, PubChem,\\\
+    nBioBERT, BioGPS, and Connectivity\\nMap\\nNo - Do mention integrating \\u201crecent\\nversions\\u201d of each source\
+    \ and give\\ndetails of ID mapping and unification\\n(e.g., Entrez Gene ID, MeSH\\nhierarchy) but no explicit version\\\
+    nnumbers or file names for each data\\ndump are shown in the text\\nYes - The code is built on Pykeen\\nand KG-reeval,\
+    \ with details for\\ntraining and hyperparameters. Also\\nmentions use of RDKit for chemical\\nfingerprints and BioBERT\
+    \ for\\nembeddings\\nPartially - Confirms that nodes were\\nunified with standard IDs (Entrez,\\nMeSH, PubChem) and that\
+    \ duplicate\\nsynonyms were resolved, but it\\ndoesn\\u2019t state that each edge carries\\nexplicit source provenance\
+    \ tags \\u2014\\nonly that relations were merged and\\nthematically assigned using Global\\nNetwork of Biomedical Relationships\"\
+    \n  },\n  {\n    \"name\": \"(GNBR)\",\n    \"text\": \"Yes - Explicitly describes merging\\noverlapping triplets, disambiguation\\\
+    nwith synonym tables, and merging\\nsemantically similar relations using\\nclustering\\nYes - Explains how 29 relation\
+    \ types\\nwere derived, how Global Network of\\nBiomedical Relationships (GNBR)\\nsemantic themes were mapped, and\\nwhich\
+    \ sources contribute to which\\nentity types and interactions\\nYes - Documents edge semantics:\\n\\u201cinteraction,\\\
+    u201d \\u201cdisease-gene,\\u201d\\n\\u201cchemical-gene,\\u201d \\u201cdisease-chemical,\\u201d\\nand subtypes \\u2014\
+    \ all mapped from\\nGlobal Network of Biomedical\\nRelationships (GNBR) semantic\\nthemes and curated bases\\nYes - All\
+    \ entities explicitly use\\nstandard biomedical identifiers and\\nthe structure is designed to support\\ndrug repurposing,\
+    \ target discovery,\\nadverse reaction prediction, etc., in\\nreal-world biomedical tasks\\nYes - Genes use Entrez Gene\
+    \ IDs;\\ndiseases use MeSH IDs; chemicals\\nuse PubChem IDs\\nYes - Explains the construction in\\ndetail, including entity\
+    \ filtering,\\nmerging, disambiguation, feature\\nextraction, and the final schema\\ndesign\\nYes - Removed trivial entities,\\\
+    nmerged low-level symptoms into\\nMeSH parent diseases, clustered and\\nmerged redundant relation types,\\napplied PCA\
+    \ for feature reduction,\\nand explain all steps clearly\\nYes - 29 defined relation types with\\nsource mapping and entity\\\
+    ncategories; and semantics from\\nGlobal Network of Biomedical\\nRelationships (GNBR) themes and\\ncurated bases\\nNo\
+    \ - There is no formal semantic\\nversioning scheme mentioned for the\\ndataset or codebase\\nNo - There is no mention\
+    \ of a public\\ntracker for feature requests or issues\\nYes - Two corresponding authors are\\nprovided with full institutional\\\
+    ncontacts (Prof. Yuedong Yang and\\nDr. Zhangming Niu) in the published\\npaper (https://academic.oup.\\ncom/bib/article/22/4/bbaa344/604224\\\
+    n0)\\nNo - No evidence yet. They state\\nthey plan future expansions (e.g.,\\ntranscriptomics, clinical data, auto-\\\
+    nextraction) but no recurring updates\\nare published so far\\nPartially - They do provide the raw\\nversion alongside\
+    \ the final\\nbenchmark on GitHub but do not\\nmaintain a changelog across multiple\\nyearly versions\\nYes - Provide\
+    \ detailed case studies\\nfor Alzheimer\\u2019s disease and\\nParkinson\\u2019s disease for drug\\nrepurposing and target\
+    \ discovery,\\nwith literature validation, top scored\\npredictions, and visualized paths\\nYes - Benchmarked Heterogeneous\\\
+    nGraph Attention Network (HRGAT)\\nand 9 other KGE baselines on\\nHetionet and PharmKG side by side\\nand analyzed results\\\
+    nYes - The paper is a dedicated\\nbenchmark for evaluating KGE\\nmodels in biomedical relation\\nprediction, with explicit\
+    \ focus on drug\\nrepurposing, target identification, and\\nmulti-relation prediction tasks\\nYes - Link prediction (MRR,\
+    \ Hits@k),\\ndownstream tasks (AUROC,\\nAUPRC), t-tests for significance\\nYes - Multiple: MRR,\\nHits@1/3/10/100, AUROC,\
+    \ AUPRC,\\np-values for statistical tests, plus\\nvisualization and interpretability\\nchecks with t-SNE plots and path\\\
+    nanalyses\\nNo explicit license (restricted use).\\nThe paper notes: \\u201c\\u00a9 The Author(s)\"\n  },\n  {\n    \"\
+    name\": \"Published by Oxford University\",\n    \"text\": \"Press. All rights reserved.\\u201d But does\\nnot reveal\
+    \ license information (nor\\ndoes the GitHub repo)\\nBioteque\\nY (Bioteque provides node-type-\\nspecific embeddings\
+    \ for 11 of the\\nnode types in its graph, along with\\ndownloadable sets of those individual\\nsets of nodes mapped to\
+    \ their\\nrepresentations in the embeddings.)\\nN\\nN\\nY (Source code for assembling the\\nKG is provided in a GitHub\\\
+    nrepository, https://github.com/sbnb-\\nirb/bioteque. This includes source-\\nspecific scripts for retrieving data\\ncomponents.)\\\
+    nN\\nY (see https://bioteque.irbbarcelona.\\norg/sources)\\nN\\nY (The list of data sources is\\ndocumented and includes\
+    \ specific\\nmentions of source files in its data\\nretrieval scripts, e.g., the source for\\nCOSMIC is defined here:\
+    \ https:\\n//github.com/sbnb-\\nirb/bioteque/blob/master/datasets/cos\\nmic_mutsig/get_data.sh)\\nY (The sources of nodes\
+    \ and edges\\nare provided in the documentation\\nand the node files.)\\nY (The 2022 Bioteque paper makes\\ntwo notes\
+    \ about duplicate resolution:\\n\\\"...we first mapped the samples and\\ngenes to our reference vocabulary\\nand collapsed\
+    \ the duplicates by their\\nmean value\\\", and \\\"We mapped the\\ncell lines and genes to our reference\\nvocabularies\
+    \ and took the mean\\nvalue whenever duplicates\\noccurred\\\".)\\nY (The list of data sources is\\ndocumented and makes\
+    \ specific\\nmention of which associations are\\nderived from which sources; see\\nhttps://bioteque.irbbarcelona.\\norg/sources)\\\
+    nN\\nY (the provided node files are\\nprovided as TSVs, though assembly\\nof a full KG would require running the\\ngraph\
+    \ assembly code. It appears that\\nthe assembly code also produces\\nnodes and edges in a TSV format.)\\nY (node identifiers\
+    \ are from clearly\\ndefined sources and expressed as\\nCURIEs)\\nY (Documentation regarding the\\nassembly code is provided;\
+    \ see https:\\n//github.com/sbnb-irb/bioteque)\\nY (each source has its own transform\\ncode and documentation, provided\\\
+    non the GitHub repo, https://github.\\ncom/sbnb-irb/bioteque)\\nN\\nN\\nY (the GitHub repository at https:\\n//github.com/sbnb-irb/bioteque\
+    \ is\\npublic and permits issue creation).\\nY (it's never explicitly stated as a\\ncontact, but the responsible\\norganization,\
+    \ the Structural\\nBioinformatics and Network Biology\\nGroup at the Institute for Research in\\nBiomedicine Barcelona,\
+    \ is identified\\nalong with a link to their home page)\\nN\\nN\\nY (Examples of use are described in\\nthe 2022 Nat Comm\
+    \ paper; an\\nexample of generating predictions for\\ndrug repurposing is provided.)\\nN\\nN\\nY (Multiple evaluation\
+    \ methods are\\nprovided in the 2022 Nat Comm\\npaper, primarily for embedding\\nevaluation.)\\nY (Multiple validation\
+    \ methods are\\nprovided in the 2022 Nat Comm\\npaper, including two distinct analyses\\ninvolving gene expression data\
+    \ and\\nprotein-protein interactions,\\nrespectively.)\"\n  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\": \"PrimeKG\\\
+    nYes - ClinicalBERT-based\\nembeddings were used to group\\ndisease nodes, providing an\\nembedding-derived version of\
+    \ the\\ngraph\\nN\\nYes - Available via Harvard\\nDataverse with raw KG (kg raw.csv)\\nand largest connected component\\\
+    n(kg giant.csv) https://dataverse.\\nharvard.edu/dataset.xhtml?\\npersistentId=doi:10.7910\"\n  },\n  {\n    \"name\"\
+    : \"/DVN/IXA7BM\",\n    \"text\": \"Yes - Full source code is available on\\nGitHub https://github.com/mims-\\nharvard/PrimeKG\\\
+    nYes - Harvard Dataverse Repo hosts\\nthe downloadable KG and\\nintermediate files https://dataverse.\\nharvard.edu/dataset.xhtml?\\\
+    npersistentId=doi:10.7910\"\n  },\n  {\n    \"name\": \"/DVN/IXA7BM\",\n    \"text\": \"Yes - 20 primary data sources\
+    \ listed,\\nincluding DisGeNET, DrugBank,\\nUMLS, Orphanet, etc. in the paper\\nhttps://www.nature.\\ncom/articles/s41597-023-01960-3\\\
+    nYes - Explicit versions and download\\ndates provided for each dataset in\\nthe Methods/Data Records section\\nPartially\
+    \ - Tools like goatools,\\nbeautifulsoup, regex scripts, and\\nvocabulary mappings are mentioned\\nin the GitHub repo,\
+    \ but not all formal\\ndependencies are listed\\nYes - Each node contains node\\nsource; edges are annotated by type\\\
+    nand origin\\nYes - Duplicates and self-loops were\\nremoved during KG preprocessing\\nand merging\\nYes - Clear documentation\
+    \ on what\\ntriples were derived from which\\nresource (e.g., drug\\u2013protein from\\nDrugBank, phenotype\\u2013disease\
+    \ from\"\n  },\n  {\n    \"name\": \"HPO)\",\n    \"text\": \"Yes - The paper documented\\nschema of 30 edge types and\
+    \ their\\norigin ontologies\\nYes - Clinical and pharmacological\\ntext features are readable and\\ninterpretable (e.g.,\
+    \ Mayo Clinic\\ndescriptions, DrugBank\\npharmacodynamics)\\nYes - Uses Mondo, DrugBank, HPO,\\nMeSH, Entrez Gene IDs,\
+    \ and UMLS\\nCUIs, which are mappable and\\nresolvable via external resources\\nYes - Extensive paper + GitHub repo\\\
+    nYes - Transformations like self-loop\\nremoval, duplicate dropping,\\nphenotype-disease resolution, and\\nmapping across\
+    \ ontologies are\\ndocumented\\nYes - Node and edge formats, and\\ntheir standardized schema, are\\nexplained in the methodology\
+    \ and\\ndata files\\nNo - No version tags (e.g., v1.0, v1.1)\\nare mentioned or used on Dataverse\\nor GitHub\\nNo - GitHub\
+    \ Issues tab is not actively\\nused for public feature requests or\\nbug tracking\\nYes - Maintained by Zitnik Lab at\\\
+    nHarvard with lab contact and GitHub\\nmaintainers listed\\nNo - Only one release version is\\navailable as of now (May\
+    \ 2022)\\nNo - No archived prior versions or\\nchangelog indicating updates\\nYes - Autism case study\\ndemonstrates disease\
+    \ concept\\nresolution and clinical alignment\\nYes - Compared to other KGs (e.g.,\\nSPOKE); benchmarks and\"\n  },\n\
+    \  {\n    \"name\": \"references to prior systems included\",\n    \"text\": \"Yes - Focused on disease-centric\\nprecision\
+    \ medicine with defined\\ncoverage: 17,080 diseases, 10\\nbiological scales, 20 sources\\nYes \\u2013 Structure connectivity,\
+    \ edge\\ndensity, text embedding-based\\ngrouping, and clinical relevance\\ntested\\nPartially - Uses similarity thresholds\\\
+    n(e.g., cosine \\u2265 0.98 for disease\\ngrouping); no formal metrics like\\nprecision/recall provided\"\n  },\n  {\n\
+    \    \"name\": \"CC BY 4.0\",\n    \"text\": \"HetioNet\\nYes - Can access paths, DWPCs,\\nprediction probabilities, network\\\
+    nsupport breakdowns for compound\\u2013\\ndisease pairs (via Neo4j Browser &\\nguides)\\nYes - fully hosted on a public\
+    \ Neo4j\\ninstance with Cypher queries, guides,\\ntutorials https://neo4j.het.io/browser/\\nYes - Downloadable as JSON,\
+    \ Neo4j\\nDB, TSV; also query online in Neo4j\\nBrowser; source code & intermediate\\ndatasets on GitHub, Zenodo,\\nFigshare\\\
+    nYes, the source code and scripts are\\npublic on hetio and GitHub linked in\\nthe paper https://github.\\ncom/elifesciences-\\\
+    npublications/hetionet\\nYes - Multiple export formats (JSON,\\nNeo4j dump, TSV)\\nYes - 29 sources documented; each\\\
+    nnode/edge carries source information\\nin properties; full list with versions in\\npaper https://elifesciences.\\norg/articles/26726\\\
+    nYes - Versions noted: e.g., DrugBank\\nv4.2, SIDER v4.1, LINCS L1000 (Oct\\n2015), Pathway Commons (with\\ndate)\\nYes\
+    \ - Input ontologies and databases\\nfully listed with versions; also\\nintermediate resources described (e.\\ng., STARGEO,\
+    \ PharmacotherapyDB\\nYes - Node/edge properties include\\nURLs, source, license, confidence\\nscores (for applicable\
+    \ edges)\\nYes - Merged redundant pathways;\\nmultiple studies for same edge\\nconsolidated; non-informative gene\\nsets\
+    \ removed\\nYes - Explicit per metaedge: e.g.,\\nbinding affinities (\\u22641 mM), co-\\noccurrence p-values (MEDLINE),\\\
+    ngene interaction specifics\\nYes - Clear metagraph with 11 node\\ntypes & 24 metaedges; each with\\ndocumented origin\
+    \ & justification\\nYes - Uses standard biomedical IDs:\\nEntrez, UMLS, MeSH, DO, Uberon\\nYes - Entrez Gene, DOID, MeSH\
+    \ IDs,\\nInChIKeys used for easy cross-\\nreferencing\\nYes - Extensive: paper + Thinklab\\nlogs + GitHub issues + detailed\\\
+    nguides\\nYes - Explained pruning (e.g., filtering\\nUberon terms, merging pathways,\\nrestricting GO terms by size)\\\
+    nYes - Metagraph is the explicit\\nschema; node and edge types clearly\\ndefined\\nPartial - \\u201cv1.0\\u201d labeled,\
+    \ but no formal\\nversion history beyond initial\\nPartial - Thinklab (now static); issues\\ncan be filed on GitHub\\\
+    nYes - Daniel Himmelstein and team,\\ncontactable via GitHub, Thinklab\\narchives, paper\\nNo - Only v1.0 publicly released\
+    \ so\\nfar\\nNo - Early versions mentioned but no\\narchived download versions listed\\nYes - Nicotine dependence\\n(bupropion),\
+    \ epilepsy predictions\\n(acamprosate)\\nYes - Compared to PREDICT, Guney\\net al., Cheng et al.; used baselines &\\npermutation\\\
+    nYes - Designed for systematic drug\\nrepurposing + broader knowledge\\nintegration\\nYes - DWPC + AUROC +\\npermutation\
+    \ + cross-validation +\\nexternal test sets (DrugCentral,\\nClinicalTrials.gov)\\nYes - Probability scores, cross-\\nvalidated\
+    \ elastic net, path-level\\ncontribution breakdowns, AUROC\"\n  },\n  {\n    \"name\": \"CC0 1.0\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"yes - neighborhood explorer; limited\\nto 10k nodes; API https://spoke.rbvi.\\\
+    nucsf.edu/swagger/\\nyes - neighborhood explorer; limited\\nto 10k nodes\\nyes\\nno\\nno\\nyes in supplemental and on\
+    \ website\\nyes; pulled each week\\nno\\nyes https://spoke.rbvi.ucsf.\\nedu/docs/index.html\\nyes; sort of; genes and\
+    \ protiens are\\nconsidered different\\nyes; some for instance specifies PPI\\nfor humans comes from STRING;\\nhuman disease\
+    \ ontology provides\\ndisease associated gene\\nyes\\nyes no custom data transforms that\\nare KG specific\\nyes uses\
+    \ Ensembl\\nyes edge and node types specified\\nwith source\\nyes; data is downloaded and\\nintegrated as is\\nyes uses\
+    \ Biolink when practical\\nno\\nno\\nyes email provided\\nyes updated weekly according to\\npaper\\nno\\nno\\nno\\nyes;\
+    \ biomedical applications such as\\ndrug reuposing, disease prediction,\\nembedding EHR data\\nno\\nno\"\n  },\n  {\n\
+    \    \"name\": \"CC BY 4.0\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"yes can access\
+    \ themes which relate\\nto the path types and their score\\nno\\nno\\nno but can get code to process data\\nyes but its\
+    \ very weirdly done;\\nseparated into files by edge types\\nyes - but NLP so not many databases\\nused\\nyes - pubtator\
+    \ annotations from april\\n30, 2016\\nyes detailed dependancy path\\nextraction;\\nyes each edge has a lot of\\ninformation;\
+    \ NLP was used and the\\nsentance that constructed something\\nis listed\\nyes counted as a co occurance;\\nfeature not\
+    \ a bug used to inform\\nnetwork\\nyes - very limited\\nyes - NLP; had four interaction types\\nand three node types\\\
+    nyes all information coming from\\npublications outside of KG\\nyes uses UMLS IDs for rare diseases\\nyes specifies where\
+    \ disease and drug\\nnodes come from\\nyes eliminated paths containing\\ndependencies of type conj\\nyes self documented\
+    \ and reported\\nwith downloads\\nyes 7 versions available\\nno\\nno\\nyes but not updated since 2019\\nyes and indicated\
+    \ which version was\\nused in the paper\\nyes drug disease indications ; 2 case\\nstudies\\nyes; compared to gold standard\
+    \ drug\\nindications; relationships from other\\ndatabases for those gotten using\\nNLP methods\\nyes drug repurposing\\\
+    nyes case studies; drug-disease path\\nanalysis; validation using DGIdb;\\nused lit review to verify novel drug\\nyes\
+    \ performance on gold standard\\ndrug indications calculate AUROC;\\ndendrograms of the themes\"\n  },\n  {\n    \"name\"\
+    : \"CC BY 4.0\",\n    \"text\": \"NCATS Gard\\nYes \\u2013 The KG enables extraction of\\ndisease mappings, disease profiles,\\\
+    nand pathogenesis paths, as shown in\\nthe case studies (e.g., 3-hop paths\\nfrom Wilson disease)\\nYes \\u2013 Public\
+    \ Neo4j instance\\navailable: https://disease.ncats.io\\nN\\nPartially \\u2013 The in-house framework\\nstitcher is mentioned\
+    \ and linked\\n(https://github.com/ncats/stitcher), but\\nfull KG generation scripts for GARD\\nKG are not public\\nY\
+    \ (networkx pickle)\\nY, integrates 34 distinct biomedical\\nresources\\nORPHADATA v4.0\\nGene Ontology\\nHuman Phenotype\
+    \ Ontology\\nGO annotations\\nPathway Commons (PTC)\\nPharos v3.8.0\\nPartially \\u2013 Tools like stitcher and\\nOWL\
+    \ file parsing are mentioned, but\\nnot declared formally like a software\\nrepo would\\nYes \\u2013 each node/edge carries\\\
+    nprovenance via stitch keys (e.g.,\\nN_Name, I_CODE)\\nPartially \\u2013 Mappings and\\nharmonization discussed, but no\\\
+    nexplicit deduplication process for\\nedges described\\nYes \\u2013 Object properties defined per\\nsource and integration\
+    \ method (e.g.,\\nhas_phenotype, I_CODE, N_Name)\\nYes \\u2013 Meta-ontology schema is\\ndescribed with object properties\
+    \ and\\ntheir meanings (Table 3)\\nYes \\u2013 Disease profiles, drug-disease\\nassociations, and harmonization\\nrules\
+    \ demonstrate biomedical\\napplicability\\nThe paper explicitly mentions using\\n\\\"Unique Ingredient Identifier (UNII),\\\
+    \"\\n\\\"MONDO ID,\\\" and \\\"OMIM ID\\\" for\\nmappings, indicating that external\\nidentifiers are a core part of their\\\
+    nentity resolution strategy\\nYes \\u2013 Detailed methods section\\ndescribes data collection, mapping\\nstrategies,\
+    \ and harmonization\\nThe paper notes that \\\"data cleanup\\nwas performed,\\\" mentioning specific\\nexamples like restricting\
+    \ prefixes for\\nOMIM IDs and Orphanet IDs. It also\\ndiscusses the challenges of\\nprogrammatic annotation, such as\\\
+    npreventing the annotation of generic\\nterms like \\\"Disease\\\" or \\\"Syndrome\\\"\\nThe paper outlines a \\\"meta-ontology\\\
+    \"\\nthat serves as the schema for the\\nknowledge graph. This includes a\\nclear definition of primary classes\\nand\
+    \ object properties used to\\nstructure the data; documented in\\ntables 2\\u20134\\nNo\\nNo\\nYes \\u2013 Corresponding\
+    \ author: qian.\\nzhu@nih.gov and NCATS/ NIH team\\naffiliation listed\\nYes - Suggests updates over time;\\nindicates\
+    \ continually updated\\nNo\\nYes \\u2013 Four detailed case studies:\\ndisease mapping, disease profiling,\\ndata harmonization,\
+    \ pathogenesis\\nexploration\\nThe paper compares its approach\\nwith other similar efforts, such as the\\nsemantic Diseasecard\
+    \ and the\\nMonarch Initiative, placing its own\\nwork in the context of the broader\\nfield; but no explicit benchmarking\\\
+    nYes \\u2013 Focused on rare diseases,\\nespecially those curated in GARD,\\nand integrating relevant biomedical\\ndata\\\
+    nPartially \\u2013 Demonstrates utility via\\ncase studies but lacks formal\\nquantitative evaluation (mapping\\nstats\
+    \ in tables 6,7,10)\\nThe paper's semi-automatic mapping\\nprocess for FDA orphan designations\\nincludes a manual curation\
+    \ step\\nwhere curators labeled mappings as\\n\\\"Done,\\\" \\\"Approximate,\\\" or \\\"Failed,\\\"\\nproviding a clear\
+    \ way to measure the\\nconfidence or accuracy of the\\nmappings\"\n  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\"\
+    : \"Monarch KG\\nYes, can access the mapping\\nschema biolink model which provides\\nsematics mappings and ontological\\\
+    nrelationships, can access\\ndownloadable graph dumps in\\nSciGraph or KGX formats.\\nYes, can access by Monarch's own\\\
+    nwebpage, API, Neo4j, downloadable\\nGraph.\\nYes, Monarch provides multiple ways\\nto download the data such as KGX\\\
+    nTSV, KGX JSON lines, Neo4j Dump,\\netc.\\nYes, can access the source code for\\nmaking the KG on Github.\\nYes, KGX TSV,\
+    \ KGX JSON lines,\\nNeo4j Dump, etc.\\nYes, 33 heterogeneous data sources\\nincluding HPOA, CTD, OMIM,\\nOrphanet, WormBase,\
+    \ FlyBase, MGI,\\ndictyBase, Xenbase, SGD, RGD,\\nPomBase, ZFIN, NCBI, HGNC,\\nPanther, BGeeDB, Reactome,\"\n  },\n  {\n\
+    \    \"name\": \"STRING\",\n    \"text\": \"Yes, provides the version info of the\\nsources used: https://data.\\nmonarchinitiative.org/monarch-kg-\\\
+    ndev/latest/index.html\\nYes, declared dependencies through\\nits build infrastructure in the\\nmonarch-ingest and kg-hub\
+    \ Github\\nrepo. Specifically, Monarch uses\\nPoetry for the dependencies\\nmanagement.\\nYes, nodes and edges contain\
+    \ the\\nmost upstream source and\\nknowledge provider information.\\nYes, duplcate edge and node\\nmanagement is taken\
+    \ into\\nconsideration in the construction of\\nthe KG.\\nYes, the triples created are captured\\nin multiple stages of\
+    \ the KG ingest\\npipeline including the biolink\\npreddicate mappings and the output.\\nYes, Biolink model. All relationships\\\
+    nare mapped to Biolink predicates.\\nYes, Monarch KG is both human-\\nreadable and usable. Monarch\\nprovides its data\
+    \ in tablular formats\\nthat are easy to understand. Also,\\nMonarch KG data and its Monarch\\ninitaitive webpage can\
+    \ be used in\\nbioinformatics & biomedical analysis,\\nmachine learning, NLP, LLMs,\\nvisualization & exploration, etc.\\\
+    nYes, supports resolvable and\\nexternally linked identifiders.\\nMonarch KG uses curie-style IDs that\\nfollow identifier\
+    \ conventions and are\\nmappable to URLs for resolution.\\nAlso, it includes a column called xref\\nwhich contains a list\
+    \ of external\\nidentifiers.\\nYes, Monarch made great effort to\\ndocument its KG construction\\nincluding data ingestion,\\\
+    ntransformation, schema usage, and\\nKG merging.\\nYes, Monarch documented data\\ntransforms including the excluded\\\
+    nnodes and dangling edges.\\nYes, Monarch uses a documented\\nschema, Biolink Model, and its\\nmonarch-ingest pipeline\
+    \ for\\nconstruction.\\nYes\\nYes, Monarch provides public tracker\\nfor feature requests, bug reports on it\\nGithub\
+    \ repo.\\nYes, the contact is Monarch Initiative.\\nContact information is provided.\\nYes, the KG is updated every month.\\\
+    nYes, prior versions are accessible.\\nAnd there is a dashoboard for QC\\nshowing what the changes are\\nbetween any two\
+    \ versions. https://qc.\\nmonarchinitiative.org/#monarch?\\ndataset=Development&kgVersion=20\\n25-07-09\\nYes, Monarch\
+    \ KG is used in\\nExomiser which is a tool to annotate\\nvariants and has a ChatGPT plugin\\nthrough RAG to support information\\\
+    nsearch. It is also integrated into the\\nGRAPE library for graph analysis and\\nmachine learning.\\nNo\\nYes, Monarch\
+    \ aims to harmonize the\\ndata across the fields (gene, disease,\\nphenotype across species) to\\nfacilitate the discovery\
+    \ of disease\\nmechanism and aid the disease\\ndiagnosis.\\nYes, created Monarch Quality Control\\n(QC) Dashboard for\
+    \ quality metrics\\nthat are specific to Monarch. In\\naddition, it developed Phenotypic\\nInference Evaluation Framework\\\
+    n(PhEval) to evaluate the analysis of\\nits tool Exomiser.\\nKind of but not explicit. The edge\\ndata contains columns\
+    \ like\\nprovided_by, publications, and\\nhas_evidence to measure the\\naccuracy or confidence.\"\n  },\n  {\n    \"name\"\
+    : \"CC BY 4.0\",\n    \"text\": \"clinical KG\\nno\\nyes both\\nyes; neo4j, docker, csv, python\\nlibrary\\nyes well documented\
+    \ github https:\\n//github.com/MannLabs/CKG?\\ntab=readme-ov-file\\nyes many different ways\\nyes in github with links\
+    \ as well as\\nsupplemental table S1\\nno\\nyes in github and documents on how\\nto download and use\\nyes edges have\
+    \ pubmed identifiers\\nyes; built in redundancy to assess\\noverlap and disagreememnt of\\nsources\\nno\\nno\\nyes use\
+    \ all external identifiers;\\nontolgies\\nyes used standardized identifiers for\\nnodes not described with exsiting\\\
+    nterminoloies or ontologies\\nyes well documented in the paper\\nand a github is well done\\nno\\nyes custom; defined\
+    \ in paper figure\\n3A\\nyes three versions\\nyes; encouraged through github\\nyes mann labs\\nyes; newest is from 2022\\\
+    nyes\\nyes; non-alcoholic fatty liver disease;\\ncancer biomarkers; identify theraputic\\noptions for chemorefractory\
+    \ cases\\nyes compared their ability to identify\\ncancer biomarkers with paper from\\n2018\\nyes harmonization of proteomics\
+    \ with\\nother omics data\\nno\\nno\"\n  },\n  {\n    \"name\": \"C BY-NC 4.0\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"RTX-KG2\",\n    \"text\": \"Yes, RTX-KG2 is able to provide\\nvarious biomedical information\\nthrough queries.\
+    \ It is also used as\\nbackend to support ARAX's path\\nreasoning and path ranking (https:\\n//github.com/RTXteam/RTX)\
+    \ .\\nYes, can access by API query, and\\nNeo4j.\\nYes, multiple ways to access\\nincluding downloadable versions, API\\\
+    n(SmartAPI), web browser user\\ninterface (seems not currently\\nworking).\\nYes, Github (https://github.\\ncom/RTXteam/RTX-KG2)\\\
+    nYes, downloadable versions are\\navailable on Github\\nYes, 70 sources Table 1 (UMLS,\\nSemMedDB, ChEMBL, DrugBank,\\\
+    nReactome, SMPDB, and 64\\nadditional knowledge sources).\\nYes, it documents the versions of the\\nupstream sources used\
+    \ (https:\\n//github.com/RTXteam/RTX-\\nKG2/blob/master/docs/kg2-versions.\\nmd).\\nYes, in the requirements file.\\nYes,\
+    \ node's ID contains source\\ninformation and edge contains\\nprimary knowledge source.\\nYes, it provides a pre-canonicalized\\\
+    ngraph version (RTX-KG2pre, with\\nsemantically duplicated concepts)\\nand a canonicalized version (RTX-\\nKG2c, withthout\
+    \ semantically\\nduplicated concepts)\\nYes, in the final output KG, each\\nedge includes the source that reated\\nthat\
+    \ triple.\\nYes, it uses Biolink Model for as the\\nschema standard for both nodes and\\nedges.\\nYes, it is used for\
+    \ other biological\\napplications such as answering\\ntranslational science questions, drug\\nrepositioning, identifying\
+    \ new\\ntherapeutic targets, and\\nunderstanding drug mechanisms.\\nYes, it uses resolvable IDs for the\\nentities.\\\
+    nYes, it has clear and step by step\\ndocumentation on construction on its\\nGithub repo\\nYes, in Appendix\\nYes, Biolink\
+    \ model and extract-\\ntransform-load (ETL) approach for\\nconstruction.\\nYes, it is using semantic versioning\\n(e.g.,\
+    \ KG2.7.3)\\nYes, provides public tracker for\\nrequests, bug reports on it Github\\nrepo.\\nYes, it provides contact\
+    \ information of\\nthe KG2 Team.\\nYes, once per month (mentioned in\"\n  },\n  {\n    \"name\": \"Discussion)\",\n  \
+    \  \"text\": \"Yes, the prior versions are accessible\\n(https://github.com/ncats/translator-\\nlfs-artifacts/blob/main/README.md)\\\
+    nwith documented changes (https:\\n//github.com/RTXteam/RTX-\\nKG2/blob/master/docs/kg2-versions.\\nmd).\\nYes, it is\
+    \ currently being used by\\nmultiple Translator reasoning agents\\nsuch as ARAX (Autonomous Relay\\nAgent X).\\nYes, it\
+    \ is compared to four other KGs\\n(Hetionet, SPOKE, the SRI\\nReference Knowledge Graph, and\"\n  },\n  {\n    \"name\"\
+    : \"ROBOKOP)\",\n    \"text\": \"Yes, it is a part of NCATS Biomedical\\nData Translator project to support\\nautomated\
+    \ biomedical reasoning and\\nquestion answering. It aims to create\\na semantically standardized,\\ncomputable, and interoperable\\\
+    nbiomedical KG that supports\\ntranslational reasoning and\\nbiomedical discovery.\\nYes, it is not only evaluated with\\\
+    nother KGs, but also evaluated on the\\ntools that utilize it such as ARAX,\\nmediKanren, BioThings Explorer, and\"\n\
+    \  },\n  {\n    \"name\": \"ARAGORN\",\n    \"text\": \"Yes, the nodes and edges contain\\nevidence, provenance, and other\\\
+    ninformation for measuring accuracy\\nand confidence.\"\n  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"Yes, users can ask biological\\nquestions via queries (Basic Usage:\\\
+    nhttps://cns-iu.github.io/hra-kg-\\nsupporting-information/#basic-usage,\\nAdvanced Usage: https://github.\\ncom/cns-iu/hra-kg-supporting-\\\
+    ninformation/blob/main/README.md)\\nYes, can access by SPARQL\\nendpoint, HRA API, and RESTful-\"\n  },\n  {\n    \"name\"\
+    : \"API\",\n    \"text\": \"Yes, dynamic queries through its\\nSPARQL, RESTful-API, and UIs.\\nYes, Github (https://github.\\\
+    ncom/hubmapconsortium/hra-kg)\\nYes, available on Zenodo and HRA\\nCDN\\nYes, Table 2\\nYes, the type, name, and version\
+    \ of\\neach DO is documented (https://lod.\\nhumanatlas.io/asct-b/).\\nYes, in the hra-do-processor.\\nYes, both nodes\
+    \ and edges have\\nsource information\\nNot explicit. As each digital object\\nproduces its own graph, the triples\\nfrom\
+    \ different objects may have\\nsimilar relationships, but they are\\nstored in separate contexts.\\nYes, the triples are\
+    \ generated by\\nDigital Objects in in RDF format.\\nYes, the KG is built based on RDF\\ngraph (CCF ontology) and standard\\\
+    nontologies to define relationship\\ntypes between the entities.\\nYes, the data is human readable and\\nusable in various\
+    \ biological\\napplications.\\nYes, it uses resolvable IDs for the\\nentity resolution such as UBERON:\\n0013702 and ENSG00000175899.\\\
+    nYes, it provides comprehensive\\ndocumentation on its construction\\nprocess (HRA KG Construction and\\nDeployment).\\\
+    nYes, it documents data transfroms\\nsuch as data normalization and\\nenrichment.\\nYes, ASCT+B tables and Common\\nCoordinate\
+    \ Framework (CCF)\\nOntology.\\nYes, e.g., v2.3.\\nNot explicitly mentioned, but there\\nare multiple Github Issues portals\
+    \ for\\nusers to post requests, reports bugs,\\nand discussions.\\nYes, contact information is available\\nto reach out\
+    \ to the team (https:\\n//humanatlas.io/about#editorial-\\nboard)\\nYes, about 2 time a year (https:\\n//github.com/hubmapconsortium/hra-\\\
+    nkg/releases).\\nYes, prior versions are accessible on\\nGithub (https://github.\\ncom/hubmapconsortium/hra-\\nkg/releases).\
+    \ Changed are\\ndocumented (https://humanatlas.\\nio/release-notes/v2.3).\\nYes, they have several use cases\\nand applications\
+    \ (Usage Notes).\\nNo, The HRA-KG is compared with\\nother KGs only from technical\\nperspective, such as the number of\\\
+    nnodes, edges, and technologies\\nused.\\nYes, HRA-KG is focused on\\nrepresenting the healthy human body\\nin semantics\
+    \ terms including\\nanatomical structures, cell types, and\\nbiomarker and spatial terms such as\\n3D reference organs.\\\
+    nYes, it has hra-ols used by OLS for\\nvalidation (https://lod.humanatlas.\\nio/collection/hra-ols/latest/) and has\\\
+    nValidation report (https://github.\\ncom/hubmapconsortium/3d-hra-ref-\\nobject-validation) (Supplementary).\\nNot explicit,\
+    \ but it has HRAlit which\\nlinks the HRA DOs to publications,\\nexperts, experimental datasets\\n(Supplementary).\"\n\
+    \  },\n  {\n    \"name\": \"CC BY 4.0\",\n    \"text\": \"Petagraph\\nyes, portions of the graph that are\\nopen licensed\
+    \ are available from\\nhttps://osf.io/6jtc9/files/osfstorage\\nyes, (ish), neo4j dump can be\\ndownloaded if you have\
+    \ a UMLS\\nlicense key, and there are\\ninstructions to build a neo4j from\\nsources in the github repository. Ish,\\\
+    nbecause it's not specifically hosted,\\nyou need to host it yourself.\\nno, (ish) completed graph can only\\nbe downloaded\
+    \ as neo4j,\\ncomponents to build the graph can\\nalso be downloaded, but that doesn't\\nquite feel like it makes a yes\\\
+    nyes, ETL of upstream sources lives in\\nhttps://github.com/x-atlas-\\nconsortia/ubkg-etl/\\nyes (with UMLS api key)\\\
+    nyes, methods section of paper https:\\n//www.nature.com/articles/s41597-\\n024-04070-w#Sec2\\nyes, ish, some source versions\
+    \ listed\\nin https://github.\\ncom/TaylorResearchLab/Petagraph/tr\\nee/main/Scientific_Data_2024\\nyes, ubkg etl has\
+    \ requirements.txt,\\npetagraph has requirements-test.txt\\nYes. They either come from existing\\nontologies or have one\
+    \ file per\\ndatasource with edges and nodes\\nthat are being added.\\nYes - Yes. Bidirectional edges are\\nonly for Concept\\\
+    u2013Concept; other\\nedges are unidirectional.\\nRedundancies are minimized using\\nbinning and source normalization\\\
+    nYes, methods of paper\\nyes custom schema defined in paper\\nYes, csv files\\nYes, concept CUI with codes\\ncorresponding\
+    \ to common external\\nID/s\\nYes, well documented github\\nguidlines for formatting ontologies in\\nuser guide, method\
+    \ explain\\npreprocessing steps\\nStart with ontologies and standards in\\nthe UBKG and add in omics data\\nbased on their\
+    \ paper defined in the\\nschema\\nNo, lists date last updated but no\\nversion\\nNo\\nYes, contributors listed https://osf.\\\
+    nio/6jtc9/\\nYes, frequent small updates\\nrecent acitivty documents date of all\\nchanges and person who made them\\\
+    nbut prior versions not accessible\\nhttps://osf.io/6jtc9/\\nYes, several in paper\\nNo\\nYes integrating/analyzing multiomics\\\
+    ndatasets\\nlink prediction tasks auROC,\\nprecision-recall, top tissues\\nassociated w a disease, and shortest\\npath\
+    \ analysis of subgraphs\\nYes. AUC-ROC, Precision-Recall\\ncurves, common neighbors vs\\nrandom, structural metrics compared\\\
+    nto randomized graphs\"\n  },\n  {\n    \"name\": \"CC BY-NC-ND 4.0\",\n    \"text\": \"GenomicKB\\nY, can submit an online\
+    \ query and\\ndownload subgraphs that meet\\ncriteria\\nwebsite with UI for creating queries,\\nAPI supposely coming in\
+    \ v2, Neo4j\\ndump available but not hosted by\\ncreators\\nY, can use online query tool or\\ndownload Neo4j dump\\nY,\
+    \ https://github.com/tinalee-tech/KG-\\ndataloader\\nY, Neo4j dump\\nY, supplementary note 1\\nN\\nN\\nY, tables 1 (nodes)\
+    \  & 2 (edges),\\nquery allows users to restrict by\\ndatasource\\nConsidered but not de-duplicated.\\nUsers can restric\
+    \ querys to specific\\ndatasources and duplicate edges can\\nbe used for validation. EX:  \\u2018enhancer\\nregulate gene\\\
+    u2019 with restriction\\n\\u2018cell_line=GM12878\\u2019 and\\n\\u2018data_source=EnhancerAtlas\\u2019 ->\\n118,610 node\
+    \ pairs. A second query\\nfor \\u2018variant overlap enhancer\\u2019,\\n\\u2018enhancer regulate gene\\u2019, and\\n\\\
+    u2018variant correlate_with gene\\u2019 ->\\n16,871  enhancer-gene pairs from\\nEnhancerAtlas can be validated by\\nGTEx\
+    \ eQTLs\\nY, table 2\\nY, table 2\\nY, they have a web interface (https:\\n//gkb.dcmb.med.umich.edu/)\\npresenting the\
+    \ entities and edges in a\\nhuman-readable format. It can be\\nused to answer genomics-related\\nquestions and conduct\
+    \ biological\\nanalysis\\nY, uses one external ID when\\npossible and defines globaly unique\\nIDs for entities without\
+    \ such as ChIP-\\nseq peaks\\nY, github and supplement\\nY, sup Note 1 Data Collection and\\nProcessing\\nUses custom\
+    \ schema not an existing\\none but does provide documentation\\nY but still on version 1.0 despite\\nmultiple upates listed\\\
+    nN, FAQ says to email the team\\nY, website has a contacts button with\\nname/emal for both technical details\\nand accessing\
+    \ the data/web server\\nDuring 2022-2023 yes but not since\\nthen\\nClearly documented chages with\\ndates but prior versions\
+    \ not available.\\n*Paper states that they store all\\nversions internally and can revert if\\nunexpected changes are\
+    \ ever made\\nto their graph but these are not\\naccessible publicaly\\nThe paper provides examples of\\nspecific queries\
+    \ that can be\\nperformed through the website that\\nwould normally require coding and\\nintegrating multiple data sources,\
+    \ but\\nit is limited to knowledge extraction\\nand does not show how this could be\\nused to make novel biological\\\
+    ndiscoveries\\nN\\nY, coding free queries of human\\ngenomic information including both\\nfunctional, strutural, epigenetic\
+    \ and\\nother relationships\\nN\\nKind of but not explicitly. Since this\\ntool is all about data querying,\\nconfidence\
+    \ could be assesed by\\ncreating multiple queries like the\\nexample of using eQTLs to \\\"validate\\\"\\nEnhancerAtlas\
+    \ relationships\"\n  },\n  {\n    \"name\": \"CC BY-NC 4.0\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\"\
+    ,\n    \"text\": \"Y, can access subgraphs through\\nquery searches\\nY: neo4j, ExEmPLAR (experimental\\ntool for queries\
+    \ of Neo4j graphs),\\nwebsite with \\\"question builder\\\"\\nfeature, automat queries (cypher and\"\n  },\n  {\n    \"\
+    name\": \"TRAPI)\",\n    \"text\": \"Y, can download or query searches\\nin multiple ways\\nY, https://github.\\ncom/RobokopU24/ORION\
+    \ (this is not\\nthe original GH from the paper but is\\nnow the one they are using)\\nY, https://stars.renci.\\norg/var/plater/graphs/RobokopKG/6fe\\\
+    n13d850fdbf89c/\\nY, metadata contains all source info\\nY metadata includes links and\\nversions for all sources\\nY,\
+    \ github lists docker requirements\\nand graph spec file with example\\nprovided\\nY, node and edges contain primary\\\
+    nknowledge source attribute and, if\\nrelationship is inferred, any\\nalgorithms/methods used\\nnot explicitly mentioned\
+    \ in paper or\\ndocs, but github for creating\\nKG/metadata records have an\\n\\\"edge_normalization_version\\\" so it\\\
+    nappears they do\\n\\\"one-hop\\\" connection schema has\\nsummary of all edge types (node 1\\ntype, node 2 type, relationship),\
+    \ and\\nindividual edges include the original\\ndata source, but sources per triple\\ntype were not explicitly\\nstated/summarized\\\
+    n\\\"one-hop\\\" connection schema has\\nsummary of all edge types, and\\nindividual edges include the original\\ndata\
+    \ source, but sources per edge\\ntype were not explicitly stated\\nYes, json files\\nY, choose one external\\nrepresentative\
+    \ entity ID and map\\nsynonyms using existing\\nequivalencies and specailized rules\\nY, github repo for construction\
+    \ with\\nreaonsable documentation on how to\\nuse it in general, and metadata files\\ninclude exact versions of functions\\\
+    nthat were used when creating their\\nKG\\nnot explicitly described but metadata\\ncontains all preprocessing steps per\\\
+    nsource with versions of each\\nnormalization strategies used\\nBioLink\\nY, https://stars.renci.\\norg/var/plater/graphs/RobokopKG/6fe\\\
+    n13d850fdbf89c/RobokopKG.meta.\\njson\\nY, github\\nContact form provided on website\\nand weekly office hours over zoom\\\
+    nYes - ROBOKOP was built 6 times in\\n2024 and 3 times so far this year. -\\nas in this metadata file -  https://stars.\\\
+    nrenci.\\norg/var/plater/graphs/RobokopKG/6fe\\n13d850fdbf89c/RobokopKG.meta.\\njson\\naccessible for bulk download. No\\\
+    nchnage log, but each comes with\\nmetadata that documents all source\\ningests (including versions) and\\npreprocessing\
+    \ steps used for each\\nsource\\nY, 4 ranging from simple linear\\nqueries to discovering mechanistic\\nlinks\\nN\\nYes\
+    \ - the scope is clearly defined\\nbecause the paper focuses narrowly\\non presenting ROBOKOP KG and\\nKGB as tools for\
+    \ federating\\nbiomedical sources into a usable KG,\\nillustrating this through a few case\\nexamples. It does not try\
+    \ to claim to\\nsolve all KG problems, but sticks to\\nintegration via APIs and\\nsynonymization\\nN\\nY, informative\
+    \ subgrahs are ranked\\naccording to number of supporting\\npublications and literarure co-\\noccurence of entity pairs\\\
+    nOpen-Source MIT License\\nEmBiology\\nN\\nN\\nN\\nN\\nN\\nN\\nN\\nN\\nN\\nN\\nN\\nY, changed yearly in their baseline\\\
+    nupdated but cannot see what schema\\nis without paid account\\nN\\nNot explicitly stated but they use ML\\nfor entity\
+    \ recognition  so probably\\nN\\nN, lots of this is based on NLP/text\\nmining approaches but preprocessing\\nof sources\
+    \ is not documented\\nN\\nN\\nN\\nContact form (for sales team)\\nY, cannot confirm but website states\\nyearly update\
+    \ of terminology/rules,\\nquarterly update of clinical trial data,\\nweekly update of relationships\\nextracted from publications\\\
+    nN\\nN\\nN\\nNot clearly stated but appears to be\\ndrug discovery for private companies\\nN\\nConfidence thresholds for\\\
+    nrelationships determined by number\\nof supporting publications\\nCopyrighted to Elsevier\\nDrugMechDB\\nY, paths that\
+    \ describe the\\nmechanism of action for drug/disease\\nindication pair\\nwebsite, can view all paths or only\\nthose\
+    \ related to a specific drug or\\ndisease\\nY Can download from zenodo or use\\nwebsite\\nY: https://github.\\ncom/SuLab/DrugMechDB\\\
+    nKind of on zenodo, but what they are\\ncalling a KG is a collection of entries\\nfor drug/disease pairs and the paths\\\
+    nconnecting them. Raw KG containing\\nall edges between all entries does\\nnot appear to exist\\ntable with node sources.\
+    \ Indications:\\nDrugCentral ( according to GH,\\nrandomly sampled from availble\\ndrug-disease pairs, does not include\\\
+    nall of them), paths: Mechanism of\\nAction section from DrugBank,\\ndescription section within Inxight\\nDrugs, review\
+    \ articles, GeneOntology\\n, UniProt, Reactome, and well-\\nsources Wikipedia articles. No\\nPrimary experimental results\
+    \ are\\nincluded. All are verified by curators\\nDate given for DrugCentral\\ndownload, cannot find info for other\\nsources\\\
+    nY, there are requirements.txt and .\\nyaml files in the KG's downloadable .\\nzip file on Zenodo (https://zenodo.\\norg/records/8139357)\
+    \ showing the\\ndependencies.\\neach entry consist of \\u2018graph\\u2019, \\u2018links\\u2019,\\n\\u2018nodes\\u2019,\
+    \ and \\u2018reference\\u2019 keys. Graph\\ncontains the drug/disease pair, links\\ncontains relationships informative\
+    \ to\\nthe indication, nodes contains\\ninformation about all entities in link,\\nand reference contains all the\\nsources\
+    \ for the entire relationship but\\nnot specifically for individual\\nnodes/edges\\npaths are manually curated\\nedges\
+    \ between informative nodes in\\na path do not contain orignal source\\ninfromation. Informative paths have\\ncitations\
+    \ for the entire path, not\\nindivudal triples within them.\\nBioLink, but does not specify exactly\\nwhat sources are\
+    \ used for each edge\\ntype\\nyes, json files\\nyes, all nodes come from existing\\nsources\\nNot really. Everything is\
+    \ \\\"manually\\ncurated\\\"\\nN\\nBioLink\\nY\\nGitHub Issues. Also includes a guide\\nfor how users can submit their\
+    \ own\\ncurated paths.\\nindirectly. website indicated the lab\\nwho owns it, but does not provide a\\npoint of contact\\\
+    nN (V1 released in 2019 with one\\nupdate less than a year later, same\\nwith V2 in 2023, no other updates)\\nAll versions\
+    \ availble, V2 has\\npublication associated but detailed\\nchange logs for minor updates not\\navailable\\nN\\nThey used\
+    \ an external KG to\\nevaluate agreement between types of\\nassociations present in both graphs\\nand calculate a p-value\
+    \ representing\\nwhen the simulated percentage of\\nmatching was greater than or equal\\nto the observed percentage\\\
+    nYes, mechanisms of action by which\\na drug treats a disease\\nN\\nagreement with MechRepoNet\\nCC0 1.0 Universal\\n\\\
+    nBioLink Node-Type Mappings\\nUnstructured Label (Node-Type)\\nBiolink Class\\nActivity\\nactivity\\nAgent\\nagent\\nAnalytical\
+    \ Sample\\nmaterial sample\\nAnatomy/Anatomical regions/Anatomical Structure\\nanatomical entity\\nAnatomical Entity\\\
+    nanatomical entity\\nAnatomy Cell Type\\ncell\\nAntibody\\nprotein\\nAbtibody Panel\\nreagent targeted gene\\nBehavior\\\
+    nbehavioral feature\\nBehavioral Feature\\nbehavioral feature\\nBiological Activity\\nactivity\\nBiological Entity\\nnamed\
+    \ thing\\nBiological Processes\\nbiological process\\nBiological Sample\\nmaterial sample\\nBiomarker\\nphenotypic feature\\\
+    nCells\\ncell\\nCell Lines\\ncell\\nCell types\\ncell\\nCellular Components\\ncellular component\\nCell Summary\\ncell\\\
+    nChemicals / Chemical Entity/ Drugs\\nchemical entity\\nChemical Mixture\\nchemical entity\\nChromosome\\nnucleic acid\
+    \ entity\\nClinical Attribute\\nclinical attribute\\nClinical Intervention\\nclinical intervention\\n\\nBioLink Node-Type\
+    \ Mappings\\nUnstructured Label (Node-Type)\\nBiolink Class\\nClinical Variable\\nclinical attribute\\nClinically Relevant\
+    \ Variable\\nclinical attribute\\nCode\\ninformation content entity\\nCohort\\npopulation of individual organisms\\nCollision\
+    \ Summary\\nevent\\nComplex\\nmacromolecular complex\\nCompounds\\nchemical entity\\nConcept\\ninformation content entity\\\
+    nCorridor\\ngeographic location\\nDataset\\ndataset\\nDefinition\\ninformation content entity\\nDevices\\ndevice\\nDiseases\\\
+    ndisease\\nDomains\\nprotein domain\\nDonor\\nindividual organism\\nEnhancer\\nregulatory region\\nEnvironmental Features\\\
+    nenvironmental feature\\nEnvironmental Processes\\nenvironmental process\\nEnzymatic Activity\\nactivity\\nEpigenomic\
+    \ Features\\nmolecular modification\\nEvent\\nevent\\nExon\\nnucleic acid entity\\nExperiment\\nstudy\\nExposures\\nexposure\\\
+    nExtraction Site (Spatial Entity)\\nanatomical entity\\n\\nBioLink Node-Type Mappings\\nUnstructured Label (Node-Type)\\\
+    nBiolink Class\\nFood\\nfood\\nFTU Illustration\\ninformation content entity\\nFTU Illustration Node\\ninformation content\
+    \ entity\\nFunctional Regions\\nregulatory region\\nGenes\\ngene\\nGene Family\\ngene family\\nGenomic Entity\\ngenomic\
+    \ entity\\nGenotype\\ngenotype\\nGeographical Location\\ngeographic location\\nGross Anatomical Structure\\nanatomical\
+    \ entity\\nGWAS Study\\nstudy\\nInformation Content Entity\\ninformation content entity\\nInformation Resource\\ninformation\
+    \ content entity\\nInsulator\\nregulatory region\\nKnown Variant\\nsequence variant\\nLandmark\\ngeographic location\\\
+    nLife Stage\\nlife stage\\nMacro Molecular Complex\\nmacromolecular complex\\nMaterial Sample\\nmaterial sample\\nMetabolite\\\
+    nsmall molecule\\nMicroRNA\\nnucleic acid entity\\nMillitome Extraction Site\\nanatomical entity\\nModification\\nmolecular\
+    \ modification\\nModified Protein\\nprotein\\nMolecular Activity\\nactivity\\n\\nBioLink Node-Type Mappings\\nUnstructured\
+    \ Label (Node-Type)\\nBiolink Class\\nMolecular Entity\\nnamed thing\\nMolecular Functions\\nactivity\\nMolecular Mixture\\\
+    nchemical mixture\\nNamed Thing\\nnamed thing\\nNon Coding RNA Product\\nnucleic acid entity\\nNucleic Acid Entity\\nnucleic\
+    \ acid entity\\nNutrients\\nsmall molecule\\nOrganisms\\norganismal entity\\nOrganism Taxon\\norganism taxon\\nOrganismal\
+    \ Entity\\norganismal entity\\nOrthology\\ngene family\\nPathological Process\\npathological process\\nPathways\\npathway\\\
+    nPeptides\\npolypeptide\\nPerturbagens\\ndrug\\nPharmacologic Classes\\nchemical entity\\nPhenomenon\\nphenomenon\\nPhenotypes/\
+    \ Effects/ Phenotypic Feature\\nphenotypic feature\\nPhysical Entity\\nnamed thing\\nPhysiological Processes\\nphysiological\
+    \ process\\nPolypeptide\\npolypeptide\\nPopulation of Individual Organisms\\npopulation of individual organisms\\nProcedure\\\
+    nclinical intervention\\nProject\\nstudy\\nPromoter\\nregulatory region\\n\\nBioLink Node-Type Mappings\\nUnstructured\
+    \ Label (Node-Type)\\nBiolink Class\\nProteins\\nprotein\\nProtein Domains\\nprotein domain\\nProtein Family\\ngene family\\\
+    nProtein Structure\\nprotein\\nPublications\\npublication\\nReactions\\nbiological process\\nReference Organ\\nanatomical\
+    \ entity\\nReference Organ Part\\nanatomical entity\\nRNA Product\\nnucleic acid entity\\nSemantic\\ninformation content\
+    \ entity\\nSequence Variant\\nsequence variant\\nSide Effects\\nphenotypic feature\\nSmall Molecules\\nsmall molecule\\\
+    nSomatic Mutation\\nsequence variant\\nSubject\\nindividual organism\\nSuper Enhancer\\nregulatory region\\nSymptoms\\\
+    nphenotypic feature\\nTerm\\ninformation content entity\\nTissues\\nanatomical entity\\nTssue Block (Sample)\\nmaterial\
+    \ sample\\nTissue Section (Sample)\\nmaterial sample\\nTranscript\\nnucleic acid entity\\nTreatment\\nclinical intervention\\\
+    nUser\\nagent\\nVariants\\nsequence variant\\n\\nBioLink Node-Type Mappings\\nUnstructured Label (Node-Type)\\nBiolink\
+    \ Class\\nVitamins\\nsmall molecule\\n3D Structures\\nprotein domain\\n\\nNode types\\nTotal # KG per node type\"\n  },\n\
+    \  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Clinical\
+    \ KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"\
+    Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\n  },\n  {\n\
+    \    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\n14\\n13\\\
+    n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nActivity\\n1\\nAgent\\n1\\nAnalytical Sample\\n1\\nAnatomy/Anatomical regions/Anatomical\
+    \ Structure\\n4\\nAnatomical Entity\\n3\\nAnatomy Cell Type\\n1\\nAntibody\\n1\\nAbtibody Panel\\n1\\nBehavior\\n1\\nBehavioral\
+    \ Feature\\n1\\nBiological Activity\\n1\\nBiological Entity\\n1\\nBiological Processes\\n8\\nBiological Sample\\n1\\nBiomarker\\\
+    n1\\nCells\\n6\\nCell Lines\\n2\\nCell types\\n2\\n\\nNode types\\nTotal # KG per node type\"\n  },\n  {\n    \"name\"\
+    : \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Clinical KG\"\n  },\n  {\n\
+    \    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"Monarch KG\\nGenomicKB\\\
+    nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n\
+    \    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\n14\\n13\\n13\\n12\\n10\\n7\\n5\\n4\\\
+    n3\\n0\\nCellular Components\\n9\\nCell Summary\\n1\\nChemicals / Chemical Entity/ Drugs\\n11\\nChemical Mixture\\n1\\\
+    nChromosome\\n1\\nClinical Attribute\\n1\\nClinical Intervention\\n2\\nClinical Variable\\n1\\nClinically Relevant Variable\\\
+    n1\\nCode\\n1\\nCohort\\n1\\nCollision Summary\\n2\\nComplex\\n1\\nCompounds\\n3\\nConcept\\n1\\nCorridor\\n1\\nDataset\\\
+    n1\\nDefinition\\n1\\n\\nNode types\\nTotal # KG per node type\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Clinical KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\\
+    nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\\
+    nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\n14\\n13\\n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nDevices\\n1\\nDiseases\\\
+    n12\\nDomains\\n2\\nDonor\\n1\\nEnhancer\\n1\\nEnvironmental Features\\n1\\nEnvironmental Processes\\n1\\nEnzymatic Activity\\\
+    n1\\nEpigenomic Features\\n1\\nEvent\\n1\\nExon\\n2\\nExperiment\\n1\\nExposures\\n1\\nExtraction Site (Spatial Entity)\\\
+    n1\\nFood\\n3\\nFTU Illustration\\n1\\n8\\nFTU Illustration Node\\n1\\nFunctional Regions\\n1\\n\\nNode types\\nTotal\
+    \ # KG per node type\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\"\
+    ,\n    \"text\": \"Clinical KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    HRA-KG\",\n    \"text\": \"Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\\
+    nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\\
+    n19\\n17\\n14\\n13\\n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nGenes\\n11\\nGene Family\\n3\\nGenomic Entity\\n1\\nGenotype\\\
+    n2\\nGeographical Location\\n2\\nGross Anatomical Structure\\n2\\nGWAS Study\\n3\\nInformation Content Entity\\n2\\nInformation\
+    \ Resource\\n1\\nInsulator\\n2\\nKnown Variant\\n1\\nLandmark\\n1\\nLife Stage\\n2\\nMacro Molecular Complex\\n1\\nMaterial\
+    \ Sample\\n1\\nMetabolite\\n1\\nMicroRNA\\n1\\nMillitome Extraction Site\\n1\\n\\nNode types\\nTotal # KG per node type\"\
+    \n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Clinical\
+    \ KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"\
+    Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\n  },\n  {\n\
+    \    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\n14\\n13\\\
+    n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nModification\\n1\\nModified Protein\\n1\\nMolecular Activity\\n3\\nMolecular Entity\\\
+    n2\\nMolecular Functions\\n6\\nMolecular Mixture\\n1\\nNamed Thing\\n3\\nNon Coding RNA Product\\n2\\nNucleic Acid Entity\\\
+    n2\\nNutrients\\n2\\nOrganisms\\n2\\nOrganism Taxon\\n3\\nOrganismal Entity\\n1\\nPathological Process\\n1\\nPathways\\\
+    n9\\nPeptides\\n1\\nPerturbagens\\n1\\nPharmacologic Classes\\n4\\n\\nNode types\\nTotal # KG per node type\"\n  },\n\
+    \  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Clinical\
+    \ KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"\
+    Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\n  },\n  {\n\
+    \    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\n14\\n13\\\
+    n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nPhenomenon\\n2\\nPhenotypes/ Effects/ Phenotypic Feature\\n6\\nPhysical Entity\\n1\\\
+    nPhysiological Processes\\n1\\nPolypeptide\\n2\\nPopulation of Individual Organisms\\n2\\nProcedure\\n2\\nProject\\n2\\\
+    nPromoter\\n1\\nProteins\\n10\\nProtein Domains\\n2\\nProtein Family\\n1\\nProtein Structure\\n1\\nPublications\\n3\\\
+    nReactions\\n1\\nReference Organ\\n1\\nReference Organ Part\\n1\\nRNA Product\\n2\\n\\nNode types\\nTotal # KG per node\
+    \ type\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\"\
+    : \"Clinical KG\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n   \
+    \ \"text\": \"Monarch KG\\nGenomicKB\\nBioteque\\nDrugMechDB\\nHetioNet\\nPrimeKG\\nNCATS Gard\\nPetagraph\\nPharmKG\"\
+    \n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"EmBiology*\\nTotal # of Node types\\n53\\n36\\n34\\n21\\n19\\n17\\\
+    n14\\n13\\n13\\n12\\n10\\n7\\n5\\n4\\n3\\n0\\nSemantic\\n1\\nSequence Variant\\n1\\nSide Effects\\n2\\nSmall Molecules\\\
+    n1\\nSomatic Mutation\\n1\\nSubject\\n1\\nSuper Enhancer\\n0\\nSymptoms\\n3\\nTerm\\n1\\nTissues\\n4\\nTssue Block (Sample)\\\
+    n1\\nTissue Section (Sample)\\n1\\nTranscript\\n3\\nTreatment\\n1\\nUser\\n1\\nVariants\\n2\\nVitamins\\n2\\n3D Structures\\\
+    n1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"\
+    name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n\
+    \    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS\
+    \ Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\"\
+    ,\n    \"text\": \"Total # of Sources\\n87\\n63\\n50\\n40\\n47\\n23\\n29\\n33\\n26\\n19\\n14\\n20\\n10\\n6\\n7\\n1\\nAlliance\
+    \ of Genome Resources\\n1\"\n  },\n  {\n    \"name\": \"ALZHEIMERS-UNIVERSITY-OF-TORONTO\",\n    \"text\": \"1\"\n  },\n\
+    \  {\n    \"name\": \"AGBASE\",\n    \"text\": \"0\"\n  },\n  {\n    \"name\": \"ARGKB\",\n    \"text\": \"1\"\n  },\n\
+    \  {\n    \"name\": \"ARUK-UCL\",\n    \"text\": \"1\\nAnatomical Therapeutic Chemical Classification System (ATC)\\n1\"\
+    \n  },\n  {\n    \"name\": \"ASP2019\",\n    \"text\": \"1\\nBasic Formal Ontology (BFO)\\n2\\nBgee\\n5\"\n  },\n  {\n\
+    \    \"name\": \"BHF-UCL\",\n    \"text\": \"0\\nBindingDB\\n3\\nBioGRID\\n2\\nBiolink\\n3\\nBiological Spatial Ontology\
+    \ (BSPO)\\n1\\nBrenda Tissue Ontology (BTO)\\n3\"\n  },\n  {\n    \"name\": \"CACAO\",\n    \"text\": \"1\"\n  },\n  {\n\
+    \    \"name\": \"CAFA\",\n    \"text\": \"1\\nCancer Cell Line Encyclopedia (CCLE)\\n1\\nCancer Genome Interpreter\\n1\"\
+    \n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\"\
+    : \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n   \
+    \ \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS\
+    \ Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\"\
+    ,\n    \"text\": \"Catalogue of Semantic Mutations in Cancer (COSMIC)\\n1\"\n  },\n  {\n    \"name\": \"CCIDB\",\n   \
+    \ \"text\": \"1\\nCell Miner\\n1\\nCell Ontology (CL)\\n7\\nCellosaurus\\n1\\nCell Line ontology (CLO)\\n1\\nChEBI\\n6\\\
+    nChEMBL\\n3\\nChemical Checker\\n1\\nCIVic\\n1\\nClinicalTrials.gov\\n2\\nClinGen\\n1\\nClinVar\\n2\"\n  },\n  {\n   \
+    \ \"name\": \"CLUE\",\n    \"text\": \"1\\nCoexpressDB\\n1\\nCommon Coordinate Framework Ontology (CCF)\\n1\\nComparative\
+    \ Toxicogenomics Database\\n0\\nCompartments\\n1\\nComplexPortal\\n1\\nConnectivity Map (CMAP)\\n1\"\n  },\n  {\n    \"\
+    name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\"\
+    ,\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n \
+    \   \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"CORUM\",\n    \"text\": \"2\"\n  },\n  {\n    \"name\": \"CREEDS\",\n    \"text\": \"1\\\
+    nCTD\\n4\\nDepmap\\n1\\ndbSNP\\n1\\ndbSuper\\n1\\ndbVar\\n1\"\n  },\n  {\n    \"name\": \"DDPHENO\",\n    \"text\": \"\
+    1\"\n  },\n  {\n    \"name\": \"DDANAT\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"DFLAT\",\n    \"text\": \"\
+    1\\nDGIdb\\n1\\nDGV\\n1\"\n  },\n  {\n    \"name\": \"DIBU\",\n    \"text\": \"1\\nDictyostelium discoideum anatomy (DDANAT)\\\
+    n1\\nDictyBase\\n1\"\n  },\n  {\n    \"name\": \"DISEASES\",\n    \"text\": \"4\\nDisGenNET\\n7\\nDisPROT\\n1\\nDGIdb\\\
+    n1\\nDO\\n5\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n\
+    \  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\
+    \n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\\
+    nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"\
+    GNBR\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DOAF\",\n    \"text\": \"2\\nDoRoth EA\\n1\\nDrugBank\\n9\\nDrugCentral\\\
+    n7\\nDrugMechDB\\n1\\nDrug repurposing Hub\\n1\\nehrlink\\n2\\nEMAPA(mouse developmental anatomy ontology)\\n1\"\n  },\n\
+    \  {\n    \"name\": \"ENCODE\",\n    \"text\": \"1\\nENdb\\n1\\nEnhancerAtlas\\n1\\nEntrez Gene\\n2\\nEnsembl\\n3\\neRAM\
+    \ (encyclopedia of rare disease annotations for precision\\nmedicine)\\n1\"\n  },\n  {\n    \"name\": \"ESPD\",\n    \"\
+    text\": \"1\\nEukaryotic Promoter Database (EPD)\\n1\\nEvolutionary Rate Covariation\\n2\\nExperimental Factor Ontology\
+    \ (EFO)\\n2\"\n  },\n  {\n    \"name\": \"FAERS\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"FANTOM5\",\n    \"\
+    text\": \"1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n\
+    \  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\
+    \n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\\
+    nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"\
+    GNBR\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"FBBT\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"FBCV\"\
+    ,\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"FBDV\",\n    \"text\": \"1\\nFDA Orphan Drug Designations Data\\n1\\\
+    nFlyBase\\n2\\nFooDB\\n2\\nFood Ontology\\n1\\nFoundational Model of Anatomy (FMA)\\n2\"\n  },\n  {\n    \"name\": \"\
+    FYPO\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"GARD\",\n    \"text\": \"1\\nGDB\\n1\"\n  },\n  {\n    \"name\"\
+    : \"GDSC\",\n    \"text\": \"2\\nGHR\\n1\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"0\\nGO\\n10\\nGO-Central\\\
+    n1\\nGO consortium\\n1\"\n  },\n  {\n    \"name\": \"GENCODE\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"GENOMICS\"\
+    ,\n    \"text\": \"1\\nGenomic Epidemiology Ontology (GENEPIO)\\n0\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"\
+    text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\\
+    nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"\
+    text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"Gene Ontology, with external relationships\
+    \ (GO-Plus)\\n1\"\n  },\n  {\n    \"name\": \"GOC-OWL\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"GO-NOCTUA\"\
+    ,\n    \"text\": \"1\\nGlyGen\\n1\\nGTEx\\n3\\nGuide to PHARMACOLOGY (GtoPdb)\\n1\\nGWAS Catalog\\n5\\nHarmonizome\\n1\\\
+    nHealth Level Seven Version 3.0 (HL7V3.0)\\n1\\nHetio-dag\\n3\\nHetionet\\n1\\nHealthcare Common Procedure Coding System\
+    \ (HCPCS)\\n1\"\n  },\n  {\n    \"name\": \"HPOMP\",\n    \"text\": \"0\\nHomo Sapiens Chromosomal Location Ontology (HSCLO38)\\\
+    n1\\nHPO\\n8\\nHuBMAP Research Attributes Value Set (HRAVS)\\n2\\nHuman Developmental Anatomy, abstract\\n1\\nHuman gene\
+    \ nomenclature committee (HGNC)\\n5\"\n  },\n  {\n    \"name\": \"HGNC-UCL\",\n    \"text\": \"1\\nHuman Interactome Database\\\
+    n2\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"\
+    name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n\
+    \    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS\
+    \ Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\"\
+    ,\n    \"text\": \"Human metabolite Database (HMDB)\\n3\\nHuman-to-mouse ortholog mappings (HCOP)\\n1\\nHuman-to-mouse\
+    \ phenotype mappings (HPOMP)\\n1\"\n  },\n  {\n    \"name\": \"HSAPDV\",\n    \"text\": \"1\\nHuman-to-rat ENSEMBL mappings\
+    \ (RATHCOP)\\n1\\nHumanNet\\n1\\nHuman Protien Atlas\\n4\\nHuRI\\n1\\nICD-10 procedure coding system (ICD10PCS)\\n1\\\
+    nICD-9, clinical modification (ICD9CM)\\n1\\nIncomplete Interactome\\n2\\nInxight Drugs\\n2\\nIntAct\\n4\\nInteraction\
+    \ Network Ontology (INO)\\n1\\nInterPro\\n4\"\n  },\n  {\n    \"name\": \"INTACT\",\n    \"text\": \"1\\niPTMnet\\n1\\\
+    nJensen Lab Diseases\\n1\"\n  },\n  {\n    \"name\": \"KEGG\",\n    \"text\": \"4\"\n  },\n  {\n    \"name\": \"KFPT\"\
+    ,\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\
+    \n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\
+    \n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\\
+    nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"\
+    GNBR\",\n    \"text\": \"KinAce\\n1\\nLabeledIn\\n2\"\n  },\n  {\n    \"name\": \"LIFEDB\",\n    \"text\": \"1\"\n  },\n\
+    \  {\n    \"name\": \"LINCS 100\",\n    \"text\": \"4\\nLungMAP Human Anatomy (LMHA)\\n1\\nLogical Observation Identifiers\
+    \ Names and Codes (LOINC)\\n1\\nMammalian Phenotype Ontology\\n2\\nMass Spectrometry Ontology\\n1\\nMayo Clinic\\n1\"\n\
+    \  },\n  {\n    \"name\": \"MAXO\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"MEDI\",\n    \"text\": \"2\\nMedication\
+    \ reference terminology (MED-RT)\\n1\\nMedGen\\n1\\nMedLine\\n2\\nMEDLINE Plus\\n1\\nMetabolomicsWorkbench\\n1\\nMetaCyc\\\
+    n1\\nMetathesaurus\\n1\\nMeSH\\n5\\nMGI\\n3\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per\
+    \ source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\"\
+    ,\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\\
+    nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\
+    \n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"miRBase\\n1\\nMolecular Interactions Controlled Vocabulary (MI)\\\
+    n1\\nMolecular Interactions Ontology\\n1\\nMolecular Signatures Database (MSigDB)\\n1\\nMonarchKG\\n1\"\n  },\n  {\n \
+    \   \"name\": \"MONDO\",\n    \"text\": \"5\\nMotifMap\\n1\"\n  },\n  {\n    \"name\": \"MPATH\",\n    \"text\": \"1\\\
+    nMouse gene-to-phenotype mappings (MPMGI)\\n1\"\n  },\n  {\n    \"name\": \"MTBBASE\",\n    \"text\": \"1\\nMutationDs\\\
+    n1\\nNCBI Gene\\n2\\nNCBI Taxonomy\\n3\\nNCBO BioPortal\\n2\\nNational Cancer Institute (NCI)\\n1\\nNational Drug data\
+    \ File\\n1\\nNational drug data file-reference terminology\\n1\\nNeuro Behavior Ontology (NBO)\\n2\"\n  },\n  {\n    \"\
+    name\": \"NTNU-SB\",\n    \"text\": \"1\\nOBA\\n1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total #\
+    \ KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical\
+    \ KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\\
+    nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"OBO Foundry\\n2\\nOffsides\\n1\"\n  },\n  {\n    \"name\"\
+    : \"OMIM\",\n    \"text\": \"6\\nOmnipath\\n1\\nOncoKB\\n1\\nOntology of Genes and Genomes\\n1\\nOpen Targets\\n1\\nOrphanet\\\
+    n5\"\n  },\n  {\n    \"name\": \"PANTHER\",\n    \"text\": \"2\\nParkinsonsuk-UCL\\n1\\nPathBank\\n1\\nPathway Interaction\
+    \ Database\\n2\"\n  },\n  {\n    \"name\": \"PATRIC\",\n    \"text\": \"1\\nPathoPhenoDB\\n1\"\n  },\n  {\n    \"name\"\
+    : \"PATO\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"PDSP\",\n    \"text\": \"1\\nPharmacoDB\\n1\\nPharmGKB\\\
+    n1\\nPharos\\n1\\nPhenio\\n1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch\
+    \ KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\"\
+    : \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\\
+    nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n\
+    \  {\n    \"name\": \"GNBR\",\n    \"text\": \"Phenotype and Trait Ontology (PATO)\\n2\"\n  },\n  {\n    \"name\": \"\
+    PHI-BASE\",\n    \"text\": \"0\\nPhosphoSitePlus\\n2\\nPhysician data query\\n1\"\n  },\n  {\n    \"name\": \"PINC\",\n\
+    \    \"text\": \"1\\nPfam\\n3\\nPomBase\\n1\\nPPI\\n1\"\n  },\n  {\n    \"name\": \"PREDICT\",\n    \"text\": \"2\"\n\
+    \  },\n  {\n    \"name\": \"PRISM\",\n    \"text\": \"1\\nPROGENy\\n1\\nProtCID\\n1\\nProtien Modification Ontology\\\
+    n2\\nProtein Ontology\\n3\\nProvisional Cell Ontology (PCL)\\n1\\nPsychological index terms\\n1\\nReactome\\n8\\nReaxy\\\
+    n1\\nRefSeq\\n2\\nRegNetwork\\n1\"\n  },\n  {\n    \"name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\\
+    nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"\
+    text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\\
+    nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n    \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n\
+    \  {\n    \"name\": \"GNBR\",\n    \"text\": \"Relation Ontology (RO)\\n3\\nRepoDB\\n1\\nRepohub\\n1\\nRGD\\n2\"\n  },\n\
+    \  {\n    \"name\": \"RHEA\",\n    \"text\": \"1\\nRNAcentral\\n2\\nROSLIN-Institute\\n1\\nRxNorm\\n1\"\n  },\n  {\n \
+    \   \"name\": \"SCREEN\",\n    \"text\": \"1\\nSequence Ontology\\n1\\nSemMedDB\\n1\\nSGD\\n2\"\n  },\n  {\n    \"name\"\
+    : \"SIDER\",\n    \"text\": \"7\"\n  },\n  {\n    \"name\": \"SIGNOR\",\n    \"text\": \"2\"\n  },\n  {\n    \"name\"\
+    : \"SMPDB\",\n    \"text\": \"2\"\n  },\n  {\n    \"name\": \"SNOMED-CT\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\"\
+    : \"STARGEO\",\n    \"text\": \"2\"\n  },\n  {\n    \"name\": \"STITCH\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\"\
+    : \"STRING\",\n    \"text\": \"6\"\n  },\n  {\n    \"name\": \"SYNGO\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\"\
+    : \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\",\n\
+    \    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n   \
+    \ \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"SYNGO-UCL\",\n    \"text\": \"1\"\n  },\n  {\n    \"name\": \"SYSCILLIA-CCNET\",\n    \"\
+    text\": \"1\\nThesaurus\\n1\"\n  },\n  {\n    \"name\": \"TISSUES\",\n    \"text\": \"5\\nTTD\\n1\\nUberon\\n7\"\n  },\n\
+    \  {\n    \"name\": \"UBKG\",\n    \"text\": \"1\\nUniChem\\n1\\nUnits Ontology\\n1\\nUniProt\\n7\"\n  },\n  {\n    \"\
+    name\": \"UMLS\",\n    \"text\": \"3\"\n  },\n  {\n    \"name\": \"UPHENO\",\n    \"text\": \"1\\nVasculature Common Coordinate\
+    \ Framework (VCCF)\\n1\\nVeterans Affairs National Drug File (VANDF)\\n2\\nWbbt\\n1\"\n  },\n  {\n    \"name\": \"WBLS\"\
+    ,\n    \"text\": \"1\\nWBPhenotype\\n1\\nWikiPathways\\n2\\nWikipedia articles\\n1\\nWormBase\\n1\"\n  },\n  {\n    \"\
+    name\": \"KG SOURCES\",\n    \"text\": \"Total # KG per source\\nMonarch KG\"\n  },\n  {\n    \"name\": \"RTX-KG2\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"ROBOKOP\",\n    \"text\": \"Bioteque\"\n  },\n  {\n    \"name\": \"SPOKE\"\
+    ,\n    \"text\": \"GenomicKB\\nHetioNet\\nclinical KG\\nPetagraph\\nDrugMechDB\\nPrimeKG\\nNCATS Gard\"\n  },\n  {\n \
+    \   \"name\": \"HRA-KG\",\n    \"text\": \"EmBiology\\nPharmKG\"\n  },\n  {\n    \"name\": \"GNBR\",\n    \"text\": \"\
+    XAO\\n1\\nXenBase\\n1\\nXPO\\n1\\nYubio Lab\\n1\\nZfin\\n2\\nZebrafish Phenotype Ontology\\n1\\nZebrafish Anatomy and\
+    \ development Ontologies\\n1\\nZFS\\n1\\n4DNucleome\\n2\\nOther - NLP/text mining\\n4\\nOther\\n4\"\n  }\n]"
+  funding: 'This research is generously supported by the
+
+    ●​ National Institutes of Health (NIH) Office of the Director Grant #5R24OD011883
+
+    ●​ NIH National Human Genome Research Institute Phenomics First Resource (NHGRI)'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\",\n    \"\
+    page\": 7\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\",\n   \
+    \ \"page\": 8\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\",\n\
+    \    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p11_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_2.png\"\
+    ,\n    \"page\": 11\n  }\n]"
+references:
+  reference_count: 3

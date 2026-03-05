@@ -1,0 +1,803 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/ToolUniverse.pdf
+
+identifiers:
+  doi: 10.1016/j.cell.2024.09.022
+  pmid: '39486399'
+citation:
+  title: Empowering biomedical discovery with AI agents
+  journal: Cell
+  year: '2024'
+  volume: '187'
+  pages: 6125-6151
+  publisher: Elsevier BV
+  authors: Shanghua Gao, Ada Fang, Yepeng Huang, Valentina Giunchiglia, Ayush Noori, Jonathan Richard Schwarz, Yasha Ektefaie,
+    Jovana Kondic, Marinka Zitnik
+content:
+  sections: "[\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"TOOLUNIVERSE moves beyond bespoke AI agents by providing\
+    \ an ecosystem for constructing\\nAI scientists. It integrates tools and operations into workflows and incorporates automatic\
+    \ tool\\n5\\n\\ndiscovery and optimization. These capabilities extend any language model, agent, or reasoning\\nmodel\
+    \ with research functionality tailored to the user: models can retrieve data or run existing\\nscripts, and also identify\
+    \ relevant analysis tools, execute them with user inputs, combine outputs\\ninto multi-step workflows, and iteratively\
+    \ refine or even generate new tools when gaps are encoun-\\ntered. It is applicable across scientific domains, and its\
+    \ integration of human-in-the-loop tools\\nprovides safeguards against erroneous outputs. For example, an AI scientist\
+    \ might propose several\\ncandidate compounds, and a human expert could validate tissue-specific expression before advanc-\\\
+    ning them. Looking ahead, TOOLUNIVERSE will be used to build AI scientists for discovery and\\nserve as a testbed to evaluate\
+    \ their integration with laboratory systems, potential for safety and\\nbiosecurity risks [27], and adherence to safeguards\
+    \ [28] and governance specifications [29].\\nTOOLUNIVERSE goes beyond orchestration frameworks such as GPT Agent [30],\
+    \ Gemini\\nCLI [31], Claude Code [32], Qwen Code [33], LangChain [34], Haystack [35], Autogen [36] or\\nCAMEL [37], and\
+    \ communication protocols like MCP [11] and AutoTools [38], which standard-\\nize how models access data resources, browsers,\
+    \ and tools. These systems are designed to route\\nqueries or connect agents with pre-defined tools, but they do not support\
+    \ the end-to-end lifecycle of\\ncreating, refining, and integrating tools into scientific workflows. In contrast, TOOLUNIVERSE\
+    \ can\\ncreate and optimize tools and integrate them into agentic workflows beyond providing static tool\\nregistries.\
+    \ It introduces Tool Discoverer, which generates new tools from natural language descrip-\\ntions and transforms them\
+    \ into ready-to-use components, and Tool Optimizer, which iteratively\\nimproves tool specifications through feedback\
+    \ from users and other AI systems. These capabilities\\nenable TOOLUNIVERSE to manage and compose existing tools (Figure\
+    \ 1b) into new tools.\\nTo ensure that tools can be effectively used by AI models to build AI scientists, TOOLU-\\nNIVERSE\
+    \ employs a multi-step validation process combining tool-specific test cases for each tool\\nadded to TOOLUNIVERSE, human\
+    \ expert reviews of input-output traces, and automated optimiza-\\ntion of tool specifications to verify correctness and\
+    \ usability by AI scientists. Regular maintenance\\nand a bug-reporting system further sustain long-term reliability.\\\
+    nA close parallel to TOOLUNIVERSE is the emergence of computational platforms in ge-\\nnomics, which created shared infrastructure\
+    \ for reuse, reproducibility, and open science innova-\\ntion. TOOLUNIVERSE provides a comparable foundation for AI scientists,\
+    \ lowering barriers to\\ntheir development and use in research.\\n6\\n\\nData and code availability. The project page\
+    \ and web service of TOOLUNIVERSE are at https:\\n//aiscientist.tools. The code, docs, and demos of TOOLUNIVERSE are at\
+    \ https://github.com/mim\\ns-harvard/ToolUniverse. The Python package of TOOLUNIVERSE is at https://pypi.org/project/t\\\
+    nooluniverse. The therapeutic case study is at https://zitniklab.hms.harvard.edu/ToolUniverse/tutor\\nials/tooluniverse\
+    \ case study.html.\"\n  },\n  {\n    \"name\": \"Acknowledgments. We thank Nicholas Yang and Yuchang Su for their contributions\
+    \ to TOOL-\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"UNIVERSE\",\n    \"text\": \"We gratefully acknowledge the\
+    \ support of NIH R01-HD108794, NSF CAREER\\n2339524, U.S. DoD FA8702-15-D-0001, ARPA-H Biomedical Data Fabric (BDF) Toolbox\
+    \ Pro-\\ngram, Harvard Data Science Initiative, Amazon Faculty Research, Google Research Scholar Pro-\\ngram, AstraZeneca\
+    \ Research, Roche Alliance with Distinguished Scientists (ROADS) Program,\\nSanofi iDEA-iTECH Award, GlaxoSmithKline Award,\
+    \ Boehringer Ingelheim Award, Merck Award,\\nOptum AI Research Collaboration Award, Pfizer Research, Gates Foundation\
+    \ (INV-079038), Chan\\nZuckerberg Initiative, John and Virginia Kaneb Fellowship at Harvard Medical School, Biswas\\nComputational\
+    \ Biology Initiative in partnership with the Milken Institute, Harvard Medical School\\nDean\\u2019s Innovation Fund for\
+    \ the Use of Artificial Intelligence, and the Kempner Institute for the\\nStudy of Natural and Artificial Intelligence\
+    \ at Harvard University. Any opinions, findings, conclu-\\nsions, or recommendations expressed in this material are those\
+    \ of the authors and do not necessarily\\nreflect the views of the funders.\"\n  },\n  {\n    \"name\": \"Competing interests.\
+    \ The authors declare no competing interests\",\n    \"text\": \"7\\n\\nTool\\nspecification\\nNew tool\\nspecification\\\
+    nTool optimizer\\nWeb protocol\\nToolUniverse\\nAI scientist\\nFind tool\\nTool list\\nCall tool\\nResponse\\nAI-Tool\
+    \ interaction protocol\\nb\\nc\\nd\\nRequest\\nResponse\\nClient\\nServer\\ne\\nf\\nh\\nj\\nTool composer\\nCompose\\\
+    ntool\\nExisting tools\\ni\\nTool\\nrequirement\\nNew tool\\nTool discoverer\\nSpecification\\nCode\\nMulti-agent system\\\
+    nTools\\nTool finder\\nTool\\nrequest\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"Tool caller\\ng\\nLocal\\\
+    nSpecification\\n& Code\\nRemote\\nMCP tools\\nTool manager\\nRegistered\\nremote tool\\nRegistered\\nlocal tool\\nRemote\
+    \ tool registration\\nLocal tool registration\\ng\\nKeyword search\\nLLM-based search\\nEmbedding search\\nquery = {\\\
+    n\\u201cname\\u201d:\\n\\u201cTool identifier\\u201d,\\n\\\"arguments\\\": {\\n\\\"parameter1\\\":\\n\\\"value1\\u201d\\\
+    n}\\n}\\nInteraction\\nprotocol\\nTest cases\\nNew spec.\\nTool results\\nMCP\\nSDK\\nAPI\\nLLM\\nDatabase\\nML model\\\
+    n\\u2026.\\nTools in ToolUniverse\\nLLM, reasoning model, agent\\nAI scientists\\nML\\nmodels\\nVisualization\\nSearch\\\
+    nand\\nembeddings\\nAgents\\nScientific\\npackages\\ndatasets\\nAutomation\\nExperiment\\nWorkflows\\nFeedback\\nand\\\
+    nsafety\\nML models \\u2013 Foundation\\nmodels, language models,\\nreasoning models\\nVisualization \\u2013 Dashboards,\
+    \ plot\\nand chart generators, visual\\nreporting tools\\nAgents \\u2013 Research planning\\nagents, computational biology\\\
+    nagents, hypothesis generation\\nagents, literature search agents,\\ndata analysis agents\\nFeedback and safety \\u2013\
+    \ Privacy\\nand safety guardrails,\\ncompliance and safety policies,\\nsecurity checklists, human-in-\\nthe-loop tools\\\
+    nScientific packages \\u2013\\nComputation packages,\\nscientific and biomedical\\nlibraries, data analysis toolkits\\\
+    nand calculators, scientific\\nsimulators\\nLocal and remote datasets \\u2013\\nCurated and trusted data\\nsources, knowledge\
+    \ bases, web\\nconnectors and endpoints,\\ndocument retrieval systems,\\ntyped API clients\\nAutomation \\u2013 Lab automation,\\\
+    ninstrument control policies\\nExperimentation \\u2013 Protocol\\ngenerators, ELN/LIMS integration\\nWorkflows \\u2013\
+    \ Workflow engines,\\norchestration schedulers, RAG\\npipelines\\nSearch and embeddings \\u2013\\nVector search, embedding\\\
+    ngenerators, vector indices\\na\\nFigure 1\\n8\\n\\nFigure 1: a) TOOLUNIVERSE is an ecosystem for building AI scientists.\
+    \ General-purpose LLMs,\\nreasoning models, and agents connect to the TOOLUNIVERSE ecosystem of more than 600 scien-\\\
+    ntific tools to perform autonomous research workflows across domains. Illustrated are four open-\\nand closed-weight AI\
+    \ models: GPT, Claude, Gemini, and DeepSeek. b) Overview of the tool cat-\\negories in TOOLUNIVERSE, including ML models,\
+    \ agents, domain knowledge, experimentation,\\nscientific packages, automation, human feedback, workflows, datasets, APIs,\
+    \ embedding stores,\\nvisualization, and retrieval. c-d) Like HTTP standardizes client\\u2013server communication, TOOL-\\\
+    nUNIVERSE defines an interaction protocol that governs how AI models issue tool requests and\\nreceive responses. Core\
+    \ operations for AI scientists interacting with TOOLUNIVERSE are Find\\nTool (map natural language to tool specifications)\
+    \ and Call Tool (execute tools and return tool\\noutputs). e) Tool Finder identifies relevant tools using keyword search,\
+    \ LLM-based in-context\\nsearch, and embedding-based similarity search. f) Tool Caller validates inputs, dynamically loads\\\
+    ntools, dispatches calls through TOOLUNIVERSE.run() or MCP, and returns tool outputs. g) Tool\\nManager integrates local\
+    \ and remote tools. It registers local tools via JSON specifications and\\ndecorators and adds remote tools through MCP\
+    \ for privacy- or dependency-constrained setups.\\nh) Tool Composer chains multiple tools into composite workflows. It\
+    \ supports sequential, paral-\\nlel, and feedback-driven orchestration of heterogeneous tools. i) Tool Discoverer is a\
+    \ multi-agent\\nsystem that generates new tools from natural language requirements. It performs specification\\nsynthesis,\
+    \ automated code generation, validation, and iterative refinement to produce production-\\nready tools. j) Tool Optimizer\
+    \ is a multi-agent system that iteratively refines tool specifications\\nto improve clarity, accuracy, and usability.\
+    \ It combines test generation, execution analysis, and\\nfeedback-driven refinement. ML, Machine Learning; LLM, Large\
+    \ Language Model; HTTP, Hy-\\npertext Transfer Protocol; MCP, Model Context Protocol; RAG, Retrieval-Augmented Generation;\\\
+    nAPI, Application Programming Interface; ELN/LIMS, Electronic Lab Notebook and Laboratory\\nInformation Management System;\
+    \ SDK, Software Development Kit.\\n9\\n\\nPatent and regulatory assessment\\nIdentify the PubChem CID number of top\\\
+    ncompounds\\nRead the abstracts of these patents with\\nwebpage tool and summarize results\\nIn silico compound screening\\\
+    nScreen existing drugs in DrugBank database\\nbased on their target and indication\\nUse DrugBank tools to identify mechanism\\\
+    nand pharmacodynamics of each drug\\nPerform multi-dimensional evaluation of\\ncompound candidate to select hits\\nHMG-CoA\
+    \ reductase\\nLovastatin\\nOptimized candidates\\nCompounds validated by\\nintellectual property literature\\nTarget identification\\\
+    nAnalyze tissue expression across biological\\ncontexts and organs for selected target\\nAssess candidate targets using\
+    \ trusted\\ndatabases (Open Targets and Europe PMC)\\nIdentify most promising target using\\nfeedback from human expert\\\
+    na\\nb\\nc\\n400+\\nWe are interested in developing a drug for hypercholesterolemia. First, we must identify a promising\\\
+    nbiological target. Then, we will screen and evaluate compounds in silico, optimize them for binding and\\nADMET properties,\
+    \ and assess their associated patents and regulatory viability.\\nInput\\n600+\\nCompound design and optimization\\nUse\
+    \ the Boltz-2 ML tool to predict binding\\naffinity with the target\\nUse ADMET-AI ML tool to optimize\\ncompounds for\
+    \ acceptable ADMET profiles\\nRetrieve structural analogs from ChEMBL\\ndatabase\\nFind chemical composition patents using\\\
+    nthe CID number and PubChem API tools\\nFigure 2\\n10\\n\\nFigure 2: a) Building AI scientists by connecting LLMs (for\
+    \ example, Claude) with special-\\nized tools. The AI scientist selects appropriate tools for each task, follows clear\
+    \ instructions, and\\nexecutes tools from TOOLUNIVERSE. b) Building AI scientists with multi-round tool use and rea-\\\
+    nsoning by connecting TOOLUNIVERSE with AI agents (for example, Gemini CLI). These agents\\nidentify relevant tools, reason\
+    \ across steps, and iteratively use TOOLUNIVERSE to solve com-\\nplex, multi-stage scientific problems. c) Applying TOOLUNIVERSE\
+    \ to therapeutic discovery for\\nhypercholesterolemia by connecting it with Gemini CLI to create an AI scientist. The\
+    \ analysis\\nproceeds from target identification to compound screening, property optimization, and patent ver-\\nification.\
+    \ The AI scientist identifies HMG-CoA reductase as a therapeutic target, screens existing\\nand novel compounds using\
+    \ DrugBank, ChEMBL, and predictive ML tools such as Boltz-2 and\\nADMET-AI, and evaluates candidates through patent-mining\
+    \ tools to confirm novelty and prior\\nart. This case study shows how AI scientists chain and execute domain-specific\
+    \ tools, incorporate\\nhuman feedback, and validate therapeutic hypotheses through multi-step reasoning. Tools from\\\
+    nTOOLUNIVERSE used in this illustration of the AI scientist include local datasets (\\u201cdrugbank get\\ndrug name and\
+    \ description by target name\\u201d, \\u201cdrugbank get drug name and description by indi-\\ncation\\u201d, \\u201cdrugbank\
+    \ get pharmacology by drug name or drugbank id\\u201d), remote datasets and API\\ntools (\\u201cOpenTargets get disease\
+    \ ID description by name\\u201d, \\u201cOpenTargets get associated targets by\\ndisease efoID\\u201d, \\u201cOpenTargets\
+    \ get target tractability by ensemblID\\u201d, \\u201cEuropePMC search articles\\u201d,\\n\\u201cHPA search genes by query\\\
+    u201d, \\u201cHPA get rna expression in specific tissues\\u201d, \\u201cHPA get compre-\\nhensive gene details by ensembl\
+    \ ID\\u201d, \\u201cChEMBL search similar molecules\\u201d, \\u201cPubChem get CID\\nby SMILES\\u201d, \\u201cPubChem\
+    \ get associated patents by CID\\u201d, \\u201cget webpage text from URL\\u201d), feed-\\nback and safety (Consult human\
+    \ expert tool), and ML models (Boltz-2 and ADMET-AI tools).\\nCLI, Command Line Interface; HPA, Human Protein Atlas; ADMET,\
+    \ Absorption, Distribution,\\nMetabolism, Excretion, and Toxicity; CID, Compound Identifier.\\n11\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Information\",\n    \"text\": \"1\\nOverview of TOOLUNIVERSE\\nTOOLUNIVERSE is an ecosystem that\
+    \ wraps around any open or closed AI model, i.e., large lan-\\nguage model (LLM), agent, or large reasoning model (LRM),\
+    \ and enables the user to create and\\nrefine their own entirely custom AI research assistant (i.e., AI scientist) without\
+    \ the need for addi-\\ntional training or finetuning. To achieve that, TOOLUNIVERSE connects the user-specified LLM/L-\\\
+    nRM/agent with a scientific toolkit (Supplementary Table 1). While advanced models possess plan-\\nning and reasoning\
+    \ capabilities, scientific research cannot be conducted through reasoning alone.\\nTOOLUNIVERSE addresses this by providing\
+    \ interactive scientific environments where models can\\nuse tools to obtain real-world feedback, effectively transforming\
+    \ internal cognitive processes into\\ntangible research actions. TOOLUNIVERSE features a tool specification protocol that\
+    \ makes tools\\nunderstandable to LLMs, LRMs, and AI agents regardless of their internal mechanisms, and an\\ninteraction\
+    \ protocol that allows tool use without the need to manage backend complexities.\\nTOOLUNIVERSE is extensible and allows\
+    \ the tools to be easily added, optimized, or cre-\\nated. It hosts a toolkit of over 600 scientific tools. It also supports\
+    \ multi-query specific searches\\nto help users locate relevant tools and is engineered for easy integration with language\
+    \ models,\\nagents, and reasoning models. Current tools in TOOLUNIVERSE include: foundation models, fine-\\ntuned LLMs,\
+    \ LRMs, and other ML models exposed as callable endpoints; agentic planners and\\ntool routers; domain libraries and simulators;\
+    \ and systems for human-in-the-loop feedback and\\nlab automation with instrument control. TOOLUNIVERSE also provides\
+    \ data and retrieval utilities,\\nsuch as data sources, knowledge bases, vector search with embedding generators, and\
+    \ complete\\nretrieval-augmented generation (RAG) pipelines. For integration and governance, the ecosystem\\noffers external\
+    \ service connectors, typed API clients, privacy guardrails, safety checklists, com-\\npliance controls, and audit logs.\
+    \ TOOLUNIVERSE supports high-level scientific and operational\\nworkflows through visualization dashboards, experiment\
+    \ design tools with ELN/LIMS integration,\\nand robust workflow engines and orchestration schedulers. Despite the backend\
+    \ heterogeneity of\\nthese tools, which span machine learning models, AI agents, software utilities, robotics, databases,\\\
+    nand APIs, all are presented to the AI scientist through a unified AI-interaction protocol, which we\\ndescribe next.\\\
+    nAI-Tool Interaction Protocol. TOOLUNIVERSE implements a protocol for presenting tool defi-\\nnitions, which makes the\
+    \ backend agnostic to users and simplifies the addition of new tools. This\\nprotocol allows the user to equip their AI\
+    \ scientist with tool-use capability without having to han-\\ndle tool-specific configurations. This protocol has two\
+    \ endpoints: 1) Find Tool, which accepts a\\ntextual description of a desired functionality and retrieves tools from TOOLUNIVERSE\
+    \ that have\\nthe desired functionality, and 2) Call Tool, which executes a specified tool with its arguments and\\nreturns\
+    \ the results. TOOLUNIVERSE connects to an AI model by providing the definitions of these\\noperations within the model\\\
+    u2019s context window. This enables the model to leverage its reasoning\\n12\\n\\ncapabilities to generate the correct\
+    \ arguments for these operations and to autonomously search for\\nand execute tools.\\nCore Components. TOOLUNIVERSE include\
+    \ Tool Discoverer and Tool Manager for discovering\\nand integrating tools, a Tool Finder to search for options from over\
+    \ 600 candidates based on user\\nrequirements, and a Tool Caller for execution. For complex tasks, the Tool Composer assembles\\\
+    nmultiple tools into a composite workflow. The Tool Optimizer utilizes a built-in multi-agent system\\nto refine tool\
+    \ specifications, ensuring they better align with the tool\\u2019s actual behavior. Leveraging\\nthese components and\
+    \ the unified AI-tool interaction protocol, TOOLUNIVERSE empowers creat-\\ning AI scientists: specialized AI models that\
+    \ combine reasoning with access to curated tools to\\nperform complex research tasks.\\n2\\nUnified AI-Tool Interaction\
+    \ Protocol in TOOLUNIVERSE\\nTOOLUNIVERSE is designed to support a comprehensive ecosystem of tools with exceptionally\\\
+    ndiverse abilities. Despite the profound backend heterogeneity of these tools, which span machine\\nlearning models, AI\
+    \ agents, software utilities, robotics, databases, and APIs, all are presented to\\nthe client through a unified protocol.\\\
+    n2.1\\nTool Specification Schema\"\n  },\n  {\n    \"name\": \"Supplementary Figure 1 shows the tool specification schema\
+    \ in TOOLUNIVERSE. This protocol\",\n    \"text\": \"exposes every tool via a standard specification containing its name;\
+    \ a functional description; a\\nlist of parameters, where each parameter is explicitly defined with its own name, description,\
+    \ data\\ntype, and required status; and a return schema that shows the data structure of the returned data. An\\nexample\
+    \ tool specification is shown in Supplementary Figure 2. The specification is provided to\\nclients such as LLMs, reasoning\
+    \ models, AI agents, and human users to help them understand how\\nto use the tool effectively. For instance, when the\
+    \ client is an LLM, the specification is supplied\\nwithin its context window, thereby granting it the necessary information\
+    \ to interact with tools from\"\n  },\n  {\n    \"name\": \"TOOLUNIVERSE\",\n    \"text\": \"2.2\\nAI-Tool Interaction\
+    \ Protocol\\nTOOLUNIVERSE processes requests through a standard interaction protocol, illustrated in Supple-\\nmentary\
+    \ Figure 3. All interactions are formatted as a single string that encodes a function call,\\nspecifying the desired tool\\\
+    u2019s name and its input arguments. This protocol provides the foundation\\nfor all interactions with TOOLUNIVERSE, enabling\
+    \ a suite of core operations including tool search,\\ncalling, discovery, optimization, and composition.\\n2.3\\nAI Communication\
+    \ in TOOLUNIVERSE\\nTOOLUNIVERSE provides two methods for communication: local and remote. For local communi-\\ncation,\
+    \ operations are executed directly in a Python environment using the TOOLUNIVERSE.run()\\nfunction. To support remote\
+    \ serving, TOOLUNIVERSE also implements the Model Context Proto-\\n13\\n\\nName: The unique identifier for the tool.\\\
+    nDescription: A clear and concise summary of the tool\\u2019s purpose and functionality.\\nParameters: A list of arguments\
+    \ that the tool accepts. Each argument has the following\\nproperties:\\n\\u2022 Argument Name: The name of the parameter.\\\
+    n\\u2022 Argument Type: The expected data type for the parameter\\u2019s value (e.g., string,\\ninteger, boolean).\\n\\\
+    u2022 Argument Description: A detailed explanation of what the parameter represents\\nand its purpose.\\n\\u2022 Required:\
+    \ A boolean value indicating whether the parameter is mandatory for the\\ntool to execute.\\nReturn Schema: A description\
+    \ of the structure and data types of the output returned by the\\ntool upon successful execution.\\nTool Specification\
+    \ Schema in TOOLUNIVERSE\"\n  },\n  {\n    \"name\": \"Supplementary Figure 1: The tool specification schema in TOOLUNIVERSE.\
+    \ The tool specification schema in\",\n    \"text\": \"TOOLUNIVERSE is consistent across all tools, regardless of their\
+    \ diverse backends.\\ncol (MCP), which allows all operations like searching and invoking tools to be communicated with\\\
+    nthe TOOLUNIVERSE server over a network, eliminating the need for local deployment.\\n2.4\\nAccessing Tools from TOOLUNIVERSE\\\
+    nBy leveraging a tool specification and interaction protocol, TOOLUNIVERSE provides an interface\\nfor human users and\
+    \ AI agents to access tools. The tool can be invoked by executing:\\ntooluniverse.run(tool_call_schema)\\nwhere tool_call_schema\
+    \ is a dictionary following the Interaction Protocol Schema: {\\u2018name\\u2019:\\nname of the tool, \\u2018arguments\\\
+    u2019: parameters required by the tool}. This approach abstracts away\\nbackend complexity. Regardless of a tool\\u2019s\
+    \ underlying implementation, it is presented to the client\\n(the user of the tool, such as LLMs, reasoning models, AI\
+    \ agents) as a specification. To use a\\ntool, the client consults this specification to construct a request that adheres\
+    \ to the unified AI-tool\\ninteraction protocol. This request is then sent to TOOLUNIVERSE via either a local interface\
+    \ or a\\nremote MCP connection. TOOLUNIVERSE processes the request, executes the specified tool, and\\nreturns the results\
+    \ to the client. This eliminates the need for complex configurations, regardless\\n14\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ Figure 2: One example of tool specification in TOOLUNIVERSE\",\n    \"text\": \"Name: The name of the tool or operation\
+    \ to be called.\\nParameters: A list of arguments that the tool accepts. Each argument has the following\\nproperties:\\\
+    n\\u2022 Argument Name: The name of the parameter.\\n\\u2022 Argument Value: The value for the parameter provided by the\
+    \ client.\\nInteraction schema in TOOLUNIVERSE\"\n  },\n  {\n    \"name\": \"Supplementary Figure 3: The universal interaction\
+    \ schema for all tools and operations within TOOLUNIVERSE\",\n    \"text\": \"of backend or runtime differences. For example,\
+    \ users can query a new database without writing\\ndatabase-specific SQL, run machine learning models without configuring\
+    \ GPUs or environments,\\nor access web-based lab equipment through a single, standardized tool call request.\\n3\\nCore\
+    \ Components of TOOLUNIVERSE\\nTOOLUNIVERSE operates through a set of core components designed for comprehensive tool\
+    \ man-\\nagement. Its capabilities include Tool Discoverer to discover new tools and Tool Manager to in-\\ntegrate tools\
+    \ into TOOLUNIVERSE, a Tool Finder to search for suitable options from over 600\\ncandidates based on user requirements,\
+    \ and a Tool Caller for execution. For complex tasks, the\\nTool Composer assembles multiple tools into a new, composite\
+    \ workflow. The Tool Optimizer\\nutilizes a built-in multi-agent system to refine tool specifications, ensuring they better\
+    \ align with\\nthe tool\\u2019s actual behavior.\\n15\\n\\n3.1\\nTool Finder\\nThe TOOLUNIVERSE contains a large repository\
+    \ of scientific tools. To facilitate the creation of\\na task-specific environment, the tool finder operation is designed\
+    \ to identify and retrieve relevant\\ntools based on user requirements. The input to the tool finder is a natural language\
+    \ query from\\nthe client, describing the task they wish to achieve or the specific capabilities required from the\\ntools.\
+    \ It employs a versatile search architecture featuring three distinct methodologies: keyword\\nsearch, LLM in-context\
+    \ search, and embedding search. The selection of a method allows for a\\nstrategic trade-off between search precision,\
+    \ semantic understanding, and computational resource\\nconsumption.\\nKeyword search. Keyword search operates on a sophisticated\
+    \ keyword-based methodology. The\\nprocess begins by parsing a user\\u2019s query through a multi-stage pipeline involving\
+    \ tokenization\\nvia regular expressions, the removal of over 45 common English stop words, and suffix-based\\nstemming\
+    \ using 20 morphological rules to reduce words to their root form. To capture multi-word\\nconcepts, this method also\
+    \ generates n-grams (bigrams and trigrams). These processed keywords\\nand phrases are then matched against a pre-built\
+    \ index of tool specifications. which has undergone\\nthe same processing. Relevance is scored using a term frequency-inverse\
+    \ document frequency\\n(TF-IDF) algorithm, calculated as: Relevance = TF \\u00d7 IDF \\u00d7 log(1 + QueryFrequency),\
+    \ where\\nTF measures how often a term appears in a document, IDF reflects how unique the term is across\\nall documents,\
+    \ and QueryFrequency indicates how often the term appears in the user\\u2019s query. The\\nscoring model enhances precision\
+    \ by applying a hierarchical bonus structure to the relevance score.\\nMatches found in a tool\\u2019s name receive the\
+    \ highest priority with a 2.0\\u00d7 bonus multiplier, followed\\nby a 1.5\\u00d7 multiplier for exact phrase matches\
+    \ within descriptions. This keyword search approach\\nprovides a fast and robust search solution that operates independently\
+    \ of machine learning models,\\nensuring accessibility across different resource levels.\\nLLM in-context search. The\
+    \ LLM in-context search leverages the advanced reasoning capabil-\\nities of a Large Language Model to interpret user\
+    \ intent more holistically. Rather than relying\\non simple keyword matching, a detailed prompt for tool selection is\
+    \ constructed. This prompt\\ncontextualizes the user\\u2019s task description with the tool specifications of a candidate\
+    \ set of tools in\\nTOOLUNIVERSE. The LLM is then tasked with analyzing this rich context to infer the optimal\\ntool\
+    \ or sequence of tools required to fulfill the user\\u2019s request. This method excels at interpreting\\ncomplex, multi-step,\
+    \ or abstract queries that demand logical inference. While its application can\\nbe constrained by the finite context\
+    \ window of the model, it offers strong flexibility in understand-\\ning abstract goals. The LLM in-context search is\
+    \ powered by the agentic tool implementation\\nin TOOLUNIVERSE. This allows the user to simply provide a configuration\
+    \ file that defines the\\nprompt and tool specifications, without needing to manage the backend LLM inference processes.\\\
+    nEmbedding search. Embedding search is a highly scalable method that retrieves tools by match-\\ning the semantic similarity\
+    \ between a user\\u2019s query and the tool\\u2019s description. To achieve this, we\\nfinetune the GTE-Qwen2-1.5B language\
+    \ embedding model using pairs of synthetic user queries\\n16\"\n  },\n  {\n    \"name\": \"Supplementary Figure 4: Code\
+    \ example of a tool operation implementation used by the Tool Caller during execution\",\n    \"text\": \"and augmented\
+    \ tool specifications, training it to understand the connection between a user\\u2019s in-\\ntent and a tool\\u2019s function.\
+    \ The process involves two stages. First, in an offline indexing stage,\\neach tool\\u2019s specification is passed through\
+    \ the embedding model to generate a semantic vector that\\ncaptures its meaning. These vectors are then stored and indexed\
+    \ in a specialized vector database.\\nLater, during the online querying stage, a user\\u2019s natural language query is\
+    \ converted into a query\\nvector using the same model. Finally, relevant tools are discovered by calculating the cosine\
+    \ simi-\\nlarity between the user\\u2019s query vector and all the tool vectors in the database, identifying the closest\\\
+    nmatches.\\n3.2\\nTool Caller\\nThe Tool Caller is the primary execution engine in TOOLUNIVERSE. It is responsible for\
+    \ in-\\nstantiating tools, validating requests, and dispatching calls. Upon initialization, the Tool Caller is\\nconfigured\
+    \ with a manifest of available tools, including their specifications and settings. To miti-\\ngate the significant system\
+    \ overhead associated with loading all tools simultaneously, it employs a\\ndynamic loading strategy. A specific tool\
+    \ is loaded into memory only upon its first request and is\\nthen cached for a duration to efficiently handle subsequent\
+    \ calls. During this loading process, the\\nTool Caller injects the necessary configurations, such as API endpoints and\
+    \ authentication keys,\\ninto the corresponding tool class.\\nWhen a tool execution request is received, the Tool Caller\
+    \ first parses it to extract the tool\\nname and arguments. It then performs a rigorous validation check, ensuring the\
+    \ provided argu-\\nments conform to the data types and structural requirements defined in the tool\\u2019s specification.\\\
+    nOnce validated, the Tool Caller dispatches the arguments to the tool\\u2019s primary execution method,\\nsuch as run(),\
+    \ as illustrated in Supplementary Figure 4. The resulting output is then returned\\nto the client through the TOOLUNIVERSE\\\
+    u2019s communication protocols. If any step in this process\\nfails, from loading to validation or execution, the system\
+    \ generates and returns a descriptive er-\\nror message. This feedback mechanism helps the client diagnose the issue and\
+    \ revise the request\\naccordingly.\\n17\"\n  },\n  {\n    \"name\": \"Supplementary Figure 5: Example code demonstrating\
+    \ how to register a local tool with Tool Manager and add it to\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TOOLUNIVERSE\"\
+    ,\n    \"text\": \"3.3\\nTool Manager\\nTool Manager is designed to simplify the process of adding new tools to TOOLUNIVERSE.\
+    \ Tool\\nManager simplifies the addition of new tools through two modes: local tools and remote tool\\nintegration. For\
+    \ local tools, which require no special dependencies, only a JSON specification\\n(including name, descriptions, arguments,\
+    \ and configurations) and a corresponding function are\\nneeded. The function executes the tool call arguments. For remote\
+    \ tools, which may have special\\ndependencies or cannot be open-sourced, TOOLUNIVERSE offers a wrapper that links them\
+    \ as\\nexternal tools via the MCP.\\nLocal Tool Registration. For local tool registration, to add a tool to TOOLUNIVERSE,\
+    \ both a\\ntool configuration and a corresponding tool class are required. The tool configuration is a dictio-\\nnary\
+    \ that specifies the tool according to the Tool Specification Schema of TOOLUNIVERSE and\\nincludes the necessary settings\
+    \ for its execution. The tool class defines an initialization func-\\ntion that sets up the tool based on its specification,\
+    \ as well as a run function that processes tool\\ncall arguments in accordance with the Interaction Protocol Schema of\
+    \ TOOLUNIVERSE. Local\\ntool registration within the Tool Manager is facilitated through an easy-to-use decorator func-\\\
+    ntion, register tool(Class name, tool config), which decorates the tool class as il-\\nlustrated in Supplementary Figure\
+    \ 5. Here, Class name is the string name of the tool class, and\\n18\"\n  },\n  {\n    \"name\": \"Supplementary Figure\
+    \ 6: Example code demonstrating how to register a remote tool with Tool Manager and add it\",\n    \"text\": \"to TOOLUNIVERSE.\\\
+    ntool config is the configuration containing both the tool specification and required settings.\\nOnce registered, the\
+    \ tool is automatically integrated into TOOLUNIVERSE without further manual\\nconfiguration. This registration process\
+    \ allows users to incorporate custom tools into TOOLUNI-\\nVERSE. This enables coordination with other existing tools,\
+    \ thereby empowering the creation of\\ncustomized AI scientists.\\nRemote Tool Registration. Remote Tool Registration\
+    \ enables the integration of tools that are pri-\\nvate, require specialized configurations, or operate within restricted\
+    \ environments, and therefore\\ncannot be made publicly available. Once registered remotely, these tools are added to\
+    \ TOOLUNI-\\nVERSE and can be accessed and executed in the same manner as standard tools.\\nTo achieve this, the Tool\
+    \ Manager includes an automatic MCP Auto Loader Tool that accepts\\nthe address of an MCP server and registers all of\
+    \ its tools into the TOOLUNIVERSE\\u2019s tool list. After\\nthe MCP Auto Loader Tool has loaded the remote tools, they\
+    \ are integrated into the TOOLUNI-\\nVERSE with the same functionality as other tools. For the remote side, TOOLUNIVERSE\
+    \ supports\\ntwo methods for setting up a remote tool. The first is building standard tools that support MCP. To\\n19\\\
+    n\\nfurther simplify the process and make remote tool registration identical to local registration, the\\nTool Manager\
+    \ also provides a decorator function, register remote tool(Class name,\\ntool config, mcp config). In this function, the\
+    \ Class name and tool config pa-\\nrameters are the same as those used in register tool(Class name, tool config),\\nwhile\
+    \ mcp config defines the configuration for the MCP server, such as the host address and\\nport used for the service.\"\
+    \n  },\n  {\n    \"name\": \"Supplementary Figure 7: This example demonstrates a composable tool, built with the Tool\
+    \ Composer, that runs\",\n    \"text\": \"multiple literature search tools concurrently, followed by a summary agent that\
+    \ synthesizes the results. The Tool\\nComposer enables the combination of multiple tools from TOOLUNIVERSE in diverse\
+    \ ways, such as in parallel,\\nsequentially, or in loops, enabling multi-tool collaboration.\\n3.4\\nTool Composer\\nFor\
+    \ complex tasks, users can create new composite tools by programmatically combining ex-\\nisting ones. Tool Composer enables\
+    \ the integration of tools with heterogeneous back ends to\\nbuild end-to-end workflows. Leveraging the Tool Caller for\
+    \ direct in-code execution, Tool Com-\\nposer generates a container function that exposes both the Tool Caller and TOOLUNIVERSE\
+    \ as\\nin-line, executable primitives. The container function, implemented as compose(arguments,\\ntooluniverse, call\
+    \ tool), serves as the execution backbone for Tool Composer. It con-\\ntains the logic for coordinating different types\
+    \ of tools so they work together in a single workflow.\\nThe arguments parameter specifies the tool call arguments that\
+    \ follow the interaction protocol\\nschema of TOOLUNIVERSE, the tooluniverse is an instance of TOOLUNIVERSE that pro-\\\
+    nvides all available functions that TOOLUNIVERSE can support, and the call tool parameter\\nis a callable interface of\
+    \ Tool Caller that abstracts the invocation of individual tools in TOOL-\\nUNIVERSE. By integrating these components,\
+    \ the container function enables flexible multi-tool\\nexecution patterns, such as chaining outputs between tools, broadcasting\
+    \ a single query across\\nmultiple tools, and constructing agentic loops that leverage tool feedback for adaptive, multi-step\\\
+    n20\\n\\nexperimental analysis. It can chain the output of one tool into the input of the next, call multiple\\ntools\
+    \ with a single query, and build agentic loops that use an agentic tool to generate function calls,\\nexecute tools, and\
+    \ incorporate tool feedback for multi-step experimental analysis. As illustrated\\nin Supplementary Figure 7, a composed\
+    \ tool can run several literature search tools concurrently\\nand then invoke a summarization agent to synthesize the\
+    \ findings, demonstrating heterogeneous\\nworkflow construction in which each step is driven by tool execution.\\n3.5\\\
+    nTool Optimizer\\nTool Optimizer is designed to refine a tool\\u2019s specifications, ensuring they are clear, accurate,\
+    \ and\\neasily understood by models. Taking advantage of the workflow building of TOOLUNIVERSE us-\\ning Tool Composer,\
+    \ we build an agentic tool description optimization tool, where the tool descrip-\\ntion is optimized by an iterative\
+    \ multi-round process that combines automated test case generation,\\nreal tool execution analysis, and agentic-powered\
+    \ feedback refinement. Through feedback-driven\\niterations, the system progressively improves both tool descriptions\
+    \ and parameter specifications,\\neliminating redundancy between them while ensuring accuracy through empirical validation.\
+    \ The\\noptimization process automatically terminates when quality thresholds are met or maximum itera-\\ntions are reached,\
+    \ producing specifications that enhances tool usability for AI agents.\\nCore principles and tools. We develop the Tool\
+    \ Optimizer that employs a multi-round iterative\\noptimization strategy to automatically enhance tool documentation quality.\
+    \ The optimizer is built\\non three core principles: (1) test-driven optimization that validates descriptions against\
+    \ actual tool\\nexecution results, (2) multi-dimensional quality assessment across six standardized criteria, and (3)\\\
+    nfeedback-driven improvement that leverages insights from previous optimization rounds to guide\\nsubsequent iterations.\
+    \ The optimizer implements a compositional architecture consisting of four\\nspecialized components working in concert.\
+    \ The TestCaseGenerator creates diverse test scenarios\\nbased on tool configurations and adaptively generates targeted\
+    \ test cases in later rounds using feed-\\nback from previous iterations. The DescriptionAnalyzer examines the alignment\
+    \ between existing\\ndescriptions and actual tool behavior by analyzing test execution results, then generates optimized\\\
+    ndescriptions that better reflect the tool\\u2019s true functionality. The ArgumentDescriptionOptimizer\\nspecifically\
+    \ targets parameter descriptions to ensure consistency with real usage patterns while\\neliminating redundancy between\
+    \ tool and parameter documentation. Finally, the DescriptionQual-\\nityEvaluator provides objective scoring on a 0-10\
+    \ scale across six quality dimensions: clarity,\\naccuracy, completeness, conciseness, user-friendliness, and redundancy\
+    \ avoidance.\\nOptimization process. The optimization process begins with initial test case generation followed\\nby tool\
+    \ execution to gather baseline performance data. The system then enters an iterative opti-\\nmization loop where each\
+    \ round generates enhanced test cases based on previous feedback, ana-\\nlyzes accumulated test results to propose improved\
+    \ descriptions, optimizes both tool and parameter\\ndescriptions, and evaluates quality against predefined thresholds.\
+    \ The process continues until ei-\\nther the satisfaction threshold is met (typically 8.0/10 for production use) or the\
+    \ maximum iteration\\n21\\n\\nlimit is reached (default: 3 rounds). This adaptive approach ensures comprehensive coverage\
+    \ while\\nmaintaining computational efficiency.\\n3.6\\nTool Discoverer\\nTool Discoverer automatically generates new\
+    \ tools, including both specifications and executable\\ncode, from high-level natural language descriptions. Leveraging\
+    \ the workflow composition ca-\\npabilities of TOOLUNIVERSE via Tool Composer, we construct an agentic multi-stage pipeline\\\
+    nthat transforms a plain-text functional request into a production-ready tool with minimal human\\nintervention. The process\
+    \ integrates tool discovery, structured specification generation, code im-\\nplementation, and iterative quality refinement,\
+    \ ensuring that the final tool adheres to functional\\nrequirements and ecosystem conventions.\\nThrough iterative feedback\
+    \ loops combining search, analysis, and code optimization, the\\nsystem progressively improves the generated tool until\
+    \ it reaches predefined quality standards.\\nThe process terminates when target scores are achieved or iteration limits\
+    \ are reached, producing\\ntools that are robust, maintainable, and ready for deployment.\\nCore principles and architecture.\
+    \ The Tool Discoverer system is built around four core princi-\\nples: pattern-guided generation that reuses functional\
+    \ patterns and conventions from existing tools\\nto ensure ecosystem consistency; structured specification synthesis that\
+    \ transforms unstructured re-\\nquests into tool specifications; automated code generation and validation that produces\
+    \ executable\\nimplementations with integrated testing; and iterative refinement that uses feedback from analysis\\nand\
+    \ testing to drive targeted improvements.\\nThe system integrates four specialized components. The tool finder locates\
+    \ existing tools\\nwith similar functionality using semantic similarity and keyword-based search, ensuring adher-\\nence\
+    \ to established conventions. The SpecificationGenerator converts the natural language descrip-\\ntion into a structured\
+    \ specification, including tool name, description, parameter definitions, return\\nschema, and category metadata. The\
+    \ ImplementationGenerator produces code that follows best\\npractices, includes complete dependency handling, integrates\
+    \ with the TOOLUNIVERSE registry,\\nand implements error handling for robust operation. The QualityEvaluator assesses\
+    \ the generated\\ntool across functionality, reliability, maintainability, performance, and test coverage, scoring each\\\
+    ndimension from 0\\u201310 and computing an overall weighted score.\\nGeneration process. The generation workflow begins\
+    \ with the discovery stage, which accepts a\\ntool description as inputs. It applies multiple search strategies to retrieve\
+    \ similar tools. Results are\\nvalidated, deduplicated, and compiled into a final set of references. Next, the specification\
+    \ stage\\nuses a agentic tool to produce a complete tool configuration. This includes tool name, descrip-\\ntions, parameter\
+    \ definitions with type annotations and descriptions, JSON-schema-based return\\ntype specification, and other meta data.\
+    \ The output conforms to TOOLUNIVERSE schema require-\\nments and naming conventions, enabling immediate downstream integration.\
+    \ The implementation\\nphase employs template-driven code generation to produce production-ready code, incorporating\\\
+    n22\\n\\nrequired imports, type-hinted function signatures, error handling, integration hooks via the @reg-\\nister tool\
+    \ decorator in TOOLUNIVERSE, and a deployment-ready module structure. Finally, the\\nsystem conducts a multiple quality\
+    \ assessments, combining code analysis, dynamic testing with\\nauto-generated test cases, and performance profiling. Each\
+    \ dimension is scored, with a target\\nminimum of 9/10 for production deployment. An iterative refinement loop applies\
+    \ targeted im-\\nprovements until the threshold is met. Generated tools are packaged for immediate inclusion in\\nTOOLUNIVERSE,\
+    \ producing a JSON configuration file with metadata, a source file with the com-\\nplete implementation, and dependency\
+    \ specifications for reproducible installation.\\n4\\nBuilding AI scientists with TOOLUNIVERSE\\nA customized AI scientist\
+    \ can be developed by integrating TOOLUNIVERSE with LLMs, reason-\\ning models, and AI agents. In this configuration,\
+    \ the LLMs and reasoning models provide the core\\ncapabilities for reasoning and tool usage, while TOOLUNIVERSE serves\
+    \ as the scientific environ-\\nment for interaction and experimentation. The development process typically involves three\
+    \ steps:\\n1) installing TOOLUNIVERSE with a single command (pip install tooluniverse); 2)\\nconnecting TOOLUNIVERSE to\
+    \ the chosen model so it can access the tools provided by TOOLU-\\nNIVERSE; and 3) instructing the model to use these\
+    \ tools to address a given scientific problem.\\nOnce the setup is complete, the AI scientist operates as follows: given\
+    \ a user instruction or\\ntask, it formulates a plan or hypothesis, employs the tool finder in TOOLUNIVERSE to identify\\\
+    nrelevant tools, and iteratively applies these tools to gather information, conduct experiments, ver-\\nify hypotheses,\
+    \ and request human feedback when necessary. For each required tool call, the AI\\nscientist generates arguments that\
+    \ conform to the TOOLUNIVERSE protocol, after which TOOLU-\\nNIVERSE executes the tool and returns the results for further\
+    \ reasoning.\\nThe models used to construct AI scientists can include LLMs, reasoning models, and AI\\nagents. LLMs may\
+    \ be API-based, such as GPT, Claude, or Gemini, or open-weight models, such\\nas LLaMA, DeepSeek, or Qwen. Large reasoning\
+    \ models enhance problem-solving capabilities\\nby applying built-in chains of thought to analyze the current step before\
+    \ interacting with TOOL-\\nUNIVERSE. Agentic systems, such as Gemini CLI or Claude Code, integrate reasoning models\\\
+    nwith agentic feedback loops to autonomously manage multi-step problem solving and tool use. In\\naddition to general-purpose\
+    \ agents, TOOLUNIVERSE can be paired with specialized agents trained\\nfor specific scientific domains, enabling stronger\
+    \ performance on targeted tasks. The following\\nsections present three examples of building AI scientists using LLMs,\
+    \ agentic systems, and spe-\\ncialized agents.\\n4.1\\nBuilding an AI Scientist from an LLM or an LRM\\nFigure 2b illustrates\
+    \ an example of building an AI scientist using an LLM, such as Claude, together\\nwith TOOLUNIVERSE. The process involves\
+    \ only three steps.\\n1. Install TOOLUNIVERSE with a single command and install the Claude desktop app.\\n23\"\n  },\n\
+    \  {\n    \"name\": \"Open the Claude Desktop and navigate to Settings \\u2192Developer \\u2192Edit Config\",\n    \"\
+    text\": \"Set up the configurations as follows:\\n{\\n\\\"mcpServers\\\": {\\n\\\"tooluniverse\\\": {\\n\\\"command\\\"\
+    : \\\"uv\\\",\\n\\\"args\\\": [\\n\\\"--directory\\\",\\n\\\"path_to_ToolUniverse/src/tooluniverse\\\",\\n\\\"run\\\"\
+    ,\\n\\\"tooluniverse-mcp-claude\\\"\\n]\\n}\\n}\\n}\\n3. Launch the Claude Desktop, select tools in TOOLUNIVERSE for the\
+    \ desired tasks.\\n4.2\\nBuilding an AI Scientist from an AI Agent\\nWe demonstrate how to build an AI scientist using\
+    \ AI Agents, such as the Gemini CLI, together\\nwith TOOLUNIVERSE.\\nWhile AI Agents can automatically leverage TOOLUNIVERSE\
+    \ \\u2019s tool\\nfinder to identify the tools required for specific tasks, the process of creating an AI scientist in-\\\
+    nvolves just two steps.\"\n  },\n  {\n    \"name\": \"Install TOOLUNIVERSE with a single command and install the Gemini\
+    \ CLI\",\n    \"text\": \"2. Open the setting configuration file for Gemini CLI. Set up the configurations as follows:\\\
+    n{\\n\\\"mcpServers\\\": {\\n\\\"tooluniverse\\\": {\\n\\\"command\\\": \\\"uv\\\",\\n\\\"args\\\": [\\n\\\"--directory\\\
+    \",\\n\\\"/path/to/your/gemini_running_env\\\",\\n\\\"run\\\",\\n\\\"tooluniverse-smcp-stdio\\\"\\n]\\n}\\n},\\n}\\n24\\\
+    n\\n4.3\\nBuilding an AI Scientist from a Specialized AI Agent\\nSpecialized AI agents are trained on specific types of\
+    \ tasks, allowing them to become experts in\\nparticular domains, such as the TxAgent [13] for precision therapeutics,\
+    \ GeneAgent [16] for gene-\\nset analysis, and SpatialAgent [39] for spatial biology. In TxAgent [13], TOOLUNIVERSE can\
+    \ be\\nused not only by these specialized AI agents during inference but also as a real-world environment\\nfor agent\
+    \ training. In training, TOOLUNIVERSE serves as the scientific environment in which\\nTxAgent can interact. Through reinforcement\
+    \ learning, TxAgent learns how to use tools within\\nTOOLUNIVERSE and effectively manage complex therapeutic tasks.\\\
+    nTool category\\nDescription\\nML models\\nTools that apply machine learning algorithms to tasks like prediction,\\nclassification,\
+    \ or generation. Examples include foundation models,\\nlanguage models, and reasoning models.\\nAgents\\nTools that operate\
+    \ autonomously to perceive environments, make\\ndecisions, and take actions toward goals. Examples include research\\\
+    nplanning agents, hypothesis generation agents, and data analysis agents.\\nScientific\\npackages\\nSoftware packages\
+    \ engineered to facilitate diverse scientific tasks,\\nexperiments, and data analysis workflows. Examples include\\ncomputation\
+    \ packages, biomedical libraries, and scientific simulators.\\nAutomation\\nTools involving physical or simulated machines\
+    \ capable of sensing,\\nreasoning, and acting in the world. Examples include lab automation\\ntools and instrument control\
+    \ policies.\\nWorkflows\\nTools that enable complex, multi-step scientific workflows. Examples\\ninclude orchestration\
+    \ schedulers and RAG pipelines.\\nVisualization\\nTools that facilitate the display and communication of scientific data\
+    \ and\"\n  },\n  {\n    \"name\": \"results. Examples include dashboards and plot and chart generators\",\n    \"text\"\
+    : \"Feedback and\\nsafety\\nTools that incorporate evaluations or input from human experts to ensure\\nsafety and goal\
+    \ alignment. Examples include privacy guardrails, security\\nchecklists, and human-in-the-loop tools.\\nLocal and remote\\\
+    ndatasets\\nTools that store, manage, and query structured or semi-structured data\\nefficiently, including relational,\
+    \ tabular, and hierarchical datasets.\\nExamples include knowledge bases and typed API clients.\\nExperimentation\\nTools\
+    \ that support the design and management of experiments. Examples\\ninclude protocol generators and LIMS integration tools.\\\
+    n25\\n\\nSearch and\\nembeddings\\nTools that store and retrieve vectorized representations of data for use in\\nmachine\
+    \ learning tasks. Examples include vector search tools and\\nembedding generators.\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ Table 1: Types of tools in TOOLUNIVERSE that TOOLUNIVERSE-powered AI scientists can use\",\n    \"text\": \"Tool category\\\
+    nNumber\\nExamples of tools in TOOLUNIVERSE\\nML models\\n17\\nboltz2 docking,\\nrun TxAgent biomedical reasoning,\\nADMET\
+    \ predict CYP interactions\\nAgents\\n56\\nHypothesisGenerator,\\nCodeQualityAnalyzer,\\nMedicalLiteratureReviewer\\nScientific\\\
+    npackages\\n164\\nget biopython info,\\nget pyscreener info,\\nget pykalman info\\nAutomation\\n8\\ncommunicate with ros\
+    \ robot,\\nmcp auto loader,\\nmcp client\\nWorkflows\\n11\\nbiomarker discovery workflow\\ntool optimizer\\ntool discoverer\\\
+    nVisualization\\n3\\nvisualize protein structure 3d\\nvisualize molecule 2d\\nvisualize molecule 3d\\nFeedback and\\nsafety\\\
+    n6\\nconsult human expert,\\nget expert response,\\nget expert status\\nLocal and remote\\ndatasets\\n391\\ndrugbank get\
+    \ drug pathways and reactions by name,\\nHPA get comprehensive gene details by ensembl id,\\nFDA get active ingredient\
+    \ info by drug name,\\nOpenTargets get associated targets by disease efoId\\n26\\n\\nSearch and\\nembeddings\\n4\\nembedding\
+    \ tool finder,\\nembedding database search,\\nembedding database add\\nExperimentation\\n3\\nexperimental design scorer,\\\
+    nprotocol optimizer,\\nextract clinical trial outcomes\"\n  },\n  {\n    \"name\": \"Supplementary Table 2: Number of\
+    \ tools and example tools for each category in TOOLUNIVERSE. The table shows\",\n    \"text\": \"the number of tools as\
+    \ of October 11, 2025. Note that TOOLUNIVERSE is continually expanded with new tools.\\n5\\nTools in TOOLUNIVERSE\\nTOOLUNIVERSE\
+    \ is a scientific environment that contains over 600 tools covering essential scien-\\ntific research domains. TOOLUNIVERSE\
+    \ integrates built-in tool categories that are easy for people\\nto reuse, covering machine learning models, AI agents,\
+    \ software utilities, expert feedback systems,\\nrobotics, databases, embedding stores, data archives, and APIs, each\
+    \ serving specific computa-\\ntional and analytical requirements.\\nAgentic tools. Agentic tools operate autonomously\
+    \ to perform complex tasks using LLMs. Each\\nagent is configurable with custom prompts and tool specifications, supporting\
+    \ multiple backend\\nmodels, including ChatGPT and Gemini. TOOLUNIVERSE includes agentic tools for literature\\nsummarization,\
+    \ code analysis, hypothesis generation, experiment planning, and results analysis.\\nBy defining the prompts and tool\
+    \ specifications in the configuration file, one can quickly build an\\nagentic tool.\\nScientific software package tools.\
+    \ To support scientific coding, scientific package tools pro-\\nvide comprehensive information about Python-based scientific\
+    \ computing libraries such as NumPy,\\nPandas, and SciPy. These tools offer installation instructions, usage examples,\
+    \ and documentation\\nlinks, implementing dual-source data retrieval from PyPI APIs with local backup information.\\nDatabase\
+    \ tools. Database tools manage structured scientific resources such as DrugBank vo-\\ncabulary datasets, clinical trial\
+    \ records, and molecular databases. They support integrations with\\ntabular, hierarchical, XML-based, and graph-structured\
+    \ data. These tools provide capabilities for\\ntext-based search, field-level filtering, configurable result limits, and\
+    \ metadata return schemas.\\nBuilt-in search, filtering, and indexing features can be reused when incorporating new databases.\\\
+    nAPI integration tools. API integration tools enable communication with external scientific data\\nsources using standard\
+    \ protocols such as RESTful APIs or GraphQL. Through these tools, users\\ncan access resources like FDA drug databases,\
+    \ OpenTargets disease\\u2013target associations, PubChem\\ncompound information, and many other databases, all with robust\
+    \ error handling and response\\nvalidation. New tools can be incorporated by updating the API server URL, provided the\
+    \ common\\nprotocol is maintained.\\nExpert feedback tools. Expert feedback tools integrate human expertise directly into\
+    \ the environ-\\n27\\n\\nment, allowing AI scientists to request human suggestions or approval whenever necessary. This\\\
+    ntool includes a server that connects the system with human experts, along with a user interface\\nthrough which experts\
+    \ can provide responses. When a user calls the expert feedback tool, the\\nrequest is redirected by the tool caller in\
+    \ TOOLUNIVERSE to a server, which forwards it to the\\nhuman expert interface. Human experts can receive the request and\
+    \ provide their own insights and\\njudgments. Their feedback is then sent back through the server as a tool response to\
+    \ the user. This\\napproach enables consultation with human experts for complex scientific decisions and interpreta-\\\
+    ntions, effectively combining automated analysis with expert validation.\\nMachine learning tools. Machine learning tools\
+    \ apply predictive and generative models to sci-\\nentific use cases, such as disease\\u2013target scoring [40], disease-state\
+    \ prediction, gene-gene interac-\\ntion [41, 42], gene dependency analysis [43], ADMET prediction [25], binding affinity\
+    \ predic-\\ntion [24], and beyond. Since running environments for machine learning models often require\\nspecialized\
+    \ setups and hardware (e.g., GPUs), which can be difficult to deploy, TOOLUNIVERSE\\nuses a remote registration scheme.\
+    \ This approach allows models to run on private servers while\\nstill being exposed as tools within TOOLUNIVERSE. New\
+    \ machine learning models can be quickly\\nintegrated into TOOLUNIVERSE through remote tool registration.\\nEmbedding\
+    \ store tools. Embedding store tools manage vectorized representations of scientific\\ndata. Scientific data is first\
+    \ transformed into embeddings using embedding models and then stored\\nin a database. TOOLUNIVERSE employs FAISS to enable\
+    \ efficient semantic search, similarity\\nmatching, and data retrieval over these embedding databases.\\n6\\nEvaluation\
+    \ of Tools\\nTo ensure the correctness and reliability of tools before their inclusion in TOOLUNIVERSE, we\\nimplemented\
+    \ a multi-step evaluation process. This evaluation was designed both to validate tool\\nfunctionality and to ensure scientific\
+    \ utility. The evaluation steps are as follows:\\n\\u2022 Input-output sampling. For each tool, we generated diverse sample\
+    \ inputs and recorded\\ncorresponding outputs. These samples were constructed to cover typical use cases as well as\\\
+    nedge conditions, ensuring broad coverage of tool functionality.\\n\\u2022 Human-in-the-loop review. Outputs produced\
+    \ by the tools were subjected to systematic hu-\\nman review. Scientific experts assessed correctness, interpretability,\
+    \ and consistency with ex-\\npected domain knowledge. This human evaluation provided an additional safeguard against\\\
+    nerroneous or misleading outputs.\\n\\u2022 Automated optimizers and checkers. Complementing human evaluation, we employed\\\
+    nautomated optimizer and checker tools. These systems iteratively tested tool specifications\\nagainst the sampled inputs,\
+    \ refining descriptions and ensuring consistency between declared\\nfunctionality and observed behavior. This process\
+    \ emphasized correctness and usability,\\nrather than accuracy alone, to promote robust integration within the ecosystem.\\\
+    n28\\n\\n\\u2022 Regular maintenance and bug reporting. For continued reliability of tools within TOOL-\\nUNIVERSE, we\
+    \ perform regular maintenance and monitoring. A structured bug reporting\\nsystem allows issues to be identified by users\
+    \ and promptly addressed by the TOOLUNI-\\nVERSE team. These practices provide ongoing quality assurance and safeguard\
+    \ the long-term\\nusability of the ecosystem.\\nBeyond these processes, TOOLUNIVERSE prioritizes tools from trusted sources.\
+    \ Many in-\\ncluded tools have been published, peer-reviewed, and verified through prior use by established\\nscientific\
+    \ communities, such as the NIH, FDA, and other regulatory or research agencies. By re-\\nlying on previously validated\
+    \ resources, we reduce the risk of introducing spurious or unverified\\nfunctionality into the ecosystem. These evaluation\
+    \ measures ensure that tools incorporated into\\nTOOLUNIVERSE meet standards of correctness, reproducibility, and scientific\
+    \ reliability, provid-\\ning a foundation for dependable AI-assisted discovery.\\n7\\nFurther Details on the Case Study\
+    \ of TOOLUNIVERSE\\nWe provide details for the hypercholesterolemia use case shown in Figure 2c, where an AI scien-\\\
+    ntist powered by LLMs connected to TOOLUNIVERSE finds and optimizes statin compounds for\\nhypercholesterolemia. Through\
+    \ this case study, we show how TOOLUNIVERSE can be used for\\nhighly interdisciplinary and complex scientific methods\
+    \ like drug development. We demonstrate\\nthat a TOOLUNIVERSE-enabled AI scientist is able to recover existing research\
+    \ on statins, lending\\ncredibility to the research enabled by TOOLUNIVERSE.\\nThe AI scientist is constructed by providing\
+    \ all 600+ tools in TOOLUNIVERSE to Gemini\\nCLI (powered by the Gemini-2.5-Pro model). With this current AI scientist,\
+    \ we must prompt\\nthe model with high-level prompts to achieve each stage of the case study. We envision that future\\\
+    nTOOLUNIVERSE-enabled AI scientists will be knowledgeable enough about TOOLUNIVERSE and\\nthe scientific discovery process\
+    \ to require only a single high-level prompt and occasional expert\\nfeedback to achieve the entire case study.\\nIn our\
+    \ case study, the AI scientist is first prompted to conduct target identification for hyper-\\ncholesterolemia. The AI\
+    \ scientist first calls OpenTargets get disease id description\\nby name (API Tool) and OpenTargets get associated targets\
+    \ by disease efo\\nId (API Tool), which allow it to identify the top targets associated with the disease. Next, it calls\\\
+    nOpenTargets get target tractability by ensemblID (API Tool) and EuropePMC\\nsearch articles (API Tool) on each protein\
+    \ target. These tools provide diverse information\\nabout each protein\\u2019s potential as a target, including the existence\
+    \ of approved drugs for the target,\\nthe presence of a high-quality binding pocket, and associated literature. After\
+    \ retrieving this infor-\\nmation for each target, the AI scientist calls consult human expert (Expert Feedback Tool)\\\
+    nto perform scientist-guided selection of the final target based on the existing literature. In this way,\\nthe AI scientist\
+    \ identifies eleven protein targets involved in hypercholesterolemia, conducts exten-\\nsive literature reviews on each,\
+    \ and selects HMG-CoA reductase as the target to take forward due\\n29\\n\\nto its history of successful targeting with\
+    \ statins. Next, the AI scientist uses HPA search genes\\nby query (API Tool), HPA get rna expression in specific tissues\
+    \ (API Tool),\\nand HPA get comprehensive gene details by ensembl id (API Tool) to query the\\nHuman Protein Atlas and\
+    \ characterize the expression profile of HMG-CoA reductase. Using the\\natlas data, the AI scientist concluded that there\
+    \ is high expression in the liver (the tissue of interest),\\nbut also in locations such as the gastrointestinal tract\
+    \ and brain. It reasoned that this could explain\\ncertain off-target effects associated with targeting HMG-CoA reductase,\
+    \ such as neurological side\\neffects. Thus, minimizing off-target binding and side effects is crucial to consider in\
+    \ subsequent\\nscreening steps.\\nThe AI scientist now conducts an in silico screen and molecular optimization process.\
+    \ It first\\ncalls drugbank get drug name and description by target name (Database Tool)\\nand drugbank get drug name\
+    \ and description by indication (Database Tool) to\\nretrieve current statin treatments from the DrugBank database, as\
+    \ statins target HMG-CoA reduc-\\ntase. The AI scientist then profiles each statin with drugbank get pharmacology by drug\\\
+    nname or drugbank id (Database Tool). This result in the selection of lovastatin as the statin\\nto optimize. Lovastatin\
+    \ is a widely used medication but has off-target binding in non-liver tissues\\ncompared to hydrophilic statins. To optimize\
+    \ lovastatin, the AI scientist uses ChEMBL search\\nsimilar molecules (API Tool) to retrieve molecular candidates from\
+    \ the ChEMBL database\\nthat are structural analogs to lovastatin (Tanimoto similarity > 0.80).\\nThen, two TOOLUNI-\\\
+    nVERSE ML Model Tools (ADMETAI predict admet properties and boltz2 docking)\\nare used to retrieve key pharmaceutical\
+    \ properties for each of the 32 structural analogs, including\\nADMET properties and binding affinity to HMG-CoA reductase.\
+    \ Of note, though Boltz-2 has\\nstrong performance on binding likelihood and affinity predictions, there is variability\
+    \ in the model\\noutput given the same input, so Boltz-2 was run four times for each of the structural analog can-\\ndidates,\
+    \ and the mean and standard deviation of its outputs were calculated. Predictions from the\\nML Model Tools for select\
+    \ properties are shown in Supplementary Table 3. We focus particularly\\non binding likelihood, binding affinity, and\
+    \ probability of blood-brain-barrier (BBB) penetrance\\nbecause the former two assess the molecule\\u2019s ability to\
+    \ act on its target, HMG-CoA reductase,\\nwhile the latter assesses the molecule\\u2019s probability of penetrating into\
+    \ one of the tissues where its\\ntarget is highly expressed (brain), which could lead to off-target effects.\\nChEMBL\
+    \ ID\\nPreferred\\nname\\nProb. of\\nbinding\\nmean\\n(\\u2193)\\nProb. of\\nbinding\\nstd. dev.\\nBinding\\naffinity\\\
+    nmean\\nBinding\\naffinity\\nstd. dev.\\nProb. of\\nBBB\\npene-\\ntrance\"\n  },\n  {\n    \"name\": \"CHEMBL3349960\"\
+    ,\n    \"text\": \"0.48\\n0.08\\n0.54\\n0.41\\n0.58\"\n  },\n  {\n    \"name\": \"CHEMBL2347006\",\n    \"text\": \"0.44\\\
+    n0.09\\n-0.18\\n0.13\\n0.48\"\n  },\n  {\n    \"name\": \"CHEMBL1205793\",\n    \"text\": \"0.43\\n0.04\\n0.38\\n0.30\\\
+    n0.68\\n30\\n\\nChEMBL ID\\nPreferred\\nname\\nProb. of\\nbinding\\nmean\\n(\\u2193)\\nProb. of\\nbinding\\nstd. dev.\\\
+    nBinding\\naffinity\\nmean\\nBinding\\naffinity\\nstd. dev.\\nProb. of\\nBBB\\npene-\\ntrance\"\n  },\n  {\n    \"name\"\
+    : \"CHEMBL1515625\",\n    \"text\": \"0.41\\n0.10\\n0.59\\n0.12\\n0.59\"\n  },\n  {\n    \"name\": \"CHEMBL3970138\",\n\
+    \    \"text\": \"0.41\\n0.10\\n-0.09\\n0.33\\n0.47\"\n  },\n  {\n    \"name\": \"CHEMBL1394089\",\n    \"text\": \"0.40\\\
+    n0.10\\n0.54\\n0.38\\n0.62\"\n  },\n  {\n    \"name\": \"CHEMBL3186637\",\n    \"text\": \"0.40\\n0.05\\n0.02\\n0.11\\\
+    n0.73\"\n  },\n  {\n    \"name\": \"CHEMBL152032\",\n    \"text\": \"mevinolin\\n0.39\\n0.06\\n0.04\\n0.16\\n0.69\"\n\
+    \  },\n  {\n    \"name\": \"CHEMBL1207599\",\n    \"text\": \"0.38\\n0.05\\n0.28\\n0.40\\n0.55\"\n  },\n  {\n    \"name\"\
+    : \"CHEMBL1230589\",\n    \"text\": \"0.38\\n0.06\\n0.71\\n0.03\\n0.64\"\n  },\n  {\n    \"name\": \"CHEMBL3349881\",\n\
+    \    \"text\": \"0.38\\n0.07\\n0.45\\n0.12\\n0.57\"\n  },\n  {\n    \"name\": \"CHEMBL4088701\",\n    \"text\": \"0.37\\\
+    n0.04\\n0.24\\n0.20\\n0.60\"\n  },\n  {\n    \"name\": \"CHEMBL333443\",\n    \"text\": \"0.37\\n0.08\\n0.60\\n0.26\\\
+    n0.58\"\n  },\n  {\n    \"name\": \"CHEMBL303515\",\n    \"text\": \"lovastatin\\nsodium\\n0.34\\n0.02\\n0.25\\n0.22\\\
+    n0.56\"\n  },\n  {\n    \"name\": \"CHEMBL2364554\",\n    \"text\": \"0.34\\n0.05\\n0.48\\n0.13\\n0.49\"\n  },\n  {\n\
+    \    \"name\": \"CHEMBL175236\",\n    \"text\": \"0.34\\n0.06\\n0.15\\n0.24\\n0.54\"\n  },\n  {\n    \"name\": \"CHEMBL330439\"\
+    ,\n    \"text\": \"0.34\\n0.11\\n0.54\\n0.40\\n0.58\"\n  },\n  {\n    \"name\": \"CHEMBL1206749\",\n    \"text\": \"0.34\\\
+    n0.05\\n0.20\\n0.24\\n0.59\"\n  },\n  {\n    \"name\": \"CHEMBL1456346\",\n    \"text\": \"0.33\\n0.09\\n0.40\\n0.37\\\
+    n0.55\"\n  },\n  {\n    \"name\": \"CHEMBL418776\",\n    \"text\": \"0.33\\n0.06\\n0.16\\n0.07\\n0.52\"\n  },\n  {\n \
+    \   \"name\": \"CHEMBL1201373\",\n    \"text\": \"lovastatin\\nacid\\n0.31\\n0.08\\n0.16\\n0.12\\n0.57\"\n  },\n  {\n\
+    \    \"name\": \"CHEMBL487721\",\n    \"text\": \"0.31\\n0.07\\n0.19\\n0.14\\n0.54\"\n  },\n  {\n    \"name\": \"CHEMBL1317360\"\
+    ,\n    \"text\": \"0.29\\n0.15\\n0.46\\n0.24\\n0.51\"\n  },\n  {\n    \"name\": \"CHEMBL5281241\",\n    \"text\": \"0.29\\\
+    n0.14\\n0.44\\n0.31\\n0.47\"\n  },\n  {\n    \"name\": \"CHEMBL3544685\",\n    \"text\": \"0.27\\n0.04\\n0.37\\n0.18\\\
+    n0.50\"\n  },\n  {\n    \"name\": \"CHEMBL4076715\",\n    \"text\": \"0.25\\n0.10\\n0.16\\n0.21\\n0.44\"\n  },\n  {\n\
+    \    \"name\": \"CHEMBL1144\",\n    \"text\": \"pravastatin\\n0.24\\n0.12\\n0.44\\n0.26\\n0.48\"\n  },\n  {\n    \"name\"\
+    : \"CHEMBL3544686\",\n    \"text\": \"0.23\\n0.04\\n0.72\\n0.28\\n0.54\"\n  },\n  {\n    \"name\": \"CHEMBL3187243\",\n\
+    \    \"text\": \"0.22\\n0.04\\n0.44\\n0.11\\n0.64\"\n  },\n  {\n    \"name\": \"CHEMBL690\",\n    \"text\": \"pravastatin\\\
+    nsodium\\n0.22\\n0.02\\n0.55\\n0.08\\n0.43\"\n  },\n  {\n    \"name\": \"CHEMBL3544781\",\n    \"text\": \"0.22\\n0.03\\\
+    n0.24\\n0.28\\n0.50\"\n  },\n  {\n    \"name\": \"CHEMBL1617336\",\n    \"text\": \"0.21\\n0.04\\n0.32\\n0.13\\n0.57\\\
+    n31\\n\\nChEMBL ID\\nPreferred\\nname\\nProb. of\\nbinding\\nmean\\n(\\u2193)\\nProb. of\\nbinding\\nstd. dev.\\nBinding\\\
+    naffinity\\nmean\\nBinding\\naffinity\\nstd. dev.\\nProb. of\\nBBB\\npene-\\ntrance\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ Table 3: TOOLUNIVERSE output for all 34 structural analogs of lovastatin. Binding probability and\",\n    \"text\":\
+    \ \"affinity were predicted by Boltz-2, while the probability of blood-brain-barrier (BBB) penetrance was predicted by\\\
+    nADMET AI. For binding affinity, more negative values indicate higher binding affinity. Analogs are ranked in de-\\nscending\
+    \ order by predicted probability of binding. Mean and standard deviation were calculated across four samples.\\nThe two\
+    \ rows highlighted in red indicate the small molecule candidate (CHEM-BL2347006/CHEMBL3970138) that\\nis selected for\
+    \ additional downstream evaluation in the patent literature.\\nThe FDA-approved pravastatin and its charged form, pravastatin\
+    \ sodium, appear in the list of\\nstructural analogs and, based on the ML model outputs, have lower probability of BBB\
+    \ penetrance\\ncompared to lovastatin. This is consistent with pravastatin\\u2019s lower off-target binding outside the\\\
+    nliver, thus supporting the AI scientist\\u2019s TOOLUNIVERSE-based optimization protocol for address-\\ning the weaknesses\
+    \ in lovastatin with new therapeutic candidates.\\nFinally, we use the AI scientist\\u2019s outputs to select two structural\
+    \ analogs for further evalu-\\nation: CHEMBL2347006 and CHEMBL3970138. These analogs are in fact the same molecule\\ndespite\
+    \ slight differences in their SMILES representation. This molecule places within the top\\nfive candidates for highest\
+    \ probability of binding the target (shown in Supplementary Table 3), has\\nthe strongest predicted binding affinity,\
+    \ and places within the top five for lowest predicted BBB\\npenetrance.\\nThe AI scientist uses TOOLUNIVERSE to evaluate\
+    \ prior art in the patent literature for this\\ncandidate drug. It uses PubChem get CID by SMILES (API Tool) and PubChem\
+    \ get assoc\\niated patents by CID (API Tool) to retrieve URLs to drug-associated patents from Pub-\\nChem.\\nThen, it\
+    \ uses get webpage text from url (API Tool) to read the text of these\\npatent URLs. Through this, the AI scientist discovered\
+    \ that the small molecule associated with\\nCHEMBL2347006 and CHEMBL3970138 was already patented for use in cardiovascular\
+    \ disease\\nin 2019 and 2021, revealing that another potential treatment for hypercholesterolemia nominated\\nby the AI\
+    \ scientist was confirmed in the literature.\\nThis case study demonstrates how TOOLUNIVERSE can be used to conduct flexible,\
+    \ multi-\\ndomain scientific research. It breaks out of the paradigm of a narrowly-focused bioinformatics\\npipeline;\
+    \ instead, the AI scientist leverages tools and data modalities across chemistry, human\\nbiology, and patent literature\
+    \ to retrieve multiple lines of evidence in supporting its final drug\\ncandidates.\\n32\"\n  },\n  {\n    \"name\": \"\
+    References\",\n    \"text\": \"1. Gao, S. et al. Empowering biomedical discovery with AI agents. Cell 187, 6125\\u20136151\
+    \ (2024).\\nURL https://doi.org/10.1016/j.cell.2024.09.022.\\n2. Boiko, D. A., MacKnight, R., Kline, B. & Gomes, G. Autonomous\
+    \ chemical research with\\nlarge language models. Nature 624, 570\\u2013578 (2023).\\n3. Swanson, K., Wu, W., Bulaong,\
+    \ N. L., Pak, J. E. & Zou, J. The virtual lab of ai agents designs\\nnew sars-cov-2 nanobodies. Nature 1\\u20133 (2025).\\\
+    n4. Virshup, I. et al. The scverse project provides a computational ecosystem for single-cell omics\\ndata analysis. Nature\
+    \ Biotechnology 41, 604\\u2013606 (2023).\"\n  },\n  {\n    \"name\": \"Lobentanzer, S. et al\",\n    \"text\": \"Democratizing\
+    \ knowledge representation with BioCypher.\\nNature\\nBiotechnology 41, 1056\\u20131059 (2023).\\n6. Heumos, L. et al.\
+    \ An open-source framework for end-to-end analysis of electronic health\\nrecord data. Nature Medicine 30, 3369\\u20133380\
+    \ (2024).\\n7. Wratten, L., Wilm, A. & G\\u00a8oke, J. Reproducible, scalable, and shareable analysis pipelines\\nwith\
+    \ bioinformatics workflow managers. Nature Methods 18, 1161\\u20131168 (2021).\\n8. Gayoso, A. et al. A Python library\
+    \ for probabilistic analysis of single-cell omics data. Nature\\nbiotechnology 40, 163\\u2013166 (2022).\\n9. Channing,\
+    \ G. & Ghosh, A. Ai for scientific discovery is a social problem. arXiv:2509.06580\\n(2025).\\n10. Wang, H. et al. Scientific\
+    \ discovery in the age of artificial intelligence. Nature 620, 47\\u201360\\n(2023).\\n11. Anthropic. Introducing the\
+    \ model context protocol (2024). Anthropic blog, November 25\\n2024.\\n12. Yao, S. et al. React: Synergizing reasoning\
+    \ and acting in language models. In International\\nConference on Learning Representations (ICLR) (2023).\\n13. Gao, S.\
+    \ et al. TxAgent: An ai agent for therapeutic reasoning across a universe of tools (2025).\\nURL https://arxiv.org/abs/2503.10970.\
+    \ 2503.10970.\\n14. Brown, T. et al. Language models are few-shot learners. In Larochelle, H., Ranzato, M.,\\nHadsell,\
+    \ R., Balcan, M. & Lin, H. (eds.) Advances in Neural Information Processing Systems,\\nvol. 33, 1877\\u20131901 (Curran\
+    \ Associates, Inc., 2020).\\n33\\n\\n15. Swanson, K., Wu, W., Bulaong, N. L., Pak, J. E. & Zou, J. The virtual lab: Ai\
+    \ agents design\\nnew sars-cov-2 nanobodies with experimental validation. bioRxiv 2024\\u201311 (2024).\\n16. Wang, Z.\
+    \ et al. GeneAgent: self-verification language agent for gene-set analysis using domain\\ndatabases. Nature Methods 1\\\
+    u20139 (2025).\\n17. Dong, G. et al. Tool-Star: empowering llm-brained multi-tool reasoner via reinforcement\\nlearning.\
+    \ arXiv:2505.16410 (2025).\\n18. Liu, W. et al. DrBioRight 2.0: an llm-powered bioinformatics chatbot for large-scale\
+    \ cancer\\nfunctional proteomics analysis. Nature Communications 16, 2256 (2025).\\n19. Shao, Z. et al. Deepseekmath:\
+    \ Pushing the limits of mathematical reasoning in open language\\nmodels. arXiv preprint arXiv:2402.03300 (2024).\\n20.\
+    \ Schulman, J., Wolski, F., Dhariwal, P., Radford, A. & Klimov, O. Proximal policy optimization\\nalgorithms. arXiv preprint\
+    \ arXiv:1707.06347 (2017).\\n21. Schenone, M., Dan\\u02c7c\\u00b4\\u0131k, V., Wagner, B. K. & Clemons, P. A. Target identification\
+    \ and mecha-\\nnism of action in chemical biology and drug discovery. Nature chemical biology 9, 232\\u2013240\\n(2013).\\\
+    n22. Ren, F. et al. A small-molecule tnik inhibitor targets fibrosis in preclinical and clinical models.\\nNature Biotechnology\
+    \ 43, 63\\u201375 (2025).\\n23. Lin, X., Li, X. & Lin, X. A review on applications of computational methods in drug screening\\\
+    nand design. Molecules 25, 1375 (2020).\\n24. Passaro, S. et al. Boltz-2: Towards accurate and efficient binding affinity\
+    \ prediction. BioRxiv\\n2025\\u201306 (2025).\\n25. Swanson, K. et al. ADMET-AI: a machine learning ADMET platform for\
+    \ evaluation of large-\\nscale chemical libraries. Bioinformatics 40, btae416 (2024).\\n26. Botti, R., Triscari, J., Pan,\
+    \ H. & Zayat, J. Concentrations of pravastatin and lovastatin in\\ncerebrospinal fluid in healthy subjects. Clinical neuropharmacology\
+    \ 14, 256\\u2013261 (1991).\\n27. Wittmann, B. J. et al. Strengthening nucleic acid biosecurity screening against generative\\\
+    nprotein design tools. Science 390, 82\\u201387 (2025).\\n28. Tang, X. et al. Risks of AI scientists: prioritizing safeguarding\
+    \ over autonomy. Nature Com-\\nmunications 16, 8317 (2025).\"\n  },\n  {\n    \"name\": \"Guan, M. Y. et al\",\n    \"\
+    text\": \"Deliberative alignment: Reasoning enables safer language models.\\narXiv:2412.16339 (2024).\\n34\\n\\n30. OpenAI.\
+    \ Introducing chatgpt agent: Bridging research and action. https://openai.com/index/i\\nntroducing-chatgpt-agent/ (2025).\\\
+    n31. Gemini CLI Contributors. gemini-cli: An open-source ai agent that brings the power of gemini\\ndirectly into your\
+    \ terminal. https://github.com/google-gemini/gemini-cli (2025).\"\n  },\n  {\n    \"name\": \"Claude code. https://claude.com/product/claude-code\
+    \ (2025)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"QwenLM Contributors. Qwen code. https://github.com/QwenLM/qwen-code\
+    \ (2025)\",\n    \"text\": \"34. LangChain Contributors. Langchain: A framework for developing language model applica-\\\
+    ntions. https://github.com/langchain-ai/langchain.\\n35. Deepset. Haystack: An open-source framework for building nlp-powered\
+    \ search systems.\\nhttps://github.com/deepset-ai/haystack (2019).\\n36. Wu, Q. et al. Autogen: Enabling next-gen llm\
+    \ applications via multi-agent conversation frame-\\nwork. arXiv preprint arXiv:2308.08155 (2023).\\n37. Li, G., Hammoud,\
+    \ H. A. A. K., Itani, H., Khizbullin, D. & Ghanem, B. Camel: Communicative\\nagents for\\u201d mind\\u201d exploration\
+    \ of large language model society. In Thirty-seventh Conference\\non Neural Information Processing Systems (2023).\\n38.\
+    \ Shi, Z. et al. Tool learning in the wild: Empowering language models as automatic tool agents.\\nIn Proceedings of the\
+    \ ACM on Web Conference 2025, 2222\\u20132237 (2025).\\n39. Wang, H., He, Y., Paula, C., Bucci, M. & other. Spatialagent:\
+    \ An autonomous ai agent for\\nspatial biology. bioRxiv (2025). URL https://www.biorxiv.org/content/early/2025/04/01/202\\\
+    n4.04.01.646459.\\n40. Targets, O. 24.09 platform release now live. https://community.opentargets.org/t/24-09-platf\\\
+    norm-release-now-live/1556?ref=blog.opentargets.org (2024).\\n41. Pearce, J. D. et al. A cross-species generative cell\
+    \ atlas across 1.5 billion years of evolution:\\nThe transcriptformer single-cell model. bioRxiv (2025). URL https://www.biorxiv.org/conten\\\
+    nt/early/2025/04/29/2025.04.25.650731. https://www.biorxiv.org/content/early/2025/04/29/2\\n025.04.25.650731.full.pdf.\\\
+    n42. Li, M. M. et al. Contextual AI models for single-cell protein biology. Nature Methods 21,\\n1546\\u20131557 (2024).\
+    \ URL https://doi.org/10.1038/s41592-024-02341-3.\\n43. DepMap, B. DepMap 24Q2 Public (2024). URL https://plus.figshare.com/articles/dataset/D\\\
+    nepMap 24Q2 Public/25880521.\\n35\"\n  }\n]"
+  competing_interests: '7
+
+
+    Tool
+
+    specification
+
+    New tool
+
+    specification
+
+    Tool optimizer
+
+    Web protocol
+
+    ToolUniverse
+
+    AI scientist
+
+    Find tool
+
+    Tool list
+
+    Call tool
+
+    Response
+
+    AI-Tool interaction protocol
+
+    b
+
+    c
+
+    d
+
+    Request
+
+    Response
+
+    Client
+
+    Server
+
+    e
+
+    f
+
+    h
+
+    j
+
+    Tool composer
+
+    Compose
+
+    tool
+
+    Existing tools
+
+    i
+
+    Tool
+
+    requirement
+
+    New tool
+
+    Tool discoverer
+
+    Specification
+
+    Code
+
+    Multi-agent system
+
+    Tools
+
+    Tool finder
+
+    Tool
+
+    request'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\",\n    \"\
+    page\": 8\n  },\n  {\n    \"id\": \"fig_p8_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_2.png\",\n   \
+    \ \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_3.png\",\n\
+    \    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_4.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_5.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_6.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_7.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_8.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_9.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_10.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_11.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_12.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_13.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_14.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_15.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_16.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_17.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_18.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_19.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_20.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_21.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_22.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_23.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_24.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_25.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_26.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_27.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_28.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_29.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_30.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_31.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p8_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_32.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_2.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_3.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_4.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_5.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_6.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_7.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_8.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_9.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_10.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_11.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_12.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_13.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_14.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_15.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_16.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_17.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_18.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_19.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_20.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_21.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_22.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p10_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_23.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p18_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_1.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p19_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p19_1.png\"\
+    ,\n    \"page\": 19\n  },\n  {\n    \"id\": \"fig_p20_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_1.png\"\
+    ,\n    \"page\": 20\n  }\n]"
+references:
+  reference_count: 4
+associated:
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/langchain-ai/langchain.\",\n    \"description\": \"\"\n  },\n\
+    \  {\n    \"url\": \"https://github.com/deepset-ai/haystack\",\n    \"description\": \"\"\n  }\n]"

@@ -1,7 +1,6 @@
 import os
-import sys
-import shutil
 from pathlib import Path
+
 import nox
 
 
@@ -218,7 +217,7 @@ def docs_serve(session):
     if not build_dir.exists():
         session.run("uv", "run", "sphinx-build", "-M", "html", "docs", "docs/_build", external=True, env=COMMON_ENV)
 
-    session.log(f"Serving docs at http://localhost:8000")
+    session.log("Serving docs at http://localhost:8000")
     session.run("python", "-m", "http.server", "8000", "-d", str(build_dir), external=True)
 
 

@@ -1,0 +1,228 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/BioContextAI.pdf
+
+identifiers:
+  doi: 10.1038/s41587-025-02900-9
+  pmid: '41199021'
+citation:
+  title: L
+  year: '2025'
+  journal: Nature Biotechnology
+  volume: '43'
+  pages: 1755-1757
+  publisher: Springer Science and Business Media LLC
+  authors: Malte Kuehl, Darius P. Schaub, Francesco Carli, Lukas Heumos, Malte Hellmig, Camila Fernández-Zapata, Nico Kaiser,
+    Jonathan Schaul, Anton Kulaga, Nikolay Usanov, , Mikaela Koutrouli, Can Ergen, Giovanni Palla, Christian F. Krebs, Ulf
+    Panzer, Stefan Bonn, Sebastian Lobentanzer, Julio Saez-Rodriguez, Victor G. Puelles
+content:
+  sections: "[\n  {\n    \"name\": \"Methods). At its core sits the Registry (Fig. 1b),\",\n    \"text\": \"which leverages\
+    \ Schema.org ontology terms11\\nto catalog community-developed MCP servers\\nin a public repository with rich metadata\
+    \ while\\nenforcing documentation and open-source\\nlicensing standards. These MCP servers allevi-\\nate the burden on\
+    \ developers of agentic sys-\\ntems and unlock synthesis and recombination\\npotential by eliminating the need to reimple-\\\
+    nment the layers through which LLMs access\\ndomain-specific resources.\\nMCP server developers can use an inter-\\nactive\
+    \ online editor to seamlessly create\\nmetadata files to add their MCP server to the\\nRegistry, contributing it through\
+    \ the Registry\\u2019s\\nGitHub repository (Supplementary Fig. 2).\\nResearchers can interact with the Registry\\nthrough\
+    \ a downloadable index, a REST API\\nor the interactive web interface available at\\nhttps://biocontext.ai/. In addition,\
+    \ the com-\\nmunity can identify the most helpful MCP\\nservers for different use cases through a\\nreview system and\
+    \ shareable collections. To\\nfacilitate the exploration of biomedical MCP\\nservers, the web application provides access\\\
+    nto BioContextAI Chat, a chatbot capable of\\nconnecting to any remote MCP server in our\\nRegistry, offering an accessible\
+    \ way of trying\\nout remote MCP servers. Furthermore, online\\ndocumentation provides useful resources for\\nMCP server\
+    \ development and usage tips for\\nBioContextAI. As a practical starting point,\\na feature-rich MCP server cookiecutter\
+    \ tem-\\nplate further streamlines the development\\nof new MCP servers in accordance with\\nBioContextAI\\u2019s standards.\\\
+    nAs a foundation for full-featured MCP\\nserver development and as an interactive\\nexample, BioContextAI offers the Knowledge-\\\
+    nbase MCP. This MCP server implementation\\nexposes functionality from over 15 biomedical\\nresources, including UniProt12\
+    \ and Open Tar-\\ngets13 (Supplementary Note 2). It is available\\nas an open-source software package for local\\ndeployment\
+    \ through the PyPI Python software\\nregistry, enabling flexible combination with\\nexisting MCP servers to enhance agentic\
+    \ sys-\\ntems with extended biomedical capabilities.\\nA remote-hosted version can be integrated\\nsetup-free across an\
+    \ array of generative arti-\\nficial intelligence applications.\\nDespite these advances, challenges per-\\nsist. Reliance\
+    \ on commercial LLMs and use\\nof remote-hosted MCP servers present secu-\\nrity, authentication, financial, data privacy\\\
+    nand maintenance concerns14, which could\\nput them out of reach for certain research\\napplications. Future developments\
+    \ in hybrid\\nlocal\\u2013cloud architectures, community-driven\\ngovernance models and privacy-preserving\\ncomputation\
+    \ will be vital to overcoming\\nthese limitations.\\nIn this light, BioContextAI is a core compo-\\nnent of an emerging\
+    \ open-source ecosystem\\nof agentic systems for biomedical research.\\nGiven the rapid progress of open-weights\\nreasoning\
+    \ LLMs and optimizations such\\nas quantization and mixture-of-experts\\narchitectures15, combined with improvements\\\
+    nin hardware throughput, the deployment of\\nprivacy-preserving, performant, transparent\\nand reproducible agentic systems\
+    \ in academic\\nresearch is becoming increasingly feasible.\\nLooking ahead, agent-supported research\\nmay involve systems\
+    \ that operate beyond\\nknowledge retrieval and standardized data\\nanalysis. Future systems may touch on all\\nphases\
+    \ of scientific discovery (Fig. 2), auton-\\nomously researching literature to identify\\ngaps in current knowledge, aiding\
+    \ in experi-\\nmental design, composing analysis code, sup-\\nporting analysis by enhancing outputs with\\ndata obtained\
+    \ from knowledgebases and\\nbiomedical software, and incorporating find-\\nings into an ever-expanding body of biomedi-\\\
+    ncal literature. Importantly, human researchers\\nmust stay in the loop to verify the accuracy\\nof outputs and ensure\
+    \ that proposed experi-\\nments are both innovative and scientifically\\nsound. Equitable access to these emerging\\ntechnologies\
+    \ will be key to leveraging existing\\nexpertise and ensuring that developments\\nreflect the richness of the scientific\
+    \ commu-\\nnity and its members.\\nWe are committed to the continued develop-\\nment of BioContextAI as a community hub\
+    \ for\\nLLM-supported biomedical research. As addi-\\ntional MCP servers are developed, a growing\\ncollection of biomedical\
+    \ tools with relevant\\ntechnical capabilities will be made broadly\\naccessible through the Registry. Researchers\\nand\
+    \ developers will be supported in creating,\\nevaluating, and deploying MCP-augmented\\nagentic systems through common\
+    \ stand-\\nards, best-practice guides, templates, and\\nintegration tests. To enhance visibility and\\nengagement and\
+    \ strive for an interoperable\\necosystem, BioContextAI will partner with\\nexisting communities, including BioCypher\\\
+    nand the scverse, and use open communication\\nchannels to foster exchange between users\\nand developers. Finally, researchers\
+    \ and devel-\\nopers can begin to engage with BioContextAI\\nHypothesis generation\\nResult\\nverification\\nWriting and\\\
+    npublishing\\nData analysis\\nand interpretation\\nExperimental\\ndesign\\nFilter by relevance\\nand potential novelty\\\
+    nRun experiment\\n...\\nHuman-led tasks\\nAgentic system-supported tasks\\nLarge language models\\nMultimodal datasets\\\
+    nScientific literature\\nBiomedical software\\nscverse ecosystem\\nBioContextAI\\nKnowledgebases\\nFig. 2 | Toward reliable\
+    \ agentic system supported biomedical research. Agentic systems, relying on\\nBioContextAI to find and develop MCP servers,\
+    \ integrate scientific literature, knowledgebases, biomedical\\nsoftware (for example, scverse ecosystem packages) and\
+    \ multimodal datasets. In an iterative agent\\u2013\\nhuman research loop, these systems could be used to support key\
+    \ stages, such as hypothesis generation,\\nexperimental design and data analysis. Human researchers would assume a more\
+    \ supervisory role, ensuring\\nrelevance, validity of results and accurate communication of findings to the wider scientific\
+    \ community.\\n\\nnature biotechnology\\nVolume 43 | November 2025 | 1755\\u20131757 | 1757\\nCorrespondence\\nby interacting\
+    \ with the community, contribut-\\ning MCP servers, developing agentic systems\\nand integrating available tools into\
+    \ research\\nworkflows to help advance the understanding\\nof health and disease.\"\n  },\n  {\n    \"name\": \"Code availability\"\
+    ,\n    \"text\": \"The BioContextAI Registry is available at\\nhttps://github.com/biocontext-ai/registry.\\nA searchable\
+    \ index and tutorial resources are\\navailable at https://biocontext.ai. The BioCon-\\ntextAI Knowledgebase MCP code is\
+    \ available\\nat https://github.com/biocontext-ai/knowl-\\nedgebase-mcp. It can be installed from PyPI\\nas \\u201cbiocontext-kb\\\
+    u201d. A remote-hosted version\\nis available with streamable HTTP transport\\nat https://mcp.biocontext.ai/mcp/ (subject\\\
+    nto usage restrictions). The API documentation\\nis available at https://docs.kb.biocontext.ai.\\nBioContextAI Chat is\
+    \ available as a freely\\nusable chat interface at https://biocontext.\\nai/chat. Source code for the BioContextAI\\nwebsite\
+    \ \\u2014 including the Registry interface\\nand chat \\u2014 is available at https://github.com/\\nbiocontext-ai/website.\
+    \ The evaluation scripts\\ncan be accessed at https://github.com/\\nbiocontext-ai/simple-mcp-evaluation. The\\nMCP server\
+    \ cookiecutter template is avail-\\nable at https://github.com/biocontext-ai/\\nmcp-server-cookiecutter.\\nMalte Kuehl\\\
+    n1,2,19\\n,\\nDarius P. Schaub\\n3,4,19, Francesco Carli5,6,\\nLukas Heumos7, Malte Hellmig\\n4,8,9,\\nCamila Fern\\u00e1ndez-Zapata\\\
+    n4,8,\\nNico Kaiser\\n3,4,8, Jonathan Schaul10,\\nAnton Kulaga\\n11, Nikolay Usanov12, Scverse\\nCommunity*, Christian\
+    \ F. Krebs\\n4,8,9,\\nUlf Panzer4,8,9, Stefan Bonn\\n3,8,9,13,20,\\nSebastian Lobentanzer5,7,14,20,\\nJulio Saez-Rodriguez\\\
+    n5,6,10,20 &\\nVictor G. Puelles\\n1,2,4,8,20\\n1Department of Clinical Medicine, Aarhus\\nUniversity, Aarhus, Denmark.\
+    \ 2Department of\\nPathology, Aarhus University Hospital, Aarhus,\\nDenmark. 3Institute of Medical Systems\\nBioinformatics,\
+    \ Center for Biomedical AI\\n(bAIome), Center for Molecular Neurobiology\\n(ZMNH), University Medical Center\\nHamburg-Eppendorf,\
+    \ Hamburg, Germany.\\n4III. Department of Medicine, University\\nMedical Center Hamburg-Eppendorf,\\nHamburg, Germany.\
+    \ 5Open Targets,\\nEuropean Bioinformatics Institute (EMBL-EBI),\\nCambridge, UK. 6European Molecular\\nBiology Laboratory,\
+    \ European Bioinformatics\\nInstitute (EMBL-EBI), Hinxton, UK. 7Institute\\nof Computational Biology, Computational\\\
+    nHealth Center, Helmholtz Center, Munich,\\nGermany. 8Hamburg Center for Kidney\\nHealth (HCKH), University Medical Center\\\
+    nHamburg-Eppendorf, Hamburg, Germany.\\n9Hamburg Center for Translational\\nImmunology (HCTI), University Medical\\nCenter\
+    \ Hamburg-Eppendorf, Hamburg,\\nGermany. 10Institute for Computational\\nBiomedicine, Heidelberg University,\\nFaculty\
+    \ of Medicine, Heidelberg University\\nHospital, Heidelberg, Germany. 11Institute\\nfor Biostatistics and Informatics\
+    \ in Medicine\\nand Ageing Research, Rostock University\\nMedical Center, Rostock, Germany. 12HEAlthy\\nLife Extension\
+    \ Society (HEALES), Brussels,\\nBelgium. 13German Center for Child and\\nAdolescent Health (DZKJ), partner site\\nHamburg,\
+    \ University Medical Center\\nHamburg-Eppendorf, Hamburg, Germany.\\n14Computational Biology Unit, German Center\\nfor\
+    \ Diabetes Research, Munich, Germany.\\n19These authors contributed equally:\\nMalte Kuehl, Darius P. Schaub.\\n20These\
+    \ authors jointly supervised this work:\\nStefan Bonn, Sebastian Lobentanzer,\\nJulio Saez-Rodriguez, Victor G. Puelles.\\\
+    n*A list of authors and their affiliations\\nappears at the end of the paper.\\ne-mail: malte.kuehl@clin.au.dk;\\nvgpuelles@clin.au.dk\\\
+    nPublished online: 6 November 2025\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nChen, Q. et al. Nat.\
+    \ Commun. 16, 3280 (2025).\\n2.\\nGao, S. et al. Cell 187, 6125\\u20136151 (2024).\"\n  },\n  {\n    \"name\": \"Lobentanzer,\
+    \ S. et al. Nat. Biotechnol. 43, 166\\u2013169 (2025)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Huang, K. et\
+    \ al. Preprint at https://doi\",\n    \"text\": \"org/10.1101/2025.05.30.656746 (2025).\\n5.\\nXie, Q. et al. Digit. Med.\
+    \ 8, 141 (2025).\"\n  },\n  {\n    \"name\": \"Barker, M. et al. Sci. Data 9, 622 (2022)\",\n    \"text\": \"7.\\nWilkinson,\
+    \ M. D. et al. Sci. Data 3, 160018 (2016).\"\n  },\n  {\n    \"name\": \"Anthropic. Introducing the Model Context Protocol\"\
+    ,\n    \"text\": \"https://www.anthropic.com/news/model-context-\\nprotocol (2025).\\n9.\\nVirshup, I. et al. Nat. Biotechnol.\
+    \ 41, 604\\u2013606 (2023).\"\n  },\n  {\n    \"name\": \"Lobentanzer, S. et al. Nat. Biotechnol. 41, 1056\\u20131059\"\
+    ,\n    \"text\": \"(2023).\"\n  },\n  {\n    \"name\": \"Guha, R. V., Brickley, D. & Macbeth, S. Commun. ACM 59,\",\n\
+    \    \"text\": \"44\\u201351 (2016).\"\n  },\n  {\n    \"name\": \"Ahmad, S. et al. Nucleic Acids Res. https://doi.org/\"\
+    ,\n    \"text\": \"10.1093/nar/gkaf394 (2025).\"\n  },\n  {\n    \"name\": \"Buniello, A. et al. Nucleic Acids Res. 53,\
+    \ D1467\\u2013D1475\",\n    \"text\": \"(2025).\"\n  },\n  {\n    \"name\": \"Hou, X. et al. Preprint at arXiv https://doi.org/10.48550/\"\
+    ,\n    \"text\": \"arXiv.2503.23278 (2025).\"\n  },\n  {\n    \"name\": \"OpenAI et al. Preprint at arXiv https://doi.org/10.48550/\"\
+    ,\n    \"text\": \"arXiv.2508.10925 (2025).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"We thank\
+    \ M. Becker and the members of the scverse\\nand BioContextAI communities for their feedback. We\\nthank our funders.\
+    \ D.P.S. was supported by the Deutsche\\nForschungsgemeinschaft through the Collaborative\\nResearch Center 1192 (SFB\
+    \ 1192) projects A1 and C3. F.C.\\nis funded by Open Targets, project code OTAR3088.\\nM.H. was supported by the Else\
+    \ Kr\\u00f6ner-Fresenius-Stiftung\\niPRIME-CS Scholarship. A.K. and N.U. were supported\\nby a Bio x AI Hackathon-2025.\
+    \ S.B. was supported by\\nthe Deutsche Forschungsgemeinschaft (FOR 5068 P9).\\nV.G.P. received funding from the NovoNordisk\
+    \ Foundation\\n(Young Investigator; NNF21OC0066381), the German\\nResearch Council (Deutsche Forschungsgemeinschaft)\\\
+    nthrough the Collaborative Research Centre 1192 (SFB\\n1192) and 1700 (SFB 1700), the Aarhus University\\nFoundation (AUFF-E-2022-7-13)\
+    \ and the BMBF (e:MED\\nJunior Consortium Fibromap and STOP-FSGS). This\\nmanuscript was partially revised using LLM-based\\\
+    ntechnology. The entire manuscript has been checked\\nfor correctness, and the authors are responsible for its\\nfinal\
+    \ content.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"M.K., D.P.S. and V.G.P. conceived the\
+    \ study. M.K. wrote the\\nfirst draft. M.K. and D.P.S. developed the BioContextAI\\nKnowledgebase MCP package, the Registry,\
+    \ BioContextAI\\nChat and the MCP server evaluation, with F.C., S.L., J.S.,\\nC.F.-Z., N.K., A.K. and N.U. providing inputs.\
+    \ M.H., M.K. and\\nD.P.S. developed the MCP cookiecutter template. F.C. and\\nS.L. implemented the BioChatter integration.\
+    \ M.K., L.H.,\\nD.P.S., F.C., the Scverse Community, S.L., J.S.-R. and V.G.P.\\ndeveloped the community structure. M.K.\
+    \ and V.G.P. created\\nthe figures. C.F.K., U.P., S.B., S.L., J.S.-R. and V.G.P. acquired\"\n  },\n  {\n    \"name\":\
+    \ \"funding. S.B., S.L., J.S.-R. and V.G.P. supervised the study\",\n    \"text\": \"All authors contributed to the editing\
+    \ of and approved the\\nfinal draft.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"M.K. is an\
+    \ employee of and holds an ownership\\ninterest in KH Biotechnology, which provides consulting\\nservices to Lamin Labs.\
+    \ L.H. is an employee of Lamin Labs.\\nJ.S.-R. reports in the last 3 years funding from GSK and\\nPfizer and fees or honoraria\
+    \ from Travere Therapeutics,\\nStadapharm, Astex, Owkin, Pfizer, Grunenthal, Tempus\\nand Moderna.\\nAdditional information\"\
+    \n  },\n  {\n    \"name\": \"Supplementary information The online version\",\n    \"text\": \"contains supplementary material\
+    \ available at\\nhttps://doi.org/10.1038/s41587-025-02900-9.\\nScverse Community\\nMikaela Koutrouli15, Can Ergen16,17\
+    \ & Giovanni Palla18\\n15Genentech, San Francisco, CA, USA. 16Department of Electrical Engineering and Computer Sciences,\
+    \ University of California, Berkeley,\\nBerkeley, CA, USA. 17University Hospital Hamburg-Eppendorf, I. Medical Department,\
+    \ University Medical Center Hamburg-Eppendorf, Hamburg,\\nGermany. 18Chan Zuckerberg Initiative, Redwood City, CA, USA.\"\
+    \n  }\n]"
+  acknowledgments: 'We thank M. Becker and the members of the scverse
+
+    and BioContextAI communities for their feedback. We
+
+    thank our funders. D.P.S. was supported by the Deutsche
+
+    Forschungsgemeinschaft through the Collaborative
+
+    Research Center 1192 (SFB 1192) projects A1 and C3. F.C.
+
+    is funded by Open Targets, project code OTAR3088.
+
+    M.H. was supported by the Else Kröner-Fresenius-Stiftung
+
+    iPRIME-CS Scholarship. A.K. and N.U. were supported
+
+    by a Bio x AI Hackathon-2025. S.B. was supported by
+
+    the Deutsche Forschungsgemeinschaft (FOR 5068 P9).
+
+    V.G.P. received funding from the NovoNordisk Foundation
+
+    (Young Investigator; NNF21OC0066381), the German
+
+    Research Council (Deutsche Forschungsgemeinschaft)
+
+    through the Collaborative Research Centre 1192 (SFB
+
+    1192) and 1700 (SFB 1700), the Aarhus University
+
+    Foundation (AUFF-E-2022-7-13) and the BMBF (e:MED
+
+    Junior Consortium Fibromap and STOP-FSGS). This
+
+    manuscript was partially revised using LLM-based
+
+    technology. The entire manuscript has been checked
+
+    for correctness, and the authors are responsible for its
+
+    final content.'
+  author_contributions: 'M.K., D.P.S. and V.G.P. conceived the study. M.K. wrote the
+
+    first draft. M.K. and D.P.S. developed the BioContextAI
+
+    Knowledgebase MCP package, the Registry, BioContextAI
+
+    Chat and the MCP server evaluation, with F.C., S.L., J.S.,
+
+    C.F.-Z., N.K., A.K. and N.U. providing inputs. M.H., M.K. and
+
+    D.P.S. developed the MCP cookiecutter template. F.C. and
+
+    S.L. implemented the BioChatter integration. M.K., L.H.,
+
+    D.P.S., F.C., the Scverse Community, S.L., J.S.-R. and V.G.P.
+
+    developed the community structure. M.K. and V.G.P. created
+
+    the figures. C.F.K., U.P., S.B., S.L., J.S.-R. and V.G.P. acquired'
+  funding: 'All authors contributed to the editing of and approved the
+
+    final draft.'
+  competing_interests: 'M.K. is an employee of and holds an ownership
+
+    interest in KH Biotechnology, which provides consulting
+
+    services to Lamin Labs. L.H. is an employee of Lamin Labs.
+
+    J.S.-R. reports in the last 3 years funding from GSK and
+
+    Pfizer and fees or honoraria from Travere Therapeutics,
+
+    Stadapharm, Astex, Owkin, Pfizer, Grunenthal, Tempus
+
+    and Moderna.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p1_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_2.png\",\n   \
+    \ \"page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n\
+    \    \"page\": 2\n  }\n]"
+references:
+  reference_count: 4
+associated:
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/biocontext-ai/registry.\",\n    \"description\": \"\"\n  },\n\
+    \  {\n    \"url\": \"https://github.com/biocontext-ai/knowl-\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"\
+    https://github.com/biocontext-ai/\",\n    \"description\": \"\"\n  }\n]"

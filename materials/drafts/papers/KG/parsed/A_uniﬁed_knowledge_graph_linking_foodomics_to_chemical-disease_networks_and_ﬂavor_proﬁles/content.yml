@@ -1,0 +1,728 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/A uniﬁed knowledge graph linking foodomics to chemical-disease networks and ﬂavor proﬁles.pdf
+
+identifiers:
+  doi: 10.1038/s41538-025-00680-9
+  pmid: '41559079'
+citation:
+  title: A uni ﬁ ed knowledge graph linking foodomics to chemical-disease networks and  ﬂ avor pro ﬁ les
+  journal: npj Science of Food
+  year: '2026'
+  volume: '10'
+  publisher: Springer Science and Business Media LLC
+  authors: Fangzhou Li, Jason Youn, Kaichi Xie, Trevor Chan, Pranav Gupta, Arielle Yoo, Michael Gunning, Keer Ni, Ilias Tagkopoulos
+content:
+  abstract: 's
+
+    of the CHI Conference on Human Factors in ComputingSystems 1–9
+
+    (Association for Computing Machinery, New York, NY, USA,
+
+    2024).'
+  sections: "[\n  {\n    \"name\": \"Results\",\n    \"text\": \"FoodAtlas incorporates data from a variety of different sources\\\
+    nFoodAtlas markedly broadens both the breadth and resolution of the\\nknowledge graph, interlinking 1430 foods with 3610\
+    \ chemicals through\\n48,474 curated food-to-chemical edges (Fig. 2). A major feature is the\\nintegration of 23,211 chemical-to-disease\
+    \ assertions, 13,417 \\u201ctreats\\u201d and\\n9794 \\u201cworsens\\u201d relationships, covering 2181 diseases extracted\
+    \ from the\\nCTD. Each chemical node is normalized to its MeSH identi\\ufb01er, and every\\nedge carries CTD provenance\
+    \ metadata, Direct Evidence plus PubMed\\ncitations, creating a transparent scaffold for toxicological and biomedical\\\
+    ninquiry. FoodAtlas also incorporates the chemical-to-bioactivity linking all\\nthe chemicals contained in at least one\
+    \ food to 8 key bioactivities derived\\nfrom ChEMBL, alongside 660 direct food-to-bioactivity antioxidant FRAP\\nvalues.\
+    \ FoodAtlas also introduces a sensory layer: 3645 chemical-to-\\ufb02avor\\nlinks connecting 958 unique \\ufb02avor descriptors\
+    \ compiled from FlavorDB\\nand PubChem.\\nLarge language model-based information extraction accurately\\nextracts chemical\
+    \ composition\\nThe test set consists of 356 sentences and was used to evaluate the perfor-\\nmance of the OpenAI GPT-4,\
+    \ GPT-3.5, and \\ufb01ne-tuned GPT-3.5 models.\\nWe applied both a zero-shot prompt, containing only extraction instruc-\\\
+    ntions, and a one-shot prompt, containing one example along with the\\ninstructions to the pre-trained GPT-4 and GPT-3.5models\
+    \ (Supplementary\\nNote 1.1). Additionally, we \\ufb01ne-tuned the GPT-3.5 model using the zero-\\nshot prompt, achieving\
+    \ a signi\\ufb01cantly higher F1-score of 0.67 compared to\\n0.42 for GPT-4 with the one-shot prompt (Supplementary Figs.\
+    \ 2, 3).\\nFoodAtlas knowledge graph encoded meaningful food repre-\\nsentation in chemical and health spaces\\nProjection\
+    \ of the food-by-chemical matrix into t-SNE25 space of the raw\\ncomposition matrix con\\ufb01rms that the metabolites\
+    \ driving disease diver-\\ngence are the dominant axes of compositional variance (Fig. 3A). Following\\nthis, a density-based\
+    \ clustering26 and a two-part hurdle test27, chemical\\nenrichment (qenrich), and disease intensity (qintensity), each\
+    \ with a false dis-\\ncovery rate28 smaller than 0.10, resolved six signi\\ufb01cant disease composition\\nclusters (Fig.\
+    \ 3B, Table 1, and Supplementary Note 1.4). Collectively, these\\nsix clusters reveal chemical composition patterns that\
+    \ correlate with\\ndivergent disease-risk trajectories, highlighting potential mechanisms\\nlinking dietary components\
+    \ to health outcomes. The omega-3 marine oils\\ncluster contains oily \\ufb01sh and krill products, which are extremely\
+    \ enriched in\\nRetrieve\\nPapers\"\n  },\n  {\n    \"name\": \"(PMC)\",\n    \"text\": \"Filter\\nSentences\\n(BioBERT)\\\
+    nFood\\nNames\\n(FooDB, FDC)\"\n  },\n  {\n    \"name\": \"Query External Databases\",\n    \"text\": \"Apple\\nCheese\\\
+    nChicken\\nSentences\\nFilter?\\nComparative\\nToxicology\\nDatabase\\nFlavorDB\"\n  },\n  {\n    \"name\": \"Knowledge\
+    \ Extraction\",\n    \"text\": \"Sulfuric Acid\\nSodium\\nVitamin C\\nChemical\\nNames\\n(FoodAtlas)\\nFoodAtlas\\nKnowledge\
+    \ Graph\\nImpactful Food\\nSubstitutions\\nBioactivity\\nPrediction\\nClustering\\nFoodAtlas Chemical-to-\\nFlavor/Disease\
+    \ pairs\\nAlzheimer\\u2019s\\ndiabetes\\nsweet\\n\\u2026\\n\\u2026\\nsalty\\numami\\nbitter\\n\\u2026\\nneoplasms\\ncancer\\\
+    n\\u2026\\n5 mg/100g\\n3 g/100g\\n28 mL/100L\\nTriplets\\nConcentration\\nFoodAtlas\\nFood-to-Chemical pairs\\n\\u2026\\\
+    n500 umol\\n\\u2026\"\n  },\n  {\n    \"name\": \"Analysis\",\n    \"text\": \"Triplets\\nDisease/Flavor\\nActual Bioactivity\\\
+    nPredicted Bioactivity\\nt-SNE dimension 1\\nt-SNE dimension 2\\nCardiovascular\\nDiseases\\nImmune System\\nDiseases\\\
+    nCancers\\nStromatogathic\\nDiseases\\nMusculoskeletal\\nDiseases\\nFig. 1 | FoodAtlas pipeline for building and analyzing\
+    \ a multi-layer\\nfood\\u2013chemical knowledge graph. Food names from FooDB and USDA FoodData\\nCentral are used to retrieve\
+    \ full-text articles in PubMed Central; BioBERT \\ufb01lters co-\\nmention sentences, which are converted into quantitative\
+    \ Food \\u2192Chemical triplets.\\nChemicals already cataloged in FoodAtlas are then linked to the Comparative\\nToxicogenomics\
+    \ Database to add Chemical \\u2192Disease edges and to FlavorDB for\\nChemical \\u2192Flavor edges, yielding an integrated\
+    \ graph that uni\\ufb01es compositional,\\nbiomedical, and sensory information. This enriched FoodAtlas Knowledge Graph\\\
+    nunderpins downstream tasks\\u2014including t-SNE clustering of foods, supervised\\nbioactivity prediction, and disease-focused\
+    \ food substitutions\\u2014enabling data-\\ndriven nutrition and precision-diet applications.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\\
+    nArticle\\nnpj Science of Food |  (2026) 10:33\\n2\\n\\nEPA (qenrich = 1.3 \\u00d7 10\\u221220) and DHA (qenrich = 4.9\
+    \ \\u00d7 10\\u221214). This group\\nshows the dataset\\u2019s strongest protection, lowering cardiovascular risk\\n(qintensity\
+    \ = 1.2 \\u00d7 10\\u22127) and improving metabolic, digestive, and nervous-\\nsystem scores (all qintensity < 10\\u22122).\
+    \ The high omega-6 seed oils cluster, which\\nincludes sun\\ufb02ower, saf\\ufb02ower, and rice-bran oils, shares signi\\\
+    ufb01cant linoleic-\\nacid enrichment (qenrich = 4.0 \\u00d7 10\\u22127) but exhibits a modest yet signi\\ufb01cant\\\
+    nrise inthe composite\\u201cpathological-conditions\\u201dscore(qintensity = 1.0 \\u00d7 10\\u22123),\\nechoing reports\
+    \ that excessive omega-6 intake can sustain low-grade\\nin\\ufb02ammation29. The anthocyanin-rich berries, such as blueberry,\
+    \ bilberry,\\nand\\nblack-currant,\\nare\\nhighly\\nenriched\\nfor\\ntotal\\nanthocyanins\\n(qenrich = 2.3 \\u00d7 10\\\
+    u22125)anddeliverbroadprotection,mostprominentlyagainst\\ncardiovascular disease (qintensity = 1.0 \\u00d7 10\\u22123)\
+    \ with auxiliary bene\\ufb01ts in\\nrespiratory and metabolic domains (qintensity = 5.0 \\u00d7 10\\u22122). The citrus-\\\
+    nterpene modulators cluster, consisting of oranges, lemons, and limes, is\\ndominated by limonene (qenrich = 9.2 \\u00d7\
+    \ 10\\u221224), is linked to lower neoplasm\\nscores (qintensity = 1.0 \\u00d7 10\\u22126) yet higher skin/connective-tissue\
+    \ scores\\n(qintensity = 1.0 \\u00d7 10\\u221210), mirroring limonene\\u2019s chemo-preventive activity\\nalongside its\
+    \ well-known phototoxicity30. The fat-dense animal proteins,\\nA\\nC\\nB\\nD\\nSeafood\\nDairy\\nLegume\\nVegetable\\\
+    nSeeds and Nuts\\nOther Plants\\nFruit\\nSweet\\nBitter\\nUmami\\nSour\\nSalty\\nOrganic Chemicals\\nHeterocyclic Compounds\\\
+    nInorganic Compounds\\nPolycyclic Compounds\\nAmino Acids, Peptides, and Proteins\\nLipids\\nCarbohydrates\\nNervous System\
+    \ Diseases\\nPathological Conditions, Signs\\nand Symptoms\\nNeoplasms\\nCardiovascular Diseases\\nUrogenital Diseases\\\
+    nDigestive System Diseases\\nNutritional and Metabolic Diseases\\nSweet\\nBitter\\nUmami\\nSour\\nSalty\\nFloral-sweet\\\
+    nFruity-sweet\\nCaramel/roasted sweet\\nVanilla/creamy sweet\\nSyrupy\\nAlkaloid\\nHerbal/botanical\\nAstringent\\nGreen/leafy\\\
+    nBrothy/meaty\\nMushroom/fungal\\nFermented-soy\\nAged-cheese\\nCitrus-acid\\nFermented\\nAcetic\\nGreen-vegetal\\nTart\\\
+    u2010fruit\\nMineral\\nBriny/sea salt\\nCured/meaty\\nSmoke-salt\\nNervous system diseases\\nNeoplasms\\nInfections\\\
+    nOther\\nPathological conditions, signs and symptoms\\nUrogenital diseases\\nCardiovascular diseases\\nDigestive system\
+    \ diseases\\nMusculoskeletal diseases\\nSkin and connective tissue diseases\\nRespiratory tract diseases\\nHemic and lymphatic\
+    \ diseases\\nCentral nervous system diseases\\nNeurologic manifestations\\nNeuromuscular diseases\\nCranial nerve diseases\\\
+    nAutoimmune diseases of the nervous system\\nNervous system malformations\\nAutonomic nervous system diseases\\nSleep\
+    \ wake disorders\\nNeoplasms by histologic type\\nNeoplasms by site\\nCysts\\nNeoplastic processes\\nBacterial infections\
+    \ and mycoses\\nParasitic diseases\\nVirus diseases\\nCentral nervous system infections\\nRespiratory tract infections\\\
+    nCommunicable diseases\\nMetabolic diseases\\nMouth diseases\\nGenetic diseases, inborn\\nEar diseases\\nNutrition disorders\\\
+    nPoisoning\\nCongenital abnormalities\\nRetinal diseases\\nPathologic processes\\nSigns and symptoms\\nPathological conditions,\
+    \ anatomical\\nFemale urogenital diseases and pregnancy complications\\nGenital diseases\\nHeart diseases\\ns\\ne\\ns\\\
+    na\\ne\\nsi\\nd\\nr\\na\\nl\\nu\\nc\\ns\\na\\nV\\nCardiovascular abnormalities\\nGastrointestinal diseases\\nLiver diseases\\\
+    nBiliary tract diseases\\nPancreatic diseases\\nDigestive system abnormalities\\nBone diseases\\nMuscular diseases\\nJoint\
+    \ diseases\\nMusculoskeletal abnormalities\\nJaw diseases\\nSkin diseases\\nConnective tissue diseases\\nLung diseases\\\
+    nRespiration disorders\\nBronchial diseases\\nNose diseases\\nLaryngeal diseases\\nPleural diseases\\nHematologic diseases\\\
+    nLymphatic diseases\\nOrganic chemicals\\nHeterocyclic compounds\\nCarbohydrates\\nLipids\\ns\\nd\\nn\\nu\\no\\np\\nm\\\
+    no\\nc\\n\\ncilc\\ny\\nc\\ny\\nl\\no\\nP\\nBiological factors\\nOther\\nInorganic chemicals\\nAmino acids, peptides, and\
+    \ proteins\\nHydrocarbons\\nCarboxylic acids\\nSulfur compounds\\nAlcohols\\ng\\nn\\nir\\n-\\n1\\n,\\ns\\nd\\nn\\nu\\\
+    no\\np\\nm\\no\\nc\\n\\ncilc\\ny\\nc\\no\\nr\\ne\\nt\\ne\\nH\\nGlycosides\\nAmines\\nFatty acids\\nHeterocyclic compounds,\
+    \ fused-ring\\nHeterocyclic compounds, 1-ring\\nAlkaloids\\nGlycosides\\nHydrocarbons\\nGlycosides\\nHeterocyclic compounds,\
+    \ 1-ring\\nHeterocyclic compounds, fused-ring\\nHydrocarbons\\nPolysaccharides\\nPigments, biological\\nCarboxylic acids\\\
+    nSugars\\nFatty acids\\nCarboxylic acids\\nMembrane lipids\\nFused-ring compounds\\nAlcohols\\nHydrocarbons\\nFatty alcohols\\\
+    nPhytochemicals\\nFused-ring compounds\\ns\\nn\\no\\nb\\nr\\na\\nc\\no\\nr\\nd\\ny\\nH\\ns\\nn\\no\\nb\\nr\\na\\nc\\no\\\
+    nr\\nd\\ny\\nh\\n\\ncit\\na\\nm\\no\\nr\\na\\n\\ncilc\\ny\\nc\\ny\\nl\\no\\nP\\nMembrane lipids\\nPhytochemicals\\nMacrocyclic\
+    \ compounds\\nQuinones\\nHormones\\nPolycyclic sesquiterpenes\\nPigments, biological\\nHydrocarbons\\nHeterocyclic compounds,\
+    \ fused-ring\\nHeterocyclic compounds, 1-ring\\nToxins, biological\\nFused-ring compounds\\nMembrane lipids\\nPhytochemicals\\\
+    nGlycosides\\nHeterocyclic compounds, fused-ring\\nPolymers\\nHormones\\nCoenzymes\\nNucleotides\\nHydrocarbons\\nHeterocyclic\
+    \ compounds, 1-ring\\nFused-ring compounds\\nBiological products\\nNucleosides\\nCarboxylic acids\\nSulfur compounds\\\
+    nElectrolytes\\nElements\\nGases\\nNitrogen compounds\\nAcids\\nMetals\\nChlorine compounds\\nOxygen compounds\\nAmino\
+    \ acids\\nPeptides\\nSulfur compounds\\nProteins\\nOrganoselenium compounds\\nCarboxylic acids\\nFruit\\nVegetable\\nPlant\
+    \ seed or nut\\nLegume\\nOther plant Dairy\\nSeafood\\nOther\\nMammalian meat\\nBerry\\nPlant fruit as vegetable\\nTropical\
+    \ fruit\\nCitrus fruit\\nFruit juice\\nStone fruit\\nPomaceous fruit\\nSolanaceous fruit\\ne\\ng\\na\\nr\\ne\\nv\\ne\\\
+    nb\\n\\nd\\ne\\nv\\nir\\ne\\nd\\nt\\nn\\na\\nl\\nP\\nMushroom\\nPlant root vegetable\\nPlant leaf\\nBrassica\\nVegetable\
+    \ (whole or pieces)\\nPlant head vegetable\\nPlant stem or spear\\nPlant seed\\nNut\\nMilled\\nPlant lipid\\nPlant seed\
+    \ vegetable\\nBrassica\\nBean\\nLegume\\nPulse\\nPea\\nPlant seed\\nPeanut\\nPlant seed vegetable\\nSpice or herb\\ne\\\
+    ng\\na\\nr\\ne\\nv\\ne\\nb\\n\\nd\\ne\\nv\\nir\\ne\\nd\\nt\\nn\\na\\nl\\nP\\nPlant root\\nSolanaceous\\nPlant lipid\\\
+    nMilk or milk based\\nBovine dairy\\nCheese\\nFermented dairy\\nShellfish\\nFish (whole or pieces)\\nSalmon\\nCod\\nTuna\\\
+    nPoultry\\nAvian egg\\nVertebrate animal\\nAnimal based refined or partially-refined\\nAnimal lipid\\nInvertebrate animal\\\
+    nBovine meat\\nSwine\\nProcessed meat\\nMeat (whole or pieces)\\nSheep meat\\nVertebrate animal\\nFig. 2 | Composition\
+    \ of the FoodAtlas Knowledge Graph. A Entity\\u2013relation\\nschema with node counts (in parentheses) and edge counts\
+    \ on the arrows: foods\\n(1430) connect to chemicals (10,266) through contains edges (48,474); chemicals\\nlink hierarchically\
+    \ via is a (263,021); chemicals map to diseases (3177) through\\ntreats/worsens relations (138,792); chemicals map to\
+    \ \\ufb02avors (1117) through has\\n\\ufb02avor (6169); foods are organized taxonomically by additional is a edges (11,683).\\\
+    nB Chemical superclass breakdown shows that polyatomic molecules dominate\\n(1115; 53.2%), followed by main group molecules\
+    \ (313; 14.9%), lipids (158; 7.5%),\\nions (140; 6.7%), glycans (54; 2.6%), amino acid derivatives (30; 1.4%), inorganic\\\
+    nmolecules (16; 0.8%) and other classes (268; 12.8%). C Integrated circos plot\\ndepicting the ecosystem of food\\u2013chemical\\\
+    u2013disease\\u2013\\ufb02avor relationships across all\\nentities in FoodAtlas. The outermost ring shows the category\
+    \ arcs. Inside this, a\\nnarrow white ring hosts a scatter-style evidence lane: red radial bars plot, for every\\nsub-category,\
+    \ the volume of supporting metadata (bar height scales with evidence\\ncount). The innermost colored band comprises the\
+    \ sub-category arcs. D Sunburst\\nplots showing hierarchical distributions of \\ufb02avor descriptors and disease outcomes.\\\
+    nEach sunburst represents the relative frequency of (outer ring) subcategories nested\\nwithin (inner ring) major categories.\\\
+    nFood Categories\\nDisease Categories\\nA\\nB\\nKey Chemicals\\nKey Chemicals\\nFig. 3 | Concordant chemical and disease\
+    \ structure in FoodAtlas foods.\\nA Composition space. A Node2Vec105 embedding built only from food-to-chemical\\nedges\
+    \ was projected with t-SNE (center plot). Density-based clustering (dashed\\nellipses) resolves nine chemically coherent\
+    \ groups whose insets (top and side panels)\\nname representative members. The horizontal bar-stripe beneath the scatter\
+    \ ranks\\nthe chemicals that are signi\\ufb01cantly enriched within each group (signed-log\\u2081\\u2080 q from\\nthe\
+    \ two-part hurdle test; darker blue = stronger enrichment). B Disease-aware space.\\nAdding signed chemical-to-disease\
+    \ edges to the graph and repeating the embedding\\nyields a second t-SNE in which node color encodes the composite, normalized\\\
+    ndisease score (blue = protective, red = harmful). Six clusters that survive the dual\\nchemical-plus-disease hurdle test\
+    \ are emphasized (dashed ellipses, labels). The dot-\\nmatrix to the right compares, for those clusters, (i) over-represented\
+    \ food categories\\n(top sub-panel) and (ii) disease classes that differ signi\\ufb01cantly from the background\\n(bottom;\
+    \ dot size \\u221d\\u2212log\\u2081\\u2080 q, color sign = protection or risk). The lower bar-stripe\\nagain lists the\
+    \ hallmark enriched chemicals, showing that the same metabolites\\u2014\\nEPA/DHA, anthocyanins, limonene, palmitic acid,\
+    \ fructose/glucose, linoleic acid\\u2014\\ndrive separation in both purely compositional and health-augmented landscapes.\\\
+    nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of Food |  (2026) 10:33\\n3\\n\\nincluding bacon,\
+    \ sausages, and hard cheeses, concentrate palmitic acid\\n(qenrich = 4.0 \\u00d7 10\\u221235) and industrial trans-fatty\
+    \ acids (qenrich = 2.3 \\u00d7 10\\u221214).\\nThe cluster is associated\\nwith worsening\\nstomatognathic disease\\n(qintensity\
+    \ = 1.0 \\u00d7 10\\u22123) and measurable endocrine and cardiovascular\\npenalties (qintensity = 5.0 \\u00d7 10\\u22122).\
+    \ Finally, the high-fructose fruit concentrates\\ncluster, which involves grape and apple juices and high-Brix tomato\
+    \ pro-\\nducts,\\nshows\\nextreme\\nfructose\\n(qenrich = 2.6 \\u00d7 10\\u221222)\\nand\\nglucose\\n(qenrich = 2.1 \\\
+    u00d7 10\\u221219) enrichment, translating into increased nervous-\\nsystem (qintensity = 1.0 \\u00d7 10\\u22127) and\
+    \ urogenital (qintensity = 1.0 \\u00d7 10\\u22127) disease\\nscores and broader metabolic detriments (qintensity = 1.0\
+    \ \\u00d7 10\\u22122).\\nBy integrating chemical composition, structural \\ufb01ngerprints, and\\npotency data, we accurately\
+    \ predict food-level antioxidant\\ncapacity\\nThe integration of FoodAtlas composition data with ChEMBL potency\\nmeasurements\
+    \ culminated in a BFL set that maps 15,222 chemicals across\\n660 foods to quantitative bioactivity readouts via pChEMBL\
+    \ values. A\\npreliminary attempt that relied on pChEMBL values alone was unin-\\nformative (Supplementary Note 1.5).\
+    \ In contrast, the ensuing BPM, which\\njointly leverages chemical concentrations, extended-connectivity \\ufb01nger-\\\
+    nprints, and potency scores, captured 52% of the variance in literature FRAP\\nmeasurements and achieved a Pearson correlation\
+    \ coef\\ufb01cient (PCC) of 0.72\\n(p = 3.9 \\u00d7 10\\u221214); three quarters of predictions deviated by \\u2264\\\
+    u00b10.81 \\u2212log\\u2081\\u2080(-\\nFRAP) units (Fig. 4A). Residual analysis con\\ufb01rmed stable model perfor-\\\
+    nmance, showing a negligible correlation (r = 0.039) between predicted\\nvalues and model residuals. Beyond reproducing\
+    \ reported values, BPM\\ngeneralizes to previously uncharacterized items: Fig. 4B ranks the 50 com-\\nmon foods per their\
+    \ predicted antioxidant content, illustrating the model\\u2019s\\nutility for rapid triage of antioxidant potential in\
+    \ foods lacking experimental\\nFRAP data.\\nHolistic food substitutions achieve signi\\ufb01cant disease-risk\\nreduction\
+    \ and antioxidant gains\\nWe modeled 14,580 disease-focused substitutions and 7798 antioxidant-\\nfocused substitutions\
+    \ (Fig. 5A and Supplementary Table 5). Across the full\\ndataset, the mean disease prevention score rose by 11.9%. Improvements\\\
+    nwereequallyweightedacrossallmeals-breakfast(9.9%),lunch(10.0%),and\\ndinner (11.1%) meals (Fig. 5B). All reductions remained\
+    \ signi\\ufb01cant after\\ncorrection for multiple testing (q < 10\\u22123). Applying the same substitution\\nframework\
+    \ to antioxidant bioactivity more than tripled predicted activity,\\nyielding an average increase of 210.6%, with peak\
+    \ enhancements at lunch\\n(257.9%), dinner (185.8%), and breakfast (176.4%). We \\ufb01rst quanti\\ufb01ed the\\naggregate\
+    \ change in disease-risk score that resulted from category-matched\\nfood swaps (Fig. 5A). Radar plots of individual disease\
+    \ domains con\\ufb01rmed\\nbroad-spectrum improvements rather than bene\\ufb01ts con\\ufb01ned to a single\\nsystem (Fig.\
+    \ 5B). To dissect the chemical basis of these effects, we extracted\\nthe ten most in\\ufb02uential chemicals for each\
+    \ meal type and visualized both\\ntheir absolute contributions to risk and the direction of change induced by\\nthe swap\
+    \ (Fig. 5C, left versus right sub-panels). Protective shifts were con-\\nsistently driven by polyphenolic \\ufb02avonoids,\
+    \ including quercetin, kaemp-\\nferol, and cyanidin, and long-chain omega-3 fatty acids (EPA, DHA), which\\nexhibited\
+    \ uniformly negative differential scores (cool hues). Conversely,\\nheterocyclic amines such as PhIP and MeIQx, advanced\
+    \ glycation end-\\nproducts (CML, CEL), and saturated tri-acyl-glycerols (palmitic-, stearic-,\\nand lauric-TAGs) remained\
+    \ dominant positive contributors (warm hues).\\nThe recurrence of these chemical signatures across breakfast, lunch, and\\\
+    ndinner indicates that the underlying mechanisms are conserved and time-\\nof-day\\u2013independent. Three-layer Sankey\
+    \ diagrams traced the pathways\\nfrom food categoriesthrough chemical classesto disease domains, revealing\\nhow dietary\
+    \ risk propagates through the food system (Fig. 5D). By mea-\\nsuring how much the total chemical content of meals changed\
+    \ after sub-\\nstitutions and testing whether these changes were statistically meaningful,\\nwe identi\\ufb01ed the most\
+    \ robust pathways. Equalized node heights decoupled\\ntopological structure from magnitude, making \\u201crisk bottlenecks\\\
+    u201d visually\\nsalient. Processed-meat and re\\ufb01ned-grain categories converged through\\nheterocyclicaminesanddicarbonylAGEsontoneoplasmnodes,wherefood\\\
+    nsubstitutions signi\\ufb01cantly increased cancer-related chemical content\\n(q = 1.8 \\u00d7 10\\u221256 for breakfast;\
+    \ q = 5.1 \\u00d7 10\\u221277 for lunch; q = 1.1 \\u00d7 10\\u221268 for\\ndinner), cardiovascular nodes, where substitutions\
+    \ increased heart disease\\nrisk (q = 2.2 \\u00d7 10\\u22125 for breakfast; q = 8.5 \\u00d7 10\\u221219 for lunch; q =\
+    \ 7.0 \\u00d7 10\\u22124 for\\ndinner), and endocrine-metabolic nodes, where substitutions disrupted\\nhormonal systems\
+    \ (q = 8.7 \\u00d7 10\\u22124 for breakfast; q = 2.2 \\u00d7 10\\u221235 for lunch;\\nq = 2.9 \\u00d7 10\\u221230 for\
+    \ dinner). Conversely, berries, leafy greens, and olive pro-\\nducts channeled\\n\\ufb02avonoids\\nand\\nmonophenols\\\
+    ntowards\\nprotective\\nendocrine-metabolic nodes (q = 8.7 \\u00d7 10\\u22124 for breakfast; q = 2.2 \\u00d7 10\\u221235\
+    \ for\\nlunch; q = 2.9 \\u00d7 10\\u221230 for dinner) and immune nodes (q = 8.7 \\u00d7 10\\u22124 for\\nbreakfast; q\
+    \ = 5.1 \\u00d7 10\\u221237 for lunch; q = 1.3 \\u00d7 10\\u221231) where substitutions\\nsigni\\ufb01cantly reduced disease\
+    \ risk (Tables 2 and 3).\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"In this study, we introduce FoodAtlas,\
+    \ a substantially expanded and fully\\ntraceable knowledge graph that integrates compositional, toxicological,\\n\\ufb02avor,\
+    \ and bioactivity data for advanced dietary analysis. By linking 1430\\nfoods to 3610 chemicals through 48,474 curated\
+    \ food\\u2013chemical edges,\\nincorporating 23,211 chemical\\u2013disease assertions across 2181 diseases\\n(13,417 ameliorative,\
+    \ 9794 exacerbating), 15,222 chemical-bioactivity\\nassertions across eight bioactivities, 660 food-antioxidant bioactivity,\
+    \ and\\nlayering in 3645 chemical-\\ufb02avor relationships covering 958 descriptors,\\nFoodAtlas represents a major leap\
+    \ in both breadth and resolution over its\\npredecessor. Our ontology-aware, transformer-driven ingestion pipeline\\nachieved\
+    \ an F1 of 0.67 on held-out extraction tasks, enabling reliable scaling\\nof literature-derived composition facts. The\
+    \ Bioactivity Prediction Model\\nfurther demonstrates generalizability, explaining 52% of variance in FRAP\\nassays (R\\\
+    u00b2 = 0.52, PCC = 0.72) and ranking antioxidant potential for\\nTable 1 | Chemistry and disease signatures of supported\
+    \ clusters\\nCluster (ID)\\nRepresentative foods\\nKey chemical(s)\\nLeading disease effect\\nSupporting\"\n  },\n  {\n\
+    \    \"name\": \"references\",\n    \"text\": \"Omega-3 marine oils\\nSalmon, mackerel, krill oil\"\n  },\n  {\n    \"\
+    name\": \"EPA (1.3 \\u00d7 10\\u221220); DHA\",\n    \"text\": \"(4.9 \\u00d7 10\\u221214)\\nCardiovascular score decreased\
+    \ (1.2 \\u00d7 10\\u22127)\\n69,70\\nHigh-LA seed oils\\nSun\\ufb02ower, saf\\ufb02ower oils\\nLinoleic acid (4.3 \\u00d7\
+    \ 10\\u22127)\\nPathological-conditions score increased (3.5 \\u00d7 10\\u22123)\\n29,71\\nAnthocyanin berries\\nBlueberry,\
+    \ bilberry\\nTotal anthocyanins (1.4 \\u00d7 10\\u22127)\\nCardiovascular score decreased (3.1 \\u00d7 10\\u22123)\\n72,73\\\
+    nCitrus-terpene foods\\nOrange, lemon, lime\\nLimonene (9.3 \\u00d7 10\\u221224)\\nNeoplasm score decreased (6.6 \\u00d7\
+    \ 10\\u22126); Skin/\\nconnective-tissue score increased (1.2 \\u00d7 10\\u221210)\\n30,74\\nProcessed animal fats\\nBacon,\
+    \ hard cheese\\nPalmitic acid (7.5 \\u00d7 10\\u221235); Trans-\"\n  },\n  {\n    \"name\": \"FA (\\u22642.0 \\u00d7 10\\\
+    u221215)\",\n    \"text\": \"Stomatognathic score increased (5.2 \\u00d7 10\\u22123)\\n75,76\\nFree-sugar fruits\\nGrape,\
+    \ apple juices\\nFructose (3.5 \\u00d7 10\\u221225); Glucose\\n(3.6 \\u00d7 10\\u221222)\\nNervous score increased (6.3\
+    \ \\u00d7 10\\u22127); Urogenital\\nscore increased (9.1 \\u00d7 10\\u22127)\\n77,78\\nTable showing the key chemicals\
+    \ and disease impact of each cluster, with supporting references.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\\
+    nnpj Science of Food |  (2026) 10:33\\n4\\n\\npreviously uncharacterized foods. We used antioxidant activity as a\\nbenchmark\
+    \ endpoint because it is one of the most widely studied and\\nquantitatively validated measures in food and nutrition\
+    \ research31, or for\\nevaluating bioactive compounds\\u2019 health bene\\ufb01ts32. The BPM\\u2019s reliance on\\nchemical\
+    \ structure, potency, and concentration data illustrates extensibility\\ntootherbioactivities,suchasthosescreenedviaAIforfood-derivedpeptides\\\
+    nwith anti-obesity or anti-fatigue effects33, while bioactive compounds\\u2019\\nbroader impacts on diseases like diabetes\
+    \ and cancer underscore the fra-\\nmework\\u2019s biological relevance34. Finally, our substitution framework, eval-\\\
+    nuating 14,580 disease-focused and 7798 antioxidant-focused one-hop\\nswaps, yielded a mean 11.9% disease-risk reduction\
+    \ and 210.6% increase in\\npredicted antioxidant activity across breakfast, lunch, and dinner. These\"\n  },\n  {\n  \
+    \  \"name\": \"results suggested FoodAtlas\\u2019s dual role as both a mechanistic knowledge\",\n    \"text\": \"base\
+    \ and a decision-support engine. The enriched graph structure,\\ncomplete with MeSH-normalized nodes and PubMed-cited\
+    \ prove-\\nnance metadata, could empower in-depth toxicological and nutrige-\\nnomic investigations.\\nThere are several\
+    \ rooms for improvement for our future work. First,\\nour information-extraction F1 of 0.67 indicates errors in entity\
+    \ and relation\\nrecognition, particularly in complex or tabular contexts. In the future, we\\naim to utilize a more advanced\
+    \ large language model, such as GPT-535,\\nincorporating techniques like multimodal reasoning36 and structured\\noutput37,\
+    \ as well as incorporating unstructured sources (e.g., tables) and\\nhybrid architectures38, to enhance the extraction\
+    \ performance. Second,\\nCTD-derived disease associations are binary and do not capture dose-\\nresponse dynamics or clinical\
+    \ outcomes. To improve, we consider incor-\\nporatingquantitative toxicology(dose-response data,clinicalendpoints) for\\\
+    npredicting therapeutic success39. Third, the BPM\\u2019s reliance on existing\\npChEMBL and concentration data may introduce\
+    \ biases due to uneven\\nassay coverage. In the future, we plan to expand coverage by developing an\\nautomated pipeline\
+    \ to extract bioactivity data from the broader scienti\\ufb01c\\nliterature and implementing active learning approaches\
+    \ to prioritize\\nunderrepresented targets and compound classes40. We also plan to expand\\nour predictive bioactivity\
+    \ modeling to other endpoints, e.g., antidiabetic\\nA\\nFoodAtlas 50 Foods with Predicted Antioxidant Content\\nV\\nd\\\
+    ne\\ntcid\\ne\\nr\\nP\\ng\\nol-(\\ns\\ne\\nula\\n)))\\ng\\n0\\n0\\n1\\n/lo\\nm\\nm\\n(\\nP\\nA\\nR\\nF\\n(\\n0\\n1\\nB\\\
+    nActual Values (-log (FRAP(mmol/100g)))\\n10\\nPredicted Values (-log (FRAP(mmol/100g)))\\n10\\nV\\nd\\ne\\ntcid\\ne\\\
+    nr\\nP\\ng\\nol-(\\ns\\ne\\nula\\n)))\\ng\\n0\\n0\\n1\\n/lo\\nm\\nm\\n(\\nP\\nA\\nR\\nF\\n(\\n0\\n1\\nla\\nu\\ndis\\ne\\\
+    nR\\nBioactivity Model Predictions vs Actual Literature Values\\nResiduals Versus Antioxidant Bioactivity Plot\\nFig.\
+    \ 4 | Predictive performance of the antioxidant Bioactivity Prediction\\nModel (BPM). A Goodness of \\ufb01t and diagnostics.\
+    \ The left panel contrasts BPM-\\npredicted versus literature-reported antioxidant activity (negative log-transformed\\\
+    nFRAP values) for foods with available measurements. The model attains an R\\u00b2 = 0.52\\nand a Pearson correlation\
+    \ coef\\ufb01cient (PCC) = 0.72. The right panel plots studentized\\nresiduals against observed antioxidant values, revealing\
+    \ homoscedastic error\\ndispersion around zero and no systematic bias across the response range.\\nB Extrapolative ranking\
+    \ of unmeasured foods. The bar chart lists the top-50 Foo-\\ndAtlas foods by predicted antioxidant content (pink bars\
+    \ \\u00b1 prediction error). Green\\ncircles indicate foods for which experimental FRAP data exist, showing close con-\\\
+    ncordance with model estimates and underscoring the BPM\\u2019s ability to prioritize\\ncandidate foods that currently\
+    \ lack empirical measurements.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of Food |  (2026)\
+    \ 10:33\\n5\\n\\nbioactivity, glycemic index values can serve as functional indicators of\\nglucose regulation potential41,\
+    \ while anti-in\\ufb02ammatory activity can be\\napproximated using the Dietary In\\ufb02ammatory Index42. Fourth, due\
+    \ to the\\nlack of a standardized \\ufb02avor ontology, \\ufb02avors are used as descriptors for\\nchemicals rather than\
+    \ embedded as part of modeling. In the future, we plan\\nto use an LLM-based human-in-the-loop tool to design a practical\
+    \ ontology\\nfor \\ufb02avors43,44, which will help with more versatile downstream tasks. Fifth,\\nour one-hop substitution\
+    \ approach is simpli\\ufb01ed and does not re\\ufb02ect the\\nmultifaceted complexity of food-health interaction. Speci\\\
+    ufb01cally, we do not\\naccount for multi-ingredient and chemical synergies, cultural dietary pat-\\nterns,\\nor\\npalatability\\\
+    nconstraints,\\nbioavailability,\\nexposure,\\nand\\nmetabolism45\\u201350, which could limit real-world adoption. For\
+    \ this work, we\\nfocus on highlighting the potential of how the FoodAtlas Knowledge Graph\\ncould provide a data source\
+    \ even for simplistic downstream models to\\ncapture correlation corroborated with literature validation. As future work,\\\
+    nwe plan to continuously ingest newly published literature data into the\\nFoodAtlas Knowledge Graph to support different\
+    \ use cases by scientists and\\ncollaborate with domain experts to advance the food-based health inter-\\nvention research.\
+    \ Lastly, we continuously work to enhance the usability of\\nour data and web interface, which we aim to extend ontologies,\
+    \ such as\\nMONDO51 fordiseases,forbettersearchability,differentdownloadabledata\\nformats, such as Parquet, JSON, RDF,\
+    \ and Neo4j, and periodic synchro-\\nnization with external data sources, such as FoodOn11, ChEBI52, and\\nPubChem53,\
+    \ to ensure interoperability.\\nTable 3 | Representative one-hop, within-category substitutions to maximize antioxidant\
+    \ bioactivity enhancement across\\nmeal types\\nMeal\\ntype\\nMeal foods\\nCategory\\nSubstitution (original\\n\\u2192alt.)\\\
+    nPortion\\n(g)\\nKey chemicals\\nAntioxidant score\\nchange (%)\\nSupporting\"\n  },\n  {\n    \"name\": \"references\"\
+    ,\n    \"text\": \"Breakfast\\nOats + chia seed\\nPlant-\\nprotein\\nChia seed \\u2192pecan nut\\n10.5\\nLinoleic acid\
+    \ +85%; \\u03b1-\\nlinolenic +19%\\n194.8\\n95,96\\nEgg-melt + Swiss\\ncheese\\nDairy\\nSwiss cheese \\u2192reduced-\\\
+    nfat cheese\\n21\\nMethionine +102%\\n182.2\\n97,98\\nMuesli drizzle \\ufb02axseed oil\\nFat/Oil\\nFlaxseed oil \\u2192soybean\
+    \ oil\\n4.5\\nLinoleic acid +398%; oleic\\nacid +389%\\n244.4\\n99,100\\nLunch\\nKale-slaw w/ green\\ncabbage\\nVegetable\\\
+    nGreen cabbage \\u2192red\\ncabbage\\n22\\nAnthocyanins \\u2191;\\nkaempferol +101%\\n200.6\\n101,102\\nMed-wrap + dill\
+    \ pickle\\nCondiment\\nDill pickle \\u2192black olive\\n18\\nOleuropein +65%; oleic\\nacid +24%\\n196.8\\n79,80\\nVeg-burrito\
+    \ + sweet\\ngreen pepper\\nVegetable\\nGreen pepper \\u2192beet (raw)\\n30\\nBetanin +352%;\\nsucrose +413%\\n258.6\\\
+    n103,104\\nDinner\\nVeg-lasagna + cheese\\ntopping\\nDairy\\nCheese \\u2192reduced-fat\\ncheese\\n56.7\\nMethionine +102%\\\
+    n197.2\\n97,98\\nStir-fry \\ufb01nished w/\\nsoybean oil\\nFat/Oil\\nSoybean oil \\u2192pecan nut\\n10.5\\nLinoleic acid\
+    \ +85%; \\u03b1-\\nlinolenic +19%\\n194\\n95,96\\nGrilled entr\\u00e9e + dill pickle\\nCondiment\\nDill pickle \\u2192black\
+    \ olive\\n18\\nOleuropein +65%; oleic\\nacid +24%\\n207.4\\n79,80\\nFor each meal, the original food composition, the\
+    \ identi\\ufb01ed high-impact item, its replacement candidate, the primary food category, and the predicted percentage\
+    \ increase in the normalized antioxidant\\nactivity score are shown, with supporting references.\\nTable 2 | Representative\
+    \ one-hop, within-category substitutions to maximize disease-risk reduction across meal types\\nMeal\\ntype\\nMeal foods\\\
+    nCategory\\nSubstitution (original\\n\\u2192alt.)\\nPortion\\n(g)\\nKey chemicals\\nDisease score\\nchange (%)\\nSupporting\"\
+    \n  },\n  {\n    \"name\": \"references\",\n    \"text\": \"Breakfast\\nWhole-grain toast + dill\\npickle\\nCondiment\\\
+    nDill pickle \\u2192olive\\n18\\nQuercetin +50.2%; oleic\\nacid +23.4%\\n11.9\\n79,80\\nSoy-latte + soy milk splash\\\
+    nDairy\\nsubstitute\\nSoy milk \\u2192almond milk\\n330\\nGenistein +92.6%;\\nsucrose +6.6%\\n11.9\\n81,82\\nCoffee +\
+    \ oatmeal-raisin\\ncookie\\nSweet\\nbakery\\nCookie \\u2192almond\\n60\\nTrans-resveratrol +88%; oleic\\nacid +7%\\n11.8\\\
+    n83,84\\nLunch\\nSpinach\\u2013quinoa bowl +\\napple juice\\n100% juice\\nApple juice \\u2192\\ngrape juice\\n149.5\\\
+    nSucrose +103.7%\\n12.2\\n85,86\\nGrain wrap + almond butter\\nPlant-\\nprotein\\nAlmond butter \\u2192\\nhazelnut\\n48\\\
+    nLinoleic acid +83%; oleic\\nacid +29%\\n11.8\\n87,88\\nGarden salad + dill pickle\\nCondiment\\nDill pickle \\u2192olive\\\
+    n18\\nQuercetin +50.2%; oleic\\nacid +23.4%\\n12.1\\n79,80\\nDinner\\nSpinach side-salad +\\ncranberry juice\\n100% juice\\\
+    nCranberry \\u2192\\npomegranate\\n248\\nChlorogenic acid +51%; citric\\nacid +25%\\n12.4\\n89,90\\nStir-fry saut\\u00e9ed\
+    \ in\\nsun\\ufb02ower oil\\nFat/Oil\\nSun\\ufb02ower oil \\u2192\\ncoconut oil\\n8\\nLauric acid \\u2191; total phenolics\
+    \ \\u2191\\n10.8\\n91,92\\nRoast veg incl. red cabbage\\nVegetable\\nRed cabbage \\u2192green\\ncabbage\\n45\\nKaempferol\
+    \ +101%\\n13.5\\n93,94\\nFor each meal, the original food composition, the identi\\ufb01ed high-impact item, its replacement\
+    \ candidate, the primary food category, and the predicted percentage reduction in the normalized composite\\ndisease treatment\
+    \ score are shown, with supporting references.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of\
+    \ Food |  (2026) 10:33\\n6\\n\\nFoodAtlasprovidesapromisingfoundationforprecisionnutritionand\\nfood-innovation applications,\
+    \ uniting high-resolution compositional data,\\nmechanistic disease links, predictive bioactivity models, and dietary\
+    \ gui-\\ndance in a single resource.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"Sentence retrieval\\nWe\
+    \ initially gathered 1300 food names, including both common and sci-\\nenti\\ufb01c terms, from FooDB and FoodData Central\
+    \ (FDC)7. We then used\\nthese names to search PubMed54 and PubMed Central (PMC)55, which host\\n36 million and 9.8 million\
+    \ abstracts and full-text articles in biomedical and\\nlife sciences, respectively. The searches were conducted using\
+    \ the NCBI\\u2019s\\nEntrez Direct (EDirect)56 to retrieve scienti\\ufb01c literature that mentions these\\nfood names.\
+    \ We employed a search template \\u201c{food name} AND ((com-\\npound) OR (nutrient))\\u201d to ensure that the articles\
+    \ included not only the food\\nname but also at least one of the keywords, \\u2018compound\\u2019 or \\u2018nutrient.\\\
+    u2019 This\\nsearch template was empirically selected to enhance the accuracy of the\"\n  },\n  {\n    \"name\": \"results.\
+    \ Next, we tokenized the retrieved scienti\\ufb01c literature into sentences\",\n    \"text\": \"using the NLTK library57\
+    \ and excluded sentences that were either too short\\nor too long, following the approach used by LitSense in their study1.\\\
+    nSentence \\ufb01ltering\\nSince not all sentences in the retrieved articles above were related to\\nfood\\u2013chemical\
+    \ associations, we followed a two-step \\ufb01ltering procedure.\\nFirst, we used a fuzzy matching58 technique to keep\
+    \ only sentences con-\\ntaining one of the food terms described in the last section, resulting in about\\n10 million sentences\
+    \ mentioning food terms. Second, we \\ufb01ne-tuned a large\\nlanguage model, BioBERT16, to classify sentences that contain\
+    \ valid\\nfood\\u2013chemical associations. This process resulted in 773,366 sentences that\\nwere highly likely (p >\
+    \ 0.9) to contain food\\u2013chemical associations. More\\ndetails can be found in Supplementary Note 1.1.\\nAssociation\
+    \ extraction\\nFor sentences that indicated food\\u2013chemical associations following the \\ufb01l-\\ntering step above,\
+    \ we passed those with a probability greater than 90% to the\\nlarge language model-based information extraction models.\
+    \ We compared\\nthe performance of two different models: OpenAI GPT-459 (Model ID: gpt-\\n4-0613) and GPT-3.560 with in-context\
+    \ learning or \\ufb01ne-tuning. For both\\nmodels, we extracted food, food parts, chemicals, and chemical con-\\ncentrations.\
+    \ For example, the sentence, \\u201cChinese cabbage leaves contain Ca\\n(1020 g kg-1 FW), Fe (26 g kg-1 FW), and total\
+    \ glucosinolates (10.926\\nmicromol g-1 DW),\\u201d would result in the following three tuple extraction:\\n(Chinese cabbage,\
+    \ leaves, Ca, 1020 g kg-1 FW), (Chinese cabbage, leaves, Fe,\\n26 g kg-1 FW), and (Chinese cabbage, leaves, total glucosinolates,\
+    \ 10.926\\nmicromol g-1 DW). We provided more details in Supplementary Note 1.1.\\nFine-tuning of GPT models using annotation\
+    \ rules\\nTo improve the accuracy and speci\\ufb01city of extracted data, we \\ufb01ne-tuned the\\nGPT-3.5 (Model ID:\
+    \ gpt-3.5-turbo-0125) model with a dataset curated\\nbased on an extensive set of annotation rules. We have two annotators\
+    \ label\\nthe same sentences independently and consolidate the disagreement. These\\nrules were designed and validated\
+    \ through the analysis of over 1780 sen-\\ntences containing food and chemical information. Speci\\ufb01cally, we extracted\\\
+    nthe information in the format: ({food}, {food part}, {chemical compound},\\nA\\nB\\nC\\nD\\nBreakfast\\nLunch\\nDinner\\\
+    n\\u22120.5\\n0\\n0.5\\n\\u22120.5\\n0\\n0.5\\n100% Juice\\nCondiments and Sauces\\nSweet Bakery Products\\nFats and Oils\\\
+    nBeverages\\nPlant-based Protein Foods\\nPhenolics\\nLipids\\nOther organic acids\\nCarbohydrates\\nAmino acids, peptides,\
+    \ and proteins\\nOthers\\nDigestive System Diseases\\nSkin and Connective Tissue Diseases\\nRespiratory Tract Diseases\\\
+    nImmune System Diseases\\nCardiovascular Diseases\\nNutritional and Metabolic Diseases\\nHemic and Lymphatic Diseases\\\
+    nNeoplasms\\nEndocrine System Diseases\\nNervous System Diseases\\nMusculoskeletal Diseases\\nUrogenital Diseases\\nStomatognathic\
+    \ Diseases\\n20\\n40\\n60\\n80\\n-log10(p-value)\\nDisease Impact Score\\n100% Juice\\n\\u22120.5\\n0\\n0.5\\nCondiments\
+    \ and Sauces\\n100% Juice\\nBeverages\\nSweet Bakery Products\\nFruits\\nFats and Oils\\nPhenolics\\nLipids\\nCarbohydrates\\\
+    nOther organic acids\\nAmino acids, peptides, and proteins\\nOthers\\nSkin and Connective Tissue Diseases\\nDigestive\
+    \ System Diseases\\nRespiratory Tract Diseases\\nNutritional and Metabolic Diseases\\nImmune System Diseases\\nCardiovascular\
+    \ Diseases\\nHemic and Lymphatic Diseases\\nNeoplasms\\nNervous System Diseases\\nEndocrine System Diseases\\nUrogenital\
+    \ Diseases\\nMusculoskeletal Diseases\\nStomatognathic Diseases\\n20\\n40\\n60\\n80\\n-log10(p-value)\\nDisease Impact\
+    \ Score\\nSweet Bakery Products\\nFats and Oils\\nBeverages\\nPlant-based Protein Foods\\nCondiments and Sauces\\nPhenolics\\\
+    nLipids\\nOther organic acids\\nCarbohydrates\\nAmino acids, peptides, and proteins\\nOthers\\nImmune System Diseases\\\
+    nHemic and Lymphatic Diseases\\nDigestive System Diseases\\nNutritional and Metabolic Diseases\\nNeoplasms\\nCardiovascular\
+    \ Diseases\\nSkin and Connective Tissue Diseases\\nRespiratory Tract Diseases\\nNervous System Diseases\\nUrogenital Diseases\\\
+    nMusculoskeletal Diseases\\nEndocrine System Diseases\\nStomatognathic Diseases\\n20\\n40\\n60\\n-log10(p-value)\\nDisease\
+    \ Impact Score\\nFig. 5 | FoodAtlas-guided, category-matched ingredient swaps attenuate pre-\\ndicted disease risk and\
+    \ expose their chemical drivers across breakfast, lunch, and\\ndinner. A Paired box-and-whisker plots of per-disease scores\
+    \ (22 MeSH classes) for\\nbreakfast (blue), lunch (green), and dinner (orange) meals before (lighter tint) and\\nafter\
+    \ (darker tint) replacing the single ingredient with the greatest weighted risk by a\\nnutritionally superior food from\
+    \ the same category. Box centers show medians,\\nhinges the inter-quartile range, whiskers 1.5 \\u00d7 IQR, and dots outliers;\
+    \ horizontal bars\\ndenote Wilcoxon signed-rank signi\\ufb01cance (p < 0.05, *p < 0.01, **p < 0.001). All\\nthree meal\
+    \ types shift consistently toward lower risk after substitution. B Radar plots\\nfor one representative meal per time-of-day\
+    \ illustrate the multidimensional bene\\ufb01t\\nof a single swap\\u2014nectarine \\u2192cranberry in a fruit-and-cottage-cheese\
+    \ breakfast\\n(+21% aggregate improvement), hummus \\u2192olive in a pita-and-chickpea lunch\\n(+18%), and oatmeal-raisin\
+    \ cookie \\u2192sweet-potato pur\\u00e9e in a spinach-and-feta\\ndinner (+4%). Solid polygons trace pre-swap scores, dashed\
+    \ polygons post-swap\\nscores; adjoining dot-plots rank the \\ufb01ve chemicals contributing most to each\\nimprovement.\
+    \ C For each meal type, paired heat-maps display the mean signed\\ncontribution of the ten most in\\ufb02uential chemicals\
+    \ (columns) to every disease class\\n(rows): the left panel shows the change induced by the swap (baseline \\u2013 optimized),\\\
+    nthe right panel the absolute post-swap impact. Meal-speci\\ufb01c color maps (Blues,\\nGreens, Oranges) reveal a conserved\
+    \ pattern in which polyphenol-rich \\ufb02avonoids\\nand omega-3 fatty acids align with risk reductions (cool hues), whereas\
+    \ heterocyclic\\namines, advanced glycation products, and saturated tri-acyl-glycerols drive risk\\nelevations (warm hues).\
+    \ D Three-layer Sankey diagrams trace risk \\ufb02ow from food\\ncategories (left) through chemical classes (center) to\
+    \ disease classes (right). Node\\nheights are equalized with a constant dummy \\ufb02ow to separate topology from\\nmagnitude,\
+    \ so dominant \\u201crisk bottlenecks\\u201d stand out visually. Companion lollipop\\ncharts plot the \\u2013log\\u2081\\\
+    u2080(p-values) for enrichment of each disease class, con\\ufb01rming the\\nstatistical signi\\ufb01cance of the observed\
+    \ pathways. Together, the panels demonstrate\\nthat single, FoodAtlas-recommended swaps reliably lower predicted disease\
+    \ burden\\nand that a small, mechanistically coherent set of chemicals mediates most of the\\nbene\\ufb01t.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\\
+    nArticle\\nnpj Science of Food |  (2026) 10:33\\n7\\n\\n{chemical concentration}) by following key principles: First,\
+    \ extracting\\ninformation exactly as presented in sentences to ensure \\ufb01delity. Second,\\nannotating the most speci\\\
+    ufb01c entities, such as individual compounds rather\\nthan broader chemical groups or food species, instead of generalized\
+    \ cate-\\ngories. Third, preserving contextual modi\\ufb01ers, such as adjectives and pro-\\ncessing descriptors (e.g.,\
+    \ \\u201caqueous extract of Mentha aquatica\\u201d).\\nFine-tuning focused on enhancing the model\\u2019s ability to handle\\\
+    ncomplex entity structures and relationships. For instance, sentences\\ndescribing chemical concentrations within speci\\\
+    ufb01c food parts (e.g., \\u201ccelery\\nleaves contain phenols\\u201d) were annotated to re\\ufb02ect both the food entity\
+    \ and\\nitspart.Additionally,casesinvolvingsynonyms,acronyms,and hierarchical\\nrelationships (e.g., \\u201cblueberry\
+    \ extract | Vaccinium angustifolium extract\\u201d)\\nwere \\ufb01ne-tuned to prioritize professional terminology and\
+    \ ensure\\ncompleteness.\\nThe \\ufb01ne-tuned models were trained to generate outputs in a structured\\nformatsuitableforintegrationintotheFAKG.Validationmetrics,including\\\
+    nprecision,recall,andF1scores,demonstratedsigni\\ufb01cantimprovementsover\\nbaseline models, particularly in extracting\
+    \ nuanced relationships and rare\\ndescriptors. Supplementary Note 1.1 shows the details for our \\ufb01ne-\\ntuned model.\\\
+    nKnowledge graph construction\\nOur FoodAtlas knowledge graph (FAKG) was formed by a set of ({food},\\ncontains, {chemical})-triplets.\
+    \ Each entity can be a food or a chemical,\\nindexed by a unique FoodAtlas ID and other identi\\ufb01ers (e.g., FoodOn\
+    \ IDs\\nfor food and PubChem CIDs for chemical entities). Each contains-triplet is\\nassociated with metadata, providing\
+    \ additional information, including\\nchemical concentration and references to the source where the information\\nwas\
+    \ extracted. To scalably expand FAKG, we developed a KG construction\\npipeline that harmonized and ingested the data\
+    \ extracted by the GPT\\nmodels into the knowledge graph. First, the pipeline processed the CSV-\\nformatted outputs from\
+    \ the LLM, discarding a few with incorrect CSV\\nformat. Second, chemical concentration information in the raw-string\\\
+    nformat was parsed into concentration value-unit pairs using regular\\nexpressions. The units convertible to each other\
+    \ were uni\\ufb01ed into a stan-\\ndardizedunit,suchas\\u2018g,\\u2019\\u2018mg,\\u2019\\u2018gram,\\u2019and\\u2018kg,\\\
+    u2019whichwereallconvertedinto\\n\\u2018100 g\\u2019 with corresponding changes in concentration value. Third, an entity\\\
+    nlinking system performed synonym resolution and string matching, map-\\nping food and chemical names mentioned in sentences\
+    \ to ontology data-\\nbases FoodOn11 and ChEBI52, respectively. To enrich the interoperability\\nand categorizability,\
+    \ identi\\ufb01ers from several other databases were retrieved\\n(Supplementary Fig. 1 and Supplementary Note 1.2, 1.3).\\\
+    nIntegration of disease data from the Comparative Tox-\\nicogenomics Database (CTD)\\nTo enrich the FoodAtlas Knowledge\
+    \ Graph (FAKG) with disease-related\\ndata, we integrated chemical\\u2013disease associations from the Comparative\\nToxicogenomics\
+    \ Database (CTD)61. The CTD provides a robust dataset\\ndetailing relationships between chemicals and diseases and contains\
+    \ critical\\n\\ufb01elds such as ChemicalName, ChemicalID (MeSH62 identi\\ufb01er), Dis-\\neaseName, DiseaseID (MeSH or\
+    \ OMIM63 identi\\ufb01er), DirectEvidence\\n(whetherthechemicalisatherapeuticormarker/mechanismforthedisease,\\nwhich\
+    \ we map as treats or worsens the disease, respectively), Infer-\\nenceGeneSymbol, InferenceScore, and PubMedIDs (a |-delimited\
+    \ list of\"\n  },\n  {\n    \"name\": \"references)\",\n    \"text\": \"We began by mapping the CTD chemicals to FoodAtlas\
+    \ using the\\nChemicalID \\ufb01eld, which corresponds to MeSH identi\\ufb01ers. This alignment\\nallowed us to cross-reference\
+    \ chemical entities in FoodAtlas with their\\nassociated diseases as recorded in CTD. Once the mappings were estab-\\\
+    nlished, we extracted relationships of the type (chemical, associated with,\\ndisease) and populated the knowledge graph\
+    \ with these connections. The\\nintegration included metadata for these relationships, such as the original\\nChemicaIDsandDiseaseIDsfoundinCTDfortherelationship,andwhether\\\
+    nthe chemical exists in foods in FoodAtlas. Additionally, the linked Pub-\\nMedIDs and their corresponding PMCIDs were\
+    \ incorporated as references\\nto enhance the veri\\ufb01ability and provenance of the data. For the diseases in\\nthese\
+    \ relationships, we extracted the DiseaseName, DiseaseID, AltDisea-\\nseIDs (MeSH, OMIM, or DiseaseOntology identi\\ufb01ers),\
+    \ and the list of\\nsynonyms from CTD\\u2019s disease information to create our FoodAtlas disease\\nentities and their\
+    \ relationships to chemicals (Supplementary Note 1.3).\\nIntegration of \\ufb02avor data from FlavorDB and PubChem\\nChemicals\
+    \ in FlavorDB are indexed using PubChem IDs, allowing for\\nstraightforward alignment with existing FoodAtlas entities.\
+    \ We scraped\\nFlavorDB, iterating through PubChem IDs of FoodAtlas chemicals, and\\nretrieving structured JSON data for\
+    \ each chemical. For chemicals missing\\nfrom FlavorDB, we extended \\ufb02avor data collection to PubChem\\u2019s Hazar-\\\
+    ndous Substances Data Bank (HSDB)21, extracting \\u201cTaste\\u201d and \\u201cOdor\\u201d\\ndescriptors. While PubChem\
+    \ provided a signi\\ufb01cant volume of additional\\ndata, its descriptors were often noisy and inconsistently formatted.\
+    \ Hence,\\nfuzzy string matching techniques58 (Supplementary Note 1.2) were\\nemployed to harmonize \\ufb02avor descriptors,\
+    \ creating a uni\\ufb01ed set of stan-\\ndardized \\ufb02avor terms. Each unique \\ufb02avor descriptor was represented\
+    \ in the\\nknowledge graph as an entity with the entity type \\ufb02avor, and relationships\\nbetween chemicals and their\
+    \ \\ufb02avors were established using a newly de\\ufb01ned\\nhasFlavor relationship (Supplementary Note 1.3).\\nIntegration\
+    \ of food and chemical bioactivity via Bioactivity\\nPrediction Model\\nTo integrate chemical bioactivity with food composition\
+    \ data in the FAKG,\\nwe employed a multi-step procedure for both data assembly and model\\ndevelopment using machine\
+    \ learning. First, we mapped chemicals present\\nin FA to corresponding records in the ChEMBL database64, using InChIKey\\\
+    nidenti\\ufb01ers as the primary linkage. This allowed us to retrieve chemical\\npChEMBL values (i.e., \\u2013log10(nM))\
+    \ for the related assays that capture\\nvarious types of bioactivity, including antioxidant, antimicrobial, anti-\\nin\\\
+    ufb02ammatory, immunomodulatory, antiviral, neuroprotective, anticancer,\\nand antidiabetic activities (Supplementary\
+    \ Note 1.5). After establishing the\\nconnections between chemicals in FA and their associated assays in\\nChEMBL, we\
+    \ linked each food to its constituent chemicals using con-\\ncentration data available in FA. The resulting dataset enabled\
+    \ the formation\\nof a Bioactivity Food Link (BFL), whereby each food inherited potential\\nbioactivity from the chemicals\
+    \ it contains. This dataset was further enriched\\nby including the Ferric Reducing Antioxidant Power (FRAP) values65\
+    \ for\\n159 food samples, providing ground truth for antioxidant capacity. The\\nresulting Bioactivity Prediction Model\
+    \ (BPM) was designed to predict\\nantioxidant capacity, quanti\\ufb01ed as \\u2013log10(FRAP), based on a machine\\nlearning\
+    \ architecture, Random Forest. The model relies on three primary\\ninput modalities. First, we generated Morgan \\ufb01ngerprints\
+    \ from SMILES\\nstrings using RDKit66, encoding chemical structure as a binary vector.\\nSecond, we included pChEMBL values67,\
+    \ which re\\ufb02ect comparable mea-\\nsures of concentrations to reach half-maximal potency/af\\ufb01nity/response\\\
+    n(e.g., IC50, EC50) on a negative logarithmic scale. Third, we incorporated\\nchemical concentration information from\
+    \ FA to capture the quantity of\\neach chemical present in a given food. These three types of inputs were fed\\ninto machine\
+    \ learning models. Outputs from the model predicted\\n\\u2013log10(FRAP) for each food. During model training, we employed\
+    \ an 80:20\\ntrain-test split, which we repeated across 25 bootstrap iterations to account\\nfor variability due to the\
+    \ limited dataset size. The Random Forest was tuned\\nusing a hyperparameter grid search. We tracked metrics such as mean\\\
+    nabsolute error (MAE), MSE, Pearson\\u2019s correlation (PCC), and the coef\\ufb01-\\ncient of determination (R\\u00b2)\
+    \ between predicted and observed FRAP values.\\nResidual analysis was used to gauge systematic errors and to verify the\\\
+    nstability of predictions across foods with diverse chemical pro\\ufb01les (Sup-\\nplementary Note 1.5).\\nOne-hop food\
+    \ substitutions for disease- and antioxidant\\nbioactivity-oriented diet improvement\\nWe implemented a one-hop substitution\
+    \ framework to evaluate and\\nenhance the healthfulness of real-world meals by jointly optimizing disease-\\nhttps://doi.org/10.1038/s41538-025-00680-9\\\
+    nArticle\\nnpj Science of Food |  (2026) 10:33\\n8\\n\\nriskandantioxidant-bioactivitypro\\ufb01les.First,weingestedtheUSDA\\\
+    u201cWhat\\nWe Eat in America\\u201d (WWEIA) diet recall data68, extracting each meal\\u2019s\\nconstituent foods and\
+    \ their portion sizes. For disease modeling, we mapped\\nfoods to associated conditions (e.g., cardiovascular, in\\ufb02ammatory)\
+    \ using\\ncurated chemical\\u2013disease relationships from the CTD. In parallel, we\\nassignedantioxidantbioactivityscoresderivedfromFRAPassays.Toenable\\\
+    ndirect comparison and aggregation across disparate metrics, both disease-\\nrisk and bioactivity scores were min-max\
+    \ normalized between 0 and 1. We\\nthen computed a weighted aggregate score for each meal by summing\\nindividual food\
+    \ contributions in proportion to their serving size. Next, we\\nidenti\\ufb01ed \\u201chigh-impact\\u201d foods, those\
+    \ whose removal yielded the greatest\\ndisease-riskreduction, and generatedcandidate alternatives drawn from the\\nsame\
+    \ primary food category (e.g., dairy, leafy greens). For each candidate\\nswap, we recomputed the meal\\u2019s composite\
+    \ disease and antioxidant scores\\nunder the same portion-weighted scheme. Substitutions that produced the\\nmaximal net\
+    \ bene\\ufb01t, minimizing normalized disease risk while maximizing\\nnormalized antioxidant activity, were selected as\
+    \ optimal (Supplementary\\nNote 1.6).\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"All data is\
+    \ available at https://github.com/IBPA/FoodAtlas-KGv2 and\\nhttps://foodatlas.ai. Food Atlas may be using data that are\
+    \ restricted licenses\\nfor different uses, please consult individual license terms from each data\\nsource. CTD compliance.\
+    \ FoodAtlas integrates curated knowledge from the\\nComparative Toxicogenomics Database (CTD) by linking to CTD chemi-\\\
+    ncal/disease identi\\ufb01ers and PubMed references; we do not redistribute CTD-\\ncurated interaction tables in our public\
+    \ releases. Users can reproduce the\\nCTD integration locally using our scripts, which download CTD data from\\nthe source\
+    \ and join via CTD IDs and PMIDs. Non-commercial use is free;\\ncommercial reuse requires a license from CTD\\u2019s licensing\
+    \ agent. Please\\nconsult CTD\\u2019s terms before downloading/using CTD content.\"\n  },\n  {\n    \"name\": \"Code availability\"\
+    ,\n    \"text\": \"All code and instructions on how to reproduce the results for knowledge\\ngraph construction and information\
+    \ extraction can be found at https://\\ngithub.com/IBPA/FoodAtlas-KGv2 and https://github.com/IBPA/Lit2KG,\\nrespectively.\\\
+    nReceived: 17 July 2025; Accepted: 17 December 2025;\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\\
+    nAllot, A. et al. LitSense: making sense of biomedical literature at\\nsentence level. Nucleic Acids Res. 47, W594\\u2013W599\
+    \ (2019).\\n2.\\nYoun, J., Li, F., Simmons, G., Kim, S. & Tagkopoulos, I. FoodAtlas:\\nautomated knowledge extraction\
+    \ of food and chemicals from\\nliterature. Comput. Biol. Med. 181, 109072 (2024).\\n3.\\nCifuentes, A. Food analysis and\
+    \ foodomics. J. Chromatogr. A 1216,\\n7109 (2009).\\n4.\\nGarc\\u00eda-Ca\\u00f1as, V., Sim\\u00f3, C., Herrero, M., Ib\\\
+    u00e1\\u00f1ez, E. & Cifuentes, A.\\nPresent and future challenges in food analysis: foodomics. Anal.\\nChem. 84, 10150\\\
+    u201310159 (2012).\\n5.\\nFooDB. https://foodb.ca/. [Accessed at 12/25/2025]\\n6.\\nMcKillop, K., Harnly, J., Pehrsson,\
+    \ P., Fukagawa, N. & Finley, J.\\nFoodData Central, USDA\\u2019s updated approach to food composition\\ndata systems.\
+    \ Curr. Dev. Nutr. 5, 596\\u2013596 (2021).\\n7.\\nUSDA FoodData Central. https://fdc.nal.usda.gov/. [Accessed at\\n12/25/2025]\\\
+    n8.\\nCapozzi, F. & Bordoni, A. Foodomics: a new comprehensive\\napproach to food and nutrition. Genes Nutr. 8, 1\\u20134\
+    \ (2013).\\n9.\\nMin, W., Liu, C., Xu, L. & Jiang, S. Applications of knowledge graphs\\nfor food science and industry.\
+    \ Patterns 3, 100484 (2022).\\n10.\\nJahangir, M., Kim, H. K., Choi, Y. H. & Verpoorte, R. Health-affecting\\ncompounds\
+    \ in Brassicaceae. Compr. Rev. Food Sci. Food Saf. 8,\\n31\\u201343 (2009).\\n11.\\nDooley, D. M. et al. FoodOn: a harmonized\
+    \ food ontology to increase\\nglobal food traceability, quality control and data integration. Npj Sci.\\nFood 2, 23 (2018).\\\
+    n12.\\nEftimov,T., Ispirova,G.,Poto\\u010dnik,D., Ogrinc,N. & Korou\\u0161i\\u0107 Seljak,B.\\nISO-FOOD ontology: a formal\
+    \ representation of the knowledge\\nwithin the domain of isotopes for food science. Food Chem. 277,\\n382\\u2013390 (2019).\\\
+    n13.\\nFurukawa H. Deep Learning for End-to-End Automatic Target\\nRecognition from Synthetic Aperture Radar Imagery.\
+    \ IEICE\\nTechnical Report; IEICE Tech. Rep. 117, 35\\u201340 (2018).\\n14.\\nDevlin, J., Chang, M-W., Lee, K. & Toutanova,\
+    \ K. BERT: Pre-training\\nof Deep BidirectionalTransformers for Language Understanding. In\\nProceedings of the 2019 Conference\
+    \ of the North American Chapter\\nof the Association for Computational Linguistics: Human Language\\nTechnologies, Volume\
+    \ 1 (Long and Short Papers), pages\\n4171\\u20134186,Minneapolis, Minnesota.Associationfor Computational\\nLinguistics.\
+    \ (2019).\\n15.\\nVaswani, A. et al. Attention is all you need. Advances in neural\\ninformation processing systems,30.\
+    \ https://doi.org/10.48550/arXiv.\\n1706.03762 (2017).\\n16.\\nLee, J. et al. BioBERT: a pre-trained biomedical language\\\
+    nrepresentation model for biomedical text mining. Bioinformatics 36,\\n1234\\u20131240 (2020).\\n17.\\nCenikj, G., Seljak,\
+    \ B. K. & Eftimov, T. FoodChem: A food-chemical\\nrelation extraction model. In 2021IEEE Symposium Series on\\nComputational\
+    \ Intelligence (SSCI) (pp. 1-8). IEEE. (2021).\\n18.\\n\\u00d6zen, N., Mu, W., van Asselt, ED. & van den Bulk, LM. Extracting\\\
+    nchemical food safety hazards from the scienti\\ufb01c literature\\nautomatically using large language models. Appl. Food\
+    \ Res. 5,\\n100679, https://doi.org/10.1016/j.afres.2024.100679 (2025).\\n19.\\nDavis, A. P. et al. Comparative Toxicogenomics\
+    \ Database\\u2019s 20th\\nanniversary: update 2025. Nucleic Acids Res. 53, D1328\\u2013D1334\\n(2025).\\n20.\\nFlavorDB:\
+    \ a database of \\ufb02avor molecules | Nucleic Acids Research |\\nOxford Academic. https://academic.oup.com/nar/article/46/D1/\"\
+    \n  },\n  {\n    \"name\": \"D1210/4559748\",\n    \"text\": \"21.\\nFonger, G. C. Hazardous substances data bank (HSDB)\
+    \ as a source\\nof environmental fate information on chemicals. Toxicology 103,\\n137\\u2013145 (1995).\\n22.\\nHaussmann,\
+    \ S. et al. FoodKG: a semantics-driven knowledge graph\\nfor food recommendation. In The Semantic Web \\u2013 ISWC 2019\
+    \ (eds\\nGhidini, C. et al.) Vol. 11779 146\\u2013162 (Springer International\\nPublishing, Cham, 2019).\\n23.\\nPark,\
+    \ D., Kim, K., Kim, S., Spranger, M. & Kang, J. FlavorGraph: a\\nlarge-scale food-chemical graph for generating food\\\
+    nrepresentations and recommending food pairings. Sci. Rep. 11, 931\\n(2021).\\n24.\\nNi, Y., Jensen, K., Kouskoumvekaki,\
+    \ I. & Panagiotou, G. NutriChem\\n2.0: exploring the effect of plant-based foods on human health and\\ndrug ef\\ufb01cacy.\
+    \ Database 2017, bax044 (2017).\\n25.\\nvan der Maaten, L. & Hinton, G. Visualizing data using t-SNE. J.\\nMach. Learn.\
+    \ Res. 9, 2579\\u20132605 (2008).\\n26.\\nMcInnes, L., Healy, J. & Astels, S. hdbscan: hierarchical density\\nbased clustering.\
+    \ J. Open Source Softw. 2, 205 (2017).\\n27.\\nMullahy, J. Speci\\ufb01cation and testing of some modi\\ufb01ed count\
+    \ data\\nmodels. J. Econom. 33, 341\\u2013365 (1986).\\n28.\\nBenjamini, Y. & Hochberg, Y. Controlling the false discovery\
+    \ rate: a\\npractical and powerful approach to multiple testing. J. R. Stat. Soc.\\nSer. B Methodol. 57, 289\\u2013300\
+    \ (1995).\\n29.\\nJohnson,G. H. & Fritsche,K. Effectof dietarylinoleicacidon markers\\nof in\\ufb02ammation in healthy\
+    \ persons: a systematic review of\\nrandomized controlled trials. J. Acad. Nutr. Diet. 112, 1041.e1\\u201315\\n(2012).\\\
+    n30.\\nCrowell, P. L. Prevention and therapy of cancer by dietary\\nmonoterpenes. J. Nutr. 129, 775S\\u2013778S (1999).\\\
+    nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of Food |  (2026) 10:33\\n9\\n\\n31.\\nBenzie, I.\
+    \ F. F. & Choi, S.-W. Chapter One - Antioxidants in food:\\ncontent, measurement, signi\\ufb01cance, action, cautions,\
+    \ caveats, and\\nresearch needs. In Advances in Food and Nutrition Research (ed.\\nHenry, J.) Vol. 71 1\\u201353 (Academic\
+    \ Press, 2014).\\n32.\\nShahidi, F. & Ambigaipalan, P. Phenolicsandpolyphenolics in foods,\\nbeverages and spices: antioxidant\
+    \ activity and health effects \\u2013 A\\nreview. J. Funct. Foods 18, 820\\u2013897 (2015).\\n33.\\nChang, J., Wang, H.,\
+    \ Su, W., He, X. & Tan, M. Arti\\ufb01cial intelligence in\\nfood bioactive peptides screening: recent advances and future\\\
+    nprospects. Trends Food Sci. Technol. 156, 104845 (2025).\\n34.\\nAlvarez-Leite, J. I. The role of bioactive compounds\
+    \ in human health\\nand disease. Nutrients 17, 1170 (2025).\\n35.\\nGPT-5 System Card. https://openai.com/index/gpt-5-system-card/\\\
+    n(2025).\\n36.\\nZhang, Z. et al. Multimodal chain-of-thought reasoning in language\\nmodels. https://openreview.net/forum?id=gDlsMWost9\
+    \ (2023).\\n37.\\nLiu, M. X. et al. \\u2018We Need Structured Output\\u2019: towards user-centered\\nconstraints on large\
+    \ language model output. In Extended Abstracts\\nof the CHI Conference on Human Factors in ComputingSystems 1\\u20139\\\
+    n(Association for Computing Machinery, New York, NY, USA,\\n2024).\\n38.\\nLu, W. et al. Large language model for table\
+    \ processing: a survey.\\nFront. Comput. Sci. 19, 192350 (2025).\\n39.\\nLi, F., Youn, J., Millsop, C. & Tagkopoulos,\
+    \ I. Predicting clinical trial\\nsuccess for Clostridium dif\\ufb01cile infections based on preclinical data.\\nFront.\
+    \ Artif. Intell. 710.3389/frai.2024.1487335 (2024).\\n40.\\nRen, P. et al. A survey of deep active learning. ACM Comput.\
+    \ Surv.\\n54, 180:1-180:40 (2021).\\n41.\\nFoster-Powell, K., Holt, S. H. & Brand-Miller, J. C. International table\\\
+    nof glycemic index and glycemic load values: 2002. Am. J. Clin. Nutr.\\n76, 5\\u201356 (2002).\\n42.\\nShivappa, N., Steck,\
+    \ S. E., Hurley, T. G., Hussey, J. R. & H\\u00e9bert, J. R.\\nDesigning and developing a literature-derived, population-based\\\
+    ndietary in\\ufb02ammatory index. Public Health Nutr. 17, 1689\\u20131696\\n(2014).\\n43.\\nToro, S. et al. Dynamic Retrieval\
+    \ Augmented Generation of\\nOntologies using Arti\\ufb01cial Intelligence (DRAGON-AI). J. Biomed.\\nSemant. 15, 19 (2024).\\\
+    n44.\\nYoun, J., Naravane, T. & Tagkopoulos, I. Using Word Embeddings to\\nLearn a Better Food Ontology. Front. Artif.\
+    \ Intell. 310.3389/\\nfrai.2020.584784. (2020).\\n45.\\nJacobs, D. R. Jr & Tapsell, L. C. Food synergy: the key to a healthy\\\
+    ndiet. Proc. Nutr. Soc. 72, 200\\u2013206 (2013).\\n46.\\nNemec, K. Cultural awareness of eating patterns in the health\
+    \ care\\nsetting. Clin. Liver Dis. 16, 204\\u2013207 (2020).\\n47.\\nForde, C. G. & de Graaf, K. In\\ufb02uence of sensory\
+    \ properties in\\nmoderating eating behaviors and food intake. Front. Nutr. 9, 841444\\n(2022).\\n48.\\nMelse-Boonstra,\
+    \ A. Bioavailability of micronutrients from nutrient-\\ndense whole foods: zooming in on dairy, vegetables, and fruits.\\\
+    nFront. Nutr. 7, 101 (2020).\\n49.\\nBenford, D. et al. The principles and methods behind EFSA\\u2019s\\nguidance on uncertainty\
+    \ analysis in scienti\\ufb01c assessment. EFSA J\\n16, e05122 (2018).\\n50.\\nShannar, A. et al. Pharmacodynamics (PD),\
+    \ pharmacokinetics (PK)\\nand PK-PD modeling of NRF2 activating dietary phytochemicals in\\ncancer prevention and in health.\
+    \ Curr. Pharmacol. Rep. 11, 6 (2024).\\n51.\\nVasilevsky, N. A. et al. Mondo: Unifying diseases for the world, by the\\\
+    nworld. Preprint at https://doi.org/10.1101/2022.04.13.22273750\\n(2022).\\n52.\\nHastings, J. et al. ChEBI in 2016: improved\
+    \ services and an\\nexpanding collection of metabolites. Nucleic Acids Res. 44,\"\n  },\n  {\n    \"name\": \"D1214\\\
+    u2013D1219 (2016)\",\n    \"text\": \"53.\\nKim, S. et al. PubChem 2023 update. Nucleic Acids Res. 51,\"\n  },\n  {\n\
+    \    \"name\": \"D1373\\u2013D1380 (2023)\",\n    \"text\": \"54.\\nPubMed. PubMed https://pubmed.ncbi.nlm.nih.gov/. [Accessed\
+    \ at\\n12/25/2025].\\n55.\\nPubMed Central (PMC). PubMed Central (PMC) https://pmc.ncbi.\\nnlm.nih.gov/. [Accessed at\
+    \ 12/25/2025].\\n56.\\nKans, J. Entrez Direct: E-utilities on the Unix Command Line. In\\nEntrez Programming Utilities\
+    \ Help [Internet] (National Center for\\nBiotechnology Information (US), 2025).\\n57.\\nBird, S. & Loper, E. NLTK: The\
+    \ Natural Language Toolkit. In\\nProceedings of the ACL Interactive Poster and Demonstration\\nSessions, pages 214\\u2013217,\
+    \ Barcelona, Spain. Association for\\nComputational Linguistics. (2004).\\n58.\\nNavarro, G. A guided tour to approximate\
+    \ string matching. ACM\\nComput. Surv. 33, 31\\u201388 (2001).\\n59.\\nOpenAI et al. GPT-4 technical report. Preprint\
+    \ at https://doi.org/10.\\n48550/arXiv.2303.08774 (2024).\\n60.\\nYe, J. et al. A comprehensive capability analysis of\
+    \ GPT-3 and GPT-\\n3.5 series models. Preprint at https://doi.org/10.48550/arXiv.2303.\\n10420 (2023).\\n61.\\nDavis,\
+    \ A. P., Wiegers, T. C., Rosenstein, M. C. & Mattingly, C. J.\\nMEDIC: a practical disease vocabulary used at the Comparative\\\
+    nToxicogenomics Database. Database J. Biol. Databases Curation\\n2012, bar065 (2012).\\n62.\\nDhammi, I. K. & Kumar, S.\
+    \ Medical subject headings (MeSH) terms.\\nIndian J. Orthop. 48, 443\\u2013444 (2014).\\n63.\\nHamosh, A., Scott, A. F.,\
+    \ Amberger, J. S., Bocchini, C. A. &\\nMcKusick, V. A. Online Mendelian Inheritance in Man (OMIM), a\\nknowledgebase of\
+    \ human genes and genetic disorders. Nucleic\\nAcids Res. 33, D514\\u2013D517 (2005).\\n64.\\nZdrazil, B. et al. The ChEMBL\
+    \ Database in 2023: a drug discovery\\nplatform spanning multiple bioactivity data types and time periods.\\nNucleic Acids\
+    \ Res. 52, D1180\\u2013D1192 (2024).\\n65.\\nCarlsen, M. H. et al. The total antioxidant content of more than 3100\\nfoods,\
+    \ beverages, spices, herbs and supplements used worldwide.\\nNutr. J. 9, 3 (2010).\\n66.\\nLaufk\\u00f6tter, O., Sturm,\
+    \ N., Bajorath, J., Chen, H. & Engkvist, O.\\nCombining structural and bioactivity-based \\ufb01ngerprints improves\\\
+    nprediction performance and scaffold hopping capability. J.\\nCheminformatics 11, 54 (2019).\\n67.\\nLenselink, E. B.\
+    \ et al. Beyond the hype: deep neural networks\\noutperform established methods using a ChEMBL bioactivity\\nbenchmark\
+    \ set. J. Cheminformatics 9, 45 (2017).\\n68.\\nWhatWeEatInAmerica(WWEIA)Database.FoodSurveysResearch\\nGroup https://doi.org/10.15482/USDA.ADC/1178144\
+    \ (2015).\\n69.\\nCalder, P. C. Omega-3 fatty acids and in\\ufb02ammatory processes.\\nNutrients 2, 355\\u2013374 (2010).\\\
+    n70.\\nMozaffarian, D. & Rimm, E. B. Fish intake, contaminants, and human\\nhealth: evaluating the risks and the bene\\\
+    ufb01ts. JAMA 296, 1885\\u20131899\\n(2006).\\n71.\\nRamsden, C. E. et al. Use of dietary linoleic acid for secondary\\\
+    nprevention of coronary heart disease and death: evaluation of\\nrecovered data from the Sydney Diet Heart Study and updated\\\
+    nmeta-analysis. BMJ 346, e8707 (2013).\\n72.\\nCassidy, A. et al. High anthocyanin intake is associated with a\\nreduced\
+    \ risk of myocardial infarction in young and middle-aged\\nwomen. Circulation 127, 188\\u2013196 (2013).\\n73.\\nKalt,\
+    \ W. et al. Recent research on the health bene\\ufb01ts of blueberries\\nand their anthocyanins. Adv. Nutr. 11, 224\\\
+    u2013236 (2020).\\n74.\\nHankinson, A., Lloyd, B. & Alweis, R. Lime-induced\\nphytophotodermatitis. J. Community Hosp.\
+    \ Intern. Med. Perspect.\\n4, 25090 (2014).\\n75.\\nSacks, F. M. et al. Dietary fats and cardiovascular disease: a\\npresidential\
+    \ advisory from the American Heart Association.\\nCirculation 136, e1\\u2013e23 (2017).\\n76.\\nde Souza, R. J. et al.\
+    \ Intake of saturated and trans unsaturated fatty\\nacids and risk of all cause mortality, cardiovascular disease, and\\\
+    nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of Food |  (2026) 10:33\\n10\\n\\ntype 2 diabetes:\
+    \ systematic review and meta-analysis of\\nobservational studies. BMJ 351, h3978 (2015).\\n77.\\nImamura, F. et al. Consumption\
+    \ of sugar sweetened beverages,\\narti\\ufb01cially sweetenedbeverages,and fruit juice andincidenceof type\\n2 diabetes:\
+    \ systematic review, meta-analysis, and estimation of\\npopulation attributable fraction. BMJ 351, h3576 (2015).\\n78.\\\
+    nYang, Q. et al. Added sugar intake and cardiovascular diseases\\nmortality among US adults. JAMA Intern. Med. 174, 516\\\
+    u2013524 (2014).\\n79.\\nSchwingshackl, L. et al. Food groups and risk of all-cause mortality:\\na systematic review and\
+    \ meta-analysis of prospective studies. Am.\\nJ. Clin. Nutr. 105, 1462\\u20131473 (2017).\\n80.\\nRocha, J., Borges, N.\
+    \ & Pinho, O. Table olives and health: a review. J.\\nNutr. Sci. 9, e57 (2020).\\n81.\\nLi, S.-C. et al. Almond consumption\
+    \ improved glycemic control and\\nlipid pro\\ufb01les in patients with type 2 diabetes mellitus. Metabolism 60,\\n474\\\
+    u2013479 (2011).\\n82.\\nLee-Bravatti, M. A. et al. Almond consumption and risk factors for\\ncardiovascular disease:\
+    \ a systematic review and meta-analysis of\\nrandomized controlled trials. Adv. Nutr. 10, 1076\\u20131088 (2019).\\n83.\\\
+    nMartin, N., German\\u00f2, R., Hartley, L., Adler, A. J. & Rees, K. Nut\\nconsumption for the primary prevention of cardiovascular\
+    \ disease.\\nCochrane Database Syst. Rev. 2015, CD011583 (2015).\\n84.\\nJiang, R. Nut and peanut butter consumption and\
+    \ risk of type 2\\ndiabetes in women. JAMA 288, 2554 (2002).\\n85.\\nBlumberg, J., Vita, J. & Chen, C. Concord grape juice\
+    \ polyphenols\\nand cardiovascular risk factors: dose-response relationships.\\nNutrients 7, 10032\\u201310052 (2015).\\\
+    n86.\\nStein, J. H., Keevil, J. G., Wiebe, D. A., Aeschlimann, S. & Folts, J. D.\\nPurple grape juice improves endothelial\
+    \ function and reduces the\\nsusceptibility of LDL cholesterol to oxidation in patients with\\ncoronary artery disease.\
+    \ Circulation 100, 1050\\u20131055 (1999).\\n87.\\nZhao, J., Wang, X., Lin, H. & Lin, Z. Hazelnut and its by-products:\
+    \ a\\ncomprehensive review of nutrition, phytochemical pro\\ufb01le,\\nextraction, bioactivities and applications. Food\
+    \ Chem. 413, 135576\\n(2023).\\n88.\\nTey, S. L. et al. Effects of different forms of hazelnuts on blood lipids\\nand\
+    \ \\u03b1-tocopherol concentrations in mildly hypercholesterolemic\\nindividuals. Eur. J. Clin. Nutr. 65, 117\\u2013124\
+    \ (2011).\\n89.\\nJazinaki, M. S., Rashidmayvan, M. & Pahlavani, N. The effect of\\npomegranate juice supplementation\
+    \ on C-reactive protein levels:\\nGRADE -assessed systematic review and dose\\u2013response updated\\nmeta-analysis of\
+    \ data from randomized controlled trials. Phytother.\\nRes. 38, 2818\\u20132831 (2024).\\n90.\\nBasu, A. & Penugonda,\
+    \ K. Pomegranate juice: a heart-healthy fruit\\njuice. Nutr. Rev. 67, 49\\u201356 (2009).\\n91.\\nKhaw, K.-T. et al. Randomised\
+    \ trial of coconut oil, olive oil or butter\\non blood lipids and other cardiovascular risk factors in healthy men\\nand\
+    \ women. BMJ Open 8, e020167 (2018).\\n92.\\nEyres, L., Eyres, M. F., Chisholm, A. & Brown, R. C. Coconut oil\\nconsumption\
+    \ and cardiovascular risk factors in humans. Nutr. Rev.\\n74, 267\\u2013280 (2016).\\n93.\\nYang, D. K. Cabbage (Brassica\
+    \ oleracea var. capitata) protects\\nagainst H2O2 -induced oxidative stress by preventing mitochondrial\\ndysfunction\
+    \ in H9c2 cardiomyoblasts. Evid. Based Complement.\\nAlternat. Med. 2018, 2179021 (2018).\\n94.\\nJiang, Y. et al. Cruciferous\
+    \ vegetable intake is inversely correlated\\nwith circulating levels of proin\\ufb02ammatory markers in women. J.\\nAcad.\
+    \ Nutr. Diet. 114, 700\\u2013708.e2 (2014).\\n95.\\nMcKay, D., Eliasziw, M., Chen, C. & Blumberg, J. A pecan-rich diet\\\
+    nimproves cardiometabolic risk factors in overweight and obese\\nadults: a randomized controlled trial. Nutrients 10,\
+    \ 339 (2018).\\n96.\\nRobbins, K. S., Gong, Y., Wells, M. L., Greenspan, P. & Pegg, R. B.\\nReprint of \\u201cInvestigation\
+    \ of the antioxidant capacity and phenolic\\nconstituents of U.S. pecans. J. Funct. Foods 18, 1002\\u20131013 (2015).\\\
+    n97.\\nFeeney, E. L., Lamichhane, P. & Sheehan, J. J. The cheese matrix:\\nunderstanding the impact of cheese structure\
+    \ on aspects of\\ncardiovascular health \\u2013 a food science and a human nutrition\\nperspective. Int. J. Dairy Technol.\
+    \ 74, 656\\u2013670 (2021).\\n98.\\nRangel, A. H. D. N. et al. An overview of the occurrence of bioactive\\npeptides in\
+    \ different types of cheeses. Foods 12, 4261 (2023).\\n99.\\nLemke, S. L. et al. Dietary intake of stearidonic acid\\\
+    u2013enriched\\nsoybean oil increases the omega-3 index: randomized, double-blind\\nclinical study of ef\\ufb01cacy and\
+    \ safety. Am. J. Clin. Nutr. 92, 766\\u2013775\\n(2010).\\n100.\\nBaer, D. J., Henderson, T. & Gebauer, S. K. Consumption\
+    \ of high-\\noleic soybean oil improves lipid and lipoprotein pro\\ufb01le in humans\\ncompared to a palm oil blend: a\
+    \ randomized controlled trial. Lipids\\n56, 313\\u2013325 (2021).\\n101.\\nFang, S., Lin, F., Qu, D., Liang, X. & Wang,\
+    \ L. Characterization of\\npuri\\ufb01ed red cabbage anthocyanins: improvement in HPLC\\nseparation and protective effect\
+    \ against H2O2-induced oxidative\\nstress in HepG2 cells. Molecules 24, 124 (2018).\\n102.\\nWiczkowski, W., Szawara-Nowak,\
+    \ D. & Topolska, J. Red cabbage\\nanthocyanins: pro\\ufb01le, isolation, identi\\ufb01cation, and antioxidant\\nactivity.\
+    \ Food Res. Int. 51, 303\\u2013309 (2013).\\n103.\\nSiervo, M. et al. Nitrate-rich beetroot juice reduces blood pressure\
+    \ in\\nTanzanian adults with elevated blood pressure: a double-blind\\nrandomized controlled feasibility trial. J. Nutr.\
+    \ 150, 2460\\u20132468\\n(2020).\\n104.\\nClifford, T., Howatson, G., West, D. & Stevenson, E. The potential\\nbene\\\
+    ufb01ts of red beetroot supplementation in health and disease.\\nNutrients 7, 2801\\u20132822 (2015).\\n105.\\nGrover,\
+    \ A. & Leskovec, J. \\\"node2vec: Scalable feature learning for\\nnetworks.\\\" Proceedings of the 22nd ACMSIGKDD international\\\
+    nconference on Knowledge discovery and data mining. (2016).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"\
+    text\": \"This work was supported by the USDA-NIFA AI Institute for Next Generation\\nFood Systems (AIFS), USDA-NIFA award\
+    \ number 2020-67021-32855.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"F.L. and J.Y. created\
+    \ the knowledge graph and built the sentence \\ufb01ltration\\nand sentence extraction pipeline. K.X. annotated the information\
+    \ extraction\\ndataset and \\ufb01ne-tuned GPT-3.5 on the data. T.C. performed analysis for\"\n  },\n  {\n    \"name\"\
+    : \"results, generated \\ufb01gures, and wrote the paper. P.G. built the bioactivity\",\n    \"text\": \"prediction model.\
+    \ A.Y. integrated disease data into FA. M.G. integrated\\n\\ufb02avor data into FA. K.N. helped K.X. with annotation.\
+    \ I.T. conceived and\\nsupervised all aspects of the project, including project management, fra-\\nmework design, pipeline\
+    \ architecture, predictive model, data analysis,\\nhypothesis generation and testing. All authors contributed to writing\
+    \ the\\nmanuscript.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"The authors declare no competing\
+    \ interests.\\nAdditional information\"\n  },\n  {\n    \"name\": \"Supplementary information The online version contains\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"supplementary material available at\",\n    \"text\": \"https://doi.org/10.1038/s41538-025-00680-9.\\\
+    nCorrespondence and requests for materials should be addressed to\\nIlias Tagkopoulos.\\nReprints and permissions information\
+    \ is available at\\nhttp://www.nature.com/reprints\\nPublisher\\u2019s note Springer Nature remains neutral with regard\
+    \ to\\njurisdictional claims in published maps and institutional af\\ufb01liations.\\nhttps://doi.org/10.1038/s41538-025-00680-9\\\
+    nArticle\\nnpj Science of Food |  (2026) 10:33\\n11\\n\\nOpen Access This article is licensed under a Creative Commons\\\
+    nAttribution 4.0 International License, which permits use, sharing,\\nadaptation, distribution and reproduction in any\
+    \ medium or format, as long\\nas you give appropriate credit to the original author(s) and the source,\\nprovide a link\
+    \ to the Creative Commons licence, and indicate if changes\\nwere made. The images or other third party material in this\
+    \ article are\\nincluded in the article\\u2019s Creative Commons licence, unless indicated\\notherwise in a credit line\
+    \ to the material. If material is not included in the\\narticle\\u2019s Creative Commons licence and your intended use\
+    \ is not permitted\\nby statutory regulation or exceeds the permitted use, you will need to\\nobtain permission directly\
+    \ from the copyright holder. To view a copy of this\\nlicence, visit http://creativecommons.org/licenses/by/4.0/.\\n\\\
+    u00a9 The Author(s) 2026\\nhttps://doi.org/10.1038/s41538-025-00680-9\\nArticle\\nnpj Science of Food |  (2026) 10:33\\\
+    n12\"\n  }\n]"
+  acknowledgments: 'This work was supported by the USDA-NIFA AI Institute for Next Generation
+
+    Food Systems (AIFS), USDA-NIFA award number 2020-67021-32855.'
+  author_contributions: 'F.L. and J.Y. created the knowledge graph and built the sentence ﬁltration
+
+    and sentence extraction pipeline. K.X. annotated the information extraction
+
+    dataset and ﬁne-tuned GPT-3.5 on the data. T.C. performed analysis for'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n   \
+    \ \"page\": 2\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n\
+    \    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_2.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_3.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_4.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_5.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_2.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_3.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_4.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_5.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_6.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_7.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_8.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_9.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_10.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_11.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_12.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_13.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_14.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_15.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_16.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_17.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_18.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_19.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_20.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_21.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_22.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_23.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_24.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_25.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_26.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_27.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_28.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_29.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_30.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_31.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_32.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_33.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_34.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_35.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_36.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_37.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_38.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_39.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_40.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_41.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_42.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_43.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_44.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_45\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_45.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_46\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_46.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_47\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_47.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_48\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_48.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_49\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_49.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_50\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_50.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  }\n]"
+references:
+  reference_count: 2
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://github.com/IBPA/FoodAtlas-KGv2\",\n    \"accession\": \"\",\n    \"database\"\
+    : \"\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://foodatlas.ai.\",\n    \"accession\": \"\",\n   \
+    \ \"database\": \"\",\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/IBPA/Lit2KG\",\n    \"description\": \"\"\n  }\n]"

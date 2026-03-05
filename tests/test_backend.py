@@ -1,7 +1,9 @@
-import pytest
-import sys
 import subprocess
+import sys
 from importlib.util import find_spec
+
+import pytest
+
 
 def test_python_version():
     """Verify standard python version meets minimum requirements."""
@@ -17,9 +19,9 @@ def test_compute_backend():
     has_torch = find_spec("torch") is not None
     if not has_torch:
         pytest.skip("PyTorch is not installed. Skipping compute backend checks.")
-        
+
     import torch
-    
+
     expected_backend = "rocm"
     if expected_backend == "cuda":
         assert "cu" in torch.__version__ or (hasattr(torch.version, 'cuda') and torch.version.cuda is not None and "rocm" not in torch.__version__), f"Expected CUDA backend but PyTorch version is {torch.__version__}."

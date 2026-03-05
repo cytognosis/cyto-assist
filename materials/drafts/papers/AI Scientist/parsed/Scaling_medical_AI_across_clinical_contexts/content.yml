@@ -1,0 +1,568 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/Scaling medical AI across clinical contexts.pdf
+
+identifiers:
+  doi: 10.1038/s41591-025-04184-7
+  pmid: '41634392'
+citation:
+  title: Scaling medical AI across clinical contexts
+  year: '2026'
+  journal: Nature Medicine
+  volume: '32'
+  pages: 439-448
+  publisher: Springer Science and Business Media LLC
+  authors: Michelle M. Li, Ben Y. Reis, Adam Rodman, Tianxi Cai, Noa Dagan, Ran D. Balicer, Joseph Loscalzo, Isaac S. Kohane,
+    Marinka Zitnik
+content:
+  sections: "[\n  {\n    \"name\": \"BOX 1\",\n    \"text\": \"Early approaches to context\\nswitching in medical AI\\nSeveral\
+    \ approaches illustrate how models begin to adapt their\\nbehavior in varying degrees across contexts:\\nPrompt engineering.\
+    \ Input instructions supply the missing context\\nand narrow the search space of possible outputs29.\\nIn-context learning.\
+    \ Zero-shot or few-shot examples in the prompt\\nshow the model how to perform a task in a new setting27,28.\\nContext\
+    \ discovery. Algorithms identify, retrieve and compress the\\nmost relevant evidence from external data sources, re-rank\
+    \ it by\\nuser constraints and feed it into the model115.\\nSupervised fine-tuning. Models update on curated datasets\
+    \ to\\nperform a target task. Parameter-efficient fine-tuning achieves\\nsimilar performance with fewer resources; full\
+    \ fine-tuning is\\nreserved for cases that require large behavioral shifts26,30\\u201333.\\nPost-pretraining adaptation.\
+    \ Multi-round refinement adjusts model\\nbehavior and aligns outputs with user intent. Techniques include\\ninstruction\
+    \ tuning to follow instructions116,117, domain-adaptive and\\ntask-adaptive pretraining to capture specialized vocabulary\
+    \ and\\npatterns118, and adaptations that teach models to use tools and call\\nfunctions119. Preference optimization,\
+    \ often implemented through\\nreinforcement learning from human feedback, further aligns\\noutputs with user expectations99.\\\
+    nAgent models. Autonomous large language model agents plan,\\nreason and act across contexts90. Specialized components\
+    \ for\\nplanning, memory, tool use or task decomposition collaborate on\\nmultistep workflows and adjust outputs based\
+    \ on feedback from\\none another.\\n\\nNature Medicine | Volume 32 | February 2026 | 439\\u2013448\\n442\\nPerspective\\\
+    nhttps://doi.org/10.1038/s41591-025-04184-7\\nlearn joint representations from raw inputs, and hybrid approaches\\ncombine\
+    \ both79\\u201382. Cross-modal attention mechanisms, which let\\nthe model focus on related cues across data types (for\
+    \ example,\\nlinking an imaging finding to the relevant note text), help align\\nsemantically related information, while\
+    \ modality-specific encoders\\npreserve details unique to each modality30,32,74. To cope with missing\\nor variable inputs,\
+    \ models may downweight unavailable data, rely on\\nalternative sources, or flexibly incorporate new modalities without\\\
+    nretraining77,78. Using language as a shared interface, these systems can\\nshift across modalities to integrate the information\
+    \ most relevant to\\nthe clinical context.\\nMultimodal context switching enables models to adjust their\\nuse of different\
+    \ data modalities dynamically at inference time based\\non the clinical setting and available inputs83. For example, a\
+    \ model\\nmay rely on histopathology images to classify a tumor when slides\\nare available, but shift to lab values and\
+    \ clinical notes when imaging is\\nmissing. Beyond substituting one modality for another, multimodal\\ncontext switching\
+    \ allows models to combine data types that are not\\nco-observed during training, such as ECG waveforms and genetic\\\
+    nvariants in cardiology risk assessments. This behavior requires models\\nto infer which modalities are most informative,\
+    \ detect redundancy or\\nmissingness, and reweight their reasoning in real-time. Retrieval-based\\ncontext discovery (Box\
+    \ 1) can realize this capability by considering\\nuser-defined metrics on clinical informativeness in the re-ranking step.\\\
+    nPreference optimization (Box 1) can allow a model to learn a reward\\nfunction that aligns model outputs with human preferences\
+    \ based\\non a set of human-annotated examples (see \\u2018reward hacking\\u2019, Box 2).\\nFurther supporting this flexibility\
+    \ are mechanisms like attention-based\\nmodality selection, uncertainty-aware fusion, and mixture-of-modality\\nexperts\
+    \ that specialize based on the task and context84\\u201387.\\nWithout context switching, multimodal models can be fragile\\\
+    nwhen the available data change. A system built to combine pathology\\nslides and clinical notes may work well when both\
+    \ are present, but may\\nstruggle when the slide is delayed, the note is sparse, or key tests are\\nmissing. Context switching\
+    \ aims to make these models more flexible:\\nit helps them use whatever information is available, shift emphasis as\\\
+    nnew results arrive, and avoid overreliance on a single modality. This\\nflexibility matches how clinical decisions are\
+    \ made in practice, where\\ninformation is often incomplete and evolves over time. As clinical\\ndata become more varied\
+    \ and complex, models must be able to han-\\ndle missingness and uncertainty while still producing outputs that\\nremain\
+    \ reliable.\\nReasoning in context through multistep analysis\\nHybrid models offer a modular design for achieving context\
+    \ switch-\\ning across tasks, modalities, and user roles. These models combine\\nideas from multimodal learning, where\
+    \ models jointly interpret diverse\\ndata types, and generative modeling, where outputs are conditioned\\non specific\
+    \ contextual signals. Compound models, such as agents\\n(Box 1), provide a modular foundation for context switching. In\
+    \ these\\nmodels, different subagents are trained to specialize in distinct tasks,\\ndata modalities85,86, or clinical\
+    \ domains88,89, and are orchestrated to\\nsolve problems that require context-specific adaptation90. For exam-\\nple,\
+    \ a dermatology case involving both imaging and text may trigger\\na vision agent specializing in skin lesion classification\
+    \ and a language\\nagent that processes clinical notes describing symptom progression.\\nRouting decisions are either\
+    \ optimized during training or dynamically\\ninferred at test-time, based on features of the input or task prompt. This\\\
+    napproach enables efficient specialization and reduces unnecessary\\ncomputation, but relies on robust mechanisms to manage\
+    \ transitions\\nbetween components.\\nAgents are goal-directed models that decompose complex tasks\\ninto subtasks, plan\
+    \ actions, and interact with data, tools, or users in\\nreal-time88\\u201390. Agent models typically consist of multiple\
+    \ specialized\\nagents, each trained to perform a distinct function (for example, infor-\\nmation retrieval, question\\\
+    u2013answering, decision support or patient\\ncommunication). Context switching in this setting refers to selecting\\\
+    nand orchestrating the appropriate agent or submodel based on features\\nof the task, user role, or available data. For\
+    \ example, an agent coordi-\\nnating cardiovascular risk assessment may activate one subagent to\\nextract patient history,\
+    \ another to synthesize lab results, and a third\\nto generate a summary tailored to a clinician or patient.\\nRather\
+    \ than relying on single agents to generalize across tasks, a\\nmulti-agent approach applies context switching by routing\
+    \ tasks to\\nthe most relevant experts. A supervisory or executive agent interprets\\ninput features, such as the type\
+    \ of clinical query, user background, or\\ndata modality, and assigns subtasks to specialized agents. Coordina-\\ntion\
+    \ can be implemented through gating functions, learned routing\\npolicies, or rule-based controllers that use structured\
+    \ metadata to\\ndirect workflows. For example, a pharmacovigilance workflow may\\nuse agents for adverse event detection,\
+    \ regulatory interpretation, and\\ncausal inference, with an executive agent selecting which experts to\\nengage depending\
+    \ on whether the task is clinical trial monitoring or\\npost-market surveillance. In this setting, context switching arises\
+    \ not\"\n  },\n  {\n    \"name\": \"BOX 2\",\n    \"text\": \"Opportunities for context\\nswitching in medical AI\\nContext\
+    \ switching is an emerging paradigm with multiple\\nopportunities for innovation. Five open challenges in medical AI\\\
+    nhighlight where context switching can have immediate impact:\\nInsufficient context in the query. When context is missing,\
+    \ models\\ncan struggle to narrow the search space and often reach incorrect\"\n  },\n  {\n    \"name\": \"conclusions.\
+    \ Current models fill these gaps from parametric\",\n    \"text\": \"knowledge. Context switching could identify the missing\\\
+    ninformation and prompt the user to supply additional details,\\nproducing more accurate responses.\\nStatic context encoding.\
+    \ Retrieval methods often encode\\nexternal knowledge in ways that restrict extrapolation from\\nsmall fragments (for\
+    \ example, sentences) across large sources\\n(for example, dense documents). Dynamic, context-aware\\nencoding could preserve\
+    \ nuance and prevent evidence dilution,\\nenabling more reliable reasoning.\\nCatastrophic forgetting. In continual and\
+    \ lifelong learning,\\nupdating model parameters can improve domain-specific\\nperformance while degrading general capabilities.\
+    \ Analogous to\\ncontinuing medical education, context switching could support\\nefficient cycles of learning and unlearning\
+    \ to refine knowledge\\nwithout erasing prior competence.\\nReward hacking. In reinforcement learning, models may exploit\\\
+    nloopholes to maximize rewards while failing to achieve the intended\\noutcome, producing misaligned or harmful behavior.\
+    \ Context\\nswitching could design reward functions that are multifaceted,\\nmultistep and sensitive to context, reducing\
+    \ this risk.\\nCompounding error. Generative and agentic models accumulate\\nerrors across steps, leading to flawed outputs.\
+    \ Context switching\\ncould detect when errors exceed tolerable limits, identify the\\nstep at which failure arises and\
+    \ revise the reasoning process\\nbefore continuing.\\n\\nNature Medicine | Volume 32 | February 2026 | 439\\u2013448\\\
+    n443\\nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\\nfrom each agent altering its reasoning strategy, but\
+    \ from routing and\\nassigning the right expert agents to the clinical context.\\nModels that perform multistep analysis\
+    \ represent a key direction\\nfor context switching in medical AI. Reasoning models learn infer-\\nence procedures that\
+    \ chain intermediate steps to address tasks, such\\nas diagnosis, treatment selection, or risk prediction91\\u201393.\
+    \ Reasoning\\nmodels, often built on large language models fine-tuned with rein-\\nforcement learning or supervised traces,\
+    \ learn both the final output\\nand the sequence of reasoning steps that generate it93,94. This abstrac-\\ntion makes\
+    \ reasoning models well-suited for context switching, since\\nreasoning strategies can often transfer across tasks. For\
+    \ example,\\ngiven a patient\\u2019s symptoms, a reasoning model might infer a molecular\\ndiagnosis by sequentially identifying\
+    \ phenotype-gene associations,\\nretrieving pathogenic variants, and ranking candidate genes. The\\nsame model could then\
+    \ apply a similar reasoning process to identify\\ntreatment options, retrieve drugs that target the implicated gene,\\\
+    nevaluate drug indications, and prioritize therapies based on safety and\\nefficacy. Context switching in reasoning models\
+    \ occurs not by chang-\\ning the model architecture, but by adjusting the sequence and struc-\\nture of inference steps\
+    \ based on the input prompt. In a novel context,\\nreasoning models can facilitate multi-turn collaboration34 with users,\\\
+    nin which the model iteratively identifies the gaps in its knowledge or\\nthe given user instruction and prompts the user\
+    \ to provide additional\\nguidance (Box 2).\\nA central challenge in developing reasoning models is designing\\nreward\
+    \ functions that guide the model through intermediate steps of\\nclinical reasoning94. These functions must assess the\
+    \ final prediction as\\nwell as the clinical relevance and plausibility of each step. For example,\\nin differential diagnosis\
+    \ from patient symptoms89, a reward function\\nmight penalize inconsistencies between symptoms and candidate diag-\\nnoses,\
+    \ reward logical progression in differential diagnosis from com-\\nmon to rare conditions, and prioritize hypotheses that\
+    \ fit the patient\\u2019s\\ndemographic and clinical context. This structure encourages models\\nto revise reasoning when\
+    \ context shifts, such as when new symptoms\\nappear or the task changes from screening to treatment planning95.\\nReward\
+    \ functions must align with clinical objectives, including reduc-\\ning diagnostic error, avoiding unnecessary procedures,\
+    \ and improving\\ncontinuity of care (Box 2). Reasoning models that incorporate such\\ncontext-aware rewards can adjust\
+    \ how they interpret and prioritize\\ninformation and adapt to clinical goals and constraints.\\nMedical AI adapts to\
+    \ who, where, what it serves\\nMedical AI must do more than process multimodal inputs or scale across\\ncomputing infrastructure.\
+    \ It must adapt to the contexts of care, align-\\ning with patient needs, care settings, and clinical workflows. Varia-\\\
+    ntion across four key domains\\u2014specialty, geography, population and\\naccess\\u2014expose the limits of static models\
+    \ and make context switching a\\nrequirement for medical AI. Below, we use clinical vignettes to illustrate\\nthe importance\
+    \ of context switching across each of these domains.\\nBridging medical specialties and disease contexts\\nPatients often\
+    \ face fragmented care in siloed health systems or\\nresource-limited regions, leading to diagnostic odysseys and delays\\\
+    nor errors in care96,97. Context switching models enable clinicians to\\ndraw on knowledge across specialties and disease\
+    \ domains, including\\nareas beyond their own expertise, to guide clinical decisions (Fig. 2a).\\nClinical vignette. Consider\
+    \ a patient with a rare disease who presents\\nwith neurological and pulmonary symptoms. The patient is referred to\\\
+    na neurologist and a pulmonologist, each with deep expertise shaped\\nby shared foundational training and system-level\
+    \ reasoning. Yet even\\nbroad training can be constrained by framing effects that narrow the\\ndifferential diagnosis\
+    \ to more common or organ-specific causes. If\\nthe symptoms reflect a multisystem disorder, this framing may lead to\\\
+    nmissed connections or delayed diagnosis. Context switching models\\ncan support clinicians by integrating knowledge across\
+    \ specialties,\\nidentifying shared pathophysiology and generating a unified diagnosis\\nand treatment plan. A related\
+    \ challenge arises in polypharmacy, when\\nmultiple physicians prescribe treatments for different conditions\\nwithout\
+    \ visibility into overlapping risks or drug\\u2013drug interactions.\\nContext switching models can mitigate these issues\
+    \ by synthesizing\\ncross-specialty knowledge, reasoning across comorbidities and tailor-\\ning treatment to minimize\
+    \ therapeutic conflicts.\\nContext switching across specialties and disease domains remains\\ndifficult because both care\
+    \ and model development often follow\\nspecialty-specific boundaries. Foundation models trained on siloed\\ndatasets or\
+    \ optimized for narrow objectives can reproduce the same\\nlimitations seen in human reasoning. Overcoming this requires\
+    \ models\\nthat perform multimodal reasoning and generalize across specialties,\\ndiseases and combinations of data types,\
+    \ even when those combina-\\ntions are absent during training.\\nData. Without context-specific datasets, models cannot\
+    \ generalize\\nacross specialties and diseases. Domain expertise can be used to curate\\ndiverse instructions (for example,\
+    \ chain-of-thought98 reasoning steps\\nthat improve generalization to complex tasks) or response-preference\\nsets (for\
+    \ example, human-annotated rankings of model outputs that\\nalign responses with user preferences99) for each specialty\
+    \ or disease.\\nA useful resource for enabling context switching is a prompt library: a\\nstructured collection of multimodal\
+    \ prompts linked to specific special-\\nties and disease scenarios.\\nModel. Medical specialties rely on complementary\
+    \ data for diagnosis\\nand treatment. For example, evaluating heart failure may require elec-\\ntrocardiograms, blood\
+    \ tests and chest X-rays. In neurology, diagnosing\\na seizure disorder may involve electroencephalograms, brain imaging\\\
+    nand genetic testing. Multimodal models that identify and prioritize the\\nmost relevant data for a given clinical context,\
+    \ such as through context\\ndiscovery (Box 1), can support context switching across specialties\\nand diseases.\\nEvaluation.\
+    \ Model generalizability is critical for context switching. A\\nmodel should not fail when faced with a new context that\
+    \ requires a\\nnovel combination of data modalities. This necessitates benchmarks\\nthat assess whether models can identify\
+    \ the correct contexts, generate\\nresponses relevant to the specialty or disease, and align outputs with\\nspecialist\
+    \ preferences100\\u2013103. These benchmarks must also minimize\\ndata contamination (for example, overlap between pretraining\
+    \ and\\ntest datasets) to provide a valid measure of model generalizability104,105.\\nTailoring care to geography and\
+    \ population\\nUnderstanding the incidence, prevalence and mortality rates of health\\nconditions in specific populations\
+    \ is essential for tailoring clinical deci-\\nsions106. For example, isoniazid preventive therapy is recommended\\nby\
+    \ the World Health Organization for people living with HIV in high\\ntuberculosis burden settings, even in the absence\
+    \ of active tuberculo-\\nsis. However, there is ongoing debate about when to initiate isoniazid\\npreventive therapy,\
+    \ especially relevant at the time of HIV diagnosis,\\ndue to concerns about adherence, resistance and regional variation\\\
+    nin tuberculosis risk107. These decisions depend on global guidelines\\nas well as on local epidemiology, healthcare infrastructure\
+    \ and social\\ncontext. For contextualized care, models need to interpret and apply\\nguidelines in light of regional\
+    \ disease patterns, resource availability\\nand population needs106,108,109 (Fig. 2b).\\nClinical vignette. Consider a\
+    \ patient who is susceptible to a disease that\\ncan lead to organ dysfunction. To monitor the patient\\u2019s disease\
+    \ risk, a\\nclinician leverages an international scoring function to regularly assess\\norgan or tissue function using\
+    \ the patient\\u2019s EHR data. A key challenge\\nof designing such a scoring function is to avoid introducing contextual\\\
+    n\\nNature Medicine | Volume 32 | February 2026 | 439\\u2013448\\n444\\nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\\\
+    nerror by assigning different scores to patients with similar clinical\\nprofiles based only on geography or demographic\
+    \ attributes, such\\nas age, sex or race. These discrepancies often arise from uncalibrated\\nmodels that ignore variation\
+    \ in healthcare delivery, disease prevalence\\nor access to care across settings. As a result, identical physiological\\\
+    ninputs may yield different recommendations depending on context,\\nleading to inappropriate care. Context switching models\
+    \ address this\\nby incorporating region-specific information, such as care practices,\\nhealth infrastructure or disease\
+    \ incidence, directly into score computa-\\ntion. A multicenter model can switch across country-level contexts to\\nalign\
+    \ with local systems and guidelines, while a multi-population model\\ncan detect subgroup-specific patterns and adapt\
+    \ outputs accordingly.\\na\\nb\\nMultimodal and\\nmultispecialty\\ncontexts\\nActive context (neurology)\\nActive context\
+    \ (pulmonology)\\nActive context (gastroenterology)\\nInactive context\\nContext switching AI\\nSwitching across medical\
+    \ specialties and diseases\\nContext switching across geographies and patient populations\\nPredicted\\nhigh risk\\nPredicted\\\
+    nlow risk\\nGeography\\ncontexts\\nPopulation\\ncontexts\\nLow\\nContribution of context\\nMedium\\nHigh\\nc Context switching\
+    \ across healthcare roles\\nHealthcare\\nsystem\\nPatient\\nPatient\\nReal-time\\nretrieval\\nand\\nupdating\\nHealthcare\\\
+    nsystem\\nReal-time\\nretrieval\\nand\\nupdating\\nNext-generation electronic\\nhealth record\\nRun laboratory tests.\\\
+    nI feel severe symptoms...\\nPCP agent\\nLaboratory tests results\\nare inconclusive.\\nRequesting second\\nopinion from\
+    \ oncologist.\\nLab tech agent\\nLaboratory test results\\nsuggest...Run scan to\\nconfirm...\\nOncologist\\nPatient\\\
+    nNext-generation electronic\\nhealth record\\nRun CT scan.\\nI feel severe symptoms...\\nPCP agent\\nCT scan results are\\\
+    nabnormal. Request review\\nand confirmation by\\noncologist.\\nCT tech agent\\nPatient has... condition.\\nPrescribe\
+    \ treatment...\\nOncologist\\nPatient\\nFig. 2 | Context switching across medical specialties and diseases, geographies\\\
+    nand populations, and healthcare roles. a, A context switching model for\\nmedical specialties and diseases can be a multimodal\
+    \ generative model that\\nidentifies and integrates the most relevant data modalities (for example,\\nhistopathology images,\
+    \ computed tomography (CT) scans and whole-genome\\nsequencing) and clinical specialties (for example, neurology and pulmonology)\\\
+    nto guide diagnosis and treatment. b, Adapting to geographic- and population-\\nspecific needs can involve a generative\
+    \ reasoning model capable of multistep\\ninference, capturing both high-level reasoning (for example, shared disease\\\
+    nrisk factors) and fine-grained variation (for example, subpopulation-specific\\nmodifiers). c, A generative multi-agent\
+    \ system, where each agent represents a\\ndistinct healthcare role (for example, nurse, primary care physician or specialist),\\\
+    ncan flexibly engage the appropriate expert(s) for a given case, involve the patient\\nthroughout the decision-making\
+    \ process, and continuously update outputs\\nusing real-time access to the patient\\u2019s EHRs.\\n\\nNature Medicine\
+    \ | Volume 32 | February 2026 | 439\\u2013448\\n445\\nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\\nFor example,\
+    \ the model might recommend inpatient rather than out-\\npatient treatment when follow-up care is difficult to access.\\\
+    nData. Patient-level data vary substantially across settings, even within\\nthe same country. Differences in documentation,\
+    \ diagnostic workflows\\nand data completeness can limit the portability of models. Although\\nregional systems and guidelines\
+    \ also influence care, the most immedi-\\nate challenge is variability in the underlying data. To support context\\nswitching,\
+    \ models must be trained on datasets that capture this hetero-\\ngeneity. Engaging local experts and building regionally\
+    \ representative\\ndatasets enable models to capture both how care is delivered and why\\nit varies across contexts.\\\
+    nModel. To generate context-specific recommendations, a reason-\\ning model can integrate multistep logic that captures\
+    \ both general\\nclinical objectives and local constraints. This includes treatment-level\\ndecisions (for example, choosing\
+    \ a therapy based on symptoms) and\\nfine-grained adjustments (for example, adapting dosing schedules or\\ncare settings\
+    \ to local resource availability). For instance, a model can\\nbe trained on human-annotated chain-of-thought reasoning\
+    \ traces\\nto capture this nuanced multistep decision-making process. A con-\\ntext switching model can identify which\
+    \ factors vary across popula-\\ntions and incorporate them into its reasoning process to produce\\ncontext-appropriate\
+    \ outputs.\\nEvaluation. Working with local and regional experts makes it possible\\nto define metrics that evaluate whether\
+    \ model outputs align with guide-\\nlines and common practices in specific populations and geographies.\\nAccuracy and\
+    \ robustness can also be measured by the trust of the target\\npopulation in the model\\u2019s recommendations and their\
+    \ acceptance of\\nits use in the community110.\\nDemocratizing access without reinforcing inequities\\nAccess to medical\
+    \ care can be constrained by socioeconomic, geo-\\ngraphic, financial and cultural factors111,112 (Fig. 2c). Context switching\\\
+    ncan adapt to patient needs, care settings and communication styles113,\\nbut if models are built on biased data or without\
+    \ input from diverse\\ncommunities, they risk reinforcing inequities. The impact of context\\nswitching depends on the\
+    \ model\\u2019s design, who develops it and whose\\ncontext it reflects114.\\nClinical vignette. Consider a patient who\
+    \ arrives at the emergency\\ndepartment experiencing severe symptoms. The patient has fre-\\nquently missed wellness visits.\
+    \ Although referred to oncology, the\\npatient has not followed up. A typical response might be for the cli-\\nnician\
+    \ to remind the patient to schedule the appointment, but this\\noverlooks key contextual barriers. The patient may live\
+    \ far from a\\nspecialty clinic, lack reliable transportation or childcare, or be unable\\nto take time off work. Without\
+    \ accounting for these constraints, the\\nsystem risks recommending care that the patient cannot access: a\\ncontextual\
+    \ error.\\nContextualized care incorporates these constraints. A more\\nappropriate intervention can be to assign the\
+    \ patient a personalized\\nmedical chatbot for symptom monitoring (for example, automatic\\nprompting by the chatbot to\
+    \ record symptoms or synchronizing\\nmeasurements captured by mobile health monitoring applications)\\nand real-time feedback\
+    \ at home. The chatbot should communicate\\nsecurely with the clinical team, augment documentation and improve\\ncontinuity\
+    \ of care. A context switching conversational model can\\ncombine clinical knowledge with the communication styles and\
+    \ deci-\\nsion roles of different healthcare professionals to engage the patient\\neffectively and collect relevant information.\
+    \ By adapting in this way,\\ncontext switching models can expand access to medical expertise\\nand provide continuous,\
+    \ reliable points of contact between patients\\nand their care teams.\\nData. With consent, researchers can curate conversations\
+    \ between\\npatients and healthcare professionals, including nurses, primary care\\nphysicians and specialists, as well\
+    \ as communication between clini-\\ncians. These conversations should reflect diverse populations, lan-\\nguages and care\
+    \ settings to capture variation in both patient expression\\nand expert communication styles. Additionally, human-annotated\\\
+    nrankings of model outputs can ensure the alignment of generated\\nresponses with the healthcare role. Relevant clinical\
+    \ tools and data-\\nbases can be integrated to improve the accuracy and adherence to\\nclinical guidelines of the model.\\\
+    nModel. A context switching conversational model can be structured as\\na generative multi-agent system, where each agent\
+    \ embodies a distinct\\nclinical persona. Agents can be selectively activated depending on the\\ntask or patient need;\
+    \ for example, a nurse practitioner for symptom\\ntriage or a specialist for treatment counseling. These agents retrieve\\\
+    nand incorporate up-to-date patient records to adjust dialogue and\\nreasoning in real-time, based on evolving clinical\
+    \ context. Patients can\\ninitiate conversations with any agent or be directed to the appropriate\\none when uncertain.\
+    \ In collaboration with the intended users, guard-\\nrails and recovery policies can be implemented to maintain long-term\\\
+    nconsistency, reduce failure modes of subagents and mitigate security\\nand data governance violations.\\nEvaluation.\
+    \ Assessing whether these models democratize care requires\\nmetrics developed alongside medical and public health experts.\
+    \ One\\nmetric can be the rate of successful referrals to the appropriate spe-\\ncialists, which reflects how well the\
+    \ model understands clinical roles.\\nAppointment follow-through can serve as a proxy for patient engage-\\nment and perceived\
+    \ accessibility. Other relevant metrics can include\\nsymptom resolution timelines, quality of documentation and patient\\\
+    u2013\\nclinician satisfaction.\"\n  },\n  {\n    \"name\": \"Conclusion\",\n    \"text\": \"We envision context switching\
+    \ as the defining paradigm of medical AI.\\nRather than building separate models for each specialty or health system,\\\
+    nfuture models can adjust their reasoning at test-time to multimodal data,\\nclinicians, patients and decisions required\
+    \ in context. This shift moves\\nmedical AI beyond narrow, static tools toward models that reflect the\\ncomplexity and\
+    \ variability of clinical practice. Medical care spans diverse\\nspecialties, populations and workflows that differ across\
+    \ settings and\\nevolve over time. To remain reliable, models can respond to this varia-\\ntion without manual adjustment.\
+    \ Context switching models can adapt\\nin real-time, reduce dependence on curated data and support consist-\\nent performance\
+    \ across health systems. Progress must move beyond\\ncomputational benchmarking toward contextual, decision-centered\\\
+    nevaluation that aligns medical AI models with goals that matter in specific\\nclinical contexts. Context switching AI\
+    \ models can scale to match the\\ncomplexity of real-world clinical practice and the diversity of patients.\"\n  },\n\
+    \  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nJiang, L. Y. et al. Health system-scale language models are\\\
+    nall-purpose prediction engines. Nature 619, 357\\u2013362 (2023).\\n2.\\nSinghal, K. et al. Large language models encode\
+    \ clinical\\nknowledge. Nature 620, 172\\u2013180 (2023).\\n3.\\nChen, R. J. et al. Towards a general-purpose foundation\
+    \ model for\\ncomputational pathology. Nat. Med. 30, 850\\u2013862 (2024).\\n4.\\nHabicht, J. et al. Closing the accessibility\
+    \ gap to mental health\\ntreatment with a personalized self-referral chatbot. Nat. Med. 30,\\n595\\u2013602 (2024).\\\
+    n5.\\nLu, M. Y. et al. A multimodal generative AI copilot for human\\npathology. Nature 634, 466\\u2013473 (2024).\\n6.\\\
+    nWan, P. et al. Outpatient reception via collaboration between\\nnurses and a large language model: a randomized controlled\
+    \ trial.\\nNat. Med. 30, 2878\\u20132885 (2024).\\n\\nNature Medicine | Volume 32 | February 2026 | 439\\u2013448\\n446\\\
+    nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\\n7.\\nHuang, K. et al. A foundation model for clinician-centered\
+    \ drug\\nrepurposing. Nat. Med. 30, 3601\\u20133613 (2024).\\n8.\\nLi, J. et al. Integrated image-based deep learning\
+    \ and language\\nmodels for primary diabetes care. Nat. Med. 30, 2886\\u20132896\\n(2024).\\n9.\\nLiu, X. et al. A generalist\
+    \ medical language model for disease\\ndiagnosis assistance. Nat. Med. 31, 932\\u2013942 (2025).\"\n  },\n  {\n    \"\
+    name\": \"Van Veen, D. et al. Adapted large language models can\",\n    \"text\": \"outperform medical experts in clinical\
+    \ text summarization.\\nNat. Med. 30, 1134\\u20131142 (2024).\\n11.\\nJohri, S. et al. An evaluation framework for clinical\
+    \ use of large\\nlanguage models in patient interaction tasks. Nat. Med. 31, 77\\u201386\\n(2025).\"\n  },\n  {\n    \"\
+    name\": \"Ao, G. et al. Comparative analysis of large language models on\",\n    \"text\": \"rare disease identification.\
+    \ Orphanet J. Rare Dis. 20, 150 (2025).\"\n  },\n  {\n    \"name\": \"Shyr, C. Large language models for rare disease\
+    \ diagnosis at the\",\n    \"text\": \"undiagnosed diseases network. JAMA Netw. Open 8, e2528538\\n(2025).\"\n  },\n \
+    \ {\n    \"name\": \"Weiner, S. J. & Schwartz, A. Listening for What Matters: Avoiding\",\n    \"text\": \"Contextual\
+    \ Errors in Health Care (Oxford Univ. Press, 2023).\"\n  },\n  {\n    \"name\": \"Yu, K. -H. & Kohane, I. S. Framing the\
+    \ challenges of artificial\",\n    \"text\": \"intelligence in medicine. BMJ Qual. Saf. 28, 238\\u2013241 (2019).\"\n\
+    \  },\n  {\n    \"name\": \"Zhang, S., Liu, Q., Qin, G., Naumann, T. & Poon, H. Med-RLVR:\",\n    \"text\": \"emerging\
+    \ medical reasoning from a 3B base model via\\nreinforcement learning. Preprint at https://doi.org/10.48550/\\narXiv.2502.19655\
+    \ (2025).\"\n  },\n  {\n    \"name\": \"Hager, P. et al. Evaluation and mitigation of the limitations of\",\n    \"text\"\
+    : \"large language models in clinical decision-making. Nat. Med. 30,\\n2613\\u20132622 (2024).\"\n  },\n  {\n    \"name\"\
+    : \"McDermott, M. B. A., Yap, B., Szolovits, P. & Zitnik, M\",\n    \"text\": \"Structure-inducing pre-training. Nat.\
+    \ Mach. Intell. 5, 612\\u2013621\\n(2023).\"\n  },\n  {\n    \"name\": \"Guo, L. L. et al. A multi-center study on the\
+    \ adaptability of a\",\n    \"text\": \"shared foundation model for electronic health records. npj Digit.\\nMed. 7, 171\
+    \ (2024).\"\n  },\n  {\n    \"name\": \"Wornow, M. et al. The shaky foundations of large language\",\n    \"text\": \"\
+    models and foundation models for electronic health records. npj\\nDigit. Med. 6, 135 (2023).\"\n  },\n  {\n    \"name\"\
+    : \"Pais, C. et al. Large language models for preventing medication\",\n    \"text\": \"direction errors in online pharmacies.\
+    \ Nat. Med. 30, 1574\\u20131582\\n(2024).\"\n  },\n  {\n    \"name\": \"Sabuncu, M. R., Wang, A. Q. & Nguyen, M. Ethical\
+    \ use of artificial\",\n    \"text\": \"intelligence in medical diagnostics demands a focus on accuracy,\\nnot fairness.\
+    \ NEJM AI 2, AIp2400672 (2024).\"\n  },\n  {\n    \"name\": \"Li, M. M. et al. Contextual AI models for single-cell protein\"\
+    ,\n    \"text\": \"biology. Nat. Methods 21, 1546\\u20131557 (2024).\"\n  },\n  {\n    \"name\": \"Kather, J. N., Ferber,\
+    \ D., Wiest, I. C., Gilbert, S. & Truhn, D. Large\",\n    \"text\": \"language models could make natural language again\
+    \ the\\nuniversal interface of healthcare. Nat. Med. 30, 2708\\u20132710 (2024).\"\n  },\n  {\n    \"name\": \"Brown,\
+    \ T. et al. Language models are few-shot learners. Adv\",\n    \"text\": \"Neural Inf. Proc. Syst. 33, 1877\\u20131901\
+    \ (2020).\"\n  },\n  {\n    \"name\": \"Liu, H. et al. Few-shot parameter-efficient fine-tuning is better and\",\n   \
+    \ \"text\": \"cheaper than in-context learning. Adv. Neural Inf. Proc. Syst. 35,\\n1950\\u20131965 (2022).\"\n  },\n \
+    \ {\n    \"name\": \"Pan, J., Gao, T., Chen, H. & Chen, D. What in-context learning\",\n    \"text\": \"\\u2018learns\\\
+    u2019 in-context: disentangling task recognition and task\\nlearning. In Findings of the Association for Computational\\\
+    nLinguistics 8298\\u20138319 (ACL, 2023).\"\n  },\n  {\n    \"name\": \"Min, S. et al. Rethinking the role of demonstrations:\
+    \ what makes\",\n    \"text\": \"in-context learning work? In Proc. 2022 Conference on\\nEmpirical Methods in Natural\
+    \ Language Processing 11048\\u201311064\"\n  },\n  {\n    \"name\": \"(ACL, 2022)\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"Chen, B., Zhang, Z., Langren\\u00e9, N. & Zhu, S. Unleashing the\",\n    \"text\": \"potential of prompt\
+    \ engineering for large language models.\\nPatterns 6, 101260 (2025).\"\n  },\n  {\n    \"name\": \"Shen, S. et al. Multitask\
+    \ vision-language prompt tuning. In Proc\",\n    \"text\": \"the IEEE/CVF Winter Conference on Applications of Computer\\\
+    nVision 5656\\u20135667 (IEEE, 2024).\"\n  },\n  {\n    \"name\": \"Wang, W. et al. VisionLLM: large language model is\
+    \ also an\",\n    \"text\": \"open-ended decoder for vision-centric tasks. Adv. Neural Inf.\\nProc. Syst. 36, 61501\\\
+    u201361513 (2023).\"\n  },\n  {\n    \"name\": \"Tanwani, A. K., Barral, J. & Freedman, D. RepsNet: combining\",\n   \
+    \ \"text\": \"vision with language for automated medical reports. In\\nInternational Conference on Medical Image Computing\
+    \ and\\nComputer-assisted Intervention 714\\u2013724 (Springer, 2022).\"\n  },\n  {\n    \"name\": \"Shentu, J. & Al Moubayed,\
+    \ N. CXR-IRGen: an integrated vision and\",\n    \"text\": \"language model for the generation of clinically accurate\
+    \ chest\\nX-ray image-report pairs. In Proc. IEEE/CVF Winter Conference on\\nApplications of Computer Vision (IEEE, 2024).\"\
+    \n  },\n  {\n    \"name\": \"Wu, S. et al. CollabLLM: from passive responders to active\",\n    \"text\": \"collaborators.\
+    \ In Proc. 42nd International Conference on Machine\\nLearning (PMLR, 2025).\"\n  },\n  {\n    \"name\": \"Alsentzer,\
+    \ E. et al. Few shot learning for phenotype-driven\",\n    \"text\": \"diagnosis of patients with rare genetic diseases.\
+    \ npj Digit. Med. 8,\\n380 (2025).\"\n  },\n  {\n    \"name\": \"Goh, E. et al. Large language model influence on diagnostic\"\
+    ,\n    \"text\": \"reasoning: a randomized clinical trial. JAMA Netw. Open 7,\\ne2440969 (2024).\"\n  },\n  {\n    \"\
+    name\": \"Wang, L. et al. Prompt engineering in consistency and reliability\",\n    \"text\": \"with the evidence-based\
+    \ guideline for LLMs. npj Digit. Med. 7, 41\\n(2024).\"\n  },\n  {\n    \"name\": \"Khattab, O. et al. DSPy: compiling\
+    \ declarative language model\",\n    \"text\": \"calls into state-of-the-art pipelines. In International Conference on\\\
+    nLearning Representations (ICLR, 2024).\"\n  },\n  {\n    \"name\": \"Yuksekgonul, M. et al. Optimizing generative AI\
+    \ by\",\n    \"text\": \"backpropagating language model feedback. Nature 639,\\n609\\u2013616 (2025).\"\n  },\n  {\n \
+    \   \"name\": \"Vaziri, M., Mandel, L., Spiess, C. & Hirzel, M. PDL: a declarative\",\n    \"text\": \"prompt programming\
+    \ language. Preprint at https://doi.org/\\n10.48550/arXiv.2410.19135 (2024).\"\n  },\n  {\n    \"name\": \"Lu, Y. et al.\
+    \ Towards doctor-like reasoning: Medical RAG fusing\",\n    \"text\": \"knowledge with patient analogy through textual\
+    \ gradients.\\nIn 39th Conference on Neural Information Processing Systems\\n(NeurIPS, 2025).\"\n  },\n  {\n    \"name\"\
+    : \"Maharjan, J. et al. OpenMedLM: prompt engineering can\",\n    \"text\": \"out-perform fine-tuning in medical question-answering\
+    \ with\\nopen-source large language models. Sci. Rep. 14, 14156 (2024).\"\n  },\n  {\n    \"name\": \"Nori, H. et al.\
+    \ Can generalist foundation models outcompete\",\n    \"text\": \"special-purpose tuning? Case study in medicine. Preprint\
+    \ at\\nhttps://doi.org/10.48550/arXiv.2311.16452 (2023).\"\n  },\n  {\n    \"name\": \"Wu, S., Koo, M., Scalzo, F. & Kurtz,\
+    \ I. AutoMedPrompt: a new\",\n    \"text\": \"framework for optimizing LLM medical prompts using textual\\ngradients.\
+    \ Preprint at https://doi.org/10.48550/arXiv.2502.15944\\n(2025).\"\n  },\n  {\n    \"name\": \"Yu, F. et al. Heterogeneity\
+    \ and predictors of the effects of AI\",\n    \"text\": \"assistance on radiologists. Nat. Med. 30, 837\\u2013849 (2024).\"\
+    \n  },\n  {\n    \"name\": \"Rrv, A., Tyagi, N., Uddin, M. N., Varshney, N. & Baral, C. Chaos\",\n    \"text\": \"with\
+    \ keywords: exposing large language models sycophancy\\nto misleading keywords and evaluating defense strategies.\\nIn\
+    \ Findings of the Association for Computational Linguistics\"\n  },\n  {\n    \"name\": \"\\u201312733 (ACL, 2024)\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"Fanous, A. et al. SycEval: evaluating LLM sycophancy. In Proc\",\n   \
+    \ \"text\": \"AAAI/ACM Conference on AI, Ethics, and Society 8, 893\\u2013900\"\n  },\n  {\n    \"name\": \"(ACM, 2025)\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Su, X. et al. KGARevion: an AI agent for knowledge-intensive\",\n  \
+    \  \"text\": \"biomedical QA. In International Conference on Learning\\nRepresentations (ICLR, 2025).\"\n  },\n  {\n \
+    \   \"name\": \"Zhang, G. et al. Leveraging long context in retrieval augmented\",\n    \"text\": \"language models for\
+    \ medical question answering. npj Digit. Med.\\n8, 239 (2025).\\n\\nNature Medicine | Volume 32 | February 2026 | 439\\\
+    u2013448\\n447\\nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\"\n  },\n  {\n    \"name\": \"Ke, Y. H. et al.\
+    \ Retrieval augmented generation for 10 large\",\n    \"text\": \"language models and its generalizability in assessing\
+    \ medical\\nfitness. npj Digit. Med. 8, 187 (2025).\"\n  },\n  {\n    \"name\": \"Kresevic, S. et al. Optimization of\
+    \ hepatological clinical guidelines\",\n    \"text\": \"interpretation by large language models: a retrieval augmented\\\
+    ngeneration-based framework. npj Digit. Med. 7, 102 (2024).\"\n  },\n  {\n    \"name\": \"Lopez, I. et al. Clinical entity\
+    \ augmented retrieval for clinical\",\n    \"text\": \"information extraction. npj Digit. Med. 8, 45 (2025).\"\n  },\n\
+    \  {\n    \"name\": \"Asai, A., Wu, Z., Wang, Y., Sil, A. & Hajishirzi, H. Self-RAG: learning\",\n    \"text\": \"to retrieve,\
+    \ generate, and critique through self-reflection. In\\nInternational Conference on Learning Representations (ICLR, 2024).\"\
+    \n  },\n  {\n    \"name\": \"Yang, D., Zeng, L., Rao, J. & Zhang, Y. Knowing you don\\u2019t know:\",\n    \"text\": \"\
+    learning when to continue search in multi-round RAG through\\nself-practicing. In Proc. 48th International ACM SIGIR Conference\\\
+    non Research and Development in Information Retrieval 1305\\u20131315\"\n  },\n  {\n    \"name\": \"(ACM, 2025)\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"Islam, S. B. et al. Open-RAG: enhanced retrieval augmented\",\n    \"text\"\
+    : \"reasoning with open-source large language models. In Findings\\nof the Association for Computational Linguistics 14231\\\
+    u201314244\"\n  },\n  {\n    \"name\": \"(ACL, 2024)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Jeong, S., Baek,\
+    \ J., Cho, S., Hwang, S. J. & Park, J. C. Adaptive-RAG:\",\n    \"text\": \"learning to adapt retrieval-augmented large\
+    \ language models\\nthrough question complexity. In Proc. 2024 Conference of the\\nNorth American Chapter of the Association\
+    \ for Computational\\nLinguistics: Human Language Technologies (Vol. 1: Long Papers)\"\n  },\n  {\n    \"name\": \"\\\
+    u20137050 (ACL, 2024)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Yang, R. et al. Retrieval-augmented generation\
+    \ for generative\",\n    \"text\": \"artificial intelligence in health care. npj Health Syst. 2, 2 (2025).\"\n  },\n \
+    \ {\n    \"name\": \"Anisuzzaman, D. M., Malins, J. G., Friedman, P. A. & Attia, Z. I\",\n    \"text\": \"Fine-tuning\
+    \ large language models for specialized use cases.\\nMayo Clin. Proc. Digit. Health 3, 100184 (2025).\"\n  },\n  {\n \
+    \   \"name\": \"Wiest, I. C. et al. Deidentifying medical documents with local,\",\n    \"text\": \"privacy-preserving\
+    \ large language models: the LLM-anonymizer.\"\n  },\n  {\n    \"name\": \"NEJM AI 2, 4 (2025)\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"Croskerry, P. A universal model of diagnostic reasoning. Acad\",\n    \"text\": \"Med. 84,\
+    \ 1022\\u20131028 (2009).\"\n  },\n  {\n    \"name\": \"Geiping, J. et al. Scaling up test-time compute with latent\"\
+    ,\n    \"text\": \"reasoning: a recurrent depth approach. In 39th Annual\\nConference on Neural Information Processing\
+    \ Systems\\n(NeurIPS, 2025).\"\n  },\n  {\n    \"name\": \"Makarov, N. et al. Large language models forecast patient health\"\
+    ,\n    \"text\": \"trajectories enabling digital twins. npj Digit. Med. 8, 588 (2025).\"\n  },\n  {\n    \"name\": \"\
+    Renc, P. et al. Zero shot health trajectory prediction using\",\n    \"text\": \"transformer. npj Digit. Med. 7, 256 (2024).\"\
+    \n  },\n  {\n    \"name\": \"Wang, J. et al. Self-improving generative foundation model for\",\n    \"text\": \"synthetic\
+    \ medical image generation and clinical applications.\\nNat. Med. 31, 609\\u2013617 (2024).\"\n  },\n  {\n    \"name\"\
+    : \"Rao, V. M. et al. Multimodal generative AI for medical image\",\n    \"text\": \"interpretation. Nature 639, 888\\\
+    u2013896 (2025).\\n66.\\t Duan, Y., Xu, C., Pei, J., Han, J. & Li, C. Pre-train and plug-in: flexible\\nconditional text\
+    \ generation with variational auto-encoders. In\\nProc. 58th Annual Meeting of the Association for Computational\\nLinguistics\
+    \ 253\\u2013262 (ACL, 2020).\"\n  },\n  {\n    \"name\": \"Epstein, D., Jabri, A., Poole, B., Efros, A. & Holynski, A.\
+    \ Diffusion\",\n    \"text\": \"self-guidance for controllable image generation. Adv. Neural Inf.\\nProc. Syst. 36, 16222\\\
+    u201316239 (2023).\"\n  },\n  {\n    \"name\": \"Li, Z. et al. ControlAR: controllable image generation with\",\n    \"\
+    text\": \"autoregressive models. In 13th International Conference on\\nLearning Representations (ICLR, 2025).\"\n  },\n\
+    \  {\n    \"name\": \"Beattie, J. et al. Using large language models to create patient\",\n    \"text\": \"centered consent\
+    \ forms. Int. J. Radiat. Oncol. Biol. Phys. 120, e612\\n(2024).\"\n  },\n  {\n    \"name\": \"Shi, Q. et al. Transforming\
+    \ informed consent generation using\",\n    \"text\": \"large language models: mixed methods study. JMIR Med. Inform.\\\
+    n13, e68139 (2025).\"\n  },\n  {\n    \"name\": \"Rudra, P., Balke, W. -T., Kacprowski, T., Ursin, F. & Salloch, S. Large\"\
+    ,\n    \"text\": \"language models for surgical informed consent: an ethical\\nperspective on simulated empathy. J. Med.\
+    \ Ethics https://doi.org/\\n10.1136/jme-2024-110652 (2025)\"\n  },\n  {\n    \"name\": \"Ravfogel, S., Goldberg, Y. &\
+    \ Goldberger, J. Conformal nucleus\",\n    \"text\": \"sampling. In Findings of the Association for Computational\\nLinguistics\
+    \ 27\\u201334 (ACL, 2023).\"\n  },\n  {\n    \"name\": \"Minh, N. N. et al. Turning up the heat: min-p sampling for creative\"\
+    ,\n    \"text\": \"and coherent LLM outputs. In 13th International Conference on\\nLearning Representations (ICLR, 2025).\"\
+    \n  },\n  {\n    \"name\": \"Zhou, K., Yang, J., Loy, C. C. & Liu, Z. Conditional prompt\",\n    \"text\": \"learning\
+    \ for vision-language models. In Proc. IEEE/CVF\\nConference on Computer Vision and Pattern Recognition\"\n  },\n  {\n\
+    \    \"name\": \"\\u201316825 (IEEE, 2022)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Khasentino, J. et al. A\
+    \ personal health large language model for\",\n    \"text\": \"sleep and fitness coaching. Nat. Med. 31, 3394\\u20133403\
+    \ (2025).\"\n  },\n  {\n    \"name\": \"Wen, J. et al. The genetic architecture of multimodal human brain\",\n    \"text\"\
+    : \"age. Nat. Commun. 15, 2604 (2024).\"\n  },\n  {\n    \"name\": \"Mizrahi, D. et al. 4M: massively multimodal masked\
+    \ modeling\",\n    \"text\": \"Adv. Neural Inf. Proc. Syst. 36, 58363\\u201358408 (2023).\"\n  },\n  {\n    \"name\":\
+    \ \"Meng, X., Sun, K., Xu, J., He, X. & Shen, D. Multi-modal\",\n    \"text\": \"modality-masked diffusion network for\
+    \ brain MRI synthesis\\nwith random modality missing. IEEE Trans. Med. Imaging 43,\\n2587\\u20132598 (2024).\"\n  },\n\
+    \  {\n    \"name\": \"Stahlschmidt, S. R., Ulfenborg, B. & Synnergren, J. Multimodal\",\n    \"text\": \"deep learning\
+    \ for biomedical data fusion: a review. Brief\\nBioinform. 23, bbab569 (2022).\"\n  },\n  {\n    \"name\": \"Boehm, K.\
+    \ M., Khosravi, P., Vanguri, R., Gao, J. & Shah, S. P\",\n    \"text\": \"Harnessing multimodal data integration to advance\
+    \ precision\\noncology. Nat. Rev. Cancer 22, 114\\u2013126 (2022).\"\n  },\n  {\n    \"name\": \"Johnson, R., Li, M. M.,\
+    \ Noori, A., Queen, O. & Zitnik, M. Graph\",\n    \"text\": \"artificial intelligence in medicine. Annu. Rev. Biomed.\
+    \ Data Sci. 7,\\n345\\u2013368 (2024).\"\n  },\n  {\n    \"name\": \"Kline, A. et al. Multimodal machine learning in precision\
+    \ health:\",\n    \"text\": \"a scoping review. npj Digit. Med. 5, 171 (2022).\"\n  },\n  {\n    \"name\": \"Huang, Y.\
+    \ et al. Multimodal AI predicts clinical outcomes\",\n    \"text\": \"of drug combinations from preclinical data. Preprint\
+    \ at\\nhttps://doi.org/10.48550/arXiv.2503.02781 (2025).\"\n  },\n  {\n    \"name\": \"Zhang, Y. et al. Multiple heads\
+    \ are better than one: mixture of\",\n    \"text\": \"modality knowledge experts for entity representation learning.\\\
+    nIn 13th International Conference on Learning Representations\"\n  },\n  {\n    \"name\": \"(ICLR, 2025)\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Bao, H. et al. VLMo: unified vision-language pre-training with\",\n    \"text\": \"\
+    mixture-of-modality-experts. Adv. Neural Inf. Proc. Syst. 35,\\n32897\\u201332912 (2022).\"\n  },\n  {\n    \"name\":\
+    \ \"Yun, S. et al. Flex-MoE: modeling arbitrary modality combination\",\n    \"text\": \"via the flexible mixture-of-experts.\
+    \ Adv. Neural Inf. Proc. Syst. 37,\\n98782\\u201398805 (2024).\"\n  },\n  {\n    \"name\": \"Cho, M. et al. Cocoon: robust\
+    \ multi-modal perception with\",\n    \"text\": \"uncertainty-aware sensor fusion. In 13th International Conference\\\
+    non Learning Representations (ICLR, 2025).\"\n  },\n  {\n    \"name\": \"Tu, T. et al. Towards conversational diagnostic\
+    \ artificial\",\n    \"text\": \"intelligence. Nature 642, 442\\u2013450 (2025).\"\n  },\n  {\n    \"name\": \"McDuff,\
+    \ D. et al. Towards accurate differential diagnosis with large\",\n    \"text\": \"language models. Nature 642, 451\\\
+    u2013457 (2025).\"\n  },\n  {\n    \"name\": \"Gao, S. et al. Empowering biomedical discovery with AI agents\",\n    \"\
+    text\": \"Cell 187, 6125\\u20136151 (2024).\"\n  },\n  {\n    \"name\": \"Guo, D. et al. DeepSeek-R1 incentivizes reasoning\
+    \ in LLMs through\",\n    \"text\": \"reinforcement learning. Nature 645, 633\\u2013638 (2025).\"\n  },\n  {\n    \"name\"\
+    : \"Gao, S. et al. TxAgent: an AI agent for therapeutic reasoning\",\n    \"text\": \"across a universe of tools. Preprint\
+    \ at https://doi.org/10.48550/\\narXiv.2503.10970 (2025).\"\n  },\n  {\n    \"name\": \"Qu, X. et al. A survey of efficient\
+    \ reasoning for large reasoning\",\n    \"text\": \"models: language, multimodality, and beyond. Preprint at\\nhttps://doi.org/10.48550/arXiv.2503.21614\
+    \ (2025).\\n\\nNature Medicine | Volume 32 | February 2026 | 439\\u2013448\\n448\\nPerspective\\nhttps://doi.org/10.1038/s41591-025-04184-7\"\
+    \n  },\n  {\n    \"name\": \"Wei, J. et al. Finetuned language models are zero-shot learners\",\n    \"text\": \"In 10th\
+    \ International Conference on Learning Representations\"\n  },\n  {\n    \"name\": \"(ICLR, 2022)\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"Ouyang, L. et al. Training language models to follow instructions\",\n    \"text\": \"\
+    with human feedback. Adv. Neural Inf. Process. Syst. 35,\\n27730\\u201327744 (2022).\"\n  },\n  {\n    \"name\": \"Gururangan,\
+    \ S. et al. Don\\u2019t stop pretraining: adapt language\",\n    \"text\": \"models to domains and tasks. In Proc. 58th\
+    \ Annual Meeting\\nof the Association for Computational Linguistics 8342\\u20138360\"\n  },\n  {\n    \"name\": \"(ACL,\
+    \ 2020)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Schick, T. et al. Toolformer: language models can teach\",\n\
+    \    \"text\": \"themselves to use tools. Adv. Neural Inf. Process. Syst. 36,\\n68539\\u201368551 (2023).\"\n  },\n  {\n\
+    \    \"name\": \"Acknowledgements\",\n    \"text\": \"M.M.L. is supported by The Ivan and Francesca Berkowitz Family\\\
+    nLiving Laboratory Collaboration at Harvard Medical School and Clalit\\nResearch Institute. We gratefully acknowledge\
+    \ the support of NIH\\nR01-HD108794, NSF CAREER 2339524, US DoD FA8702-15-D-0001,\\nARPA-H BDF program, Chan Zuckerberg\
+    \ Initiative, Bill & Melinda\\nGates Foundation INV-079038, Amazon Faculty Research, Google\\nResearch Scholar Program,\
+    \ AstraZeneca Research, Roche Alliance\\nwith Distinguished Scientists, Sanofi iDEA-iTECH, Pfizer Research,\\nGlaxoSmithKline\
+    \ Award, Boehringer Ingelheim Award, Merck Award,\\nOptum AI Research Collaboration Award, John and Virginia Kaneb\\nFellowship\
+    \ at Harvard Medical School, Biswas Computational Biology\\nInitiative in partnership with the Milken Institute, Harvard\
+    \ Medical\\nSchool Dean\\u2019s Innovation Fund for the Use of Artificial Intelligence,\\nand Kempner Institute for the\
+    \ Study of Natural and Artificial\\nIntelligence at Harvard University. Any opinions, findings, conclusions\\nor recommendations\
+    \ expressed in this material are those of the\\nauthors and do not necessarily reflect the views of the funders.\"\n \
+    \ },\n  {\n    \"name\": \"Author Contributions\",\n    \"text\": \"All authors contributed to the writing of the paper\
+    \ and provided\\ncritical feedback. M.M.L. and M.Z. conceived the study and were\\nresponsible for overall direction and\
+    \ planning.\"\n  },\n  {\n    \"name\": \"Competing interests\",\n    \"text\": \"The authors declare no competing interests.\\\
+    nAdditional information\\nCorrespondence should be addressed to Michelle M. Li or\\nMarinka Zitnik.\\nPeer review information\
+    \ Nature Medicine thanks Dokyoon Kim and the\\nother, anonymous, reviewer(s) for their contribution to the peer review\\\
+    nof this work. Primary Handling Editor: Karen O\\u2019Leary, in collaboration\\nwith the Nature Medicine team.\\nReprints\
+    \ and permissions information is available at\\nwww.nature.com/reprints.\\nPublisher\\u2019s note Springer Nature remains\
+    \ neutral with regard to\\njurisdictional claims in published maps and institutional affiliations.\\nSpringer Nature or\
+    \ its licensor (e.g. a society or other partner) holds\\nexclusive rights to this article under a publishing agreement\
+    \ with\\nthe author(s) or other rightsholder(s); author self-archiving of the\\naccepted manuscript version of this article\
+    \ is solely governed by the\\nterms of such publishing agreement and applicable law.\\n\\u00a9 Springer Nature America,\
+    \ Inc. 2026\"\n  },\n  {\n    \"name\": \"Besta, M. et al. Reasoning language models: a blueprint. Preprint\",\n    \"\
+    text\": \"at https://doi.org/10.48550/arXiv.2501.11223 (2025).\"\n  },\n  {\n    \"name\": \"Johnson, R. et al. ClinVec:\
+    \ unified embeddings of clinical codes\",\n    \"text\": \"enable knowledge-grounded AI in medicine. Preprint at medRxiv\\\
+    nhttps://doi.org/10.1101/2024.12.03.24318322 (2025).\"\n  },\n  {\n    \"name\": \"Wallace, E. et al. Managing patients\
+    \ with multimorbidity in\",\n    \"text\": \"primary care. BMJ 350, h176 (2015).\"\n  },\n  {\n    \"name\": \"Spillmann,\
+    \ R. C. et al. A window into living with an undiagnosed\",\n    \"text\": \"disease: illness narratives from the Undiagnosed\
+    \ Diseases\\nNetwork. Orphanet J. Rare Dis. 12, 1\\u201311 (2017).\"\n  },\n  {\n    \"name\": \"Wei, J. et al. Chain-of-thought\
+    \ prompting elicits reasoning in large\",\n    \"text\": \"language models. Adv. Neural Inf. Proc. Syst. 35, 24824\\u201324837\\\
+    n(2022).\"\n  },\n  {\n    \"name\": \"Rafailov, R. et al. Direct preference optimization: your language\",\n    \"text\"\
+    : \"model is secretly a reward model. Adv. Neural Inf. Proc. Syst. 36,\\n53728\\u201353741 (2023).\"\n  },\n  {\n    \"\
+    name\": \"Nathani, D. et al. MLGym: a new framework and benchmark for\",\n    \"text\": \"advancing AI research agents.\
+    \ Preprint at https://doi.org/\\n10.48550/arXiv.2502.14499 (2025).\"\n  },\n  {\n    \"name\": \"Jiang, Y. et al. MedAgentBench:\
+    \ a virtual EHR environment to\",\n    \"text\": \"benchmark medical LLM agents. NEJM AI 2, AIdbp2500144 (2025).\"\n \
+    \ },\n  {\n    \"name\": \"Kazemi, M. et al. BIG-bench extra hard. In Proc. 63rd Annual\",\n    \"text\": \"Meeting of\
+    \ the Association for Computational Linguistics (Vol. 1:\\nLong Papers) 26473\\u201326501 (ACL, 2025).\"\n  },\n  {\n\
+    \    \"name\": \"Liang, P. et al. Holistic evaluation of language models. Preprint at\",\n    \"text\": \"https://doi.org/10.48550/arXiv.2211.09110\
+    \ (2023).\"\n  },\n  {\n    \"name\": \"Choi, H. K., Khanov, M., Wei, H. & Li, Y. How contaminated is your\",\n    \"\
+    text\": \"benchmark? Measuring dataset leakage in large language models\\nwith kernel divergence. In 13th International\
+    \ Conference on\\nMachine Learning (ICLR, 2025).\"\n  },\n  {\n    \"name\": \"Ektefaie, Y. et al. Evaluating generalizability\
+    \ of artificial\",\n    \"text\": \"intelligence models for molecular datasets. Nat. Mach. Intell. 6,\\n1512\\u20131524\
+    \ (2024).\"\n  },\n  {\n    \"name\": \"Bourlon, M. T. et al. Envisioning academic global oncologists:\",\n    \"text\"\
+    : \"proposed competencies for global oncology training from ASCO.\\nJCO Glob. Oncol. 10, e2300157 (2024).\"\n  },\n  {\n\
+    \    \"name\": \"Johnson-Peretz, J. et al. Geographical, social, and political\",\n    \"text\": \"contexts of tuberculosis\
+    \ control and intervention, as reported by\\nmid-level health managers in Uganda: \\u2018the activity around town\\u2019.\\\
+    nSoc. Sci. Med. 338, 116363 (2023).\"\n  },\n  {\n    \"name\": \"Ning, Y. et al. An ethics assessment tool for artificial\
+    \ intelligence\",\n    \"text\": \"implementation in healthcare: CARE-AI. Nat. Med. 30, 3038\\u20133039\\n(2024).\"\n\
+    \  },\n  {\n    \"name\": \"Boverhof, B. -J. et al. Radiology AI Deployment and Assessment\",\n    \"text\": \"Rubric\
+    \ (RADAR) to bring value-based AI into radiological practice.\\nInsights Imaging 15, 34 (2024).\"\n  },\n  {\n    \"name\"\
+    : \"Dagan, N. et al. Evaluation of AI solutions in health care\",\n    \"text\": \"organizations \\u2014 the OPTICA tool.\
+    \ NEJM AI 1, AIcs2300269 (2024).\"\n  },\n  {\n    \"name\": \"Borja, N. A. et al. Advancing equity in rare disease research:\"\
+    ,\n    \"text\": \"insights from the undiagnosed disease network. Am. J. Med.\\nGenet. A 197, e63904 (2025).\"\n  },\n\
+    \  {\n    \"name\": \"Williams, J. S., Walker, R. J. & Egede, L. E. Achieving equity in an\",\n    \"text\": \"evolving\
+    \ healthcare system: opportunities and challenges. Am. J.\\nMed. Sci. 351, 33\\u201343 (2016).\"\n  },\n  {\n    \"name\"\
+    : \"Pool, J., Indulska, M. & Sadiq, S. Large language models and\",\n    \"text\": \"generative AI in telehealth: a responsible\
+    \ use lens. J. Am. Med.\\nInform. Assoc. 31, 2125\\u20132136 (2024).\"\n  },\n  {\n    \"name\": \"Yu, K. -H., Healey,\
+    \ E., Leong, T. -Y., Kohane, I. S. & Manrai, A. K\",\n    \"text\": \"Medical artificial intelligence and human values.\
+    \ N. Engl. J. Med.\\n390, 1895\\u20131904 (2024).\"\n  },\n  {\n    \"name\": \"Lewis, P. et al. Retrieval-augmented generation\
+    \ for\",\n    \"text\": \"knowledge-intensive NLP tasks. Adv. Neural Inf. Process. Syst. 33,\\n9459\\u20139474 (2020).\"\
+    \n  }\n]"
+  acknowledgments: 'M.M.L. is supported by The Ivan and Francesca Berkowitz Family
+
+    Living Laboratory Collaboration at Harvard Medical School and Clalit
+
+    Research Institute. We gratefully acknowledge the support of NIH
+
+    R01-HD108794, NSF CAREER 2339524, US DoD FA8702-15-D-0001,
+
+    ARPA-H BDF program, Chan Zuckerberg Initiative, Bill & Melinda
+
+    Gates Foundation INV-079038, Amazon Faculty Research, Google
+
+    Research Scholar Program, AstraZeneca Research, Roche Alliance
+
+    with Distinguished Scientists, Sanofi iDEA-iTECH, Pfizer Research,
+
+    GlaxoSmithKline Award, Boehringer Ingelheim Award, Merck Award,
+
+    Optum AI Research Collaboration Award, John and Virginia Kaneb
+
+    Fellowship at Harvard Medical School, Biswas Computational Biology
+
+    Initiative in partnership with the Milken Institute, Harvard Medical
+
+    School Dean’s Innovation Fund for the Use of Artificial Intelligence,
+
+    and Kempner Institute for the Study of Natural and Artificial
+
+    Intelligence at Harvard University. Any opinions, findings, conclusions
+
+    or recommendations expressed in this material are those of the
+
+    authors and do not necessarily reflect the views of the funders.'
+  author_contributions: 'All authors contributed to the writing of the paper and provided
+
+    critical feedback. M.M.L. and M.Z. conceived the study and were
+
+    responsible for overall direction and planning.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information
+
+    Correspondence should be addressed to Michelle M. Li or
+
+    Marinka Zitnik.
+
+    Peer review information Nature Medicine thanks Dokyoon Kim and the
+
+    other, anonymous, reviewer(s) for their contribution to the peer review
+
+    of this work. Primary Handling Editor: Karen O’Leary, in collaboration
+
+    with the Nature Medicine team.
+
+    Reprints and permissions information is available at
+
+    www.nature.com/reprints.
+
+    Publisher’s note Springer Nature remains neutral with regard to
+
+    jurisdictional claims in published maps and institutional affiliations.
+
+    Springer Nature or its licensor (e.g. a society or other partner) holds
+
+    exclusive rights to this article under a publishing agreement with
+
+    the author(s) or other rightsholder(s); author self-archiving of the
+
+    accepted manuscript version of this article is solely governed by the
+
+    terms of such publishing agreement and applicable law.
+
+    © Springer Nature America, Inc. 2026'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  }\n]"
+references:
+  reference_count: 34

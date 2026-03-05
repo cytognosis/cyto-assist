@@ -1,0 +1,1201 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/Biomni.pdf
+
+identifiers:
+  doi: 10.1101/2025.05.30.656746
+  pmid: '40501924'
+citation:
+  title: 'Biomni:   A General-Purpose Biomedical AI Agent'
+  year: '2025'
+  publisher: openRxiv
+  authors: Kexin Huang, Serena Zhang, Hanchen Wang, Yuanhao Qu, Yingzhou Lu, Yusuf Roohani, Ryan Li, Lin Qiu, Gavin Li, Junze
+    Zhang, Di Yin, Shruti Marwaha, Jennefer N. Carter, Xin Zhou, Matthew Wheeler, Jonathan A. Bernstein, Mengdi Wang, Peng
+    He, Jingtian Zhou, Michael Snyder, Le Cong, Aviv Regev, Jure Leskovec
+content:
+  abstract: '1
+
+    Biomedical research underpins progress in our understanding of human health and disease,
+
+    2
+
+    drug discovery, and clinical care. However, with the growth of complex lab experiments,
+
+    3
+
+    large datasets, many analytical tools, and expansive literature, biomedical research is in-
+
+    4
+
+    creasingly constrained by repetitive and fragmented workﬂows that slow discovery and limit
+
+    5
+
+    innovation, underscoring the need for a fundamentally new way to scale scientiﬁc exper-
+
+    6
+
+    tise. Here, we introduce Biomni, a general-purpose biomedical AI agent designed to au-
+
+    7
+
+    tonomously execute a wide spectrum of research tasks across diverse biomedical subﬁelds.
+
+    8
+
+    To systematically map the biomedical action space, Biomni ﬁrst employs an action discov-
+
+    9
+
+    ery agent to create the ﬁrst uniﬁed agentic environment – mining essential tools, databases,
+
+    10
+
+    and protocols from tens of thousands of publications across 25 biomedical domains. Built
+
+    11
+
+    on this foundation, Biomni features a generalist agentic architecture that integrates large
+
+    12
+
+    language model (LLM) reasoning with retrieval-augmented planning and code-based execu-
+
+    13
+
+    tion, enabling it to dynamically compose and carry out complex biomedical workﬂows – en-
+
+    14
+
+    tirely without relying on predeﬁned templates or rigid task ﬂows. Systematic benchmarking
+
+    15
+
+    demonstrates that Biomni achieves strong generalization across heterogeneous biomedical
+
+    16
+
+    tasks – including causal gene prioritization, drug repurposing, rare disease diagnosis, micro-
+
+    17
+
+    biome analysis, and molecular cloning – without any task-speciﬁc prompt tuning. Real-world
+
+    18
+
+    case studies further showcase Biomni’s ability to interpret complex, multi-modal biomedical
+
+    19
+
+    datasets and autonomously generate experimentally testable protocols. Biomni envisions a
+
+    20
+
+    future where virtual AI biologists operate alongside and augment human scientists to dra-
+
+    21
+
+    matically enhance research productivity, clinical insight, and healthcare. Biomni is ready to
+
+    22
+
+    use at https://biomni.stanford.edu, and we invite scientists to explore its capabilities, stress-
+
+    23
+
+    test its limits, and co-create the next era of biomedical discoveries.
+
+    24
+
+    2
+
+    .
+
+    CC-BY 4.0 International license
+
+    available under a
+
+    was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.
+    It is made
+
+    The copyright holder for this preprint (which
+
+    this version posted June 2, 2025.
+
+    ;
+
+    https://doi.org/10.1101/2025.05.30.656746
+
+    doi:
+
+    bioRxiv preprint
+
+
+    1'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"25\\nBiomedical research is a key pillar of modern science\
+    \ and medicine, driving discoveries in disease\\n26\\nmechanisms, diagnostics, and therapeutics1\\u20134. Yet, with the\
+    \ growth in large-scale experiments,\\n27\\ndata, tools, and literature, progress is increasingly slowed by fragmented,\
+    \ complex work\\ufb02ows that\\n28\\nrequire specialized tools, exhaustive literature reviews, intricate experimental\
+    \ design, and careful\\n29\\nstatistical modeling5,6. A vast volume of valuable biomedical data sits underutilized7, many\
+    \ so-\\n30\\nphisticated analyses are not conducted, and many connections for past knowledge and literature are\\n31\\\
+    nnot made, not for lack of signi\\ufb01cance, but because the demand for expert researchers far exceeds\\n32\\nthe supply.\
+    \ This mismatch between data abundance and limited human bandwidth highlights an\\n33\\nurgent need for a fundamentally\
+    \ new approach \\u2013 one that can effectively scale expertise, streamline\\n34\\nwork\\ufb02ows, and unlock the full\
+    \ potential of biomedical research.\\n35\\nRecent advances in Arti\\ufb01cial Intelligence (AI) have created a paradigm\
+    \ shift, opening the\\n36\\npossibility for fundamentally reshaping biomedical research8. AI agents have dramatically\
+    \ re-\\n37\\nshaped \\ufb01elds such as software engineering9, law10, material science11 and healthcare12 by au-\\n38\\\
+    ntomating repetitive tasks, enhancing productivity, and enabling breakthroughs that were previ-\\n39\\nously unimaginable.\
+    \ Given these developments, the question emerges: Can we build a virtual\\n40\\nAI biomedical scientist? Such a virtual\
+    \ scientist would autonomously tackle diverse biomedical\\n41\\nresearch tasks spanning multiple sub\\ufb01elds, unlocking\
+    \ extensive capabilities and fostering novel\\n42\\ninsights through interdisciplinary integration \\u2013 an achievement\
+    \ that can radically augment human\\n43\\nbiologists limited by specialized expertise. Capable of ef\\ufb01ciently managing\
+    \ thousands of concur-\\n44\\nrent tasks, this virtual scientist could dramatically enhance human productivity and accelerate\
+    \ the\\n45\\npace of biomedical discovery.\\n46\\nPrevious approaches have largely relied on specialist agentic work\\\
+    ufb02ows tailored to nar-\\n47\\nrow biomedical tasks13\\u201319, which restricts their capacity to move \\ufb02uidly\
+    \ and generalize across\\n48\\nthe full spectrum of biomedical domains, as needed to answer key research questions. Enabling\\\
+    n49\\nan AI agent to handle a broad range of biomedical tasks introduces substantial technical chal-\\n50\\nlenges \\\
+    u2013 most notably, the need to tightly couple advanced reasoning20 with the ability to exe-\\n51\\ncute highly specialized\
+    \ biomedical actions21. Although LLM-based reasoning has seen signi\\ufb01cant\\n52\\nadvancements22, such LLMs need access\
+    \ to an environment that explicitly de\\ufb01nes the biomedical\\n53\\n3\\n.\\nCC-BY 4.0 International license\\navailable\
+    \ under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint\
+    \ in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\\
+    nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\naction space, which is inherently diverse, domain-speci\\\
+    ufb01c, and complex. Moreover, a truly capable\\n54\\nsystem requires an agentic architecture that can natively interact\
+    \ with this biomedical environment\\n55\\n\\u2013 autonomously selecting and composing actions, using its reasoning capabilities\
+    \ to plan and exe-\\n56\\ncute diverse tasks without relying on rigid, pre-de\\ufb01ned work\\ufb02ows.\\n57\\nHere we\
+    \ present Biomni, a generalist biomedical AI agent purpose-built to automate and\\n58\\nadvance biomedical research across\
+    \ a wide range of sub\\ufb01elds. Acting as a virtual AI biologist,\\n59\\nBiomni autonomously formulates novel, testable\
+    \ hypotheses, performs complex bioinformatics\\n60\\nanalyses, and designs rigorous experimental protocols. To enable\
+    \ this capability, we \\ufb01rst con-\\n61\\nstructed a uni\\ufb01ed and comprehensive biomedical action space by systematically\
+    \ analyzing tens\\n62\\nof thousands of biomedical research papers spanning 25 distinct sub\\ufb01elds, curated from major\\\
+    n63\\nbio-literature repositories. From this foundation, we developed an LLM-powered action discovery\\n64\\nagent capable\
+    \ of reading papers and extracting key tasks, tools, and databases essential to driving\\n65\\nbiomedical discoveries.\
+    \ These elements are then selected and implemented into Biomni-E1, the\\n66\\nfoundational environment that de\\ufb01nes\
+    \ the biomedical action space for agentic interaction. Biomni-\\n67\\nE1 includes 150 specialized biomedical tools, 105\
+    \ software packages, and 59 databases. We then\\n68\\ndesigned Biomni-A1, a general-purpose agent architecture capable\
+    \ of \\ufb02exibly executing a broad\\n69\\nspectrum of biomedical tasks by using tools and datasets provided by Biomni\
+    \ E1. Given a user\\n70\\nquery, the agent \\ufb01rst uses a retrieval system to identify the most relevant tools, databases,\
+    \ and soft-\\n71\\nware needed. It then applies LLM-based reasoning and domain expertise to generate a detailed,\\n72\\\
+    nstep-by-step plan. Each step is expressed through executable code, enabling precise and \\ufb02exible\\n73\\ncompositions\
+    \ of biomedical actions \\u2013 an essential feature given the domain\\u2019s reliance on highly\\n74\\nspecialized tools\
+    \ and data resources. Unlike traditional function-calling methods, this approach\\n75\\nsupports the dynamic and complex\
+    \ nature of biomedical work\\ufb02ows. This integrated system allows\\n76\\nBiomni not only to solve challenging, large-scale\
+    \ biomedical problems with ef\\ufb01ciency, but also to\\n77\\ngeneralize to novel tasks across previously unseen areas\
+    \ of biomedical research.\\n78\\nRigorous benchmarking demonstrates Biomni\\u2019s outstanding performance across established\\\
+    n79\\nbiomedical Q&A benchmarks, and robust generalization performance in eight challenging, realis-\\n80\\ntic scenarios\
+    \ never encountered during development. Additionally, we highlight Biomni\\u2019s practical\\n81\\ncapabilities through\
+    \ three impactful case studies: (1) analyzing 458 \\ufb01les of wearable sensor data\\n82\\nto generate novel insights;\
+    \ (2) rapidly performing comprehensive bioinformatics analyses on mas-\\n83\\n4\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2,\
+    \ 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\nsive raw datasets, such as single-cell\
+    \ RNA-seq and ATAC-seq data, to generate novel insights and\\n84\\nhypotheses; (3) autonomously designing laboratory protocols\
+    \ to assist wet-lab researchers. With\\n85\\nBiomni, we introduce the \\ufb01rst generation of a scalable, general-purpose\
+    \ biomedical AI agent,\\n86\\nsetting the stage for an era where virtual AI biologists work alongside human researchers\
+    \ to dra-\\n87\\nmatically accelerate biomedical discovery from basic research to translation.\\n88\\n2\"\n  },\n  {\n\
+    \    \"name\": \"Results\",\n    \"text\": \"89\\nOverview of Biomni. Biomni is a general-purpose biomedical AI agent\
+    \ comprising two main\\n90\\ncomponents: Biomni-E1, a foundational biomedical environment with a uni\\ufb01ed action space,\
+    \ and\\n91\\nBiomni-A1, an intelligent agent designed to utilize this environment effectively.\\n92\\nCurating a uni\\\
+    ufb01ed biomedical action space is challenging due to its inherent complexity and\\n93\\nvastness. We systematically address\
+    \ this by employing an AI-driven approach (Figure 1a). Specif-\\n94\\nically, we leveraged the 25 subject categories de\\\
+    ufb01ned by bioRxiv, selecting the 100 most recent\\n95\\npublications per category. An action discovery LLM agent processed\
+    \ each paper sequentially,\\n96\\nextracting essential tasks, tools, databases, and software necessary to replicate or\
+    \ generate the de-\\n97\\nscribed research. This comprehensive set of resources constitutes the essential actions required\
+    \ to\\n98\\nperform a large set of biological research tasks.\\n99\\nWe then curated Biomni-E1, an environment for a biomedical\
+    \ AI agent to perform a wide\\n100\\nrange of actions (Figure 1b). Identi\\ufb01ed tools were rigorously veri\\ufb01ed\
+    \ by human experts, along\\n101\\nwith corresponding test cases. These tools (Supplementary Table 1-Table 18) were speci\\\
+    ufb01cally\\n102\\nchosen for their non-trivial nature, encompassing complex code, domain-speci\\ufb01c know-how, or\\\
+    n103\\nspecialized AI models. Recognizing the inherent \\ufb02exibility required by biological software, which\\n104\\\
+    ncannot always be simpli\\ufb01ed into static functions, we constructed an execution environment pre-\\n105\\ninstalled\
+    \ with 105 widely-used biological software packages (Supplementary Table 23-30), sup-\\n106\\nporting Python, R, and Bash\
+    \ scripts. For database integration, we categorized resources into two\\n107\\ndistinct groups. The \\ufb01rst group consists\
+    \ of massive relational databases accessible via web APIs\\n108\\n(e.g., PDB, OpenTarget, ClinVar) (Supplementary Table\
+    \ 19-20). Rather than creating numerous\\n109\\nindividual retrieval tools, we implemented a uni\\ufb01ed function per\
+    \ database. Each function accepts\\n110\\nnatural language queries and internally employs an LLM to parse database schemas\
+    \ and generate\\n111\\nexecutable queries dynamically. Databases without web interfaces were downloaded into a data\\\
+    n112\\n5\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv\
+    \ preprint\\n\\nlake and preprocessed locally into structured pandas DataFrames for seamless integration with the\\n113\\\
+    nagent, for a total of 59 databases in Biomni-E1 (Supplementary Table 21-22). In summary, Biomni-\\n114\\nE1 is the \\\
+    ufb01rst environment for biomedical AI agent and includes 150 specialized biomedical tools,\\n115\\n105 software, and\
+    \ 59 databases.\\n116\\nTo build a general-purpose agent capable of tackling diverse biomedical tasks, we require a\\\
+    n117\\nspecialized agentic architecture \\u2013 one that avoids hardcoding work\\ufb02ows for each individual task.\\\
+    n118\\nThis led to the development of Biomni-A1, which incorporates several core innovations critical\\n119\\nfor operating\
+    \ across the biomedical research landscape. First, we introduce an LLM-based tool\\n120\\nselection mechanism designed\
+    \ to navigate the complexity and specialization of biomedical tools,\\n121\\ndynamically retrieving a tailored subset\
+    \ of resources based on the user\\u2019s goal. Second, recogniz-\\n122\\ning that biomedical tasks often require rich\
+    \ procedural logic, Biomni-A1 uses code as a universal\\n123\\naction interface \\u2013 allowing it to compose and execute\
+    \ complex work\\ufb02ows involving loops, par-\\n124\\nallelization, and conditional logic. Crucially, this approach also\
+    \ enables the agent to interleave\\n125\\ncalls to software, tools, databases, and raw data operations that do not conform\
+    \ to prede\\ufb01ned func-\\n126\\ntion signatures-supporting \\ufb02exible and dynamic integration of heterogeneous resources.\
+    \ Third, the\\n127\\nagent adopts an adaptive planning strategy: it formulates an initial plan grounded in biomedical\\\
+    n128\\nknowledge and iteratively re\\ufb01nes it throughout execution, enabling responsive, context-aware be-\\n129\\\
+    nhavior. Together, these innovations enable Biomni-A1 to generalize to previously unseen tasks and\\n130\\ndomains, dynamically\
+    \ composing intelligent actions and interfacing with software, data, and tools\\n131\\nin a way that embodies generalist\
+    \ biomedical intelligence (Figure 1c).\\n132\\nBiomni excels on general biomedical knowledge and reasoning benchmarks.\
+    \ We evaluated\\n133\\nBiomni on three challenging multiple-choice benchmarks of general biomedical knowledge and\\n134\\\
+    nreasoning: Humanity\\u2019s Last Exam (HLE)23 and LAB-Bench24, which includes two key subtasks \\u2013\\n135\\nDbQA (Database\
+    \ Question Answering) and SeqQA (Sequence Question Answering) (Figure 2a).\\n136\\nThese tasks span tool use, symbolic\
+    \ reasoning, and structured biological information retrieval \\u2013\\n137\\ncore competencies for any robust biomedical\
+    \ AI agent. To isolate the impact of tool access and\\n138\\nagent design, we compared Biomni against six strong general-purpose\
+    \ baselines (details in Sup-\\n139\\nplementary Notes A). Specialized methods25,26 designed for each task is not considered\
+    \ as we aim\\n140\\nto compare on generalist performance.\\n141\\n6\\n.\\nCC-BY 4.0 International license\\navailable\
+    \ under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint\
+    \ in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\\
+    nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\nFor LAB-Bench, a 45-question development set\
+    \ was used to re\\ufb01ne tool and database inter-\\n142\\nfaces, while the \\ufb01nal evaluation was conducted on 315\
+    \ held-out test questions, with performance\\n143\\naveraged across three independent runs. We only curated a representative\
+    \ 12.5% subset of the full\\n144\\nbenchmark due to API cost constraints. In DbQA, which requires structured querying\
+    \ over biolog-\\n145\\nical databases, Biomni achieved 74.4% accuracy \\u2013 matching expert human performance (74.7%)\\\
+    n146\\nand outperformed all baselines, including the coding agent (ReAct+Code, 40.8%). In SeqQA,\\n147\\nwhich involves\
+    \ reasoning over DNA and protein sequences, Biomni achieved 81.9% accuracy,\\n148\\nagain exceeding human-level performance\
+    \ (78.8%).\\n149\\nTo test true generalization of biomedical knowledge and reasoning without any development\\n150\\nset,\
+    \ we also evaluated Biomni on a 52-question subset of HLE spanning 14 biomedical sub\\ufb01elds\\n151\\n\\u2013 from molecular\
+    \ biology to physiology. Biomni achieved 17.3% accuracy, signi\\ufb01cantly outper-\\n152\\nforming the base LLM (6.0%),\
+    \ coding agent (12.8%), and literature agent (12.2%). These re-\\n153\\nsults demonstrate Biomni\\u2019s ability to generalize\
+    \ across unfamiliar, open-ended biomedical domains\\n154\\nwithout any task-speci\\ufb01c adaptation. Additional ablation\
+    \ results are shown in Supplementary Fig-\\n155\\nures 1-2. Performances across each sub\\ufb01eld are reported in the\
+    \ Supplementary Figure 3.\\n156\\nBiomni generalizes to new, real-world biomedical tasks across diverse sub\\ufb01elds.\
+    \ To evaluate\\n157\\ngeneralization in realistic research tasks, we curated eight new biomedical benchmarks spanning\\\
+    n158\\ngenetics, genomics, microbiology, pharmacology, and clinical medicine (Figure 2b). Each task\\n159\\nwas framed\
+    \ to re\\ufb02ect a common, well-de\\ufb01ned, but complex real-world biomedical research goal,\\n160\\nincluding: (1)\
+    \ Variant prioritization: Identify the most likely causal variant from a list of poten-\\n161\\ntial variants for a trait,\
+    \ requiring reasoning about regulatory functions in non-coding regions. (2)\\n162\\nGWAS causal gene detection: Select\
+    \ the most likely causal gene within a locus, demanding \\ufb01ne-\\n163\\ngrained locus-level inference. (3) CRISPR perturbation\
+    \ screen design: Construct gene panels to\\n164\\nmaximize post-perturbation effect across a large (\\u21e020,000 genes)\
+    \ search space. (4) Rare disease\\n165\\ndiagnosis: Map patient phenotypes and genetic \\ufb01ndings to rare disease diagnosis.\
+    \ (5) Drug repur-\\n166\\nposing: Given a rare disease and a list of candidate drugs, select the best therapeutic match.\
+    \ (6)\\n167\\nSingle-cell RNA-seq annotation: Assign accurate cell-type labels to individual cell pro\\ufb01les across\\\
+    n168\\ntissues, species, and platforms. (7) Microbiome disease-taxa analysis: Perform statistical associa-\\n169\\ntion\
+    \ tests on microbiome datasets to uncover disease-relevant taxa. (8) Patient gene prioritization:\\n170\\n7\\n.\\nCC-BY\
+    \ 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder, who has granted\
+    \ bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\\
+    nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\nGiven\
+    \ an individual patient\\u2019s genetic pro\\ufb01le and phenotype description, identify the most plausi-\\n171\\nble\
+    \ causal gene. We benchmarked Biomni without prompt engineering or task-speci\\ufb01c \\ufb01ne-tuning\\n172\\nagainst\
+    \ three baselines: (1) a base LLM (Claude Sonnet 3.7) without tool use, (2) a coding agent\\n173\\nwith direct function\
+    \ calls and code execution (ReAct+Code), and (3) Biomni-ReAct, an ablation\\n174\\nof Biomni that replaces code-based\
+    \ planning with ReAct-style chaining. The complete benchmark\\n175\\nconstructions are described in Methods, with detailed\
+    \ performance comparisons in Supplementary\\n176\\nNotes B.\\n177\\nAcross all tasks, Biomni outperformed the base LLM\
+    \ by an average relative performance\\n178\\ngain of 402.3%, the coding agent by 43.0%, and its own ablated variant Biomni-ReAct\
+    \ by 20.4%.\\n179\\nThese \\ufb01ndings highlight the importance of code-centric planning and environment grounding, en-\\\
+    n180\\nabling Biomni to compose precise, \\ufb02exible, and context-aware actions. For each benchmark, we\\n181\\nfurther\
+    \ analyzed the execution trajectories, identifying commonly invoked tools, software, and\\n182\\ndatasets, as detailed\
+    \ in Supplementary Figures 6-16. These trajectories provide insight into the\\n183\\ncomplexity and structure of agent\
+    \ behavior across tasks. On average, Biomni executes between 6\\n184\\nand 24 distinct steps per task, involving combinations\
+    \ of 0-4 specialized tools, 1-8 software pack-\\n185\\nages, and 0-3 unique data lake items. The agent interleaves data\
+    \ extraction, search/retrieval, rea-\\n186\\nsoning, and computational analyses (Supplementary Figure 8) \\u2013 re\\\
+    ufb02ecting a work\\ufb02ow pattern that\\n187\\nmirrors how human scientists alternate between retrieving knowledge and\
+    \ generating new insights.\\n188\\nResource usage varies by task type: information synthesis tasks, such as CRISPR perturbation\\\
+    n189\\nscreen design and GWAS causal gene identi\\ufb01cation, rely heavily on database queries (e.g., KEGG,\\n190\\nReactome)\
+    \ and literature search (e.g., PubMed, Google), whereas bioinformatics analysis tasks\\n191\\nlike microbiome pro\\ufb01ling\
+    \ and single-cell annotation involve minimal database use but extensive\\n192\\ncode execution with software libraries\
+    \ such as scanpy.\\n193\\nBiomni jointly analyzes 458 wearable sensor \\ufb01les to generate physiological hypotheses.\
+    \ To\\n194\\nevaluate Biomni\\u2019s performance in real-world biomedical work\\ufb02ows, we invited scientists to ap-\\\
+    n195\\nply it directly to their own research questions. In this case study, a researcher used Biomni to\\n196\\nanalyze\
+    \ 458 Excel \\ufb01les containing months-long wearable sensor data (continuous glucose moni-\\n197\\ntoring (CGM) and\
+    \ body temperature) from 30 participants. The data were highly heterogeneous:\\n198\\n\\ufb01le formats varied, annotations\
+    \ were inconsistent, and participants exhibited substantial variability\\n199\\n8\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2,\
+    \ 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\n(Figure 3a). The researcher posed\
+    \ an open-ended question: Can we uncover biologically meaning-\\n200\\nful thermogenic patterns?\\n201\\nBiomni autonomously\
+    \ generated and executed a 10-step analysis pipeline (Figure 3b), in-\\n202\\nferring meal events from glucose spikes,\
+    \ extracting pre/post meal temperature windows, normal-\\n203\\nizing across individuals, and synthesizing population-level\
+    \ trends. Crucially, after completing the\\n204\\npipeline, the agent delivered a structured, human-readable report summarizing\
+    \ its key \\ufb01ndings\\n205\\n(Supplementary Notes D). It identi\\ufb01ed a consistent postprandial thermogenic response,\
+    \ with an\\n206\\naverage temperature rise of 2.19\\u25e6C (median: 1.10\\u25e6CC) and a wide range across individuals\
+    \ (-\\n207\\n0.11\\u25e6CC to 15.56\\u25e6CC). Some participants showed rapid, pronounced spikes within 30 minutes of\\\
+    n208\\neating, while others had delayed or muted responses \\u2013 indicating divergent metabolic phenotypes\\n209\\n(Figure\
+    \ 3c,d). These insights were not manually curated or extracted by a human; the agent per-\\n210\\nformed the entire analysis\
+    \ end-to-end and surfaced the results as a concise narrative highlighting\\n211\\npatterns that would otherwise being\
+    \ ignored in raw data.\\n212\\nIn a parallel work\\ufb02ow, the scientist requested Biomni to analyze 227 nights of wearable-\\\
+    n213\\nrecorded sleep data across 10 participants. Biomni computed averages for duration, ef\\ufb01ciency,\\n214\\nlatency,\
+    \ and sleep stage composition, derived a composite sleep quality score, and conducted\\n215\\nchronobiological analyses.\
+    \ The agent delivered a structured summary to the user (Supplemen-\\n216\\ntary Notes D, Supplementary Figure 4), including\
+    \ personalized sleep pro\\ufb01les and timing insights,\\n217\\nwithout human post hoc synthesis. Biomni uncovered several\
+    \ novel insights: sleep ef\\ufb01ciency\\n218\\nconsistently peaked mid-week (on Wednesdays) and declined on Sundays,\
+    \ suggesting a potential\\n219\\nbehavioral pattern tied to pre-Monday stress or weekend-induced disruptions. Another\
+    \ important\\n220\\n\\ufb01nding was that consistent sleep timing correlated more strongly with higher sleep quality than\\\
+    n221\\ntotal sleep duration, highlighting the critical role of circadian regularity in maintaining restorative\\n222\\\
+    nsleep.\\n223\\nThe scientist then tasked Biomni with analyzing multi-omics data (652 lipidomic, 731 metabolomic,\\n224\\\
+    nand 1,470 proteomic features), jointly with the CGM data. Biomni conducted cross-omics correla-\\n225\\ntion analysis,\
+    \ applied hierarchical clustering to uncover biologically coherent feature groups, and\\n226\\nperformed unsupervised\
+    \ PCA to link CGM signals to molecular pathways. It automatically gener-\\n227\\nated interpretable outputs \\u2013 trajectory\
+    \ plots, heatmaps, boxplots, PCA biplots, and cluster maps \\u2013\\n228\\nempowering rapid insight generation from complex\
+    \ multimodal datasets (Supplementary Notes D,\\n229\\n9\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas\
+    \ not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.\
+    \ It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\"\n  },\n  {\n    \"name\": \"Supplementary Figure 5). Signi\\ufb01cant correlations among lipids,\
+    \ metabolites, and proteins revealed\",\n    \"text\": \"230\\ntightly interlinked regulatory pathways, underscoring the\
+    \ systems-level nature of metabolic regula-\\n231\\ntion. Notably, several identi\\ufb01ed biomarkers showed consistent\
+    \ patterns across samples and exhib-\\n232\\nited high connectivity within correlation networks. Across all cases, the\
+    \ scientist noted that Biomni\\n233\\naccelerated the path from messy real-world data to testable hypotheses, supporting\
+    \ applications in\\n234\\nsleep optimization, metabolic research, and precision health.\\n235\\nBiomni automates complex\
+    \ multi-omics analysis to decipher transcriptional regulation of\\n236\\nskeletal lineages. To test whether Biomni could\
+    \ generalize to complex omics work\\ufb02ows, a scien-\\n237\\ntist used it to analyze a recently published multi-omics\
+    \ dataset of the developing human skeleton 27.\\n238\\nThis dataset comprises 336,162 single-nucleus RNA-Seq (snRNA) and\
+    \ ATAC-seq (snATAC-Seq),\\n239\\npaired with spatial transcriptomics data collected from human embryos between 5-11 weeks\
+    \ post-\\n240\\nconception (Figure3e). While the original study emphasized developmental trajectories and dis-\\n241\\\
+    nease mechanisms, the scientist was interested in exploring gene regulatory mechanisms across\\n242\\nemerging skeletal\
+    \ cell types \\u2013 a technically demanding task typically requiring extensive bioinfor-\\n243\\nmatics support.\\n244\\\
+    nThe scientist asked Biomni to investigate transcriptional regulation across skeletal lineages\\n245\\nusing a detailed\
+    \ instruction (Supplementary Notes E). The system autonomously planned and exe-\\n246\\ncuted a ten-stage analysis pipeline:\
+    \ (1) loading and exploring all datasets, (2) preparing RNA-seq\\n247\\ndata for analysis, (3) con\\ufb01guring pySCENIC\
+    \ to retrieve motifs, (4) running GRNBoost2 to infer\\n248\\ngene regulatory networks, (5) pruning networks using cisTarget,\
+    \ (6) calculating regulon activity\\n249\\nwith AUCell, (7) extracting accessibility data from ATAC-seq, (8) \\ufb01ltering\
+    \ predicted targets us-\\n250\\ning ATAC-seq accessibility, (9) analyzing activity patterns across cell types, developmental\
+    \ stages,\\n251\\nand anatomical regions, and (10) summarizing \\ufb01ndings and preparing a report to the scientist.\
+    \ It\\n252\\nenabled Biomni to predict transcription factor-target gene links and \\ufb01lter regulons based on mo-\\\
+    n253\\ntif enrichment and chromatin accessibility correlations (Figure 3f). The full run, completed in\\n254\\njust over\
+    \ \\ufb01ve hours, handled real-time execution issues (e.g., variable name mismatches) by sub-\\n255\\nsampling and debugging\
+    \ locally. Throughout, Biomni maintained all intermediate outputs \\u2013 code,\\n256\\n\\ufb01gures, and logs \\u2013\
+    \ organized in a reproducible folder structure for validation and inspection. The\\n257\\nagent summarized all the analysis\
+    \ and generated a report describing the analysis and key \\ufb01ndings\\n258\\n10\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2,\
+    \ 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\n(Supplementary Notes E).\\n259\\\
+    nIn its \\ufb01nal gene regulatory network (GRN) analysis (Figure 3h), Biomni re-capitulated known\\n260\\nregulatory\
+    \ relationships between key osteogenic transcription factors such as RUNX2 and HHIP,\\n261\\ncon\\ufb01rming how they\
+    \ are regulated by a shared set of anti-osteogenic transcription factors including\\n262\\nTWIST1, LMX1B, and ALX4 27.\
+    \ These \\ufb01ndings align with author\\u2019s report 27 about the balanced\\n263\\nregulation needed for proper bone\
+    \ formation and suture patency. Furthermore, Biomni also uncov-\\n264\\nered several unreported TFs, including AUTS2,\
+    \ ZFHX3, and PBX1, showed unexpectedly high\\n265\\nregulatory activity across multiple skeletal cell types. Although\
+    \ PBX1 is a well-established skele-\\n266\\ntal regulator 28 and ZFHX3/AUTS2 have only limited or indirect skeletal reports\
+    \ (in mouse 29\\n267\\nor zebra\\ufb01sh 30), their broad activity here suggests under-appreciated roles across diverse\
+    \ skele-\\n268\\ntal lineages. Biomni reported that these novel regulators were particularly active in osteoblasts,\\\
+    n269\\npreosteoblasts, and various chondrocyte populations, suggesting they play important but previ-\\n270\\nously unrecognized\
+    \ roles in the transcriptional control of skeletal cell fate determination during\\n271\\nhuman embryonic development.\
+    \ Finally, Figure 3g-h reveals how Biomni\\u2019s visualizations effec-\\n272\\ntively captured both temporal dynamics\
+    \ of regulator activity and cell-type-speci\\ufb01c variations in key\\n273\\nregulons like RUNX2. This demonstrates how\
+    \ Biomni enables researchers to autonomously per-\\n274\\nform complex multi-omics analysis and rapidly generate testable\
+    \ hypotheses without specialized\\n275\\nprogramming expertise.\\n276\\nBiomni designs wet-lab validated experimental\
+    \ protocol for cloning. To evaluate Biomni\\u2019s\\n277\\nability to support real-world experimental design, we focused\
+    \ on a core task in molecular biology:\\n278\\ncloning. This process is central to countless work\\ufb02ows in research\
+    \ and biotechnology and requires\\n279\\ncomplex reasoning, from designing high-\\ufb01delity primers to choosing the\
+    \ right assembly method\\n280\\nand validating constructs. While general-purpose LLMs have struggled to perform such tasks\
+    \ due\\n281\\nto limited domain knowledge and tool access 24, Biomni integrates LLM reasoning with dynamic\\n282\\ntool\
+    \ execution, enabling expert-level performance in molecular biology tasks.\\n283\\nTo rigorously evaluate this task, we\
+    \ \\ufb01rst collaborated with an expert group of gene-editing\\n284\\nresearchers to design an open-ended cloning benchmark\
+    \ and expert user study (Figure 4a). Our\\n285\\nbenchmark consisted of 10 realistic, representative cloning tasks covering\
+    \ Golden Gate, Gibson,\\n286\\nGateway, and restriction cloning \\u2013 each with options including single-fragment vs.\
+    \ pooled assem-\\n287\\n11\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review)\
+    \ is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright\
+    \ holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\nbly. The benchmark also included essential validation steps, such as designing Sanger sequencing\\\
+    n288\\nprimers and analyzing restriction digests. We posed these tasks to four entities: an LLM (Claude\\n289\\n3.7),\
+    \ Biomni, a human trainee (Stanford Biology Master with previous experience in cloning),\\n290\\nand a senior human expert\
+    \ (Stanford Genetics PostDoc with 5+ years of cloning experience).\\n291\\nEach was asked to generate a complete, end-to-end\
+    \ protocol along with the \\ufb01nal cloned plas-\\n292\\nmid map. Blinded expert reviewers assessed the outputs. Biomni\
+    \ produced protocols and designs\\n293\\nthat matched the human expert in accuracy and completeness \\u2013 often providing\
+    \ comparable lev-\\n294\\nels of detail and anticipating the same edge cases. In contrast, the human trainee\\u2019s submissions\\\
+    n295\\nwere frequently incomplete or suboptimal, re\\ufb02ecting the experience gap typical in early-stage re-\\n296\\\
+    nsearchers. Remarkably, Biomni completed all tasks autonomously in a fraction of the time taken\\n297\\nby the expert.\\\
+    n298\\nTo further validate Biomni in a real-world setting, a scientist assigned it a practical cloning\\n299\\ntask: cloning\
+    \ a guide RNA targeting the human B2M gene into the lentiCRISPR v2 Blast construct\\n300\\n(Figure 4b). Biomni successfully\
+    \ executed the task through a comprehensive work\\ufb02ow (Figure 4c).\\n301\\nFirst, it analyzed the plasmid structure\
+    \ using annotation and pattern search tools to identify key fea-\\n302\\ntures necessary for cloning. It then designed\
+    \ three Cas9 sgRNAs targeting B2M using specialized\\n303\\nknockout sgRNA design tools. For the cloning process, Biomni\
+    \ generated forward and reverse\\n304\\noligos with BsmBI overhangs to enable directional insertion of the sgRNA sequence.\
+    \ It produced\\n305\\ndetailed protocols (Figure 4d) for oligo annealing, double-stranded DNA formation, and Golden\\\
+    n306\\nGate cloning into the target vector. Biomni also provided complete bacterial transformation in-\\n307\\nstructions,\
+    \ including heat-shock steps and antibiotic selection. For quality control, it designed a\\n308\\nU6 promoter sequencing\
+    \ primer to verify sgRNA insertion and simulated the Golden Gate assem-\\n309\\nbly to produce the \\ufb01nal plasmid\
+    \ map.\\n310\\nThe scientist followed Biomni\\u2019s protocol exactly to perform the wet-lab experiment (Fig-\\n311\\\
+    nure 4e). Colonies appeared on the plate the next day; two were cultured, miniprepped, and se-\\n312\\nquenced using the\
+    \ Biomni-designed primers \\u2013 both showing perfect alignment. This case illustrates\\n313\\nhow scientists can rely\
+    \ on Biomni to autonomously design complex molecular biology experiments\\n314\\nwith accuracy comparable to human experts,\
+    \ but in a fraction of the time.\\n315\\nUser-friendly interface to empower scientists to generate biomedical discoveries.\
+    \ To bring the\\n316\\n12\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review)\
+    \ is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright\
+    \ holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\npower of Biomni into the hands of every scientist, we built an intuitive graphical interface\
+    \ \\u2013 avail-\\n317\\nable at https://biomni.stanford.edu \\u2013 to help transform the way researchers interact with\
+    \ biomedical\\n318\\ndata and tools. This seamless platform enables users to submit natural language queries and receive\\\
+    n319\"\n  },\n  {\n    \"name\": \"results powered by the full capabilities of Biomni\\u2019s agentic system. Whether\
+    \ designing complex\",\n    \"text\": \"320\\ncloning experiments, querying multi-omics databases, or generating hypotheses\
+    \ from wearable\\n321\\ndata, scientists can now access the intelligence of a general-purpose biomedical AI agent without\\\
+    n322\\nwriting a single line of code. The interface is designed for rapid iteration, real-time feedback, and\\n323\\nvisual\
+    \ traceability, allowing users to explore intermediate steps, inspect tool usage, and validate\\n324\"\n  },\n  {\n  \
+    \  \"name\": \"results interactively. By closing the gap between biomedical intent and execution, Biomni opens a\",\n\
+    \    \"text\": \"325\\nnew era of accessible, automated, and scalable scienti\\ufb01c discovery. An example of this interface\
+    \ is\\n326\\nshown in Supplementary Figure 17.\\n327\\n3\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"\
+    328\\nBiomni marks a major step forward in biomedical research, demonstrating robust generalization\\n329\\nacross diverse\
+    \ sub\\ufb01elds and laying the groundwork for AI agents as integral collaborators in scien-\\n330\\nti\\ufb01c discovery.\
+    \ Its zero-shot performance across complex tasks \\u2013 including those in genetics, ge-\\n331\\nnomics, microbiology,\
+    \ immunology, pharmacology, and clinical medicine \\u2013 underscores its poten-\\n332\\ntial to boost research productivity,\
+    \ accelerate discovery, and broaden access to advanced biomedical\\n333\\nanalyses.\\n334\\nBy automating complex, labor-intensive\
+    \ work\\ufb02ows, which normally require both expert\\n335\\nknowledge and coding skills, Biomni enables researchers to\
+    \ redirect their efforts toward creative\\n336\\nhypothesis generation, experimental innovation, and cross-disciplinary\
+    \ collaboration. This shift\\n337\\nholds profound implications. In the conext of target and drug discovery for biopharma,\
+    \ Biomni\\n338\\ncan autonomously prioritize targets, design perturbation screens, or repurpose drugs \\u2013 offering\
+    \ a\\n339\\npath to faster, more cost-effective reasearch. In clinical application settings, its capabilities in gene\\\
+    n340\\nprioritization and rare disease diagnosis point to more accurate, personalized insights and stream-\\n341\\nlined\
+    \ diagnostics. For consumer health, Biomni\\u2019s integration of wearable data and multi-omics\\n342\\nanalyses envisions\
+    \ real-time, individualized health monitoring and intervention.\\n343\\nNonetheless, several limitations remain. While\
+    \ Biomni\\u2019s uni\\ufb01ed environment spans a wide\\n344\\nrange of biomedical tools and databases, the evaluated\
+    \ tasks represent only a subset of the \\ufb01eld,\\n345\\n13\\n.\\nCC-BY 4.0 International license\\navailable under\
+    \ a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint\
+    \ in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\\
+    nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\nand key domains remain unexplored. In addition,\
+    \ in the action discovery agent, our decision to pri-\\n346\\noritize the most recent literature makes the agent appear\
+    \ timely, but risks overlooking foundational\\n347\\nconcepts and techniques that have faded from current discourse despite\
+    \ their enduring relevance.\\n348\\nThe future versions should encapsulate a larger coverage of publications when de\\\
+    ufb01ning the envi-\\n349\\nronment. Moreover, although Biomni approaches human-level performance in tasks like database\\\
+    n350\\nquerying, sequence analysis, and molecular cloning, it still struggles in areas requiring nuanced\\n351\\nclinical\
+    \ judgment, novel experimental reasoning, analytical inventions, or deep biological thinking\\n352\\nand synthesis. No\
+    \ system yet captures the full scope of human biomedical expertise. As re\\ufb02ected\\n353\\nin our benchmarks, Biomni\
+    \ has not achieved expert-level performance across all task categories.\\n354\\nWe expect continued improvements as foundation\
+    \ models evolve and the agentic environment ex-\\n355\\npands, as well as thanks to human experts and trainees deploying\
+    \ Biomni to facilitate or augment\\n356\\ntheir work.\\n357\\nThese limitations open promising directions for future development.\
+    \ Training biomedical\\n358\\nreasoning agents with reinforcement learning could enable continuous self-improvement in\
+    \ plan-\\n359\\nning and execution. Integrating multimodal data \\u2013 text, images, and structured inputs \\u2013 may\
+    \ further\\n360\\ndeepen reasoning capabilities. Equipping Biomni to autonomously discover and incorporate new\\n361\\\
+    ntools and databases, as well as incorporate more historical methods (which may have high utility\\n362\\nbut can be easily\
+    \ forgotten by human users), would ensure adaptability and long-term relevance.\\n363\\nLooking ahead, Biomni and its\
+    \ successors could become foundational infrastructure in an AI-\\n364\\npowered biomedical ecosystem, working seamlessly\
+    \ with human experts to unlock novel insights\\n365\\ninto health and disease. This hybrid partnership may radically reshape\
+    \ biomedical research \\u2013\\n366\\nautomating hypothesis generation, scaling discovery pipelines, and enabling medical\
+    \ innovation\\n367\\nto proceed at unprecedented speed and scope. General-purpose agents like Biomni could not only\\\
+    n368\\naccelerate breakthroughs but rede\\ufb01ne the future of scienti\\ufb01c inquiry itself.\\n369\\n14\\n.\\nCC-BY\
+    \ 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder, who has granted\
+    \ bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\\
+    nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\n150\
+    \ biological specialized tools\\nAI\\nWet-lab\\nAI models Know-hows\\nS\\n105 softwares\\n59 databases\\nAn AI Agent Environment\
+    \ with\\nUnified Biomedical Action Space\\nb\\nMicrobiology\\nGenetics\\nMolecular\\nbiology\\nPharmacology\\nBiochemistry\\\
+    nBiophysics\\nAlphaFold\\nDB\"\n  },\n  {\n    \"name\": \"PLINK\",\n    \"text\": \"OpenTarget\\nGenetics\"\n  },\n \
+    \ {\n    \"name\": \"ADMET\",\n    \"text\": \"Pred\\nBindingDB\\nPDB\\nRegulomeDB\\nClinVar\\nCellxGene\\nvirtual\\nscreening\\\
+    nUCE\\nDiffDock\\nScanpy\\nBiopython\\na\\nBiochemistry\\n25 subjects defined in biorxiv\\n100 recent published papers\\\
+    nAction discovery agent\\n...\\nSubject 1\\nSubject 25\\nP\\nP\\nP\\nPhysiology\\nBioengineering\\nPathology\\nGenomics\\\
+    n?\\nSynthetic\\nbiology\\nRNA\\nvelocity\\ngolden\\ngate clone\\nOligo\\nassembly\\nExpert\\ncuration\"\n  },\n  {\n\
+    \    \"name\": \"UCSC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"COSMIC\",\n    \"text\": \"miRBase\\nInterPro\\\
+    nsk-image\\nflowkit\\nmacs2\\nlibsbml\\nviennaRNA\\nDESeq2\\nHomer\\nmuscle\\nprimer\\ndesign\"\n  },\n  {\n    \"name\"\
+    : \"JASPAR\",\n    \"text\": \"gnomAD\\nMPD\"\n  },\n  {\n    \"name\": \"IUCN\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"GCTA\",\n    \"text\": \"bwa\\ncooler\\n...\\n...\\n...\\nCell\\nbiology\\n...\\n...\\n...\\n...\\n...\\\
+    nActions necessary to conduct\\nbiomedical research\\nComposing actions with code\\nReasoning\\nc\\nAre oncogenic pathways\
+    \ enriched among\\ndifferentially expressed genes in adata.h5ad?\\nObservation\\nTo answer the question:\\n[   ] Preprocess,\
+    \ cluster and identify differentially expressed genes.\\n[   ] Load oncogenic gene sets for comparison.\\n[   ] Perform\
+    \ enrichment analysis to check for oncogenic pathways.\\n[   ] Validate results with literature and databases.\\nReasoning\\\
+    nComposing actions with code\\nAnswer\\n......\\nRetrieving\\nScanpy\\ngseapy ...\\nCellxGene\\nClinVar ...\\nUCE\\nRNA\\\
+    nvelocity ...\\nTools\"\n  },\n  {\n    \"name\": \"DKK1, UGT1A, EEF1A1, RAC2, PTGDS, COL1A1, TIMP1, SPP1\",\n    \"text\"\
+    : \"[   ] Preprocess, cluster and identify differentially expressed genes.\\n[   ] Load oncogenic gene sets for comparison...\\\
+    nRaw data\\nSoftware\\nObservation\\nFigure 1: Overview of the uni\\ufb01ed biomedical action space and agent environment\
+    \ in Biomni. (a) Work\\ufb02ow for systematically\\ncurating the uni\\ufb01ed biomedical action space. Actions necessary\
+    \ to conduct biomedical research were extracted from 2,500 recent\\nbioRxiv publications across 25 biomedical sub\\ufb01elds\
+    \ using an AI-driven discovery agent. Extracted actions were rigorously validated\\nand curated by human experts, resulting\
+    \ in the integration of 105 biomedical software tools, 150 specialized biological tools (includ-\\ning wet-lab protocols,\
+    \ AI-driven predictive models, and domain-speci\\ufb01c know-how), and 59 comprehensive biomedical databases.\\n(b) Illustration\
+    \ of the uni\\ufb01ed biomedical action space spanning diverse biomedical sub\\ufb01elds such as genetics, genomics, synthetic\\\
+    nbiology, cell biology, physiology, microbiology, pharmacology, bioengineering, biophysics, molecular biology, and pathology.\
+    \ Rep-\\nresentative tools and databases integrated into Biomni\\u2019s environment are shown, highlighting its general-purpose\
+    \ capabilities. (c)\\nExample work\\ufb02ow demonstrating Biomni\\u2019s reasoning and action composition process to autonomously\
+    \ answer a complex biological\\nquestion. Biomni retrieves relevant tools based on the user\\u2019s query, formulates\
+    \ a structured reasoning plan, and composes executable\\ncode to perform comprehensive bioinformatics analyses, iteratively\
+    \ re\\ufb01ning its reasoning based on observations until converging on\\na \\ufb01nal, precise answer.\\n15\\n.\\nCC-BY\
+    \ 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder, who has granted\
+    \ bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\\
+    nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\n\\nMicrobiome\
+    \ disease-taxa\\nbioinformatics analysis\\nI have microbiome raw data stored at\\nXXXX, analyze which taxa is associated\\\
+    nwith the disease XXX.\\nscRNA-seq cell annotation\\nI have scRNA-seq data stored at XXXX,\\nannotate the cell type for\
+    \ me.\\nDrug repurposing\\nI have a rare disease XX, among a list of\\npotential drugs, find the most likely one\\nfor\
+    \ repurposing.\\nRare disease diagnosis\\nI have a patient with phenotypes XXX,\\nXXX, and WGS returns gene mutations\\\
+    nXXX, what is the diagnosis?\\nPatient gene prioritization\\nI have a patient with phenotypes XXX,\\nXXX, and WGS returns\
+    \ gene mutations\\nXXX, what is the causal gene?\\nGWAS causal gene detection\\nI have a GWAS hit for trait XX, there\
+    \ are\\ngenes XXX, XXX in the locus, which is\\nthe most likely causal gene?\\n0\\n5\\n10\\n15\\n1\\n2\\n3\\n4\\n5\\n6\\\
+    n7\\n8\\n9\\n10\\n11\\n12\\n13\\n14\\n15\\n16\\n17\\n18\\n19\\n20\\n21\\n22\\n-\\nlog10(P)\\nChromosome\\nVariant prioritization\\\
+    nI have a list of potential variants for\\ndisease X, prioritize the top variant for\\nme.\\nT\\nA\\nA\\nT\\nG\\nC\\nC\\\
+    nG\\nPerturbation screen design\\nDesign a gene panel of 50 genes for my\\nCRISPR screen on T-cell exhaustion.\\nGenetics\\\
+    nGenomics\\na\\nb\\nLAB-Bench: DbQA\\nLAB-Bench: SeqQA\\nHumanity's Last Exam:\\nBiomedicine\\nHuman\\nHuman\\nGenetics\\\
+    nGenomics\\nMicrobiology\\nDrug\\nPatient\\n+162%\\n+78.9% +3.0%\\n+8.8%\\n+19.4%\\n+5.7%\\n+54.2%\\n+19.4%\\n+2.7%\\\
+    n+9.8%\\n+13.2% +23.0%\\n+inf\\n+10.3% +93.6%\\nX21\\n+19.4% +10.3%\\n+1.3%\\n+3.6%\\n+0.2%\"\n  },\n  {\n    \"name\"\
+    : \"X4.8\",\n    \"text\": \"+180.0% +25.0%\\nFigure 2: Zero-shot generalization of Biomni across diverse realistic biomedical\
+    \ tasks. (a) Biomni is superior to 6 baselines in\\nQ&A multiple choice benchmarks that broadly evaluate the model\\u2019s\
+    \ capability across biomedical \\ufb01elds. (b) Biomni demonstrates\\nrobust zero-shot performance across eight previously\
+    \ unseen, real-world biomedical scenarios spanning multiple biomedical sub-\\n\\ufb01elds, without any task-speci\\ufb01c\
+    \ \\ufb01ne-tuning or prompt engineering. Evaluated tasks include variant prioritization and GWAS causal\\ngene detection\
+    \ (genetics and genomics), perturbation screen design (functional genomics, immunology), patient gene prioritiza-\\ntion,\
+    \ rare disease diagnosis (clinical genomics), drug repurposing (pharmacology), microbiome disease-taxa bioinformatics\
+    \ analysis\\n(microbiology), and single-cell RNA-seq cell annotation (single-cell biology). Across these diverse scenarios,\
+    \ Biomni consistently\\noutperformed baseline models (Base LLM, ReAct+Code) and specialized environments (Biomni ReAct),\
+    \ highlighting its general-\\npurpose biomedical capabilities and ability to autonomously adapt to new and complex biomedical\
+    \ tasks.\\n16\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv\
+    \ preprint\\n\\n{Shoulder, Hip,\\nKnee} Joint\\nTime\\nsnRNA-seq\\nsnATAC-seq\\n\\u25cfNovel transcription factors AUTS2,\
+    \ ZFHX3, and\\nPBX1 showed high regulatory activity across\\nmultiple skeletal lineages.\\n\\u25cfCell types LimbMes exhibited\
+    \ the highest overall\\nactivity levels among all the identified 566-589\\nregulons across cell types.\\nMap transcription\
+    \ factor circuits\\ndriving skeletal development on\\nthis scRNA & scATAC data.\\n...... [instructions] ......\"\n  },\n\
+    \  {\n    \"name\": \"Load and explore all\",\n    \"text\": \"the datasets\"\n  },\n  {\n    \"name\": \"Prepare RNA-seq\"\
+    ,\n    \"text\": \"data for analysis\"\n  },\n  {\n    \"name\": \"Configure pySCENIC (e.g.,\",\n    \"text\": \"retrieve\
+    \ motifs from data lake)\"\n  },\n  {\n    \"name\": \"Run GRNBoost2 to infer\",\n    \"text\": \"gene regulatory networks\"\
+    \n  },\n  {\n    \"name\": \"Prune networks\",\n    \"text\": \"using cisTarget\"\n  },\n  {\n    \"name\": \"Calculate\
+    \ regulon\",\n    \"text\": \"activity (AUCell)\"\n  },\n  {\n    \"name\": \"Extract accessibility\",\n    \"text\":\
+    \ \"data from ATAC-seq\"\n  },\n  {\n    \"name\": \"Filter predicted targets\",\n    \"text\": \"using ATAC-seq accessibility\"\
+    \n  },\n  {\n    \"name\": \"Analyze activity patterns across cell types,\",\n    \"text\": \"developmental stages, and\
+    \ anatomical regions\"\n  },\n  {\n    \"name\": \"Summary\",\n    \"text\": \"findings\\ne\\nf\\ng\\nh\\nContinuous\\\
+    nGlucose\\nMonitoring Data\\nActivity\\nData\\nFindings:\\n\\u25cfOn average, participants exhibited a 2.19\\u00b0C\\\
+    nincrease in core body temperature following\\nmeal intake, with a median increase of 1.10\\u00b0C.\\n\\u25cfParticipants\
+    \ displayed considerable inter-\\nindividual variability, with some showing rapid\\nand pronounced thermogenic responses,\\\
+    nwhile others had more subtle or delayed\\ntemperature changes.\\na\\nb\\nc\\nd\\n......\"\n  },\n  {\n    \"name\": \"\
+    Raw Excel\",\n    \"text\": \"Sheets\\n30 samples\\n336,000 nucleus droplets\\nI have CGM-derived data from multiple\\\
+    nparticipants collected continuously around meals.\\nStudy how temperature changes after food intake.\\n...... [instructions]\
+    \ ......\\nFindings:\"\n  },\n  {\n    \"name\": \"Dataset exploration\",\n    \"text\": \"& preprocessing\"\n  },\n \
+    \ {\n    \"name\": \"Postprandial\",\n    \"text\": \"temperature analysis\"\n  },\n  {\n    \"name\": \"Individual temperature\"\
+    ,\n    \"text\": \"response plots\"\n  },\n  {\n    \"name\": \"Cross-subject\",\n    \"text\": \"comparative analysis\"\
+    \n  },\n  {\n    \"name\": \"Temperature\",\n    \"text\": \"response normalization\"\n  },\n  {\n    \"name\": \"Peak\
+    \ thermogenic\",\n    \"text\": \"timing characterization\"\n  },\n  {\n    \"name\": \"Response pattern\",\n    \"text\"\
+    : \"heatmap generation\"\n  },\n  {\n    \"name\": \"Temperature increase\",\n    \"text\": \"distribution analysis\"\n\
+    \  },\n  {\n    \"name\": \"Identification of individual\",\n    \"text\": \"metabolic variability\"\n  },\n  {\n    \"\
+    name\": \"Meal event detection\",\n    \"text\": \"Key figures generated from Biomni\\nKey figures generated from Biomni\\\
+    nFigure 3: Biomni autonomously executes complex multi-modal biomedical analyses to generate hypothesis. (a-d) Biomni rapidly\\\
+    nanalyzed CGM-derived thermogenic responses data and activity data from 30 individuals, comprising 458 raw Excel sheets.\
+    \ (b)\\nWork\\ufb02ow demonstrating Biomni\\u2019s autonomous execution of data preprocessing, meal event detection, postprandial\
+    \ temperature\\nanalysis, and thermogenic response characterization. (c) Representative individual temperature-response\
+    \ plots and temperature in-\\ncrease distribution following meals, automatically generated by Biomni. (d) Summary of unique\
+    \ biological \\ufb01ndings identi\\ufb01ed\\nby Biomni, including signi\\ufb01cant increases in core body temperature\
+    \ post-meal intake (average 2.19C, median 1.10C), and notable\\ninter-individual variability in thermogenic responses.\
+    \ (e-h) Biomni autonomously analyzed single-cell multiomics data from approx-\\nimately 336,000 nucleus droplets, combining\
+    \ single-nucleus RNA (snRNA-seq) and single-nucleus ATAC sequencing (snATAC-seq)\\nacross human embryonic joint development\
+    \ (shoulder, hip, knee). (f) A detailed work\\ufb02ow diagram showing Biomni\\u2019s 10-step analy-\\nsis pipeline for\
+    \ gene regulatory networks with multiomics. (g) Two key \\ufb01gures generated from Biomni: Left panel shows a heatmap\\\
+    nof regulator activity by developmental stage, with color intensity indicating activity levels. Right panel displays a\
+    \ boxplot of RUNX2\\nregulon activity by cell type, showing variation in expression across different cell populations.\
+    \ (h) Key \\ufb01ndings from the GRN anal-\\nysis: 1) Novel transcription factors (AUTS2, ZFHX3, and PBX1) showing high\
+    \ regulatory activity across multiple skeletal lineages\\ndespite no previous association with skeletal development, and\
+    \ 2) Across the 566-589 regulons recovered, limb mesenchyme cells\\ndisplay the highest mean regulonactivity score, underscoring\
+    \ their prominent role in skeletal transcriptional control.\\n17\\n.\\nCC-BY 4.0 International license\\navailable under\
+    \ a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint\
+    \ in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\\
+    nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\"\n  },\n  {\n    \"name\": \"Plasmid\",\n    \"\
+    text\": \"Analysis\"\n  },\n  {\n    \"name\": \"Oligo Design\",\n    \"text\": \"for Cloning\"\n  },\n  {\n    \"name\"\
+    : \"Oligo Annealing &\",\n    \"text\": \"Golden Gate Assembly\"\n  },\n  {\n    \"name\": \"Bacterial\",\n    \"text\"\
+    : \"Transformation\"\n  },\n  {\n    \"name\": \"Colony\",\n    \"text\": \"Screening &\\nVerification\"\n  },\n  {\n\
+    \    \"name\": \"Final Plasmid\",\n    \"text\": \"Map Assemble\\n2. sgRNA\\nDesign\\nI have a plasmid plentiCRISPR v2\
+    \ blast:\"\n  },\n  {\n    \"name\": \"CGTTGGAGTCCACGTTCTTTAATAGTGG.....GCCCTTTGA\",\n    \"text\": \"I hope to clone\
+    \ a CRISPR sgRNA targeting human B2M\\ninto this plasmid. Could you give me the final map of\\nthe plasmid and step-by-step\
+    \ guidance on how should I\\nperform the cloning?\\na\\nb\\n## Step-by-Step Cloning Protocol\\n### 1. Design and Order\
+    \ Oligos\\n- **Forward oligo**: 5'-\"\n  },\n  {\n    \"name\": \"CACCGCGCGAGCACAGCTAAGGCCA-3'\",\n    \"text\": \"- **Reverse\
+    \ oligo**: 5'-\"\n  },\n  {\n    \"name\": \"AAACTGGCCTTAGCTGTGCTCGCGC-3'\",\n    \"text\": \"### 2. Anneal and Phosphorylate\
+    \ Oligos\"\n  },\n  {\n    \"name\": \"Resuspend oligos to 100 \\u03bcM in nuclease-free water\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"Prepare annealing reaction:\",\n    \"text\": \"- 1 \\u03bcL Forward oligo (100 \\u03bcM)\\\
+    n- 1 \\u03bcL Reverse oligo (100 \\u03bcM)\\n- 1 \\u03bcL 10X T4 Ligation Buffer\\n- 6.5 \\u03bcL nuclease-free water\\\
+    n- 0.5 \\u03bcL T4 PNK\"\n  },\n  {\n    \"name\": \"Incubate in a thermocycler:\",\n    \"text\": \"- 37\\u00b0C for\
+    \ 30 minutes (phosphorylation)\\n- 95\\u00b0C for 5 minutes (denaturation)\\n- Ramp down to 25\\u00b0C at 5\\u00b0C/min\
+    \ (annealing)\"\n  },\n  {\n    \"name\": \"Dilute annealed oligos 1:200 in nuclease-free water\",\n    \"text\": \"(final:\
+    \ 50 nM)\\n### 3. Golden Gate Assembly\"\n  },\n  {\n    \"name\": \"Prepare reaction:\",\n    \"text\": \"- 100 ng lentiCRISPR\
+    \ v2 blast plasmid\\n- 1 \\u03bcL diluted annealed oligos (50 nM)\\n- 2 \\u03bcL 10X T4 DNA Ligase Buffer\\n- 1 \\u03bcL\
+    \ BsmBI-v2 (NEB)\\n- 1 \\u03bcL T4 DNA Ligase\\n- Nuclease-free water to 20 \\u03bcL total\"\n  },\n  {\n    \"name\"\
+    : \"Incubate in a thermocycler:\",\n    \"text\": \"- 37\\u00b0C for 5 minutes\\n- 16\\u00b0C for 5 minutes\\n- Repeat\
+    \ steps 1-2 for 10 cycles\\n- 55\\u00b0C for 5 minutes (final digestion)\\n- 80\\u00b0C for 5 minutes (enzyme inactivation)\\\
+    nc\\n### 4. Bacterial Transformation\"\n  },\n  {\n    \"name\": \"Add 2 \\u03bcL of the Golden Gate reaction to 50 \\\
+    u03bcL of\",\n    \"text\": \"competent Stbl3 E. coli cells\"\n  },\n  {\n    \"name\": \"Incubate on ice for 30 minutes\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Heat shock at 42\\u00b0C for 45 seconds\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"Return to ice for 2 minutes\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Add 950 \\u03bcL\
+    \ of SOC medium\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Incubate at 37\\u00b0C for 1 hour with shaking\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"Plate 100 \\u03bcL on LB agar plates with ampicillin (100 \\u03bcg/mL)\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Incubate plates at 37\\u00b0C overnight\",\n    \"text\": \"### 5. Colony\
+    \ Screening and Verification\"\n  },\n  {\n    \"name\": \"Pick 3-5 colonies and grow in 5 mL LB + ampicillin\",\n   \
+    \ \"text\": \"medium overnight\"\n  },\n  {\n    \"name\": \"Extract plasmid DNA using a miniprep kit\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Verify correct insertion by Sanger sequencing using the U6\",\n    \"text\": \"promoter\
+    \ forward primer:\"\n  },\n  {\n    \"name\": \"'-GACTATCATATGCTTACCGT-3'\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Confirm the presence of the B2M sgRNA sequence in the\",\n    \"text\": \"plasmid\\n### 6. Lentivirus Production and\
+    \ Cell Transduction\"\n  },\n  {\n    \"name\": \"Transfect the verified plasmid into HEK293T cells along\",\n    \"text\"\
+    : \"with packaging plasmids\"\n  },\n  {\n    \"name\": \"Collect virus-containing supernatant after 48-72 hours\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"Filter and concentrate the lentivirus if needed\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"Transduce target cells with the lentivirus\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Select transduced cells with blasticidin (5-10 \\u03bcg/mL)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Verify\
+    \ B2M knockout by flow cytometry, Western blot, or\",\n    \"text\": \"genomic sequencing\\nd\\nBiomni generated wet-lab\
+    \ cloning protocol\\nPlasmid Map\\ne\\nA scientist\\nfollows the\\nprotocol to\\nperform the\\ncloning\\nGG\\nCloning\
+    \ Open Answer Evaluation\\nMultiple-piece GG\\nGG Library\\nGibson\\nGibson Library\\nGateway\\nRestriction\\nRestriction\
+    \ Library\\nDiagnostic digest\\nFigure 4: Biomni designs wet-lab experimental protocol. (a) Open-ended cloning benchmark\
+    \ on 10 real cloning scenarios. We\\ncompared against base LLM, trainee-level human, and expert-level human scientists.\
+    \ We found that Biomni has similar accuracy\\nas the expert level scientist, and signi\\ufb01cantly higher accuracy than\
+    \ trainee level, while using much less time. (b) Example of a\\nuser request to Biomni for cloning an sgRNA targeting\
+    \ the human B2M gene into the lentiCRISPR v2 Blast plasmid. (c) Biomni\\u2019s\\nautomated stepwise work\\ufb02ow, including\
+    \ plasmid analysis, sgRNA design, oligo synthesis, Golden Gate assembly, bacterial transfor-\\nmation, colony screening,\
+    \ and \\ufb01nal plasmid mapping. (d) Biomni-generated detailed cloning protocol with step-by-step instructions\\nand\
+    \ comprehensive plasmid map, enabling laboratory scientists to execute the experiment autonomously. (e) Validation of\
+    \ Biomni\\u2019s\\ncloning protocol through successful colony growth on selection plates, followed by Sanger sequencing\
+    \ con\\ufb01rming perfect alignment\\nof sgRNA insertion in picked colonies, demonstrating Biomni\\u2019s robust capability\
+    \ for precise and reliable experimental design.\\n18\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not\
+    \ certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.\
+    \ It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\n4\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"370\\nAction Discovery from\
+    \ Literature. 100 recent publications from the year 2024 at biorxiv Were\\n371\\ncollected and analyzed by extracting\
+    \ and parsing their PDF contents. Each paper was processed\\n372\\nin chunks, and a specialized prompt guided an LLM through\
+    \ each chunk to explicitly identify\\n373\\nand extract three categories of actionable insights: tasks, software, and\
+    \ databases. Speci\\ufb01cally for\\n374\\ntasks, the LLM was instructed to highlight recurrent tasks requiring specialized\
+    \ implementations\\n375\\nwithin biomedical research work\\ufb02ows.\\n376\\nImplementing the Biomni Environment. In the\
+    \ initial iteration of environment construction, a\\n377\\nconservative and focused approach was adopted for tool curation.\
+    \ Initially, tasks were \\ufb01ltered\\n378\\nbased on relevance to the primary research interests-drug discovery and\
+    \ clinical biomedicine-\\n379\\nretaining \\ufb01elds such as biochemistry, bioengineering, biophysics, cancer biology,\
+    \ cell biology, de-\\n380\\nvelopmental biology, genetics, genomics, immunology, microbiology, molecular biology, pathol-\\\
+    n381\\nogy, pharmacology, physiology, synthetic biology, and systems biology. Subsequently, these were\\n382\\nnarrowed\
+    \ down to approximately 1,900 commonly recurring tasks. These tasks were further man-\\n383\\nually reviewed to eliminate\
+    \ redundancy and exclude tasks that were trivial or easily implementable\\n384\\nthrough simple code. Selecting highly\
+    \ specialized tasks that require signi\\ufb01cant domain expertise\\n385\\nwas emphasized, such as wet-lab protocols and\
+    \ advanced AI models.\\n386\\nHuman scientists then collaborated with software engineering agents equipped with web\\\
+    n387\\nsearch capabilities to implement each specialized tool. Every tool underwent rigorous validation,\\n388\\nrequiring\
+    \ a clearly de\\ufb01ned test case that it successfully passed. This stringent process culminated in\\n389\\na curated\
+    \ collection of 150 specialized tools. Additionally, essential literature retrieval tools were\\n390\\nincluded, such\
+    \ as PubMed and Google Scholar, with provisions for future iterative expansions.\\n391\\nEach tool was strictly de\\ufb01ned\
+    \ using a comprehensive checklist that mandated: (1) a clear\\n392\\nand descriptive name, (2) detailed documentation,\
+    \ (3) outputs formatted as detailed research logs\\n393\\noptimized for LLM interpretation, (4) the inclusion and successful\
+    \ passing of a speci\\ufb01c test case,\\n394\\nand (5) specialization criteria-if a task could easily be implemented\
+    \ via brief LLM-generated code\\n395\\n(e.g., simple database queries), no specialized tool was created.\\n396\\nDatabases\
+    \ were categorized and extensive relational databases accessible via web APIs (e.g.,\\n397\\nPDB, OpenTargets, ClinVar)\
+    \ were integrated using a uni\\ufb01ed querying function. This function\\n398\\naccepts natural language inputs and leverages\
+    \ an LLM to dynamically parse database schemas\\n399\\nand execute corresponding queries. Databases lacking web APIs were\
+    \ downloaded and locally\\n400\\npreprocessed into structured pandas DataFrames for seamless accessibility by the agent.\\\
+    n401\\nFor software integration, recognizing the frequent necessity of concurrently utilizing multiple\\n402\\n19\\n.\\\
+    nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder, who has\
+    \ granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\
+    \ (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\\
+    n\\nsoftware tools, a uni\\ufb01ed containerized environment was constructed, which was pre-installed with\\n403\\na comprehensive\
+    \ suite of relevant software. Additionally, this environment supports the execution\\n404\\nof R packages and command-line\
+    \ interface (CLI) tools.\\n405\\nBiomni-A1. The Biomni agent is a general-purpose biomedical AI agent built upon the CodeAct31\\\
+    n406\\nframework, designed to systematically solve biomedical tasks by combining LLMs with an inter-\\n407\\nactive coding\
+    \ environment. Given a user query, Biomni begins by prompting the LLM to generate\\n408\\na clear, numbered bullet-list\
+    \ plan detailing the steps needed to tackle the given problem, keeping\\n409\\ncareful track of progress and adjustments\
+    \ along the way. As the tool, software, and database space\\n410\\nis vast, the query task may only use a small set of\
+    \ these resources. To avoid long context, a prompt-\\n411\\nbased retriever is utilized, powered by a separate LLM, where\
+    \ the agent dynamically selects the\\n412\\nmost relevant functions, datasets, and software libraries from available resources.\
+    \ During execu-\\n413\\ntion, the LLM generates code, executes it in a coding environment (Python, R, or Bash), and returns\\\
+    n414\\nthe resulting observations to inform subsequent reasoning. This iterative approach continues until\\n415\\nthe\
+    \ agent converges on an accurate, validated solution.\\n416\\nQ&A Benchmarks. Development and testing sets were created\
+    \ by sampling the LAB-Bench\\n417\\nDatabase Question-Answering and Sequence Question-Answering benchmarks 24. Due to\
+    \ resource\\n418\\nconstraints, each set comprises 12.5% of the complete reference, proportionally distributed across\\\
+    n419\\nbenchmark subtasks, providing a cost-effective and representative assessment of model perfor-\\n420\\nmance. The\
+    \ development set informed iterative re\\ufb01nements to Biomni\\u2019s database integrations and\\n421\\ntool implementations,\
+    \ while the test set provided an independent evaluation of generalization ca-\\n422\\npabilities. Accuracy was evaluated\
+    \ by following the LAB-Bench protocol, using multiple-choice\\n423\\nanswer options with an option for abstention due\
+    \ to insuf\\ufb01cient information. Results represent\\n424\\naverages across three independent evaluation runs.\\n425\\\
+    nFor Humanity\\u2019s Last Exam (HLE)23, a representative sample of questions was selected, span-\\n426\\nning fourteen\
+    \ subdisciplines of Biology/Medicine: Genetics, Biology, Ecology, Neuroscience,\\n427\\nBiochemistry, Microbiology, Immunology,\
+    \ Molecular Biology, Computational Biology, Biophysics,\\n428\\nBioinformatics, Genomics, and Physiology. From each subdiscipline,\
+    \ up to \\ufb01ve questions were\\n429\\nsampled (or the maximum number available if fewer than \\ufb01ve existed in the\
+    \ category). This\\n430\\nsampling approach yielded a \\ufb01nal evaluation set of 52 questions that comprehensively assessed\\\
+    n431\\nBiomni\\u2019s performance across the biological sciences. The evaluation was conducted directly with-\\n432\\\
+    nout the use of a development set.\\n433\\nCurating real-world benchmarks. The variant prioritization benchmark was curated\
+    \ from Open\\n434\\nTarget Genetics32 ground truth set, and processed such that given a variant, a negative set of vari-\\\
+    n435\\n20\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv\
+    \ preprint\\n\\nants is found. The prompt was as follows: \\u201dYour task is to identify the most promising variant\\\
+    n436\\nassociated with a given GWAS phenotype for futher examination. From the list, prioritize the\\n437\\ntop associated\
+    \ variant (matching one of the given variant). GWAS phenotype: {trait} Variants:\\n438\\n{variant list}\\u201d. Accuracy\
+    \ was used as the metric. The GWAS causal gene detection benchmark\\n439\\nutilized a dataset curated from Shringarpure\
+    \ et al33, using the original prompt: \\u201dYour task is to\\n440\\nidentify likely causal genes within a locus for a\
+    \ given GWAS phenotype. From the list, provide\\n441\\nonly the likely causal gene (matching one of the given genes).\
+    \ Identify the causal gene. GWAS\\n442\\nphenotype: {trait} Genes in locus: {gene str}\\u201d. Accuracy was used as the\
+    \ metric. The pertur-\\n443\\nbation screen design benchmark was curated from Schmidt et al.34. The prompt is \\u201dTask:\
+    \ Plan\\n444\\na CRISPR screen to{task description}. There are 18,939 possible genes to perturb and only per-\\n445\\\
+    nturb {num genes} genes. For each perturbation, you can measure out {measurement} which will\\n446\\nbe referred to as\
+    \ the score. Generate {num genes} genes that maximize the perturbation effect.\\n447\\nOutput format: a list of genes\
+    \ 1. XXX 2.XXX 3.XXX ...\\u201d. The evaluation metric was the average\\n448\\npost-perturbed effect. As the scale differs\
+    \ for the post-perturbed effect, one screen (IL-2) was used.\\n449\\nThe scRNA-seq annotation benchmark ensured \\ufb02exibility\
+    \ across diverse data formats (e.g., Cel-\\n450\\nlxGene, author-hosted portals), encompassing multiple tissues, species,\
+    \ sequencing technologies,\\n451\\nand experimental conditions. Datasets with author-provided annotations (Tier 1 or Tier\
+    \ 2, typically\\n452\\n\\u226510 cell types) were prioritized, and 20k-50k cells were subsampled proportionally to their\
+    \ cell\\n453\\ntype distributions. Automatic evaluation was conducted at the single-cell level using LLMs via\\n454\\\
+    nsemantic match, accounting for both naming variations (e.g., \\ufb01broblast vs. Fibroblast cells) and\\n455\\nhierarchical\
+    \ relations (e.g., CD8+ T cells vs. T cells), judged on-the-\\ufb02y by LLM agents and later\\n456\\nveri\\ufb01ed by\
+    \ humans. In the microbiome benchmark, both Biomni and human experts independently\\n457\\nperformed differential abundance\
+    \ analysis on \\ufb01ve diverse microbiome datasets, selected to re\\ufb02ect\\n458\\ndifferent data types, biological\
+    \ contexts, and analytical challenges. Dataset 1 comes from the MGM\\n459\\n2.0 platform35 and includes relative microbial\
+    \ abundance across samples and another with sample\\n460\\nlabels, ideal for classi\\ufb01cation tasks35. Dataset 2 curated\
+    \ from a well-known Nature study, offers\\n461\\nmicrobial abundance data in mice alongside metadata such as diet and\
+    \ sex, making it valuable for\\n462\\nmodeling host-microbiome interactions36. Dataset 3, developed by Pasolli et al.37,\
+    \ combines eight\\n463\\nhuman metagenomic studies with species-level features processed using MetaPhlAn237. Dataset 4\\\
+    n464\\nexplores microbial communities in drinking water systems, providing an OTU matrix with abun-\\n465\\ndances represented\
+    \ as relative sequence counts. This environmental dataset allows models to be\\n466\\ntested beyond host-associated microbiomes38.\
+    \ Finally, Dataset 5 is an in-house resource derived\\n467\\nfrom the Human Microbiome Project39. Together, these datasets\
+    \ provide a comprehensive foun-\\n468\\ndation for benchmarking AI agents in microbiome analysis across both clinical\
+    \ and environmental\\n469\\n21\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review)\
+    \ is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright\
+    \ holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\ndomains. Biomni results were compared against those generated by human experts for consistency,\\\
+    n470\\naccuracy, and ef\\ufb01ciency. The drug repurposing benchmark used a dataset from Huang et al.40, for\\n471\\nthe\
+    \ task of identifying the most likely drug from a pre-de\\ufb01ned list of drugs for repurposing in a\\n472\\ngiven indication.\
+    \ Evaluation was based on the alignment score with off-label prescription patterns\\n473\\nof clinicians from an EHR system.\
+    \ The prompt was \\u201dYour task is to identify top 5 drugs that can\\n474\\nbe potentially repurposed to treat the given\
+    \ disease. From the list, prioritize the drug list with\\n475\\nthe highest potential (matching the given DrugBank IDs).\
+    \ Disease: {disease} Drugs: {drug list}\\n476\\nOutput format: a list of drugs with their DrugBank IDs, no drug name,\
+    \ just the IDs: 1. DB00001\\n477\\n2. DB00002 3. DB00003 ..\\u201d. The rare disease diagnosis benchmark used the MyGene2\
+    \ dataset,\\n478\\ncurated by Alsentzer et al.41. The ground truth was expert annotated diagnosis. The prompt was\\n479\\\
+    n\\u201dTask: given a patient\\u2019s phenotypes and a list of candidate genes, diagnose the rare disease that\\n480\\\
+    nthe patient has. Phenotypes: {phenotype list} Candidate genes: {candidate genes} Output format:\\n481\\n{{\\u2019disease\
+    \ name\\u2019: XXX, \\u2019OMIM ID\\u2019: XXX}}\\u201d. The patient gene prioritization benchmark used\\n482\\na dataset\
+    \ curated by Alsentzer et al.41. The ground truth was a truly causal gene. The prompt was\\n483\\n\\u201dTask: Given a\
+    \ patient\\u2019s phenotypes and a list of candidate genes, identify the causal gene. Phe-\\n484\\nnotypes: {phenotype\
+    \ list} Candidate genes: {candidate genes} Output format: {{\\u2019causal gene\\u2019:\\n485\\n[gene1]}}\\u201d.\\n486\\\
+    nWearable analysis case study. A wearable case study integrated CGM-derived body temperature\\n487\\ndata, sleep metrics,\
+    \ and multi-omics datasets from human participants42, as follows: CGM Body\\n488\\nTemperature Data: For each participant,\
+    \ continuous glucose monitors (CGMs) equipped with tem-\\n489\\nperature sensors recorded skin temperature in high resolution.\
+    \ A total of 485 temperature \\ufb01les were\\n490\\ncollected, each centered on a presumed meal event. The time window\
+    \ for each \\ufb01le spanned 6 hours\\n491\\ntotal, comprising 2 hours pre-meal and 4 hours post-meal. Sleep Data: Sleep\
+    \ metrics were derived\\n492\\nfrom wrist-worn wearable devices for a subset of 10 participants, covering 227 nights of\
+    \ sleep. Pa-\\n493\\nrameters collected included sleep duration, sleep ef\\ufb01ciency, sleep latency, sleep stage composition\\\
+    n494\\n(light, deep, REM), and number of wake episodes. Omics Data: Blood samples were analyzed to\\n495\\ngenerate the\
+    \ following: Lipidomics: 652 lipid features across 147 samples; Metabolomics: 731\\n496\\nmetabolite features across 147\
+    \ samples; Proteomics: 1,470 protein features across 20 samples.\\n497\\nMultiome analysis case study. The authors\\u2019\
+    \ dataset was directly downloaded and used with no\\n498\\nmodi\\ufb01cations 27. The authors\\u2019 study generated a\
+    \ multi-omic dataset of human embryonic skeletal\\n499\\ndevelopment from 5-11 weeks post-conception. The dataset includes\
+    \ snRNA-seq and snATAC-seq\\n500\\ndata from approximately 336,000 nuclei across \\ufb01ve anatomical regions (hip, knee,\
+    \ shoulder joints,\\n501\\ncalvaria, and skull base). The dataset covers both appendicular (limb) and cranial regions.\
+    \ No\\n502\\n22\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv\
+    \ preprint\\n\\nadditional tools or manual preprocessing were added. As the analytical traces are extensive, more\\n503\\\
+    nguidance was included in the prompt instruction and two use cases were tested:\\n504\\nComparative Analysis. This analysis\
+    \ focused on how cellular processes differ across anatomi-\\n505\\ncal locations and developmental timepoints. Biomni\
+    \ was instructed to characterize the cellular\\n506\\ncomposition across anatomical regions (calvaria, skull base, shoulder,\
+    \ hip, knee) and developmen-\\n507\\ntal stages. We prompted Biomni with detailed instructions (Supplementary Section\
+    \ E), including\\n508\\ncell type proportion estimates, region-speci\\ufb01c population labels, UMAP embeddings, stacked\
+    \ bar\\n509\\nplots, a comparison of intramembranous versus endochondral ossi\\ufb01cation, key transcription factor\\\
+    n510\\nhighlights, and developmental trajectory tracing.\\n511\\nGene Regulatory Network Analysis We asked Biomni to identify\
+    \ transcriptional programs underly-\\n512\\ning skeletal development. Following a systematic 10-step process, Biomni inferred\
+    \ gene regulatory\\n513\\nnetworks by: (1) loading and exploring all datasets, (2) preparing RNA-seq data for analysis,\
+    \ (3)\\n514\\ncon\\ufb01guring pySCENIC to retrieve motifs, (4) running GRNBoost2 to infer gene regulatory net-\\n515\\\
+    nworks, (5) pruning networks using cisTarget, (6) calculating regulon activity with AUCell, (7)\\n516\\nextracting accessibility\
+    \ data from ATAC-seq, (8) \\ufb01ltering predicted targets using ATAC-seq ac-\\n517\\ncessibility, (9) analyzing activity\
+    \ patterns across cell types, developmental stages, and anatomical\\n518\\nregions, and (10) summarizing \\ufb01ndings.\\\
+    n519\\nManual veri\\ufb01cation To evaluate whether the aggregated \\ufb01ndings are truly re\\ufb02ected by the data\
+    \ or\\n520\\nmerely simulated or hallucinated by the LLM, manual (human) veri\\ufb01cation was conducted follow-\\n521\\\
+    ning the traces and codes generate by Biomni.\\n522\\nWetlab Benchmark Development and Evaluation. A comprehensive benchmark\
+    \ was developed\\n523\\nconsisting of 20 open-ended cloning questions curated from real-world applications to represent\\\
+    n524\\nthe diversity and complexity of molecular cloning tasks across four major categories: Golden\\n525\\nGate assembly,\
+    \ Gibson assembly, restriction enzyme cloning, and Gateway cloning. Each cate-\\n526\\ngory included both single-construct\
+    \ and pooled cloning scenarios. Additionally, the benchmark\\n527\\nincorporated common validation methods, including\
+    \ diagnostic restriction digestion, Sanger se-\\n528\\nquencing primer design, and sequence alignment analysis. For establishing\
+    \ baseline performance,\\n529\\nthree human experts with extensive experience in molecular cloning were recruited. These\
+    \ experts\\n530\\nwere instructed to complete each task without utilizing language models but were permitted to use\\\
+    n531\\nstandard molecular biology tools, search engines, and publicly available online resources such as\\n532\\nplasmid\
+    \ repositories and primer design platforms. The time required for each expert to complete\\n533\\neach task was recorded,\
+    \ from initial task understanding to the \\ufb01nal protocol and plasmid map gen-\\n534\\neration. In parallel, Biomni\
+    \ and general LLM models were evaluated on identical tasks. Each\\n535\\nsystem was provided with the same task descriptions\
+    \ and required to generate detailed end-to-end\\n536\\n23\\n.\\nCC-BY 4.0 International license\\navailable under a\\\
+    nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in\
+    \ perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\nexperimental protocols and \\ufb01nal cloned plasmid maps. For general LLMs, Claude 3.7\
+    \ was used as\\n537\\none of the most capable publicly-available models at the time of testing, providing it with the\
+    \ same\\n538\\ninformation but without access to specialized molecular biology tools. For evaluation, an indepen-\\n539\\\
+    ndent senior researcher with experience in molecular cloning technologies was recruited and blinded\\n540\\nto the source\
+    \ of each protocol (human expert, Biomni, or general LLM). The evaluator assessed\\n541\\neach protocol and plasmid map\
+    \ based on two primary criteria: (1) Accuracy: The correctness of\\n542\\nthe proposed methodology, including appropriate\
+    \ enzyme selection, reaction conditions, primer\\n543\\ndesign parameters, and plasmid construction strategy. (2) Completeness:\
+    \ The thoroughness of the\\n544\\nprotocol, including all necessary steps, reagents, concentrations, incubation times,\
+    \ and veri\\ufb01cation\\n545\"\n  },\n  {\n    \"name\": \"methods. Each criterion was scored on a scale of 1-5 according\
+    \ to a detailed rubric (Supplementary\",\n    \"text\": \"546\\nTable S31-32). The average scores across all 20 tasks\
+    \ were calculated for each system and human\\n547\\nexpert to enable direct comparison.\\n548\\nWetlab Validation. A practical\
+    \ cloning task was selected for validation: the insertion of a guide\\n549\\nRNA targeting the human B2M gene into the\
+    \ lentiCRISPR v2 Blast construct. This task was\\n550\\nchosen for its relevance to CRISPR-based gene editing applications\
+    \ and its moderate complexity,\\n551\\ninvolving multiple molecular biology techniques. The experiment was conducted in\
+    \ a standard\\n552\\nmolecular biology laboratory setting using commercially available reagents and materials. The\\n553\\\
+    nlentiCRISPR v2 Blast plasmid was obtained from Addgene. All protocols for the experiment were\\n554\\ngenerated entirely\
+    \ by Biomni without modi\\ufb01cation (Supplementary Notes F), including plasmid\\n555\\nanalysis, sgRNA design, oligo\
+    \ design with appropriate overhangs, detailed Golden Gate assembly\\n556\\nconditions, bacterial transformation parameters,\
+    \ and veri\\ufb01cation strategies. For validation of the\\n557\\ncloning results, standard molecular biology practices\
+    \ were followed, selecting colonies for cul-\\n558\\nture and miniprep, followed by Sanger sequencing using the Biomni-designed\
+    \ primers. Sequence\\n559\\nalignment analysis was performed to verify the correct insertion of the sgRNA sequence. The\\\
+    n560\\nsuccess of the cloning process was determined by the presence of bacterial colonies on selective\\n561\\nmedia\
+    \ and subsequent sequence veri\\ufb01cation con\\ufb01rming the accurate incorporation of the designed\\n562\\nsgRNA construct\
+    \ into the lentiCRISPR v2 Blast backbone.\\n563\\n24\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not\
+    \ certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.\
+    \ It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"All data used in Biomni are\
+    \ publicly available at Harvard Dataverse under\\n564\\nhttps://doi.org/10.7910/DVN/CE4ZYG.\\n565\"\n  },\n  {\n    \"\
+    name\": \"Code availability\",\n    \"text\": \"Biomni is open-sourced at https://github.com/snap-stanford/biomni. A web-\\\
+    n566\\nbased user interface is available at https://biomni.stanford.edu. Note that the public tool is not for\\n567\\\
+    nprotected health information.\\n568\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"We thank Emily\
+    \ Alsentzer, Andrew Lee, members of Jure Leskovec\\u2019s lab,\\n569\\nand members of Euan Ashley\\u2019s lab, for providing\
+    \ helpful feedbacks. K.H. and J.L. also gratefully\\n570\\nacknowledge the support of NSF under Nos. OAC-1835598 (CINES),\
+    \ CCF-1918940 (Expedi-\\n571\\ntions), DMS-2327709 (IHBEM), IIS-2403318 (III); Stanford Data Applications Initiative,\
+    \ Wu Tsai\\n572\\nNeurosciences Institute, Stanford Institute for Human-Centered AI, Chan Zuckerberg Initiative,\\n573\\\
+    nAmazon, Genentech, GSK, Hitachi, SAP, and UCB. K.H. acknowledge the support of Stanford\\n574\\nBio-X fellowship. Research\
+    \ reported in this publication was supported by the National Institute\\n575\\nof Neurological Disorders and Stroke of\
+    \ the National Institutes of Health under Award Number\\n576\\nU01NS134358. The content is solely the responsibility of\
+    \ the authors and does not necessarily\\n577\\nrepresent the of\\ufb01cial views of the National Institutes of Health.\\\
+    n578\\nAuthors contribution.\\nK.H., Y.R., J.L. conceived the study. K.H. and J.L. supervised the project.\\n579\\nK.H.\
+    \ designed and developed the framework. K.H., S.Z., H.W., Y.Q., Y.L. implemented tools\\n580\\nand databases. K.H. designed\
+    \ and implemented the generalist agent architecture. K.H. and R.L.\\n581\\ndesigned the action discovery agent. S.Z. performed\
+    \ benchmarks on Q&A tasks. K.H., H.W., Y.L.\\n582\\ncollected and implemented benchmarks on realistic tasks. X.Z. provided\
+    \ advice on microbiome\\n583\\nbenchmark. H.W., J.Z., P.H., K.H. performed multi-omics integration case study. Y.L., K.H.\\\
+    n584\\nperformed wearable data analysis case study. Y.Q., J.Z., D.Y., S.Z., Y.L., K.H. performed wet-\\n585\\nlab case\
+    \ study. K.H., S.M., J.C., M.W., J.B. performed rare disease diagnosis case study. R.L.\\n586\\nperformed qualitative\
+    \ trace analysis. R.L., L.Q., G.L., provided support for software. K.H., S.Z.,\\n587\\nH.W., Y.Q., A.R., Y.L. wrote the\
+    \ draft paper. All authors discussed the results and contributed to\\n588\\nthe \\ufb01nal manuscript.\\n589\"\n  },\n\
+    \  {\n    \"name\": \"Competing interests\",\n    \"text\": \"A.R. and H.W. are employees of Genentech and A.R. has equity\
+    \ in Roche.\\n590\\nAll other authors declare no competing interests.\\n591\\n25\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2,\
+    \ 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\"\n  },\n  {\n    \"name\": \"References\"\
+    ,\n    \"text\": \"592\\n593\\n1. Cong, L. et al. Multiplex genome engineering using crispr/cas systems. Science 339,\
+    \ 819\\u2013823\\n594\\n(2013).\\n595\\n2. Jumper, J. et al. Highly accurate protein structure prediction with alphafold.\
+    \ nature 596,\\n596\\n583\\u2013589 (2021).\\n597\\n3. Van Dyck, C. H. et al. Lecanemab in early alzheimers disease. New\
+    \ England Journal of\\n598\\nMedicine 388, 9\\u201321 (2023).\\n599\\n4. L\\u00b4opez-Ot\\u00b4\\u0131n, C., Blasco, M.\
+    \ A., Partridge, L., Serrano, M. & Kroemer, G. Hallmarks of aging:\\n600\\nAn expanding universe. Cell 186, 243\\u2013278\
+    \ (2023).\\n601\\n5. Botvinik-Nezer, R. et al. Variability in the analysis of a single neuroimaging dataset by many\\\
+    n602\\nteams. Nature 582, 84\\u201388 (2020).\\n603\\n6. Thiele, I. & Palsson, B. \\u00d8. A protocol for generating a\
+    \ high-quality genome-scale metabolic\\n604\\nreconstruction. Nature protocols 5, 93\\u2013121 (2010).\\n605\\n7. Gibney,\
+    \ E. & Van Noorden, R. Scientists losing data at a rapid rate. Nature 10 (2013).\\n606\\n8. Wang, H. et al. Scienti\\\
+    ufb01c discovery in the age of arti\\ufb01cial intelligence. Nature 620, 47\\u201360\\n607\\n(2023).\\n608\\n9. Ridnik,\
+    \ T., Kredo, D. & Friedman, I. Code generation with alphacodium: From prompt engi-\\n609\\nneering to \\ufb02ow engineering.\
+    \ arXiv preprint arXiv:2401.08500 (2024).\\n610\\n10. Cui, J., Li, Z., Yan, Y., Chen, B. & Yuan, L. Chatlaw: Open-source\
+    \ legal large language model\\n611\\nwith integrated external knowledge bases. CoRR (2023).\\n612\\n11. Tom, G. et al.\
+    \ Self-driving laboratories for chemistry and materials science. Chemical Reviews\\n613\\n124, 9633\\u20139732 (2024).\\\
+    n614\\n12. Peng, C. et al. A study of generative large language model for medical research and healthcare.\\n615\\nNPJ\
+    \ digital medicine 6, 210 (2023).\\n616\\n13. Qu, Y. et al. Crispr-gpt: An llm agent for automated design of gene-editing\
+    \ experiments.\\n617\\nbioRxiv 2024\\u201304 (2024).\\n618\\n14. Swanson, K., Wu, W., Bulaong, N. L., Pak, J. E. & Zou,\
+    \ J. The virtual lab: Ai agents design\\n619\\nnew sars-cov-2 nanobodies with experimental validation. bioRxiv 2024\\\
+    u201311 (2024).\\n620\\n15. Roohani, Y. et al. Biodiscoveryagent: An ai agent for designing genetic perturbation experi-\\\
+    n621\\nments. International Conference on Learning Representations (2025).\\n622\"\n  },\n  {\n    \"name\": \"Wang, E.\
+    \ et al\",\n    \"text\": \"Txgemma: Ef\\ufb01cient and agentic llms for therapeutics.\\narXiv preprint\\n623\\narXiv:2504.06196\
+    \ (2025).\\n624\\n17. Xiao, Y. et al. Cellagent: An llm-driven multi-agent framework for automated single-cell data\\\
+    n625\\nanalysis. BioRxiv 2024\\u201305 (2024).\\n626\\n18. Youngblut, N. D. et al. scbasecamp: an ai agent-curated, uniformly\
+    \ processed, and continually\\n627\\nexpanding single cell data repository. bioRxiv 2025\\u201302 (2025).\\n628\\n26\\\
+    n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified by peer review) is the author/funder, who\
+    \ has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\
+    \ (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\\\
+    n\\n19. Hu, M. et al. Evaluation of large language models for discovery of gene set function. Nature\\n629\"\n  },\n \
+    \ {\n    \"name\": \"methods 1\\u201310 (2024)\",\n    \"text\": \"630\\n20. Wei, J. et al. Chain-of-thought prompting\
+    \ elicits reasoning in large language models. Advances\\n631\\nin neural information processing systems 35, 24824\\u201324837\
+    \ (2022).\\n632\\n21. Yao, S. et al. React: Synergizing reasoning and acting in language models. In International\\n633\\\
+    nConference on Learning Representations (ICLR) (2023).\\n634\"\n  },\n  {\n    \"name\": \"Guo, D. et al\",\n    \"text\"\
+    : \"Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement\\n635\\nlearning. arXiv preprint arXiv:2501.12948\
+    \ (2025).\\n636\\n23. Phan, L. et al. Humanity\\u2019s last exam. arXiv preprint arXiv:2501.14249 (2025).\\n637\\n24.\
+    \ Laurent, J. M. et al. Lab-bench: Measuring capabilities of language models for biology re-\\n638\\nsearch. arXiv preprint\
+    \ arXiv:2407.10362 (2024).\\n639\\n25. Narayanan, S. et al. Aviary: training language agents on challenging scienti\\\
+    ufb01c tasks. arXiv\\n640\\npreprint arXiv:2412.21154 (2024).\\n641\\n26. Ghareeb, A. E. et al. Robin: A multi-agent system\
+    \ for automating scienti\\ufb01c discovery. arXiv\\n642\\npreprint arXiv:2505.13400 (2025).\\n643\\n27. To, K. et al.\
+    \ A multi-omic atlas of human embryonic skeletal development. Nature 635,\\n644\\n657\\u2013667 (2024).\\n645\\n28. Gordon,\
+    \ J. A. et al. Pbx1 represses osteoblastogenesis by blocking hoxa10-mediated recruit-\\n646\\nment of chromatin remodeling\
+    \ factors. Molecular and cellular biology (2010).\\n647\\n29. Gomez, G. A. et al. Evaluation of potential roles of zinc\
+    \ \\ufb01nger homeobox 3 (zfhx3) expressed\\n648\\nin chondrocytes and osteoblasts on skeletal growth in mice. Calci\\\
+    ufb01ed Tissue International\\n649\\n115, 445\\u2013454 (2024).\\n650\\n30. Geng, Z., Tai, Y. T., Wang, Q. & Gao, Z. Auts2\
+    \ disruption causes neuronal differentiation\\n651\\ndefects in human cerebral organoids through hyperactivation of the\
+    \ wnt/\\u03b2-catenin pathway.\\n652\\nScienti\\ufb01c reports 14, 19522 (2024).\\n653\\n31. Wang, X. et al. Executable\
+    \ code actions elicit better llm agents. In Forty-\\ufb01rst International\\n654\\nConference on Machine Learning (2024).\\\
+    n655\\n32. Ghoussaini, M. et al. Open targets genetics: systematic identi\\ufb01cation of trait-associated genes\\n656\\\
+    nusing large-scale genetics and functional genomics. Nucleic acids research 49, D1311\\u2013D1320\\n657\\n(2021).\\n658\\\
+    n33. Shringarpure, S. S. et al. Large language models identify causal genes in complex trait gwas.\\n659\\nmedRxiv 2024\\\
+    u201305 (2024).\\n660\\n34. Schmidt, R. et al. Crispr activation and interference screens decode stimulation responses\
+    \ in\\n661\\nprimary human t cells. Science 375, eabj4008 (2022).\\n662\\n35. Zhang, H., Kang, Z., Zhang, Y., Yang, R.\
+    \ & Ning, K. Towards a generative paradigm for\\n663\\nlarge-scale microbiome analysis by generative language model. bioRxiv\
+    \ 2025\\u201301 (2025).\\n664\\n36. Turnbaugh, P. J. et al. A core gut microbiome in obese and lean twins. nature 457,\
+    \ 480\\u2013484\\n665\\n(2009).\\n666\\n27\\n.\\nCC-BY 4.0 International license\\navailable under a\\nwas not certified\
+    \ by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is\
+    \ made\\nThe copyright holder for this preprint (which\\nthis version posted June 2, 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\\
+    ndoi:\\nbioRxiv preprint\\n\\n37. Pasolli, E., Truong, D. T., Malik, F., Waldron, L. & Segata, N. Machine learning meta-analysis\\\
+    n667\\nof large metagenomic datasets: tools and biological insights. PLoS computational biology 12,\\n668\\ne1004977 (2016).\\\
+    n669\\n38. Gomez-Alvarez, V. & Revetta, R. P. Monitoring of nitri\\ufb01cation in chloraminated drinking\\n670\\nwater\
+    \ distribution systems with microbiome bioindicators using supervised machine learning.\\n671\\nFrontiers in Microbiology\
+    \ 11, 571009 (2020).\\n672\\n39. Turnbaugh, P. J. et al. The human microbiome project. Nature 449, 804\\u2013810 (2007).\\\
+    n673\\n40. Huang, K. et al. A foundation model for clinician-centered drug repurposing. Nature Medicine\\n674\\n30, 3601\\\
+    u20133613 (2024).\\n675\\n41. Alsentzer, E. et al. Few shot learning for phenotype-driven diagnosis of patients with rare\\\
+    n676\\ngenetic diseases. medRxiv 2022\\u201312 (2022).\\n677\\n42. Metwally, A. A. et al. Prediction of metabolic subphenotypes\
+    \ of type 2 diabetes via continuous\\n678\\nglucose monitoring and machine learning. Nature Biomedical Engineering 1\\\
+    u201318 (2024).\\n679\\n43. Katz, D. et al. The multi-omic, multi-tissue response to acute endurance and resistance exer-\\\
+    n680\\ncise: Results from the molecular transducers of physical activity consortium. Circulation 150,\\n681\"\n  },\n\
+    \  {\n    \"name\": \"A4143199\\u2013A4143199 (2024)\",\n    \"text\": \"682\\n28\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\nwas not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint (which\\nthis version posted June 2,\
+    \ 2025.\\n;\\nhttps://doi.org/10.1101/2025.05.30.656746\\ndoi:\\nbioRxiv preprint\"\n  }\n]"
+  acknowledgments: 'We thank Emily Alsentzer, Andrew Lee, members of Jure Leskovec’s lab,
+
+    569
+
+    and members of Euan Ashley’s lab, for providing helpful feedbacks. K.H. and J.L. also gratefully
+
+    570
+
+    acknowledge the support of NSF under Nos. OAC-1835598 (CINES), CCF-1918940 (Expedi-
+
+    571
+
+    tions), DMS-2327709 (IHBEM), IIS-2403318 (III); Stanford Data Applications Initiative, Wu Tsai
+
+    572
+
+    Neurosciences Institute, Stanford Institute for Human-Centered AI, Chan Zuckerberg Initiative,
+
+    573
+
+    Amazon, Genentech, GSK, Hitachi, SAP, and UCB. K.H. acknowledge the support of Stanford
+
+    574
+
+    Bio-X fellowship. Research reported in this publication was supported by the National Institute
+
+    575
+
+    of Neurological Disorders and Stroke of the National Institutes of Health under Award Number
+
+    576
+
+    U01NS134358. The content is solely the responsibility of the authors and does not necessarily
+
+    577
+
+    represent the ofﬁcial views of the National Institutes of Health.
+
+    578
+
+    Authors contribution.
+
+    K.H., Y.R., J.L. conceived the study. K.H. and J.L. supervised the project.
+
+    579
+
+    K.H. designed and developed the framework. K.H., S.Z., H.W., Y.Q., Y.L. implemented tools
+
+    580
+
+    and databases. K.H. designed and implemented the generalist agent architecture. K.H. and R.L.
+
+    581
+
+    designed the action discovery agent. S.Z. performed benchmarks on Q&A tasks. K.H., H.W., Y.L.
+
+    582
+
+    collected and implemented benchmarks on realistic tasks. X.Z. provided advice on microbiome
+
+    583
+
+    benchmark. H.W., J.Z., P.H., K.H. performed multi-omics integration case study. Y.L., K.H.
+
+    584
+
+    performed wearable data analysis case study. Y.Q., J.Z., D.Y., S.Z., Y.L., K.H. performed wet-
+
+    585
+
+    lab case study. K.H., S.M., J.C., M.W., J.B. performed rare disease diagnosis case study. R.L.
+
+    586
+
+    performed qualitative trace analysis. R.L., L.Q., G.L., provided support for software. K.H., S.Z.,
+
+    587
+
+    H.W., Y.Q., A.R., Y.L. wrote the draft paper. All authors discussed the results and contributed to
+
+    588
+
+    the ﬁnal manuscript.
+
+    589'
+  competing_interests: 'A.R. and H.W. are employees of Genentech and A.R. has equity in Roche.
+
+    590
+
+    All other authors declare no competing interests.
+
+    591
+
+    25
+
+    .
+
+    CC-BY 4.0 International license
+
+    available under a
+
+    was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.
+    It is made
+
+    The copyright holder for this preprint (which
+
+    this version posted June 2, 2025.
+
+    ;
+
+    https://doi.org/10.1101/2025.05.30.656746
+
+    doi:
+
+    bioRxiv preprint'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\",\n \
+    \   \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_2.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_3.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_4.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_5.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_6.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_7.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_8.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_9.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_10.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_11.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_12.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_13.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_14.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_15.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_16.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_17.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_18.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_19.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_20.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_21.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_22.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_23.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_24.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_25.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_26.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_27.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_28.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_29.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_30.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_31.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_32.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_33.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_34.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_35.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_36.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_37.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_38.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_39.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_40.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_41.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_42.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_43.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_44.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_45\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_45.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_46\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_46.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_47\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_47.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_48\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_48.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_49\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_49.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_50\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_50.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_51\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_51.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_52\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_52.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_53\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_53.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_54\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_54.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_55\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_55.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_56\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_56.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_57\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_57.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_58\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_58.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_59\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_59.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_60\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_60.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_61\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_61.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_62\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_62.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_63\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_63.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_64\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_64.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_65\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_65.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_66\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_66.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_67\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_67.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_68\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_68.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_69\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_69.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_70\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_70.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_71\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_71.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p15_72\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_72.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p16_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_1.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_2.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_3.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_4.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_5.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_6.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_7.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_8.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_9.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_10.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_11.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_12.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_13.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_14.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_15.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_16.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_17.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_18.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_19.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_20.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_21.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_22.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_23.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_24.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_25.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_26.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_27.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_28.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_29.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_30.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_31.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_32.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_33.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_34.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_35.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_36.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_37.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_38.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_39.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_40.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_41.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_42.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_43.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_44.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_2.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_3.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_4.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_5.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_6.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_7.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_8.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_9.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_10.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_11.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_12.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_13.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_14.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_15.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_16.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_17.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_18.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_19.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_20.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_21.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_22.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_23.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_24.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_25.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_26.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_27.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_28.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_29.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_30.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_31.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_32.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_33.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_34.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_35.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_36.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_37.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_38.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_39.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p18_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_1.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_2.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_3.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_4.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_5.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_6.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_7.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_8.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_9.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_10.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_11.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_12.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_13.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_14.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_15.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_16.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_17.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_18.png\"\
+    ,\n    \"page\": 18\n  }\n]"
+references:
+  reference_count: 15
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://doi.org/10.7910/DVN/CE4ZYG.\",\n    \"accession\": \"\",\n    \"database\"\
+    : \"\",\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/snap-stanford/biomni.\",\n    \"description\": \"\"\n  }\n\
+    ]"

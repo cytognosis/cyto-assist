@@ -1,0 +1,85 @@
+# Foresight Institute Grant Application — Template Specification
+#
+# AI for Science and Safety Nodes grant program.
+# Source: Grant_writing_frameworks.md + foresight.org/grants
+#
+# Schema Version: 1.0
+
+template:
+  name: "Foresight Institute Grant Application"
+  version: "1.0"
+  source: "https://foresight.org/grants/grants-ai-for-science-safety/"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Project Description ────────────────────────────────────────────────
+  - id: project
+    title: "Project Description"
+    fields:
+      - id: what
+        label: "What are you trying to do? Explain it in as few words as possible with zero jargon."
+        type: textarea
+        required: true
+        constraints:
+          maxChars: 350
+
+      - id: innovation
+        label: "How is today's approach limited? What is new in your approach, and what does success look like?"
+        type: section
+        required: true
+
+      - id: safety
+        label: "If there are risks, is it possible to differentially advance safety-enhancing aspects of the technology first?"
+        type: section
+        required: false
+
+  # ─── Timeline & Milestones ──────────────────────────────────────────────
+  - id: timeline
+    title: "Timeline & Milestones"
+    fields:
+      - id: milestones
+        label: "Please outline the start and end times, along with your key project milestones."
+        type: section
+        required: true
+
+  # ─── Scaling Plan ───────────────────────────────────────────────────────
+  - id: scaling
+    title: "Scaling Plan"
+    fields:
+      - id: scale_plan
+        label: "If this project goes well, how do you plan to scale it to have the impact needed for safe AI in 3-5 years?"
+        type: section
+        required: true
+
+  # ─── Focus Area ─────────────────────────────────────────────────────────
+  - id: focus_area
+    title: "Focus Area"
+    fields:
+      - id: area
+        label: "Primary focus area"
+        type: choice
+        required: true
+        options:
+          - "AI for Longevity Biotechnology"
+          - "AI for Neuro, Brain-Computer Interfaces & Whole Brain Emulation"
+          - "AI for Molecular Nanotechnology"
+          - "AI for Science & Epistemics"
+          - "Decentralized & Cooperative AI"
+          - "Private AI"
+
+  # ─── Budget ─────────────────────────────────────────────────────────────
+  - id: budget
+    title: "Budget"
+    fields:
+      - id: amount_requested
+        label: "Amount requested (USD)"
+        type: number
+        required: true
+        constraints:
+          min: 10000
+          max: 100000
+
+      - id: budget_breakdown
+        label: "Budget breakdown"
+        type: textarea
+        required: false

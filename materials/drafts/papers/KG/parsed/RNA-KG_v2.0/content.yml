@@ -1,0 +1,832 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/RNA-KG v2.0.pdf
+
+identifiers:
+  doi: 10.1093/nargab/lqaf194
+  pmid: '41531547'
+citation:
+  title: 'RNA-KG v2.0: an RNA-centered Knowledge Graph with Properties'
+  year: '2026'
+  journal: NAR Genomics and Bioinformatics
+  volume: '8'
+  publisher: Oxford University Press (OUP)
+  authors: Emanuele Cavalleri, Paolo Perlasca, Marco Mesiti
+content:
+  abstract: 'RNA-KG is a recently de v eloped biomedical kno wledge graph that integrates the interactions in v olving coding
+    and non-coding RNA molecules
+
+    extracted from public data sources. It can be used to support the classification of new molecules, identify new interactions
+    through the use of
+
+    link prediction methods, and re v eal hidden patterns among the represented entities. In this paper, we propose RNA-KG
+    v2.0, a new release of
+
+    RNA-KG that integrates around 100 M manually curated interactions sourced from 91 linked open data repositories and ontologies.
+    Relationships
+
+    are characterized by standardized properties that capture the specific context (e.g. cell line, tissue, pathological state)
+    in which they have been
+
+    identified. In addition, the nodes are enriched with detailed attributes, such as descriptions, synonyms, and molecular
+    sequences sourced from
+
+    platforms such as OBO ontologies, NCBI repositories, RNAcentral, and Ensembl. The enhanced repository enables the expression
+    of advanced
+
+    queries that take into account the context in which the e xperiments w ere conducted. It also supports downstream applications
+    in RNA research,
+
+    including ‘conte xt-a w are’ link prediction techniques that combine both topological and semantic information. Finally,
+    the recent integration
+
+    of RNA-KG relationships into the RNAcentral portal provides a powerful resource for linking RNA-centric relationships
+    with non-coding gene
+
+    expression in human tissues, RNA secondary str uct ures, and their functional roles in biological pathw a y s, which can
+    accelerate the disco v ery of
+
+    no v el therapeutic targets.
+
+    Gr aphical abstr act'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"RNA molecules play a pivotal role in various physiologi-\\\
+    ncal and pathological processes, as confirmed by extensive re-\\nsearch conducted over the past two decades [ 1 \\u20133\
+    \ ]. Beyond\\ntheir fundamental role in gene expression, these molecules\\nhave emerged as promising tools to provide\
+    \ new insights in the\\ntreatment of cancer, genetic and neurodegenerative disorders,\\ncardiovascular and infectious\
+    \ diseases [ 4 ]. Several genomics\\nlaboratories release datasets containing interactions between\\nRNAs and other bio-entities\
+    \ like genes, proteins, chemicals,\\ndiseases, and phenotypes. However, the integration and stan-\\ndardization of these\
+    \ data remain a significant challenge, since\\nReceived: August 15, 2025. Revised: October 11, 2025. Accepted: November\
+    \ 13, 2025\\n\\u00a9 The Author(s) 2026. Published by Oxford University Press.\\nThis is an Open Access article distributed\
+    \ under the terms of the Creative Commons Attribution-NonCommercial License\\n( https:// creativecommons.org/ licenses/\
+    \ by-nc/ 4.0/ ), which permits non-commercial re-use, distribution, and reproduction in any medium, provided the\\noriginal\
+    \ work is properly cited. For commercial re-use, please contact reprints@oup.com for reprints and translation rights for\
+    \ reprints. All other\\npermissions can be obtained through our RightsLink service via the Permissions link on the article\
+    \ page on our site\\u2014for further information please contact\\njournals.permissions@oup.com .\\n\\n2\\nCavalleri et\
+    \ al.\\na common identification scheme is missing to represent RNA\\nmolecules and their relationships, and manual efforts\
+    \ are often\\nrequired to retrieve standard identifiers.\\nKnowledge graphs (KGs) [ 5 ] have emerged as a powerful\"\n\
+    \  },\n  {\n    \"name\": \"abstraction for integrating heterogeneous information from\",\n    \"text\": \"diverse sources,\
+    \ enabling the identification of complex inter-\\ndependencies and the discovery of hidden relationships. While\\nKGs\
+    \ were initially represented using the Resource Description\\nFramework (RDF) [ 6 ], more recent initiatives [ 7 \\u20139\
+    \ ] increas-\\ningly adopt property graphs (e.g. Neo4j [ 10 ]) due to their scal-\\nability and efficiency in managing\
+    \ large graphs with millions\\nof edges. When a KG is constructed according to an ontol-\\nogy, the labels, types, and\
+    \ attributes used to describe nodes\\nand relationships are ontology-driven, thereby ensuring con-\\nsistent interpretation\
+    \ and semantic clarity \\u2013 an essential pre-\\nrequisite for supporting various reasoning tasks. In the life\\nsciences,\
+    \ KGs have gained particular relevance, offering struc-\\ntured representations of bio-entities and their interactions,\
+    \ as\\nwell as supporting AI-driven methods for knowledge discov-\\nery and explanation. Several domain-specific biological\
+    \ KGs\\nhave recently been developed, including PrimeKG [ 11 ], the\\nHuman Disease Benchmark KG [ 12 ], the KG for hepatocellu-\\\
+    nlar carcinoma (KGHC) [ 7 ], ReproTox-KG [ 13 ], the Monarch\\nKnowledge Graph [ 14 ], the Oregano Knowledge Graph [ 15\
+    \ ],\\nand the Biomedicine Knowledge Base [ 16 ], each designed to\\nfacilitate different types of analyses and research\
+    \ activities.\\nHowever, RNA-related interactions remain underrepresented\\nacross these resources and, when included,\
+    \ their coverage is\\noften sparse and incomplete. For example, the Human Dis-\\nease Benchmark KG mainly focuses on coding\
+    \ transcripts and\\ntheir localization within anatomical parts or cellular compart-\\nments, while KGHC describes only\
+    \ nine RNAs involved in\\nhepatocellular carcinoma.\\nRNA-KG [ 17 ] is the first ontology-based KG that gathers\\nbiological\
+    \ knowledge about RNAs from more than 60 pub-\\nlic databases, integrating more than 12 . 5 M functional rela-\\ntionships\
+    \ with genes, proteins, chemicals, and other ontologi-\\ncally grounded biomedical entities. RNA-KG is a core project\\\
+    nof the Monarch Initiative KG-Hub [ 18 ], a platform that en-\\nables standardized construction, exchange, and reuse of\
+    \ KGs.\\nDuring the construction of RNA-KG, we have noticed that\\nRNA-related relationships frequently depend on: (i\
+    \ ) the se-\\nquence, structure, and/or the genomic loci the RNA is tran-\\nscribed from; and (ii ) the cell line, tissue,\
+    \ or more generally,\\nthe \\u2018context\\u2019 where they occur. Introducing this information\\nin the KG would be an\
+    \ enhancement for obtaining a more so-\\nphisticated representation of the domain and could be used in\\nseveral downstream\
+    \ applications.\\nThis paper introduces RNA-KG v2.0, a new version\\nof RNA-KG that has been extended from multiple view-\\\
+    npoints. First, relationships from 20 new data sources have\\nbeen integrated, and those already stored have been more\\\
+    nthoroughly characterized. For example, the \\u2018generic\\u2019 RNA-\\ncauses or contributes to condition-disease has\
+    \ now been\\ndetailed in specific instances (e.g. RNA-over-expressed in-\\ndisease and RNA-under-expressed in-disease\
+    \ ) according to\\nthe metadata provided by the sources. Moreover, a new\\nidentification scheme for RNA molecules, based\
+    \ on RNA-\\ncentral [ 19 , 20 ] for non-coding RNAs and Ensembl [ 21 ]\\nfor coding transcripts, is now adopted. This\
+    \ scheme en-\\nables the representation of transcript variants (i.e. isoforms),\\novercoming the limitations of previous\
+    \ releases, which col-\\nlapsed multiple isoforms into a single gene-level entity. For\\nexample, the lncRNAs LINC-PINT-205\
+    \ and LINC-PINT-\\n206 previously collectively identified through the Entrez [ 22 ]\\nidentifier Entrez:378805?lncRNA\
+    \ are now represented as\\nURS00025E6A5F_9606 and URS00005A4FBF_9606 . RNA\\nentities in RNA-KG are also enhanced by integrating\
+    \ the\\nRfam [ 23 ] node classification scheme, which improves the\\naccuracy and granularity of RNA categories. Finally,\
+    \ prop-\\nerties for both entities and relationships are now included\\nin the knowledge base. This information is of\
+    \ paramount\\nimportance for discriminating bio-entities and relationships\\nbased on their data sources and the \\u2018context\\\
+    u2019 where they\\nhave been acquired. For instance, the RNA regulation of\\na gene may depend on specific sequence motifs.\
+    \ RNA iso-\\nforms may differ by a few nucleotides, but one may bind\\nto a protein-coding gene due to the presence of\
+    \ the motif,\\nwhile the other does not. Similarly, the over-expression of an\\nRNA might be associated with Alzheimer\\\
+    u2019s disease in brain tis-\\nsues but not in the blood. This information can now be used\\nin different kinds of analysis\
+    \ and for developing meaningful\\napplications.\\nThe resulting KG integrates entities and relationships from\\n80 public\
+    \ repositories and 11 biomedical ontologies with a\\ntotal of 6,553,767 nodes involved in 99,936,712 relation-\\nships.\
+    \ Nodes and edges are characterized by 27,242,075 and\\n242,896,588 properties. The new RNA-KG version is avail-\\nable\
+    \ as a property graph in Neo4j. A web portal and an API\\nsupport the users in accessing and interacting with the infor-\\\
+    nmation stored in the knowledge base. By means of the web\\nportal, users can decide to generate views (i.e. subgraphs\
+    \ of\\ninterest [ 24 ]) by exploiting the endpoint or download views\\nalready extracted by our team. Thanks to the adoption\
+    \ of\\nstandard identification schemes, the integration with the in-\\nformation of other portals is made easy, and further\
+    \ kinds of\\nanalysis can be carried out. This is also demonstrated by the\\nrecent integration of RNA-KG relationships\
+    \ into the RNA-\\ncentral portal [ 19 ].\\nBy exploiting the new release of RNA-KG and its API that\\nprovides easy access\
+    \ to entities and relationships with their\\nproperties, a researcher can: (i ) extract subgraphs of inter-\\nest via\
+    \ Cypher [ 25 ] queries, for example selecting interactions\\nvalidated by specific experimental methods (e.g. qPCR, west-\\\
+    nern blotting) or RNAs with particular properties (e.g. GC\\ncontent above a given threshold) or sharing the same func-\\\
+    ntional annotations; (ii ) apply multimodal machine learning\\n(ML) approaches that combine information from RNA-KG,\\\
+    nsuch as sequence and topological features, with external data\\nsources (e.g. RNA editing events like A > I from REDIpor-\\\
+    ntal [ 26 ] or tissue-specific expression profiles from Expression\\nAtlas [ 27 ], tools both integrated into RNAcentral),\
+    \ enabling\\ncontext-specific analyses of RNA functions and interactions;\\n(iii ) support hypothesis generation and prioritize\
+    \ candidate\\nRNA molecules using ML (e.g. inferring RNAs plausibly as-\\nsociated with a disease).\\nThe paper is organized\
+    \ as follows. The Materials and Meth-\\nods section introduces the new data sources, the main modifi-\\ncations to the\
+    \ identification scheme, and the characteristics of\\nthe bio-entities, relationships, and their properties. An excerpt\\\
+    nof the KG is also presented to show its expressive power. The\\nResult section describes the web portal, the API, and\
+    \ several\\nuse cases and applications in which RNA-KG can be fruitfully\\nused. The Discussion section provides concluding\
+    \ remarks and\\nfuture research directions. Finally, the Data Availability sec-\\ntion details how to access the web portal,\
+    \ the API, and the code\\n\\nEnhancing RNA-KG with Properties\\n3\\nof the use cases. The code is available in our public\
+    \ repository\\nto support the reproducibility of the experiments.\"\n  },\n  {\n    \"name\": \"Materials and methods\"\
+    ,\n    \"text\": \"New data sources and identification schemes\\nRNA-KG v2.0 integrates publicly available relationships\
+    \ in-\\nvolving biomedical entities from 80 data sources and 11 on-\\ntologies. Twenty new sources were identified: RNAcentral,\\\
+    nEnsembl, DisGeNET [ 28 ], GeneMANIA [ 29 ], CTD [ 30 ], Clin-\\nVar [ 31 ], STRING [ 32 ], starBase2 [ 33 ], microT [\
+    \ 34 ], The\\nHuman Protein Atlas [ 35 ], miRanda [ 36 ], Reactome [ 37 ],\\nHGNC [ 38 ], GTEx [ 39 ], POSTAR2 [ 40 ],\
+    \ UniProtKB [ 41 ],\\nRNAhybrid [ 42 ], PhenomiR [ 43 ], COSMIC [ 44 ], and cir-\\ncBase [ 45 ]. These sources were considered\
+    \ because they\\n(i ) increase the coverage of interactions that describe the\\n\\u2018RNA world\\u2019 (e.g. RNA-ribosomally\
+    \ translates to-protein in-\\nteractions from Ensembl); (ii ) are well-reputed sources that\\ndo not or marginally deal\
+    \ with RNA molecules but en-\\nhance the KG quality, including relationships involving enti-\\nties that are connected\
+    \ to RNA molecules in RNA-KG (e.g.\\nprotein-molecularly interacts with-protein interactions from\\nSTRING). Supplementary\
+    \ Tables S1 \\u2013S3 detail the new rela-\\ntionships included along with the entities involved.\\nEleven standard biomedical\
+    \ ontologies are used to establish\\ncommon semantics: Human Phenotype Ontology (HPO [ 46 ]),\\nGene Ontology (GO [ 47\
+    \ ]) Monarch Merged Disease Ontol-\\nogy (Mondo [ 48 ]), Vaccine Ontology (VO [ 49 ]), Chemical En-\\ntities of Biological\
+    \ Interest (ChEBI [ 50 ]), Uber-anatomy On-\\ntology (Uberon [ 51 ]), Cell Line Ontology (CLO [ 52 ]), PRotein\\nOntology\
+    \ (PRO [ 53 ]), Sequence Ontology (SO [ 54 ]), Path-\\nway Ontology (PW [ 55 ]), and Relation Ontology (RO [ 56 ]).\\\
+    nWe selected these ontologies because their terms, properties,\\nand hierarchical structures are widely accepted by the\
+    \ scien-\\ntific community to describe biological classes and entities, such\\nas diseases, phenotypes, chemicals, biological\
+    \ processes, pro-\\nteins, and relations between them, consistently and unequiv-\\nocally. Bio-entities that are not currently\
+    \ represented in one\\nof these ontologies are modeled using well-accepted termi-\\nnologies. They include DrugBank [\
+    \ 57 ] accession numbers for\\nidentifying drugs, NCBI Entrez identifiers for genes and pseu-\\ndogenes, RNAcentral identifiers\
+    \ for ncRNA molecules, En-\\nsembl transcript identifiers for mRNA sequences, NCBI db-\\nSNP [ 58 ] rsIDs, and COSMIC\
+    \ identifiers for germline and\\nsomatic variants. Grounding RNA molecules in RNAcentral\\nand Ensembl identifiers allows\
+    \ the precise RNA sequence to be\\ndistinguished among RNA isoforms. Table 1 details the iden-\\ntification schemes for\
+    \ the main bio-entities according to the\\nproposed bar charts.\\nThe acquisition of raw data and its transformation into\
+    \ en-\\ntities and relationships in RNA-KG v2.0 followed the same\\npipeline adopted in [ 17 ] and leveraged the primitives\
+    \ provided\\nby the PheKnowLator library [ 12 ]. Specifically:\\nr Tabular data were downloaded from the considered data\\\
+    nsources, cleaned, and semantically annotated. The se-\\nmantic annotation serves two main purposes. First, it\\nidentifies\
+    \ the entities and the relationships (with their\\nproperties) to be included in the KG according to the\\nstructure of\
+    \ the classes of the previously mentioned on-\\ntologies and the relationships of the Relation Ontology.\\nSecond, it\
+    \ specifies when to apply lookup tables to con-\\nTable 1. Identification schemes for the main bio-entities\\nEntity\\\
+    nScheme\\nExample\\nVariant\\ndbSNP\\nrs766102409\"\n  },\n  {\n    \"name\": \"COSMIC\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"COSV60127483\",\n    \"text\": \"ncRNA\\nRNAcentral\"\n  },\n  {\n    \"name\": \"URS00000478B7_9606\"\
+    ,\n    \"text\": \"mRNA\\nEnsembl\"\n  },\n  {\n    \"name\": \"ENST00000713680\",\n    \"text\": \"circRNA\\ncircBase\\\
+    nhsa_circ_0018046\\nChemical\\nChEBI\"\n  },\n  {\n    \"name\": \"CHEBI:4021\",\n    \"text\": \"Protein\\nPRO\"\n  },\n\
+    \  {\n    \"name\": \"PR:Q8WXF3\",\n    \"text\": \"Gene\\nEntrez\\nEntrez:1954\\nCell\\nCLO\"\n  },\n  {\n    \"name\"\
+    : \"CLO:0003725\",\n    \"text\": \"GO term\\nGO\"\n  },\n  {\n    \"name\": \"GO:0140657\",\n    \"text\": \"Disease\\\
+    nMondo\"\n  },\n  {\n    \"name\": \"MONDO:0020683\",\n    \"text\": \"Phenotype\\nHPO\"\n  },\n  {\n    \"name\": \"\
+    HP:0040064\",\n    \"text\": \"Anatomy\\nUberon\"\n  },\n  {\n    \"name\": \"UBERON:0002169\",\n    \"text\": \"Vaccine\\\
+    nVO\"\n  },\n  {\n    \"name\": \"VO:0010137\",\n    \"text\": \"Pathway\\nPW\"\n  },\n  {\n    \"name\": \"PW:0000035\"\
+    ,\n    \"text\": \"Reactome\"\n  },\n  {\n    \"name\": \"R-HSA-9837999\",\n    \"text\": \"WikiPathways\"\n  },\n  {\n\
+    \    \"name\": \"WP5090\",\n    \"text\": \"vert local data source identifiers into the identification\\nschemes used\
+    \ in RNA-KG.\\nr Then, mapping rules were applied to each row of the tab-\\nular data to generate the bio-entities and\
+    \ their relation-\\nships. These rules exploit lookup tables and also exclude\\ntuples that do not meet quality constraints\
+    \ (e.g. relation-\\nships with high p-values or other reliability metrics).\\nr By leveraging the Neo4j import utilities,\
+    \ the graph\\ndatabase was generated from the cleaned ontology-\\ngrounded data. A Neo4j endpoint was created to make\\\
+    nRNA-KG v2.0 freely available and accessible. Using\\nCypher, portions of the graph can be extracted to per-\\nform \\\
+    u2018context-aware\\u2019 analyses that address specific bio-\\nlogical questions.\\nRNA-KG bio-entities\\nNode type distribution\\\
+    nRNA-KG includes approximately 6 . 5 M typed nodes with 139\\ndistinct node types. Ontology classes are used to define\
+    \ node\\ntypes (e.g. SO:0000276 for miRNA ). Additional node types\\nhave also been introduced by parsing ontologies to\
+    \ enhance\\nentity types with specific relevance within the \\u2018RNA world\\u2019.\\nFor instance, the type Cardiovascular\
+    \ disease was as-\\nsigned to specific disease entities based on hierarchical re-\\nlationships within Mondo, and the\
+    \ Transcription Fac-\\ntor ( TF ) type has been associated with proteins whose label\\nin PRO contains the string \\u2018transcription\
+    \ factor\\u2019 or matches\\nknown TF symbols from curated sources. Moreover, the GO\\ntype is further split into Cellular\
+    \ component , Molec-\\nular function , and Biological process , consistent\\nwith the three branches of the Gene Ontology.\
+    \ This subdivi-\\nsion is particularly relevant as it enables a focus on biolog-\\n\\n4\\nCavalleri et al.\\nFigure 1.\
+    \ Node type distribution.\\nical processes (such as A-to-I tRNA editing ) that are exten-\\nsively studied in the context\
+    \ of RNA biology . Finally , this fine-\\ngrained representation facilitates the construction of domain-\\nspecific views\
+    \ using Cypher queries or the graphical interfaces\\nof the web portal.\\nBesides the well-represented entities, RNA-KG\
+    \ also incor-\\nporates less frequent ones, including hundreds of Protein\\nmodi\\ufb01cations (e.g. hydroxylated lysine\
+    \ ), Epigenetic\\nmodi\\ufb01cations (e.g. 3-(3-amino-3-carboxypropyl)uridine \\u2013\\nacp3U , from MODOMICS [ 59 ]),\
+    \ and Histone modi\\ufb01ca-\\ntion s (e.g. H3K27 monomethylation site ). The relevance of\\nthis knowledge is increasingly\
+    \ recognized in both physiologi-\\ncal and pathological processes involving RNA molecules and\\ncan be used to investigate\
+    \ RNA-mediated mechanisms [ 60 ].\\nFigure 1 shows the node types distribution in RNA-KG. The\\nmost represented class\
+    \ is Variant (with around 5 M nodes)\\ndue to the integration of large-scale variant databases (e.g. db-\\nSNP and COSMIC)\
+    \ that catalog millions of mutations across\\nthe human genome. Note that each known mutation event\\n(e.g. an A-to-T\
+    \ substitution occurring in a specific genomic\\nlocus) leads to the creation of a new variant identifier. The\\nsecond\
+    \ most common node type is RNA ( 971 k nodes). RNA se-\\nquences are typed using SO classes and Rfam categories such\\\
+    nas mRNA , lncRNA , and miRNA . Figure 2 details the distribu-\\ntion of RNA types. Non-coding RNAs represent a substan-\\\
+    ntial portion of this set (around 752 k nodes), as supported by\\ncurrent estimates [ 20 , 23 ]. mRNAs account for around\
+    \ 126 k\\nnodes, a number consistent with the expected diversity of\\ntranscript isoforms derived from the 20 k \\u201322\
+    \ k protein-coding\\ngenes in the human genome [ 61 ].\\nBio-entities\\u2019 properties\\nProperties for RNA-KG nodes\
+    \ correspond to the attributes\\nassociated with the ontological terms. Among the available\\nattributes, label , description\
+    \ , and synomyms are as-\\nsociated with nodes that represent amino acids, anatomical\\nparts, biological processes, biological\
+    \ roles, cells and cell lines,\\ncellular components, chemicals, diseases, genomic features\\nFigure 2. RNA node distribution.\\\
+    nsuch as epigenetic and histone modifications and sequence\\nlocations, protein modifications, lipids, molecular functions,\\\
+    npathways, phenotypes, proteins, species, and vaccines. Ad-\\nditional attributes are included for specific nodes\\u2019\
+    \ cate-\\ngories. Specifically, charges , masses , formulae , SMILES\\nstructures , CAS numbers , and InChIKeys for chemical\\\
+    nentities; amino acid sequences and species for proteins.\\nOn the other hand, RNA-KG nodes representing entities\\nthat\
+    \ cannot be directly mapped to ontological terms (e.g.\\ngenes, RNAs, and variants) are characterized by a subset of\\\
+    nthe attributes that can be retrieved from the corresponding\\nterminologies. Specifically, (i ) DrugBank provides labels\
+    \ ,\\nsequences , synonyms , InChIKeys , and CAS numbers\\nfor drugs; (ii ) NCBI Entrez provides labels , species ,\\\
+    nsynonyms , descriptions , and genomic coordinates\\nwith associated nucleotide sequences for genes; (iii ) NCBI\\ndbSNP\
+    \ and COSMIC provide labels , species , and ge-\\nnomic coordinates with associated mutations that oc-\\ncur in the nucleotide\
+    \ chain. Many efforts have been devoted\\nto producing a uniform representation of specific attributes\\nlike structures\
+    \ , sequences , mutations , and genomic\\ncoordinates . Figure 3 shows the distribution of nodes\\u2019\\nproperties in\
+    \ RNA-KG, highlighting the cardinality of RNA\\nnodes\\u2019 properties, which will be detailed in the following.\\nProperties\
+    \ specific for RNA molecules\\nRNA molecules are characterized by a set of properties (e.g.\\nlabels , structures , descriptions\
+    \ , genomic coor-\\ndinates , and sequences ) that are mainly acquired from\\ncentralized repositories like Ensembl and\
+    \ RNAcentral, min-\\nimizing the risk of heterogeneity in annotation. The prop-\\nerty genomic coordinates is the most\
+    \ numerous since it\\nis a list of genomic loci (whose items are provided with the\\nstandard format chromosome: start-end\
+    \ strand ) from which\\nRNA molecules are transcribed (the same RNA sequence can\\npresent multiple loci in the genome).\
+    \ Proprietary specialized\\ndatabases contribute additional annotations when molecules\\n\\nEnhancing RNA-KG with Properties\\\
+    n5\\nFigure 3. Node property distribution.\\ncannot be mapped on Ensembl/RNAcentral terminologies (de-\\ntails in the\
+    \ Supplementary material ).\\nFigure 4 shows the hierarchical organization of RNA\\nmolecules along with the associated\
+    \ properties. A property is\\nadded to an RNA class if at least one instance of that class is\\nenriched with that property.\
+    \ Child nodes inherit parent nodes\\u2019\\nproperties. For the sake of readability, RNA drugs and many\\nRNA (sub)categories\
+    \ that are under-represented in RNA-KG\\nare removed from the visualization. For example, RNA an-\\ntisense oligonucleotides\
+    \ subclasses (e.g. PMO ASO, 2MeO\\nASO), tRF subtypes (e.g. tRF-1, tRF-3), scaRNAs, T-box ri-\\nboswitches, ribozymes,\
+    \ and RNA components of RNAses, re-\\ntained introns, precursor RNAs, bacterial RNAs, and RNA\\ndecay molecules are removed\
+    \ because they do not add rele-\\nvant properties to the hierarchy. It is worth noting that nu-\\ncleotide sequences are\
+    \ always associated with an RNA class,\\nbut some of them miss the associated genomic coordinates be-\\ncause they are\
+    \ synthetic (e.g. siRNAs, shRNAs, ASOs) or they\\nare co-located with multiple transcripts, as for piRNAs, and\\nno certain\
+    \ coordinates are provided by the original source.\\nViral RNAs (that usually represent the entire genome of the\\npathogen\
+    \ since RNA virus genomes usually contain relatively\\nfew genes [ 62 ]), bacterial riboswitches, and tRNA sequences\\\
+    nare enriched with their secondary structures (expressed\\nusing the base pair \\u2018dot-bracket\\u2019 notation [ 63\
+    \ ]). These fold-\\nings are crucial for RNA functional analysis as they influence\\nRNA stability, interactions with\
+    \ proteins/RNAs, and the reg-\\nulation of gene expression [ 64 ].\\nRNA-KG edges\\nEdge type distribution\\nRNA-KG includes\
+    \ approximately 100 M typed edges with 424\\ndistinct edge types. Edge types are grounded in OBO ontolo-\\ngies\\u2019\
+    \ properties. Specifically, we used RO properties for anno-\\ntating relationships identified within linked open data\
+    \ sources.\\nThe hierarchical organization of concepts in RO allows the\\nexpression of different kinds of edges at different\
+    \ granulari-\\nties. For example, the general property RO:0002434 interacts\\nwith (the most numerous edge type in RNA-KG\
+    \ due to the\\nintegration of homogeneous sources such as RNAInter [ 65 ])\\ncan be substituted with more specific properties\
+    \ such as molec-\\nularly interacts with or genetically interacts with . Inverse re-\\nlationships are included in RNA-KG\
+    \ (e.g. location of and its\\ninverse located in ). Besides edges coming from linked open\\ndata, we introduced edges\
+    \ stemming from (i ) the integration of\\nthe eleven bio-ontologies according to the abstraction strategy\\ndescribed\
+    \ in [ 66 ] and (ii ) the entity linking technique accord-\\ning to the class-based modeling described in [ 12 ]. The\
+    \ model\\nlinks entities not directly mappable to an ontology term (i.e.\\ndatabase entities without a corresponding ontological\
+    \ identi-\\nfier) to ontology classes using the rdfs:subClassOf property.\\nFigure 5 shows the distribution of edge types\
+    \ in RNA-\\nKG, highlighting the cardinality of the relations involving\\nRNA molecules. The distribution mirrors the\
+    \ biological fo-\\ncus of RNA-KG since more than half of its relationships\\ninvolve RNAs. The figure also points out\
+    \ the relevance of\\nrdfs:subClassOf, which is used for entity linking and ontol-\\nogy integration.\\nEdges\\u2019 properties\\\
+    nFigure 6 outlines the most important edges\\u2019 properties that we\\nhave identified in terms of cardinality and biological\
+    \ relevance,\\nhighlighting properties involving RNA molecules. Examples\\nof properties are (i ) the score that indicates\
+    \ the level of con-\\nfidence for the interaction to occur; (ii ) the method that pro-\\nvides experimental evidence to\
+    \ the interaction (e.g. RT-PCR,\\nAGO-CLIP, ImmunoBlot); (iii ) the specific tissue, cell line, dis-\\nease, phenotype\
+    \ (in general, the context ) where the interac-\\ntion was analyzed; (iv ) the PubMed identi\\ufb01er of the ar-\\nticle\
+    \ where the interaction is described. Interactions can also\\nbe enhanced by variants , epigenetic modi\\ufb01cations\
+    \ ,\\ncompeting molecules or binding partners (RNAs, genes, etc.,\\nin general, the interactor ) that provides further\
+    \ context\\nfor the documented relationship as described by the original\\nsource. Each relationship within RNA-KG is\
+    \ also associated\\nwith the list of sources providing the interaction. Moreover,\\nedges\\u2019 properties are grounded\
+    \ in bio-ontologies and termi-\\nnologies, as we have done for nodes and edge types. For exam-\\nple, methods are grounded\
+    \ in the National Cancer Institute\\nThesaurus (NCIt [ 67 ]), mutations in dbSNP and COSMIC,\\nand regulators in PRO.\\\
+    nSince we are aware that binary relationships usually\\nadopted in the representation of KG are not adequate to\\nmodel\
+    \ dependencies between properties (e.g. the dependence\\nof mutations on the context) and ternary relationships (e.g.\\\
+    nthose observed in ceRNA interactions [ 68 ]), we have chosen\\nto represent this information as a list of attributes\
+    \ because it\\noffers a practical compromise between expressivity and sim-\\nplicity. Modeling these complex dependencies\
+    \ explicitly would\\nrequire blank nodes or reification patterns, which would in-\\ncrease both the complexity of the\
+    \ graph schema and the com-\\nputational overhead in querying and maintenance. Instead,\\nthrough the proposed representation,\
+    \ we can easily extract\\nsubgraphs containing the required information for conducting\\na specific type of analysis,\
+    \ thereby simplifying the application\\nof ML approaches, especially those that are graph-based.\\nExample 1. To illustrate\
+    \ the expressive power of the property-\\ngraph edition of RNA-KG, consider the subgraph in Fig. 7\\ndepicting the interactions\
+    \ among the miRNA hsa-let-7a-\\n5p , the protein-coding gene CDC34 , and the small compound\\nmetformin (for simplicity,\
+    \ labels are used instead of identi-\\nfiers). Node properties provide biological information to be\\n\\n6\\nCavalleri\
+    \ et al.\\nFigure 4. Hierarchy of RNA molecules with associated properties.\\nFigure 5. Edge type distribution.\\nFigure\
+    \ 6. Edge property distribution.\\n\\nEnhancing RNA-KG with Properties\\n7\\nFigure 7. Excerpt of an RNA-KG subgraph.\\\
+    nexploited in downstream analyses. Species and descrip-\\ntion are associated with miRNAs and genes and facilitate\\nthe\
+    \ disambiguation, curation, and filtering of nodes by or-\\nganism or functional role. Genomic coordinates and se-\\nquence\
+    \ can support sequence-based analyses such as RNA-\\ntarget binding prediction, isoform comparison, and integra-\\ntion\
+    \ with data coming from omic studies. Metformin is an-\\nnotated with attributes derived from the ChEBI ontology,\\nincluding\
+    \ formula , SMILES , mass , and charge . Combin-\\ning these features with topological metrics (e.g. node degree,\\ncentrality,\
+    \ closeness) enables chemo-informatics analyses that\\nintegrate chemical and network-based evidence to prioritize\\nmolecules.\\\
+    nEdge properties enrich the semantics of interactions. The\\nedge regulates activityof between hsa-let-7a-5p, and\\nCDC34\
+    \ includes the properties method , PubMedID , and\\nsource . These attributes assess the reliability of interactions\\\
+    nand can be used in inter action-r anking applications [ 69 ] . The\\nedge hsa-let-7a-5p interacts with metformin presents\\\
+    nthe context (i.e. the cancer cells where the interaction was\\nobserved) and the sources confirming the interaction.\
+    \ Dur-\\ning views generation, this knowledge can be used to weigh\\ninteractions and prioritize them.\\nRNA-KG v2.0 also\
+    \ integrates entity linking and ontology\\nnodes and edges (pink relations). hsa-let-7a-5p is linked\\nto its corresponding\
+    \ SO class miRNA via a rdfs:subClassOf\\nrelation. This allows hierarchical querying in Cypher and the\\nretrieval of\
+    \ entities based on their ontology categories. The SO\\nhierarchy includes links between ontology terms (e.g. miRNA\\\
+    nand small regulatory ncRNA ) that can be used for rea-\\nsoning tasks. Furthermore, ontology nodes\\u2019 properties\
+    \ (e.g.\\nlabel , description , and synonyms ) facilitate entity nor-\\nmalization, mapping, and semantic search.\"\n\
+    \  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"The Web portal and API\\nA web portal is available at https://RNA-KG.biodata.di.\\\
+    nunimi.it and provides several facilities for working with RNA-\\nKG v2.0. As shown in Fig. 8 (a), the portal provides\
+    \ a browsing\\ninterface for exploring the KG structure. Starting from a node\\nof the graph, it is possible to expand\
+    \ the visualization with\\nits neighboring nodes and see the properties associated with\\nnodes and edges. Moreover, through\
+    \ the interface in Fig. 8 (b),\\nthe user can generate a customized view by specifying the kind\\nof nodes and edges to\
+    \ be included. Customized and predefined\\nListing 1. API JSON response for the EZR-201 transcript.\\nviews (prepared\
+    \ by our team) can also be downloaded in CSV\\nformat from the web portal. RNA-KG v2.0 is also accessi-\\nble via a RESTful\
+    \ API. The API exposes endpoints to retrieve\\nthe properties of a given entity, incoming and outgoing rela-\\ntionships\
+    \ for an entity, to run Cypher queries on the Neo4j\\ndatabase, and to access metadata and schema-level informa-\\ntion.\
+    \ It also supports filtering options (e.g. for RNAcentral-\\nderived relationships or for including/excluding specific\
+    \ fields)\\nand provides JSON-formatted responses, making it easier to\\nintegrate with other tools.\\nExample 2. Suppose\
+    \ we are interested in the Ensembl tran-\\nscript EZR-201 (with identifier ENST00000337147). The\\nfollowing API can be\
+    \ inv ok ed to obtain the JSON in Listing 1\\nwith the genomic coordinates, description, and sequence.\\nhttps://rna-kg.biodata.di.unimi.it/api/v1/\\\
+    nnode/id?node _ id=ENST00000337147&node _ id _\\nscheme=Ensembl\\nThe RNA-KG v2.0 API also enables the retrieval of topo-\\\
+    nlogical information, sequence-based evidence, and node- and\\nedge-level properties of an RNA molecule to prioritize\
+    \ the\\nmost promising candidates for experimental validation.\\nExample 3. T he following API call makes easy to prioritize\\\
+    nthe miRNAs that down-regulate the transcript EZR-201 .\\nhttps://rna-kg.biodata.di.unimi.it/api/v1/\\nincoming/id?node\
+    \ _ id=ENST00000337147&node _\\nid _ scheme=Ensembl\\n\\n8\\nCavalleri et al.\\nFigure 8. RNA-KG web portal.\\nAmong the\
+    \ different relationships in which EZR-201 can\\nbe inv olv ed that are contained in the JSON response, we\\ncan extract\
+    \ those of type directly negatively regulates activ-\\nity of , which corresponds to the canonical repression mech-\\\
+    nanism exerted by miRNAs on mRNAs (as also formalized\\nin the RO ontology term). Four candidate miRNAs down-\\nregulate\
+    \ EZR-201 (among the more than 5,000 miRNAs doc-\\numented in RNA-KG): hsa-miR-183-5p , hsa-miR-335-\\n3p , hsa-miR-205-5p\
+    \ , and hsa-miR-345-5p .\\nA list of the main endpoints with their descriptions, in-\\nput/output examples, and HTTP methods\
+    \ is provided in\"\n  },\n  {\n    \"name\": \"Supplementary Table S4 . The complete API documentation is\",\n    \"text\"\
+    : \"available at https:// RNA-KG.biodata.di.unimi.it/ api/ v1/ docs ,\\nwith details of usage and outputs.\\nApplications\
+    \ and use cases\\nRNA-KG v2.0 enhances its utility in multiple ways. First, it en-\\nables fine-grained queries, allowing\
+    \ users to filter interactions\\nnot only by molecular entities but also by context, experimen-\\ntal method, or supporting\
+    \ literature. Furthermore, node and\\nedge properties can also be leveraged as additional features\\nto improve the performance\
+    \ of ML models across different\\n\\nEnhancing RNA-KG with Properties\\n9\\nListing 2. Query to retrie v e interactions\
+    \ between miRNAs and genes\\nv alidated b y a w estern blotting assa y in RNA-KG (and e x cerpt of the\\nresult).\\nListing\
+    \ 3. Query to retrie v e miRNAs whose uracile percentage is abo v e\\n55% (and e x cerpt of the result).\\ntasks. Finally,\
+    \ bio-entities interactions can be integrated with\\ninformation from external sources (e.g. RNAcentral) via the\\nRNA-KG\
+    \ API, enabling further analysis. In the remainder, dif-\\nferent applications and use cases will be discussed. The corre-\\\
+    nsponding code is available in the experiments directory of\\nthe GitHub repository.\\nContext-aware Cypher queries\\\
+    nCypher can be exploited for extracting node properties, direct\\nand indirect relationships among bio-entities, and subgraphs.\\\
+    nSeveral conditions can be easily expressed depending on the\\nresearch questions the biologists have in mind.\\nExample\
+    \ 4. Suppose biologists are interested in identifying\\nthe interactions between miRNAs and genes that western blot-\\\
+    nting assays have experimentally validated. Listing 2 shows the\\nCypher query and an excerpt of the corresponding result\
+    \ to\\nretriev e relationships betw een miRNAs and genes. Whenev er\\nthe relationship r has been confirmed by western\
+    \ blotting as-\\nsays, the query returns the label of the miRNA molecule, the\\ntype of interaction, and the label of\
+    \ the target gene. By its ex-\\necution, w e discov er that regulates activity of is the only rela-\\ntionship type between\
+    \ them. Furthermore, the query retrieves\\n2,738 interactions involving 651 miRNAs and 1,032 genes,\\nconfirming that\
+    \ a single miRNA can regulate multiple target\\ngenes [ 1 ] . Only mature miRNAs are inv olv ed as they are in-\\ncorporated\
+    \ into the RISC complex and are functionally active\\nin the recognition and regulation of target genes.\\nExample 5.\
+    \ Suppose biologists wish to retrieve miRNAs that\\nare rich in uracil, which may be relevant for structure, stabil-\\\
+    nity, and molecular netw or k studies. This request requires im-\\nposing conditions on the miRNA sequences. Listing 3\
+    \ shows\\nthe corresponding query and an excerpt of the result. We first\\ndetermine for each miRNA molecule the total\
+    \ number of\\nListing 4. Query to retrie v e miRNA-gene-disease triples with shared\\nPubMedIDs (and excerpt of the result).\\\
+    nuracil bases contained in its sequence (using the WITH clause).\\nThen, miRNAs\\u2019 label and sequence whose uracil\
+    \ (\\u2018U\\u2019) content\\nexceeds 55% are returned.\\nIn RNA-KG, many of these uracil-rich miRNAs are con-\\nnected\
+    \ to specific transcription factors and regulate genes. For\\nexample, hsa-miR-3613-5p interacts with metal-response\\\
+    nelement-binding transcription factor 2 ( MTF2 ) while also reg-\\nulate a large set of ribosomal protein genes, translation\
+    \ factors,\\nand pseudogenes, including RPL26P6 , RPS4XP22 , ETF1P3 ,\\nEIF4EP2 , UBE2D3P1 , and MYL6P5 . This pattern\
+    \ suggests\\nthat uracil-rich miRNAs ma y preferentiall y interact with TFs\\nwith a primary role in histone and repressor\
+    \ binding activ-\\nity (such as MTF2 ) and regulate genes inv olv ed in ribosomal\\nand pseudogene netw or ks. Associations\
+    \ betw een miRNA se-\\nquences and the functional pathways of their targets have been\\nreported in [ 70 ] , indicating\
+    \ that GU-rich motifs are often in-\\nv olv ed in specific regulatory mechanisms.\\nExample 6. Suppose biologists are\
+    \ interested in identifying\\nPubMed articles that describe how miRNAs regulate the ac-\\ntivity of genes known to cause\
+    \ or contribute to the develop-\\nment of a specific disease. In this case, we need to identify a\\npath of length 2 in\
+    \ RNA-KG where the first entity is a miRNA\\nthat is connected through a relationship regulates activity of\\nwith a Gene\
+    \ that in turn is connected through a relationship\\ncauses or contributes to condition with a Disease . When\\nthis pattern\
+    \ is identified, the common PubMed articles that\\nsupport both interactions are retrieved. Listing 4 shows the\\ncorresponding\
+    \ query and an excerpt of the result. The MATCH\\nclause reports the identification of the path among miRNA ,\\nGene ,\
+    \ and Disease . Then, the WITH clause computes the in-\\ntersection of PubMed IDs between the two relationships for\\\
+    neach miRNA\\u2013gene\\u2013disease triple. Only ternary relationships\\nwith at least one shared PubMed ID are returned,\
+    \ along with\\nthe miRNA, gene, disease, and supporting PubMed IDs.\\nFrom the execution of this query, we observed that:\
+    \ (i ) in\\nPubMed article 23834033 , the miRNA hsa-miR-34a-5p is\\nassociated with inherited obesity when it regulates\
+    \ the gene\\nNAMPT , (ii ) in PubMed article 19839049 , the miRNAs hsa-\\nmiR-200c-3p and hsa-miR-200b-3p regulate the\
+    \ gene\\nZEB2 , contributing to breast carcinoma.\\nThus, RNA-KG 2.0 allows: (i ) given a PubMed article, to\\nidentify\
+    \ relationships without having to read the full text, and\\n(ii ) given specific relationships (e.g. miRNA\\u2013gene\\\
+    u2013disease as-\\nsociations), to determine the articles supporting them.\\nAll these queries allow the extraction of\
+    \ tabular data that\\ncan be used for conducting different kinds of analyses. They\\n\\n10\\nCavalleri et al.\\ncan be\
+    \ used to train supervised ML techniques or to group\\ndata according to specific hypotheses or research questions.\\\
+    nContent-aware KG pruning and clustering\\nTraditional approaches to KG pruning (i.e. the process of con-\\nflating or\
+    \ removing nodes and edges that are irrelevant to a\\nspecific analysis [ 71 ]) and clustering (i.e. grouping highly sim-\\\
+    nilar nodes) typically rely on topological criteria [ 72 , 73 ] or\\nincorporate \\u2018domain-aware\\u2019 knowledge\
+    \ [ 74 , 75 ]. For exam-\\nple, the GRAPE [ 76 ] library identifies \\u2018topological oddities\\u2019\\nof a graph, that\
+    \ is, nodes that are topologically indistinguish-\\nable because they share the same type and neighbors. More-\\nover,\
+    \ nodes can be clustered together to discover communi-\\nties relying on connected components, clustering coefficients,\\\
+    nand neighborhood similarity, as well as low-dimensional pro-\\njections via dimensionality reduction techniques like\
+    \ t-SNE.\\nHowever, in many use cases, it is desirable to complement\\nstructural information with the semantic content\
+    \ encoded in\\nthe node and edge attributes. For example, \\u2018biologically simi-\\nlar\\u2019 RNA molecules can be\
+    \ clustered by considering sequence\\nalignment techniques [ 77 , 78 ] or according to the tissue in\\nwhich they are\
+    \ expressed or active, allowing the discovery of\\ntissue-specific and functionally-related entities.\\nIn all these situations,\
+    \ the rich set of properties that are\\nmade available in RNA-KG v2.0 can be exploited to define\\napproaches that are\
+    \ both topological and content-aware.\\nExample 7. Suppose we are interested in studying physical in-\\nteractions involving\
+    \ sncRNAs. The subgraph of interest con-\\nsists of approximately 9.8k nodes, 244.8k edges, and 4 edge\\ntypes: interacts\
+    \ with , genetically interacts with , molecularly\\ninteracts with , and directly regulates activity of . In this sub-\\\
+    ngraph, we identified 177 isomorphic node groups involv-\\ning 2.8k nodes (mainly miRNA and tsRNA sequences) and\\n139.3k\
+    \ edges (56.9% of the total). This high density can be\\nexplained by the biological tendency of tsRNAs to act in co-\\\
+    nordinated groups [ 79 ] . A topological pruning approach would\\ncollapse all nodes in each group into a single representative,\\\
+    npotentially reducing the edges to 48k. Although this strategy\\nwould greatly reduce the size of the graph, it would\
+    \ also risk\\ndiscarding biologically significant differences among the se-\\nquences.\\nTo mitigate this phenomenon,\
+    \ the average global sequence\\nalignment scores can be computed within each group using the\\nNeedleman\\u2013Wunsc h\
+    \ alg orithm [ 78 ] . Fig. 9 shows the distri-\\nbution of alignment scores across groups. A total of 78 groups\\n(49.7%)\
+    \ involving 596 sequences exhibit a score exceeding\\nthe median (highlighted in red in the boxplot). By only col-\\nlapsing\
+    \ nodes within groups whose members show high bio-\\nlogical similarity (i.e. groups with alignment scores above the\\\
+    nmedian), the graph size is reduced to 9 . 3 k nodes and 196 . 3 k\\nedges (a 19.8% reduction) while preserving both topological\\\
+    nand content-aware information.\\nTopological and context-aware link predictions\\nLink prediction is a core task in KG\
+    \ analysis, aiming to in-\\nfer new plausible edges between entities based on the graph\\nstructure and content. Existing\
+    \ approaches only exploit the\\nnetwork topology (homogeneous methods), the topology and\\nthe nodes\\u2019 and edges\\\
+    u2019 types (heterogeneous methods), or that\\nalso combine the node and edge properties (multimodal meth-\\nods).\\nFigure\
+    \ 9. Alignment scores distribution of sncRNA isomorphic groups.\\nWe have recently demonstrated [ 24 ] that when interested\\\
+    nin identifying the existence of an edge between two KG\\nnodes, simple homogeneous graph representation learning\\n(GRL)\
+    \ methods (e.g. LINE [ 80 ] and node2vec [ 81 ]) com-\\nbined with Random Forests (RF) achieve a balanced accuracy\\nabove\
+    \ 80% for homogeneous link prediction tasks involving\\nmiRNA-miRNA, miRNA-gene, and lncRNA-disease relation-\\nships.\
+    \ Thus, these approaches can be used when we are inter-\\nested in the existence of a link or when the KG is quite homo-\\\
+    ngeneous and a few types of edges occur between the same pair\\nof node types.\\nWhen we wish to identify the existence\
+    \ of an edge between\\ntwo KG nodes and the type of their relationship, heteroge-\\nneous GRL methods (e.g. TransE [ 82\
+    \ ], ComplEx [ 83 ], and\\nMetapath2Vec [ 84 ]) can be employed. These methods embed\\nboth node and edge types, thus\
+    \ predicting the existence of\\na link and the specific interaction type. These methods are\\nrelevant when we need to\
+    \ discriminate among multiple se-\\nmantic relations that may exist between the same types of\\nentities. For example,\
+    \ when studying RNA\\u2013disease interac-\\ntions, we might be interested in determining whether an RNA\\nmolecule is\
+    \ over-expressed in , under-expressed in , contributes\\nto , or causes a given disease.\\nMultimodal link prediction\
+    \ methods [ 85 ] further extend\\nhomogeneous and heterogeneous approaches by incorpo-\\nrating complementary information\
+    \ contained in nodes\\u2019 and\\nedges\\u2019 attributes in the learning process. For instance, fine-\\ntuned transformers\
+    \ like BioBERT [ 86 ] or DNABERT [ 87 ]\\ncan be used to embed textual biomedical descriptions and se-\\nquences. These\
+    \ embeddings can be concatenated with those\\nobtained by GRL methods to enhance the topologically based\\nprediction\
+    \ method with biological and contextual informa-\\ntion.\\nExample 8. To evaluate the behavior of the link prediction\\\
+    napproaches on RNA-KG, we generated a view, named miR-\\nNAdisease , with 105 k nodes and 1 . 6 M edges that aims to\\\
+    nrepresent the biological and functional context of miRNAs\\nby including their interactions with diseases, phenotypes,\
+    \ epi-\\ngenetic changes, and genes. miRNAs and genes are enhanced\\nwith sequences, while diseases and phenotypes are\
+    \ enhanced\\nwith ontological descriptions. Supplementary Fig. S1 reports\\ndetails on node distribution and edge cardinality\
+    \ (only edges\\nwith more than 1 k occurrences are shown for the sake of read-\\nability).\\nTable 2 reports the balanced\
+    \ accuracy on our view. We dis-\\ntinguish between homogeneous link prediction (denoted Hom ,\\npredicting the existence\
+    \ of an edge, regardless of its type), het-\\n\\nEnhancing RNA-KG with Properties\\n11\\nTable 2. Link prediction results\
+    \ on miRNAdisease\\nBalanced accuracy\\nModel\\nEdge\\nHom\\nMHom\\nHet\\nMHet\\nGene-Dis.\\n89.09%\\n89.39%\\n89.09%\\\
+    n89.42%\\nGene-Phen.\\n80.12%\\n80.97%\\n80.13%\\n80.83%\"\n  },\n  {\n    \"name\": \"LINE\",\n    \"text\": \"RNA-Dis.\\\
+    n75.38%\\n75.71%\\n49.51%\\n49.34%\\nRNA-Gene\\n61.44%\\n66.49%\\n43.58%\\n48.00%\\nRNA-Phen.\\n74.29%\\n74.67%\\n49.87%\\\
+    n50.21%\\nGene-Dis.\\n90.43%\\n89.68%\\n90.00%\\n89.65%\\nGene-Phen.\\n82.06%\\n81.31%\\n81.76%\\n81.08%\\nn2v\\nRNA-Dis.\\\
+    n76.28%\\n76.02%\\n50.18%\\n49.96%\\nRNA-Gene\\n72.31%\\n72.90%\\n51.96%\\n52.85%\\nRNA-Phen.\\n74.94%\\n74.73%\\n50.77%\\\
+    n50.33%\\nGene-Dis.\\n75.51%\\n80.47%\\n75.53%\\n80.47%\\nGene-Phen.\\n64.30%\\n69.84%\\n64.54%\\n69.84%\\nTransE\\nRNA-Dis.\\\
+    n75.78%\\n74.41%\\n84.01%\\n53.46%\\nRNA-Gene\\n58.71%\\n63.99%\\n64.87%\\n70.91%\\nRNA-Phen.\\n75.85%\\n73.14%\\n83.14%\\\
+    n55.30%\\nerogeneous link prediction ( Het , predicting both the existence\\nand type of an edge), and their corresponding\
+    \ multimodal\\nvariants ( MHom and MHet ). DNABERT was used to embed\\nsequences and BioBERT for descriptions. We concatenated\\\
+    nthese embeddings with those produced by LINE, node2vec\\n( n2v ), and TransE.\"\n  },\n  {\n    \"name\": \"Results confirm\
+    \ that node2vec outperforms LINE and\",\n    \"text\": \"TransE in homogeneous prediction; TransE outperforms\\nLINE and\
+    \ node2vec in heterogeneous link prediction tasks\\nwhen more than one edge type is present at sc hema-lev el (i.e.\\\
+    nmiRNA-gene and miRNA-disease). TransE ac hiev es better re-\\nsults by disambiguating the four semantically distinct\
+    \ edge\\ntypes between miRNAs and diseases. Finally, the multi-modal\\napproac h improv es the performance in 9 out of\
+    \ 15 cases for\\nthe homogeneous link prediction task and in 8 cases for the\\nheterogeneous task (highlighted in bold),\
+    \ with gains up to\\n+ 5% in balanced accuracy observed for RNA-gene predic-\\ntions in both LINE and TransE. Supplementary\
+    \ material re-\\nports the used parameters.\\nTime-stratified link prediction.\\nA key property introduced in RNA-KG 2.0\
+    \ is the PubMed\\nidentifier of scientific articles that support the existence of rela-\\ntions among bio-entities ( 14\
+    \ . 3 M edges have been annotated).\\nFrom these identifiers, we can extract the publication year that\\ncan be exploited\
+    \ for observing the content of the KG at differ-\\nent instants of time.\\nExample 9. To show the relevance of the publication\
+    \ date\\nwhen c hec king for new advancements on regulatory RNA\\nmolecules for the development of new therapies and vaccines,\\\
+    nwe extr acted inter actions from RNA-KG involving miRNA,\\ngene, diseases, phenotypes, and epigenetic modifications.\
+    \ They\\nare supported by 52 k PubMed articles that we grouped to-\\ngether relying on the year of publication. Starting\
+    \ from the\\ngraphical distribution of articles per year reported in Fig.\\n10 , w e can observ e that more than 84% of\
+    \ the relations\\nw ere discov ered after 2019, the y ear mar king the emergence\\nof COVID-19 and a subsequent surge\
+    \ in RNA-related studies.\\nTime-stratified link prediction can be realized by training\\nmodels with the knowledge available\
+    \ up to a given instant of\\nFigure 10. Distribution of articles per year in miRNAdisease .\\ntime and then evaluate their\
+    \ ability to predict links discovered\\nlater. KG quality can be validated through this approach, as\\nit is expected\
+    \ to support the discovery of future knowledge\\nbased on past evidence.\\nExample 10. To validate the miRNAdisease view\
+    \ using a\\ntime-stratified scenario, we trained a ML model on its relations\\nsupported by articles published before\
+    \ 2022. Interactions dis-\\ncovered after 2022 are used as a test set. These links repre-\\nsent knowledge that w as not\
+    \ av ailable at training time and to\\nwhic h w e aim to assign high probability scores. The model has\\nbeen conceived\
+    \ through node2vec embeddings coupled with a\\nRF classifier, following our link prediction pipeline [ 24 ] .\\nFig. 11\
+    \ reports the distributions of probability scores for\\ninteractions involving miRNA molecules in the test set. Re-\\\
+    nsults show that 82% of the predicted links ac hiev e prediction\\nscores well above 0.5 (highlighted in red), with median\
+    \ scores\\nexceeding 0.6. The boxes corresponding to years 2023 and\\n2024 appear wider, possibly due to a larger number\
+    \ of novel\\ninteractions and/or increased variability in their nature. This\\nsuggests that the KG can support meaningful\
+    \ predictive infer-\\n\\n12\\nCavalleri et al.\\nFigure 11. node2vec probabilities for relations discovered after 2022.\\\
+    nence, as the model can anticipate future associations relying\\non prior evidence.\\nHypothesis generation through RNA-KG\\\
+    nRNA-KG v2.0 facilitates the generation of new, testable bi-\\nological hypotheses by integrating molecular interaction\
+    \ and\\nsequence information, allowing researchers to identify candi-\\ndate molecules, regulatory mechanisms, and disease\
+    \ associa-\\ntions for further investigation.\\nExample 11. Using the API call of Example 2, we discover\\nthe existence\
+    \ of a siRNA sequence ( https:// web.mit.edu/ sirna/\\nsequences/results-1061.html) that represses EZR-201 with a\\nreported\
+    \ knockdown percentage of 70\\u201380%. The presence of\\na siRNA targeting the transcript may contribute to hypothesis\\\
+    ngeneration in two wa ys: (i ) anal yzing the siRNA sequence can\\nguide the design or discovery of novel siRNAs or ASOs\
+    \ with\\nstronger regulatory effects; (ii ) using the RNAcentral \\u2018Search\\u2019\\ntool, this siRNA is found to share\
+    \ similarity with four poorly\\ncharacterized human sRNAs, potentially worth further inves-\\ntigation. Interestingly,\
+    \ these sRNAs interact with several lncR-\\nNAs in RNA-KG.\\nML models trained on RNA-KG can be used to generate\\nhypotheses\
+    \ by predicting novel RNA\\u2013disease associations that\\nare not documented in RNA-KG. Articles associated with can-\\\
+    ndidate RNAs can be explored through the RNAcentral \\u2018Pub-\\nlications\\u2019 tab to assess involvement in diseases\
+    \ of interest.\\nExample 12. Using a node2vec + RF model trained on the\\nmiRNAdisease view, we infer that hsa-miR-345-5p\
+    \ is as-\\nsociated with ovarian cancer with a prediction score of 0.80.\\nAlthough this association is not represented\
+    \ in RNA-KG, a\\nresearcher finds that this claim is supported by the literature\\nusing the RNAcentral \\u2018Publications\\\
+    u2019 tab with \\u2018ovarian cancer\\u2019\\nas filter. Experimental studies can be prioritized based on the\\ninv olv\
+    \ ement of this miRNA in ovarian cancer over other can-\\ndidate miRNAs/diseases.\\nIntegr ating RN A-KG with external\
+    \ -omics sources\\nSeveral types of analyses can be performed by integrating\\nthe information available in RNA-KG and\
+    \ other -omics data\\nsources, leveraging the provided API. Such integration enables\\nthe combination of structural,\
+    \ functional, interaction-based,\\nexpression, and literature-derived facts about RNA molecules,\\nwhich are often not\
+    \ available in a single resource.\\nUsing the recent integration of RNA-KG relationships in\\nthe RNAcentral portal [\
+    \ 19 ], a biologist interested in a spe-\\ncific molecule, such as the human microRNA hsa-miR-183-5p\\ninvolved in cancer\
+    \ progression, can visually explore its inter-\\naction network through the RNAcentral \\u2018Relationships\\u2019 tab\\\
+    n(highlighted in red in Fig. 12 ). From this view, rapid hypoth-\\nesis generation can be performed without requiring\
+    \ API calls\\nor programming skills.\\nMoreover, additional mRNA interactions from IntAct [ 88 ],\\nconserved sequence\
+    \ annotations, RNA editing annotations\\nfrom REDIportal, and functional GO annotations can be eas-\\nily accessed and\
+    \ integrated with the interactions contained in\\nRNA-KG. Cross-referencing these annotations compensates\\nfor information\
+    \ intentionally omitted from RNA-KG to re-\\nduce the graph size (e.g. A-to-I editing events would dominate\\nthe graph\
+    \ structure if represented as relationships), allowing\\ntheir retrieval \\u2018on-the-fly\\u2019 only when actually needed.\\\
+    nFurthermore, the RNAcentral \\u2018Search\\u2019 tool can be used to\\nretrieve candidate ASO, siRNA, and miRNA sequences,\
+    \ ex-\\npanding sets with conserved homologs or natural counter-\\nparts similar to synthetic inputs. By cross-referencing\
+    \ these\\nsequences with RNA-KG relationships, researchers can as-\\nsess potential participation in regulatory networks,\
+    \ interac-\\ntions with disease targets, or shared functional annotations,\\nhelping prioritize candidates for experimental\
+    \ validation or\\ntherapeutic design.\\nFinally, additional RNAcentral functionalities (e.g. the new\\n\\u2018Gene\\u2019\
+    \ tab, expression profiles across tissues from Expres-\\nsion Atlas [ 27 ] accessible within the \\u2018Expression\\u2019\
+    \ tab, Lit-\\nSumm [ 89 ], R2DT [ 90 ]) and complementary prediction tools\\n(e.g. DIANA-microT) can be exploited to further\
+    \ enrich the\\ncharacterization of RNA molecules, providing insights into\\nfamily relationships, structural and expression\
+    \ features, and\\npredicted binding sites and binding types (e.g. 6mer, 9mer).\\nThese data can also be incorporated into\
+    \ multimodal ML\\nmodels to complement interaction- and property-based evi-\\ndence, similarly to what has been done in:\
+    \ (i ) MMnc [ 91 ],\\nwhich proposes a deep-learning framework that classifies non-\\ncoding RNAs into functional groups\
+    \ by leveraging sequences,\\nsecondary structures, and expression profiles; (ii ) MolFM\\n(Multimodal Molecular Foundation\
+    \ Model [ 92 ]), which inte-\\ngrates molecular structure, biomedical literature, and KG data\\nthrough a cross-modal\
+    \ attention mechanism for performing\\nproperty prediction, drug\\u2013target interaction prediction, and\\nmolecule\\\
+    u2013text retrieval; and (iii ) M2REMAP [ 93 ], which em-\\nbeds chemical structures, patient records, and drug\\u2013disease\
+    \ re-\\nlationships to prioritize molecule\\u2013disease associations.\\nExample 13. Suppose a biologist wishes to extract\
+    \ a subnet-\\nw or k of lncRNA\\u2013miRNA interactions associated with cancer-\\nrelated processes and identify a molecular\
+    \ relationship be-\\ntween the lncRNA TSIX and the miRNA hsa-miR-155-\\n5p . This interaction, imported from LncBase [\
+    \ 94 ] and char-\\nacterized by a DIANA-microT score of 0.82, indicates a high-\\nconfidence for playing a role in post-transcriptional\
+    \ regulation\\nrelevant to oncogenic mechanisms, and thus warrants further\\nexperimental validation. To enrich this relationship\
+    \ with con-\\ntextual biological evidence, complementary data can be re-\\ntrieved from external sources. For example,\
+    \ RNAcentral pro-\\nvides conserved sequence motifs for both molecules and a tex-\\ntual summary for TSIX , while REDIportal\
+    \ characterizes RNA\\nediting events occurring on the sequence of TSIX and that may\\naffect the binding affinity between\
+    \ them.\\n\\nEnhancing RNA-KG with Properties\\n13\\nFigure 12. RNAcentral \\u2018Relationships\\u2019 tab for hsa-miR-183-5p\
+    \ .\\nFig. 13 shows the pipeline for integrating this complemen-\\ntary evidence within the subgraph extracted from RNA-KG.\\\
+    nMotifs and editing events are modeled as nodes connected to\\nTSIX and hsa-miR-155-5p through the relationship char-\\\
+    nacteristic of part of (annotated with the nucleotide interval\\nwhere the motif occurs e.g. \\u20181\\u201323\\u2019)\
+    \ and involved in (annotated\\nwith the positions of editing events e.g. \\u20181828\\u2019, \\u20181840\\u2019). More-\\\
+    nover, introducing a property to the TSIX node with the text\\n\\u2018 TSIX is a non-coding RNA that plays a crucial role\
+    \ in the\\nregulation of X chromosome inactivation, particularly by re-\\npressing the expression of its antisense transcript\
+    \ XIST. It is\\ninvolved in a complex regulatory network where its expres-\\nsion can be influenced by factors such as\
+    \ REX1 and OCT4.\\u2019,\\nreinforces the hypothesis that TSIX participates in complex\\npost-transcriptional netw or\
+    \ ks and interact with specific miR-\\nNAs.\\nThe integrated subgraph can be generated \\u2018on-the-fly\\u2019 and\\\
+    nlever aged to acceler ate hypothesis gener ation by assessing\\nwhether interactions are consistent with known regulatory\\\
+    nmec hanisms suc h as the sponge-lik e function of lncRNAs in\\nmiRNA-mediated regulation (ceRNA). This supports the pri-\\\
+    noritization of the most plausible candidates for experimen-\\ntal validation. Finally, the enriched subgraph can serve\
+    \ as\\ninput for downstream ML models that encode topological,\\nsequence-, text-, and event-based features, injecting\
+    \ further\\ncontext into RNA\\u2013RNA interaction prediction and improv-\\ning explainability of inferred relationships.\"\
+    \n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"In this paper, we presented the new characteristics of the\
+    \ en-\\nhanced version of RNA-KG. It now contains properties as-\\nsociated with bio-entities and their interactions that\
+    \ can be\\nexploited for various kinds of analysis and research activities.\\nWe described various use cases that leverage\
+    \ the new informa-\\ntion contained in this version of the system. The KG is pub-\\nlicly accessible, can be easily queried,\
+    \ and is integrated in the\\nRNAcentral portal.\\nWe are currently working on enhancing RNA-KG in dif-\\nferent directions.\
+    \ While the current version focuses on human\\nmolecules, entities and relationships from other species should\\nbe included,\
+    \ along with additional information extracted from\\nexternal sources. This expansion will increase the RNA-KG\\ncoverage\
+    \ and enable comparative and cross-species analyses.\\nThe use of automatic techniques to incorporate additional\\nfacts\
+    \ into RNA-KG may propagate errors already present in\\nthe original sources. In future work, we plan to adopt anomaly\\\
+    ndetection techniques [ 95 ] for KGs to prevent the introduction\\nof potential false-positive relationships. Moreover,\
+    \ RNA-KG\\nis static while biological networks are context-dependent and\\nrelationships among molecules often hold only\
+    \ within spe-\\ncific subsystems (e.g. n-ary interactions such as ceRNA mecha-\\nnisms) or temporal windows. Incorporating\
+    \ temporal dimen-\\nsions and contextual constraints would allow modeling dy-\\nnamic changes in RNA interactions. To\
+    \ further enhance rela-\\ntionship representation, a hypergraph model should be used.\\nThe integration of external -omics\
+    \ or predictive resources\\nmay require additional normalization and mapping efforts.\\nAlthough many lookup tables are\
+    \ provided to support this\\nprocess, they are static and must be regularly updated to re-\\nflect evolving identifiers\
+    \ and naming conventions. The devel-\\nopment of an RNA ontology could mitigate this limitation by\\nproviding an up-to-date\
+    \ mapping framework.\\nThe presence of an ontology is of paramount importance\\nfor the description of the characteristics\
+    \ of coding and non-\\ncoding RNA molecules. However, the current tentative pro-\\nposals do not take the heterogeneity\
+    \ of identification schemes\\nacross RNA sources into account, do not provide mapping\\n\\n14\\nCavalleri et al.\\nFigure\
+    \ 13. Example of data integration pipeline in v olving relationships from RNA-KG v2.0.\\nrules between identification\
+    \ systems, and do not include prop-\\nerties that characterize RNA molecules (e.g. sequences, struc-\\ntures, and descriptions).\
+    \ Moreover, they fail to capture recent\\nadvancements in RNA research. The Non-Coding RNA On-\\ntology (NCRO [ 96 ])\
+    \ was published over eight years ago and\\nfocuses on the classification of non-coding RNA molecules\\nwith an emphasis\
+    \ on representation of the over 2 k human\\nstem-loop miRNAs. However, cross-references are not up-\\nto-date and relevant\
+    \ properties (like the sequence) are not\\nprovided. NCRO also lacks representation of other ncRNA\\nmolecules (e.g. lncRNA,\
+    \ circRNA) now recognized as pivotal\\nin therapeutic and diagnostic contexts. The RNA Ontology\\n(RNAO [ 97 ]) was published\
+    \ more than fifteen years ago and\\nfocuses on 3D RNA structures, including classes about bio-\\nchemical and molecular\
+    \ types but does not include RNA se-\\nquences, limiting its utility in sequence-specific applications.\\nFor these reasons,\
+    \ we would like to develop a new ontol-\\nogy that leverages the knowledge contained in RNA-KG v2.0\\nand complements\
+    \ existing RNA sequence repositories such as\\nRNAcentral and Ensembl by providing an ontological repre-\\nsentation of\
+    \ RNA transcripts. The new \\u2018Gene\\u2019 feature recently\\nintroduced in RNAcentral already moves in this direction,\
+    \ as\\nit clusters similar transcripts into gene-level entries with their\\nown identifier. Such structured information\
+    \ could serve as a\\nfoundation for building the new RNA ontology and better\\nannotate many experiments about RNA interactions\
+    \ that op-\\nerate at the gene level rather than the transcript level.\\nA c kno wledg ements\\nThis research was in part\
+    \ supported by the \\u2018National Cen-\\nter for Gene Therapy and Drugs based on RNA Technology\\u2019,\\nPNRR-NextGeneration\
+    \ EU program [G43C22001320007],\\nand in part by the MUSA - Multilayered Urban Sustainabil-\\nity Action - Project, funded\
+    \ by the PNRR-NextGeneration EU\\nprogram ([G43C22001370007], Code ECS00000037). The\\nauthors wish to thank Prof. Giorgio\
+    \ Valentini for mentoring\\nus in the \\u2018RNA world\\u2019 and Dr. Blake Sweeney for his valuable\\ncomments on the\
+    \ use cases presented in this paper. We also\\nthank the anonymous reviewers whose insightful comments\\nhelped improve\
+    \ the quality of the manuscript.\"\n  },\n  {\n    \"name\": \"Author contributions : E.C. and M.M. conceived the experi-\"\
+    ,\n    \"text\": \"ment(s), E.C. conducted the experiment(s), E.C. and P .P . devel-\\noped the RNA-KG web portal, E.C.\
+    \ and M.M. analysed the re-\\nsults. E.C., P .P ., and M.M. wrote and reviewed the manuscript.\"\n  },\n  {\n    \"name\"\
+    : \"Supplementary data\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary data is available at NAR Genomics\
+    \ & Bioin-\",\n    \"text\": \"formatics online.\\nConflict of interest\\nNone declared.\"\n  },\n  {\n    \"name\": \"\
+    Funding\",\n    \"text\": \"This research was in part supported by the \\u2018National Cen-\\nter for Gene Therapy and\
+    \ Drugs based on RNA Technology\\u2019,\\nPNRR-NextGeneration EU program [G43C22001320007],\\nand in part by the MUSA\
+    \ - Multilayered Urban Sustainabil-\\nity Action - Project, funded by the PNRR-NextGeneration EU\\nprogram ([G43C22001370007],\
+    \ Code ECS00000037).\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"The new release of RNA-KG is\
+    \ stored as a property graph\\ndatabase. A web portal is available at https://RNA-KG.\\nbiodata.di.unimi.it and provides\
+    \ several facilities for work-\\ning with RNA-KG v2.0, and a public Neo4j query endpoint\\nhas been realized and made\
+    \ available at https://neo4j.biodata.\\ndi.unimi.it with username and password rnakgv20 . Data\\nand code for reproducing\
+    \ experiments are available in Zen-\\nodo and GitHub at the links: https:// doi.org/ 10.5281/ zenodo.\\n10078876 ; https://\
+    \ github.com/ AnacletoLAB/ RNA-KG . The\\nGitHub repository provides Python scripts and Jupyter note-\\nbooks (stored\
+    \ in the notebooks directory) to process from\\nscratch the 91 linked open data repositories and ontologies\\nthat compose\
+    \ the current release of RNA-KG. These scripts\\ncan be applied to process similar sources, and the GitHub\\nrepository\
+    \ can be used to suggest new data providers to our\\nteam via the Issues tab. Code is available for each of the fol-\\\
+    nlowing KG construction steps: (i ) Download, clean, and merge\\nthe 11 ontologies describing RNA-KG v2.0 schema (ontolo-\\\
+    ngies are processed according to PheKnowLator\\u2018s implementa-\\ntion of OWL-NETS [ 12 , 66 ]); (ii ) define and generate\
+    \ lookup\\ntables for normalizing entities according to standard identi-\\n\\nEnhancing RNA-KG with Properties\\n15\\\
+    nfiers; (iii ) process entities, relationships, and their properties\\nfrom the 80 linked open data repositories. Finally,\
+    \ a bash com-\\nmand is provided to import the generated files ( nodes.csv and\\nedges.csv ) into a Neo4j server storage.\\\
+    nThe Zenodo repository provides: (i ) descriptive statis-\\ntics about RNA-KG v2.0, (ii ) a copy of the intermediate\\\
+    nnodes.csv and edges.csv files to reduce the need for re-\\nrunning the entire pipeline, (iii ) a Neo4j dump of the full\\\
+    ndatabase, and (iv ) a resources.zip archive containing addi-\\ntional intermediate files relevant for constructing the\
+    \ KG. The\\nlatter may be particularly useful for reusing pre-processed\\nlookup tables (e.g. ones involving RNAcentral\
+    \ or OBO on-\\ntologies identifiers) and building other biomedical KGs from\\nscratch.\"\n  },\n  {\n    \"name\": \"\
+    References\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Bartel DP, Chen CZ. Micromanagers of gene expression: the\"\
+    ,\n    \"text\": \"potentially widespread influence of metazoan microRNAs. Nat\\nRev Genet 2004;5:396\\u2013400. https://\
+    \ doi.org/ 10.1038/ nrg1328\"\n  },\n  {\n    \"name\": \"Cech TR, Steitz JA. The noncoding RNA revolution\\u2014trashing\
+    \ old\",\n    \"text\": \"rules to forge new ones. Cell 2014;157:77\\u201394.\\nhttps:// doi.org/ 10.1016/ j.cell.2014.03.008\"\
+    \n  },\n  {\n    \"name\": \"Guttman M, Rinn JL. Modular regulatory principles of large\",\n    \"text\": \"non-coding\
+    \ RNAs. Nature 2012;482:339\\u201346.\\nhttps:// doi.org/ 10.1038/ nature10887\"\n  },\n  {\n    \"name\": \"Damase TR,\
+    \ Sukhovershin R, Boada C et al. The limitless future of\",\n    \"text\": \"RNA therapeutics. Front Bioeng Biotechnol\
+    \ 2021;9:628137.\\nhttps:// doi.org/ 10.3389/ fbioe.2021.628137\"\n  },\n  {\n    \"name\": \"Hogan A, Blomqvist E, Cochez\
+    \ M et al. Knowledge graphs. ACM\",\n    \"text\": \"Comput Surv 2021;54:1\\u201337. https:// doi.org/ 10.1145/ 3447772\"\
+    \n  },\n  {\n    \"name\": \"Beckett D, McBride B. RDF/XML syntax specification (revised) -\",\n    \"text\": \"W3C recommendation.\
+    \ 2004.\\nhttps:// www.w3.org/ TR/ REC- rdf- syntax/.\"\n  },\n  {\n    \"name\": \"Li N, Yang Z, Luo L et al. KGHC: a\
+    \ knowledge graph for\",\n    \"text\": \"hepatocellular carcinoma. BMC Med Inform Decision Making\\n2020;20:135. https://\
+    \ doi.org/ 10.1186/ s12911- 020- 1112- 5\"\n  },\n  {\n    \"name\": \"Stear BJ, Mohseni Ahooyi T, Simmons JA et al. Petagraph:\
+    \ A\",\n    \"text\": \"large-scale unifying knowledge graph framework for integrating\\nbiomolecular and biomedical data.\
+    \ Sci Data 2024;11:1338.\\nhttps:// doi.org/ 10.1038/ s41597- 024- 04070- w\"\n  },\n  {\n    \"name\": \"Zhu Q, Nguyen\
+    \ DT, Grishagin I et al. An integrative knowledge\",\n    \"text\": \"graph for rare diseases, derived from the Genetic\
+    \ and Rare\\nDiseases Information Center (GARD). J\\nBiomed Semant 2020;11:13.\\nhttps:// doi.org/ 10.1186/ s13326- 020-\
+    \ 00232- y\"\n  },\n  {\n    \"name\": \"Neo4j. Neo4j, the World\\u2019s Leading Graph Database. Neo4j Graph\",\n    \"\
+    text\": \"Database 2015.\"\n  },\n  {\n    \"name\": \"Chandak P, Huang K, Zitnik M. Building a knowledge graph to\",\n\
+    \    \"text\": \"enable precision medicine. Sci Data 2023;10:67.\\nhttps :// doi.org/ 10.1038/ s41597- 023- 01960- 3\"\
+    \n  },\n  {\n    \"name\": \"Callahan TJ, Tripodi IJ, Stefanski AL et al. An open source\",\n    \"text\": \"knowledge\
+    \ graph ecosystem for the life sciences. Sci Data 2024;11.\\nhttps:// doi.org/ 10.1038/ s41597- 024- 03171- w\"\n  },\n\
+    \  {\n    \"name\": \"Evangelista JE, Clarke DJB, Xie Z et al. Toxicology knowledge\",\n    \"text\": \"graph for structural\
+    \ birth defects. Commun Med 2023;3:98.\\nhttps :// doi.org/ 10.1038/ s43856- 023- 00329- 2\"\n  },\n  {\n    \"name\"\
+    : \"Shefchek KA, Harris NL, Gargano M et al. The Monarch Initiative\",\n    \"text\": \"in 2019: an integrative data and\
+    \ analytic platform connecting\\nphenotypes to genotypes across species. Nucleic Acids Res\\n2019;48:D704\\u201315. https://\
+    \ doi.org/ 10.1093/ nar/ gkz997\"\n  },\n  {\n    \"name\": \"Boudin M, Diallo G, Dranc\\u00e9 M et al. The OREGANO knowledge\"\
+    ,\n    \"text\": \"graph for computational drug repurposing. Sci Data 2023;10:871.\\nhttps:// doi.org/ 10.1038/ s41597-\
+    \ 023- 02757- 0\"\n  },\n  {\n    \"name\": \"Livingston KM, Bada M, Baumgartner WA et al. KaBOB:\",\n    \"text\": \"\
+    ontology-based semantic integration of biomedical databases.\\nBMC Bioinformatics 2015;16:126.\\nhttps :// doi.org/ 10.1186/\
+    \ s12859- 015- 0559- 3\"\n  },\n  {\n    \"name\": \"Cavalleri E, Cabri A, Soto-Gomez M et al. An ontology-based\",\n\
+    \    \"text\": \"knowledge graph for representing interactions involving RNA\\nmolecules. Sci Data 2024;11:906.\\nhttps://\
+    \ doi.org/ 10.1038/ s41597- 024- 03673- 7\"\n  },\n  {\n    \"name\": \"Caufield JH, Putman T, Schaper K et al. KG-Hub\\\
+    u2014building and\",\n    \"text\": \"exchanging biological knowledge graphs. Bioinformatics\\n2023;39:btad418. https://\
+    \ doi.org/ 10.1093/ bioinformatics/ btad418\"\n  },\n  {\n    \"name\": \"The RNAcentral Consortium. RNAcentral in 2026:\
+    \ Genes and\",\n    \"text\": \"literature integration. Nucl Acids Res 2025;gkaf1329.\\nhttps:// doi.org/ 10.1093/ nar/\
+    \ gkaf1329\"\n  },\n  {\n    \"name\": \"Sweeney BA, Petrov AI, Ribas CE et al. RNAcentral 2021:\",\n    \"text\": \"\
+    secondary structure integration, improved sequence search and\\nnew member databases. Nucleic Acids Res 2020;49:D212\\\
+    u201320.\\nhttps:// doi.org/ 10.1093/ nar/ gkaa921\"\n  },\n  {\n    \"name\": \"Dyer SC, Austine-Orimoloye O, Azov AG\
+    \ et al. Ensembl 2025\",\n    \"text\": \"Nucleic Acids Res 2024;53:D948\\u201357.\\nhttps:// doi.org/ 10.1093/ nar/ gkae1071\"\
+    \n  },\n  {\n    \"name\": \"NCBI Resource Coordinators. Database resources of the National\",\n    \"text\": \"Center\
+    \ for Biotechnology Information. Nucleic Acids Res\\n2017;46:D8\\u201313. https:// doi.org/ 10.1093/ nar/ gkx1095\"\n\
+    \  },\n  {\n    \"name\": \"Kalvari I, Nawrocki EP, Ontiveros-Palacios N et al. Rfam 14:\",\n    \"text\": \"expanded\
+    \ coverage of metagenomic, viral and microRNA families.\\nNucleic Acids Res 2020;49:D192\\u2013200.\\nhttps:// doi.org/\
+    \ 10.1093/ nar/ gkaa1047\"\n  },\n  {\n    \"name\": \"Torgano F, Soto Gomez M, Zignani M et al. RNA\",\n    \"text\"\
+    : \"Knowledge-Graph analysis through homogeneous embedding\"\n  },\n  {\n    \"name\": \"methods. Bioinform Adv 2025;5:vbaf109\"\
+    ,\n    \"text\": \"https:// doi.org/ 10.1093/ bioadv/ vbaf109\"\n  },\n  {\n    \"name\": \"Francis N, Green A, Guagliardo\
+    \ P et al. Cypher: An Evolving\",\n    \"text\": \"Query Language for Property Graphs. Houston, TX, USA:\\nAssociation\
+    \ for Computing Machinery 2018, 1433\\u201345\"\n  },\n  {\n    \"name\": \"D\\u2019Addabbo P, Cohen-Fultheim R, Twersky\
+    \ I et al. REDIportal:\",\n    \"text\": \"toward an integrated view of the A-to-I editing. Nucleic Acids Res\\n2024;53:D233\\\
+    u201342. https:// doi.org/ 10.1093/ nar/ gkae1083\"\n  },\n  {\n    \"name\": \"George N, Fexova S, Fuentes AM et al.\
+    \ Expression Atlas update:\",\n    \"text\": \"insights from sequencing data at both bulk and single cell level.\\nNucleic\
+    \ Acids Res 2023;52:D107\\u201314.\\nhttps:// doi.org/ 10.1093/ nar/ gkad1021\"\n  },\n  {\n    \"name\": \"Pi\\u00f1ero\
+    \ J, Bravo l, Queralt-Rosinach N et al. DisGeNET: a\",\n    \"text\": \"comprehensive platform integrating information\
+    \ on human\\ndisease-associated genes and variants. Nucleic Acids Res\\n2016;45:D833\\u20139. https:// doi.org/ 10.1093/\
+    \ nar/ gkw943\"\n  },\n  {\n    \"name\": \"Warde-Farley D, Donaldson SL, Comes O et al. The GeneMANIA\",\n    \"text\"\
+    : \"prediction server: biological network integration for gene\\nprioritization and predicting gene function. Nucleic\
+    \ Acids Res\\n2010;38:W214\\u201320. https:// doi.org/ 10.1093/ nar/ gkq537\"\n  },\n  {\n    \"name\": \"Davis AP, Wiegers\
+    \ TC, Johnson RJ et al. Comparative\",\n    \"text\": \"Toxicogenomics Database (CTD): update 2023. Nucleic Acids Res\\\
+    n2022;51:D1257\\u201362. https:// doi.org/ 10.1093/ nar/ gkac833\"\n  },\n  {\n    \"name\": \"Landrum MJ, Chitipiralla\
+    \ S, Kaur K et al. ClinVar: updates to\",\n    \"text\": \"support classifications of both germline and somatic variants.\\\
+    nNucleic Acids Res 2024;53:D1313\\u201321.\\nhttps:// doi.org/ 10.1093/ nar/ gkae1090\"\n  },\n  {\n    \"name\": \"Szklarczyk\
+    \ D, Kirsch R, Koutrouli M et al. The STRING database\",\n    \"text\": \"in 2023: protein\\u2013protein association networks\
+    \ and functional\\nenrichment analyses for any sequenced genome of interest. Nucleic\\nAcids Res 2022;51:D638\\u201346.\\\
+    nhttps:// doi.org/ 10.1093/ nar/ gkac1000\"\n  },\n  {\n    \"name\": \"Li JH, Liu S, Zhou H et al. starBase v2.0: decoding\"\
+    ,\n    \"text\": \"miRNA-ceRNA, miRNA-ncRNA and protein\\u2013RNA interaction\\nnetworks from large-scale CLIP-Seq data.\
+    \ Nucleic Acids Res\\n2013;42:D92\\u20137. https:// doi.org/ 10.1093/ nar/ gkt1248\"\n  },\n  {\n    \"name\": \"Paraskevopoulou\
+    \ MD, Georgakilas G, Kostoulas N et al\",\n    \"text\": \"DIANA-microT web server v5.0: service integration into miRNA\\\
+    nfunctional analysis workflows. Nucleic Acids Res\\n2013;41:W169\\u201373. https:// doi.org/ 10.1093/ nar/ gkt393\\n\\\
+    n16\\nCavalleri et al.\"\n  },\n  {\n    \"name\": \"Thul PJ, Lindskog C. The human protein atlas: A spatial map of\"\
+    ,\n    \"text\": \"the human proteome. Protein Sci 2017;27:233\\u201344.\\nhttps:// doi.org/ 10.1002/ pro.3307\"\n  },\n\
+    \  {\n    \"name\": \"John B, Enright AJ, Aravin A et al. Human MicroRNA Targets\",\n    \"text\": \"PLoS Biol 2004;2:e363.\\\
+    nhttps:// doi.org/ 10.1371/ journal.pbio.0020363\"\n  },\n  {\n    \"name\": \"Milacic M, Beavers D, Conley P et al. The\
+    \ Reactome Pathway\",\n    \"text\": \"Knowledgebase 2024. Nucleic Acids Res 2023;52:D672\\u201378.\\nhttps:// doi.org/\
+    \ 10.1093/ nar/ gkad1025\"\n  },\n  {\n    \"name\": \"Seal RL, Braschi B, Gray K et al. Genenames.org: the HGNC\",\n\
+    \    \"text\": \"resources in 2023. Nucleic Acids Res 2022;51:D1003\\u20139.\\nhttps:// doi.org/ 10.1093/ nar/ gkac888\"\
+    \n  },\n  {\n    \"name\": \"Lonsdale J, Thomas J, Salvatore M et al. The Genotype-Tissue\",\n    \"text\": \"Expression\
+    \ (GTEx) project. Nat Genet 2013;45:580\\u20135.\\nhttps:// doi.org/ 10.1038/ ng.2653\"\n  },\n  {\n    \"name\": \"Zhu\
+    \ Y, Xu G, Yang YT et al. POSTAR2: deciphering the\",\n    \"text\": \"post-transcriptional regulatory logics. Nucleic\
+    \ Acids Res\\n2018;47:D203\\u201311. https:// doi.org/ 10.1093/ nar/ gky830\"\n  },\n  {\n    \"name\": \"Boutet E, Lieberherr\
+    \ D, Tognolli M et al. In:\",\n    \"text\": \"UniProtKB/Swiss-Prot, the Manually Annotated Section of the\\nUniProt KnowledgeBase:\
+    \ How to Use the Entry View . New York:\\nSpringer, 2016, 23\\u201354.\\nhttps:// doi.org/ 10.1007/ 978- 1- 4939- 3167-\
+    \ 5 _ 2\"\n  },\n  {\n    \"name\": \"Kruger J, Rehmsmeier M. RNAhybrid: microRNA target\",\n    \"text\": \"prediction\
+    \ easy, fast and flexible. Nucleic Acids Res\\n2006;34:W451\\u20134. https:// doi.org/ 10.1093/ nar/ gkl243\"\n  },\n\
+    \  {\n    \"name\": \"Ruepp A, Kowarsch A, Schmidl D et al. PhenomiR: a\",\n    \"text\": \"knowledgebase for microRNA\
+    \ expression in diseases and\\nbiological processes. Genome Biol 2010;11:R6.\\nhttps:// doi.org/ 10.1186/ gb- 2010- 11-\
+    \ 1- r6\"\n  },\n  {\n    \"name\": \"Sondka Z, Dhir NB, Carvalho-Silva D et al. COSMIC: a curated\",\n    \"text\": \"\
+    database of somatic variants and clinical data for cancer. Nucleic\\nAcids Res 2023;52:D1210\\u20137. https:// doi.org/\
+    \ 10.1093/ nar/ gkad986\"\n  },\n  {\n    \"name\": \"Gla\\u017ear P, Papavasileiou P, Rajewsky N. circBase: a database\
+    \ for\",\n    \"text\": \"circular RNAs. RNA 2014;20:1666\\u201370.\\nhttps:// doi.org/ 10.1261/ rna.043687.113\"\n  },\n\
+    \  {\n    \"name\": \"Robinson PN, K\\u00f6hler S, Bauer S et al. The Human Phenotype\",\n    \"text\": \"Ontology: A\
+    \ Tool for Annotating and Analyzing Human\\nHereditary Disease. Am J Hum Genet 2008;83:610\\u20135.\\nhttps:// doi.org/\
+    \ 10.1016/ j.ajhg.2008.09.017\"\n  },\n  {\n    \"name\": \"Ashburner M, Ball CA, Blake JA et al. Gene Ontology: tool\
+    \ for the\",\n    \"text\": \"unification of biology. Nat Genet 2000;25:25\\u20139.\\nhttps:// doi.org/ 10.1038/ 75556\"\
+    \n  },\n  {\n    \"name\": \"Vasilevsky NA, Matentzoglu NA, Toro S et al. Mondo: Integrating\",\n    \"text\": \"disease\
+    \ terminology across communities. Genetics 2025.\\nhttps:// doi.org/ 10.1093/ genetics/ iyaf2152\"\n  },\n  {\n    \"\
+    name\": \"He Y, He Y, Cowell L et al. VO: Vaccine Ontology. Nat Prec \",\n    \"text\": \"2009. https:// doi.org/ 10.1038/\
+    \ npre.2009.3553\"\n  },\n  {\n    \"name\": \"Degtyarenko K, de Matos P, Ennis M et al. ChEBI: a database and\",\n  \
+    \  \"text\": \"ontology for chemical entities of biological interest. Nucleic Acids\\nRes 2007;36:D344\\u201350. https://\
+    \ doi.org/ 10.1093/ nar/ gkm791\"\n  },\n  {\n    \"name\": \"Mungall CJ, Torniai C, Gkoutos GV et al. Uberon, an integrative\"\
+    ,\n    \"text\": \"multi-species anatomy ontology. Genome Biol 2012;13:R5.\\nhttps:// doi.org/ 10.1186/ gb- 2012- 13-\
+    \ 1- r5\"\n  },\n  {\n    \"name\": \"Sarntivijai S, Lin Y, Xiang Z et al. CLO: The cell line ontology. J\",\n    \"text\"\
+    : \"Biomed Semant 2014;5:37.\\nhttps:// doi.org/ 10.1186/ 2041- 1480- 5- 37\"\n  },\n  {\n    \"name\": \"Natale DA, Arighi\
+    \ CN, Barker WC et al. The Protein Ontology: a\",\n    \"text\": \"structured representation of protein forms and complexes.\
+    \ Nucleic\\nAcids Res 2010;39:D539\\u201345. https:// doi.org/ 10.1093/ nar/ gkq907\"\n  },\n  {\n    \"name\": \"Eilbeck\
+    \ K, Lewis SE, Mungall CJ et al. The Sequence Ontology: a\",\n    \"text\": \"tool for the unification of genome annotations.\
+    \ Genome Biol\\n2005;6:R44. https:// doi.org/ 10.1186/ gb- 2005- 6- 5- r44\"\n  },\n  {\n    \"name\": \"Petri V, Jayaraman\
+    \ P, Tutaj M et al. The pathway\",\n    \"text\": \"ontology\\u2013updates and applications. J Biomed Semant 2014;5:7.\\\
+    nhttps:// doi.org/ 10.1186/ 2041- 1480- 5- 7\"\n  },\n  {\n    \"name\": \"Mungall C, Matentzoglu N, Balhoff J et al.\
+    \ oborel/obo-relations:\",\n    \"text\": \"2023-08-18 Release. Zenodo, 2023.\\nhttps:// doi.org/ 10.5281/ zenodo.8263469\"\
+    \n  },\n  {\n    \"name\": \"Wishart DS, Feunang YD, Guo AC et al. DrugBank 5.0: a major\",\n    \"text\": \"update to\
+    \ the DrugBank database for 2018. Nucleic Acids Res\\n2017;46:D1074\\u201382. https:// doi.org/ 10.1093/ nar/ gkx1037\"\
+    \n  },\n  {\n    \"name\": \"Sherry ST. dbSNP: the NCBI database of genetic variation. Nucleic\",\n    \"text\": \"Acids\
+    \ Res 2001;29:308\\u201311. https:// doi.org/ 10.1093/ nar/ 29.1.308\"\n  },\n  {\n    \"name\": \"Boccaletto P, Stefaniak\
+    \ F, Ray A et al. MODOMICS: a database of\",\n    \"text\": \"RNA modification pathways. 2021 update. Nucleic Acids Res\\\
+    n2021;50:D231\\u20135. https:// doi.org/ 10.1093/ nar/ gkab1083\"\n  },\n  {\n    \"name\": \"Delaunay S, Helm M, Frye\
+    \ M. RNA modifications in physiology\",\n    \"text\": \"and disease: towards clinical applications. Nat Rev Genet\\n2023;25:104\\\
+    u201322. https:// doi.org/ 10.1038/ s41576- 023- 00645- 2\"\n  },\n  {\n    \"name\": \"Salzberg SL. Open questions: How\
+    \ many genes do we have?; BMC\",\n    \"text\": \"Biol 2018;16:94. https :// doi.org/ 10.1186/ s12915- 018- 0564- x\"\n\
+    \  },\n  {\n    \"name\": \"Boerneke MA, Ehrhardt JE, Weeks KM. Physical and Functional\",\n    \"text\": \"Analysis of\
+    \ Viral RNA Genomes by SHAPE. Annu Rev Virol\\n2019;6:93\\u2013117.\\nhttps:// doi.org/ 10.1146/ annurev- virology- 092917-\
+    \ 043315\"\n  },\n  {\n    \"name\": \"Hofacker IL, Fontana W, Stadler PF et al. Fast folding and\",\n    \"text\": \"\
+    comparison of RNA secondary structures. Monatshefte f\\u00fcr\\nChemie Chemical Monthly 1994;125:167\\u201388.\\nhttps://\
+    \ doi.org/ 10.1007/ bf00818163\"\n  },\n  {\n    \"name\": \"Daher M, Mustoe AM, Morriss-Andrews A et al. Tuning RNA\"\
+    ,\n    \"text\": \"folding and function through rational design of junction topology.\\nNucleic Acids Res 2017;45:9706\\\
+    u201315.\\nhttps:// doi.org/ 10.1093/ nar/ gkx614\"\n  },\n  {\n    \"name\": \"Kang J, Tang Q, He J et al. RNAInter v4.0:\
+    \ RNA interactome\",\n    \"text\": \"repository with redefined confidence scoring system and improved\\naccessibility.\
+    \ Nucleic Acids Res 2021;50:D326\\u201332.\\nhttps:// doi.org/ 10.1093/ nar/ gkab997\"\n  },\n  {\n    \"name\": \"Callahan\
+    \ TJ, Baumgartner WA, Bada M et al. OWL-NETS:\",\n    \"text\": \"Transforming OWL Representations for Improved Network\\\
+    nInference. In: Biocomputing 2018 . Kohala Coast, Hawaii, USA:\\nWorld Scientific, 2017.\\nhttps :// doi.org/ 10.1142/\
+    \ 9789813235533 _ 0013\"\n  },\n  {\n    \"name\": \"Sioutos N, Coronado Sd, Haber MW et al. NCI Thesaurus: A\",\n   \
+    \ \"text\": \"semantic model integrating cancer-related clinical and molecular\\ninformation. J Biomed Inform 2007;40:30\\\
+    u201343.\\nhttps:// doi.org/ 10.1016/ j.jbi.2006.02.013\"\n  },\n  {\n    \"name\": \"Poliseno L, Pandolfi PP. PTEN ceRNA\
+    \ networks in human cancer\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Methods 2015;77-78:41\\u201350\",\n    \"\
+    text\": \"https:// doi.org/ 10.1016/ j.ymeth.2015.01.013\"\n  },\n  {\n    \"name\": \"Wang W, Zhou XJ, Liu Z et al. Network\
+    \ tuned multiple rank\",\n    \"text\": \"aggregation and applications to gene ranking. BMC\\nBioinformatics 2015;16:S6.\\\
+    nhttps :// doi.org/ 10.1186/ 1471- 2105- 16- s1- s6\"\n  },\n  {\n    \"name\": \"Rolle K, Piwecka M, Belter A et al.\
+    \ The sequence and structure\",\n    \"text\": \"determine the function of mature human miRNAs. PLoS One\\n2016;11:e0151246.\"\
+    \n  },\n  {\n    \"name\": \"Faralli S, Finocchi I, Ponzetto S et al. Efficient Pruning of Large\",\n    \"text\": \"\
+    Knowledge Graphs. In: Proc. of the Int\\u2019l Joint Conf. on Artificial\\nIntelligence . Stockholm, Sweden: International\
+    \ Joint Conferences\\non Artificial Intelligence Organization 2018, 4055\\u201363.\\nhttps :// doi.org/ 10.24963/ ijcai.2018/\
+    \ 564\"\n  },\n  {\n    \"name\": \"Faralli S, Stilo G, Velardi P. Large scale homophily analysis in\",\n    \"text\"\
+    : \"twitter using a twixonomy. In: Proc. of the 24th Int\\u2019l Conf. on\\nArtificial Intelligence . Buenos Aires, Argentina:\
+    \ AAAI Press, 2015,\\n2334\\u201340.\"\n  },\n  {\n    \"name\": \"Tarjan R. Depth-first search and linear graph algorithms.\
+    \ In: 12th\",\n    \"text\": \"Annual Symposium on Switching and Automata Theory (swat\\n1971) . East Lansing, MI, USA:\
+    \ IEEE 1971, 114\\u201321.\\nhttps :// doi.org/ 10.1109/ SWAT.1971.10\"\n  },\n  {\n    \"name\": \"Kozareva Z, Hovy E.\
+    \ A Semi-Supervised Method to Learn and\",\n    \"text\": \"Construct Taxonomies Using the Web. In: Proc. of the Conf.\
+    \ on\\nEmpirical Methods in Natural Language Processing . Cambridge,\\nMassachusetts: Association for Computational Linguistics\
+    \ 2010,\\n1110\\u20138.\"\n  },\n  {\n    \"name\": \"Swartout W, Patil R, Knight K et al. Toward Distributed Use of\"\
+    ,\n    \"text\": \"Large-Scale Ontologies. In: AAAI Spring Symposium . AAAI 1997,\\n138\\u201348.\\n\\nEnhancing RNA-KG\
+    \ with Properties\\n17\"\n  },\n  {\n    \"name\": \"Cappelletti L, Fontana T, Casiraghi E et al. GRAPE for fast and\"\
+    ,\n    \"text\": \"scalable graph processing and random-walk-based embedding.\\nNat Comput Sci 2023;3:552\\u201368.\\\
+    nhttps:// doi.org/ 10.1038/ s43588- 023- 00465- 8\"\n  },\n  {\n    \"name\": \"Higgins DG, Sharp PM. CLUSTAL: a package\
+    \ for performing\",\n    \"text\": \"multiple sequence alignment on a microcomputer. Gene\\n1988;73:237\\u201344. https://\
+    \ doi.org/ 10.1016/ 0378- 1119(88)90330- 7\"\n  },\n  {\n    \"name\": \"Needleman SB, Wunsch CD. A general method applicable\
+    \ to the\",\n    \"text\": \"search for similarities in the amino acid sequence of two proteins.\\nJ Mol Biol 1970;48:443\\\
+    u201353.\\nhttps:// doi.org/ 10.1016/ 0022- 2836(70)90057- 4\"\n  },\n  {\n    \"name\": \"Chen Q, Zhang X, Shi J et al.\
+    \ Origins and evolving functionalities\",\n    \"text\": \"of tRNA-derived small RNAs. Trends\\nBiochem Sci 2021;46:790\\\
+    u2013804.\\nhttps:// doi.org/ 10.1016/ j.tibs.2021.05.001\"\n  },\n  {\n    \"name\": \"Tang J, Qu M, Wang M et al. LINE:\
+    \ Large-scale Information\",\n    \"text\": \"Network Embedding. In: Proceedings of the 24th International\\nConference\
+    \ on World Wide Web. WWW \\u201915 . Republic and\\nCanton of Geneva, CHE: International World Wide Web\\nConferences\
+    \ Steering Committee, 2015, 1067\\u201377.\\nhttps:// doi.org/ 10.1145/ 2736277.2741093\"\n  },\n  {\n    \"name\": \"\
+    Grover A, Leskovec J. Node2vec: Scalable Feature Learning for\",\n    \"text\": \"Networks. In: Proc. of the Int\\u2019l\
+    \ Conf. on Knowledge Discovery\\nand Data Mining . San Francisco California\"\n  },\n  {\n    \"name\": \"USA: ACM 2016,\
+    \ 855\\u201364\",\n    \"text\": \"https :// doi.org/ 10.1145/ 2939672.2939754\"\n  },\n  {\n    \"name\": \"Bordes A,\
+    \ Bottou L, Welling M et al. Translating Embeddings for\",\n    \"text\": \"Modeling Multi-relational Data. In: Burges\
+    \ CJ, (eds.), Advances in\\nNeural Information Processing Systems , Vol. 26. Lake Tahoe,\\nNevada: Curran Associates,\
+    \ Inc., 2013.\"\n  },\n  {\n    \"name\": \"Trouillon T, Dance CR, Gaussier \\u00c9 et al. Knowledge graph\",\n    \"\
+    text\": \"completion via complex tensor factorization. J Mach Learn Res\"\n  },\n  {\n    \"name\": \"(JMLR) 2017;18:1\\\
+    u201338\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Dong Y, Chawla NV, Swami A. metapath2vec: Scalable\",\n   \
+    \ \"text\": \"Representation Learning for Heterogeneous Networks. In:\\nProceedings of the 23rd ACM SIGKDD International\
+    \ Conference\\non Knowledge Discovery and Data Mining. KDD \\u201917 . New York,\\nNY, USA: Association for Computing\
+    \ Machinery, 2017, 135\\u201344.\\nhttps:// doi.org/ 10.1145/ 3097983.3098036\"\n  },\n  {\n    \"name\": \"Daza D, Alivanistos\
+    \ D, Mitra P et al. BioBLP: a modular\",\n    \"text\": \"framework for learning on multimodal biomedical knowledge\\\
+    ngraphs. J Biomed Semant 2023;14:20.\\nhttps:// doi.org/ 10.1186/ s13326- 023- 00301- y\"\n  },\n  {\n    \"name\": \"\
+    Lee J, Yoon W, Kim S et al. BioBERT: a pre-trained biomedical\",\n    \"text\": \"language representation model for biomedical\
+    \ text mining.\\nBioinformatics 2020;36:1234\\u201340.\"\n  },\n  {\n    \"name\": \"Zhou Z, Ji Y, Li W et al. . DNABERT-2:\
+    \ Efficient Foundation\",\n    \"text\": \"Model and Benchmark For Multi-Species Genome. 2024.\\nhttps:// arxiv.org/ abs/\
+    \ 2306.15006 .\\n88. del Toro N, Shrivastava A, Ragueneau E et al. The IntAct\\ndatabase: efficient access to fine-grained\
+    \ molecular interaction\\ndata. Nucleic Acids Res 2021;50:D648\\u201353.\\nhttps:// doi.org/ 10.1093/ nar/ gkab1006\"\n\
+    \  },\n  {\n    \"name\": \"Green A, Ribas CE, Ontiveros-Palacios N et al. LitSumm: large\",\n    \"text\": \"language\
+    \ models for literature summarization of noncoding\\nRNAs. Database 2025;2025:baaf006.\\nhttps:// doi.org/ 10.1093/ database/\
+    \ baaf006\"\n  },\n  {\n    \"name\": \"McCann H, Meade CD, Williams LD et al. R2DT: a\",\n    \"text\": \"comprehensive\
+    \ platform for visualizing RNA secondary structure.\\nNucleic Acids Res 2025;53:gkaf032.\\nhttps:// doi.org/ 10.1093/\
+    \ nar/ gkaf032\"\n  },\n  {\n    \"name\": \"Creux C, Zehraoui F, Radvanyi F et al. MMnc: multi-modal\",\n    \"text\"\
+    : \"interpretable representation for non-coding RNA classification\\nand class annotation. Bioinformatics 2025;41:btaf051.\\\
+    nhttps:// doi.org/ 10.1093/ bioinformatics/ btaf051\"\n  },\n  {\n    \"name\": \"Luo Y, Yang K, Hong M et al. . MolFM:\
+    \ A Multimodal Molecular\",\n    \"text\": \"Foundation Model. 2023.https:// arxiv.org/ abs/ 2307.09484\"\n  },\n  {\n\
+    \    \"name\": \"Wen J, Zhang X, Rush E et al. Multimodal representation learning\",\n    \"text\": \"for predicting molecule\\\
+    u2013disease relations. Bioinformatics\\n2023;39:btad085. https:// doi.org/ 10.1093/ bioinformatics/ btad085\"\n  },\n\
+    \  {\n    \"name\": \"Karagkouni D, Paraskevopoulou MD, Tastsoglou S et al\",\n    \"text\": \"DIANA-LncBase v3: indexing\
+    \ experimentally supported miRNA\\ntargets on non-coding transcripts. Nucleic Acids\\nRes . 2019. 48:D101\\u2013D110.\
+    \ https:// doi.org/ 10.1093/ nar/ gkz1036\"\n  },\n  {\n    \"name\": \"Senaratne A, Christen P, Omran P et al. . Anomaly\
+    \ Detection and\",\n    \"text\": \"Classification in Knowledge Graphs. 2024.\\nhttps:// arxiv.org/ abs/ 2412.04780\"\n\
+    \  },\n  {\n    \"name\": \"Huang J, Eilbeck K, Smith B et al. The Non-Coding RNA\",\n    \"text\": \"Ontology (NCRO):\
+    \ a comprehensive resource for the unification\\nof non-coding RNA biology. J Biomed Semant 2016;7:24.\\nhttps :// doi.org/\
+    \ 10.1186/ s13326- 016- 0066- 0\"\n  },\n  {\n    \"name\": \"Leontis NB, Altman RB, Berman HM et al. The RNA Ontology\"\
+    ,\n    \"text\": \"Consortium: An open invitation to the RNA community. RNA\\n2006;12:533\\u201341. https:// doi.org/\
+    \ 10.1261/ rna.2343206\\nReceived: August 15, 2025. Revised: October 11, 2025. Accepted: November 13, 2025\\n\\u00a9 The\
+    \ Author(s) 2026. Published by Oxford University Press.\\nThis is an Open Access article distributed under the terms of\
+    \ the Creative Commons Attribution-NonCommercial License ( https:// creativecommons.org/ licenses/ by-nc/ 4.0/ ), which\
+    \ permits\\nnon-commercial re-use, distribution, and reproduction in any medium, provided the original work is properly\
+    \ cited. For commercial re-use, please contact reprints@oup.com for reprints and\\ntranslation rights for reprints. All\
+    \ other permissions can be obtained through our RightsLink service via the Permissions link on the article page on our\
+    \ site\\u2014for further information please contact\\njournals.permissions@oup.com .\"\n  }\n]"
+  author_contributions: 'ment(s), E.C. conducted the experiment(s), E.C. and P .P . devel-
+
+    oped the RNA-KG web portal, E.C. and M.M. analysed the re-
+
+    sults. E.C., P .P ., and M.M. wrote and reviewed the manuscript.'
+  funding: 'This research was in part supported by the ‘National Cen-
+
+    ter for Gene Therapy and Drugs based on RNA Technology’,
+
+    PNRR-NextGeneration EU program [G43C22001320007],
+
+    and in part by the MUSA - Multilayered Urban Sustainabil-
+
+    ity Action - Project, funded by the PNRR-NextGeneration EU
+
+    program ([G43C22001370007], Code ECS00000037).'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n   \
+    \ \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_2.png\",\n\
+    \    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p6_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_2.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p6_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_3.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p7_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_2.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_2.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p9_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_3.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p12_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p12_1.png\"\
+    ,\n    \"page\": 12\n  },\n  {\n    \"id\": \"fig_p13_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_1.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p14_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_1.png\"\
+    ,\n    \"page\": 14\n  }\n]"
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://RNA-KG.\",\n    \"accession\": \"\",\n    \"database\": \"\",\n    \"\
+    description\": \"\"\n  },\n  {\n    \"url\": \"https://neo4j.biodata.\",\n    \"accession\": \"\",\n    \"database\":\
+    \ \"\",\n    \"description\": \"\"\n  }\n]"

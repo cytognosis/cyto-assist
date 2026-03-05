@@ -1,0 +1,376 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Desiderata for a biomedical knowledge network.pdf
+
+identifiers:
+  doi: 10.1101/2024.09.18.613276
+  pmid: '39345458'
+citation:
+  title: 'Desiderata  for  a  biomedical  knowledge  network: opportunities, challenges and future  Directions'
+  year: '2037'
+  publisher: openRxiv
+  authors: Nicolas Matentzoglu, Susan M Bello, Ray Stefancsik, Sarah M. Alghamdi, Anna V. Anagnostopoulos, James P. Balhoff,
+    Meghan A. Balk, Yvonne M. Bradford, Yasemin Bridges, Tiffany J. Callahan, Harry Caufield, Alayne Cuzick, Leigh C Carmody,
+    Anita R. Caron, Vinicius de Souza, Stacia R. Engel, Petra Fey, Malcolm Fisher, Sarah Gehrke, Christian Grove, Peter Hansen,
+    Nomi L. Harris, Midori A. Harris, Laura Harris, Arwa Ibrahim, Julius O.B. Jacobsen, Sebastian Köhler, Julie A. McMurry,
+    Violeta Munoz-Fuentes, Monica C. Munoz-Torres, Helen Parkinson, Zoë M Pendlington, Clare Pilgrim, Sofia MC Robb, Peter
+    N. Robinson, James Seager, Erik Segerdell, Damian Smedley, Elliot Sollis, Sabrina Toro, Nicole Vasilevsky, Valerie Wood,
+    Melissa A. Haendel, Christopher J. Mungall, James A. McLaughlin, David Osumi-Sutherland
+content:
+  abstract: 'Knowledge graphs, collectively as a knowledge network, have become critical tools for knowledge
+
+    discovery in computable and explainable knowledge systems. Due to the semantic and structural
+
+    complexities of biomedical data, these knowledge graphs need to enable dynamic reasoning over large
+
+    evolving graphs and support fit-for-purpose abstraction, while establishing standards, preserving
+
+    provenance and enforcing policy constraints for actionable discovery. A recent meeting of leading
+
+    scientists discussed the opportunities, challenges and future directions of a biomedical knowledge
+
+    network. Here we present six desiderata inspired by the meeting: (1) inference and reasoning in
+
+    biomedical knowledge graphs need domain-centric approaches; (2) harmonized and accessible
+
+    standards are required for knowledge graph representation and metadata; (3) robust validation of
+
+    biomedical knowledge graphs needs multi-layered, context-aware approaches that are both rigorous
+
+    and scalable; (4) the evolving and synergistic relationship between knowledge graphs and large
+
+    language models is essential in empowering AI-driven biomedical discovery; (5) integrated
+
+    development environments, public repositories, and governance frameworks are essential for secure
+
+    and reproducible knowledge graph sharing; and (6) robust validation, provenance, and ethical
+
+    governance are critical for trustworthy biomedical knowledge graphs. Addressing these key issues will
+
+    be essential to realize the promises of a biomedical knowledge network in advancing biomedicine.
+
+
+
+
+
+    Desiderata for a biomedical knowledge network
+
+    1'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Knowledge graphs (KGs) have become critical tools for\
+    \ semantic\\nintegration of biomedical data in an increasingly computable, inference-\\nbearing and explainable knowledge\
+    \ system, allowing researchers to\\nuncover meaningful patterns, predict new relationships, and extract\\ninsights to\
+    \ enable biomedical knowledge discovery. To explore the\\nopportunities, challenges and future directions of a biomedical\
+    \ knowledge\\nnetwork (as a collection of individually built KGs), we hosted a\\n\\u201cKnowledge Networks in Biomedical\
+    \ and Behavioral Research\\u201d meeting\\non May 28-29, 2025 (KN meeting 2025), organized under the auspices of\\nthe\
+    \ Knowledge Graph Working Group of the US National Institutes of\\nHealth (NIH). The meeting brought together leading\
+    \ scientists in the field\\nfrom multiple NIH-funded programs such as the Biomedical Data\\nTranslator (Fecho et al. 2025)\
+    \ and Common Fund Data Ecosystem (CFDE\\nn.d.) as well as the NSF partnership program, Proto-OKN (Proto-OKN\\nn.d.), with\
+    \ a total of 88 participants including NIH program officials.\\nThe goals of the meeting were multifold: (1) to identify\
+    \ opportunities\\nand challenges in KG research; (2) to discuss strategies to facilitate\\ndevelopments in AI technologies\
+    \ and approaches for building KGs; and\\n(3) to develop guidelines for ethical, transparent, and informed reuse of\\ndata,\
+    \ knowledge, and models (KN meeting 2025). Accordingly, we\\norganized three half-day panel sessions to address each of\
+    \ the topics with\\nbreakout sessions for discussion. This perspective article presents our\\ncollective observations\
+    \ and thoughts, organized as six (6) desiderata,\\ninspired by the keynote and panel presentations and vibrant discussions\\\
+    nfrom all meeting participants. We summarize several challenges as well\\nas opportunities and future directions from\
+    \ the desiderata for a biomedical\\nknowledge network.\\n2\\nDesiderata\\nRealizing the full potential of a biomedical\
+    \ knowledge network requires\\na principled fusion of domain specificity, semantic rigor, computational\\nscalability,\
+    \ reproducibility and trustworthiness. By addressing the current\\nchallenges and harnessing strategic opportunities as\
+    \ detailed in the\\ndesiderata, we aspire to build a biomedical knowledge network capable\\nof supporting robust, interpretable,\
+    \ and actionable biomedical discovery\\n(Figure 1).\\nDesideratum 1. Inference and reasoning in biomedical knowledge\\\
+    ngraphs need domain-centric approaches\\nEffective inference within biomedical knowledge graphs demands\\nmethodologies\
+    \ that are attuned to the semantic and structural complexities\\nof biomedical data. Unlike general-purpose KGs, biomedical\
+    \ KGs exhibit\\nhigh relational density, many-to-many topologies, and a mix of symmetric\\nand directed relationships\
+    \ (Stear et al. 2024). Edge types often range from\\nsimple assertions to qualified statements, carrying metadata such\
+    \ as\\nconfidence scores, provenance, or temporality.  Many applications require\\nreasoning over complex subgraphs, or\
+    \ finding semantically constrained\\nlong paths. These characteristics render conventional edge prediction\\ntechniques\
+    \ inadequate. In this domain, inference is not merely a\\nmathematical task but an inherently semantic one, calling for\
+    \ novel\\napproaches that leverage graph structure through logical and heuristic\\ninference, tailored to domain-centric\
+    \ application needs.\\nTo harmonize symbolic reasoning (e.g., logic- and ontology-based\"\n  },\n  {\n    \"name\": \"\
+    methods) with domain-centric approaches, biomedical inference engines\",\n    \"text\": \"must operate across heterogeneous\
+    \ data scales, from biological centric\\ngenes and variants to clinical centric patient data, while preserving\\nprovenance,\
+    \ enforcing policy constraints, and accommodating both\\ndynamic updates and partial knowledge. Critically, methods must\
+    \ respect\\nthe semantics of node and edge types (e.g., part-of, regulates, expressed-\\nduring) to ensure biologically\
+    \ plausible information flow and interpretable\\nreasoning pathways. The Data Distillery Knowledge Graph (DDKG), built\\\
+    nwithin the NIH Common Fund ecosystem, exemplifies how semantic\\nreasoning can be operationalized at scale (DDKG n.d.).\
+    \ Extending the\\nUnified Biomedical Knowledge Graph (UBKG n.d.), DDKG employs\\nontologies, graph motifs, and structured\
+    \ reasoning pathways to integrate\\ndatasets such as GTEx, LINCS, HuBMAP, and Kids First. It enables use\\ncases in disease\
+    \ mechanism exploration, therapeutic target identification,\\nand developmental biology, highlighting the potential of\
+    \ reasoning-ready\\nKGs to drive translational insights.\\nLooking forward, next-generation inference engines must address\\\
+    nseveral open challenges: a) multimodal integration should be enabled to\\nincorporate diversified causal priors and spatially\
+    \ explicit data (e.g.,\\nanatomical atlases such as HuBMAP and Allen Brain); b) temporal\\nreasoning is a necessity when\
+    \ inferencing across developmental stages or\\ndisease trajectories; c) reasoning over large subgraphs and finding\\nsemantically\
+    \ constrained long paths (e.g. representations of complex\\nregulatory networks), not just edge prediction or retrieving\
+    \ triples; d)\\ncross-species alignment, building on efforts like UPheno (Matentzoglu et\\nal. 2024) to support translational\
+    \ and comparative studies. e) uncertainty\\nrepresentation is especially important in domains like dose-dependent\\ngene\
+    \ expression (e.g., LINCS), where biological variability must be\\nmodeled with nuance; f) finally, the balance between\
+    \ abstraction and\\nfidelity must be managed. Driven by the specific use cases, practitioners\\nneed tools that support\
+    \ fit-for-purpose KG abstraction while retaining\\nlinks to detailed source data. Such tools should enable dynamic reasoning\\\
+    nover large, evolving graphs without requiring costly retraining.\\nIn summary, realizing the full potential of inference\
+    \ in biomedical KGs\\nrequires a principled fusion of semantic rigor, computational scalability,\\nand domain specificity.\
+    \ By grounding machine reasoning in biological\\nmeaning, we can build systems capable of supporting robust, interpretable,\\\
+    nand actionable biomedical discovery.\\nDesideratum 2. Harmonized and accessible standards are required\\nfor knowledge\
+    \ graph representation and metadata\\nThe core methods for representing and building knowledge graphs have\\nchanged little\
+    \ since AI researchers first developed semantic networks in\\nthe 1960s. These early networks enabled applications like\
+    \ intelligent\\ntutoring systems and offered flexibility and intuitive structure, but they\\nlacked standardized representations.\
+    \ The absence of shared formalisms led\\nto fragmented approaches that hindered interoperability. While some\\nefforts,\
+    \ such as DARPA\\u2019s 1990s Knowledge Sharing Effort (Patil et al.\\n1992), attempted to bridge these gaps, their impact\
+    \ remained modest and\\nlimited within research laboratories. A turning point came in the 2000s,\\nwith the introduction\
+    \ of Web standards\\u2014RDF (Resource Description\\nFramework) and OWL (Web Ontology Framework)\\u2014endorsed by the\\\
+    nWorld Wide Web Consortium. These standards enabled scalable creation\\nof linked data graphs and reusable ontologies,\
+    \ driving a renaissance in KG\\ndevelopment, coupled with growing attention to data governance. Today,\\nthe landscape\
+    \ is again fragmented, with the recent surge of diverse graph\\ndatabase systems, such as labelled property graphs, now\
+    \ competing\\ncommercially with RDF.  The evolution of the underlying graph database\\ntechnology was typically driven\
+    \ by the increasing demands of scalable\\nquerying and dissemination, nevertheless, the need for standards and their\\\
+    nharmonization remains central to advancing KGs at scale.\\n\\nDesiderata for a biomedical knowledge network\\nSeveral\
+    \ key requirements are broadly applicable to the current process\\nof building a biomedical knowledge networks.\\nStandards\
+    \ are essential.  The resurgence of the KG community has\\nbeen driven by the emergence of standards.  While biomedical\
+    \ domain\\nspecific standards exist for graphs and ontologies, they remain\\nincomplete.  More accessible and expressive\
+    \ formalisms are needed to\\nmodel complex relationships, contextual information, and provenance\\u2014\\ncapabilities\
+    \ that labeled property graphs support, albeit in an ad hoc\\nmanner.  Critically, there is still a lack of widely accepted\
+    \ standards for\\ngraph metadata\\u2014descriptors that would facilitate the discovery, reuse\\nand integration of graph\
+    \ content. There is an urgent need for structured\\nreporting guidelines for annotating graphs and graph fragments, analogous\\\
+    nto existing standards for genomic datasets such as MIAME (Brazma et al.\\n2001).\\nThere is a growing demand for standardized\
+    \ ontologies, value\\nsets,  and other curated semantic resources.  KGs are most effective\\nwhen they use interoperable,\
+    \ well-defined terms linked to established\\nontologies. To enable scalability, there must be sustained investment in\\\
+    nboth the maintenance of existing ontologies and the development of new\\nones for scientific domains that remain underrepresented.\
+    \ Although many\\nbiomedical ontologies are actively curated and well supported, continued\\ninvestment is essential to\
+    \ build and sustain a comprehensive biomedical\\nknowledge network. In parallel, there must be a commitment to preserving\\\
+    nthese semantic resources in open, publicly accessible repositories such as\\nBioPortal (Whetzel et al. 2011).\\nOf critical\
+    \ importance are standards across all layers of the KG\\nbuilding ecosystem: the ontologies that define terms, the graph\\\
+    nrepresentations themselves, the metadata that describes them, and the tools\\nused to build, visualize, and integrate\
+    \ them. Much of what we have learned\\nfrom standardizing ontologies and software systems can now inform the\\ndevelopment\
+    \ of standards for KGs. However, the scale of the challenge is\\nfar greater. There are orders of magnitude more content,\
+    \ and the necessary\\ngraph models, ontologies, and supporting tools to realize this vision have\\nyet to be developed.\
+    \ The Biolink model (Unni et al. 2022), as used in the\\nTranslator project, provides a compelling example of the direction\
+    \ and\\npotential needed to meet this challenge.\\nIn summary, sustained progress in biomedical KGs depends on\\nharmonized,\
+    \ accessible standards for graph representations, ontologies\\nand metadata. Addressing current gaps will require coordinated\\\
+    ninvestments in standard development, resource maintenance, and tool\\ninteroperability across the entire ecosystem.\\\
+    nDesideratum 3. Robust validation of biomedical knowledge graphs\\nneeds multi-layered, context-aware approaches that\
+    \ are both\\nrigorous and scalable.\\nValidation, in this context, is not merely a technical checkpoint but a\\ncontinuous,\
+    \ context-sensitive process that must evolve in parallel with the\\nknowledge it represents. Constructing domain-specific\
+    \ knowledge graphs\\noften relies on expert curation, integrating evidence from literature,  real-\\nworld data, and other\
+    \ sources. Yet biomedical knowledge is constantly\\nshifting, with new findings frequently revising or contradicting earlier\\\
+    nones. Consequently, validation strategies must go beyond verifying the\\nexistence or direction of relationships to assess\
+    \ their strength of evidence,\\ncontext specificity, and potential modifiers.\\nAs biomedical KGs are continuously updated\
+    \ to reflect new\\ndiscoveries, evolving terminologies, and shifting clinical guidelines, they\\nface challenges in data\
+    \ heterogeneity, scalability, standardization, and\\nentity resolution. Quality issues, such as incorrect hierarchical\\\
+    nrelationships or missing terminology mappings, can lead to flawed clinical\\ninsights, suboptimal cohort selection, and\
+    \ diminished analytic\\nreproducibility.\\nEffective quality management involves both assessment (e.g.,\\nevaluating completeness,\
+    \ consistency, timeliness, and accuracy) and\\nimprovement (e.g.,  through error detection, correction, and gap\\ncompletion).\
+    \ Existing methods span manual curation, rule-based systems,\\nstatistical checks, machine learning, and large language\
+    \ model (LLM)-\\naugmented approaches. However, the absence of a consensus definition of\\n\\u201cfitness for use\\u201d\
+    \ hampers automation, benchmarking and reuse. Of equal\\nimportance is the ability to track \\\"knowledge drift\\\", changes\
+    \ in structure,\\nsemantics, or provenance that affect downstream interpretations.\\nSystematic provenance tracking should\
+    \ accompany each assertion,\\ndetailing its source, method of extraction, and evidence type.\\nValidation must also represent\
+    \ uncertainty at multiple levels, across\\nnodes, edges, and subgraphs. This includes marking conflicting evidence,\\\
+    ntagging causal claims with strength and direction, and maintaining version\\ncontrol in dynamic graphs.\\nCritically,\
+    \ validation should be use-case driven. For instance, tolerance\\nfor ambiguity or error differs substantially between\
+    \ applications in\\ninformation retrieval, diagnostic inference, and causal modeling.\\nValidating graph construction\
+    \ is distinct from validating graph utility;\\neach requires tailored metrics, interpretive frameworks, and benchmarks.\\\
+    nRather than relying on a single gold standard, task-specific validation\\nprotocols must be developed. Initiatives such\
+    \ as TRIPOD-AI (Collins et\\nal. 2021), which provide reporting standards for predictive models, could\\ninform similar\
+    \ frameworks for KGs, defining minimum requirements for\\ntransparency, evidence sufficiency, and explainability. Benchmark\\\
+    ndatasets, checklists, and reference implementations are needed to promote\\nreproducibility and cross-institutional adoption.\\\
+    nAdditionally, ontological mappings present another layer of\\ncomplexity. Inaccurate or ambiguous mappings can compromise\\\
+    ninteroperability, especially when mappings conflate related concepts (e.g.,\\n\\u201cbroader-than\\u201d vs. \\u201cequivalent-to\\\
+    u201d). Mapping provenance and confidence\\nscores must be made explicit, with fine-grained metadata to support\\nauditability,\
+    \ trust and downstream utility. Standardizing such practices\\nacross KGs is a critical next step.\\nMoving forward, community-wide\
+    \ collaboration is essential. Key\\npriorities include: a) developing shared QA pipelines that incorporate\\nprovenance,\
+    \ uncertainty tagging and confidence scoring; b) building tools\\nfor dynamic validation that accommodate evolving knowledge\
+    \ and\\ncontextual shifts; c) supporting retrospective validation (e.g., validating\\npast predictions with future outcomes;\
+    \ and d) establishing standards for\\nedge-level metadata, ontological mappings, and equivalence annotations.\\nThe central\
+    \ challenge is defining and operationalizing validation\\nframeworks that are scalable, interpretable, and aligned with\
+    \ scientific\\nrigor. While peer review of KGs is valuable, it is currently too labor-\\nintensive to scale. Semi-automated\
+    \ pipelines and benchmarked validation\\ntools are essential for sustainable KG development.\\nIn summary, validation\
+    \ is not an endpoint but an iterative,\\nmultidimensional process embedded throughout the lifecycle of\\nbiomedical KGs.\
+    \ Embedding provenance, context, and shared standards at\\nevery level is essential to ensure these systems are not only\\\
+    ncomputationally robust but also trustworthy and fit-for-purpose.\\nDesideratum 4. The evolving and synergistic relationship\
+    \ between\\nknowledge graphs and large language models is essential in\\nempowering AI-driven biomedical discovery.\\\
+    n\\nDesiderata for a biomedical knowledge network\\nIn the era of powerful large language models (LLMs), knowledge\\ngraphs\
+    \ remain essential. While LLMs excel at interpreting unstructured\\ndata and generating natural language outputs, KGs\
+    \ offer structured,\\nprecise, and provenance-rich representations that help constrain LLM\\nhallucinations, support explainability,\
+    \ and ensure scientific rigor.\\nEncoding biomedical knowledge as graphs inherently imposes a degree of\\nformalization\
+    \ that benefits both computational inference and human\\ninspection. In this sense, KGs act as a source of truth for LLMs,\
+    \ grounding\\ninference and generated content within biomedically sensible context.\\nKGs and LLMs thus play complementary\
+    \ roles: KGs provide rigorously\\ndefined representations, identifiable provenance, and the potential for\\nlogical and\
+    \ semantic reasoning, while LLMs are adept at processing,\\ngenerating, and transforming unstructured input. LLMs can\
+    \ assist KG\\nconstruction by extracting triples from text or identifying inconsistencies\\n(Pop et al. 2025), while KGs\
+    \ can enhance LLMs outputs through retrieval-\\naugmented generation (RAG) or by injecting validated facts into prompts.\\\
+    nCompared\\nto\\nLLMs,\\nKG-based\\nreasoning\\nis\\nmore\\n\\u201chuman-\\ncomprehensible\\u201d and transparent, allowing\
+    \ domain experts to inspect and\\nrefine knowledge directly, which can be regarded as \\\"living textbooks of\\nthe future\\\
+    \" for biomedicine.\\nSeveral promising integration patterns are emerging: a) graph-\\naugmented retrieval to ground LLM\
+    \ responses in a biomedical domain-\\nspecific context; b) LLM-assisted curation to support semi-automated\\ngraph construction;\
+    \ c) hybrid reasoning, blending logical inferences from\\nKGs with LLM-generated hypotheses or narratives. LLMs can also\\\
+    nimprove KG usability by acting as natural language interfaces, allowing\\nexperts to query graphs conversationally and\
+    \ receive contextual,\\nstructured responses\\u2014lowering the cognitive barrier to interacting with\\ncomplex KGs encoded\
+    \ in triple format.\\nDespite promise, challenges remain. Current approaches often fall short\\nin terms of scalability,\
+    \ utility, and reliability. Human-in-the-loop\\nworkflows are critical for validating LLM-generated triples, and ensuring\\\
+    ncontextual accuracy, especially in high-stakes domains like precision\\nmedicine. Novel methods are needed to scale expert\
+    \ oversight while\\npreserving scientific fidelity. A key opportunity is to use LLMs not as\\nautonomous knowledge creators,\
+    \ but as assistive agents in structured\\ncuration workflows, akin to code review assistants in software\\ndevelopment.\
+    \ For instance, projects like Uberon have successfully\\nadopted semi-automated, expert-guided ontology development (Haendel\\\
+    net al. 2014). This model combines LLM efficiency with human judgement,\\naligning automation with domain-specific epistemic\
+    \ constraints.\\nMitigating hallucination and ensuring provenance are also critical in\\nKG-LLM integration. Strategies\
+    \ include prompt engineering, enforcing\\nstructured outputs (e.g., triple formats), citation tagging, and external\\\
+    nvalidation against trusted datasets or knowledge bases. Clinical use cases\\nalso require an extra layer of privacy safeguards\
+    \ and access controls.\\nIn summary, KGs provide the structure, provenance, and semantic rigor\\nthat LLMs lack, while\
+    \ LLMs offer new ways to build, maintain, and\\ninteract with KGs. Together, they can amplify human expertise and enable\\\
+    nbiomedical AI systems that are powerful, transparent, and trustworthy\\u2014\\nprovided the field invests in validation,\
+    \ standards, and human-centered\\ntooling to realize their full potential.\\nDesideratum 5. Integrated development environments,\
+    \ public\\nrepositories, and governance frameworks are essential for secure\\nand reproducible knowledge graph sharing\\\
+    nKnowledge graphs are fundamentally about knowledge sharing and\\nreuse, the power of the graph-based inference and reasoning\
+    \ arises from\\nthe broad scope of integrated knowledge. While the projects relying on\\nbiomedical KGs have rapidly increased,\
+    \ the development and sharing of\\nbiomedical KGs are hindered by the lack of robust development\\nenvironments for standards-based\
+    \ graph construction. An important\\naspect of a reproducible KG is the ability to share the build process, not\\njust\
+    \ the resulting graph (Callahan et al. 2024). New development\\nenvironments that facilitate graph construction best practices\
+    \ and\\nreproducibility will be broadly impactful.  While commercial graph\\ndatabases offer user-friendly interfaces\
+    \ and end-to-end tooling, RDF-\\nbased graph engineering remains a fragmented and technically demanding\\nprocess. Efficient\
+    \ tools for building, visualizing, debugging, and\\nmaintaining large, standards-compliant graphs are urgently needed.\
+    \ Such\\nenvironments would not only accelerate development but also enhance\\nreproducibility,\\nrigor,\\nand\\ninteroperability\\\
+    nacross\\ngraph-based\\napplications.\\nEqually critical is the creation of public, searchable repositories for\\nKGs.\
+    \ Currently, there is no recognized archive where researchers can\\npublish, explore, and reuse KG content. A well-designed\
+    \ repository would\\nsupport graph visualization, metadata-rich indexing, and modular reuse\\u2014\\nallowing developers\
+    \ to merge existing graphs by value or by reference into\\ntheir own projects. These repositories should align with existing\\\
+    nbiomedical infrastructure (e.g., BioPortal, UMLS) and adopt metadata\\nstandards for graph description and provenance.\
+    \ Just as the NIH endorses\\nstandardized value sets, it could similarly support a set of reference graphs\\nto promote\
+    \ reuse and quality assurance.\\nBuilding on NIH\\u2019s 2023 Data Management and Sharing Policy (\\u201cData\\nManagement\
+    \ and Sharing Policy\\u201d n.d.), a parallel Knowledge\\nManagement and Sharing Policy could be developed. This would\\\
+    ninclude expectations for source transparency, build reproducibility,\\nlicensing disclosure, update frequency, and provenance\
+    \ documentation.\\nAutomated rebuild pipelines, standardized graph packaging, and\\nrepository-based dissemination could\
+    \ significantly improve trust and\\nsustainability. Addressing licensing challenges, often a roadblock for\\nreuse, should\
+    \ be a priority in any future governance framework.\\nIn summary, to ensure that biomedical KGs are secure, reproducible,\\\
+    nand shareable at scale, the field must invest in purpose-built development\\nenvironments, curated public repositories,\
+    \ and governance models that\\nbalance openness with ethical responsibility. These infrastructure and\\npolicy investments\
+    \ will be essential to support community-driven,\\ntrustworthy knowledge sharing in the era of AI-enhanced biomedical\\\
+    ndiscovery.\\nDesideratum 6. Rigorous validation, provenance, and ethical\\ngovernance are critical for trustworthy biomedical\
+    \ knowledge\\ngraphs\\nBiomedical knowledge graphs are complex, evolving systems that\\nintegrate diverse and possibly\
+    \ sensitive information. To be trustworthy\\nand impactful, they must be validated rigorously, governed transparently,\\\
+    nand built on provenance-rich foundations. Yet, the scale, complexity, and\\ndomain-specific nature of biomedical knowledge\
+    \ pose significant\\nchallenges. Biomedical KGs differ from other domains due to their rapid\\nknowledge evolution, uncertainty\
+    \ in evidence, and the sheer diversity of\\nentity and relationship types, such as genes, proteins, phenotypes and\\nclinical\
+    \ concepts.\\nValidation remains a persistent challenge. Unlike static datasets, KGs\\nrequire continuous quality assessment\
+    \ as knowledge evolves. This\\nincludes verifying not just the presence of connections, but the context,\\nevidence strength,\
+    \ and potential modifiers. Manual validation is costly and\\n\\nDesiderata for a biomedical knowledge network\\nresource-intensive;\
+    \ scalable solutions must combine automation with\\nhuman oversight. Existing automated approaches to support the reuse\
+    \ of\\nbiomedical data, such as the (Re)usable Data Project (Carbon et al. 2019),\\nprovide useful frameworks, but broader\
+    \ adoption will require new\"\n  },\n  {\n    \"name\": \"methods, including checklists for licensing and provenance,\
+    \ and smarter\",\n    \"text\": \"automation that can support expert review.\\nThe advantage of KGs over black-box AI\
+    \ models like LLMs is their\\ninherent transparency: the provenance of every statement can, in\\nprinciple, be traced.\
+    \ However, this ideal is not always realized. Current\\nframeworks (Stear et al. 2024; Putman et al. 2024; Callahan et\
+    \ al. 2024)\\nemphasize automated graph construction and build pipelines, including\\nsource and mapping metadata for\
+    \ each node and edge. While this\\nrepresents progress, challenges persist\\u2014especially in handling ambiguous\\nontology\
+    \ mappings, context-sensitive validity, and the articulation of\\ndesign intent, audience, and use case.\\nTechnical barriers\
+    \ are compounded by governance gaps. Licensing\\nrestrictions often inhibit reuse, derivation, or redistribution of data,\
+    \ with\\nmany data sources having unclear terms (Carbon et al. 2019). Ethical\\nconcerns also demand renewed attention.\
+    \ While some issues\\u2014like re-\\nidentification risks\\u2014are familiar, the structured nature of KGs introduces\\\
+    nnew potential harms, such as emergent inferences or exposure of sensitive\\nlinkages. Governance must also address equity\
+    \ and sovereignty,\\nparticularly for marginalized groups such as Indigenous communities,\\nwhere control over data use\
+    \ is paramount.\\nPrivacy must be balanced with openness. The principle of \\u201cas open\\nas possible, but as restricted\
+    \ as necessary\\u201d (Landi et al. 2020) adheres with\\nmore general principles of conducting open and careful science\
+    \ (Resnik\\n1998). Under this principle, technical strategies\\u2014homomorphic\\nencryption, differential privacy, and\
+    \ privacy-preserving embeddings\\u2014\\noffer potential for fine-grained control without undermining usability.\\nCapturing\
+    \ and honoring data-use preferences from participants is both an\\nethical imperative and a technical challenge. The security\
+    \ of KGs must be\\nprotected against misuse and adversarial exploitation. It will be important\\nthat KG security practices\
+    \ conform with international standards, e.g. the\\nISO 27001 requirements on information security management (ISO 27001\\\
+    n2022) and relevant law such as the EU\\u2019s General Data Protection\\nRegulation (GDPR 2018).\\nIn summary, to build\
+    \ a trustworthy biomedical knowledge network, the\\nfield must adopt a multidimensional approach to validation, provenance,\\\
+    nand governance. This includes scalable quality assessment, transparent\\nlicensing, ethical data stewardship, and privacy-preserving\
+    \ architectures.\\n3\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"The \\u201cKnowledge Networks in Biomedical\
+    \ and Behavioral Research\\u201d\\nmeeting provided a forum for discussion about challenges, opportunities\\nand future\
+    \ directions for a biomedical knowledge network. Our key\\nobservations and analyses of the Desiderata are summarized\
+    \ in Figure 1.\\nWhile the Desiderata are presented in separate sections, we illustrate in a\\nknowledge graph created\
+    \ by using terms from the Desiderata that their\\nunderlying principles intersect (Figure 2).\\nThe Desiderata knowledge\
+    \ graph shows that the most highly connected\\nand salient concepts relate to the unique challenges of representing the\\\
+    ncomplex nature of the biomedical domain (e.g., heterogeneity, patient\\ndata), critical qualities of KGs (e.g., trustworthiness,\
+    \ transparency,\\nreproducibility, interoperability), graph quality assessments (e.g.,\\nvalidation, provenance, privacy),\
+    \ and graph methods (e.g., inference,\\nmodeling, LLM, RAG). Indeed, one can argue that the virtues of a\\nbiomedical\
+    \ knowledge network lie in its trustworthiness. The concept of\\n\\u201ctrustworthy\\u201d can be described as epistemic\
+    \ components, relating to\\nprovenance and validation, and ethical components, such as privacy and\\nsecurity protections.\
+    \ As a final remark, we emphasize that as knowledge\\ngraphs become more central to biomedical AI, ensuring their integrity\
+    \ and\\nsocial acceptability will be as important as ensuring their computational\\npower.\"\n  },\n  {\n    \"name\"\
+    : \"Acknowledgements\",\n    \"text\": \"We wish to thank the NIH Knowledge Graph Working Group and the Office of Data\\\
+    nScience Strategy (ODSS) for fostering this collaboration and the NIH organizing\\ncommittee (Ishwar Chandramouliswaran,\
+    \ Mauricio Rangel Gomez, Chun-Ju Hsiao,\\nHaluk Resat) for co-hosting this meeting. We thank the session panelists (Chris\\\
+    nBizon, Katy B\\u00f6rner, Licong Cui, Nick Evans, Jeffrey Grethe, Melissa Haendel, Bian\\nJiang, Chris Mungall, Jonathan\
+    \ Silverstein, Deanne Tayler, Chunhua Weng) for their\\npanel presentations and discussion. We thank all meeting participants\
+    \ who\\ncontributed to the discussion.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"All authors\
+    \ equally contributed to writing this perspective.\\n\\nConflict of interest\\nNone declared.\"\n  },\n  {\n    \"name\"\
+    : \"Data availability\",\n    \"text\": \"No data is associated with this manuscript since it is a perspective.\"\n  },\n\
+    \  {\n    \"name\": \"References\",\n    \"text\": \"Brazma, A., P. Hingamp, J. Quackenbush, G. Sherlock, P. Spellman,\
+    \ C. Stoeckert, J.\\nAach, et al. 2001. \\u201cMinimum Information about a Microarray Experiment\\n(MIAME)-toward Standards\
+    \ for Microarray Data.\\u201d Nature Genetics 29 (4): 365\\u2013\\n71.\\nCallahan, Tiffany J., Ignacio J. Tripodi, Adrianne\
+    \ L. Stefanski, Luca Cappelletti,\\nSanya B. Taneja, Jordan M. Wyrwa, Elena Casiraghi, et al. 2024. \\u201cAn Open\\nSource\
+    \ Knowledge Graph Ecosystem for the Life Sciences.\\u201d Scientific Data 11\\n(1): 363.\\nCarbon, Seth, Robin Champieux,\
+    \ Julie A. McMurry, Lilly Winfree, Letisha R.\\nWyatt, and Melissa A. Haendel. 2019. \\u201cAn Analysis and Metric of\
+    \ Reusable\\nData Licensing Practices for Biomedical Resources.\\u201d PloS One 14 (3):\\ne0213090.\\nCFDE. n.d. \\u201cCommon\
+    \ Fund Data Ecosystem (CFDE).\\u201d Accessed June 19, 2025.\\nhttps://commonfund.nih.gov/dataecosystem.\\nCollins, Gary\
+    \ S., Paula Dhiman, Constanza L. Andaur Navarro, Jie Ma, Lotty Hooft,\\nJohannes B. Reitsma, Patricia Logullo, et al.\
+    \ 2021. \\u201cProtocol for Development\\nof a Reporting Guideline (TRIPOD-AI) and Risk of Bias Tool (PROBAST-AI)\\nfor\
+    \ Diagnostic and Prognostic Prediction Model Studies Based on Artificial\\nIntelligence.\\u201d BMJ Open 11 (7): e048008.\\\
+    n\\u201cData Management and Sharing Policy.\\u201d n.d. Accessed June 19, 2025.\\nhttps://sharing.nih.gov/data-management-and-sharing-policy.\\\
+    nDDKG. n.d. \\u201cData Distillery KG.\\u201d DDKG. Accessed June 19, 2025. https://dd-kg-\\nui.cfde.cloud/about.\\nFecho,\
+    \ Karamarie, Gw\\u00eanlyn Glusman, Sergio E. Baranzini, Chris Bizon, Matthew\\nBrush, William Byrd, Lawrence Chung, et\
+    \ al. 2025. \\u201cAnnouncing the\\nBiomedical Data Translator: Initial Public Release.\\u201d Clinical and Translational\\\
+    nScience 18 (7): e70284.\\nGDPR. 2018. \\u201cGeneral Data Protection Regulation.\\u201d GDPR. 2018. https://gdpr-\\ninfo.eu/.\\\
+    nHaendel, Melissa A., James P. Balhoff, Frederic B. Bastian, David C. Blackburn,\\nJudith A. Blake, Yvonne Bradford, Aurelie\
+    \ Comte, et al. 2014. \\u201cUnification of\\nMulti-Species Vertebrate Anatomy Ontologies for Comparative Biology in\\\
+    nUberon.\\u201d Journal of Biomedical Semantics 5 (1): 21.\\nISO 27001. 2022. \\u201cISO/IEC 27001:2022 Information Security,\
+    \ Cybersecurity and\\nPrivacy Protection \\u2014 Information Security Management Systems \\u2014\\nRequirements.\\u201d\
+    \ ISO 27001. 2022. https://www.iso.org/standard/27001.\\n\\nDesiderata for a biomedical knowledge network\\nKN meeting.\
+    \ 2025. \\u201cMeeting Agenda with Slide Presentations, \\u2018Knowledge\\nNetworks in Biomedical and Behavioral Research\\\
+    u2019 Meeting, Rockville,\\nMaryland,\\nMay\\n28-29,\\n2025.\\u201d\\nKN\\nMeeting.\\nMay\\n29,\\n2025.\\nhttps://drive.google.com/file/d/1OZs5z0RWAi-\\\
+    ndimu6kMimn8mx1p_KIBrT/view?usp=sharing.\\nLandi, Annalisa, Mark Thompson, Viviana Giannuzzi, Fedele Bonifazi, Ignasi\\\
+    nLabastida, Luiz Olavo Bonino da Silva Santos, and Marco Roos. 2020. \\u201cThe \\u2018A\\u2019\\nof FAIR \\u2013 as Open\
+    \ as Possible, as Closed as Necessary.\\u201d Data Intelligence 2 (1\\u2013\\n2): 47\\u201355.\\nMatentzoglu, Nicolas,\
+    \ Susan M. Bello, Ray Stefancsik, Sarah M. Alghamdi, Anna\\nV. Anagnostopoulos, James P. Balhoff, Meghan A. Balk, et al.\
+    \ 2024. \\u201cThe\\nUnified Phenotype Ontology (UPheno): A Framework for Cross-Species\\nIntegrative\\nPhenomics.\\u201d\\\
+    nBioRxivorg.\\nhttps://doi.org/10.1101/2024.09.18.613276.\\nPatil, Ramesh S., Richard Fikes, Peter F. Patel-Schneider,\
+    \ Donald P. McKay,\\nTimothy W. Finin, Thomas R. Gruber, and Robert Neches. 1992. \\u201cThe DARPA\\nKnowledge Sharing\
+    \ Effort: A Progress Report.\\u201d In Proceedings of the Third\\nInternational Conference on Principles of Knowledge\
+    \ Representation and\\nReasoning, 777\\u201388. KR\\u201992. San Francisco, CA, USA: Morgan Kaufmann\\nPublishers Inc.\\\
+    nPop, Mihai, Teresa K. Attwood, Judith A. Blake, Philip E. Bourne, Ana Conesa,\\nTerry Gaasterland, Lawrence Hunter, et\
+    \ al. 2025. \\u201cBiological Databases in the\\nAge of Generative Artificial Intelligence.\\u201d Bioinformatics Advances\
+    \ 5 (1):\\nvbaf044.\\nProto-OKN.\\nn.d.\\n\\u201cProto-OKN.\\u201d\\nProto-OKN.\\nAccessed\\nJune\\n19,\\n2025.\\nhttps://www.proto-okn.net.\\\
+    nPutman, Tim E., Kevin Schaper, Nicolas Matentzoglu, Vincent P. Rubinetti, Faisal\\nS. Alquaddoomi, Corey Cox, J. Harry\
+    \ Caufield, et al. 2024. \\u201cThe Monarch\\nInitiative in 2024: An Analytic Platform Integrating Phenotypes, Genes and\\\
+    nDiseases across Species.\\u201d Nucleic Acids Research 52 (D1): D938\\u201349.\\nResnik, David B. 1998. The Ethics of\
+    \ Science: An Introduction. Routledge.\\nhttps://doi.org/10.4324/9780203979068.\\nStear, Benjamin J., Taha Mohseni Ahooyi,\
+    \ J. Alan Simmons, Charles Kollar, Lance\\nHartman, Katherine Beigel, Aditya Lahiri, et al. 2024. \\u201cPetagraph: A\
+    \ Large-\\nScale Unifying Knowledge Graph Framework for Integrating Biomolecular and\\nBiomedical Data.\\u201d Scientific\
+    \ Data 11 (1): 1338.\\nUBKG. n.d. \\u201cUnified Biomedical Knowledge Graph (UBKG).\\u201d UBKG. Accessed\\nJune 19, 2025.\
+    \ https://ubkg.docs.xconsortia.org/.\\nUnni, Deepak R., Sierra A. T. Moxon, Michael Bada, Matthew Brush, Richard\\nBruskiewich,\
+    \ J. Harry Caufield, Paul A. Clemons, et al. 2022. \\u201cBiolink Model:\\nA Universal Schema for Knowledge Graphs in\
+    \ Clinical, Biomedical, and\\nTranslational Science.\\u201d Clinical and Translational Science 15 (8): 1848\\u201355.\\\
+    nWhetzel, Patricia L., Natalya F. Noy, Nigam H. Shah, Paul R. Alexander, Csongor\\nNyulas, Tania Tudorache, and Mark A.\
+    \ Musen. 2011. \\u201cBioPortal: Enhanced\\nFunctionality via New Web Services from the National Center for Biomedical\\\
+    nOntology to Access and Use Ontologies in Software Applications.\\u201d Nucleic\\nAcids Research 39 (Web Server issue):\
+    \ W541-5.\\n\\nFigures\\n\\n\\nFigure 1. Desiderata for a biomedical knowledge network: challenges, opportunities and\
+    \ future directions.\\n\\n\\n\\n\\n\\n\\nFigure 2. Convergent principles demonstrated as a knowledge graph from the Desiderata.\\\
+    nThe underlying graph is available at: https://biothings-data.s3.us-west-\\n2.amazonaws.com/knmeeting/graph_desiderata.html.\"\
+    \n  }\n]"
+  acknowledgments: 'We wish to thank the NIH Knowledge Graph Working Group and the Office of Data
+
+    Science Strategy (ODSS) for fostering this collaboration and the NIH organizing
+
+    committee (Ishwar Chandramouliswaran, Mauricio Rangel Gomez, Chun-Ju Hsiao,
+
+    Haluk Resat) for co-hosting this meeting. We thank the session panelists (Chris
+
+    Bizon, Katy Börner, Licong Cui, Nick Evans, Jeffrey Grethe, Melissa Haendel, Bian
+
+    Jiang, Chris Mungall, Jonathan Silverstein, Deanne Tayler, Chunhua Weng) for their
+
+    panel presentations and discussion. We thank all meeting participants who
+
+    contributed to the discussion.'
+  author_contributions: 'All authors equally contributed to writing this perspective.
+
+
+    Conflict of interest
+
+    None declared.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\",\n    \"\
+    page\": 7\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\",\n   \
+    \ \"page\": 8\n  }\n]"
+references:
+  reference_count: 106

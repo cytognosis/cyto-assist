@@ -1,0 +1,1847 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/MEDEA.pdf
+
+identifiers:
+  doi: 10.64898/2026.01.16.696667
+  pmid: '41648610'
+citation:
+  title: 'M :   An omics AI agent for therapeutic discovery'
+  year: '2026'
+  publisher: openRxiv
+  authors: Pengwei Sui, Michelle M. Li, Shanghua Gao, Wanxiang Shen, Valentina Giunchiglia, Andrew Shen, Yepeng Huang, Zhenglun
+    Kong, Marinka Zitnik
+content:
+  abstract: 'RelevanceVeriﬁcation systematically assesses the relevance of a paper to the research objec-
+
+    tive using an LLM. For each retrieved publication, the tool analyzes its title, abstract, and metadata
+
+    to assess study characteristics (e.g., species, disease, cell type context), and generates a binary
+
+    relevance label and a detailed relevance summary.
+
+    OpenScholarReasoning synthesizes evidence from the curated collection of papers using
+
+    the OpenScholar framework [49] with integrated reranking capabilities. The process involves:
+
+    (1) initializing a BGE reranker model [139] to identify and prioritize the most informative pas-
+
+    sages via semantic similarity to the user instruction; and (2) using OpenScholar [49] to generate a
+
+    literature-grounded report (with proper citation formatting) that addresses the user instruction.
+
+    1.5
+
+    MultiRoundDiscussion module
+
+    The MultiRoundDiscussion module conducts a multi-round deliberation over the outputs of the
+
+    Analysis module, LiteratureReasoning module, and backbone LLM to generate a consensus
+
+    that addresses the user input. It adapts a ReConcile-style panel discussion [55] with standardized
+
+    inputs, independent judgments, weighted reconciliation, iterative debate, and ﬁnal synthesis.
+
+    Before deliberation, each module’s output is normalized into an evidence-grounded argument
+
+    28
+
+
+    via a template with a ﬁxed token budget and uniﬁed format. The deliberation has four main stages:
+
+    (1) independent evaluation by each LLM panelist, (2) preliminary consensus among the panelists,
+
+    (3) iterative discussion between the panelists until consensus is achieved, and (4) summarization
+
+    of the panelists’ decision. In the ﬁrst stage, three distinct LLMs independently evaluate each 300-
+
+    word argument against the evaluation criteria (e.g., evidence strength, logical consistency, scientiﬁc
+
+    rigor) to generate structured responses containing their preferred argument (i.e., from the Analysis
+
+    module, LiteratureReasoning module, or backbone LLM), explanations, and conﬁdence scores.
+
+    The verdict of each LLM is saved in a JSON format. The three LLMs are conﬁgurable; by de-
+
+    fault, we use the backbone LLM, Gemini-ﬂash-2.0 [140], and o3-mini [141]. In the second stage,
+
+    preliminary consensus is determined by aggregating the verdicts from stage one via conﬁdence-
+
+    weighted voting using each panelist’s conﬁdence score, which ranges from 0 to 1. If consensus is
+
+    not achieved in stage two, the module initiates R (default is 2) rounds of debate. For each round,
+
+    every panelist receives a debate prompt containing the arguments from each module and an audit
+
+    trail summarizing the verdicts from the other panelists. Panelists reassess and update their own
+
+    verdicts. When the panelists reach a consensus, the backbone LLM synthesizes the ﬁnal response.
+
+    1.6
+
+    Implementation details
+
+    Base LLM conﬁguration. MEDEA can be ﬂexibly integrated with any LLM that supports function-
+
+    calling and reasoning. Here, our experiments utilize Azure OpenAI GPT-4o (v2024-11-21; knowl-
+
+    edge cutoff Sep 30, 2023) [142] and Claude Sonnet 3.7 (knowledge cutoff Feb 2025) [143] as
+
+    backbone LLMs. Sampling temperatures are set to 0.4 for agent reasoning, 0.6 for tool invocations,
+
+    and 1.0 for panel discussion modules; the remaining parameters are set to the default settings.
+
+    AgentLite framework. MEDEA is developed using the AgentLite framework (v0.1.12) [144].
+
+    Each agentic module operates independently using the ReAct [145] architecture, performing an
+
+    observe-act-reﬂect cycle for iterative tool-augmented reasoning. Individual modules maintain their
+
+    own task-speciﬁc prompting schemas and memory modules for short-term trajectory tracking and
+
+    long-term observation retrieval. As such, MEDEA’s architecture enables separation between rea-
+
+    soning logic, tool interaction, and task specialization.
+
+    2
+
+    Therapeutic target nomination
+
+    Nominating therapeutic targets requires reasoning about the candidate gene/protein in the dis-
+
+    ease and cellular contexts of interest. This is a biological question-answering task (Supplemen-
+
+    tary Table 1). We select ﬁve disease atlases from CELLxGENE [121, 146] for rheumatoid arthritis
+
+    (RA) [64], type 1 diabetes mellitus (T1DM) [65], Sj¨ogren’s syndrome (SS) [66], hepatoblastoma
+
+    (HB) [67], and follicular lymphoma (FL) [68]. We process these disease atlases to identify disease-
+
+    speciﬁc marker genes for each cell type (Section 2.1). With these marker genes and OpenTargets,
+
+    we construct a benchmark dataset for therapeutic target nomination (Section 2.2).
+
+    29
+
+
+    2.1
+
+    Single-cell disease atlas processing
+
+    We process disease atlases from CELLxGENE [121, 146] using the standard scanpy [147] pipeline.
+
+    First, we remove cells with fewer than 200 expressed genes. To control cell-level quality across
+
+    the disease atlases, we apply thresholds on mitochondrial read fraction and detected gene count.
+
+    For T1DM, we use a mitochondrial threshold of 25% and a gene-count cap of 6,000; for RA, 20%
+
+    and 800; for SS, 0% and 3,000; for FL, 15% and 5,000; and for HB, 8% and 8,000. Next, we ﬁlter
+
+    out genes that are expressed in fewer than 3 cells and that are among the 10% least variable genes.
+
+    Then, we normalize the total UMI counts to a scaling factor of 10,000 reads per cell, apply log
+
+    normalization, and scale each gene to unit variance (and clip values exceeding 10 standard devia-
+
+    tions). We also ﬁlter out genes with missing or duplicated NCBI IDs, Entrez IDs, or gene symbols.
+
+    To evaluate the processing quality, we perform UMAP dimensionality reduction on the processed
+
+    data. We visualize cell clustering with respect to known biological and technical metadata, includ-
+
+    ing cell type, donor identity, and other dataset-speciﬁc annotations. These embeddings allow us to
+
+    assess whether biologically meaningful groupings are preserved while identifying potential batch
+
+    effects, indicated by clustering due to technical rather than biological factors. Finally, to identify
+
+    disease-speciﬁc marker genes for each cell type, we perform differential expression analysis using
+
+    a one-vs-all Wilcoxon rank-sum test. For each cell type within a given disease context, expression
+
+    is compared against all other cells belonging to different disease statuses. This approach identiﬁes
+
+    genes that are speciﬁcally enriched in particular cell type and disease combinations.
+
+    2.2
+
+    Dataset construction
+
+    Dataset construction follows a three-step procedure. First, we analyze the processed single-cell
+
+    disease atlases from CELLxGENE [121] to identify disease-speciﬁc cell marker genes, which are
+
+    signiﬁcant differentially expressed genes (Wilcoxon rank-sum test with Bonferroni correction at
+
+    ↵0.05) within a cell type and disease context [148, 149]. Second, we collect 2,415 disease-
+
+    associated genes/proteins from the Open Targets Platform [39]. We keep genes/proteins with either
+
+    a genetic evidence score >0 [150] or ChEMBL evidence score >0 [70]. Third, we deﬁne ground-
+
+    truth cell type speciﬁc disease targets as the genes/proteins satisfying the criteria from both steps
+
+    1 and 2. For each cell type context, we sample one target (i.e., positive gene/protein) and four
+
+    negative genes/proteins that do not meet the criteria to form ﬁve-gene candidate lists. Prompts are
+
+    paraphrased with o3-mini-0131 (temperature = 1.0) under a “biologist” role. Using three random
+
+    seeds, we generate 20 samples per cell type per disease, producing 2,400 analyses: 420 for RA, 600
+
+    for T1DM, 360 for SS, 180 for HB, and 840 for FL (Figure 3b; Figure 4b; Supplementary Table 1).
+
+    3
+
+    Synthetic lethality prediction
+
+    Predicting synthetic lethality (SL) requires reasoning about genetic dependencies in a certain cel-
+
+    lular context to infer whether perturbing two genes together reduces cellular viability substantially
+
+    more than perturbing either gene alone [94, 95]. This is an open-ended reasoning task.
+
+    30
+
+
+    3.1
+
+    Dataset construction
+
+    We curate experimentally-validated (via combinatorial genetic screening [96]) SL gene pairs and
+
+    matched negative gene pairs. Gene pairs are collected from seven cell lines (six tumor-derived
+
+    and one non-tumorigenic control from distinct genomic contexts) to capture diverse genomic de-
+
+    pendencies [151]: KRAS gain-of-function mutations (MDAMB231, A427, A549), PIK3CA gain-
+
+    of-function mutations (MCF7, CAL33), TP53 mutations (MDAMB231, CAL27, CAL33), and no
+
+    such mutations (MCF10A) [96]. These cell lines represent contexts in which cancer therapeutic tar-
+
+    gets have been extensively characterized using CRISPR screens [152]. For each positive gene pair
+
+    in a speciﬁc cell line, (genea, geneb, cellx), two negative gene pairs are generated via random sub-
+
+    stitution from a pool of 9,987 reported non-SL pairs, (genea, genec, cellx) and (geneb, gened, cellx).
+
+    The substituted genes (genec and gened) are experimentally-validated to not have a synthetic lethal
+
+    interaction with the positive genes (genea and geneb) in any of the cell line contexts [96]. This
+
+    strategy preserves structural similarity to the positive pairs while ensuring non-lethality. With these
+
+    triplets of gene pairs and cell line context, we construct an open-ended reasoning benchmark for
+
+    context-speciﬁc SL prediction (Figure 5b; Supplementary Table 1). Prompts are paraphrased with
+
+    o3-mini-0131 (temperature = 1.0) under a “biologist” role. The dataset contains 1,855 analyses.
+
+    4
+
+    Immunotherapy response prediction
+
+    Predicting personalized immunotherapy response requires reasoning about each patient’s clinical
+
+    features, genomic proﬁle (e.g., tumor mutational burden), and tumor microenvironment [104, 106,
+
+    107]. This is an open-ended reasoning task on multimodal inputs.
+
+    4.1
+
+    Dataset construction
+
+    We construct the dataset using the IMvigor210 cohort (N = 298) [105], a single-arm phase II study
+
+    of anti-PD-L1 atezolizumab in patients with metastatic urothelial carcinoma. For each patient,
+
+    we create a user instruction containing the patient’s clinical metadata: tumor mutational burden
+
+    (TMB) [153], demographics (sex, race), tissue source, and treatment regimen (Figure 6b; Supple-
+
+    mentary Table 1). We create two additional prompt templates that contain the user instruction and
+
+    an experiment instruction to analyze the patient’s transcriptomic proﬁle (Figure 6c). Prompts are
+
+    paraphrased with o3-mini-0131 (temperature = 1.0) under a “clinician” role. Using three random
+
+    seeds, we generate 2,682 analyses (3 seeds ⇥298 patients ⇥3 prompt templates).
+
+    5
+
+    Evaluation of model outputs
+
+    We provide details about model evaluation, performance metrics, and statistical analyses.
+
+    5.1
+
+    LLM judge
+
+    We use an LLM-as-a-Judge (or LLM judge) framework [115, 154] to assess model outputs. No-
+
+    tably, we incorporate mechanisms for selective prediction [155, 156] to handle three special cases:
+
+    (1) Abstain, where the model explicitly admits insufﬁcient evidence or inconclusive analyses [157];
+
+    (2) Failed, where the model does not return any substantive analysis; and (3) None, where the
+
+    31
+
+
+    model systematically evaluates and rejects all candidates based on context-speciﬁc criteria.
+
+    Multiple choice evaluation. For therapeutic target nomination (Section 2; Supplementary Fig-
+
+    ure 1) and immunotherapy response prediction (Section 4; Supplementary Figure 2), the LLM
+
+    judge examines the model output to classify the prediction as one of the predeﬁned categories. For
+
+    therapeutic target nomination, the LLM judge either provides the target gene name or classiﬁes the
+
+    output into one of three categories (Supplementary Figure 1): Abstain, None, or Failed. For im-
+
+    munotherapy response prediction, the LLM judge classiﬁes the output into one of four categories
+
+    (Supplementary Figure 2): R (responder), NR (non-responder), Abstain, or Failed.
+
+    Open-ended reasoning. The LLM judge uses structured prompt templates that provide label def-
+
+    initions with examples [158]. This approach mirrors established methodologies for research claim
+
+    veriﬁcation, where the models must discern whether the evidence supports or refutes a hypoth-
+
+    esis [159]. For synthetic lethality prediction (Section 3), the LLM judge evaluates the model’s
+
+    open-ended reasoning trace to classify it as one of four categories (Supplementary Figure 3):
+
+    (1) Synthetic lethality, (2) Non-SL, (3) Abstain, or (4) Failed.
+
+    5.2
+
+    Model evaluation
+
+    MEDEA is benchmarked against ﬁve large language models (LLMs) and one biomedical agent.
+
+    Large Language Models (LLMs). We evaluate MEDEA against ﬁve state-of-the-art LLMs: GPT-
+
+    4o [142], o1-mini [160], o3-mini [141], DeepSeek-R1:671B [161], and Claude-3.7-Sonnet [143].
+
+    Biomedical AI Agents. CellVoyager is designed to reproduce single-cell analyses from scientiﬁc
+
+    papers [21]. We evaluate its ability to nominate therapeutic targets for rheumatoid arthritis [26].
+
+    5.3
+
+    Accuracy metric
+
+    We adopt the selective prediction evaluation protocol [162, 163]. We deﬁne accuracy as the propor-
+
+    tion of analyses for which the model output contains a deﬁnitive and correct answer (Section 5.1).
+
+    Formally, given Ntotal analyses, the accuracy (or selective risk) is calculated as:
+
+    Accuracy =
+
+    1
+
+    Ntotal −Nabstain
+
+    Ntotal
+
+    X
+
+    i=1
+
+    1{ˆyi = yi ^ ˆyi 6= Abstain},
+
+    (1)
+
+    where 1{·} is the indicator function that equals 1 when the predicted category matches the ground-
+
+    truth label (case-insensitive) and 0 otherwise, and Nabstain denotes the total number of analyses
+
+    classiﬁed as Abstain (Section 5.1). Abstain cases occur when models explicitly acknowledge in-
+
+    sufﬁcient evidence or uncertainty in their reasoning. As abstentions are not incorrect predictions,
+
+    we exclude them from accuracy calculations, decoupling correctness from coverage [155]. We
+
+    additionally report the abstention rate rabstain = Nabstain/Ntotal.
+
+    5.4
+
+    Statistical signiﬁcance testing
+
+    We use McNemar’s test [71] to evaluate the statistical signiﬁcance between two models’ perfor-
+
+    mance. We construct a 2 ⇥2 contingency matrix. Each entry nij indicates the number of analyses
+
+    32
+
+
+    in which MEDEA’s correctness is i 2 {0, 1} and the other model’s correctness is j 2 {0, 1}, where
+
+    0 represents correct and 1 represents incorrect. n01 denotes the number of analyses where MEDEA
+
+    is correct but the other model is incorrect. n10 denotes the number of analyses where MEDEA is
+
+    incorrect but the other model is correct. We exclude analyses where either model abstains (Sec-
+
+    tion 5.1). The McNemar’s test statistic is calculated as:
+
+    χ2 = (n01 −n10)2
+
+    n01 + n10
+
+    (2)
+
+    using the implementation from the statsmodels package [164].
+
+    33'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Omics datasets support target discovery [1], studies\
+    \ of disease biology [2], and biomarker discov-\\nery [3] by linking gene activity to cellular phenotypes [4\\u20136].\
+    \ Chemogenomics adds another data\\nlayer that connects cellular states to compound responses [7, 8], and genetic studies\
+    \ provide ev-\\nidence for how perturbing a gene affects disease risk and presentation [9, 10]. When combined,\\nthese\
+    \ omics datasets can link molecular mechanisms to disease states and perturbations [11\\u201314].\\nFor example, a genetic\
+    \ association can prioritize a gene, single-cell pro\\ufb01les can localize its activity\\nto a disease-relevant cell\
+    \ population, and chemogenomics can suggest compound classes that shift\\nthat disease state toward a reference state.\
+    \ These analyses can help decide which candidate target\\ngenes to test, in which cellular models or patient populations,\
+    \ and with which intervention classes.\\nAI agents are beginning to inform these decisions by translating therapeutic\
+    \ hypotheses into\\nresearch plans, retrieving relevant data, and executing work\\ufb02ows [15\\u201323]. However, many\
+    \ agents\\nstill rely on large language model (LLM)\\u2019s parametric memory instead of grounding intermediate\"\n  },\n\
+    \  {\n    \"name\": \"results in omics datasets, or they follow \\ufb01xed templates that limit adaptation across omics\
+    \ analy-\",\n    \"text\": \"ses [24]. Three gaps limit how these agents can support therapeutic discovery from omics\
+    \ data.\\nFirst, agents often lose track of biological context over long-horizon analyses. They do not consis-\\ntently\
+    \ carry forward the speci\\ufb01ed cell type, disease, and patient cohort, so they may apply single-\\ncell tools to bulk\
+    \ questions or query pathway knowledge bases curated for unrelated tissues. These\\ncontext slips can bias agents toward\
+    \ marker genes from abundant cell types rather than targets in\\nthe disease-relevant compartment [19, 21]. Second, agents\
+    \ rarely verify feasibility before and after\\nexecution. Pre-run checks do not test tool-dataset assumptions and statistical\
+    \ requirements, and\\npost-run checks often stop at catching runtime errors. As a result, an analysis can run successfully\\\
+    nbut still be wrong, for example, when differential expression uses mismatched covariates that are\\npropagated into downstream\
+    \ pathway ranking [22, 23]. Third, agents can struggle to reconcile\\nevidence across datasets, often aggregating studies\
+    \ without screening for relevance [19, 20]. These\\ngaps motivate the development of agents that preserve biological context,\
+    \ validate analyses as they\\nrun, and resolve potentially con\\ufb02icting evidence across omics datasets and tools.\\\
+    nAddressing these gaps requires agents that ground conclusions in omics data by coordinating\\ntools that retrieve, analyze,\
+    \ and interpret omics readouts. Many of the tools that agents call are ma-\\nchine learning models. Contextual embedding\
+    \ models, for example, represent genes in ways that\\ndepend on biological context, including the tissue, the cell type,\
+    \ and the cell state in which they are\\nmeasured [25\\u201328]. When paired with large biological datasets [29, 30] and\
+    \ literature [31], these\\nmodels provide context-speci\\ufb01c evidence that an agent can retrieve and integrate into\
+    \ its analysis.\\nPerturbation models add a complementary class of tools by estimating how genetic or chemical in-\\n2\\\
+    n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\nterventions change gene expression and cellular phenotypes, allowing an agent to compare disease\\nand perturbation\
+    \ signatures and prioritize interventions expected to impact disease states [32\\u201335].\\nHere, we present MEDEA, an\
+    \ AI agent that takes an omics objective and executes a multi-step\\nanalysis with veri\\ufb01cation at each step. MEDEA\
+    \ comprises four modules: planning that speci\\ufb01es\\nthe biological context and checks plan integrity, execution that\
+    \ runs code with pre-run validation\\nand post-run checks, literature reasoning that retrieves and screens studies for\
+    \ contextual relevance\\ngiven the omics objective, and consensus module that reconciles evidence from tool outputs, liter-\\\
+    nature, and the underlying language model, or abstains when evidence is insuf\\ufb01cient. MEDEA op-\\nerates over a tool\
+    \ space spanning single-cell and bulk transcriptomics, protein networks, pathway\\nand ontology resources, and foundation\
+    \ models, and we evaluate it in three open-ended domains.\\nIn cell type speci\\ufb01c target nomination, MEDEA prioritizes\
+    \ candidate targets in disease-relevant cell\\ntypes rather than tissue-level averages. Across 2,400 analyses covering\
+    \ \\ufb01ve diseases and primary\\ncell types, MEDEA improves the accuracy of LLMs by up to 45.9% in rheumatoid arthritis\
+    \ and\\n32.9% in Sj\\u00a8ogren\\u2019s Syndrome. In synthetic lethality reasoning, MEDEA integrates genetic interac-\\\
+    ntion signals with pathway evidence to identify gene pairs whose combined inhibition is predicted to\\nimpair cancer cell\
+    \ viability. Across 2,385 analyses in seven cell lines, MEDEA improves accuracy\\nby up to 21.7% in MCF7 and 13.9% in\
+    \ A549, with lower failure rates than the LLM alone. In im-\\nmunotherapy response prediction, MEDEA links tumor-intrinsic\
+    \ and microenvironment programs\\nto treatment responses by integrating signals related to antigen presentation, interferon\
+    \ signaling,\\nand T-cell exhaustion. Across 894 analyses involving 298 patients, MEDEA achieves up to 23.9%\\nhigher\
+    \ accuracy than existing models. Ablations show complementary contributions of MEDEA\\u2019s\\nmodules: a literature-only\
+    \ con\\ufb01guration abstains in 79.1% of disease contexts, whereas an LLM-\\nonly con\\ufb01guration abstains in 1.8%\
+    \ of analyses but accounts for the largest share of errors; the full\\nMEDEA achieves the best performance with the lowest\
+    \ failure rate.\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\": \"MEDEA agent for veri\\ufb01ed omics reasoning\\\
+    nMEDEA takes as input an omics-based objective speci\\ufb01ed as a natural language instruction and an\\noptional experiment\
+    \ plan. To support different levels of user expertise, MEDEA accepts both high-\\nlevel plans and detailed research plans.\
+    \ MEDEA couples agentic modules with tool use (Figure 1a)\\nand can invoke any of 20 tools (Methods 1.1, Figure 2a) to\
+    \ execute multi-step analyses, returning\\na report grounded in outputs from machine learning models [26, 27, 36], multimodal\
+    \ datasets [37\\u2013\\n46], and literature [47\\u201349].\\nMEDEA orchestrates four modules: ResearchPlanning (Methods\
+    \ 1.2), Analysis (Meth-\\n3\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer\
+    \ review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\\
+    nThe copyright holder for this preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\\
+    ndoi:\\nbioRxiv preprint\\n\\nods 1.3), LiteratureReasoning (Methods 1.4), and MultiRoundDiscussion (Methods 1.5). The\\\
+    nResearchPlanning module transforms an omics-based objective into an executable computa-\\ntional experiment plan, decomposing\
+    \ complex instructions into tractable subtasks, selecting ap-\\npropriate tools (e.g., databases, machine learning models)\
+    \ for each step, and verifying plan in-\\ntegrity by assessing speci\\ufb01city, technical feasibility, consistency, and\
+    \ logical validity [50\\u201353]. The\\nAnalysis module translates the plan into tool calling analyses (databases/APIs,\
+    \ machine learning\\nmodels, and other agents) and enforces veri\\ufb01cation through pre-execution validation (syntax\
+    \ and\\ndependency checks), sandboxed execution with automated error trapping, and post-execution ver-\\ni\\ufb01cation\
+    \ (data provenance auditing [54]) to ensure outputs remain aligned with the plan and the\\nomics objective. The LiteratureReasoning\
+    \ module retrieves literature to produce an evidence-\\ngrounded response, using Semantic Scholar [47] and OpenAlex [48]\
+    \ for retrieval, performing rel-\\nevance screening, and using OpenScholar [49] to generate literature summaries. MEDEA\
+    \ initi-\\nates reasoning by querying the backbone LLM to derive a preliminary response from parametric\\nknowledge and\
+    \ then instantiating a multi-round deliberative process [55] in which a panel of LLMs\\nreviews and reconciles outputs\
+    \ from the Analysis, LiteratureReasoning, and backbone LLM to\\nform a consensus response with calibrated abstention when\
+    \ evidence is insuf\\ufb01cient. In evaluations,\\nMEDEA can activate any subset of modules and tools to complete omics\
+    \ objectives, a capability we\\nevaluate across three open-ended domains: cell type speci\\ufb01c target nomination, synthetic\
+    \ lethality\\nreasoning, and immunotherapy response prediction.\\nBenchmark for cell type speci\\ufb01c target nomination\\\
+    nA target\\u2019s therapeutic potential re\\ufb02ects how likely a gene or protein is a useful point of intervention,\\\
+    nmeaning that perturbing it produces a meaningful disease-relevant effect with an acceptable safety\\npro\\ufb01le. This\
+    \ potential depends on biological context, including the tissue, cell type, and cellular\\nstate in which the target is\
+    \ active [56]. When this context is ignored, on-target ef\\ufb01cacy can be\\nreduced and the risk of off-target toxicity\
+    \ can increase [57\\u201359]. Yet translating context speci\\ufb01city\\ninto computational target nomination remains\
+    \ challenging [26, 60, 61]. Many machine learning\\napproaches are trained on bulk tissue or established cell lines, and\
+    \ therefore lack the resolution\\nneeded to assess therapeutic hypotheses at the level of speci\\ufb01c cell types [62,\
+    \ 63]. To evaluate\\nwhether agents can perform this type of therapeutic analysis, we construct a benchmark for cell\\\
+    ntype speci\\ufb01c target nomination (Figure 3a).\\nThe benchmark spans 29 cell types across \\ufb01ve diseases: rheumatoid\
+    \ arthritis (RA) [64],\\ntype 1 diabetes mellitus (T1DM) [65], Sj\\u00a8ogren\\u2019s syndrome (SS) [66], hepatoblastoma\
+    \ (HB) [67],\\nand follicular lymphoma (FL) [68] (Figure 3b; Methods 2). For each disease, we de\\ufb01ne cell\\n4\\n.\\\
+    nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\ntype speci\\ufb01c targets by retrieving single-cell transcriptomic atlases from healthy individuals and\\npatients,\
+    \ and identifying differentially expressed genes per cell type between healthy and disease\\nstates. We then \\ufb01lter\
+    \ candidates for prior evidence of involvement in disease mechanisms [69]\\nor association with approved or clinical candidate\
+    \ drugs (via ChEMBL) [70]. We de\\ufb01ne negative\\nsamples as genes that are not differentially expressed in patients\
+    \ compared to healthy individuals\\nor that lack genetic and clinical trial support. For each disease\\u2013cell-type\
+    \ context, we generate 60\\nanalyses in which the agent receives a disease, a cell type, and \\ufb01ve candidate genes,\
+    \ yielding 2,400\\nanalyses in total (420 across 7 cell types for RA, 600 across 9 cell types for T1DM, 360 across\\n6\
+    \ cell types for SS, 180 across 3 cell types for HB, and 840 across 14 cell types for FL). In each\\nanalysis, the agent\
+    \ or model selects the gene with the strongest evidence of therapeutic potential in\\nthe speci\\ufb01ed disease and cell\
+    \ type and provides a rationale.\\nThe benchmark is challenging in three ways. First, it requires completing an omics-based\\\
+    nobjective at cell type resolution within a speci\\ufb01ed disease context, rather than reasoning at the\\nbulk tissue\
+    \ level. Second, it links single-cell differential expression with orthogonal evidence from\\nhuman genetics and clinical\
+    \ trials, so methods must integrate multiple evidence sources rather than\\nrelying on gene expression alone. Third, the\
+    \ 2,400 analyses span immune and malignant diseases\\nand diverse cell types, testing whether methods generalize across\
+    \ contexts rather than optimizing\\nfor a single indication. We evaluate models and agents using per-analysis accuracy,\
+    \ de\\ufb01ned as the\\nfraction of analyses in which the correct gene is nominated among the \\ufb01ve candidates. For\
+    \ agents\\nthat can abstain when con\\ufb01dence is low, we additionally report the abstention rate and accuracy\\nconditioned\
+    \ on non-abstention to quantify both coverage and correctness of performance.\\nCell type speci\\ufb01c target nomination\\\
+    nMEDEA is evaluated against \\ufb01ve LLMs and a computational biology agent, CellVoyager [21], on\\nthe omics objectives\
+    \ of nominating therapeutic targets in disease-relevant cell types for rheumatoid\\narthritis, type 1 diabetes mellitus,\
+    \ Sj\\u00a8ogren\\u2019s Syndrome, hepatoblastoma, and follicular lymphoma.\\nFor each of the 2,400 analyses (omics objectives),\
+    \ MEDEA provides an answer and a report that\\nsummarizes the rationale for each candidate target in a cell type and disease\
+    \ context.\\nMEDEA performs competitively against LLMs, reasoning models, and CellVoyager in nomi-\\nnating cell type\
+    \ speci\\ufb01c therapeutic targets (Figure 3). MEDEA outperforms LLMs by up to 45.9%\\nin accuracy for rheumatoid arthritis\
+    \ (p-value < 0.0001 using McNemar\\u2019s test [71]; Figure 3c);\\n23.3% for type 1 diabetes mellitus (p-value < 0.0001;\
+    \ Figure 3d); 33.0% for Sj\\u00a8ogren\\u2019s Syndrome\\n(p-value < 0.0001; Figure 3e); 15.0% for hepatoblastoma (p-value\
+    \ < 0.0001; Figure 3f); and\\n19.8% for follicular lymphoma (p-value < 0.0001; Figure 3g). We also evaluate MEDEA with\\\
+    n5\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\nGPT-4o or Claude 3.7 Sonnet as the LLM backbone.\\nMEDEA consistently outperforms its backbone LLM, which is de\\\
+    ufb01ned as the underlying\\nlanguage model used on its own without the ResearchPlanning, Analysis, or LiteratureRea-\\\
+    nsoning modules. For example, MEDEA (GPT-4o) and MEDEA (Claude 3.7 Sonnet) are 12.1%\\n(p-value < 0.0001) and 8.5% (p-value\
+    \ = 0.0004) more accurate than GPT-4o and Claude 3.7\\nSonnet alone, respectively, on the omics objectives for type 1\
+    \ diabetes mellitus target nomination\\n(Figure 3d). These results show that integrating veri\\ufb01cation-aware modules\
+    \ and tools improves\\ntarget nomination across disease and cell type contexts.\\nSince CellVoyager is designed to reproduce\
+    \ single-cell analyses from scienti\\ufb01c papers [21],\\nwe evaluate whether it can nominate therapeutic targets for\
+    \ rheumatoid arthritis [26]. We compare\\nCellVoyager against MEDEA (Claude 3.7 Sonnet) using the global tool space (Section\
+    \ 1.1). Be-\\ncause CellVoyager produces lengthy multimodal outputs and exhibits high failure rates, a human\\nexpert\
+    \ reviews and scores all CellVoyager outputs. Across 420 analyses, CellVoyager completes\\n28.6% (120 out of 420). On\
+    \ these 120 completed analyses, CellVoyager is 0.8% less accurate than\\nMEDEA (Figure 3h). In 39.3% of analyses (165\
+    \ out of 420), CellVoyager fails to nominate any\\ntarget due to errors during data preprocessing; on the remaining 255\
+    \ analyses, MEDEA is 30.3%\\n(or 2.1 times) more accurate than CellVoyager (Figure 3h). We also \\ufb01nd that CellVoyager\
+    \ does not\\nenforce factual consistency [72\\u201374] (Figure 3i; Supplementary Note 6); for example, it often hallu-\\\
+    ncinates gene names. Finally, while LLMs can be instructed to abstain when uncertain, CellVoyager\\nis not designed to\
+    \ abstain [75\\u201377] (Figure 3i), and struggles with long-horizon reasoning [50, 78,\\n79] because it only interprets\
+    \ the output of the most recent Jupyter cell (Figure 3i). In contrast,\\nMEDEA maintains factual consistency at each step\
+    \ of the analysis, can abstain when evidence is\\ninsuf\\ufb01cient, and completes analyses that require multi-step reasoning\
+    \ over long horizons, which\\ncorrespond to higher accuracy and lower failure rates on the benchmark.\\nContext veri\\\
+    ufb01cation improves cell type level performance\\nWe next assess MEDEA\\u2019s ability to reason about candidate targets\
+    \ within the user-speci\\ufb01ed cell\\ntype context, which is critical for therapeutic ef\\ufb01cacy and safety. Completing\
+    \ this omics-based\\nobjective requires correctly identifying the stated context and retrieving context-appropriate evi-\\\
+    ndence [19]. Closely related cell types can have distinct roles; for example, na\\u00a8\\u0131ve CD4+ \\u21b5\\u03b2 T\
+    \ cells\\nversus effector memory CD4+ \\u21b5\\u03b2 T cells and na\\u00a8\\u0131ve CD8+ \\u21b5\\u03b2 T cells [80, 81].\
+    \ However, LLMs\\noften miss such distinctions [19, 24] and may default to higher-level lineages, such as CD4+ or\\nCD8+\
+    \ T cells. MEDEA is designed to perform context veri\\ufb01cation [82, 83] so that intermediate\\ndecisions remain consistent\
+    \ with the speci\\ufb01ed cell type and disease context. To quantify the con-\\n6\\n.\\nCC-BY 4.0 International license\\\
+    navailable under a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license\
+    \ to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version posted January\
+    \ 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\ntribution of context veri\\\
+    ufb01cation, we stratify MEDEA\\u2019s performance across the cell type and disease\\ncontexts in the target nomination\
+    \ benchmark (Methods 2).\\nMEDEA performs comparably or better than GPT-4o in diverse cell type and disease contexts\\\
+    n(Figure 4a). MEDEA boosts the accuracy of predicting therapeutic targets for rheumatoid arthritis\\nin myeloid dendritic\
+    \ cells by 28.9%, na\\u00a8\\u0131ve CD4+ \\u21b5\\u03b2 T cells by 21.7%, effector memory CD4+\\n\\u21b5\\u03b2 T cells\
+    \ by 21.1%, and na\\u00a8\\u0131ve CD8+ \\u21b5\\u03b2 T cells by 12.2%. Performance gains in nominating\\ntherapeutic\
+    \ targets for rheumatoid arthritis within these cell types are meaningful. The localization\\nof certain myeloid dendritic\
+    \ cells in the synovium of patients with rheumatoid arthritis has been as-\\nsociated with immune homeostasis [84]. As\
+    \ different subsets of CD4+ [85] and CD8+ T cells [86]\\ncontribute uniquely to the pathogenesis of rheumatoid arthritis,\
+    \ it is important to consider gran-\\nular subtypes (e.g., na\\u00a8\\u0131ve versus effector memory CD4+ \\u21b5\\u03b2\
+    \ T cells) for nominating therapeutic\\ntargets. MEDEA and GPT-4o perform comparably on na\\u00a8\\u0131ve B cells and\
+    \ natural killer (NK) cells.\\nFor type 1 diabetes mellitus, MEDEA consistently outperforms GPT-4o on all nine cell type\
+    \ con-\\ntexts, with performance gains of up to 21.7%. For Sj\\u00a8ogren\\u2019s Syndrome, MEDEA yields improved\\naverage\
+    \ accuracies by 29.6% in endothelial cells, 15% in \\ufb01broblasts, and 14.8% in IgA plasma\\ncells. Endothelial cells\
+    \ and \\ufb01broblasts contribute to the recruitment of or interact with lympho-\\ncytes in salivary glands, which are\
+    \ particularly affected by Sj\\u00a8ogren\\u2019s Syndrome, respectively [87].\\nSince IgA plasma cells are enriched in\
+    \ patients with Sj\\u00a8ogren\\u2019s Syndrome, they serve as one of\\nthe histopathological features for diagnosis [88,\
+    \ 89] and a potential target for treating systemic\\nautoimmune rheumatic diseases [90]. MEDEA\\u2019s accuracy doubles\
+    \ (7.0% vs. 13.6%) when nom-\\ninating therapeutic targets for hepatoblastoma in Kupffer cells, which are the liver\\\
+    u2019s \\ufb01rst line of\\ndefense [91]. For follicular lymphoma, MEDEA achieves 15.0% and 13.9% higher average accu-\\\
+    nracy in myeloid cells and plasmacytoid dendritic cells than GPT-4o, respectively. Myeloid cells are\\nmanipulated by\
+    \ tumor cells to promote tumor angiogenesis, cell invasion, and metastasis [92], and\\nthe activation of plasmacytoid\
+    \ dendritic cells can boost innate and adaptive cancer immunity [93].\\nThese \\ufb01ndings indicate that MEDEA identi\\\
+    ufb01es the disease-relevant cell type context, retrieves and\\nexecutes context-appropriate tools, and reasons consistently\
+    \ within the speci\\ufb01ed context.\\nDissecting contributions of MEDEA\\u2019s agentic modules\\nTo quantify how MEDEA\
+    \ achieves cell type speci\\ufb01c target nomination, we perform ablation anal-\\nyses of its agentic modules. Because\
+    \ MEDEA can invoke different tools and agents, we isolate the\\ncontribution of each component by restricting MEDEA to\
+    \ speci\\ufb01c subsets of tools and/or modules\\nand measuring its accuracy on the omics objectives of nominating cell\
+    \ type speci\\ufb01c therapeutic\\ntargets across \\ufb01ve disease contexts (Figure 4b-d).\\n7\\n.\\nCC-BY 4.0 International\
+    \ license\\navailable under a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv\
+    \ a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version\
+    \ posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\nTo assess how\
+    \ tool choice affects performance, we instruct MEDEA to use either PINNA-\\nCLE [26] or TranscriptFormer [27] for the\
+    \ omics objectives of nominating cell type speci\\ufb01c thera-\\npeutic targets (Figure 4b). Neither tool consistently\
+    \ outperforms the other when used by MEDEA.\\nWith PINNACLE, MEDEA performs best for rheumatoid arthritis, type 1 diabetes\
+    \ mellitus, and\\nSj\\u00a8ogren\\u2019s Syndrome. With TranscriptFormer, MEDEA performs better or comparably to the best\\\
+    nLLM for hepatoblastoma (Figure 3f) and follicular lymphoma (Figure 3g), respectively. These\"\n  },\n  {\n    \"name\"\
+    : \"results show that different disease contexts bene\\ufb01t from different tools, motivating agent access to\",\n  \
+    \  \"text\": \"a suite of complementary tools for completing omics objectives.\\nBased on the omics-based objective, MEDEA\
+    \ can activate different combinations of modules\\nto complete the analysis. To quantify module contributions, we compare:\
+    \ pretrained knowledge\\nfrom the backbone LLM only (GPT-4o), the ResearchPlanning and Analysis modules (MEDEA-\\nPA),\
+    \ the LiteratureReasoning module only (MEDEA-R), and the full agent (MEDEA). Using all\\nmodules generally yields the\
+    \ highest accuracy and the lowest abstention rates (Figure 4d), consis-\\ntent with reconciling complementary evidence\
+    \ through the MultiRoundDiscussion module when\\nindividual pathways are incomplete or con\\ufb02icting. For example,\
+    \ because the literature on cell\\ntype speci\\ufb01c therapeutic targets is limited, MEDEA-R abstains most frequently,\
+    \ with an average\\nabstention rate of 77.6% across \\ufb01ve diseases, whereas the backbone LLM abstains less (1.8% on\\\
+    naverage). However, the backbone LLM also produces the highest rate of incorrect nominations\\nacross disease contexts:\
+    \ 49.1% in rheumatoid arthritis, 80.0% in type 1 diabetes mellitus, 65.3%\\nin Sj\\u00a8ogren\\u2019s Syndrome, 76.1%\
+    \ in hepatoblastoma, and 75.5% in follicular lymphoma. These ab-\\nlations show that MEDEA\\u2019s modules act synergistically\
+    \ to improve its performance on completing\\nomics objectives.\\nInferring synthetic lethality in cellular contexts\\\
+    nWe next evaluate MEDEA on the omics objectives of inferring synthetic lethality in a given cel-\\nlular context (Figure\
+    \ 5a) [94, 95]. Synthetic lethality occurs when perturbing two genes together\\nreduces cellular viability substantially\
+    \ more than perturbing either gene alone, re\\ufb02ecting a syner-\\ngistic interaction between the perturbations. Synthetic\
+    \ lethality can be exploited to design ther-\\napies that selectively kill cancer cells while limiting toxicity to normal\
+    \ cells [94, 95]. Using a\\nmultilineage CRISPR screen that identi\\ufb01ed synthetic lethal interactions in seven cell\
+    \ lines [96], we\\nconstruct an open-ended benchmark for synthetic lethality reasoning (Methods 3.1). The bench-\\nmark\
+    \ includes 265 synthetic lethal gene pairs and 1,591 non-synthetic lethal pairs across seven cell\\nlines: MCF7 (breast\
+    \ adenocarcinoma), MCF10A (\\ufb01brocystic breast disease), MDAMB231 (triple-\\nnegative breast cancer), CAL27 (tongue\
+    \ adenosquamous carcinoma), CAL33 (tongue squamous\\n8\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which\
+    \ was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in\
+    \ perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\\
+    ndoi:\\nbioRxiv preprint\\n\\ncell carcinoma), A549 (non-small cell lung cancer), and A427 (non-small cell lung cancer).\\\
+    nMEDEA can activate all modules, agents, and tools, including tools that analyze DepMap\\ngene co-dependency scores from\
+    \ CRISPR-Cas9 essentiality screens in cancer cells [97], biolog-\\nical pathways [37, 40, 98, 99], and molecular function\
+    \ datasets [41, 100, 101] (Methods 1.1).\\nAcross all seven cell line contexts, MEDEA achieves higher accuracy than LLMs\
+    \ and reasoning\\nmodels on the omics objectives of synthetic lethality inference (Figure 5c-i). Compared to LLMs,\\nMEDEA\
+    \ achieves stronger accuracy by up to 21.7% in MCF7 (p-value = 0.0002 using McNemar\\u2019s\\ntest [71]; Figure 5c), 12.3%\
+    \ in MCF10A (p-value = 0.0012; Figure 5d), 9.9% in MDAMB231\\n(p-value 0.0220; Figure 5e), 11.2% in CAL27 (p-value = 0.0145;\
+    \ Figure 5f), 8.7% in CAL33 (p-\\nvalue = 0.0018; Figure 5g), 13.9% in A549 (p-value < 0.0001; Figure 5h), and 11.8% in\
+    \ A427\\n(p-value < 0.0001; Figure 5i). Further, we observe performance gains compared to LLMs re-\\ngardless of MEDEA\\\
+    u2019s LLM backbone (GPT-4o or Claude 3.7 Sonnet). While MEDEA (GPT-4o)\\nand MEDEA (Claude 3.7 Sonnet) have comparable\
+    \ performance in the MDAMB231 (Figure 5e),\\nCAL33 (Figure 5g), and A427 (Figure 5i) cell line contexts, MEDEA (Claude\
+    \ 3.7 Sonnet) yields\\nhigher accuracy in MCF7 by 3.2% (Figure 5c), MCF10A by 5.2% (Figure 5d), CAL27 by 6.3%\\n(Figure\
+    \ 5f), and A549 by 4.2% (Figure 5h).\\nMEDEA corrects errors and abstentions of LLMs\\nWe next test whether veri\\ufb01cation\
+    \ enables MEDEA to revise intermediate steps and convert unre-\\nliable LLM outputs into more reliable conclusions for\
+    \ omics objectives, which is important when\\nprioritizing candidate perturbations for follow-up. We therefore focus on\
+    \ analyses where MEDEA\\nis correct while an LLM used alone is incorrect or abstains (Figure 5j-k). MEDEA (GPT-4o) and\\\
+    nMEDEA (Claude 3.7 Sonnet) correctly infer the viability outcome in at least 323 (13.5%) and 308\\n(12.9%) analyses, respectively,\
+    \ for which GPT-4o, o1-mini, Deepseek R1 671B, Claude 3.7 Son-\\nnet, and o3-mini are incorrect (Figure 5j). In addition,\
+    \ for up to 175 (7.3%) and 227 (9.5%) gene\\npairs where an LLM abstains, MEDEA (GPT-4o) and MEDEA (Claude 3.7 Sonnet)\
+    \ correctly iden-\\ntify the interaction (Figure 5j). In these cases, MEDEA uses literature and data tools to re-evaluate\\\
+    nthe gene pair, check consistency with reported genetic screens, and prioritize interactions supported\\nby convergent\
+    \ evidence, re\\ufb01ning synthetic lethality inference beyond parametric knowledge alone.\\nBecause false positives and\
+    \ false negatives can trigger unnecessary wet-lab experiments\\nor missed therapeutic opportunities [95], we next analyze\
+    \ cases where an LLM is incorrect but\\nMEDEA abstains. MEDEA (GPT-4o) and MEDEA (Claude 3.7 Sonnet) abstain in up to\
+    \ 141 (5.9%)\\nand 109 (4.6%) analyses, respectively, when an LLM makes an incorrect prediction (Figure 5j).\\nAlthough\
+    \ Claude 3.7 Sonnet has a relatively high abstention rate when used alone, it does not\\n9\\n.\\nCC-BY 4.0 International\
+    \ license\\navailable under a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv\
+    \ a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version\
+    \ posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\ndegrade the\
+    \ performance of MEDEA (Claude 3.7 Sonnet), indicating that MEDEA\\u2019s abstention be-\\nhavior is not solely determined\
+    \ by the LLM backbone. Instead, abstention re\\ufb02ects the joint effect\\nof the ResearchPlanning, Analysis, and LiteratureReasoning\
+    \ modules, which surface internal\\ninconsistencies and choose not to commit to a synthetic lethal prediction (Figure\
+    \ 4d). For exam-\\nple, MEDEA abstains when quantitative signals are weak or when pathway and empirical evidence\\ndo\
+    \ not corroborate the interaction (Supplementary Note 7). These results show that MEDEA can\\ncorrect LLM errors and selectively\
+    \ abstain in uncertain cases of synthetic lethality inference.\\nPersonalized treatment response prediction from tumor\
+    \ transcriptomes\\nWe apply MEDEA to multimodal patient data, including clinical and transcriptomic pro\\ufb01les, to\\\
+    npredict personalized response to immunotherapy (Figure 6a-b). Immunotherapy aims to treat can-\\ncer by activating the\
+    \ patient\\u2019s immune system against tumor cells; immune checkpoint inhibitors\\nblock proteins, such as CTLA-4 and\
+    \ PD-1, on T cells so that these cells can recognize and kill\\ntumor cells [102]. However, biomarkers of treatment response\
+    \ are limited [103], and established\\nones, including tumor mutational burden (TMB) and features of the tumor microenvironment,\
+    \ are\\nnot consistently reliable predictors [104]. Using the IMvigor210 patient cohort [105], we con-\\nstruct an open-ended\
+    \ benchmark of 298 patients with bladder urothelial carcinoma treated with\\natezolizumab monotherapy (Methods 4). For\
+    \ each patient, MEDEA generates a report that includes\\na predicted responsiveness score and a rationale grounded in\
+    \ evidence relevant to the patient\\u2019s\\ntumor transcriptomic pro\\ufb01le, tumor microenvironment, and clinical pro\\\
+    ufb01le (Figure 6a).\\nMEDEA can activate all modules and tools, including those that query COMPASS, an inter-\\npretable\
+    \ machine learning model for immunotherapy response prediction [36]. MEDEA reasons\\nover the biologically grounded signatures\
+    \ learned by COMPASS to explain its prediction, includ-\\ning immune biomarkers, and combines these signals with evidence\
+    \ from other tools to generate the\\n\\ufb01nal report (Figure 6a). We evaluate MEDEA under three experiment instruction\
+    \ settings: without\\nexplicit experiment instructions, with broad guidance (experiment instruction A), and with detailed\\\
+    nstep-by-step constraints (experiment instruction B) (Figure 6c). While experiment instructions A\\nand B both direct\
+    \ MEDEA to use COMPASS for analyzing the patient\\u2019s transcriptomic pro\\ufb01le, ex-\\nperiment instruction A asks\
+    \ MEDEA to interpret the top \\ufb01ve immune-related concepts ranked by\\nCOMPASS whereas experiment instruction B speci\\\
+    ufb01es the concepts to interpret.\\nUnder experiment instruction B, MEDEA outperforms LLMs in predicting treatment re-\\\
+    nsponse (Figure 6d). MEDEA achieves up to 23.9% higher accuracy than LLMs (p-value < 0.0001\\nusing McNemar\\u2019s test\
+    \ [71]). Consistent with cell type speci\\ufb01c target nomination and synthetic\\nlethality (Figures 3-5), changing the\
+    \ underlying LLM used by MEDEA does not substantially af-\\n10\\n.\\nCC-BY 4.0 International license\\navailable under\
+    \ a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the\
+    \ preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version posted January 20, 2026.\\\
+    n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\nfect performance on treatment response\
+    \ prediction (Figure 6e). In addition, varying or omitting\\nthe experiment instruction yields comparable performance,\
+    \ and MEDEA continues to outperform\\nLLMs across these settings (Figure 6f). These results show that MEDEA is robust\
+    \ to differences\\nin instruction speci\\ufb01city while completing the omics objectives of predicting treatment response\\\
+    nfrom patients\\u2019 tumor transcriptomes.\\nInterpreting treatment response from TMB and microenvironment\\nImmunotherapy\
+    \ response varies substantially across patients and tumor states [104, 106]. Tu-\\nmor mutational burden (TMB) is often\
+    \ associated with improved response [104], but response\\nalso depends on features of the tumor microenvironment [107].\
+    \ For instance, high TMB together\\nwith an in\\ufb02amed microenvironment is more consistent with response than high\
+    \ TMB with a non-\\nin\\ufb02amed microenvironment [104].\\nGiven this dependence on multiple interacting factors, we\\\
+    nevaluate whether MEDEA can extract and reason over evidence about both TMB and the tumor\\nmicroenvironment when inferring\
+    \ immunotherapy response.\\nWe evaluate MEDEA (GPT-4o) and MEDEA (Claude 3.7 Sonnet) against their LLM back-\\nbones on\
+    \ treatment response prediction for patients across four subgroups: low TMB and non-\\nin\\ufb02amed (N = 97, with 16\
+    \ responder and 81 non-responders; Figure 6g), low TMB and in\\ufb02amed\\n(N = 23, with 2 responders and 21 non-responders;\
+    \ Figure 6h), high TMB and in\\ufb02amed (N = 33,\\nwith 15 responders and 18 non-responders; Figure 6i), and high TMB\
+    \ and non-in\\ufb02amed (N = 64,\\nwith 25 responders and 39 non-responders; Figure 6j) tumor microenvironment. MEDEA\
+    \ achieves\\nthe highest accuracy across all groups. In contrast, standalone GPT-4o and Claude 3.7 Sonnet per-\\nform\
+    \ near random chance; for example, they tend to predict by default that patients with high TMB\\nare responders. Further,\
+    \ MEDEA complements tool outputs by recovering false predictions. Across\\nthe four clinical subgroups, MEDEA correctly\
+    \ predicts response for patients that COMPASS mis-\\nclassi\\ufb01es (Figure 6k), with rescue rates of up to 50.9% in\
+    \ challenging settings such as patients\\nwith high TMB and non-in\\ufb02amed microenvironments. These results indicate\
+    \ that integrating tran-\\nscriptomic, clinical, and mutational pro\\ufb01les with literature evidence improves treatment\
+    \ response\\ninference, and that MEDEA bene\\ufb01ts from agentic modules that combine tumor microenvironment\\nfrom transcriptomes\
+    \ (via analysis of a patient\\u2019s transcriptomic pro\\ufb01le by the COMPASS tool [36])\\nwith TMB and other biomarker\
+    \ features (via literature retrieval tools) (Supplementary Notes 1-5).\\nTo illustrate how MEDEA supports treatment response\
+    \ prediction, we present two patient\\nvignettes from the IMvigor210 cohort [105] treated with atezolizumab. For each\
+    \ patient, MEDEA\\nintegrates clinical variables, tumor mutational burden, and tumor transcriptomes to infer treatment\\\
+    nresponse. The \\ufb01rst vignette is of a white male patient with bladder urothelial carcinoma with tumor\\n11\\n.\\\
+    nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\nmutational burden of 38.0 and a non-in\\ufb02amed tumor microenvironment. Using the pre-treatment\\ntumor biopsy transcriptome\
+    \ together with clinical and mutational features, MEDEA (GPT-4o) and\\nMEDEA (Claude 3.7 Sonnet) predict response to atezolizumab.\
+    \ In this case, the Analysis and\\nLiteratureReasoning pathways are concordant, concluding that the patient will respond\
+    \ based on\\nCOMPASS\\u2019s predicted responsiveness and immune signatures, including moderate-high cytotoxic\\nT cell\
+    \ signal and interferon signaling, together with literature evidence linking treatment response\\nto tumor microenvironment\
+    \ features and molecular subtype. GPT-4o and Claude 3.7 Sonnet used\\nalone also predict response. The patient exhibits\
+    \ a partial response (RECIST [108]) after treatment.\\nIn a second vignette, we consider a white female patient diagnosed\
+    \ with bladder urothe-\\nlial carcinoma, tumor mutational burden of 14.0, and an in\\ufb02amed tumor microenvironment.\
+    \ Us-\\ning the pre-treatment tumor biopsy transcriptome together with clinical and mutational features,\\nMEDEA (GPT-4o)\
+    \ and MEDEA (Claude 3.7 Sonnet) predict non-response to atezolizumab. In this\\ncase, the Analysis and LiteratureReasoning\
+    \ modules provide con\\ufb02icting evidence: Analysis\\npredicts non-response based on COMPASS\\u2019s outputs [36], whereas\
+    \ LiteratureReasoning empha-\\nsizes the literature associating higher tumor mutational burden with better response to\
+    \ immune-\\ncheckpoint inhibitors [109]. After multi-round discussions by MultiRoundDiscussion, MEDEA\\npredicts non-response\
+    \ by prioritizing the microenvironment signature and by noting that tumor\\nmutational burden is not a consistently reliable\
+    \ biomarker when used alone, as factors like im-\\nmune cell composition can dominate response. In contrast, GPT-4o and\
+    \ Claude 3.7 Sonnet used\\nalone both predict that the patient will respond to treatment. The patient has progressive\
+    \ disease\\n(RECIST [108]), consistent with MEDEA\\u2019s prediction of non-response.\"\n  },\n  {\n    \"name\": \"Discussion\"\
+    ,\n    \"text\": \"MEDEA is an agent that completes omics-based objectives for therapeutic discovery across biolog-\\\
+    nical contexts. Across three open-ended domains, cell type speci\\ufb01c target nomination (2,400 analy-\\nses across\
+    \ \\ufb01ve diseases), synthetic lethality reasoning (2,385 analyses across seven cell lines), and\\npatient-level immunotherapy\
+    \ response prediction (894 patient analyses), MEDEA achieves strong\\nperformance while maintaining low failure rates\
+    \ and calibrated abstention. These results re\\ufb02ect a\\nveri\\ufb01cation-aware design that speci\\ufb01es biological\
+    \ context, executes tool-grounded analyses with\\npre-run and post-run checks, evaluates and screens literature, and reconciles\
+    \ evidence or abstains\\nwhen evidence is insuf\\ufb01cient. In target nomination, MEDEA links candidates to disease-relevant\\\
+    ncell types rather than tissue-level averages. In synthetic lethality, it integrates dependency sig-\\nnals with pathway\
+    \ context. In immunotherapy, it connects tumor microenvironment programs to\\npersonalized treatment response.\\n12\\\
+    n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\nContext veri\\ufb01cation yields biologically speci\\ufb01c interpretations. In rheumatoid arthritis, MEDEA\\nties\
+    \ targets to myeloid dendritic cells, na\\u00a8\\u0131ve and effector-memory CD4+ \\u21b5\\u03b2 T cells, and na\\u00a8\\\
+    u0131ve\\nCD8+ \\u21b5\\u03b2 T cells rather than bulk tissue signals, improving accuracy within each cell type (e.g.,\
+    \ by\\n28.9% in myeloid dendritic cells and 21.1% in effector memory CD4+ \\u21b5\\u03b2 T cells) while abstain-\\ning\
+    \ when the speci\\ufb01ed context is ambiguous. In follicular lymphoma, MEDEA nominates targets\\nwithin disease-relevant\
+    \ B cell compartments and highlights pathways linked to germinal center\\nbiology, including B cell receptor signaling\
+    \ and immune synapse organization. Planning and ex-\\necution checks further reduce failures by validating that the selected\
+    \ resources and model inputs\\nmatch the speci\\ufb01ed context and data structure, avoiding common errors in agents [110].\\\
+    nThe performance of AI agents on long-horizon tasks depends on verifying intermediate\\nsteps [111, 112]. In practice,\
+    \ tool-augmented agents often fail when tools time out, raise API\\nexceptions, or return inconsistent outputs, which\
+    \ can trigger cascading errors and task abandon-\\nment. MEDEA adds explicit checks in planning and execution to detect\
+    \ tool malfunctions, apply\\nstructured retries, and update downstream reasoning. Because agentic training pipelines typically\\\
+    noptimize for success trajectories and rarely expose models to tool failures [113], early mistakes\\nin multi-step analyses\
+    \ can propagate and compound. In MEDEA, ablations show distinct roles for\\nplanning checks, execution diagnostics, and\
+    \ literature retrieval. A literature-only agent abstains in\\n77.6% of disease contexts and often withholds useful conclusions.\
+    \ An LLM-only agent abstains in\\n1.8% of analyses, but contributes the largest share of errors (69.2% on average across\
+    \ \\ufb01ve diseases).\\nThe full MEDEA agent achieves the best performance with the lowest failure rate. In head-to-head\\\
+    ncomparisons with a biomedical agent, it fails to return outputs in 39.3% of rheumatoid arthritis\\ncases due to preprocessing\
+    \ issues; among the remaining cases, MEDEA is 2.1 times more accurate.\\nAnalyses of synthetic lethality and immunotherapy\
+    \ response further illustrate the bene\\ufb01ts of\\ncontext veri\\ufb01cation in MEDEA. For synthetic lethality, MEDEA\
+    \ surfaces lineage-aware genetic in-\\nteractions whose joint inhibition is predicted to disrupt compensatory circuits,\
+    \ including pairs that\\ncouple DNA damage response or metabolic co-dependencies observed within speci\\ufb01c cancer\
+    \ cell\\nlines, with accuracy gains up to 22.0% across seven lines. For immunotherapy response, MEDEA\\nstrati\\ufb01es\
+    \ patients by tumor mutational burden and tumor microenvironment features, and links\\nresponse to antigen presentation,\
+    \ interferon signaling, and T-cell exhaustion programs. Prompt-\\nrobust behavior suggests that reconciliation steps reduce\
+    \ variance in conclusions that would other-\\nwise arise from minor prompt changes [114].\\nOur study has limitations.\
+    \ First, the benchmarks rely on curated atlases, genetic dependency\\nresources, and an immune checkpoint inhibitor na\\\
+    u00a8\\u0131ve cohort, which may not capture the full di-\\nversity of tissues, lineages, or clinical settings; additional\
+    \ cohorts will be needed to test generaliz-\\n13\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was\
+    \ not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity.\
+    \ It is made\\nThe copyright holder for this preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\\
+    ndoi:\\nbioRxiv preprint\\n\\nability [36]. Second, performance for some tasks is judged with an LLM-based rubric and\
+    \ human\\nadjudication [115]. Although we track abstention and failures, experimental follow-ups remain\\nessential [116].\
+    \ Third, tools can encode assumptions, including cell type granularity and batch\\nstructure. MEDEA mitigates this with\
+    \ context checks and execution diagnostics, yet mismatches\\ncan still bias outputs. Finally, the consensus stage relies\
+    \ on panel LLMs and con\\ufb01dence weighting,\\nand correlated errors across panelists or adversarial prompts could in\\\
+    ufb02uence results [117].\\nFuture work can treat perturbations as the central object that links omics objectives to read-\\\
+    nouts from omics datasets, enabling MEDEA to complete these objectives using experimental datasets\\nrather than relying\
+    \ primarily on internet search. Adding measurements that resolve tissue context,\\nincluding spatial transcriptomics [118\\\
+    u2013120] and disease-matched single-cell readouts [121, 122],\\ncan broaden the range of omics objectives supported by\
+    \ MEDEA. Looking ahead, extending eval-\\nuations to new biological domains will be important to establish general principles\
+    \ for AI agents.\\n14\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review)\
+    \ is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright\
+    \ holder for this preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\\
+    ndoi:\\nbioRxiv preprint\"\n  },\n  {\n    \"name\": \"Acknowledgements. We thank NVIDIA for the helpful discussions on\
+    \ benchmarking DeepSeek\",\n    \"text\": \"models. M.M.L. and M.Z. are supported by the Berkowitz Family Living Laboratory\
+    \ at Harvard\\nMedical School and the Clalit Research Institute. We gratefully acknowledge the support of NIH\\nR01-HD108794,\
+    \ NSF CAREER 2339524, U.S. DoD FA8702-15-D-0001, ARPA-H Biomedical\\nData Fabric (BDF) Toolbox Program, Harvard Data Science\
+    \ Initiative, Amazon Faculty Research,\\nGoogle Research Scholar Program, AstraZeneca Research, Roche Alliance with Distinguished\\\
+    nScientists (ROADS) Program, Sano\\ufb01iDEA-iTECH Award, GlaxoSmithKline Award, Boehringer\\nIngelheim Award, Merck Award,\
+    \ Optum AI Research Collaboration Award, P\\ufb01zer Research, Gates\\nFoundation (INV-079038), Chan Zuckerberg Initiative,\
+    \ John and Virginia Kaneb Fellowship at\\nHarvard Medical School, Biswas Computational Biology Initiative in partnership\
+    \ with the Milken\\nInstitute, Harvard Medical School Dean\\u2019s Innovation Fund for the Use of Arti\\ufb01cial Intelligence,\\\
+    nand the Kempner Institute for the Study of Natural and Arti\\ufb01cial Intelligence at Harvard University.\\nAny opinions,\
+    \ \\ufb01ndings, conclusions or recommendations expressed in this material are those of the\\nauthors and do not necessarily\
+    \ re\\ufb02ect the views of the funders.\\nAuthors contributions. P.S. developed and implemented MEDEA. M.M.L. designed\
+    \ the experi-\\nments, interpreted the results, and performed statistical analyses. P.S., M.M.L., and A.S. performed\\\
+    nthe benchmark analyses. M.M.L., A.S., and W.S. contributed agentic tools. M.M.L, V.G., and\\nY.H. retrieved, processed,\
+    \ and analyzed datasets. M.M.L. and S.G. helped with the design of agen-\\ntic modules, and Z.K. helped with agent implementation\
+    \ and release. M.Z. and M.M.L. designed\\nand led the study. All authors discussed the research and contributed to the\
+    \ manuscript.\"\n  },\n  {\n    \"name\": \"Competing interests. None\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Data availability. The model checkpoints, datasets, and MEDEA\\u2019s tools are available on Hugging-\",\n    \"text\"\
+    : \"Face at https://huggingface.co/datasets/mims-harvard/MedeaDB.\"\n  },\n  {\n    \"name\": \"Code availability. The\
+    \ documentation of MEDEA is available at https://medea.openscientist.ai\",\n    \"text\": \"The implementation of MEDEA\
+    \ and the code to reproduce the analyses in the paper are available\\non GitHub: https://github.com/mims-harvard/Medea.\\\
+    n15\\n.\\nCC-BY 4.0 International license\\navailable under a\\n(which was not certified by peer review) is the author/funder,\
+    \ who has granted bioRxiv a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this\
+    \ preprint\\nthis version posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\\
+    n\\nb\\na\\nProtein\\nCell\\nPatient\\nModeling immunotherapy\\nresponse\\nTherapeutic response\\nevaluation report\\\
+    nGene 1\\nGene 2\\n+\\nSynthetic lethality\\ncharacterization\\nCell survival?\\nCell death?\\nTarget nomination across\\\
+    nbiological contexts\\nInput\\nStep-by-step procedure\\nResearch\\nplanning module\\nContext verification\\nIntegrity\
+    \ verification\\nAnalysis module\\nOutput Consistence\\nVerification\\nData Provenance\\nVerification\\nLiterature\\nreasoning\
+    \ module\\nLiterature relevance\\nverification\\nStudy quality\\nverification\\nResearch plan\\n(1)\\nLoad cell type-specific\
+    \ embeddings\\nfor hepatocytes \\u2026\\n(2)\\nIdentifying therapeutic targets for\\nhepatoblastoma \\u2026\\nObjective\\\
+    n[Step 1] Retrieve macrophage cell-\\nspecific embeddings from PINNACLE,\\nas macrophages are closely related to\\nhepatocytes\
+    \ \\u2026\\n[Step 2] Retrieve verified therapeutic\\ntargets for hepatoblastoma that\\napproved by the FDA and identified\
+    \ via\"\n  },\n  {\n    \"name\": \"GWAS \\u2026\",\n    \"text\": \"Experiment results\\nfrom tool_space.action_functions\\\
+    nimport load_pinnacle_ppi, \\u2026\\n# Retrieve and validate hepatocytes\\ncell-specific embeddings \\u2026\\ncandidate_genes\
+    \ = {'CBL', 'MTHFS',\"\n  },\n  {\n    \"name\": \"'POU3F4', 'TUBB', 'CYSRT1'}\",\n    \"text\": \"immune_embeddings =\\\
+    nload_pinnacle_ppi(cell_type='hepato\\ncyte\\u2019) \\u2026\\nExperiment code\\n-\\nFound 311 therapeutic targets for\\\
+    nhepatoblastoma \\u2026\\n-\\nIdentified 86 cell-specific therapeutic\\ntarget genes \\u2026\\nExperiment results\\nLiterature-search\
+    \ analysis\\nHepatic stellate cells are non-parenchymal\\ncells in the liver that play critical roles in liver\\nhomeostasis,\
+    \ fibrosis, and regeneration.\\nRecent studies using scRNA-seq and\\nsnRNA-seq have identified rare subtypes of\\nhepatic\
+    \ stellate cells and their transcriptional\\nprofiles, which include genes involved in liver\\nfibrosis, regeneration,\
+    \ and immune\\nmodulation [1] \\u2026\\n-\\nCBL could be targeted to modulate\\noncogenic signaling pathways, but its\
+    \ role\\nin normal liver function must be carefully\\nevaluated to avoid unintended\\nconsequences \\u2026\\nStudy-based\
+    \ reasoning\\n[1] Single Cell, Single Nucleus and Spatial\\nRNA Sequencing of the Human Liver\\nIdentifies Hepatic Stellate\
+    \ Cell and\\nCholangiocyte Heterogeneity (2021) ...\\nCitations\\nResearch plan\\nExperiment results\\nAmong the candidate\
+    \ genes, TUBB\\ndemonstrates the highest expression\\nspecificity in hepatic stellate cells and\\nrepresents the most\
+    \ viable therapeutic target\\nfor hepatoblastoma. This conclusion is\\nsupported by the following evidence:\\n- [Experiment]\
+    \ Expression Specificity in\\nHepatic Stellate Cells:\\nHepatic stellate cells (HSCs) are non-\\nparenchymal liver cells\
+    \ involved in fibrosis,\\nregeneration, and immune modulation. TUBB\\nhas been identified as a critical structural\\nprotein\
+    \ involved in microtubule dynamics \\u2026\\n- [Literature] Therapeutic Viability for\\nHepatoblastoma:\\nHepatoblastoma\
+    \ is a rare pediatric liver\\ncancer characterized by rapid cell\\nproliferation and dysregulated signaling\\npathways.\
+    \ TUBB is a well-established target\\nin cancer therapy due to its role in\\nmicrotubule formation \\u2026\\nOutput\\\
+    nMulti-round discussion\\nEvidence consensus\\nvalidation\\nLiterature-grounded\\nanalysis\\nWhich of the following genes\
+    \ CBL,\\nMTHFS, POU3F4, TUBB, or CYSRT1\\nshows the highest specificity in hepatic\\nstellate cells and represents the\
+    \ most\\nviable therapeutic target for\\nhepatoblastoma?\\nIdentify the validated therapeutic targets\\nfor Hepatoblastoma\
+    \ and analyze the\\nhepatic stellate cell-specific genes \\u2026\\nExperiment instruction\\nUser task\\nFinal analysis\
+    \ report\\nMedea\\nFigure 1: Overview of MEDEA and open-ended evaluation domains. (a) MEDEA takes an omics objective and\
+    \ an optional\\nexperiment instruction, produces a research plan, executes omics analyses using tools, retrieves and screens\
+    \ literature, and recon-\\nciles evidence to return a \\ufb01nal report or calibrated abstention. MEDEA consists of four\
+    \ modules: ResearchPlanning (context and\\nintegrity veri\\ufb01cation for plan construction), Analysis (tool execution\
+    \ with pre-run checks and post-run veri\\ufb01cation), LiteratureRea-\\nsoning (literature retrieval with relevance and\
+    \ evidence-strength assessment), and MultiRoundDiscussion (evidence reconciliation\\nacross module outputs). (b) MEDEA\
+    \ is evaluated on three domains: cell type speci\\ufb01c target nomination, synthetic lethality reasoning\\nin cell lines,\
+    \ and immunotherapy response prediction from patient tumor transcriptomes and clinical data.\\n16\\n.\\nCC-BY 4.0 International\
+    \ license\\navailable under a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv\
+    \ a license to display the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version\
+    \ posted January 20, 2026.\\n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\nResearch\\\
+    nPlan Draft\\nPlan Context\\nVerification\\nPlan Integrity\\nVerification\\nThinking\\nTool:\\nThe observation indicates\
+    \ that the cell type 'hepatic stellate cell' is not available in\\nthe tool PINNACLE. I need to revise the proposal by\
+    \ selecting a closely related cell\\ntype from the available options in PINNACLE \\u2026\\nTool:\\nparams: {'user_query':\
+    \ 'Which of the following genes CBL, MTHFS, POU3F4,\\nTUBB, or CYSRT1 shows the highest expression specificity in hepatic\
+    \ stellate cells\\nand represents the most viable therapeutic target for hepatoblastoma? \\u2026}\\nObservation: [ResearchPlan\
+    \ \\u2013 ID: 3158] created.\\nTool:\\nparams: { \\u2018research_plan\\u2019: [ResearchPlan \\u2013 ID: 3158] }\\nObservation:\
+    \ Context validation issues found.\\n[load_pinnacle_ppi] The specified cell type \\\"hepatic stellate cell\\\" is not\
+    \ available\\nwithin the cell-type-specific embedding keys of pinnacle \\u2026.\\nFeedback updated on [ResearchPlan \\\
+    u2013 ID: 3158]. Please consider selecting from\\nthe available, closely related cell type options : ['pancreatic stellate\
+    \ cell',\\n'hematopoietic stem cell\\u2019 ..] \\u2026\\nTool:\\nparams: {'user_query\\u2019: \\u2026, \\u2018research_plan\\\
+    u2019: [ResearchPlan \\u2013 ID: 3158] \\u2026}\\n\\u2026\\nTool:\\nparams: { \\u2018research_plan\\u2019: [ResearchPlan\
+    \ \\u2013 ID: 3158] }\\nObservation: The rationale for selecting alternative cell types is insufficiently\\njustified,\
+    \ and the constraints on tool usage (e.g., load_pinnacle_ppi ) are not fully\\nadhered to. Revise to include explicit\
+    \ fallback mechanisms for missing embeddings\\nand ensure logical coherence in the selection of alternative cell types\\\
+    u2026\\n\\u2026\\nResearchPlanDraft\\nContextVerification\\nThinking\\nIntegrityVerification\\nResearchPlanDraft\\nResearch\
+    \ planning\\nmodule\\nContext Verification\\nIntegrity Verification\\nResearch Plan\\nUser task\\nExperiment instruction\\\
+    nResearch planning module\\na\\nb\\nTool space\\nTranscriptFormer\"\n  },\n  {\n    \"name\": \"COMPASS\",\n    \"text\"\
+    : \"Humanbase\\nChEMBL\\nEnrichr\"\n  },\n  {\n    \"name\": \"PINNACLE\",\n    \"text\": \"Semantic Scholar\\nFoundation\
+    \ models for\\ncontextual transcriptomics\\nLiterature evidence\\nProteome &\\ntissue-expression\\nPathway & ontology\\\
+    nenrichment\\nTarget dependency &\\ndisease association\\nFigure 2: Tool space and veri\\ufb01ed planning in MEDEA. (a)\
+    \ MEDEA uses a global tool space (Methods 1.1) with resources\\nabout therapeutic targets, disease associations, proteomics,\
+    \ and tissue expression; tools to perform gene set enrichment and pathway\\nanalyses; machine learning models for single-cell\
+    \ and bulk omics; and tools for literature retrieval. (b) Given an omics objective (user\\ninstruction) and an optional\
+    \ experiment instruction, the ResearchPlanning module (Methods 1.2) generates a multi-step analysis\\nplan. Context veri\\\
+    ufb01cation checks tool and data compatibility with the research objective. Integrity veri\\ufb01cation audits the research\\\
+    nplan\\u2019s feasibility, completeness, and logical consistency.\\n17\\n.\\nCC-BY 4.0 International license\\navailable\
+    \ under a\\n(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display\
+    \ the preprint in perpetuity. It is made\\nThe copyright holder for this preprint\\nthis version posted January 20, 2026.\\\
+    n;\\nhttps://doi.org/10.64898/2026.01.16.696667\\ndoi:\\nbioRxiv preprint\\n\\nCell-marker gene collection\\nDisease-specific\
+    \ target collection\\nGenetic\\nAssociation\\nContext specific target collection\\nUser task generation\\nCell-type specific\
+    \ targets\\nHepatoblastoma\\n5 diseases\\n29 cell types\\nCell-marker\\ngene collection\\nDisease-specific\\ntarget collection\\\
+    nDrugs\\n(ChEMBL)\\nTarget-disease evidence\\n+\\n2,400 analysis\"\n  },\n  {\n    \"name\": \"MTHFS\",\n    \"text\"\
+    : \"CBL\"\n  },\n  {\n    \"name\": \"TUBB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"FOU3F4\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"CYSRT1\",\n    \"text\": \"Experiment\\ninstruction\\ntemplate\\nUser\\ninstruction\\\
+    ntemplate\\nWhich of the following genes CBL,\\nMTHFS, POU3F4, TUBB, or CYSRT1\\nshows the highest specificity in\\nhepatic\
+    \ stellate cells and represents\\nthe most viable therapeutic target for\\nhepatoblastoma?\\nIdentify the validated therapeutic\\\
+    ntargets for Hepatoblastoma and\\nanalyze the hepatic stellate cell\\nspecific activated genes...\\nBinvignat et al.\\\
+    n108k cells\\n15 cell types\\nFasolino et al.\\n69k cells\\n10 cell types\\nBondoc et al.\\n67k cells\\n11 cell types\\\
+    nPranzantelli et al.\\n94k cells\\n19 cell types\\nHan et al.\\n137k cells\\n18 cell types\\nDisease atlas\\n2,415 disease-specific\
+    \ targets\\n2,725 context specific\\ntarget collection\\n(     ,      ,      )\\n(    ,      ,      )\\nContext specific\\\
+    ntarget collection\\nTotal\\nLLM paraphraser\\nTarget nomination across\\nbiological contexts\\nb\\na\\ni\\nh\\nc\\nd\\\
+    ne\\nf\\ng\\nCellVoyager\\ncompleted cases\\nCellVoyager completed\\n+ unresolved cases\\nCellVoyager\\nMedea\"\n  },\n\
+    \  {\n    \"name\": \"N=120\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"N=255\",\n    \"text\": \"Medea CellVoyager\\\
+    nLLMs\\nAbstention\\nInstruction\\nfollowing\\nReasoning over\\nlong-horizon\\nFactual\\nconsistency\\nFigure 3: Cell\
+    \ type speci\\ufb01c target nomination benchmark. (a) Given a disease, a cell type, and a set of candidate genes, MEDEA\\\
+    nexecutes the omics objective of nominating the most supported target for the speci\\ufb01ed context by integrating evidence\
+    \ from databases,\\nsingle-cell foundation models, and the scienti\\ufb01c literature (Methods 2). (b) Constructing the\
+    \ benchmark dataset of context-speci\\ufb01c\\ntargets across \\ufb01ve diseases and multiple primary cell types leverages\
+    \ single-cell atlases and resources about therapeutic targets and\\ndisease-gene associations. (c-h) Performance of MEDEA\
+    \ compared to \\ufb01ve LLMs and a single-cell computational biology agent,\\nCellVoyager [21], across disease and cell\
+    \ type contexts. (i) Qualitative comparison of capabilities relevant to this benchmark,\\nincluding instruction following,\
+    \ factual consistency checks, calibrated abstention, and long-horizon multi-step reasoning.\\n18\\n\\nAccuracy (%)\\nRheumatoid\
+    \ arthritis\\nType 1 diabetes mellitus\\nSjogren's Syndrome\\nHepatoblastoma\\nFollicular lymphoma\\nMedea (GPT-4o)\\\
+    nGPT-4o\\nWhich gene, among IFIT5, TMEM258, HHATL-AS1, SLC46A2, and OR1A1, exhibits\\nthe highest cell-type specificity\
+    \ in pancreatic epsilon cells as a potential candidate for\\ntargeted investigations in type 1 diabetes mellitus?\\nUser\
+    \ task\\nExperiment instruction 2\\nIdentify the verified therapeutic targets\\nfor hepatoblastoma and obtain their\\\
+    ncell type\\u2013specific embeddings using\\nthe PINNACLE.\\nNext, determine which of these targets\\noverlap with the\
+    \ hepatic stellate cell-\\nactivated genes in PINNACLE to define\\nthe cell type\\u2013specific target set.\\nCompute\
+    \ the average embedding of\\nthis overlapping set as a reference,\\nthen calculate the cosine similarity\\nbetween this\
+    \ reference and each target\\nembedding \\u2026\\nExperiment instruction 1\\nIdentify the validated therapeutic\\ntargets\
+    \ for Hepatoblastoma from the\\nrelevant database sources.\\nRetrieve the embeddings specific to\\nthe corresponding cell\
+    \ type from\\nTranscriptFormer for these targets and\\nextract the genes activated in hepatic\\nstellate cells and determine\
+    \ their\\nintersection with the Hepatoblastoma\\ntherapeutic targets.\\nCompute the mean embedding for this\\noverlapping\
+    \ set to establish a reference\\nvector\\u2026\\nb\\nc\\na\\nd\\nMedea (GPT-4o) with\\nExperiment Instruction 1\\nMedea\
+    \ (GPT-4o) with\\nExperiment Instruction 2\\nSettings\\nMedea-PA (GPT-4o)\\nMedea-R (GPT-4o)\\nGPT-4o\\nMedea (GPT-4o)\\\
+    nFigure 4: MEDEA performs cell type speci\\ufb01c target nomination through multimodal agentic reasoning. (a) Accuracy\
+    \ of\\nMEDEA (GPT-4o) and its backbone LLM (GPT-4o), strati\\ufb01ed by disease and cell type, on the cell type speci\\\
+    ufb01c target nomination\\nbenchmark. (b-c) Tool-constrained experiments in which MEDEA is instructed to use a speci\\\
+    ufb01c single-cell foundation model (PIN-\\nNACLE [26] or TranscriptFormer [27]) for linking the candidate genes to disease-relevant\
+    \ cell types, evaluating the impact of tool\\nchoice on performance. (d) Agent module ablations that quantify how planning,\
+    \ tool execution, and literature reasoning by MEDEA\\ncontribute to correctness and calibrated abstention. MEDEA-PA denotes\
+    \ the con\\ufb01guration that activates the ResearchPlanning and\\nAnalysis modules (Methods 1.2-1.3) to execute tool-based\
+    \ reasoning without literature synthesis. MEDEA-R denotes the con\\ufb01gura-\\ntion that activates only the LiteratureReasoning\
+    \ module (Methods 1.4). MEDEA denotes the full agent con\\ufb01guration that activates\\nall four modules (i.e., ResearchPlanning,\
+    \ Analysis, LiteratureReasoning, MultiRoundDiscussion).\\n19\\n\\nCell death?\\nCell survival?\\nCancer cell line\\nConcurrent\
+    \ mutation\\nSynthetic lethality reasoning\\nacross diverse biological contexts\\nh\\na\\nb\\nc\\nd\\ne\\nf\\ng\\ni\\\
+    nj\\nk\\nWe're running an experiment where we've inactivated both KDM1A and NF2 in our\\nA427 lung cancer cell line. Could\
+    \ you determine if there is any synthetic genetic\\ninteraction between these two mutations, and if so, what is the nature\
+    \ of this\\ninteraction?\\nUser task\\nUse DepMap data to retrieve correlation metrics reflecting the co-dependency of\
+    \ the\\ngene pair on cell viability. Next, perform pathway enrichment analysis with Enrichr to\\nidentify whether pathways\
+    \ associated with cell viability are significantly enriched and\\ncould be impacted by the gene pair. Synthesize the DepMap\
+    \ and Enrichr results,\\nevaluate whether the combined perturbation of these genes is likely to induce a\\nsignificant\
+    \ effect on cell viability, and find literature support if exist.\\nExperiment instruction\\nBased on the available evidence\
+    \ from\\n, mutations in both KIF11 and SF3B1 in A427 lung cancer\\ncells would likely result in an additive effect or\
+    \ synthetic sickness rather than strong\\nsynthetic lethality.\\nThe double mutant cells would be expected to exhibit\
+    \ more severe growth defects\\nthan cells with either mutation alone, though they may remain viable. The interaction\\\
+    nbetween these mutations would likely involve:\\n-\\nCompromised mitotic fidelity: SF3B1 mutations induce genomic instability,\
+    \ while\\nKIF11 mutations directly impair the mitotic machinery, creating a combined burden\\non cell division processes\\\
+    n-\\nCell cycle checkpoint dysregulation: SF3B1-mutant cells experiencing replication\\nstress may be particularly vulnerable\
+    \ to KIF11 mutations that affect mitotic spindle\\nassembly.\\nSupporting Evidence:\\n1.\\nThe weak positive correlation\
+    \ (r=0.139) observed in                       data, though\\nstatistically significant (adj_p=0.000018), suggests a mild\
+    \ co-dependency rather\\nthan strong synthetic lethality.\\n2.\\nPathway analysis from                               \
+    \          indicates these genes function in\\ndistinct biological processes without significant overlap, further supporting\
+    \ an\\nadditive rather than synergistic effect \\u2026\\nMedea\\nDepMap\\nGO Function Interaction\\nReactome Interaction\\\
+    nOpenAlex\\nSemantic Scholar\\nDepMap\\nReactome Interaction\\nMedea\\nLLM\\nMedea\\nLLM\\nMedea\\nLLM\\nCorrect\\nAbstain\\\
+    nIncorrect\\nMedea\\nLLM\\nMedea\\nLLM\\nMedea\\nLLM\\nCorrect\\nAbstain\\nIncorrect\\nFigure 5: Agent reasoning about\
+    \ genetic interactions that affect cellular viability. (a) Given a pair of genes and a cell line\\ncontext, MEDEA completes\
+    \ the omics objective of assessing whether the genes\\u2019 combined perturbation is consistent with reduced\\nviability\
+    \ beyond single-gene effects (synthetic lethality; Methods 3). (b) MEDEA takes a natural language description of the omics\\\
+    nobjective (user instruction) and an optional experiment instruction, and produces an evidence-grounded response using\
+    \ tools (e.g., ge-\\nnetic dependency maps, pathway enrichment analyses) and literature evidence. (c-d) Number of analyses\
+    \ where the backbone LLM\\nis incorrect but MEDEA is correct or abstains, and where the backbone LLM abstains but MEDEA\
+    \ is correct. (e-k) Performance of\\nMEDEA and \\ufb01ve LLMs on synthetic lethality reasoning across seven cell lines.\\\
+    n20\\n\\nBased on the integrated analysis of this patient's characteristics, the likelihood of a positive\\nresponse for\
+    \ this patient to atezolizumab therapy appears low to moderate, despite the\\nhigh TMB of 19.0.\\nFavourable Factors\\\
+    nHigh TMB: The patient's TMB of 19.0 is considered high (>10 mutations/megabase), which\\ngenerally correlates with increased\
+    \ neoantigen load and better response to immune\\ncheckpoint inhibitors.\\nUnfavourable Factors\\nTranscriptomic Profile:\
+    \ The                         transcriptomic analysis predicts a non-responder\\nstatus, and indicate several immune cell\
+    \ dysfunction from the transcriptomic profile:\\n-\\nHigh levels of exhausted T cells (score: 0.5067), indicating impaired\
+    \ T cell function\\n-\\nOnly moderate natural killer cell presence (score: 0.4162)\\n-\\nLow B cell infiltration (score:\
+    \ 0.0260)\\n-\\nModerate plasma cell presence (score: 0.3648) ...\"\n  },\n  {\n    \"name\": \"Conclusion\",\n    \"\
+    text\": \"The overall immune profile suggests a dysfunctional tumor microenvironment dominated\\nby exhausted T cells,\
+    \ which may limit the effectiveness of PD-L1 inhibition despite the\\nfavorable TMB. Based on the existed studies    \
+    \                                                    ,  the\\nbalance between the potentially immunogenic high TMB and\
+    \ the apparent defects in\\ncellular immunity creates a complex scenario that predisposes the patient toward reduced\\\
+    nresponsiveness to atezolizumab \\u2026\\nMedea\\nHumanbase\"\n  },\n  {\n    \"name\": \"COMPASS\",\n    \"text\": \"\
+    Semantic Scholar\\nOpenAlex\\nSemantic Scholar\\nOpenAlex\"\n  },\n  {\n    \"name\": \"COMPASS\",\n    \"text\": \"Therapeutic\
+    \ response\\nevaluation report\\nmRNA transcriptional profile\\nImmune therapy\\nPatient clinical information\\nImmunotherapy\\\
+    npatient response\\nprediction\\nTranscriptomic immune-\\nsignature profiling\\nTumor microenvironment\\nbiomarker identification\\\
+    nClinician interpretation\\npatient_tumor_microenvironment_tpm_profile.pkl\\nUser task\\nI have mRNA TPM data characterizing\
+    \ the tumor immune\\nmicroenvironment in a patient with Bladder Urothelial Carcinoma\\nand am interested in how likely\
+    \ is a positive response to\\nAtezolizumab therapy. The patient\\u2019s details are as follows:\\n\\u2022\\nSex: Male\\\
+    n\\u2022\\nRace: White\\n\\u2022\\nTissue: Bladder biopsy\\n\\u2022\\nCarcinoma: Bladder Urothelial Carcinoma\\n\\u2022\\\
+    nTumor Mutational Burden (FMOne mutation burden per MB): 19.0\\nAttachments:\\nb\\nc\\nf\\nh\\ng\\na\\nd\\ne\\nExperiment\
+    \ instruction A\\nExperiment instruction B\"\n  },\n  {\n    \"name\": \"Apply COMPASS to predict the patient's likelihood\
+    \ of\",\n    \"text\": \"responding to Atezolizumab and extract the top five\\nmost relevant immune-related concepts\"\
+    \n  },\n  {\n    \"name\": \"Combine these biomarker measurements with each\",\n    \"text\": \"patient\\u2019s clinical\
+    \ and demographic data to create a\\ndetailed immune profile.\"\n  },\n  {\n    \"name\": \"Use the integrated profile\
+    \ to estimate the patient\\u2019s\",\n    \"text\": \"probability of Atezolizumab treatment response, and\\nreport the\
+    \ key contributing features \\u2026\"\n  },\n  {\n    \"name\": \"Profile the tumor immune microenvironment using\",\n\
+    \    \"text\": \"COMPASS to exam biomarkers related to immune-\\ndeficiency, such as NK-cell activity, T-cell exhaustion,\\\
+    nB-cell activation, and plasma-cell abundance.\"\n  },\n  {\n    \"name\": \"Integrate these findings with the COMPASS\
+    \ output to\",\n    \"text\": \"provide an evidence-based assessment of the patient\\u2019s\\nlikelihood of Atezolizumab\
+    \ response. In your report,\\nclearly state the direction and magnitude of each feature\\nand how it supports or opposes\
+    \ response \\u2026\\nTMB-low &\\nInflamed (N=23)\\nTMB-low &\\nNon-inflamed (N=97)\\nTMB-high &\\nNon-inflamed (N=52)\\\
+    nTMB-high &\\nInflamed (N=33)\\nRescue rate (%)\\nGPT-4o\\nMedea w/o Experiment\\ninstruction\\nMedea w/ Experiment\\\
+    ninstruction A\\nMedea w/ Experiment\\ninstruction B\\ni\\nj\\nk\\nFigure 6: Multimodal reasoning for immunotherapy response\
+    \ prediction. (a) Given a patient\\u2019s clinical pro\\ufb01le and tumor\\ntranscriptomic readout, MEDEA completes the\
+    \ omics objective of predicting immunotherapy response and returns a report with\\nsupporting evidence (Methods 4). (b)\
+    \ Multimodal inputs to MEDEA comprise clinical covariates and a tumor transcriptomic pro-\\n\\ufb01le. (c) MEDEA accepts\
+    \ broad or detailed experiment instructions. (d) MEDEA grounds its report in evidence from an omics\\nmachine learning\
+    \ model (COMPASS [36]), tissue-speci\\ufb01c protein networks [37], and literature [47, 48]. (e) Performance of MEDEA\\\
+    nand \\ufb01ve LLMs on predicting immunotherapy response. (f) Sensitivity of MEDEA (GPT-4o) and its backbone LLM (GPT-4o)\
+    \ to\\nprompt variants: omics objective only, omics objective with a broad experiment instruction, and omics objective\
+    \ with a detailed\\nexperiment instruction. (g-j) Strati\\ufb01ed performance of MEDEA (GPT-4o) and MEDEA (Claude 3.7\
+    \ Sonnet) and their corresponding\\nbackbone LLMs (GPT-4o or Claude 3.7 Sonnet) on four clinical subgroups in the IMvigor210\
+    \ cohort [105]. (k) Rescue analysis\\non IMvigor210 [105] patients for whom MEDEA correctly predicts the response label\
+    \ despite the incorrect prediction by the omics\\nmachine learning model [36]. Rescue rates are strati\\ufb01ed by clinical\
+    \ subgroup.\\n21\\n\\nOnline Methods\\n1\\nOverview of MEDEA\\nMEDEA is an omics AI agent for therapeutics discovery.\
+    \ MEDEA uses a global tool space of\\ndatabases, APIs, machine learning models, and agents (Section 1.1). It consists\
+    \ of a Research-\\nPlanning module (Section 1.2), an Analysis module (Section 1.3), a LiteratureReasoning mod-\\nule (Section\
+    \ 1.4), and a MultiRoundDiscussion module (Section 1.5).\\n1.1\\nGlobal tool space\\nMEDEA features a global tool space\
+    \ comprising 20 tools from 17 sources (13 databases/APIs\\nand 4 machine learning models or agents). These tools are accessible\
+    \ to ResearchPlanning and\\nAnalysis modules throughout MEDEA\\u2019s runs.\\nRetrieve Disease Targets tool identi\\ufb01es\
+    \ and retrieves a disease\\u2019s protein targets through a\\ntwo-step approach. Given a disease name, the tool \\ufb01rst\
+    \ queries the EMBL-EBO API [38] to retrieve\\nan Experimental Factor Ontology (EFO) ID for the disease. It then uses the\
+    \ EFO ID to interrogate\\nthe OpenTargets GraphQL API [39], extracting a list of associated protein targets based on speci\\\
+    ufb01c\\nevidence categories, such as genetic associations or approved therapeutic indications. By applying\\nevidence-based\
+    \ \\ufb01ltering criteria, the tool outputs a curated list of protein targets.\\nLoad PINNACLE Embeddings obtains pretrained\
+    \ cell type speci\\ufb01c protein embeddings\\nfrom PINNACLE [26]. PINNACLE integrates single-cell transcriptomics data\
+    \ with protein-protein\\ninteraction networks, resulting in 394,760 protein embeddings from 156 cell type contexts across\\\
+    n24 tissues. Given protein(s) and cell type context(s) of interest, this tool retrieves their corre-\\nsponding cell type\
+    \ speci\\ufb01c protein embeddings from PINNACLE. The \\ufb01nal output is a dictionary\\ncontaining context-speci\\ufb01c\
+    \ protein embeddings, where keys are cell type contexts and values are\\ncell type speci\\ufb01c protein embeddings.\\\
+    nLoad TranscriptFormer Embeddings retrieves cell type speci\\ufb01c gene embeddings from\\nTranscriptFormer [27], a single-cell\
+    \ transformer-based foundation model that models gene-gene\\ninteractions in single-cell transcriptomics data. The tool\
+    \ obtains precomputed Contextual Gene\\nEmbeddings (CGE) generated from single-cell atlases for rheumatoid arthritis [64],\
+    \ type 1 diabetes\\nmellitus [123], Sj\\u00a8ogren\\u2019s Syndrome [124], hepatoblastoma [67], and follicular lymphoma\
+    \ [125]\\n(accessed via CELLxGENE [121]). Concretely, we perform TranscriptFormer inference on each\\ncell type and disease\
+    \ combination using 16-bit mixed precision. As a result, we collect 2.1 million\\nprecomputed gene embeddings across 138\
+    \ cell type and diseases. Given a list of gene names\\n(of\\ufb01cial gene symbols or Ensembl IDs) along with disease\
+    \ and cell type contexts, the \\ufb01nal output\\nis a dictionary where keys are gene names and values are TranscriptFormer\
+    \ embeddings.\\nRetrieve HumanBase PPI retrieves tissue-speci\\ufb01c protein-protein interaction networks, where\\nnodes\
+    \ represent proteins and edges denote tissue-speci\\ufb01c interactions annotated with con\\ufb01dence\\nscores. Given\
+    \ a list of gene names and a tissue context, the tool \\ufb01rst queries the Entrez API [126]\\nto obtain the corresponding\
+    \ NCBI Entrez gene identi\\ufb01ers. It then calls the HumanBase RESTful\\nAPI [37] to retrieve the relevant tissue-speci\\\
+    ufb01c PPI network. From this network, an induced sub-\\n22\\n\\ngraph is generated based on the input gene list. The\
+    \ \\ufb01nal output includes (i) a NetworkX [127]\\ngraph object representing the induced subgraph and (ii) a set of associations\
+    \ between the queried\\ngenes within the speci\\ufb01ed tissue context.\\nHumanBase Co-Expression Analyzer identi\\ufb01es\
+    \ genes that are co-regulated within a given\\ntissue context. The tool accepts a gene list and a target tissue as inputs,\
+    \ and then queries the Human-\\nBase API [37] to retrieve tissue speci\\ufb01c co-expression interactions. Retrieved interactions\
+    \ undergo\\nsequential quality control: raw correlation with coef\\ufb01cients \\uf8ff0.2 are excluded while those \\\
+    u22650.7\\nare considered further. To ensure interpretability, the analysis does not rely solely on correlation\\nstrength:\
+    \ \\ufb01rst, interactions lacking meaningful biological support are \\ufb01ltered out (evidence score\\n\\uf8ff0.1);\
+    \ then, the top three most common evidence types behind the association are examined. The\\ntool outputs a summary including\
+    \ co-expression network topology, network strength rating, ranked\\ninteractions with associated weights and supporting\
+    \ evidence, and a list of biological processes that\\nare enriched in the co-expressed genes.\\nHumanBase Protein Interaction\
+    \ Analyzer identi\\ufb01es tissue-speci\\ufb01c protein interactions by\\nquerying the HumanBase API, which integrates\
+    \ protein interaction data curated from BioGRID [128],\\nIntAct [100], MINT [129], and MIPS [130]. Each protein pair is\
+    \ assigned a posterior probability\\nweight based on experimental evidence. The tool retains edges with posterior probability\
+    \ \\u22650.1\\nand prioritize those with \\u22650.6 as high-con\\ufb01dence. Given a gene list, tissue name, and optionally\\\
+    nthe maximum number of interactions, the tool returns a summary of interaction types, con\\ufb01dence-\\nweighted interaction\
+    \ pairs with supporting evidence, and a list of enriched biological functions.\\nHumanBase Transcription Factor Analyzer\
+    \ reconstructs tissue-speci\\ufb01c regulatory net-\\nworks for the genes of interest by analyzing transcription factor\
+    \ (TF)-gene relationships. Given\\na gene list, a target tissue, and optionally the maximum number of interactions, the\
+    \ tool queries\\nthe HumanBase API to retrieve a tissue-speci\\ufb01c regulatory network derived from JASPAR motif\\npredictions\
+    \ [37, 131]. TF-gene associations are identi\\ufb01ed through the scoring of binary motifs,\\nwith interactions \\ufb01ltered\
+    \ by evidence scores >0.1 to retain high-con\\ufb01dence predictions. The tool\\nprioritizes TFs that may regulate the\
+    \ genes of interest in a given tissue context. The output includes\\nthe inferred TF-gene interactions, network connectivity\
+    \ scores, and enriched biological processes.\\nHumanBase microRNA Target Analyzer evaluates how microRNAs modulate gene\
+    \ ex-\\npression in speci\\ufb01c tissue environments. Given a set of genes and a tissue context, the tool queries\\nthe\
+    \ HumanBase API for microRNA target interactions curated from MSigDB (c3:MIR) [101], and\\nconstructs the corresponding\
+    \ regulatory network. The tool aggregates evidence types across inter-\\nactions, and summarizes primary evidence categories.\
+    \ It returns a summary of observed microRNA\\ntargeting patterns, key regulators, and associated functional pathways.\\\
+    nHumanBase Perturbation Analyzer extracts tissue-speci\\ufb01c perturbation relationships from\\na given list of genes\
+    \ and tissue context. The tool retrieves perturbation data from MSigDB (c2:\\nCGP) [101] via the HumanBase API, and retains\
+    \ only high-con\\ufb01dence associations (interaction\\nweight \\u22650.6) that are supported by evidence (evidence score\
+    \ > 0.1). Each association is evaluated\\nfor functional relevance by aggregating and interpreting the underlying evidence\
+    \ types. The tool\\nreturns: (1) perturbation response of gene pairs from MSigDB (e.g., gene A knockdown affects\\n23\\\
+    n\\ngene B expression), ranked by HumanBase interaction con\\ufb01dence scores; and (2) Gene Ontol-\\nogy biological process\
+    \ terms annotated to the query genes, retrieved from HumanBase\\u2019s curated\\nannotations.\\nEnrichr Gene Enrichment\
+    \ Analyzer uses Enrichr RESTful APIs [98] to perform func-\\ntional enrichment analysis for a given gene pair across multiple\
+    \ curated libraries: WikiPathways\\n2024 [99], Reactome 2024 [40], MSigDB Hallmark 2020 [41], and the 2023 releases of\
+    \ GO Molec-\\nular Function and GO Biological Process [42, 132]. Given a pair of genes, the tool retains terms\\nwith\
+    \ Benjamini\\u2013Hochberg adjusted P \\uf8ff0.05 as \\u201cenriched\\u201d terms (reported by Enrichr). It also\\nrecords\
+    \ Enrichr\\u2019s combined score for each gene\\u2013term association, and constructs a bipartite graph\\nwhere nodes\
+    \ are the two genes and the set of \\u201cenriched\\u201d terms. Each gene-to-term edge is weighted\\nby Enrichr\\u2019s\
+    \ combined score, which integrates Fisher\\u2019s exact P with a z-score (c = ln(P) \\u21e5z) [98,\\n133] to capture both\
+    \ statistical signi\\ufb01cance and effect size. The tool then aggregates the combined\\nscores and counts shared terms\
+    \ to assign an overall con\\ufb01dence level, and labels the putative interac-\\ntion mechanism (e.g., signalling, metabolic,\
+    \ regulatory, complex) based on the biological context\\nof those terms. It returns a structured report containing: (i)\
+    \ a summary of the inferred gene\\u2013gene\\nrelationship in natural language, (ii) an overall con\\ufb01dence based\
+    \ on aggregated combined scores\\nand shared-term counts, and (iii) the \\ufb01ve most signi\\ufb01cant shared pathways\
+    \ or GO terms.\\nWikiPathways Co-Pathway Inspector examines whether two genes participate in shared\\nbiological pathways\
+    \ by querying the community-curated WikiPathways 2024 Human corpus [99].\\nGiven a pair of genes, the tool uses the Enrichr\
+    \ REST API to retrieve all human pathways that\\ncontain each gene in the WikiPathways 2024 Human corpus, and intersects\
+    \ these sets to pinpoint\\npathways in which the genes co-occur. For every shared pathway, it derives an interaction-context\\\
+    nlabel (e.g., signalling cascade, metabolic chain) from edge metadata, and a con\\ufb01dence score of\\nthe interaction\
+    \ based on node proximity, edge evidence, and annotation depth. The output is a\\nstructured list of pathway names, their\
+    \ interaction classi\\ufb01cations, and their con\\ufb01dence scores.\\nReactome Co-Pathway Analyzer queries the Enrichr\
+    \ REST API to identify genes involved\\nin shared molecular reactions based on the Reactome Pathways 2024 database [40].\
+    \ The tool deter-\\nmines functional associations between the given genes by analyzing whether two genes participate\\\
+    nin the same reaction events (e.g., phosphorylation, complex formation, direct binding, enzymatic\\nactivity). It takes\
+    \ a pair of genes as input and returns a summary of overlapping biochemical\\ninteractions, including the classi\\ufb01cation\
+    \ of the molecular mechanism and a con\\ufb01dence estimate.\\nHallmark Co-Pathway Analyzer identi\\ufb01es functional\
+    \ relationships between genes based\\non shared involvement in cancer hallmark processes, using the MSigDB Hallmark 2020\
+    \ collec-\\ntion [41] obtained via the Enrichr REST API. Given two genes, the tool evaluates whether they\\nco-occur in\
+    \ curated hallmark pathways associated with oncogenic processes (e.g., apoptosis, pro-\\nliferation, metabolic reprogramming,\
+    \ immune signaling, DNA repair, angiogenesis). Outputs are\\na summary of shared hallmark processes, mechanism classi\\\
+    ufb01cations, and con\\ufb01dence annotations.\\nGO Molecular Function Checker evaluates whether two genes share similar\
+    \ molecular\\nfunctions by querying curated annotations from GO Molecular Function 2023 [42, 132]. Given a\\ngene pair,\
+    \ the tool accesses the GO molecular function annotations via Enrichr REST API calls,\\n24\\n\\nand searches for convergent\
+    \ functional assignments, mechanism categories, and relative con\\ufb01-\\ndence scores. The outputs are a list of shared\
+    \ functional terms, associated weights, and relevant\\nmechanism labels drawn from GO\\u2019s standardized molecular vocabulary.\\\
+    nGO Biological Process Checker analyzes the enrichment of biological processes among\\nthe input genes by querying curated\
+    \ annotations from GO Biological Process (GO-BP) 2023 [42,\\n98, 132]. Through Enrichr REST API calls, the tool tests\
+    \ each gene separately and intersects the\\nsigni\\ufb01cant GO-BP terms (Benjamini\\u2013Hochberg adjusted p \\uf8ff0.05).\
+    \ For every shared term, the tool\\nrecords the GO ID and Enrichr\\u2019s combined score. It then summarizes the overlap\
+    \ into an overall\\ncon\\ufb01dence (e.g., number of shared terms, distribution of combined scores). The tool\\u2019s\
+    \ outputs are\\na list of shared GO-BP terms (names and GO IDs), per-gene statistics (adjusted p-value, combined\\nscore),\
+    \ mechanism labels, and an overall con\\ufb01dence summary.\\nRetrieve DepMap Correlations obtains pairwise co-dependency\
+    \ statistics using Chronos\\ngene-effect pro\\ufb01les from the DepMap 24Q2 CRISPR dataset [43]. The tool accesses preprocessed\\\
+    nChronos gene scores derived from CRISPR-Cas9 knockout screens across 1,320 cancer cell lines.\\nFor each pair of genes,\
+    \ it calculates the Pearson correlation coef\\ufb01cients [134] and the BH-adjusted\\np-values between the Chronos scores\
+    \ of the two genes [135]. A Chronos dependency score of a\\ngene estimates the likelihood that the gene is essential in\
+    \ a cell line (0 indicates not essential, and\\n-1 suggests comparable essentiality to the median of all pan-essential\
+    \ genes) [136].\\nGenerate COMPASS Predictions applies the COMPASS model to predict immunotherapy\\nresponse based on\
+    \ a patient\\u2019s transcriptomic pro\\ufb01le [36]. Given a patient\\u2019s transcriptomic pro\\ufb01le\\n(TPM) and\
+    \ cancer type, the tool calls COMPASS to (1) predict the scores of 44 biologically-\\ngrounded immune concepts, capturing\
+    \ immune cell states, tumor microenvironment interactions,\\nand signaling pathways, and (2) predict the likelihood of\
+    \ the patient responding to immune check-\\npoint inhibitors (ICIs).\\nSearch Scienti\\ufb01c Literature retrieves and\
+    \ synthesizes relevant scienti\\ufb01c literature to answer\\nthe user query. It queries the Semantic Scholar API to collect\
+    \ candidate papers [47], and \\ufb01lters for\\nmethodological soundness and direct relevance. The resulting set of papers\
+    \ is fed into an Open-\\nScholar reasoning module [49], which synthesizes their key \\ufb01ndings into a concise response\
+    \ with\\ncitations to address the query. The output is either a structured dictionary containing the literature-\\ngrounded\
+    \ summary with inline citations or, if the search yields nothing suitable, an explicit note\\nthat no suf\\ufb01ciently\
+    \ relevant study is found.\\nHPA Biological Processes Analysis performs functional characterization of individual genes\\\
+    nby querying the Human Protein Atlas (HPA) API [44\\u201346], which integrates expression data from\\n44 human tissues,\
+    \ 10 cancer cell lines, 8 blood cell types, and 7 regions of the brain. The tool\\nprocesses these data to generate three\
+    \ outputs. The tool retrieves tissue-speci\\ufb01c expression data\\n(nTPM), experimentally validated Gene Ontology (GO)\
+    \ annotations, and protein-protein interac-\\ntion (PPI) datasets. It maps the retrieved GO annotations to ten canonical\
+    \ biological categories\\n(e.g., cell cycle, apoptosis, metabolism) to stratify the gene\\u2019s involvement in core cellular\
+    \ mecha-\\nnisms. Additionally, the PPI datasets retrieved from the HPA API are used to identify functionally\\nsimilar\
+    \ proteins, quantifying similarity via a Jaccard index of shared biological process pro\\ufb01les.\\n25\\n\\nFinally,\
+    \ for genes with tissue-speci\\ufb01c expression data, the tool calculates fold changes between\\ncancer cell lines and\
+    \ healthy tissues to quantify the magnitude of differential expression. The \\ufb01nal\\nreport includes the categorized\
+    \ GO annotations, functionally similar proteins identi\\ufb01ed by over-\\nlapping biological processes, and calculated\
+    \ fold changes across cancer cell lines for the queried\\ngenes.\\nHPA Comparative Expression Analysis performs comparative\
+    \ gene expression analysis on\\n10 cancer cell lines against healthy tissues [44\\u201346]. For each gene, the tool retrieves\
+    \ normalized\\nTranscripts Per Million (nTPM) values via the Human Protein Atlas (HPA) API, and performs sev-\\neral comparative\
+    \ analyses, including fold-change calculation, statistical signi\\ufb01cance assessment,\\nand expression level categorization.\
+    \ The tool reports per-tissue nTPM, per-cell-line nTPM, and\\ntissue-vs-cell-line fold-changes. By default, the tool summarizes\
+    \ results from a panel of 10 cell\\nlines (HeLa, MCF-7, A549, HepG2, Jurkat, PC-3, RH-30, SiHa, U-251 MG, Ishikawa). Expres-\\\
+    nsion levels are binned into analysis-de\\ufb01ned ranges (from very low <0.1 to very high \\u226550 nTPM).\\nTo prioritize\
+    \ candidates, the tool calculates a differential expression score based on magnitude\\n(>3-fold = high, >2-fold = moderate)\
+    \ and \\ufb02ags highly upregulated targets, returning a summary\\nreport containing HPA metadata and fold-change metrics.\\\
+    n1.2\\nResearchPlanning module\\nGiven free-form user input, consisting of a user instruction and an optional experimental\
+    \ instruc-\\ntion, the ResearchPlanning module iteratively transforms it into in silico research plans (Figure\\n2b).\
+    \ It leverages three module-speci\\ufb01c tools: ResearchPlanDraft, ContextVeri\\ufb01cation, and Integri-\\ntyVeri\\\
+    ufb01cation. ResearchPlanDraft generates a multi-step research plan that explicitly states the ob-\\njectives of the analyses,\
+    \ the selected tools, and the tools\\u2019 expected inputs, parameters, and outputs;\\nContextVeri\\ufb01cation validates\
+    \ each biological entity and parameter choice against tool knowledge\\nbases to con\\ufb01rm data availability and compatibility;\
+    \ and IntegrityVeri\\ufb01cation checks the speci\\ufb01city,\\ntechnical feasibility, and logical consistency of the\
+    \ research plan.\\nResearchPlanDraft transforms free-form user input into a structured multi-step research\\nplan, which\
+    \ consists of sequential computational analyses that address the research objective. Each\\nstep speci\\ufb01es the analysis\
+    \ objective, selected tool, required inputs and parameters, and expected\\noutputs. The procedure is: (1) apply an LLM\
+    \ to distill the objectives of the research plan based on\\nthe given instructions; (2) perform LLM-augmented retrieval\
+    \ (RAG) to identify relevant tools and\\nobtain their metadata from the global tool space; and (3) assemble the objectives,\
+    \ relevant tools,\\nand tool metadata into a coherent, stepwise research plan.\\nContextVeri\\ufb01cation ensures that\
+    \ all biological entities and parameter choices in the plan\\nare compatible with the available tools and datasets from\
+    \ the global tool space. The procedure is:\\n(1) apply an LLM to extract the names and parameters of the tools speci\\\
+    ufb01ed in the plan; (2) verify\\nthe tools\\u2019 availability in the global tool space; (3) invoke each tool\\u2019s\
+    \ internal context checker\\nfunction, when available, to validate the parameter choices in the plan; and (4) if the required\\\
+    ncontext is missing or invalid, use an LLM to recommend a set of tool-supported alternatives.\\nIntegrityVeri\\ufb01cation\
+    \ acts as the \\ufb01nal audit of the completeness, coherence, and logical\\n26\\n\\nsoundness of the research plan. An\
+    \ LLM judge, guided by a rubric-style systems prompt, eval-\\nuates: (1) clarity of the plan; (2) tool-use \\ufb01delity,\
+    \ ensuring that each tool\\u2019s usage aligns with the\\ndocumented functionality and parameter speci\\ufb01cation; (3)\
+    \ parameter precision, con\\ufb01rming that the\\ninputs follow the documentation and best practices; (4) hallucination\
+    \ risk, \\ufb02agging elements unsup-\\nported by the provided data or tool instructions; and (5) logical coherence, verifying\
+    \ that the steps\\nare sequential, build upon each other appropriately, and follow a clear step-by-step progression to-\\\
+    nward addressing the objective. Failure on any criterion triggers a revision request (i.e., returning a\\nmessage that\
+    \ asks for another re\\ufb01nement cycle to improve the plan). The tool outputs an evaluation\\nreport that summarizes\
+    \ the unmet criteria and provides concrete recommendations for revision.\\n1.3\\nAnalysis module\\nThe Analysis module\
+    \ translates the research plans from the ResearchPlanning module into\\nwell-documented, executable code for computational\
+    \ experiments. It coordinates four module-\\nspeci\\ufb01c tools: CodeGenerator, AnalysisExecution, CodeDebugger, and\
+    \ AnalysisQualityChecker.\\nCodeGenerator produces code snippets that implement the analyses speci\\ufb01ed in the research\
+    \ plan;\\nAnalysisExecution runs the code in a sandboxed environment with resource and timeout controls,\\ncapturing standard\
+    \ output, error streams, and generated artifacts (e.g., tables, plots); CodeDebugger\\ndiagnoses runtime failures and\
+    \ revises code snippets using LLM-assisted debugging; and Analy-\\nsisQualityChecker performs post-execution evaluation,\
+    \ using structured criteria to assess correct-\\nness, reproducibility, parameter/provenance logging, and output informativeness\
+    \ against the user\\ninput and the research plan\\u2019s stated objectives. Altogether, the module operates through an\
+    \ au-\\ntonomous iterative cycle, delivering executable code and in silico experimental results that address\\nthe user\
+    \ input and research plan without human intervention.\\nCodeGenerator uses a two-stage approach to generate executable\
+    \ code snippets for the anal-\\nyses speci\\ufb01ed in the research plan. First, a ToolSelector component applies an LLM\
+    \ to identify\\nthe necessary tools and retrieve their associated metadata from the global tool space. Then, a sep-\\\
+    narate LLM instance synthesizes code under a code-generation systems prompt that integrates the\\nselected tools as outlined\
+    \ in the step-by-step research plan. Each generated code snippet undergoes\\na rubric-guided pre-execution check (e.g.,\
+    \ syntax, interface compliance, parameter validity) using\\nan LLM with a quality-check systems prompt; failures trigger\
+    \ bounded retries before returning a\\ncode snippet. This tool-aware code synthesis with iterative self-re\\ufb01nement\
+    \ is aligned with existing\\nwork on LLM tool-use and feedback-driven re\\ufb01nement [137, 138].\\nAnalysisExecution\
+    \ writes each code snippet to a temporary Python \\ufb01le and launches a\\nPython subprocess with a 10-minute wait time\
+    \ to execute the code. Standard output and error\\nstreams are captured. Upon timeout, the tool captures the return code\
+    \ from the subprocess with the\\nfull traceback and logs attached for downstream analysis and debugging.\\nCodeDebugger\
+    \ is an LLM-based debugging tool. It analyzes the problematic code snippet\\nand error messages, the user instructions,\
+    \ the research plan, and the tool speci\\ufb01cations to identify\\nthe root cause. The CodeDebugger then generates corrected\
+    \ code snippets that address the errors\\nwhile maintaining alignment with the research objectives and tool constraints,\
+    \ enabling iterative\\n27\\n\\nre\\ufb01nement until successful execution is achieved.\\nAnalysisQualityChecker evaluates\
+    \ the scienti\\ufb01c validity and completeness of the success-\\nfully executed code using an LLM judge [115]. The tool\
+    \ analyzes the generated code and its\\nexecution outputs against the user instruction and research plan, examining code\
+    \ informativeness\\n(i.e., outputs provide meaningful insights that are relevant to the research question), logical correct-\\\
+    nness (i.e., proper implementation of analytical work\\ufb02ows), and alignment with research objectives.\\nThe evaluation\
+    \ process uses structured LLM prompts that assess the quality of the analysis, and\\nprovides feedback in the tool\\u2019s\
+    \ output for iterative re\\ufb01nement if quality standards are not met.\\n1.4\\nLiteratureReasoning module\\nThe LiteratureReasoning\
+    \ module performs autonomous retrieval, relevance appraisal, and syn-\\nthesis of peer-reviewed publications to produce\
+    \ literature-grounded analysis using three module-\\nspeci\\ufb01c tools: LiteratureSearch, RelevanceVeri\\ufb01cation,\
+    \ and OpenScholarReasoning. Literature-\\nSearch executes structured searches across academic journal indices (e.g., Semantic\
+    \ Scholar [47],\\nOpenAlex [48]) to collect candidate papers. RelevanceVeri\\ufb01cation performs study quality screen-\\\
+    ning, scoring each paper for topical relevance and study type and returning a compact evidence\\npro\\ufb01le per paper.\
+    \ OpenScholarReasoning synthesizes the screened set of papers into a literature-\\ngrounded report to address the research\
+    \ objective in user instruction.\\nLiteratureSearch conducts literature searches across Semantic Scholar [47] and OpenAlex\
+    \ [48]\\ndatabases. The process involves: (1) using an LLM to extract domain-speci\\ufb01c search terms from\\nthe user\
+    \ instruction; (2) conducting literature searches in parallel with Semantic Scholar and Ope-\\nnAlex tools; (3) aggregating\
+    \ the retrieved papers and their metadata, and performing deduplication\\nbased on exact title matching and DOI comparison;\
+    \ and (4) returning a curated collection of paper\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\nLee,\
+    \ H. et al. Mechanisms of antigen escape from BCMA-or GPRC5D-targeted immunother-\\napies in multiple myeloma. Nature\
+    \ Medicine 29, 2295\\u20132306 (2023).\\n2.\\nMathys, H. et al. Single-cell multiregion dissection of Alzheimer\\u2019s\
+    \ disease. Nature 632,\\n858\\u2013868 (2024).\\n3.\\nSchallenberg, S. et al. AI-powered spatial cell phenomics enhances\
+    \ risk strati\\ufb01cation in\\nnon-small cell lung cancer. Nature Communications 16, 9701 (2025).\\n4.\\nSchaffer, L.\
+    \ V. et al. Multimodal cell maps as a foundation for structural and functional\\ngenomics. Nature, 1\\u201310 (2025).\\\
+    n5.\\nSteyaert, S. et al. Multimodal data fusion for cancer biomarker discovery with deep learning.\\nNature machine intelligence\
+    \ 5, 351\\u2013362 (2023).\\n6.\\nHingerl, J. C. et al. scooby: modeling multimodal genomic pro\\ufb01les from DNA sequence\
+    \ at\\nsingle-cell resolution. Nature Methods, 1\\u201311 (2025).\\n7.\\nDuran-Frigola, M. et al. Extending the small-molecule\
+    \ similarity principle to all levels of\\nbiology with the Chemical Checker. Nature Biotechnology 38, 1087\\u20131096\
+    \ (2020).\\n8.\\nPourmousa, M. et al. AI-driven discovery of synergistic drug combinations against pancre-\\natic cancer.\
+    \ Nature Communications 16, 4020 (2025).\\n9.\\nDiogo, D. et al. Phenome-wide association studies across large population\
+    \ cohorts support\\ndrug target validation. Nature Communications 9, 4285 (2018).\\n10.\\nJawinski, P. et al. Genome-wide\
+    \ analysis of brain age identi\\ufb01es 59 associated loci and un-\\nveils relationships with mental and physical health.\
+    \ Nature Aging, 1\\u201318 (2025).\\n11.\\nElmarakeby, H. A. et al. Biologically informed deep neural network for prostate\
+    \ cancer\\ndiscovery. Nature 598, 348\\u2013352 (2021).\\n12.\\nZhang, S. et al. Single-cell polygenic risk scores dissect\
+    \ cellular and molecular heterogene-\\nity of complex human diseases. Nature Biotechnology, 1\\u201317 (2025).\\n13.\\\
+    nRen, F. et al. A small-molecule TNIK inhibitor targets \\ufb01brosis in preclinical and clinical\\nmodels. Nature Biotechnology\
+    \ 43, 63\\u201375 (2025).\\n14.\\nIvan\\u02c7ci\\u00b4c, D. et al. Discovery and protein language model-guided design\
+    \ of hyperactive trans-\\nposases. Nature Biotechnology, 1\\u20136 (2025).\\n15.\\nGao, S. et al. Empowering biomedical\
+    \ discovery with AI agents. Cell 187, 6125\\u20136151\\n(2024).\\n16.\\nGao, S. et al. Democratizing AI scientists using\
+    \ ToolUniverse. arXiv:2509.23426 (2025).\\n17.\\nSwanson, K., Wu, W., Bulaong, N. L., Pak, J. E. & Zou, J. The Virtual\
+    \ Lab of AI agents\\ndesigns new SARS-CoV-2 nanobodies. Nature, 1\\u20133 (2025).\\n34\\n\\n18.\\nJin, Q. et al. Agentmd:\
+    \ Empowering language agents for risk prediction with large-scale\\nclinical tool learning. Nature Communications 16,\
+    \ 9377 (2025).\\n19.\\nHu, M. et al. Evaluation of large language models for discovery of gene set function. Nature\"\n\
+    \  },\n  {\n    \"name\": \"Methods 22, 82\\u201391 (2025)\",\n    \"text\": \"20.\\nWang, Z. et al. GeneAgent: self-veri\\\
+    ufb01cation language agent for gene-set analysis using do-\\nmain databases. Nature Methods, 1\\u20139 (2025).\\n21.\\\
+    nAlber, S. et al. Cellvoyager: Ai compbio agent generates new insights by autonomously\\nanalyzing biological data. bioRxiv,\
+    \ 2025\\u201306 (2025).\\n22.\\nHuang, K. et al. Biomni: A general-purpose biomedical AI agent. biorxiv (2025).\\n23.\\\
+    nQu, Y. et al. CRISPR-GPT for agentic automation of gene-editing experiments. Nature\\nBiomedical Engineering, 1\\u201314\
+    \ (2025).\\n24.\\nLuo, E. et al. Benchmarking AI scientists in omics data-driven biological research. arXiv:2505.08341\\\
+    n(2025).\\n25.\\nTheodoris, C. V. et al. Transfer learning enables predictions in network biology. Nature 618,\\n616\\\
+    u2013624 (2023).\\n26.\\nLi, M. M. et al. Contextual AI models for single-cell protein biology. Nature Methods 21,\\n1546\\\
+    u20131557 (2024).\\n27.\\nPearce, J. D. et al. A Cross-Species Generative Cell Atlas Across 1.5 Billion Years of Evo-\\\
+    nlution: The TranscriptFormer Single-cell Model. bioRxiv, 2025\\u201304 (2025).\\n28.\\nCui, H. et al. scGPT: toward building\
+    \ a foundation model for single-cell multi-omics using\\ngenerative AI. Nature methods 21, 1470\\u20131480 (2024).\\n29.\\\
+    nLevine, D. et al. Cell2Sentence: teaching large language models the language of biology.\\nBioRxiv, 2023\\u201309 (2024).\\\
+    n30.\\nSu, X. et al. KGARevion: an AI agent for knowledge-intensive biomedical QA. Interna-\\ntional Conference on Learning\
+    \ Representations (2025).\\n31.\\nWang, Z. et al. A foundation model for human-AI collaboration in medical literature\
+    \ mining.\\nNature communications 16, 8361 (2025).\\n32.\\nJi, Y. et al. Scalable and universal prediction of cellular\
+    \ phenotypes enables in silico exper-\\niments. BioRxiv (2025).\\n33.\\nBunne, C. et al. Learning single-cell perturbation\
+    \ responses using neural optimal transport.\\nNature Methods 20, 1759\\u20131768 (2023).\\n34.\\nRoohani, Y., Huang, K.\
+    \ & Leskovec, J. Predicting transcriptional outcomes of novel multi-\\ngene perturbations with GEARS. Nature Biotechnology\
+    \ 42, 927\\u2013935 (2024).\\n35.\\nGonzalez, G. et al. Combinatorial prediction of therapeutic perturbations using causally-\\\
+    ninspired neural networks. Nature Biomedical Engineering (2025).\\n35\\n\\n36.\\nShen, W. et al. Generalizable AI predicts\
+    \ immunotherapy outcomes across cancers and treat-\\nments. medRxiv, 2025\\u201305 (2025).\\n37.\\nGreene, C. S. et al.\
+    \ Understanding multicellular function and disease with human tissue-\\nspeci\\ufb01c networks. Nature genetics 47, 569\\\
+    u2013576 (2015).\\n38.\\nMadeira, F. et al. Search and sequence analysis tools services from EMBL-EBI in 2022.\\nNucleic\
+    \ acids research 50, W276\\u2013W279 (2022).\\n39.\\nBuniello, A. et al. Open Targets Platform: facilitating therapeutic\
+    \ hypotheses building in\\ndrug discovery. Nucleic acids research 53, D1467\\u2013D1475 (2025).\\n40.\\nFabregat, A. et\
+    \ al. The reactome pathway knowledgebase. Nucleic acids research 46, D649\\u2013\"\n  },\n  {\n    \"name\": \"D655 (2018)\"\
+    ,\n    \"text\": \"41.\\nLiberzon, A. et al. The molecular signatures database hallmark gene set collection. Cell\\nsystems\
+    \ 1, 417\\u2013425 (2015).\\n42.\\nAleksander, S. A. et al. The gene ontology knowledgebase in 2023. Genetics 224, iyad031\\\
+    n(2023).\\n43.\\nArafeh, R., Shibue, T., Dempster, J. M., Hahn, W. C. & Vazquez, F. The present and future\\nof the Cancer\
+    \ Dependency Map. Nature Reviews Cancer 25, 59\\u201373 (2025).\\n44.\\nUhl\\u00b4en, M. et al. Tissue-based map of the\
+    \ human proteome. Science 347, 1260419 (2015).\\n45.\\nThul, P. J. et al. A subcellular map of the human proteome. Science\
+    \ 356, eaal3321 (2017).\\n46.\\nKarlsson, M. et al. A single\\u2013cell type transcriptomics map of human tissues. Science\
+    \ ad-\\nvances 7, eabh2169 (2021).\\n47.\\nKinney, R. et al. The semantic scholar open data platform. arXiv:2301.10140\
+    \ (2023).\\n48.\\nPriem, J., Piwowar, H. & Orr, R. OpenAlex: A fully-open index of scholarly works, authors,\\nvenues,\
+    \ institutions, and concepts. arXiv:2205.01833 (2022).\\n49.\\nAsai, A. et al. Openscholar: Synthesizing scienti\\ufb01c\
+    \ literature with retrieval-augmented lms.\\narXiv:2411.14199 (2024).\\n50.\\nValmeekam, K., Marquez, M., Olmo, A., Sreedharan,\
+    \ S. & Kambhampati, S. Planbench: An\\nextensible benchmark for evaluating large language models on planning and reasoning\
+    \ about\\nchange. Advances in Neural Information Processing Systems 36, 38975\\u201338987 (2023).\\n51.\\nWang, X. et\
+    \ al. Self-consistency improves chain of thought reasoning in language models.\\narXiv:2203.11171 (2022).\\n52.\\nZhang,\
+    \ W. et al. Deep research: A survey of autonomous research agents. arXiv:2508.12752\\n(2025).\\n53.\\nWei, H. et al. Plangenllms:\
+    \ A modern survey of llm planning capabilities. arXiv:2502.11221\\n(2025).\\n36\\n\\n54.\\nLongpre, S. et al. The data\
+    \ provenance initiative: A large scale audit of dataset licensing &\\nattribution in ai (2023).\\n55.\\nChen, J., Saha,\
+    \ S. & Bansal, M. Reconcile: Round-table conference improves reasoning via\\nconsensus among diverse llms in Proceedings\
+    \ of the 62nd Annual Meeting of the Association\\nfor Computational Linguistics (Volume 1: Long Papers) (2024), 7066\\\
+    u20137085.\\n56.\\nLindsay, M. A. Target discovery. Nature Reviews Drug Discovery 2, 831\\u2013838 (2003).\\n57.\\nLaman\
+    \ Trip, D. S. et al. A tissue-speci\\ufb01c atlas of protein\\u2013protein associations enables pri-\\noritization of\
+    \ candidate disease genes. Nature Biotechnology, 1\\u201314 (2025).\\n58.\\nPan, X. et al. Massively targeted evaluation\
+    \ of therapeutic CRISPR off-targets in cells. Nat.\\nCommun. 13, 4049 2022.\\n59.\\nDeshaies, R. J. How multispeci\\ufb01c\
+    \ molecules are transforming pharmacotherapy. Nature\\nReviews Drug Discovery, 1\\u201313 (2025).\\n60.\\nConsortium,\
+    \ G. The GTEx Consortium atlas of genetic regulatory effects across human\\ntissues. Science 369, 1318\\u20131330 (2020).\\\
+    n61.\\nDini, A. et al. A multiplex single-cell RNA-Seq pharmacotranscriptomics pipeline for drug\\ndiscovery. Nature Chemical\
+    \ Biology 21, 432\\u2013442 (2025).\\n62.\\nChen, J. et al. Deep transfer learning of cancer drug responses by integrating\
+    \ bulk and\\nsingle-cell RNA-seq data. Nature Communications 13, 6494 (2022).\\n63.\\nChen, H. et al. Drug target prediction\
+    \ through deep learning functional representation of\\ngene signatures. Nature communications 15, 1853 (2024).\\n64.\\\
+    nBinvignat, M. et al. Single-cell RNA-Seq analysis reveals cell subsets and gene signatures\\nassociated with rheumatoid\
+    \ arthritis disease activity. JCI insight 9, e178499 (2024).\\n65.\\nFasolino, M. et al. Single-cell multi-omics analysis\
+    \ of human pancreatic islets reveals novel\\ncellular states in type 1 diabetes. Nature Metabolism 4, 284\\u2013299 (2022).\\\
+    n66.\\nPranzatelli, T. J. et al. GZMK+ CD8+ T cells target a speci\\ufb01c Acinar cell type in Sj\\u00a8ogren\\u2019s\\\
+    ndisease. Research Square, rs\\u20133 (2024).\\n67.\\nBondoc, A. et al. Identi\\ufb01cation of distinct tumor cell populations\
+    \ and key genetic mecha-\\nnisms through single cell sequencing in hepatoblastoma. Communications Biology 4, 1049\\n(2021).\\\
+    n68.\\nHan, G. et al. Follicular lymphoma microenvironment characteristics associated with tumor\\ncell mutations and\
+    \ MHC class II expression. Blood Cancer Discovery 3, 428\\u2013443 (2022).\\n69.\\nDuffy, \\u00b4A. et al. Development\
+    \ of a human genetics-guided priority score for 19,365 genes\\nand 399 drug indications. Nature Genetics 56, 51\\u201359\
+    \ (2024).\\n70.\\nZdrazil, B. et al. The ChEMBL Database in 2023: a drug discovery platform spanning\\nmultiple bioactivity\
+    \ data types and time periods. Nucleic acids research 52, D1180\\u2013D1192\\n(2024).\\n37\\n\\n71.\\nDem\\u02c7sar, J.\
+    \ Statistical comparisons of classi\\ufb01ers over multiple data sets. Journal of Machine\\nLearning Research 7, 1\\u201330\
+    \ (2006).\\n72.\\nChern, I. et al. FacTool: Factuality Detection in Generative AI\\u2013A Tool Augmented Frame-\\nwork\
+    \ for Multi-Task and Multi-Domain Scenarios. arXiv:2307.13528 (2023).\\n73.\\nTian, K., Mitchell, E., Yao, H., Manning,\
+    \ C. D. & Finn, C. Fine-tuning language models for\\nfactuality in The Twelfth International Conference on Learning Representations\
+    \ (2023).\\n74.\\nGou, Z. et al. Critic: Large language models can self-correct with tool-interactive critiquing.\\narXiv:2305.11738\
+    \ (2023).\\n75.\\nCheng, Q. et al. Can AI assistants know what they don\\u2019t know? arXiv:2401.13275 (2024).\\n76.\\\
+    nBrahman, F. et al. The art of saying no: Contextual noncompliance in language models,\"\n  },\n  {\n    \"name\": \"\
+    URL https://arxiv. org/abs/2407 12043\",\n    \"text\": \"77.\\nWen, B. et al. Know your limits: A survey of abstention\
+    \ in large language models, 2024.\\nURL https://arxiv. org/abs/2407.18418.\\n78.\\nLiu, X. et al. Agentbench: Evaluating\
+    \ llms as agents. arXiv:2308.03688 (2023).\\n79.\\nLin, B. Y. et al. Swiftsage: A generative agent with fast and slow\
+    \ thinking for complex\\ninteractive tasks. Advances in Neural Information Processing Systems 36, 23813\\u201323825\\\
+    n(2023).\\n80.\\nSallusto, F., Lenig, D., F\\u00a8orster, R., Lipp, M. & Lanzavecchia, A. Two subsets of memory T\\nlymphocytes\
+    \ with distinct homing potentials and effector functions. Nature 401, 708\\u2013712\\n(1999).\\n81.\\nFarber, D. L., Yudanin,\
+    \ N. A. & Restifo, N. P. Human memory T cells: generation, compart-\\nmentalization and homeostasis. Nature Reviews Immunology\
+    \ 14, 24\\u201335 (2014).\\n82.\\nShi, W. et al. Trusting your evidence: Hallucinate less with context-aware decoding,\
+    \ 783\\u2013\\n791 (2024).\\n83.\\nZhou, W., Zhang, S., Poon, H. & Chen, M. Context-faithful prompting for large language\\\
+    nmodels. arXiv:2303.11315 (2023).\\n84.\\nMacDonald, L. et al. Synovial tissue myeloid dendritic cell subsets exhibit\
+    \ distinct tissue-\\nniche localization and function in health and rheumatoid arthritis. Immunity 57, 2843\\u20132862\\\
+    n(2024).\\n85.\\nChemin, K., Gerstner, C. & Malmstr\\u00a8om, V. Effector functions of CD4+ T cells at the site of\\nlocal\
+    \ autoimmune in\\ufb02ammation\\u2014lessons from rheumatoid arthritis. Frontiers in Immunol-\\nogy 10, 353 (2019).\\\
+    n86.\\nMoon, J.-S. et al. Cytotoxic CD8+ T cells target citrullinated antigens in rheumatoid arthri-\\ntis. Nature Communications\
+    \ 14, 319 (2023).\\n87.\\nXiang, N. et al. Single-cell transcriptome pro\\ufb01ling reveals immune and stromal cell hetero-\\\
+    ngeneity in primary Sj\\u00a8ogren\\u2019s syndrome. iScience 26 (2023).\\n38\\n\\n88.\\nZandbelt, M. et al. The synergistic\
+    \ value of focus score and IgA% score of sublabial salivary\\ngland biopsy for the accuracy of the diagnosis of Sj\\u00a8ogren\\\
+    u2019s syndrome: a 10-year comparison.\\nRheumatology 41, 819\\u2013823 (2002).\\n89.\\nVan Ginkel, M. S. et al. Increased\
+    \ diagnostic accuracy of the labial gland biopsy in pri-\\nmary sj\\u00a8ogren syndrome when multiple histopathological\
+    \ features are included. Arthritis &\\nRheumatology 76, 421\\u2013428 (2024).\\n90.\\nSteinmetz, T. D., Verstappen, G.\
+    \ M., Suurmond, J. & Kroese, F. G. Targeting plasma cells in\\nsystemic autoimmune rheumatic diseases\\u2013Promises and\
+    \ pitfalls. Immunology Letters 260,\\n44\\u201357 (2023).\\n91.\\nJu, C. & Tacke, F. Hepatic macrophages in homeostasis\
+    \ and liver diseases: from pathogene-\\nsis to novel therapeutic strategies. Cellular & Molecular Immunology 13, 316\\\
+    u2013327 (2016).\\n92.\\nGabrilovich, D. I., Ostrand-Rosenberg, S. & Bronte, V. Coordinated regulation of myeloid\\ncells\
+    \ by tumours. Nature Reviews Immunology 12, 253\\u2013268 (2012).\\n93.\\nMonti, M. et al. Plasmacytoid dendritic cells\
+    \ at the forefront of anti-cancer immunity:\\nrewiring strategies for tumor microenvironment remodeling. Journal of Experimental\
+    \ &\\nClinical Cancer Research 43, 196 (2024).\\n94.\\nO\\u2019Neil, N. J., Bailey, M. L. & Hieter, P. Synthetic lethality\
+    \ and cancer. Nature Reviews\\nGenetics 18, 613\\u2013623 (2017).\\n95.\\nGonc\\u00b8alves, E., Ryan, C. J. & Adams, D.\
+    \ J. Synthetic lethality in cancer drug discovery:\\nchallenges and opportunities. Nature Reviews Drug Discovery, 1\\\
+    u201317 (2025).\\n96.\\nFong, S. H. et al. A multilineage screen identi\\ufb01es actionable synthetic lethal interactions\
+    \ in\\nhuman cancers. Nature Genetics 57, 154\\u2013164 (2025).\\n97.\\nPacini, C. et al. Integrated cross-study datasets\
+    \ of genetic dependencies in cancer. Nature\\nCommunications 12, 1661 (2021).\\n98.\\nKuleshov, M. V. et al. Enrichr:\
+    \ a comprehensive gene set enrichment analysis web server\\n2016 update. Nucleic acids research 44, W90\\u2013W97 (2016).\\\
+    n99.\\nMartens, M. et al. WikiPathways: connecting communities. Nucleic acids research 49,\"\n  },\n  {\n    \"name\"\
+    : \"D613\\u2013D621 (2021)\",\n    \"text\": \"100.\\nHermjakob, H. et al. IntAct: an open source molecular interaction\
+    \ database. Nucleic acids\\nresearch 32, D452\\u2013D455 (2004).\\n101.\\nLiberzon, A. et al. Molecular signatures database\
+    \ (MSigDB) 3.0. Bioinformatics 27, 1739\\u2013\\n1740 (2011).\\n102.\\nHe, X. & Xu, C. Immune checkpoint signaling and\
+    \ cancer immunotherapy. Cell research\\n30, 660\\u2013669 (2020).\\n103.\\nSun, Q. et al. Immune checkpoint therapy for\
+    \ solid tumours: clinical dilemmas and future\\ntrends. Signal Transduction and Targeted Therapy 8, 320 (2023).\\n39\\\
+    n\\n104.\\nHavel, J. J., Chowell, D. & Chan, T. A. The evolving landscape of biomarkers for checkpoint\\ninhibitor immunotherapy.\
+    \ Nature Reviews Cancer 19, 133\\u2013150 (2019).\\n105.\\nNecchi, A. et al. Atezolizumab in platinum-treated locally\
+    \ advanced or metastatic urothe-\\nlial carcinoma: post-progression outcomes from the phase II IMvigor210 study. Annals\
+    \ of\\nOncology 28, 3044\\u20133050 (2017).\\n106.\\nLiu, D. et al. Integrative molecular and clinical modeling of clinical\
+    \ outcomes to PD1 block-\\nade in patients with metastatic melanoma. Nature Medicine 25, 1916\\u20131927 (2019).\\n107.\\\
+    nWu, B., Zhang, B., Li, B., Wu, H. & Jiang, M. Cold and hot tumors: from molecular mech-\\nanisms to targeted therapy.\
+    \ Signal Transduction and Targeted Therapy 9, 274 (2024).\\n108.\\nWyatt, A. W. et al. Plasma ctDNA as a treatment response\
+    \ biomarker in metastatic cancers:\\nevaluation by the RECIST working group. Clinical Cancer Research 30, 5034\\u20135041\
+    \ (2024).\\n109.\\nBudczies, J. et al. Tumour mutational burden: clinical utility, challenges and emerging im-\\nprovements.\
+    \ Nature Reviews Clinical Oncology 21, 725\\u2013742 (2024).\\n110.\\nWang, J. et al. GTA: a benchmark for general tool\
+    \ agents. Advances in Neural Information\\nProcessing Systems 37, 75749\\u201375790 (2024).\\n111.\\nEpperson, W. et al.\
+    \ Interactive debugging and steering of multi-agent ai systems in Pro-\\nceedings of the 2025 CHI Conference on Human\
+    \ Factors in Computing Systems (2025), 1\\u2013\\n15.\\n112.\\nZhang, Z. et al. Multi-Agent Taskforce Collaboration: Self-Correction\
+    \ of Compounding\\nErrors in Long-Form Literature Review Generation. arXiv:2508.04306 (2025).\\n113.\\nVuddanti, S. V.\
+    \ et al. PALADIN: Self-Correcting Language Model Agents to Cure Tool-\\nFailure Cases. arXiv:2509.25238 (2025).\\n114.\\\
+    nErrica, F., Sanvito, D., Siracusano, G. & Bifulco, R. What did i do wrong? quantifying\\nLLMs\\u2019 sensitivity and\
+    \ consistency to prompt engineering in Proceedings of the 2025 Con-\\nference of the Nations of the Americas Chapter of\
+    \ the Association for Computational Lin-\\nguistics: Human Language Technologies (Volume 1: Long Papers) (2025), 1543\\\
+    u20131558.\\n115.\\nZheng, L. et al. Judging LLM-as-a-judge with MT-Bench and chatbot arena. Advances in\\nNeural Information\
+    \ Processing Systems 36, 46595\\u201346623 (2023).\\n116.\\nQueen, O. et al. ProCyon: A multimodal foundation model for\
+    \ protein phenotypes. BioRxiv,\\n2024\\u201312 (2024).\\n117.\\nKim, E., Garg, A., Peng, K. & Garg, N. Correlated Errors\
+    \ in Large Language Models. In-\\nternational Conference on Machine Learning (2025).\\n118.\\nZuo, C., Xia, J. & Chen,\
+    \ L. Dissecting tumor microenvironment from spatially resolved\\ntranscriptomics data by heterogeneous graph learning.\
+    \ Nature Communications 15, 5057\\n(2024).\\n40\\n\\n119.\\nMo, C.-K. et al. Tumour evolution and microenvironment interactions\
+    \ in 2D and 3D space.\\nNature 634, 1178\\u20131186 (2024).\\n120.\\nLin, X., Kong, Z., Ghosh, S., Kellis, M. & Zitnik,\
+    \ M. CONCERT predicts niche-aware\\nperturbation responses in spatial transcriptomics. bioRxiv, 2025\\u201311 (2025).\\\
+    n121.\\nProgram, C. C. S. et al. CZ CELLxGENE Discover: a single-cell data platform for scalable\\nexploration, analysis\
+    \ and modeling of aggregated data. Nucleic Acids Research 53, D886\\u2013\"\n  },\n  {\n    \"name\": \"D900 (2025)\"\
+    ,\n    \"text\": \"122.\\nJee, J. et al. Automated real-world data integration improves cancer outcome prediction.\\nNature\
+    \ 636, 728\\u2013736 (2024).\\n123.\\nFasolino, M. et al. Multiomics single-cell analysis of human pancreatic islets reveals\
+    \ novel\\ncellular states in health and type 1 diabetes. BioRxiv, 2021\\u201301 (2021).\\n124.\\nPranzatelli, T. J. et\
+    \ al. GZMK+ CD8+ T cells target a speci\\ufb01c Acinar cell type in Sj\\u00a8ogren\\u2019s\\ndisease. Research Square,\
+    \ rs\\u20133 (2024).\\n125.\\nWilson, P. C. et al. Multimodal single cell sequencing implicates chromatin accessibility\\\
+    nand genetic background in diabetic kidney disease progression. Nature communications 13,\\n5253 (2022).\\n126.\\nKim,\
+    \ S. et al. PubChem 2025 update. Nucleic acids research 53, D1516\\u2013D1525 (2025).\\n127.\\nHagberg, A., Swart, P.\
+    \ J. & Schult, D. A. Exploring network structure, dynamics, and func-\\ntion using NetworkX tech. rep. (Los Alamos National\
+    \ Laboratory (LANL), Los Alamos,\\nNM (United States), 2008).\\n128.\\nOughtred, R. et al. The BioGRID database: A comprehensive\
+    \ biomedical resource of cu-\\nrated protein, genetic, and chemical interactions. Protein Science 30, 187\\u2013200 (2021).\\\
+    n129.\\nZanzoni, A. et al. MINT: a Molecular INTeraction database. FEBS letters 513, 135\\u2013140\\n(2002).\\n130.\\\
+    nMewes, H.-W. et al. MIPS: a database for genomes and protein sequences. Nucleic acids\\nresearch 30, 31\\u201334 (2002).\\\
+    n131.\\nRauluseviciute, I. et al. JASPAR 2024: 20th anniversary of the open-access database of\\ntranscription factor\
+    \ binding pro\\ufb01les. Nucleic acids research 52, D174\\u2013D182 (2024).\\n132.\\nAshburner, M. et al. Gene ontology:\
+    \ tool for the uni\\ufb01cation of biology. Nature genetics 25,\\n25\\u201329 (2000).\\n133.\\nChen, E. Y. et al. Enrichr:\
+    \ interactive and collaborative HTML5 gene list enrichment anal-\\nysis tool. BMC bioinformatics 14, 128 (2013).\\n134.\\\
+    nSchober, P., Boer, C. & Schwarte, L. A. Correlation coef\\ufb01cients: appropriate use and inter-\\npretation. Anesthesia\
+    \ & analgesia 126, 1763\\u20131768 (2018).\\n41\\n\\n135.\\nBenjamini, Y. & Hochberg, Y. Controlling the false discovery\
+    \ rate: a practical and powerful\\napproach to multiple testing. Journal of the Royal statistical society: series B (Methodolog-\\\
+    nical) 57, 289\\u2013300 (1995).\\n136.\\nDempster, J. M. et al. Chronos: a cell population dynamics model of CRISPR experiments\\\
+    nthat improves inference of gene \\ufb01tness effects. Genome biology 22, 343 (2021).\\n137.\\nMadaan, A. et al. Self-re\\\
+    ufb01ne: Iterative re\\ufb01nement with self-feedback. Advances in Neural\\nInformation Processing Systems 36, 46534\\\
+    u201346594 (2023).\\n138.\\nJiang, S., Wang, Y. & Wang, Y. Selfevolve: A code evolution framework via large language\\\
+    nmodels. arXiv:2306.02907 (2023).\\n139.\\nChen, J. et al. Bge m3-embedding: Multi-lingual, multi-functionality, multi-granularity\
+    \ text\\nembeddings through self-knowledge distillation. arXiv:2402.03216 (2024).\\n140.\\nGoogle. Gemini 2.0 Flash Model\
+    \ Card tech. rep. Accessed: 2025-12-10 (Google, 2024).\\nhttps://modelcards.withgoogle.com/assets/documents/gemini-2-\\\
+    ufb02ash.pdf.\\n141.\\nZhang, B. et al. OpenAI o3-mini System Card in (2025).\\n142.\\nHurst, A. et al. Gpt-4o system\
+    \ card. arXiv:2410.21276 (2024).\\n143.\\nAnthropic. Claude 3.7 Sonnet System Card in (2025).\\n144.\\nLiu, Z. et al.\
+    \ Agentlite: A lightweight library for building and advancing task-oriented llm\\nagent system. arXiv:2402.15538 (2024).\\\
+    n145.\\nYao, S. et al. React: Synergizing reasoning and acting in language models in International\\nConference on Learning\
+    \ Representations (ICLR) (2023).\\n146.\\nMegill, C. et al. CELLxGENE: a performant, scalable exploration platform for\
+    \ high dimen-\\nsional sparse matrices. bioRxiv, 2021\\u201304 (2021).\\n147.\\nWolf, F. A., Angerer, P. & Theis, F. J.\
+    \ SCANPY: large-scale single-cell gene expression data\\nanalysis. Genome biology 19, 15 (2018).\\n148.\\nLuecken, M.\
+    \ D. & Theis, F. J. Current best practices in single-cell RNA-seq analysis: a\\ntutorial. Molecular systems biology 15,\
+    \ e8746 (2019).\\n149.\\nHao, Y. et al. Integrated analysis of multimodal single-cell data. Cell 184, 3573\\u20133587\\\
+    n(2021).\\n150.\\nNelson, M. R. et al. The support of human genetic evidence for approved drug indications.\\nNature genetics\
+    \ 47, 856\\u2013860 (2015).\\n151.\\nTsherniak, A. et al. De\\ufb01ning a cancer dependency map. Cell 170, 564\\u2013576\
+    \ (2017).\\n152.\\nBehan, F. M. et al. Prioritization of cancer therapeutic targets using CRISPR\\u2013Cas9 screens.\\\
+    nNature 568, 511\\u2013516 (2019).\\n153.\\nSamstein, R. M. et al. Tumor mutational load predicts survival after immunotherapy\
+    \ across\\nmultiple cancer types. Nature genetics 51, 202\\u2013206 (2019).\\n42\\n\\n154.\\nDubois, Y. et al. Alpacafarm:\
+    \ A simulation framework for methods that learn from human\\nfeedback. Advances in Neural Information Processing Systems\
+    \ 36, 30039\\u201330069 (2023).\\n155.\\nKamath, A., Jia, R. & Liang, P. Selective question answering under domain shift.\
+    \ arXiv\\npreprint arXiv:2006.09462 (2020).\\n156.\\nCole, J. et al. Selectively answering ambiguous questions in Proceedings\
+    \ of the 2023 Con-\\nference on Empirical Methods in Natural Language Processing (2023), 530\\u2013543.\\n157.\\nSi, C.\
+    \ et al. Prompting GPT-3 To Be Reliable in The Eleventh International Conference on\\nLearning Representations ().\\n158.\\\
+    nGolovneva, O. et al. Roscoe: A suite of metrics for scoring step-by-step reasoning. arXiv\\npreprint arXiv:2212.07919\
+    \ (2022).\\n159.\\nWadden, D. et al. Fact or Fiction: Verifying Scienti\\ufb01c Claims in Proceedings of the 2020\\nConference\
+    \ on Empirical Methods in Natural Language Processing (EMNLP) (eds Webber,\\nB., Cohn, T., He, Y. & Liu, Y.) (Association\
+    \ for Computational Linguistics, Online, Nov.\\n2020), 7534\\u20137550. https://aclanthology.org/2020.emnlp-main.609/.\\\
+    n160.\\nJaech, A. et al. Openai o1 system card. arXiv:2412.16720 (2024).\\n161.\\nGuo, D. et al. Deepseek-r1: Incentivizing\
+    \ reasoning capability in llms via reinforcement\\nlearning. arXiv:2501.12948 (2025).\\n162.\\nEl-Yaniv, R. et al. On\
+    \ the Foundations of Noise-free Selective Classi\\ufb01cation. Journal of\\nMachine Learning Research 11 (2010).\\n163.\\\
+    nGeifman, Y. & El-Yaniv, R. Selective classi\\ufb01cation for deep neural networks. Advances in\\nneural information processing\
+    \ systems 30 (2017).\\n164.\\nSeabold, S. & Perktold, J. Statsmodels: Econometric and statistical modeling with python\\\
+    nin 9th Python in Science Conference (2010).\\n165.\\nGalsky, M. D. et al. Tumor, immune, and stromal characteristics\
+    \ associated with clini-\\ncal outcomes with atezolizumab (atezo)+ platinum-based chemotherapy (PBC) or atezo\\nmonotherapy\
+    \ (mono) versus PBC in metastatic urothelial cancer (mUC) from the phase III\\nIMvigor130 study. 2020.\\n166.\\nSong,\
+    \ Y. et al. Fibroblast growth factor receptor 3 mutation attenuates response to immune\\ncheckpoint blockade in metastatic\
+    \ urothelial carcinoma by driving immunosuppressive mi-\\ncroenvironment. Journal for Immunotherapy of Cancer 11, e006643\
+    \ (2023).\\n167.\\nLiang, Y. et al. Single-cell atlases link macrophages and CD8+ T-cell subpopulations to\\ndisease progression\
+    \ and immunotherapy response in urothelial carcinoma. Theranostics 12,\\n7745 (2022).\\n43\"\n  }\n]"
+  acknowledgments: 'models. M.M.L. and M.Z. are supported by the Berkowitz Family Living Laboratory at Harvard
+
+    Medical School and the Clalit Research Institute. We gratefully acknowledge the support of NIH
+
+    R01-HD108794, NSF CAREER 2339524, U.S. DoD FA8702-15-D-0001, ARPA-H Biomedical
+
+    Data Fabric (BDF) Toolbox Program, Harvard Data Science Initiative, Amazon Faculty Research,
+
+    Google Research Scholar Program, AstraZeneca Research, Roche Alliance with Distinguished
+
+    Scientists (ROADS) Program, SanoﬁiDEA-iTECH Award, GlaxoSmithKline Award, Boehringer
+
+    Ingelheim Award, Merck Award, Optum AI Research Collaboration Award, Pﬁzer Research, Gates
+
+    Foundation (INV-079038), Chan Zuckerberg Initiative, John and Virginia Kaneb Fellowship at
+
+    Harvard Medical School, Biswas Computational Biology Initiative in partnership with the Milken
+
+    Institute, Harvard Medical School Dean’s Innovation Fund for the Use of Artiﬁcial Intelligence,
+
+    and the Kempner Institute for the Study of Natural and Artiﬁcial Intelligence at Harvard University.
+
+    Any opinions, ﬁndings, conclusions or recommendations expressed in this material are those of the
+
+    authors and do not necessarily reﬂect the views of the funders.
+
+    Authors contributions. P.S. developed and implemented MEDEA. M.M.L. designed the experi-
+
+    ments, interpreted the results, and performed statistical analyses. P.S., M.M.L., and A.S. performed
+
+    the benchmark analyses. M.M.L., A.S., and W.S. contributed agentic tools. M.M.L, V.G., and
+
+    Y.H. retrieved, processed, and analyzed datasets. M.M.L. and S.G. helped with the design of agen-
+
+    tic modules, and Z.K. helped with agent implementation and release. M.Z. and M.M.L. designed
+
+    and led the study. All authors discussed the research and contributed to the manuscript.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p16_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_1.png\",\n   \
+    \ \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_2.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_3.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_4.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_5.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_6.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_7.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_8.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_9.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_10.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_11.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_12.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_13.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_14.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_15.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_16.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_17.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_18.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_19.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_20.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_21.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_22.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_23.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_24.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_25.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_26.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_27.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_28.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_29.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_30.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_31.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_32.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_33.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_34.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_35.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_36.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_37.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_38.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_39.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_40.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_41.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_42.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_43.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_44.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_45\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_45.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_46\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_46.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_47\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_47.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_48\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_48.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_49\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_49.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_50\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_50.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_51\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_51.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_52\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_52.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_53\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_53.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_54\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_54.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_55\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_55.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_56\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_56.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_57\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_57.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_58\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_58.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_59\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_59.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_60\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_60.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_61\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_61.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_62\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_62.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_63\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_63.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_64\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_64.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_65\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_65.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_66\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_66.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_67\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_67.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_68\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_68.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_69\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_69.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_70\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_70.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_71\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_71.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_72\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_72.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_73\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_73.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_74\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_74.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_75\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_75.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_76\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_76.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_77\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_77.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_78\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_78.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_79\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_79.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_80\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_80.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_81\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_81.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_82\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_82.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_83\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_83.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_84\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_84.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_85\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_85.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_86\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_86.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_87\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_87.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_88\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_88.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_89\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_89.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_90\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_90.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_91\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_91.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_92\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_92.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_93\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_93.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_94\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_94.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_95\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_95.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_96\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_96.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_97\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_97.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_98\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_98.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_99\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_99.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_100\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_100.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_101\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_101.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_102\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_102.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_103\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_103.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_104\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_104.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_105\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_105.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_106\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_106.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_107\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_107.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_108\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_108.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_109\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_109.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_110\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_110.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_111\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_111.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_112\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_112.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_113\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_113.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_114\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_114.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_115\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_115.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_116\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_116.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_117\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_117.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_118\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_118.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_119\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_119.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_120\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_120.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_121\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_121.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_122\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_122.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_123\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_123.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_124\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_124.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_125\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_125.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_126\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_126.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_127\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_127.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_128\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_128.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_129\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_129.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_130\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_130.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_131\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_131.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_132\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_132.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_133\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_133.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_134\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_134.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_135\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_135.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_136\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_136.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_137\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_137.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_138\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_138.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_139\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_139.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_140\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_140.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_141\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_141.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_142\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_142.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_143\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_143.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_144\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_144.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_145\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_145.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_146\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_146.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_147\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_147.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_148\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_148.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_149\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_149.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_150\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_150.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_151\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_151.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_152\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_152.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_153\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_153.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_154\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_154.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_155\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_155.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_156\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_156.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_157\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_157.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p16_158\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_158.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_2.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_3.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_4.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_5.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_6.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_7.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_8.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_9.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_10.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_11.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_12.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_13.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_14.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_15.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_16.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_17.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_18.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_19.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_20.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_21.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p17_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_22.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p18_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_1.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_2.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_3.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_4.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_5.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_6.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_7.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_8.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_9.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_10.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_11.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_12.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_13.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_14.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_15.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_16.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_17.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_18.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_19.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_20.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_21.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_22.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_23.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_24.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_25.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_26.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_27.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_28.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_29.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_30.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_31.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_32.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_33.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_34.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_35.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_36.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_37.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_38.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_39.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_40.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_41.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_42.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_43.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_44.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_45\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_45.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_46\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_46.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_47\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_47.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_48\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_48.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_49\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_49.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_50\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_50.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_51\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_51.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_52\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_52.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_53\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_53.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p18_54\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p18_54.png\"\
+    ,\n    \"page\": 18\n  },\n  {\n    \"id\": \"fig_p20_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_1.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_2.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_3.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_4.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_5.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_6.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_7.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_8.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_9.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_10.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p20_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_11.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p21_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_1.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_2.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_3.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_4.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_5.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_6.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_7.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_8.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_9.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_10.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_11.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_12.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_13.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_14.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_15.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_16.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_17.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_18.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_19.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_20.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_21.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_22.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_23.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_24.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_25.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_26.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_27\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_27.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_28\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_28.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_29\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_29.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_30\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_30.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_31\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_31.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_32\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_32.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_33\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_33.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_34\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_34.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_35\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_35.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_36\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_36.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_37\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_37.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_38\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_38.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_39\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_39.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_40\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_40.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_41\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_41.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_42\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_42.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_43\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_43.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_44\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_44.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_45\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_45.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_46\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_46.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_47\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_47.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_48\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_48.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_49\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_49.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_50\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_50.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_51\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_51.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_52\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_52.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_53\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_53.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_54\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_54.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_55\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_55.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_56\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_56.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_57\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_57.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_58\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_58.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_59\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_59.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_60\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_60.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_61\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_61.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_62\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_62.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_63\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_63.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_64\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_64.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_65\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_65.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_66\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_66.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_67\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_67.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_68\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_68.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_69\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_69.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_70\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_70.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_71\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_71.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_72\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_72.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_73\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_73.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_74\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_74.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_75\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_75.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_76\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_76.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_77\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_77.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_78\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_78.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_79\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_79.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_80\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_80.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_81\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_81.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_82\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_82.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_83\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_83.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_84\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_84.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_85\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_85.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_86\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_86.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_87\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_87.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_88\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_88.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_89\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_89.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_90\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_90.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_91\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_91.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_92\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_92.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_93\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_93.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_94\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_94.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_95\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_95.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_96\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_96.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_97\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_97.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_98\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_98.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_99\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_99.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_100\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_100.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_101\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_101.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_102\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_102.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_103\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_103.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_104\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_104.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_105\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_105.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_106\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_106.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_107\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_107.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_108\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_108.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_109\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_109.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_110\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_110.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_111\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_111.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_112\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_112.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_113\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_113.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_114\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_114.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_115\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_115.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_116\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_116.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_117\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_117.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_118\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_118.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_119\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_119.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_120\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_120.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_121\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_121.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_122\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_122.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_123\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_123.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_124\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_124.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_125\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_125.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_126\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_126.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_127\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_127.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_128\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_128.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_129\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_129.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_130\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_130.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_131\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_131.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_132\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_132.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_133\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_133.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_134\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_134.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_135\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_135.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_136\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_136.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_137\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_137.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_138\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_138.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_139\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_139.png\"\
+    ,\n    \"page\": 21\n  },\n  {\n    \"id\": \"fig_p21_140\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p21_140.png\"\
+    ,\n    \"page\": 21\n  }\n]"
+references:
+  reference_count: 56
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://huggingface.co/datasets/mims-harvard/MedeaDB.\",\n    \"accession\":\
+    \ \"\",\n    \"database\": \"\",\n    \"description\": \"\"\n  }\n]"
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/mims-harvard/Medea.\",\n    \"description\": \"\"\n  }\n]"

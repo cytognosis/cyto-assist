@@ -1,0 +1,198 @@
+# ARPA-H Mission Office ISO — Template Specification
+#
+# Defines the structure of an ARPA-H Mission Office Innovative Solutions Opening.
+# This template covers both the PHO (Proactive Health Office) and
+# HSF (Health Science Futures) Mission Office ISOs, since they share
+# the same structure but address different mission areas.
+#
+# Schema Version: 1.0
+# Sources: ARPA-H-SOL-24-106 (PHO), ARPA-H-SOL-24-104 (HSF)
+
+template:
+  name: "ARPA-H Mission Office ISO"
+  version: "1.0"
+  description: "Innovative Solutions Opening (ISO) for ARPA-H Mission Offices (PHO/HSF)"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Document Metadata ──────────────────────────────────────────────────
+  - id: metadata
+    title: "Document Metadata"
+    fields:
+      - id: mission_office
+        label: "Mission Office"
+        type: choice
+        required: true
+        options:
+          - "Proactive Health Office (PHO)"
+          - "Health Science Futures (HSF)"
+          - "Scalable Solutions Office (SSO)"
+          - "Resilient Systems Office (RSO)"
+
+      - id: solicitation_id
+        label: "Solicitation Number"
+        type: text
+        required: true
+        hint: "e.g., ARPA-H-SOL-24-106"
+
+      - id: amendment_number
+        label: "Amendment Number"
+        type: number
+        required: false
+
+      - id: release_date
+        label: "Release Date"
+        type: date
+        required: true
+
+      - id: sam_gov_url
+        label: "SAM.gov Listing URL"
+        type: url
+        required: false
+
+  # ─── ISO Summary Information ────────────────────────────────────────────
+  - id: iso_summary
+    title: "ISO Summary Information"
+    note: "Section 1.0 — Overview of the solicitation purpose and scope"
+    fields:
+      - id: purpose
+        label: "ISO Purpose"
+        type: section
+        required: true
+
+      - id: key_dates
+        label: "Key Dates & Deadlines"
+        type: textarea
+        required: true
+        hint: "Solution Summary and proposal submission deadlines"
+
+  # ─── Program Description ────────────────────────────────────────────────
+  - id: description
+    title: "Description of the Solicitation"
+    note: "Section 2.0 — Introduction, acquisition strategy, and procedures"
+    fields:
+      - id: introduction
+        label: "Introduction"
+        type: section
+        required: true
+
+      - id: acquisition_strategy
+        label: "Acquisition Strategy"
+        type: section
+        required: true
+        hint: "Instrument types (OT, contract, grant, cooperative agreement)"
+
+      - id: solicitation_procedures
+        label: "Solicitation Procedures"
+        type: section
+        required: true
+
+      - id: award_information
+        label: "Award Information"
+        type: section
+        required: true
+
+  # ─── Eligibility ────────────────────────────────────────────────────────
+  - id: eligibility
+    title: "Eligibility Information"
+    note: "Section 3.0 — Who can propose"
+    fields:
+      - id: eligible_proposers
+        label: "Eligible Proposers"
+        type: section
+        required: true
+
+      - id: ffrdc_prohibition
+        label: "FFRDC and Government Entity Restrictions"
+        type: section
+        required: true
+
+      - id: non_us_organizations
+        label: "Non-U.S. Organizations Policy"
+        type: section
+        required: true
+
+  # ─── Submission Information ─────────────────────────────────────────────
+  - id: submission
+    title: "Solution Summary and Proposal Preparation"
+    note: "Section 4.0 — How to prepare and submit"
+    fields:
+      - id: solution_summary_prep
+        label: "Solution Summary Preparation Instructions"
+        type: section
+        required: true
+
+      - id: proposal_submission_info
+        label: "Proposal Submission Information"
+        type: section
+        required: true
+
+      - id: submission_deadlines
+        label: "Submission Deadlines"
+        type: textarea
+        required: true
+
+      - id: proprietary_information
+        label: "Proprietary Information Policy"
+        type: section
+        required: false
+
+  # ─── Evaluation Criteria ────────────────────────────────────────────────
+  - id: evaluation
+    title: "Solution Summary Review and Evaluation"
+    note: "Section 5.0 — How submissions are evaluated"
+    fields:
+      - id: review_process
+        label: "Solution Summary Review Process"
+        type: section
+        required: true
+
+      - id: criterion_1
+        label: "Criterion 1: Overall Scientific and Technical Merit"
+        type: section
+        required: true
+
+      - id: criterion_2
+        label: "Criterion 2: Contribution to ARPA-H Mission"
+        type: section
+        required: true
+
+      - id: criterion_3
+        label: "Criterion 3: Proposer's Capabilities/Experience"
+        type: section
+        required: true
+
+      - id: criterion_4
+        label: "Criterion 4: Cost/Price/Budget Assessment"
+        type: section
+        required: true
+
+      - id: selection_process
+        label: "Review and Selection Process"
+        type: section
+        required: true
+
+  # ─── Award Administration ───────────────────────────────────────────────
+  - id: award_admin
+    title: "Award Administration Information"
+    note: "Section 6.0 — IP, data sharing, compliance requirements"
+    fields:
+      - id: intellectual_property
+        label: "Intellectual Property Policy"
+        type: section
+        required: true
+
+      - id: genomic_data_sharing
+        label: "Genomic Data Sharing (GDS) Policy"
+        type: section
+        required: false
+
+      - id: human_subjects
+        label: "Human Subjects Research Policy"
+        type: section
+        required: false
+
+      - id: animal_subjects
+        label: "Animal Subjects Research Policy"
+        type: section
+        required: false

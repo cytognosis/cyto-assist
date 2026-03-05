@@ -1,0 +1,1150 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Petagraph.pdf
+
+identifiers:
+  doi: 10.1038/s41597-024-04070-w
+  pmid: '39695169'
+citation:
+  title: 'Petagraph: A large-scale unifying  knowledge graph framework for  integrating biomolecular and  biomedical data'
+  year: '2024'
+  journal: Scientific Data
+  volume: '11'
+  publisher: Springer Science and Business Media LLC
+  authors: Benjamin J. Stear, Taha Mohseni Ahooyi, J. Alan Simmons, Charles Kollar, Lance Hartman, Katherine Beigel, Aditya
+    Lahiri, Shubha Vasisht, Tiffany J. Callahan, Christopher M. Nemarich, Jonathan C. Silverstein, Deanne M. Taylor
+content:
+  sections: "[\n  {\n    \"name\": \"Background & Summary\",\n    \"text\": \"The annual increase in the volume and complexity\
+    \ of biomedical data has posed significant challenges for ana-\\nlysts interested in comprehensive data integration, and\
+    \ requires advanced tools to harness the potential of bio-\\nmedical datasets that include omics data. Knowledge graphs\
+    \ are the best near-term solutions for the integration\\nand analysis of heterogeneous data within and between large biomedical\
+    \ datasets1. Knowledge graphs can effec-\\ntively integrate and analyze heterogeneous data sources within and across large\
+    \ biomedical datasets. Methods\\nsuch as node and link prediction algorithms, supervised and unsupervised machine learning\
+    \ can be applied to\\nbiomedical knowledge graphs for many types of use cases.\\nMost biomedical knowledge graphs are\
+    \ customized for particular use cases. In recent years, knowledge\\ngraphs have witnessed a rapid proliferation in their\
+    \ adoption, with applications spanning drug discovery, drug\\nrepurposing, and the prediction of drug targets2\\u20136.\
+    \ Other biomedical knowledge graphs gave integrated hetero-\\ngeneous COVID-19 data7\\u201313, oncology datasets14\\u201316,\
+    \ and gene-disease associations3,17. These knowledge graphs\\nare very application-specific, which is expected for efficiency\
+    \ and analysis. General genomic data-integrated\\nknowledge graphs such as Petagraph and GenomicKB18 are expected to increase\
+    \ in number, helped in no small\\npart by the maturation of projects on ontological unification such as the Monarch Initiative19\
+    \ and on genomics\\ndata standards such as GA4GH20.\\nTo facilitate the widespread adoption of knowledge graphs in the\
+    \ biomedical research community, we aimed\\nto develop a modular knowledge graph framework comprising ontologies, vocabularies,\
+    \ standards, and com-\\nmonly used data resources including omics data. This framework would enable the efficient creation\
+    \ of knowl-\\nedge graphs for diverse applications. Our requirements for this knowledge graph framework included the need\\\
+    nto accommodate various omics data types within a network of interconnected standards and ontology systems\\nto ingest\
+    \ and seamlessly link experimentally-derived data to other data sources within the graph.\\n1Department of Biomedical\
+    \ and Health Informatics (DBHI), The Children\\u2019s Hospital of Philadelphia, Philadelphia,\\nPA, USA. 2Department of\
+    \ Biomedical Informatics, School of Medicine, The University of Pittsburgh, Pittsburgh,\\nPA, USA. 3Department of Biomedical\
+    \ Informatics, Columbia University Irving Medical Campus, New York, NY, USA.\\n4Department of Pediatrics, University of\
+    \ Pennsylvania Perelman Medical School, Philadelphia, PA, USA. 5These\\nauthors contributed equally: Benjamin J. Stear,\
+    \ Taha Mohseni Ahooyi. \\u2709e-mail: taylordm@chop.edu\\nData Descriptor\"\n  },\n  {\n    \"name\": \"OPEN\",\n    \"\
+    text\": \"2\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nIn order to support these requirements, we created the Unified Biomedical Knowledge\
+    \ Graph (UBKG)21.\\nThe UBKG takes the form of a property graph, based on the NIH Unified Medical Language Service (UMLS)22,\\\
+    nand incorporates 105 English language-based ontologies and standards updated regularly from the biannual\\nUMLS releases.\
+    \ The UBKG extends the content from the UMLS by adding biomedical data from a variety of\\nother sources, including both\
+    \ standard ontologies and custom reference data. UBKG offers adaptability for var-\\nious biomedical ontological knowledge\
+    \ graph construction. It has already been adapted for projects such as\\nHuBMAP23, SenNet24, and the NIH Common Fund Data\
+    \ Ecosystem Data Distillery Project25. Table 2 provides\\na list of additional ontologies that the UBKG contributes to\
+    \ the UMLS ontology collection, which will enhance\\nsupport for building knowledge graphs and supporting future omics\
+    \ initiatives.\\nAdopting the UBKG as a base ontological scaffold, we constructed Petagraph, a biomedical knowledge graph\\\
+    nthat embeds and connects omics and related data into the UBKG\\u2019s ontological structure, effectively \\u2018bringing\
+    \ the\\ndata to the ontologies\\u2019 by embedding these data within a richly connected annotation environment. Petagraph\\\
+    nhas added over 12 million nodes to the UBKG, an increase of almost 44%, more than doubling the number of\\nrelationships\
+    \ from 52 million to 118 million. Petagraph increases independent relationship types to 1,861 versus\\nUBKG\\u2019s 1,756.\
+    \ Petagraph was originally piloted as a resource for rapid feature selection to identify, annotate, and\\nexplore gene\
+    \ candidates for human diseases, and has since expanded to act as a base module for user-customized\\nknowledge graphs\
+    \ for other types of biomedical use cases. To create Petagraph, we added 21 sources of support-\\ning omics and annotation\
+    \ to UBKG (Tables 2 and 3). Among these additions is the Homo sapiens Chromosomal\\nLocation Ontology (HSCLO38), developed\
+    \ to allow Petagraph queries to easily link relevant genomics features\\nacross different resolutions by chromosome position\
+    \ and chromosomal vicinity26. The modular design for data\\nSAB\\nName\\nData Type\\nPlatform\"\n  },\n  {\n    \"name\"\
+    : \"PATO\",\n    \"text\": \"Phenotypic Quality Ontology\\nOntology\\nOBO Foundry\"\n  },\n  {\n    \"name\": \"UBERON\"\
+    ,\n    \"text\": \"Uber Anatomy Ontology51\\nOntology\\nOBO Foundry\\nCL\\nCell Ontology85\\nOntology\\nOBO Foundry\"\n\
+    \  },\n  {\n    \"name\": \"DOID\",\n    \"text\": \"Human Disease Ontology86\\nOntology\\nOBO Foundry\\nOBI\\nOntology\
+    \ for Biomedical Investigations\\nOntology\\nOBO Foundry\"\n  },\n  {\n    \"name\": \"OBIB\",\n    \"text\": \"Ontology\
+    \ for Biobanking\\nOntology\\nNCBO BioPortal\"\n  },\n  {\n    \"name\": \"EDAM\",\n    \"text\": \"Ontology bioscientific\
+    \ data analysis and data management\\nOntology\"\n  },\n  {\n    \"name\": \"EDAM\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"HSAPDV\",\n    \"text\": \"Human Developmental Stages Ontology\\nOntology\\nOBO Foundry\\nSBO\\nSystems\
+    \ Biology Ontology\\nOntology\\nSBO\\nMI\\nMolecular Interactions\\nOntology\\nOBO Foundry\"\n  },\n  {\n    \"name\"\
+    : \"CHEBI\",\n    \"text\": \"CHEBI Integrated Role Ontology\\nOntology\\nOBO Foundry\\nMP\\nMammalian Phenotype Ontology\\\
+    nOntology\\nOBO Foundry\"\n  },\n  {\n    \"name\": \"ORDO\",\n    \"text\": \"Orphanet Rare Disease Ontology\\nOntology\\\
+    nNCBO BioPortal\"\n  },\n  {\n    \"name\": \"UNIPROTKB\",\n    \"text\": \"UniProtKB\\nReference\\nUniProt\\nUO\\nUnits\
+    \ of Measure Ontology\\nOntology\\nNCBO BioPortal\"\n  },\n  {\n    \"name\": \"MONDO\",\n    \"text\": \"MONDO Disease\
+    \ Ontology\\nOntology\\nOBO Foundry\\nEFO\\nExperimental Factor Ontology\\nOntology\\nNCBO BioPortal\\nPGO\\nPseudogene\\\
+    nOntology\\nNCBO BioPortal\"\n  },\n  {\n    \"name\": \"GENCODE_ONT\",\n    \"text\": \"GenCode ontology support (value\
+    \ sets)\\nOntology\\nSimpleKnowledge\"\n  },\n  {\n    \"name\": \"GENCODE\",\n    \"text\": \"GENCODE annotations and\
+    \ metadata\\nReference\\ncustom (translation of FTP download)\\nTable 2.\\u2002 Ontologies added to the existing UMLS\
+    \ collection by UBKG. The UBKG ontology set is\\nregularly updated and can be found at: https://github.com/dbmi-pitt/ubkg/blob/main/scripts/README-\\\
+    nPARAMETER%20ORDER%20for%20generation.md.\\nInformation\\nReason\\nComment\\nCounts of subject and object\\nnodes in the\
+    \ edge file, grouped\\nby Code source (SAB)\\nTo identify the vocabularies\\nused for Codes for nodes in the\\nedges file\\\
+    nMay indicate that another source should be ingested prior to the current\\ningestion.\\nComparisons of nodes from the\\\
+    nedge file with the nodes file\\nTo identify nodes that are\\nreferenced in the edge file, but\\nnot defined in the nodes\
+    \ file.\\nA node in the edge file will be converted into a Code node in UBKG\\nonly if either it is also defined in the\
+    \ node file or already exists in the\\nUBKG from a prior ingestion. Thus, this check may indicate that\\nanother source\
+    \ should be ingested prior to the current ingestion.\\nCounts of predicates in the edge\\nfile, grouped by predicate\\\
+    nTo identify opportunities\\nfor alignment with Relations\\nOntology\\nFor example, the relationship with the custom predicate\
+    \ is_a_tiny_part_\\nof might be better represented with a standard predicate from Relations\\nOntology such as part_of\
+    \ (BFO:0000050).\\nCounts of cross-references in\\nthe node file, grouped by Code\\nsource (SAB)\\nTo identify sources\
+    \ used in\\ncross-references\\nMay indicate that another source should be ingested prior to the current\\ningestion.\\\
+    nTable 1.\\u2002 Summary of checks and analyses performed during the ingestion of new data into UBKG: information\\nassessed,\
+    \ their purpose, and comments on potential actions.\\n\\n3\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nincorporation enables any user to add and/or subset\
+    \ data on top of Petagraph\\u2019s omics-rich data structure for\\ntheir particular use case. Petagraph is therefore distinguished\
+    \ by its generalizable schema and richly annotated\\nstructure, which will allow for the subsetting of highly integrated\
+    \ omics data for a myriad of use cases.\\nIn choosing datasets for Petagraph, we prioritized the integration of interpreted\
+    \ knowledge over raw experi-\\nmental data. The genomic and related datasets within Petagraph have been curated, harmonized,\
+    \ and interpreted\\nthrough thousands of hours of expert effort, ensuring that users have access to high-quality data\
+    \ for their queries\\nand thus increasing the likelihood of generating meaningful insights. We show that queries on Petagraph\
+    \ can, in\\nfact, rapidly return meaningful results for a diverse set of example use cases, including those for annotation\
+    \ and\\nanalysis. The integration of large datasets into Petagraph has the potential to advance how biomedical and bio-\\\
+    nmolecular data is mined and analyzed. By harmonizing diverse data types, including genomics, transcriptomics,\\nproteomics,\
+    \ and clinical data, Petagraph supports system-wide approaches to analysis.\\nUse cases for Petagraph include but are\
+    \ not limited to identifying genomic features functionally linked to\\ngenes or diseases, linking across genetics data\
+    \ between human and animal models, linking transcriptional per-\\nturbations by compound in tissues of interest, or identifying\
+    \ cell types from single-cell data that are most asso-\\nciated with diseases or genes. Analytical use cases for Petagraph\\\
+    u2019s data collection include applying machine\\nlearning methods or topological analyses to predict relationships such\
+    \ as link prediction, or predicting new\\nproperties on biomedical data types, such as node property prediction.\\nThe\
+    \ scalable and modular design of Petagraph allows for continuous incorporation of new datasets.\\nPetagraph\\u2019s mature\
+    \ architecture is designed to be extended easily by users wishing to build their own custom\\nknowledge graph. Utilizing\
+    \ the Unified Biomedical Knowledge Graph (UBKG) ingestion protocols, Petagraph\\nusers can easily integrate additional\
+    \ data sources, whether they are publicly available or proprietary. This modu-\\nlarity ensures that researchers can curate\
+    \ the knowledge graph to include specific builds relevant to their unique\\napplications. The node and edge CSV files\
+    \ that are used to construct Petagraph are 12.5 GB in size and can be\\nused to reconstruct the database or can be used\
+    \ with our instructions to expand or change the knowledge graph\\nwith the UBKG as the base scaffold. We provide a 4.5\\\
+    u2009GB database dump of Petagraph that can be installed on\\nlocal laptops with at least 16\\u2009GB of memory. Petagraph\
+    \ is currently being utilized as a base module by the NIH\\nCommon Fund Data Ecosystem (CFDE) Data Distillery Project\
+    \ to integrate Common Fund omics data from\\ntwelve data coordination centers25.\\nFuture work will focus on expanding\
+    \ Petagraph\\u2019s capabilities, enhancing automated validation techniques,\\nand developing standardized benchmarks\
+    \ for knowledge graph comparisons. Another emerging and important\\nresearch area is in the integration of knowledge graphs\
+    \ with Large Language Models (LLMs) to enhance biomed-\\nical data analysis. Curated knowledge graphs like Petagraph provide\
+    \ a curated source of structured knowledge\\nthat can improve LLMs\\u2019 understanding and generation of biomedical knowledge.\
+    \ LLMs can use Petagraph to\\ngenerate more accurate and contextually relevant responses to complex biomedical queries,\
+    \ with many potential\\napplications in personalized medicine, drug discovery, and clinical outcome prediction.\\nIn conclusion,\
+    \ Petagraph represents a significant advancement in the integration and analysis of multi-omics\\nand biomedical data.\
+    \ Its robust framework, extensive dataset integration, and advanced analytical capabilities\\nposition it as a valuable\
+    \ resource for the biomedical research community, enabling new discoveries and fostering\\na deeper understanding of complex\
+    \ biological systems.\\nDataset and\\ncitation\\nGraph SAB\\n# of Concept\\nnodes added\\n% of total\\nConcept\\nnodes\\\
+    n# of Concept\\n- to - Concept\\nRelationships\\n% total graph\\nof Concept -\\nto - Concept\\nrelationships\\nEdges with\
+    \ SABs\\nURL(s)\\nHCOP: Human to\\nMouse Ortholog\\nmappings\"\n  },\n  {\n    \"name\": \"HCOP\",\n    \"text\": \"0\\\
+    n0%\\n671,046\\n0.56%\"\n  },\n  {\n    \"name\": \"MGI, HGNC\",\n    \"text\": \"https://www.genenames.org/tools/hcop/\\\
+    nMouse Gene\\nto Phenotype\\nmappings (IMPC/\"\n  },\n  {\n    \"name\": \"KOMP2)\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"MPMGI\",\n    \"text\": \"0\\n0%\\n234,043\\n0.2%\"\n  },\n  {\n    \"name\": \"MGI, MP\",\n    \"text\"\
+    : \"http://ftp.ebi.ac.uk/pub/databases/impc/all-data-\\nreleases/latest/results/genotype-phenotype-assertions-\\nALL.csv.gz,\
+    \ http://ftp.ebi.ac.uk/pub/databases/impc/all-\\ndata-releases/latest/results/statistical-results-ALL.csv.\\ngz, http://www.informatics.jax.org/downloads/reports/\\\
+    nMGI_PhenoGenoMP.rpt, http://www.informatics.\\njax.org/downloads/reports/MGI_GenePheno.rpt,\\nhttp://www.informatics.jax.org/downloads/reports/\\\
+    nMGI_Geno_DiseaseDO.rpt\\nHuman Gene\\nto Phenotype\\nmappings\"\n  },\n  {\n    \"name\": \"(MONDO)\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"HGNCHPO\",\n    \"text\": \"0\\n0%\\n671,046\\n0.56%\"\n  },\n  {\n    \"name\": \"\
+    HGNC, HPO\",\n    \"text\": \"https://hpo.jax.org/app/data/annotations\\nHuman to Mouse\\nPhenotypes\\n(PheKnoWLator)\"\
+    \n  },\n  {\n    \"name\": \"HPOMP\",\n    \"text\": \"0\\n0%\\n1,785\\n0.00151%\"\n  },\n  {\n    \"name\": \"HPO, MP\"\
+    ,\n    \"text\": \"See HPOMP in Methods\\nHuman Ensembl\\nto Rat Ensembl\\nmappings\"\n  },\n  {\n    \"name\": \"RATHCOP\"\
+    ,\n    \"text\": \"0\\n0%\\n42,371\\n0.036%\"\n  },\n  {\n    \"name\": \"ENSEMBL\",\n    \"text\": \"(Human),\\nENSEMBL\
+    \ (Rat)\\nhttps://www.genenames.org/tools/hcop/\"\n  },\n  {\n    \"name\": \"GENCODE\",\n    \"text\": \"to HSCLO38\\\
+    nmappings\"\n  },\n  {\n    \"name\": \"GENCODEHSCLO38\",\n    \"text\": \"0\\n0%\\n591,101\\n0.5%\"\n  },\n  {\n    \"\
+    name\": \"GENCODE,\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HSCLO38\",\n    \"text\": \"See Table 9\\nTable\
+    \ 3.\\u2002 Genomic data mappings added to the UBKG to create Petagraph.\\n\\n4\\nScientific Data |         (2024) 11:1338\
+    \  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\"\n \
+    \ },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"We discuss the origins and versions of records used in Petagraph\
+    \ by the type of data source: ontologies, map-\\npings, and source genomics data sets. Details of these datasets can be\
+    \ found in Tables 2 and 3. For clarity, we\\nindicate graph elements in courier font, for example, distinguishing graph\
+    \ elements such as HGNC nodes from\\nthe dataset source HGNC.\\nRecords for supporting ontologies.\\nThis section represents\
+    \ ontologies and ontology collections.\\nUBKG base context.\\u2003 The UBKG acts as the base build for Petagraph. The\
+    \ foundation of the UBKG is a set of\\nentities and relationships obtained from the NIH Unified Medical Language System\
+    \ (UMLS). The UMLS con-\\nsolidates the content of a large number of standard biomedical vocabularies. The set of assertions\
+    \ obtained from\\nextracted UMLS 2023AB content is referred to as the UMLS source context27. The UBKG adds to the data\
+    \ from\\nUMLS information from a variety of sources, including:\\n\\u2022\\nOntologies published in OBO Foundry28 and\
+    \ NCBO BioPortal29\\n\\u2022\\nReference sites, such as UniProt30 and GENCODE31\\n\\u2022\\nCustom data sources, including\
+    \ those from CFDE partners such as HuBMAP23\\nThe combination of the UMLS source context with the additional sources is\
+    \ referred to as the UBKG base context27.\\nDataset and\\ncitation\\nGraph SAB\\n# of\\nConcept\\nnodes\\nadded\\n% of\
+    \ total\\nConcept\\nnodes\\n# of Concept\\n- to - Concept\\nRelationships\\n% total graph\\nof Concept -\\nto - Concept\\\
+    nrelationships\\nEdges with SABs\\nURL(s)\\nLibrary of\\nIntegrated\\nNetwork-\\nBased Cellular\\nSignatures\"\n  },\n\
+    \  {\n    \"name\": \"(LINCS L1000)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LINCS\",\n    \"text\": \"0\\n0%\\\
+    n3,198,094\\n2.7%\"\n  },\n  {\n    \"name\": \"CHEBI, HGNC\",\n    \"text\": \"https://maayanlab.cloud/Harmonizome/resource/\\\
+    nLINCS+L1000+Connectivity+Map\\nClinVar\"\n  },\n  {\n    \"name\": \"CLINVAR\",\n    \"text\": \"0\\n0%\\n214,040\\n0.18%\"\
+    \n  },\n  {\n    \"name\": \"HPO, OMIM,\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"EFO, MONDO,\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"HGNC\",\n    \"text\": \"https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/\\\
+    nConnectivity\\nMap\"\n  },\n  {\n    \"name\": \"CMAP\",\n    \"text\": \"0\\n0%\\n2,625,336\\n2.22%\"\n  },\n  {\n \
+    \   \"name\": \"CHEBI, HGNC\",\n    \"text\": \"https://maayanlab.cloud/Harmonizome/resource/\\nConnectivity+Map\\nProtein\\\
+    n- Protein\\ninteractions\"\n  },\n  {\n    \"name\": \"STRING\",\n    \"text\": \"0\\n0%\\n459,701\\n0.38%\"\n  },\n\
+    \  {\n    \"name\": \"UNIPROTKB\",\n    \"text\": \"https://stringdb-downloads.org/download/protein.links.\\nv12.0/9606.protein.links.v12.0.txt.gz\\\
+    nMouse genes\\nMGI\\n27,239\\n0.084%\\n0\\n0\"\n  },\n  {\n    \"name\": \"HGNC, MP\",\n    \"text\": \"http://www.informatics.jax.org/downloads/reports/\\\
+    nMGI_Geno_DiseaseDO.rpt\\nHomo Sapiens\\nChromosomal\\nLocation\\nOntology\"\n  },\n  {\n    \"name\": \"HSCLO38\",\n\
+    \    \"text\": \"3,431,155\\n10.7%\\n6,862,195\\n5.8%\"\n  },\n  {\n    \"name\": \"HSCLO38 4DNL,\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"ENSEMBL\",\n    \"text\": \"https://osf.io/pe8v7/\\nThe Molecular\\nSignatures\\nDatabase\"\
+    \n  },\n  {\n    \"name\": \"MSIGDB\",\n    \"text\": \"31,702\\n0.159%\\n2,610,562\\n2.2%\"\n  },\n  {\n    \"name\"\
+    : \"HGNC, MSIGDB\",\n    \"text\": \"https://www.gsea-msigdb.org/gsea/\\nAzimuth\\nAZ\\n92\\n2.87e-4%\\n769\\n0.00065%\"\
+    \n  },\n  {\n    \"name\": \"HGNC, UBERON\",\n    \"text\": \"https://azimuth.hubmapconsortium.org/references/\\nGTEX\
+    \ Co-\\nexpression\\nby tissue (see\"\n  },\n  {\n    \"name\": \"Methods)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"GTEXCOEXP\",\n    \"text\": \"0\\n0%\\n539,021\\n0.45%\"\n  },\n  {\n    \"name\": \"HGNC\",\n    \"text\": \"https://gtexportal.org/home/downloads/adult-gtex/\\\
+    nbulk_tissue_expression\\nGTEx\\nMedian TPM\\nExpression\"\n  },\n  {\n    \"name\": \"GTEXEXP\",\n    \"text\": \"1,573,584\\\
+    n4.9%\\n4,720,141\\n3.99%\"\n  },\n  {\n    \"name\": \"HGNC, UBERON,\",\n    \"text\": \"TPM nodes\\nhttps://gtexportal.org/home/downloads/adult-gtex/\\\
+    nbulk_tissue_expression\\nGTEx eQTLs\"\n  },\n  {\n    \"name\": \"GTEXEQTL\",\n    \"text\": \"5,478,259\\n17.13%\\n5,780,112\\\
+    n4.9%\"\n  },\n  {\n    \"name\": \"HGNC,UBERON,\",\n    \"text\": \"P-value nodes\\nhttps://gtexportal.org/home/downloads/adult-gtex/\\\
+    nbulk_tissue_expression\"\n  },\n  {\n    \"name\": \"GLYGEN\",\n    \"text\": \"selected\\ndatasets (see\"\n  },\n  {\n\
+    \    \"name\": \"Methods)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GLYGEN\",\n    \"text\": \"29,203\\n0.09%\\\
+    n115,033\\n0.01%\"\n  },\n  {\n    \"name\": \"GLY.TYPE.SITE,\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GLYTOUCAN,\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"UNIPROTKB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"ISOFORM,\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"UNIPROTKB\",\n    \"text\": \"https://data.glygen.org\\nDevelopmental\\\
+    nheart single-\\ncell RNA-seq\"\n  },\n  {\n    \"name\": \"ASP2019\",\n    \"text\": \"2,816\\n8.8e-3%\\n8,448\\n7.1e-3%\"\
+    \n  },\n  {\n    \"name\": \"UBERON, HGNC,\",\n    \"text\": \"Expression\\nhttps://www.spatialresearch.org/resources-published-\\\
+    ndatasets/doi-10-1016-j-cell-2019-11-025\\nKids First\\nPhenotypes\\nKF\\n5,006\\n0.025%\\n46,414\\n0.04%\\nHPO\\nhttps://kidsfirstdrc.org/\\\
+    n4D Nucleome\\n4DN\\n216,212\\n0.67%\\n1,294,980\\n1.1%\"\n  },\n  {\n    \"name\": \"HSCLO38, EFO,\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"UBERON, 4DNF,\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DND, 4DNL,\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"DNQ\",\n    \"text\": \"https://data.4dnucleome.org/files-processed/\\nTable\
+    \ 4.\\u2002 Quantitative genomics data added to the UBKG to create Petagraph. Those entries with 0% total\\nConcept nodes\
+    \ are mapping (relationship-only) datasets.\\n\\n5\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\"\n  },\n  {\n    \"name\": \"HGNC ID\",\n    \"text\"\
+    : \"Common\\nNeighbors Score\\nJaccard\\u2019s Index\\nGene symbol\\nEvidence for heart defect\\nlinkage\"\n  },\n  {\n\
+    \    \"name\": \"HGNC:4173\",\n    \"text\": \"13\\n0.005488\"\n  },\n  {\n    \"name\": \"GATA4\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"PMID: 24000169\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:905\",\n    \"text\"\
+    : \"10\\n0.004554\\nAXL\"\n  },\n  {\n    \"name\": \"HGNC:7881\",\n    \"text\": \"9\\n0.003447\"\n  },\n  {\n    \"\
+    name\": \"NOTCH1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 36583388\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"HGNC:7976\",\n    \"text\": \"9\\n0.003089\"\n  },\n  {\n    \"name\": \"NR2F2\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"PMID: 24702954\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:10449\",\n    \"text\"\
+    : \"8\\n0.003457\"\n  },\n  {\n    \"name\": \"RREB1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 33929320\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:961\",\n    \"text\": \"8\\n0.003288\"\n  },\n  {\n    \"name\"\
+    : \"BAZ1B\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:7882\",\n    \"text\": \"8\\n0.003031\"\n  },\n  {\n\
+    \    \"name\": \"NOTCH2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 22340493\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"HGNC:4916\",\n    \"text\": \"8\\n0.002690\"\n  },\n  {\n    \"name\": \"HIRA\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"PMID: 27518902\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:29216\",\n \
+    \   \"text\": \"7\\n0.003794\"\n  },\n  {\n    \"name\": \"ARHGAP31\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    PMID: 27760138\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:10898\",\n    \"text\": \"7\\n0.003568\"\n  },\n\
+    \  {\n    \"name\": \"SKIV2L\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 23302111\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"HGNC:1390\",\n    \"text\": \"7\\n0.003552\"\n  },\n  {\n    \"name\": \"CACNA1C\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 36277185\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:7660\"\
+    ,\n    \"text\": \"7\\n0.003011\"\n  },\n  {\n    \"name\": \"NCF1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    MGI:97283\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:12796\",\n    \"text\": \"7\\n0.002315\\nWT1\"\n  },\n\
+    \  {\n    \"name\": \"PMID: 17853480\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:1097\",\n    \"text\": \"\
+    7\\n0.002137\"\n  },\n  {\n    \"name\": \"BRAF\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 23312968\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:11105\",\n    \"text\": \"6\\n0.003043\"\n  },\n  {\n    \"name\"\
+    : \"SMARCC2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID: 35241061\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"HGNC:4084\",\n    \"text\": \"6\\n0.002879\"\n  },\n  {\n    \"name\": \"GABRD\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"HGNC:3767\",\n    \"text\": \"6\\n0.002591\"\n  },\n  {\n    \"name\": \"FLT4\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"PMID: 36496429\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HGNC:14881\",\n \
+    \   \"text\": \"6\\n0.002140\"\n  },\n  {\n    \"name\": \"ZEB2\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PMID:\
+    \ 29263819\",\n    \"text\": \"Table 5.\\u2002 Prioritization of genes related to heart defects based on KF data. Results\
+    \ of link prediction in Petagraph\\nusing a Common Neighbors algorithm. We identified genes with predicted damaging de\
+    \ novo variants from\\nchildren in the Kids First cohort phs001138.v4 with tetralogy of Fallot (ToF). The Common Neighbors\
+    \ score\\nprioritizes likely relationships between Petagraph nodes for each gene and the node for Human Phenotype Ontology\\\
+    nID HP:0001636 (ToF), thus helping prioritize gene-to-phenotype relationships based on evidence from genomics\\ndata and\
+    \ annotation. GATA4, NOTCH1, NOTCH2, FLT4 are all previously known ToF-related variants, while other\\ngenes with PMIDs\
+    \ show evidence to links to other heart defects in humans or mice. Evidence for heart defect linkage\\nwas based on manual\
+    \ searches in PubMed for evidence linking these genes to heart defects. These results show how\\nresearchers can explore\
+    \ known and proposed relationships between genes, diseases, or disorders from utilizing\\nPetagraph omics dataset connectivity\
+    \ with information in CF omics datasets and supporting annotation datasets.\\nJaccard's Index was calculated as the ratio\
+    \ of Common Neighbors and Total Neighbors, all calculated on Petagraph\\nusing the Neo4j GDS library. MGI: Mouse Genome\
+    \ Informatics ID. PMID: PubMed Identifier.\\nGene Symbol\\nDegree Count\"\n  },\n  {\n    \"name\": \"TP53\",\n    \"\
+    text\": \"65\\nVHL\\n61\"\n  },\n  {\n    \"name\": \"FGFR1\",\n    \"text\": \"61\\nNF1\\n60\"\n  },\n  {\n    \"name\"\
+    : \"PIK3CA\",\n    \"text\": \"46\"\n  },\n  {\n    \"name\": \"IDH1\",\n    \"text\": \"41\"\n  },\n  {\n    \"name\"\
+    : \"PTEN\",\n    \"text\": \"39\"\n  },\n  {\n    \"name\": \"DICER1\",\n    \"text\": \"33\\nNF2\\n32\"\n  },\n  {\n\
+    \    \"name\": \"SUFU\",\n    \"text\": \"31\"\n  },\n  {\n    \"name\": \"INSR\",\n    \"text\": \"28\"\n  },\n  {\n\
+    \    \"name\": \"SLX4\",\n    \"text\": \"28\"\n  },\n  {\n    \"name\": \"PTPN11\",\n    \"text\": \"27\"\n  },\n  {\n\
+    \    \"name\": \"SMARCB1\",\n    \"text\": \"26\"\n  },\n  {\n    \"name\": \"SDHA\",\n    \"text\": \"25\"\n  },\n  {\n\
+    \    \"name\": \"RERE\",\n    \"text\": \"23\"\n  },\n  {\n    \"name\": \"TUBB\",\n    \"text\": \"23\"\n  },\n  {\n\
+    \    \"name\": \"TSC1\",\n    \"text\": \"22\"\n  },\n  {\n    \"name\": \"TGFBR2\",\n    \"text\": \"22\"\n  },\n  {\n\
+    \    \"name\": \"KRAS\",\n    \"text\": \"21\\nTable 6.\\u2002 Genes ranked by their degree in a subgraph generated from\
+    \ all the shortest paths between selected\\nabnormal CNS phenotypes and CNS neoplasms. This table lists genes based on\
+    \ their connectivity within the\\nsubgraph, indicating their potential involvement in both CNS phenotypic abnormalities\
+    \ and brain cancers.\\nHigher degree counts suggest a stronger association with both conditions, highlighting these genes\
+    \ as key nodes\\n(hubs) in the network and potential targets for further research.\\n\\n6\\nScientific Data |        \
+    \ (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nHomo sapiens chromosomal location ontology (HSCLO38).\\u2003 The Petagraph team created the Homo Sapiens\\nChromosomal\
+    \ Location Ontology for GRCh38 (HSCLO38) primarily to connect genomic features by chro-\\nmosomal position. HSCLO38 is\
+    \ utilized to connect features from annotation standards such as GENCODE\\nand datasets such as 4DN and GTEXEQTL locations\
+    \ in the graph as searchable nodes at 1 kbp resolution. The\\nHSCLO38 nodes are defined at 5 resolution levels; chromosome,\
+    \ 1 Mbp, 100 kbp, 10 kbp and 1 kbp with each\\nlevel connected up and down size scales. The HSCLO38 tree contains 3,431,155\
+    \ nodes and 6,862,195 relation-\\nships (13,724,390 including reverse edges)26\\nSupporting mappings.\\nGenomic features-to-chromosomal\
+    \ position (GENCODEHSCLO).\\u2003 Gene names\\nwith chromosomal positions were downloaded on 2023-12-10 from GENCODE31\
+    \ v41 (https://ftp.ebi.ac.uk/pub/\\ndatabases/gencode/Gencode_human/release_41/). GENCODE genomic features are mapped\
+    \ to 1 kbp resolution\\nnodes in HSCLO38 at their 5\\u2032 and 3\\u2032 genomic positions. The preprocessing script is\
+    \ provided in GitHub (Table 9).\\nRelationship Type\\nMSigDB\\nDataset Source\\nchr_band_contains_gene\\nMSigDB C1\\ninverse_chr_band_contains_gene\\\
+    nMSigDB C1\\npathway_associated_with_gene\\nMSigDB C2\\ninverse_pathway_associated_with_gene\\nMSigDB C2\\ntargets_expression_of_gene\\\
+    nMSigDB C3\\ninverse_targets_expression_of_gene\\nMSigDB C3\\nhas_marker_gene\\nMSigDB C8\\ninverse_has_marker_gene\\\
+    nMSigDB C8\\nhas_signature_gene\\nMSigDB H\\ninverse_has_signature_gene\\nMSigDB H\\nTable 7.\\u2002 Summary of Concept-to-Concept\
+    \ Relationships in the MSigDB dataset within Petagraph. This table\\ndetails the types of relationships introduced by\
+    \ the MSigDB v7.4 datasets, linking MSigDB Concept nodes to\\nHGNC Concept nodes. Each relationship type corresponds to\
+    \ specific MSigDB subsets: C1 (positional gene\\nsets), C2 (curated gene sets), C3 (regulatory target gene sets), C8 (cell\
+    \ type signature gene sets), and H (hallmark\\ngene sets). The table lists both the direct and inverse relationships that\
+    \ contribute to the 2,598,060 Concept-to-\\nConcept connections added to Petagraph.\\nFile Accession\\nDataset Description\\\
+    nURL\"\n  },\n  {\n    \"name\": \"DNFIEY8UT8A\",\n    \"text\": \"in situ Hi-C on HCT-116 (HCT-116-RAD21-mAC)\\nhttps://data.4dnucleome.org/files-processed/4DNFIEY8UT8A/\"\
+    \n  },\n  {\n    \"name\": \"DNFIOQLL854\",\n    \"text\": \"Replicates of in situ Hi-C on untreated HCT116 WAPL-mAID2\
+    \ cells\\nhttps://data.4dnucleome.org/files-processed/4DNFIOQLL854/\"\n  },\n  {\n    \"name\": \"DNFILP7BD5H\",\n   \
+    \ \"text\": \"Replicates of in situ Hi-C on Auxin treated HCT116 WAPL-mAID2 cells\\nhttps://data.4dnucleome.org/files-processed/4DNFILP7BD5H/\"\
+    \n  },\n  {\n    \"name\": \"DNFILKW1NH2\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with both FA and\
+    \ DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFILKW1NH2/\"\n  },\n  {\n    \"name\": \"\
+    DNFI3GNGT17\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with both FA and DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI3GNGT17/\"\
+    \n  },\n  {\n    \"name\": \"DNFIEEF14ST\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with both FA and\
+    \ DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFIEEF14ST/\"\n  },\n  {\n    \"name\": \"\
+    DNFI4PMUZNU\",\n    \"text\": \"Hi-C experiments on H1-hESC crosslinked with both FA and DSG, digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI4PMUZNU/\"\
+    \n  },\n  {\n    \"name\": \"DNFI8NCHTIR\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFI8NCHTIR/\"\
+    \n  },\n  {\n    \"name\": \"DNFIVO3FNLK\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIVO3FNLK/\"\
+    \n  },\n  {\n    \"name\": \"DNFIY71465K\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIY71465K/\"\
+    \n  },\n  {\n    \"name\": \"DNFILSK2QNY\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFILSK2QNY/\"\
+    \n  },\n  {\n    \"name\": \"DNFIWEN3L7Y\",\n    \"text\": \"Hi-C on HFFc6 (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFIWEN3L7Y/\"\
+    \n  },\n  {\n    \"name\": \"DNFIIQP46FO\",\n    \"text\": \"MicroC Libraries from HFFc6 cells with 3 biological replicates,\
+    \ FA and DSG cross-\\nlinked, MNase digestion\\nhttps://data.4dnucleome.org/files-processed/4DNFIIQP46FO/\"\n  },\n  {\n\
+    \    \"name\": \"DNFI212GCZW\",\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with both FA and DSG, digested\
+    \ with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFI212GCZW/\"\n  },\n  {\n    \"name\": \"DNFI2K9STD5\"\
+    ,\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with both FA and DSG, digested with DdeI.\\nhttps://data.4dnucleome.org/files-processed/4DNFI2K9STD5/\"\
+    \n  },\n  {\n    \"name\": \"DNFIQ48U7UJ\",\n    \"text\": \"Hi-C experiments on HFFc6 crosslinked with both FA and DSG,\
+    \ digested with DdeI and\\nDpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFIQ48U7UJ/\"\n  },\n  {\n    \"name\"\
+    : \"DNFI3RMWQ85\",\n    \"text\": \"MicroC Libraries from H1ESC cells from 2 biological replicates, FA and DSG cross-\\\
+    nlinked, MNase digestion\\nhttps://data.4dnucleome.org/files-processed/4DNFI3RMWQ85/\"\n  },\n  {\n    \"name\": \"DNFI3O1OTN4\"\
+    ,\n    \"text\": \"in situ Hi-C on H1-hESC (Tier 1) with DpnII\\nhttps://data.4dnucleome.org/files-processed/4DNFI3O1OTN4/\"\
+    \n  },\n  {\n    \"name\": \"DNFI49A9Z1K\",\n    \"text\": \"Micro-C experiments on H1 derived endoderm, differentiated\
+    \ using the 4DN protocol.\\nhttps://data.4dnucleome.org/files-processed/4DNFI49A9Z1K/\"\n  },\n  {\n    \"name\": \"DNFIPTEIICR\"\
+    ,\n    \"text\": \"Hi-C experiments on H1 derived endoderm, differentiated using the 4DN protocol. Cells\\ncrosslinked\
+    \ with FA and digested with DpnII.\\nhttps://data.4dnucleome.org/files-processed/4DNFIPTEIICR/\"\n  },\n  {\n    \"name\"\
+    : \"DNFIW5Z7XD3\",\n    \"text\": \"Hi-C experiments on H1 derived endoderm, differentiated using the protocol from Rene\\\
+    nMaehr lab. Cells crosslinked with FA and digested w\\u2026\\nhttps://data.4dnucleome.org/files-processed/4DNFIW5Z7XD3/\\\
+    nTable 8.\\u2002 List of the 4DN dot calls files, their description and download URL.\\n\\n7\\nScientific Data |     \
+    \    (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nHuman-to-mouse ortholog mappings (HCOP).\\u2003 Human-to-mouse orthology mappings were downloaded\\nfrom the HGNC Comparisons\
+    \ of Orthology Predictions (HCOP) tool (https://www.genenames.org/tools/\\nhcop/)32 on 04/15/2021. HCOP maps mouse orthologs\
+    \ to 20,715 of the 41,638 HGNC Concept nodes. Each\\northologous pair of human-mouse gene nodes share reciprocal relationships,\
+    \ \\u2018has_human_ortholog\\u2019, and\\n\\u2018has_mouse_ortholog\\u2019.\\nHuman gene-to-phenotype mappings (HGNCHPO).\\\
+    u2003 Mapping data from human genes to human phenotypes\\nwere obtained in July 2021 from the Human Phenotype Ontology\
+    \ (HPO) (https://hpo.jax.org/app/data/annota-\\ntions)33. The dataset contains 4,545 genes mapped to at least one phenotype\
+    \ and 10,896 phenotypes mapped to at\\nleast one gene. The Hugo Gene Nomenclature Committee\\u2019s (HGNC)34 gene names\
+    \ are included with the UMLS\\nas HGNC Concept nodes which are connected to HPO Concept nodes through an \\u2018associated_with\\\
+    u2019 rela-\\ntionship type.\\nHuman-to-mouse phenotype mappings (HPOMP).\\u2003 Human-to-mouse phenotype mapping data\
+    \ connecting\\nHuman Phenotype Ontology (HPO) terms to Mammalian Phenotype Ontology (MP) terms were generated\\non 2020-12-12\
+    \ using PheKnowLator35 v1 (Table 9). We included only PhenoKnowLator\\u2019s \\u201cexact phenotype\\nmatches\\u201d between\
+    \ HPO and MP, resulting in ~1000 mappings. More detailed descriptions of the PheKnowLator\\nmapping scores can be found\
+    \ on their GitHub page (https://github.com/callahantiff/PheKnowLator). Precise\\nmapping of human phenotypes in HPO to\
+    \ mammalian phenotypes in MP is an ongoing project by the MONDO\\nand uPheno projects19.\\nMouse gene-to-phenotype mappings\
+    \ (MPMGI).\\u2003 We were interested in including mouse gene-to-phenotype\\nrelationships. Data were downloaded (2021-01-10)\
+    \ as multiple datasets from two separate databases.The\\nfirst set of datasets for genotype and phenotype assertions were\
+    \ downloaded from the International Mouse\\nPhenotyping Consortium (IMPC)36 (https://www.mousephenotype.org/) from their\
+    \ ftp site (http://ftp.ebi.\\nac.uk/pub/databases/impc/all-data-releases/latest/results/genotype-phenotype-assertions-ALL.csv.gz)\
+    \ and the\"\n  },\n  {\n    \"name\": \"results of statistical analyses connecting mouse genes to phenotypes (http://ftp.ebi.ac.uk/pub/databases/impc/\"\
+    ,\n    \"text\": \"all-data-releases/latest/results/statistical-results-ALL.csv.gz). The second set of datasets were obtained\
+    \ from the\\nmouse genome informatics (MGI) database37 and can be found at (http://www.informatics.jax.org/downloads/\\\
+    nreports/index.html#pheno). We imported MGI datasets PhenoGeno (http://www.informatics.jax.org/down-\\nloads/reports/MGI_PhenoGenoMP.rpt)\
+    \ GenePheno and (http://www.informatics.jax.org/downloads/reports/\\nMGI_GenePheno.rpt) and Geno_Disease (http://www.informatics.jax.org/downloads/reports/MGI_Geno_\\\
+    nDiseaseDO.rpt). All 3 datasets contain, among other data, phenotype-to-gene mappings. The datasets from\\nIMPC and MGI\
+    \ were combined to create a mouse genotype-to-phenotype dataset. This master dataset MPMGI\\ncontains 10,380 MP terms\
+    \ that are mapped to at least one gene and 17,936 genes that are mapped to at least one\\nMP term.\\nMolecular signatures\
+    \ database (MSIGDB).\\u2003 MSigDB is a collection of gene set resources, curated or collected\\nfrom several different\
+    \ sources38,39 (https://www.gsea-msigdb.org/gsea/msigdb/). Five subsets of MSigDB v7.4\\ndatasets were introduced as entity-gene\
+    \ relationships to the knowledge graph: C1 (positional gene sets), C2\\n(curated gene sets), C3 (regulatory target gene\
+    \ sets), C8 (cell type signature gene sets) and H (hallmark gene\\nsets). With this subset, we created MSIGDB Concept\
+    \ nodes for 31,516 MSigDB systematic names (used as\\nCodes). The MSIGDB and HGNC Concept nodes are connected by relationships\
+    \ that reflect the content of each\\nof the MSigDB subsets. For example, a pathway in the MSigDB Hallmark dataset will\
+    \ link to its member genes\\nPreprocess\\nScript\\nCreates Concept node and edge files for 4DN human chromosome loops\
+    \ based on 4DN dot call files and\\nconnects to HSCLO Concept nodes\"\n  },\n  {\n    \"name\": \"DN_LOOP.R\",\n    \"\
+    text\": \"Creates Concept node and edge files for 4DN human chromosome Q values based on 4DN dot call files\"\n  },\n\
+    \  {\n    \"name\": \"DN_Q.R\",\n    \"text\": \"Creates nodes and edges files for the human embryonic heart single-cell\
+    \ marker data from Asp2019\\nASP2019.ipynb\\nCreates edge files for ClinVar links between human genes, diseases and phenotypes\"\
+    \n  },\n  {\n    \"name\": \"CLINVAR.R\",\n    \"text\": \"Creates edge files for CMAP relationships between compounds\
+    \ to human genes\"\n  },\n  {\n    \"name\": \"CMAP.R\",\n    \"text\": \"Creates Concept node and edge files for TPM\
+    \ gene expression and eQTL data from the GTEx project.\\nGTEX.ipynb\\nCreates edge files GTEXCOEXP relationships between\
+    \ human genes\"\n  },\n  {\n    \"name\": \"GTEXCOEXP.R\",\n    \"text\": \"Creates edge files between HPO and HGNC from\
+    \ the HPO project.\\nHGNCHPO.ipynb\\nCreates edge files between HPO and MP concept nodes based on PhenKnowLator output.\\\
+    nHPOMP.ipynb\\nCreates edges between ENSEMBL and HSCLO\"\n  },\n  {\n    \"name\": \"HSCLO_GENCODE.R\",\n    \"text\"\
+    : \"Workflows to process Kids First phenotype and genotype count data.\\nKF_main.ipynb\\nCreates edge files for L1000\
+    \ relationships between compounds to human genes\"\n  },\n  {\n    \"name\": \"L1000.R\",\n    \"text\": \"Creates nodes\
+    \ and edges files for the mouse data from the IMPC\\nMPMGI.ipynb\\nCreates nodes and edges files for MSigDB linking genes\
+    \ to pathways\"\n  },\n  {\n    \"name\": \"MSIGDB.R\",\n    \"text\": \"Creates edge files for STRING relationships between\
+    \ human proteins (UniProt IDs)\"\n  },\n  {\n    \"name\": \"STRING.R\",\n    \"text\": \"Table 9.\\u2002 Preprocessing\
+    \ scripts to prepare datasets ingested into Petagraph. All scripts can be found under\\nhttps://github.com/TaylorResearchLab/Petagraph/tree/main/Scientific_Data_2024/code/preprocessing/.\\\
+    n\\n8\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nthrough the has_signature_gene and reverse as inverse_has_signature_gene edge types.\
+    \ The\\nMSIGDB Term names were also compiled according to the MSigDB generic entity names. Collectively, MSigDB\\nadds\
+    \ 2,598,060 Concept-to-Concept direct and inverse relationships to Petagraph. Details on MSigDB relation-\\nships types\
+    \ connecting the Concept nodes are found in Table 7. Preprocessing scripts for MSIGDB relationships\\nare deposited in\
+    \ GitHub (Table 9).\\nHuman-to-rat ENSEMBL mappings (RATHCOP).\\u2003 The source of the human-to-rat ENSEMBL40 ortholog\
+    \ map-\\npings was from the HGNC Comparisons of Orthology Predictions tool (HCOP)32 (https://www.genenames.org/\\ntools/hcop/)\
+    \ downloaded on 2023-11-16.\\nSupporting genomics data sets.\\nSummary details for each mapping and quantitative dataset\
+    \ are featured\\nin Tables 3, 4.\\n4D Nucleome program (4DN).\\u2003 We obtained 21 loop files (Table 8) stored in dot\
+    \ call format from the 4D nucle-\\nome project41 website (https://www.4dnucleome.org) on 2023-01-05. The loop files were\
+    \ further processed for\\ningestion by first creating dataset nodes (SAB: 4DND) with the respective terms containing the\
+    \ dataset infor-\\nmation (assay type, lab and cell type involved), file nodes (SAB: 4DNF). The respective terms containing\
+    \ the file\\ninformation, loop nodes (SAB: 4DNL) were attached to HSCLO38 nodes at 1kpb resolution level corresponding\\\
+    nto upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and\\nq-value nodes\
+    \ (SAB: 4DNQ) corresponding to donut q-value of the loops. Preprocessing scripts to format the\\nloop and q-value data\
+    \ were deposited in GitHub (Table 9).\\nSingle cell fetal heart data (ASP2019).\\u2003 This dataset includes single cell\
+    \ RNA-seq data from human fetal\\nheart tissue as described in Asp et al.42. The data was downloaded on 2021-08-10 (https://www.spatialresearch.\\\
+    norg/resources-published-datasets/doi-10-1016-j-cell-2019-11-025/) The average gene expression of each\\nauthor-supplied\
+    \ cell type cluster was calculated and used to represent each gene within the cluster with a pre-\\nprocessing script\
+    \ (Table 9). Single cell fetal heart Concept nodes were created and connections to cell type nodes\\nfrom the Cell Ontology\
+    \ (CL) and HGNC nodes connections were made. There were cell types defined in the Asp\\net al. paper that do not currently\
+    \ exist in the CL. We created our own cell type Concept nodes for these cell types\\nwith an SAB of ASP2019CLUSTER. The\
+    \ Single cell heart Code nodes have an SAB of ASP2019.\\nClinVar (CLINVAR).\\u2003 The ClinVar43 human genetic variants-phenotype\
+    \ submission summary dataset was\\nutilized to define relationships between human genes and phenotypes and was downloaded\
+    \ on (2023-01-05)\\nfrom the FTP site (https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz)\
+    \ and pre-\\nprocessed to create edge files (Table 9). As a preprocessing step, we imported only genes with single nucle-\\\
+    notide variants (SNVs) annotated as pathogenic, likely pathogenic and pathogenic/likely pathogenic variants.\\nDiseases\
+    \ and phenotypes included from ClinVar were sourced from MEDGEN44, MONDO45, HPO33, EFO46\\nand MESH47. Diseases and phenotypes\
+    \ were linked to genes with the 'gene_associated_with_dis-\\nease_or_phenotype' edge type and reverse as 'inverse_gene_associated_with_disease_\\\
+    nor_phenotype.' As a result, ClinVar represents 214,040 relationships (including reverse) connecting genes\\nto diseases\
+    \ and/or phenotypes, thus connecting HGNC and MEDGEN, MONDO, HPO, EFO, and MSH Concept\\nnodes. Preprocessing scripts\
+    \ for CLINVAR relationships were deposited in GitHub (Table 9).\\nConnectivity MAP (CMAP).\\u2003 We obtained the edge\
+    \ lists of the CMAP Signatures of Differentially Expressed\\nGenes for Small Molecules dataset from the Harmonizome database\
+    \ (https://maayanlab.cloud/Harmonizome/\\ndataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)48,49.\
+    \ These edge\\nlists combine chemical data from CHEBI50 with HGNC gene IDs. The dataset features genes from microarray\\\
+    ngene expression molecular signatures that were responsive to a chemical perturbation introduced to selected\\nhuman cell\
+    \ lines. CHEBI and HGNC connectors in CMAP have edge types 'positively_correlated_\\nwith_gene' and 'negatively_correlated_with_gene'\
+    \ plus their inverses. The dataset added\\n2,625,336 relationships (including reverse). Preprocessing scripts for CMAP\
+    \ relationships were deposited in\\nGitHub (Table 9).\\nGTEx, Expression and eQTL data (GTEXEXP and GTEXEQTL).\\u2003\
+    \ Human gene expression per tissue data\\nwas obtained from Genotype-Tissue Expression (GTEx) Portal (Version 8) (https://gtexportal.org/home/\\\
+    ndatasets) on 2023-04-10. We preprocessed the gene expression dataset (GTEx_Analysis_2017-06-05_v8_\\nRNASeQCv1.1.9_gene_median_tpm),\
+    \ as well as the expression quantitative trait loci (eQTL) dataset (GTEx_\\nAnalysis_v8_eQTL) (Table 9). The gene expression\
+    \ dataset contains expression profiles from 54 tissues across\\n56,200 transcripts. The eQTLs dataset contains over 1.2\
+    \ million eQTLs from 49 tissues. GTEx includes HGNC\\ngene IDs and Uberon tissue names51. We created Concept nodes for\
+    \ each eQTL and each tissue-gene expression\\npair. The eQTL Concepts were then connected to their corresponding tissue\
+    \ node (UBERON), gene node (HGNC)\\nand genomic location node (HSCLO38). The gene expression nodes are connected to their\
+    \ corresponding tissue\\nnode and gene node. We also integrated quantitative data from GTEx including p-values for the\
+    \ eQTL data and\\ntranscripts per million (TPM) for the gene expression data into the graph. In order to reduce redundancy\
+    \ of\\nnodes we created bin Concept nodes for these quantitative data types. For example, if the gene TP53 has a TPM\\\
+    nof 10.5 in the heart, the GTEx Concept for TP53 - Heart will be connected to the \\u2018[10.0.11.0]\\u2019 TPM bin\\\
+    n\\n9\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nConcept node. Similarly, if an eQTL has a p-value of 0.0005 it will be connected to\
+    \ the \\u2018[0.0001.0.001]\\u2019 p-value\\nbin Concept node.\\nGTEx, Coexpression data (GTEXCOEXP).\\u2003 Coexpression\
+    \ of human genes was computed using the GTEx gene\\nTPM (transcript per million) normalized data (GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm)\\\
+    n(https://gtexportal.org/home/datasets) by first computing the correlation matrix for each of the GTEx tissues\\nand selecting\
+    \ the entries with pairwise Pearson\\u2019s correlation above 0.99. This preprocessing was done for 54\\nhuman tissues\
+    \ and cell types as a result 1,078,042 (including reverse) relationships were ingested into the KG\\nconnecting HGNC Concept\
+    \ nodes. These relationships link genes that are co-expressed with evidence codes\\nreflecting the number of tissues where\
+    \ the connected genes meet the criteria for co-expression. Preprocessing\\nscripts for GTEXCOEXP relationships were deposited\
+    \ in GitHub (Table 9).\\nGlyGen selected datasets (GLYGEN).\\u2003 Five datasets from the GlyGen data website52,53 were\
+    \ chosen based on\\ntheir relevance to our preliminary use cases and for all datasets we used release v1.12.3. The first\
+    \ two data-\\nsets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/\\\
+    nGLY_000004) and mouse (https://data.glygen.org/GLY_000030). These datasets were modeled by creating a\\n\\u2018human\
+    \ glycosyltransferase\\u2019 Concept node as well as a \\u2018mouse glycosyltransferase\\u2019 Concept node. Then, the\\\
+    nConcept nodes for human genes (HGNC nodes) and mouse genes (MGI nodes) were connected to their respec-\\ntive glycosyltransferase\
+    \ nodes with a \\u2018is_glycotransferase\\u2019 relationship. The next three datasets con-\\ntain human O-linked and\
+    \ N-linked glycosylation information from GlyGen, namely O-GlcNac (https://data.\\nglygen.org/GLY_000517), Glyconnect\
+    \ (https://data.glygen.org/GLY_000329) and UniCarbKB (https://data.\\nglygen.org/GLY_000138). These datasets contain information\
+    \ on human proteoforms, such as the exact residue\\non a protein isoform which is glycosylated, the type of glycosylation\
+    \ and the glycans found to bind that amino\\nacid. To define relationships between human proteins from UniProtKB (UNIPROTKB\
+    \ Concept nodes)54 and\\nglycans from the ChEBI resource50 (as included in CHEBI data) we introduced an intermediary ontology\
+    \ of\\nglycosylation sites derived from the information included in the mentioned dataset. In this process, we added\\\
+    n38,344 protein isoform relationships and glycosylation_type_site relationships to GLYGEN based on the three\\nselected\
+    \ data sources.\\nGabriella Miller Kids First datasets (KFPT).\\u2003 To provide a test set for human phenotype-to-genetic-variant\\\
+    nanalysis in Petagraph, we imported subject ID to-phenotype and cohort-wide gene-variant counts downloaded\\nfrom the\
+    \ Gabriella Miller Kids First (GMKF) Data Resource Center (https://portal.kidsfirstdrc.org) on 2022-\\n07-01. We used\
+    \ summarized de-identified data originating from a Kids First congenital heart defects cohort\\n(phs001138.v4, https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs001138.v4.p2)55\\\
+    nbased on 5,006 subject-parent trios. Subjects were modeled as Concept nodes with SAB of KFPT, for \\u2018Kids\\nFirst\
+    \ Patient\\u2019, and subject IDs were connected to their respective HPO Concept nodes. Analysis added counts of\\ndamaging\
+    \ de novo single nucleotide variants observed per gene across all probands\\u2019 VCFs based on a VEP score\\nprediction\
+    \ of \\u2018HIGH\\u2019 impact. A single summed count for predicted damaging variants per gene are reported for\\nthis\
+    \ cohort.\\nLINCS L1000 (LINCS).\\u2003 We introduced gene-small molecule perturbagen relationships to Petagraph based\
+    \ on\\nthe LINCS L1000 edge list available on the Harmonizome database (https://maayanlab.cloud/Harmonizome/sea\\nrch?t=all&q=l1000)49,56.\
+    \ These relationships were summarized from LINCS L1000 Signatures of Differentially\\nExpressed Genes for Small Molecules\
+    \ dataset57. This was done by first finding the corresponding CHEBI\\nConcept nodes for the L1000 small molecules and\
+    \ then establishing the relationship of such nodes to the HGNC\\nnodes according to the edge list mentioned above. The\
+    \ relationships were then collapsed to exclude the cell line,\\ndosage, and treatment time information but the effect\
+    \ directions were retained in relationship types (scripts\\nin Table 9). This led to 3,198,094 relationships (noted as\
+    \ negative or positively correlated) between HGNC and\\nCHEBI nodes. Preprocessing scripts for LINCS relationships are\
+    \ available in GitHub (Table 9).\\nMouse Genome Informatics (MGI).\\u2003 IDs for mouse genes were provided by MGI58 and\
+    \ downloaded from\\nthe MGI site at the Jackson Laboratory (http://www.informatics.jax.org/downloads/reports/MGI_Geno_\\\
+    nDiseaseDO.rpt) on 2023-12-15. No filtering or preprocessing was done to the MGI Codes prior to inges-\\ntion. The MGI\
+    \ nodes have 22,682 relationships to their orthologous HGNC nodes. There are also 234,043\\ngene-to-phenotype relationships\
+    \ between MGI nodes and MP nodes.\\nSTRING (STRING).\\u2003 Human protein to protein interaction data was downloaded from\
+    \ the STRING website\\n(https://stringdb-downloads.org/download/protein.links.v12.0/9606.protein.links.v12.0.txt.gz).\
+    \ As Petagraph\\npreferentially utilizes UniprotKB, we converted ENSEMBL protein ID entries to UNIPROTKB and filtered\
+    \ the\\ndataset for the top 10% of the STRING-provided \\u201ccombined score\\u201d. The refined dataset contains 459,701\
+    \ rela-\\ntionships linking UNIPROTKB nodes with a relationship property from the STRING combined score as evi-\\ndence\
+    \ of the interaction. The preprocessing script for STRING relationships was deposited in GitHub (Table 9).\\nKnowledge\
+    \ graph construction.\\nHere, we discuss how we built Petagraph from each of its individual\\ncomponents. Petagraph\\\
+    u2019s ingestion workflow facilitates the integration of large-scale, biomolecular, and biomedi-\\ncal data sets. The\
+    \ basic steps we took to build Petagraph were: (1) obtain a UMLS license from NIH, (2) build the\\nUBKG from ingestion\
+    \ processing scripts, and (3) ingest the Petagraph CSVs into the UBKG base release. Users\\n\\n10\\nScientific Data |\
+    \         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    ninterested in building Petagraph from source can follow the same process, however we supply a database dump\\ndiscussed\
+    \ in the Usage Notes section.\\nPetagraph is built on a Neo4j graph database, version 5, community edition. The scripts\
+    \ for data ingestion\\nwere developed as part of the UBKG project and can be found on the UBKG project\\u2019s GitHub\
+    \ repository21. The\\ningestion scripts require any new data ingestion to utilize identifiers for the data sources and\
+    \ Codes supported\\nby UBKG59 with examples such as HGNC symbols and Human Phenotype Ontology IDs. If a Concept identifier\\\
+    nis already in the UBKG, the scripts identify the existing Concept and any new Code(s) and Term(s) are attached.\\nIn\
+    \ cases where there are no existing Concepts for newly introduced ontologies or data sources, the UBKG inges-\\ntion process\
+    \ will automatically generate a new Concept node along with its unique identifier. We have made\\nminor adaptations in\
+    \ the UBKG scripts for loading biomolecular data for Petagraph, and those scripts have been\\nincluded in the Petagraph\
+    \ GitHub repository60.\\nThe Petagraph ingestion pipeline we created contains four major steps (Figure 1). These are:\
+    \ (1) data selection\\nand modeling, (2) cleaning and formatting data, (3) running the appropriate UBKG ETL scripts to\
+    \ convert data\\ninto UBKG CSV format, and (4) building Petagraph with the Neo4j bulk import tool. We discuss each of\
+    \ these\\nsteps in detail below.\\nStep 1: Data selection and modeling.\\u2003 The selection, sourcing, review, and modeling\
+    \ of data appropriate for the\\nknowledge graph required a comprehensive understanding of the knowledge graph\\u2019s\
+    \ existing model and struc-\\nture. When creating a model that merges disparate types of biomolecular data, there should\
+    \ be an emphasis on\\nmodeling relationships between discrete entities in a biologically meaningful way. For example,\
+    \ when modeling\\nrelationships between Concepts for genes and Concepts for associated regulatory motifs, biological context,\\\
+    nsuch as the proximity of a regulatory motif to a gene within the genome should be considered. Therefore, instead\\nof\
+    \ just attaching the regulatory motif to a gene, we created the HSCLO38 in order to map genomic elements at\\nany size\
+    \ scale to their location on the chromosomes.\\nStep 2: Cleaning and formatting of raw data.\\u2003 In the second step,\
+    \ cleaning and formatting the data was per-\\nformed. The UBKG generation framework designed by our team converts data\
+    \ from a variety of data sources\\ninto a triplet representation based on the OWL NEtwork Transformation for Statistical\
+    \ Learning (OWLNETS)\\nformat61. The ingestion process is optimized for working with ontology data provided in Web Ontology\\\
+    nLanguage (OWL) format. OWL format, which is based on the resource description framework (RDF), is a set of\\nstandards\
+    \ designed for creating formal, structured knowledge representations62).\\nThe UBKG generation framework employs the Phenotype\
+    \ Knowledge Translator (PheKnowLator) Python\\npackage when ingesting OWL files63. The PheKnowLator package converts semantic\
+    \ information from an OWL\\nfile into a set of files in OWLNETS format. The UBKG generation framework works with OWL files\
+    \ in a variety\\nFig. 1\\u2002 Petagraph Data Ingestion Workflow. The data ingestion workflow starts with Step 1 by downloading\
+    \ the\\nUBKG base CSVs and the dataset(s) that will be integrated. Then in Step 2, the raw dataset (or ontology) must\\\
+    nbe formatted into nodes and edges files according to guidelines found in the UBKG user guide. If the import\\nfile is\
+    \ in OWL format then the user can jump to Step 3 which involves running the OWLNETS Python script to\\nconvert the edges\
+    \ and nodes files into the UBKG format and simply appended to the base UBKG files. Lastly, for\\nStep 4k,Neo4js command-line\
+    \ bulk import tool is used to build the graph database.\\n\\n11\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nof serializations. Currently supported serialization\
+    \ syntaxes are Turtle and RDF/XML, which seems to be the\\nnorm for ontology files published to repositories such as the\
+    \ Open Biological and Biomedical Foundry64 or the\\nNational Center for Biomedical Ontology\\u2019s BioPortal29. If the\
+    \ source data is already in the UBKG Edge Node\\nformat65 (derived from the OWLNETS format), then the conversion to OWLNETS\
+    \ format is not necessary.\\nThe UBKG generation framework also obtains biomedical reference data from sources other than\
+    \ OWL files,\\nincluding data downloaded from GENCODE31, HUGO34, UniProtKB30, and RefSeq66, converting this data into\\\
+    nfiles in the UBKG edge and node formats. To ingest genomics data into Petagraph, we must clean and reformat\\nthe data.\
+    \ The main quantitative data types selected from genomics datasets are: p-values, log2 fold changes, and\\ngene expression\
+    \ data. Genomics data cleaning generally involves removing missing or irrelevant data points, and\\nformatting the data\
+    \ according to the specific dataset schema that was decided on in Step 1.\\nThe required edges file asserts a set of relationships\
+    \ between entities using triples, each consisting of a subject,\\na predicate, and an object. The subject and object of\
+    \ an assertion represent the starting node and ending node\\nof a relationship and the predicate represents the relationship.\
+    \ The nodes file describes the nodes that comprise\\nthe subjects and objects in the triples of the edge file, providing\
+    \ information about nodes such as Codes for\\nFig. 2\\u2002 Petagraph dataset schema. (a) General schema design. Schematic\
+    \ summary of the Petagraph schema.\\nMain \\u201cConcept\\u201d nodes (blue circle) are the bi-directional connected backbone\
+    \ of the Petagraph schema and\\nrepresent organizing nodes where multiple annotation systems for a single type of entity\
+    \ converge. For example\\nthe Concept node for Type 2 diabetes (T2D) may have many different definitions and codings across\
+    \ multiple\\nsystems such as ICD10, MONDO, HPO, or SNOMED that can all link to one Concept node for T2D. Each\\nsystem\
+    \ would have its own Code node connecting to the particular Concept representing the coded identifier\\nfrom a system.\
+    \ The CUI-CUI connector between Concept nodes represents over 2,000 edge types defining\\nConcept-to-Concept relationships.\
+    \ Code nodes (yellow circle) are the entities that store systematic IDs from\\ndifferent systems that connect to the Concept,\
+    \ and Terms (brown circle) give human-readable definitions for\\nCodes and Concepts. Semantic types (light blue circle)\
+    \ classify the Concept node type while Definition nodes\\n(orange circle) provide a unified definition of the Concept\
+    \ node. Bidirectional relationship links only exist\\nbetween Concept nodes, simplifying queries and improving query times.\
+    \ (b) Specific Schema example. The\\nConcept node for TP53 (C0079419) with three of its Codes and Terms are shown: HGNC\
+    \ (HGNC:11998),\\nNCI Gene (NCI:C17359) and ENTREZ (ENTREZ:7157). Other Code nodes also connect to C0079419\\nbut are\
+    \ not shown. It can also be seen in this example that the only bidirectional connections are those between\\nConcept nodes,\
+    \ shown here between TP53\\u2019s Concept node and one of the HPO Concept nodes. PT: Preferred\\nterm. STY: Semantic Type.\
+    \ DEF: Definition.\\n\\n12\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nthe nodes in a source (e.g., the HGNC ID), preferred\
+    \ terms, synonyms, definitions, and cross-references for the\\nCode to other vocabularies. For data that required reformatting,\
+    \ we put all data into the nodes and edge file\\nformats as described.\\nStep 3: Convert nodes and edges files into UBKG\
+    \ CSV format.\\u2003 The UBKG generation framework converts the\\ncontent of a collection of edge and node files into\
+    \ a set of ontology CSV files. The ontology CSV files represent\\nthe entities, relationships, and metadata that will\
+    \ be in the UBKG. The ontology CSV files conform to the format\\nrecognized by the neo4j-admin import utility67. Importing\
+    \ the ontology CSV file into Neo4j by means of the\\nneo4j-admin import tool generates the entities and relationships\
+    \ of the UBKG.\\nThe UBKG generation framework builds a set of ontology CSV files iteratively, starting with an initial\
+    \ set of\\nCSV files extracted from a release of the UMLS. The framework extends the content from the UMLS with that\\\
+    nfrom another data source by appending to the ontology CSVs data that it extracts from files in UBKG Edge Node\\nformat.\\\
+    nFig. 3\\u2002 Dataset connectivity. Querying across datasets in Petagraph requires connecting relationships. A\\nhallmark\
+    \ feature of Petagraph is the rich set of ontological and biomedical mapping data sources that connects\\nphenotypic and\
+    \ genomic data together across human and mouse models. This figure only captures a select set of\\ndatasets and relationships\
+    \ in Petagraph. The log10 relationship count between Petagraph-specific datasets reveals\\nwhich of these datasets have\
+    \ direct Concept to Concept relationships through one-hop relationships, however\\nmany of these datasets are linked together\
+    \ through one or more intermediary datasets. For example, HGNC\\nestablishes a connection to MP through the HPO dataset\
+    \ (HGNC to HPO to MP).\\n\\n13\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nThe UBKG base build is provided by a set of CSV files\
+    \ that follow the Neo4j bulk import tool header format67.\\nThe UBKG import file headers specify any of the five node\
+    \ types that the metadata attributes are assigned to, and\\nwhich types of nodes the relationships connect. This conversion\
+    \ is done via a set of UBKG ingestion scripts which\\ncan be found at the UBKG GitHub site68. After the CSVs from each\
+    \ dataset have been converted from the nodes\\nand edges files into UBKG CSV format, they are appended to the base UBKG\
+    \ CSVs. We now refer to these updated\\nCSVs as the \\u201cPetagraph CSVs\\u201d since they contain assertions from the\
+    \ 21 datasets added to the UBKG (Table 2).\\nStep 4: Build Petagraph with the Neo4j bulk import tool.\\u2003 Lastly, once\
+    \ the nodes and edges files for each dataset\\nwere converted to UBKG CSV format and appended to the base UBKG CSVs, we\
+    \ used the Neo4j bulk import\\ntool (neo4j-admin database import) to build the graph on the Neo4j Desktop platform using\
+    \ Neo4j v5.\\nSchema structure.\\nPetagraph\\u2019s data records arise from a heterogeneous collection of datasets that\
+    \ each have\\ntheir own schema representing the underlying dataset structure.\\nNode types.\\nThere are five main data-specific\
+    \ types of nodes within Petagraph: Concept, Code, Term,\\nDefinition, and Semantic Type. These node types are discussed\
+    \ in further detail in the UMLS Metathesaurus69.\\nWithin Petagraph, the most important node type is the Concept node,\
+    \ as they form the central backbone of the\\nentire graph model. All other node types are essentially metadata attached\
+    \ to Concept nodes.\\nConcept nodes represent a node nexus for organizing on a particular conceptual meaning. For example,\
+    \ a\\nConcept node for a particular gene will include references to many different representations of that gene from\\\
+    nresources such as HGNC34, Ensembl40, and ENTREZ70. Every Concept node has just one property called the\\nConcept Unique\
+    \ Identifier (CUI). CUIs are alphanumeric identifiers and are not informative outside of their use\\nas unique identifiers.\
+    \ For example, the CUI for the concept for the H. sapiens TP53 gene is C0079419.\\nCode nodes identify the reference IDs\
+    \ for a given Code in a particular ontology or standard. Several Code\\nnodes can share associations with the same Concept.\
+    \ It is this one-to-many relationship between Concept and\\nCode nodes that allows for traversal of the graph between\
+    \ data sources: if a Code in one source is linked to the\\nsame Concept as a Code in another source, then it may be possible\
+    \ to propose an equivalence between the two\\nCodes. The only relationship between Concept nodes and their respective\
+    \ Code nodes is the CODE relation-\\nship. All Code nodes have three properties: (1) the source abbreviation (SAB), (2)\
+    \ the Code from the reference\\nsource, and (3) the CodeID which is the SAB and the Code separated by a colon. In Petagraph\\\
+    u2019s schema, the\\nSAB signifies the identity of the originating dataset or ontology. Examples of three CodeIDs supporting\
+    \ the\\nConcept node for the H. sapiens TP53 gene are HGNC:11998, NCI:C17359, and ENTREZ:7157, repre-\\nsenting identifiers\
+    \ from the HGNC, NCI Thesaurus, and NCBI\\u2019s ENTREZ databases respectively. Figure 2 shows\\nan example of two concept\
+    \ nodes (blue) connecting a human gene and phenotype. Code nodes are represented\\nfor each Concept node (blue) showing\
+    \ the different dataset identifiers for the concepts.\\nTerm nodes have a name property that provides human-readable annotation\
+    \ about the linked Code node.\\nAs an example, the Term node for the HGNC:11998 Code node (representing H. sapiens TP53)\
+    \ has the name\\nproperty of \\u201ctumor protein p53\\u201d provided by HGNC. Most Code nodes have a relationship to\
+    \ at least\\nCells, Tissues, Organs\\nSemantic Type\\nCount\\nAnatomical Structure\\n226\\nBody Location or Region\\n26,794\\\
+    nBody Part, Organ, or Organ Component\\n92,412\\nBody Space or Junction\\n10,203\\nBody Substance\\n2,390\\nBody System\\\
+    n670\\nCell\\n5,876\\nCell Component\\n8,223\\nEmbryonic Structure\\n2,651\\nFully Formed Anatomical Structure\\n8\\nGene\
+    \ or Genome\\n85,026\\nOrganism Attribute\\n936\\nReceptor\\n5,661\\nTissue\\n7,242\\nChemicals and Drugs\\nSemantic Type\\\
+    nCount\\nAntibiotic\\n6,413\\nBiologically Active Substance\\n78,028\\nBiomedical or Dental Material\\n8,653\\nChemical\\\
+    n28\\nChemical Viewed Functionally\\n306\\nChemical Viewed Structurally\\n393\\nClinical Drug\\n240,228\\nElement, Ion,\
+    \ or Isotope\\n2,767\\nHazardous or Poisonous Substance\\n6,713\\nIndicator, Reagent, or Diagnostic Aid\\n20,108\\nInorganic\
+    \ Chemical\\n6,293\\nOrganic Chemical\\n252,433\\nPharmacologic Substance\\n185,572\\nSubstance\\n14,942\\nBiological\
+    \ Processes\\nSemantic Type\\nCount\\nBiologic Function\\n1,733\\nMolecular Function\\n32,919\\nGenetic Function\\n5,438\\\
+    nCell or Molecular Dysfunction\\n4,997\\nNeoplastic Process\\n45,616\\nCell Function\\n19,933\\nPathologic Function\\\
+    n28,242\\nOrganism Function\\n5,558\\nOrgan or Tissue Function\\n4,853\\nPhysiologic Function\\n2,570\\nDiseases and Abnormalities\\\
+    nSemantic Type\\nCount\\nAcquired Abnormality\\n4,314\\nAnatomical Abnormality\\n7,194\\nClinical Attribute\\n105,922\\\
+    nCongenital Abnormality\\n11,643\\nDisease or Syndrome\\n115,109\\nInjury or Poisoning\\n115,123\\nMental or Behavioral\
+    \ Dysfunction\\n9,201\\nMental Process\\n1,475\\nSign or Symptom\\n13,925\\nBiomolecules\\nSemantic Type\\nCount\\nAmino\
+    \ Acid Sequence\\n209\\nAmino Acid, Peptide, or Protein\\n162,859\\nCarbohydrate Sequence\\n2\\nEnzyme\\n32,028\\nHormone\\\
+    n4,061\\nImmunologic Factor\\n40,088\\nMolecular Sequence\\n12\\nNucleotide Sequence\\n449\\nVitamin\\n3,616\\nOrganisms\\\
+    nSemantic Type\\nCount\\nAmphibian\\n7,620\\nAnimal\\n109\\nArchaeon\\n1,347\\nBacterium\\n38,200\\nBird\\n29,000\\nEukaryote\\\
+    n301,492\\nFish\\n29,541\\nFungus\\n65,550\\nHuman\\n39\\nMammal\\n14,323\\nOrganism\\n133\\nPlant\\n217,561\\nReptile\\\
+    n11,432\\nVertebrate\\n33\\nVirus\\n12,515\\nChemical\\nCell\\nBiologic\\nFunction\\nAnatomical\\nStructure\\nAnatomical\\\
+    nAbnormaity\\nAmino\\nAcid,\\nPeptide, or\\nProtein\\nNeoplastic\\nProcess\\nGene or\\nGenome\\nClinical\\nDrug\\nDisease\
+    \ or\\nSyndrome\\na\\nb\\nFig. 4\\u2002 Semantic Types in Petagraph (a) Major Semantic Types and their counts in Petagraph\
+    \ grouped by class.\\n(b) Example of interconnections between selected Semantic Type Concept nodes in Petagraph where\
+    \ circle size\\ncorresponds to node degree. The relationships are considered for the immediate Semantic Types attached\
+    \ to the\\ngraph concept nodes, therefore upstream STY parent nodes were disregarded.\\n\\n14\\nScientific Data |    \
+    \     (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    none Term node, usually through a PT relationship type, which stands for preferred term. Code nodes may carry\\nmultiple\
+    \ associated Term nodes if provided from the original data source, such as synonyms. Concept nodes\\nalso have relationships\
+    \ to Term nodes; however, many Concept nodes connect to a \\u201cpreferred term\\u201d Term node\\nthrough a PREF_TERM\
+    \ relationship. This relationship allows for a quick evaluation of a Concept node\\u2019s identity.\\nThere are two additional\
+    \ types of nodes that connect directly to Concept nodes where appropriate: the\\nDefinition nodes and the Semantic nodes.\
+    \ Definition nodes are connected through a DEF relationship type to\\nConcepts and have a DEF property where they provide\
+    \ definitions for Concept nodes. (Sources provide defi-\\nnitions for Codes, not Concepts; because the corresponding Code\
+    \ nodes can share links to Concept nodes, a\\nConcept generally has more than one Definition node.) Semantic nodes are\
+    \ connected to Concept nodes by a\\nSTY relationship type and have a name property that provides wider semantic type classifications\
+    \ such as Body\\nSystem, Cell Component, Gene, Mammal, etc., to Concepts.\\nA data dictionary covering Petagraph\\u2019s\
+    \ schema and its node structures can be found at the Petagraph data\\ndictionary website71. From here onward, we will\
+    \ often exclude the word \\u201cnodes\\u201d when referring to Concept\\nnodes, Code nodes, and Term nodes in this manuscript\
+    \ for ease of reading.\\nFig. 5\\u2002 Heatmap representation of the presence or absence of a direct relationship between\
+    \ the 55 selected\\nSemantic Types. This figure depicts the presence (red) or absence (blue) map of at least one relationship\\\
+    n(type\\u2009+\\u2009SAB) between pairwise combinations of Semantic Types through their respective Concept nodes. Note\\\
+    nthat the matrices are diagonally symmetrical as Concept to Concept relationships are bidirectional and the\\nrelationships\
+    \ are considered for the immediate Semantic Types attached to the graph concept nodes, therefore\\nupstream STY parent\
+    \ nodes were disregarded.\\n\\n15\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nEdge types.\\nEdges define links and relationships.\
+    \ Petagraph has 1,861 distinct edge types. The majority of\\nthese edges fall into the category of Concept to Concept\
+    \ edges, which are Petagraph\\u2019s only bidirectional edge type.\\nEach edge type comes with its own Source Abbreviation\
+    \ (SAB) property, which is particularly useful for quick\\ninclusion or exclusion of edge-only data sources when querying\
+    \ the graph. Petagraph also extensively uses edge\\nidentifiers between Concepts from the Relations Ontology64 whenever\
+    \ possible. The Concept to Concept relation-\\nship network serves as the primary traversable component of Petagraph and\
+    \ constitutes the graph\\u2019s fundamental\\nstructural backbone.\\nThere are five other main non-(Concept to Concept)\
+    \ relationship types in Petagraph that add metadata to\\nthe Concept nodes. These relationships are always unidirectional\
+    \ and point away from their respective Concept\\nnodes. These relationships include: the Concept node to Code node relationship\
+    \ (relationship type\\u2009=\\u2009CODE), the\\nConcept node to Term node relationship (relationship type\\u2009=\\u2009PREF_TERM),\
+    \ the Code node to Term node rela-\\ntionship(s) (relationship types\\u2009=\\u2009PT, SYN, ACR which stand for \\u201cpreferred\
+    \ term\\u201d, \\u201csynonym\\u201d and \\u201cacronym\\u201d,\\nrespectively), the Concept node to Definition node relationship\
+    \ (relationship type\\u2009=\\u2009DEF) and the Concept node\\nto Semantic node relationship (relationship type\\u2009=\\\
+    u2009STY which stands for \\u201cSemantic Type\\u201d). There are an addi-\\ntional 180 relationship types between Codes\
+    \ and Terms that are used with much lower frequency.\\nFig. 6\\u2002 Heatmap representation of relationship type statistics\
+    \ of 55 selected semantic types. Data represents\\ndirect Semantic types on both sides of Concept to Concept node connections.\
+    \ Here, the colors represent the\\ndiversity of the log10 relationship counts (+1) (type\\u2009+\\u2009SAB) connecting\
+    \ the candidate Semantic Types through\\ntheir respective Concept nodes.\\n\\n16\\nScientific Data |         (2024) 11:1338\
+    \  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nData\
+    \ modeling.\\nData modeling was a major consideration in how we introduced quantitative data within\\nthe structure supported\
+    \ by the UBKG. The Petagraph schema supports quantitative values as node and edge\\nproperties. Under the framework of\
+    \ the UMLS and UBKG, the properties for each node type are well defined:\\nevery Concept node has a CUI property; every\
+    \ Code node has SAB, Code and CodeID properties and every\\nTerm node has a name property. However, Code nodes can have\
+    \ an extra quantitative attribute called value.\\nFor example, GTEx eQTL Code nodes have a value property corresponding\
+    \ to their p-values. We also wanted\\nto integrate quantitative data within the categorial and conceptual framework of\
+    \ the UMLS schema. This allows\\nquery results to be returned rapidly, even for multidimensional, numerical searches.\
+    \ We accomplished this by\\ncreating Concept nodes representing interval bins of numerical ranges, for example, p-values,\
+    \ expression TPM,\\nand log2FC. Nodes with a quantitative value can then be assigned to the appropriate bin node allowing\
+    \ for rapid\\nselection of numerical values within the graph. As many bioinformatics analyses are performed with results\
+    \ that\\nmeet a certain threshold, the numerical bin nodes are especially useful for thresholding data in biologically\
+    \ mean-\\ningful queries (e.g. return all data points with p-value\\u2009<\\u20090.05).\\nIn order for Petagraph to more\
+    \ fully support the use of experimental omics data, we also included dozens\\nof relationship-only (\\u201cmapping\\u201d)\
+    \ datasets that may come from observational data themselves, many of which\\nmap to and within genomic and phenotypic\
+    \ databases for human and mouse models. Sixteen of these mapping\\nFig. 7\\u2002 Heatmap representation of relationship\
+    \ count statistics of 55 selected semantic types. The colors\\nrepresent the log10 number of outgoing relationships (+1)\
+    \ (from row to column) connecting the candidate\\nSemantic Types through their respective Concept nodes.\\n\\n17\\nScientific\
+    \ Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    ndatasets (and the datasets they map to) are visualized in Figure 3. The interconnectedness of these datasets\\nenables\
+    \ many different types of queries and their contributions are represented in the heatmap intensities. For\\nexample, LINCS\
+    \ and CMAP are represented by the CHEBI to HGNC connections and STRING is represented\\nby the UNIPROTKB to UNIPROTKB\
+    \ connections. HGNC is clearly a hub dataset, as human gene names connect\\nacross many different omics and annotation\
+    \ datasets. Of the sixteen datasets shown in Figure 3, nine have rela-\\ntionships to three or more others. Several datasets\
+    \ were already part of the UBKG (HGNC, HPO, UBERON), and\\ndisplayed in Figure 3 because of their high number of connections\
+    \ in Petagraph. Note that many of these data-\\nsets have connections to other datasets not shown in Figure 3, for example,\
+    \ the developmental heart scRNA-seq\\ndataset also shares edges with the Cell Ontology (CL)72.\\nMost Concept nodes in\
+    \ Petagraph are classified by Semantic Type. The UBKG generation framework does\\nnot explicitly assign Semantic Types\
+    \ to Concepts outside of those brought in as part of the UMLS context.\\nCurrently, there are 127 Semantic Types inherited\
+    \ from the UMLS within Petagraph attached to their member\\ndataset Concept nodes through STY relationship types. We summarize\
+    \ the categories of Semantic Types in\\nPetagraph in Figure 4a which also depicts the connectivity of 10 major Semantic\
+    \ Types in the graph (Figure 4b).\\nAs shown in this figure, all these major Semantic Types have relationships to their\
+    \ own types (e.g. gene-gene or\\nDensity\\n0.00\\n0.10\\n0.20\\n0.30\\nShortest Path Length\\n1\\n2\\n3\\n4\\n5\\n6\\\
+    n7\\n8\\n9\\n10\\n11\\nFig. 8\\u2002 Shortest Path Lengths in Petagraph. Probability density of associated Concept to\
+    \ Concept node shortest\\npath lengths for 1 million pairwise combinations of human gene Concept nodes in Petagraph.\\\
+    nFig. 9\\u2002 Common Neighbors Scores in Petagraph. Here we show a comparison between the Common Neighbors\\nscores for\
+    \ genes connected with direct links in Petagraph (blue) versus random selections from all genes\\nregardless of their\
+    \ direct connectivity. The log10 Common Neighbors Count distribution on the x-axis indicates\\na three order of magnitude\
+    \ shift towards higher common neighbors counts where the genes are directly\\nconnected. These measures serve as additional\
+    \ evidence of how orthogonal datasets ingested in Petagraph can\\nbe utilized to predict links between entities of interest.\\\
+    n\\n18\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nphenotype-phenotype relationships). In this plot, the linkages represent direct Semantic\
+    \ Types connectivities\\nregardless of hierarchical relationship between STYs.\\nTo understand how the Concept-Concept\
+    \ relationship data connect Semantic Types, we chose 55 Semantic\\nTypes and extracted the relationships connecting them\
+    \ through the Concept nodes directly connected to them\\n(that is, no hierarchical connection between Semantic Types was\
+    \ considered). Subsequently we mapped the\\nquality and quantity where the selected STYs are related to anatomy, phenotypes,\
+    \ diseases, and chemical species\\nand biological entities, cells or metabolic pathways (Figures 5\\u20137). The presence\
+    \ of relationships (Figure. 5), the\\ncumulative number of relationship types (Figure 6), and the relationship counts\
+    \ (Figure.7) were plotted using\\nthe package pheatmap v1.0.1273 in RStudio v 1.4.110674 R v4.0.475. For Figures 6, 7,\
+    \ the frequency of relation-\\nships are shown between pairwise combinations of Semantic Types, connected through their\
+    \ Concept nodes.\\nTherefore, Concept to Concept relationships where one or both Concept nodes are not connected to Semantic\\\
+    nTypes are excluded. To increase the dynamic range, the base-10 logarithm was used, and to avoid log10 (0), we\\nadded\
+    \ 1 to all values.\\nFigure 5 illustrates the presence or absence of at least one relationship type between pairs of Concept\
+    \ nodes\\nbetween different Semantic Types. This figure shows how Semantic Type pairs that lack direct graph-wide\\nrelationships\
+    \ can be linked through other relationships. For example, Concept nodes categorized under the\\nSemantic Types Congenital\
+    \ Abnormality and Clinical Drug do not share a direct relationship\\nwithin the graph. However, both of these Semantic\
+    \ Types do have relationships with the Physiologic\\nFunction Semantic Type which allows for a connection. Queries can\
+    \ therefore utilize the intermediary to\\nlink the Congenital Abnormality Semantic Type and the Clinical Drug Semantic\
+    \ Type. Similarly,\\nwe can bridge all data in Semantic Types through intermediary links. To further analyze these relationships,\
+    \ we\\nquantified the number of relationship types (log10-transformed) per pair of the 55 Semantic Types, consider-\\\
+    ning distinctions based on the start and end nodes, relationship type, and Source Abbreviation (SAB). Figure 7\\nshows\
+    \ the distribution of relationships among each pair of the 55 Semantic Types. Semantic Types positioned\\nalong the diagonal\
+    \ exhibit a higher likelihood of being connected to a greater number of links, as indicated by\\nthe log10-transformed\
+    \ relationship counts. Collectively, the information presented in Figures. 5\\u20137 enables us\\nto draw conclusions\
+    \ regarding which Semantic Types within the graph possess the majority of relationships.\\nFurthermore, it sheds light\
+    \ on the potential for extracting valuable information from these relationships, thereby\\nunveiling insights that may\
+    \ not be directly accessible through other means.\\nFinally, we were interested in useful examples of pairwise shortest\
+    \ path lengths, and chose to map\\ngene-to-gene relationships using HGNC Concept nodes on the Concept-Concept subgraph\
+    \ Shortest Path Length\\nand Connectivity Analyses were performed to measure the expected relationships between terms\
+    \ that are known\\nto be related from orthogonal sources. This analysis will show how the HGNC dataset is connected to\
+    \ other data-\\nsets by secondary relationships within the graph. This is an important consideration in designing queries\
+    \ look-\\ning for gene-to-gene relationships. The distribution of the shortest path lengths between the graph\\u2019s\
+    \ gene to gene\\n(HGNC-HGNC) Concept nodes was estimated using a sample of 1 million pairs of such nodes. Figure 8 shows\
+    \ the\\nprobability distribution for shortest lengths between Concept nodes, which range from 1 to 11. The majority of\\\
+    nHGNC Concept nodes are connected to each other through 4 or fewer hops, with the peak at 3. This shows that\\nin the\
+    \ case of gene-to-gene relationships, most genes are not directly connected through a single intermediate\\nresource,\
+    \ which allows for more informative results with queries spanning more intermediate relationships.\\nData Records\\nInstalling\
+    \ Petagraph from a Neo4j dump file.\\nUsers with a UMLS license can follow site instructions\\nto obtain and utilize a\
+    \ UMLS license key at https://ubkg-downloads.xconsortia.org/ to download the most recent\\nPetagraph dump file (currently\
+    \ 4.5 GB). The dump file can be used with Neo4j Desktop to build Petagraph quickly\\nand easily. Detailed instructions\
+    \ on building the database with the dump file can be found on the Petagraph\\nGithub README60 or users can follow the\
+    \ standard procedure for loading Neo4j dump files from the vendor.\\nPetagraph installation from source.\\nBuilding Petagraph\
+    \ from the source files can take several hours but\\nallows for build customization. The instructions can also be used\
+    \ for ingesting new data into any Petagraph build. The\\ncode and instructions to recreate Petagraph from source data\
+    \ is on the project\\u2019s Github site60. The process for building\\nfrom source consists of two stages: establishing\
+    \ the source framework and then the generation framework. In the\\nsource framework stage a user downloads the UMLS Metathesaurus\
+    \ and Semantic Network files from the UMLS web-\\nsite76 and then runs a set of SQL queries to extract data to build the\
+    \ UMLS base CSVs. In the generation framework\\nstage, the ingestion pipeline will add additional ontologies and datasets\
+    \ into the UMLS base. The same scripts are then\\nrun to add additional datasets onto the UBKG CSV files, creating Petagraph.\
+    \ We provide the source files for Petagraph\\nat https://ubkg-downloads.xconsortia.org/ on the project\\u2019s Open Science\
+    \ Framework site (https://osf.io/6jtc9/)77.\\nTechnical Analysis and Validation\\nUBKG Generation framework ingestion\
+    \ validation.\\nThe heterogeneous and often custom nature of\\ndata sources means that the validation of ingestion from\
+    \ a particular data source involves analysis that is not\\nobviously amenable to automation. The generation framework\
+    \ generates basic analytical reports during ingestion\\nto aid manual validation; however, manual validation by a subject\
+    \ matter expert is still necessary.\\nBasic content and consistency requirements.\\nA source for ingestion into UBKG represents\
+    \ a set of asser-\\ntions. Each assertion involves two nodes (entities) and an edge (relationship). In the UBKG Edge Node\
+    \ format,\\n\\u2022\\nThe edge file represents assertions as triplets in which both nodes and edges are represented with\
+    \ Codes.\\n\\n19\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\n\\u2022\\nThe node file decodes nodes with metadata such as terms and definitions.\\\
+    nTo be represented properly in the UBKG, the edge and node files must satisfy basic requirements for content\\nand internal\
+    \ consistency. These requirements include:\\n\\u2022\\nEvery node in the edge file must either be described explicitly\
+    \ in the node file or already exist in the UBKG.\\n\\u2022\\nIf a node in the node file has a cross-reference to another\
+    \ Code, the cross-referenced Code should already\\nexist in the UBKG.\\nIngestion validation.\\nMost data quality problems\
+    \ in the assertion files arise from missing node references,\\nsuch as:\\n\\u2022\\nAn assertion includes a Code for a\
+    \ node that is neither defined in the node file or previously ingested into\\nthe UBKG.\\n\\u2022\\nA node has a cross-reference\
+    \ to a Code that is not in the UBKG.\\nData ingestion validation.\\nAfter a set of assertions from a source is ingested,\
+    \ the resulting ontology CSVs\\nare imported into a Neo4j instance. Using the Neo4j browser, nodes and relationships from\
+    \ the source are com-\\npared in the UBKG with the corresponding edge and node files, using tools such as shortest path\
+    \ queries. For\\nexample, if the edge file asserts that SAB1:CodeA has_relationship_X_with SAB2:CodeB, then\\na\\nb\\\
+    nc\\nd\\nTransitivity\\nTriangles\\nPetagraph\\nRandomized Graph\\nFig. 10\\u2002 Validation using local structure. Here\
+    \ we show a comparison between Petagraph and a random graph\\nwith the same number of relationships and nodes degrees\
+    \ as Petagraph but randomized Concept-to-Concept\\nconnections in terms of Concept node transitivity and number of triangles\
+    \ each node belongs to indicates a shift\\ntowards lower means for both measures as a result of randomization.\\n\\n20\\\
+    nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nthere should be a shortest path that connects the Code nodes SAB1:CodeA and SAB2:CodeB\
+    \ with a relation-\\nship of type has_relationship_X_with. Additional queries validate information from the node file\
+    \ \\u2013 e.g.,\\nthat the Code node in the UBKG that corresponds to the node in the node file has the expected terms,\
+    \ synonyms,\\ndefinitions, and cross-references to Codes from other sources.\\nFor ingestion of genomics and related datasets\
+    \ into the UBKG scaffold, we wrote a continuous integration\\n(CI) workflow using Github Actions to ensure that the final\
+    \ Petagraph product contains the correct schema\\nas well as the correct types and counts of nodes and edges. Our Github\
+    \ Actions CI downloads the latest stable\\nrelease of Neo4j, downloads the latest version of the Petagraph CSVs from the\
+    \ Open Science Framework website\\nand then builds Petagraph. Then we run tests comparing the count of node and edge types\
+    \ from the Petagraph\\nCSVs and the Petagraph graph to confirm that the graph has been built as expected.\\nFor reviewing\
+    \ the integrity and accuracy of ingested data, the UBKG framework generates a summary report. This\\nreport helps identify\
+    \ potential issues and opportunities for alignment before finalizing the ingestion process (Table 1).\\nFAIR validation.\\\
+    nWhen building Petagraph we adhered strictly to findability, accessibility, interoperability\\nand reusability (FAIR)\
+    \ data principles (https://www.nature.com/articles/sdata201618). Petagraph is findable by\\nFig. 11\\u2002 Validation\
+    \ using embeddings and dimensionality reduction. UMAP representations of\\n100-dimensional Node2Vec embeddings of subsets\
+    \ of Concept nodes in an example subgraph, created around\\n12 abnormal heart morphology phenotypes and 2 blood cancer\
+    \ phenotypes by including Petagraph nodes 1\\nor 2 hops away from these source nodes. (a) Gene or Genome Concept nodes\
+    \ vs. Disease or Syndrome. (b)\\nNeoplastic Processes Concept nodes vs. Clinical Drugs. (c) Perturbagen Concept nodes\
+    \ vs. Genes or Genomes\\nand (d) Organ Component vs. Cell vs. Molecular Function Concept nodes.\\n\\n21\\nScientific Data\
+    \ |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\\
+    nway of GitHub, the Open Science Framework (https://osf.io/search)77 and any major search engine. Metadata\\nin the form\
+    \ of a data dictionary is available on the project GitHub, which describes the schema of every indi-\\nvidual dataset\
+    \ that has been ingested. The data dictionary also contains detailed descriptions of preprocessing\\nand formatting that\
+    \ was done to the data prior to ingestion. Descriptions of the ingested datasets and ontologies\\nare also present in\
+    \ the Methods section of this paper. Petagraph is accessible by being freely downloadable and\\nsmall enough (4.5GB) that\
+    \ a dump of the entire database can easily fit onto a user\\u2019s personal computer. Whether\\nbuilding from source or\
+    \ from the database dump file, our build process is OS-agnostic. Petagraph, and the UBKG,\\nare built on top of the UMLS,\
+    \ so they are inherently interoperable. The UMLS alone harmonizes hundreds of\\nbiomedical vocabularies and ontologies\
+    \ so that users can easily query across standards.\\nAdding new data to Petagraph is straightforward. Ontologies or datasets\
+    \ that are in OWL, RDF/XML, OBO\\nor Turtle format can be incorporated into the graph automatically using our ingestion\
+    \ workflow, outlined in\\ndetail in the Methods section. Datasets that are not in one of these formats can be added to\
+    \ the graph after some\\nsimple preprocessing steps. Lastly, all data sources and Petagraph releases are versioned and\
+    \ the entire process of\\ndownloading the dump file and building the Neo4j database locally can easily be automated using\
+    \ the OSF and\\nNeo4j APIs which helps ensure reproducibility and consistency for Petagraph users.\\nStructural validation.\\\
+    nValidation through link prediction.\\u2003 As a link prediction-based validation, we com-\\nputed the Common Neighbors\
+    \ scores for about 500,000 pairs of gene-to-gene direct connections and compared\\nthe results to the distribution of\
+    \ Common Neighbors scores for random selections of pairs of genes. As shown in\\nFigure 9, the Common Neighbors of genes\
+    \ with direct connection in Petagraph are approximately three orders\\nof magnitude greater than randomly selected genes.\
+    \ This analysis has two implications. First, it suggests that the\\northogonal datasets ingested in Petagraph could effectively\
+    \ be used for link prediction. Second, the links in the\\ngraph can be cross-validated using the information in the graph\
+    \ data sources from independent datasets.\\nValidation using analysis of local structures (transitivity and triangle counts).\\\
+    u2003 We analyzed the Petagraph\\nConcept-to-Concept subgraph nodes in terms of transitivity (the probability of nodes\
+    \ adjacent to a nominal\\nnode are connected to each other) and triangle counts (the number of triangles or 3-cliques\
+    \ each node is a part\\nof). We compared the distribution of these measures of local structure connectivity derived from\
+    \ Petagraph with\\na randomized graph created with the same number of nodes and relationships and node degrees but with\
+    \ ran-\\ndom connections to other nodes (Figure 10). As portrayed by the distributions of transitivity (ranging between\\\
+    n0 and 1) and triangle counts, the Petagraph Concept-to-Concept subgraph presents a shift towards higher val-\\nues of\
+    \ both node transitivity and triangle counts. These meaningful shifts provide an insight into less-random\\norganization\
+    \ in Petagraph Concept nodes connectivity as opposed to the randomized graph, therefore showing\\ninformational consistency\
+    \ in the data ingested in Petagraph.\\nValidation through low dimensional visualization of high dimensional graph embeddings.\\\
+    u2003  We visualized the\\nUMAP components of a 100-dimensional embedding of the subgraph of Petagraph consisting ~400,000\
+    \ nodes\\nand ~12,000,000 relationships (bidirectional). This was derived from a query that extracts all nodes one or\
+    \ two\\nhops away from 12 abnormal heart morphology and 2 blood cancer phenotypes (Methods) and all their inter-\\nconnections.\
+    \ This included Concept nodes from all 127 Semantic Types including ~10,000 genes and ~10,000\\nphenotypes. It visualizes\
+    \ the results for a selection of Concept nodes from major Semantic Types including Gene\\nor Genome, Disease or Syndrome,\
+    \ Neoplastic Process, Clinical Drug, Cells and Molecular Processes (Figure 11).\\nIn this figure, UMAP low-dimensional\
+    \ visualizations illustrate the spatial distribution of major Semantic\\nType-related Concept nodes. Nodes belonging to\
+    \ the same STYs are shown to cluster together, indicating their\\nrelative proximity and suggesting a higher likelihood\
+    \ of connections within the graph. Conversely, nodes from\\ndifferent STY groups are distinctly separated, although nodes\
+    \ that are adjacent in the graph may still appear\\nclose to each other in the embedding space, indicating potential linkages.\\\
+    nAssessing major dataset contributions to link prediction.\\u2003 We analyzed the influence of major datasets on link\\\
+    nprediction by using two graph-wide connectivity metrics: transitivity and assortativity (Figure 12). Transitivity\\nmeasures\
+    \ the likelihood of new connections based on existing local patterns, such as the probability that two\\nnodes sharing\
+    \ a neighbor will be directly connected. This is linked to the formation of triangles in the graph,\\nindicated by metrics\
+    \ like the clustering coefficient and triangle count. Utilizing transitivity helps predict poten-\\ntial links based on\
+    \ the current graph structure. Assortativity evaluates the tendency of nodes with similar\\nattributes or degrees to connect,\
+    \ offering insights into Petagraph's structural patterns. Including assortativity\\nin predictive models enhances accuracy\
+    \ in forecasting future link formations. Together, these metrics provide\\ninsights into graph connectivity dynamics and\
+    \ link prediction capabilities.\\nTo assess the impact of individual datasets on global transitivity and degree assortativity\
+    \ within subgraphs\\naround human genes in Petagraph, we systematically removed our largest gene-related datasets from\
+    \ the graph.\\nThis approach allows us to measure each dataset\\u2019s contribution to overall connectivity and structural\
+    \ features.\\nFigure 12a shows that excluding the GTEXCOEXP dataset significantly reduces global transitivity, indicating\\\
+    ndecreased local clustering. Figure 12b reveals that removing most major datasets generally decreases degree\\nassortativity,\
+    \ except for the GTEXEQTL dataset. Removal of the GTEXEQTL dataset leads to an increase in\\ndegree assortativity as a\
+    \ GTEXEQTL node connects terminally to a gene target node thus not providing links\\nbetween genes.\\nThese findings underscore\
+    \ the specific contributions of each dataset to the graph\\u2019s structural properties and\\nfunctional relationships\
+    \ among human genes.\\n\\n22\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n0\\n8\\n16\\n24\\n32\\nAll\"\n  },\n  {\n    \"name\"\
+    : \"-GTEXCOEXP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-GTEXEXP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"-GTEXEQTL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-LINCS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"-CMAP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-MSIGDB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\":\
+    \ \"-HGNCHPO\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-STRING\",\n    \"text\": \"Assortativity Negative Reciprocal\\\
+    n0\\n0.003\\n0.005\\n0.008\\n0.01\\nAll\"\n  },\n  {\n    \"name\": \"-GTEXCOEXP\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"-GTEXEXP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-GTEXEQTL\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \"-LINCS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-CMAP\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"-MSIGDB\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"-HGNCHPO\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"-STRING\",\n    \"text\": \"Transitivity\\na\\nb\\nAssortativity Negative Reciprocal\\nTransitivity\\\
+    nDataset\\nDataset\\nFig. 12\\u2002 Contribution of major datasets on link prediction. Impact of dataset removal on global\
+    \ transitivity and\\ndegree assortativity in subgraphs around human genes (1 hop) in Petagraph. Major datasets were removed\
+    \ one\\nat a time to assess their contributions to graph connectivity and the resulting subgraphs were each evaluated\\\
+    nfor transitivity and assortativity coefficients using the R package igraph82. As Petagraph is a sparse graph,\\nassortativity\
+    \ is globally negative in the [\\u22121, 0) range. Therefore Assortativity is graphed as its negative reciprocal\\ncalculated\
+    \ as (\\u22121/assortativity) where less assortative subgraphs have lower values. Dataset descriptions are\\nfound under\
+    \ the SAB column in Tables 3, 4.\\nFig. 13\\u2002 Validation with Use Case 1. Comparison of (a) ROC and (b) PRC curves\
+    \ calculated for the link\\nprediction scores vs. the presence or absence of direct links (binary classifier) between\
+    \ Tetralogy of Fallot\\n(HP:0001636) phenotype and human genes in Petagraph. The analysis shows that the Common Neighbors\\\
+    nscores and Jaccard\\u2019s Index similarity metric behave like near-perfect classifiers of such phenotype to gene\\nconnectivities.\\\
+    n\\n23\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nUse case validation.\\nIn this section we validate Petagraph\\u2019s relevance to biomedical\
+    \ research through eval-\\nuation of its capacity to return biologically relevant information with three use cases. Further\
+    \ validation of these\\nuse case results are performed through evaluation of orthogonal information such as literature\
+    \ review.\\nUse Case 1: Validation by re-predicting relationships between congenital heart defects and genes.\\u2003 Figure\
+    \ 13 illus-\\ntrates our evaluation of topological link prediction methods in identifying associations between the Tetralogy\\\
+    nof Fallot (ToF) phenotype (HP:00001636) and genes cataloged by HGNC (43,001 nodes). We employed four\"\n  },\n  {\n \
+    \   \"name\": \"methods for this analysis: preferential attachment, total neighbors, common neighbors, and Jaccard\\u2019s\
+    \ Index\",\n    \"text\": \"By analyzing the Receiver Operating Characteristic (ROC) and Precision-Recall Curve (PRC)\
+    \ of the binary\\nclassifiers against the graph\\u2019s existing gene-phenotype links, we show that the graph\\u2019s\
+    \ structure\\u2014specifically,\\nthe node-to-node relationships\\u2014empowers these topological link prediction methods,\
+    \ achieving ROC AUCs\\ngreater than 0.9 (as shown in Figure 13a,b). Notably, the common neighbors method and Jaccard\\\
+    u2019s Index\\nachieved exceptional performance, with ROC and PRC AUCs approaching 1, indicating a high reliability for\\\
+    npredicting links across the graph. We also conducted a literature review to validate the top 10 gene-phenotype\\nrelationships\
+    \ identified by the common neighbors method, using this external information as a form of orthog-\\nonal validation not\
+    \ originally incorporated into the graph. The supporting evidence from this review is detailed\\nin Table 5.\\nUse Case\
+    \ 2: Validation by predicting drug side effects within tissues of interest.\\u2003 The drug rofecoxib was recalled\\nin\
+    \ 2004 due to safety concerns because of an observed increased risk for cardiovascular events, most notably\\nheart attack,\
+    \ and stroke78. We queried Petagraph for all shared genes between the transcriptional profiles for the\\ndrug rofecoxib\
+    \ (CHEBI:8887) in LINCS (L1000, CMAP) to all tissue transcriptional profiles in GTEx with\\nexpression higher than a minimum\
+    \ level (TPM\\u2009>\\u20095) (GTEXEXP). Once we extracted such genes, we computed\\nNormalized Gene Interaction Counts\\\
+    nCorrelated with Rofecoxib\\nNormalized Gene\\nCount\\n0.8\\n0.85\\n0.9\\n0.95\\n1\\nTissue\\nRight auricular appendage\\\
+    nStructure of cortex of kidney\\nomental fat pad\\nTransverse colon\\nLeft colic exure\\nbreast epithelium\\nFallopian\
+    \ Tubes\\nMyocardium of left ventricle\\nSubcutaneous Fat\\nTibial Arteries\\nStructure of posterior tibial artery\\nStructure\
+    \ of anterior tibial artery\\nVagina\\nCoronary artery\\nVaginal part of cervix\\nExocervix\\nStructure of putamen\\nAscending\
+    \ aorta structure\\nStomach\\nFig. 14\\u2002 Validation with Use Case 2. Querying possible drug-tissue interactions for\
+    \ rofecoxib using CMAP,\\nLINCS L1000 and GTEX_EXP datasets. Top 19 tissues with the highest ratio of genes correlated\
+    \ with rofecoxib\\n(LINCS L1000) to all genes (TPM\\u2009>\\u20095).\\n\\n24\\nScientific Data |         (2024) 11:1338\
+    \  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nthe\
+    \ number of shared genes as a ratio for each tissue with respect to the total number of genes with TPM\\u2009>\\u20095\
+    \ and\\nthen normalized the value to the highest value in all tissues and ranked them accordingly.\\nFigure 14 summarizes\
+    \ the result of the query used to extract the shared genes in the transcriptional profiles\\nfrom rofecoxib and human\
+    \ tissues. This query is based on the genes with expression levels higher than a pre-\\ndefined threshold (TPM\\u2009>\\\
+    u20095) with relationships with rofecoxib in the LINCS dataset. As shown in Figure 14,\\nthe ranked tissues point to different\
+    \ organs; the LINCS data provides a correct prediction that heart and blood\\nvessels in the GTEx dataset are most closely\
+    \ related to perturbation gene profiles in rofecoxib (e.g. right auricular\\nappendage, myocardium of left ventricle,\
+    \ coronary arteries). These predictions are not obvious by just examining\\nwhere rofecoxib\\u2019s target gene, PTGS2,\
+    \ is expressed.\\nFig. 15\\u2002 Validation through shortest path analysis. Analysis of connections between HPO terms\
+    \ in a Petagraph\\nsubgraph between abnormal central nervous system (CNS) morphology and CNS neoplastic processes (a)\
+    \ An\\nexample Petagraph subgraph consisting of shortest paths connecting 54 abnormal CNS morphology and 54\\nCNS neoplasms,\
+    \ containing a total of 777 nodes including 191 human genes. Colors reflect the edge traversal\\ncounts and node degree\
+    \ centralities. (b) Node degree histogram of the subgraph. (c) Edge traversal count\\nfrequencies for the subgraph. (d)\
+    \ Shortest path length distribution of the subgraph.\\n\\n25\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\nUse Case 3: Validation through shortest path analysis\
+    \ of subgraphs.\\u2003 Epidemiological analysis has shown that\\nbrain tumors are more common in children with CNS abnormalities\
+    \ than in the general population79,80. In this\\nanalysis, we focused on constructing and examining a subgraph derived\
+    \ from Petagraph, specifically targeting\\nthe connections between HPO Concept nodes related to abnormal CNS morphology\
+    \ and CNS neoplastic pro-\\ncesses. The subgraph, comprising 777 nodes as shown in Figure 15a, was formed by identifying\
+    \ all shortest paths\\nlinking a selected set of 54 CNS morphology abnormalities with 54 CNS neoplastic process nodes.\
+    \ Upon analyz-\\ning this subgraph, we observed particular patterns in node degree distribution, link traversal frequencies,\
+    \ and\\nshortest path lengths, as detailed in Figure 15b\\u2013d. The distributions observed align with a scale-free structure,\\\
+    nwhich has been recurrently identified within various segments of Petagraph. This type of structure is significant\\nbecause\
+    \ scale-free networks are known for few highly connected nodes (hubs) amidst many nodes with fewer\\nconnections, which\
+    \ allows for shorter direct paths between nodes as compared to randomly configured graphs\\nof the same size. Scale-free\
+    \ graph structures are prevalent in many biological systems and data collections.\\nInvestigation into the node degrees\
+    \ within this subgraph allowed us to rank human genes based on their con-\\nnectivity. Genes with common links between\
+    \ CNS phenotypic abnormalities and brain cancers could be impli-\\ncated in both conditions with origins in perturbed\
+    \ developmental processes. The top-ranked genes, as listed in\\nTable 6, offer potential targets for further research\
+    \ into their relevance to both CNS disorders and neoplasms.\\nLimitations.\\nDespite its strengths, Petagraph has certain\
+    \ limitations. Inherent complexity and variabil-\\nity of the data sources integrated into the graph will always be a\
+    \ challenge. Ensuring the accuracy and consist-\\nency of data ingestion and mapping processes requires expert curation,\
+    \ continuous refinement and validation.\\nAdditionally, the scalability of Petagraph, while robust, may face constraints\
+    \ with the incorporation of increas-\\ningly large and diverse datasets, necessitating ongoing optimization of computational\
+    \ resources and algorithms.\\nAnother limitation is the potential bias introduced by the selection and integration of\
+    \ specific datasets. While\\nPetagraph aims to be comprehensive for general use, the inclusion of certain data and the\
+    \ exclusion of others can\\ninfluence the results and interpretations derived from the graph. Biomedical data also tends\
+    \ to be sparse which\\ncan compound biases in available data. Careful consideration and transparency in the data selection\
+    \ process is\\nsuggested for those who extend Petagraph with additional data for their own purposes.\\nUsage Notes\\nUsage\
+    \ documentation.\\nTo help aid users who would like to query Petagraph we have written a user guide\\nwith example queries\
+    \ available at https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/user_\\nguide.md.\\nFig. 16\\u2002 Recursive\
+    \ queries on ontologies allow for returning results and increasing search depths. This is\\nan example of a recursive\
+    \ (transitive closure) search using the mammalian phenotype (MP) Atrial Septal\\nDefects (ASD) as the parent phenotype.\
+    \ This query returns all of the eQTLs (p-value\\u2009<\\u20090.05) from ASD\\n(MP:00110403) and its direct child phenotypes,\
+    \ based on genes that are expressed in the GTEx heart data.\\nConcept nodes are in blue, Code nodes in purple.\\n\\n26\\\
+    nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\nwww.nature.com/scientificdata\\\
+    nwww.nature.com/scientificdata/\\nAnalysis considerations.\\nBefore employing Petagraph for analytical use, users should\
+    \ consider several fac-\\ntors in setting up their analyses. After finding a use case, users may want to identify and\
+    \ familiarize themselves\\nwith the datasets and ontologies that their use case will include (if they are known). This\
+    \ is helpful for two reasons.\\nFirst, stating explicitly what datasets or relationships to search for in the Cypher query\
+    \ can drastically speed up\\nquery run time. Secondly, including a predefined set of datasets and relationships can help\
+    \ with interpretability\\nof results. Furthermore, to avoid writing nonsensical queries and to be able to correctly interpret\
+    \ results, it is\\nimportant to consult the data dictionary and to understand the basic preprocessing and data modeling\
+    \ decisions\\nthat took place while creating Petagraph. Located on the Petagraph Github71, the data dictionary includes\
+    \ detailed\\ndescriptions of the datasets, preprocessing steps, as well as images and descriptions of how each dataset\
+    \ has been\\nmodeled. Users also need to be wary of comparing quantitative results from different data sources. For example,\\\
+    np-values from two separate sources should not be directly compared with each other. For more complex use cases\\n(and\
+    \ queries) it may be helpful to define a projected subgraph using function(s) from Neo4j GDS: Graph Data\\nScience library81.\
+    \ A graph projection creates an in-memory graph that can be queried more quickly than the\\ndatabase and may help to speed\
+    \ up analysis.\\nCareful selection of Cypher query strategies can aid in returning rapid results. For example, recursive\
+    \ queries\\ncan be performed on OBO-compliant ontologies in Petagraph. Ontologies like HPO, MP, UBERON can be que-\\nried\
+    \ recursively to include child nodes at any specified level. This can be useful, for example, when a user wants\\nto include\
+    \ information about a general disease condition instead of just a single phenotype term. In Figure 16 we\\nshow how this\
+    \ can be done by querying and returning eQTLs for the term Atrial Septal Defects in addition to all\\nof its direct child\
+    \ terms. When writing a Cypher statement, a user can query recursively be using the \\u2018*\\u2019 operator\\ninside\
+    \ a relationship definition.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"UMLS licensing information:\
+    \ Whether starting from source data or from the dump file, construction of\\nPetagraph with the UBKG requires licensing\
+    \ of the UMLS82. The UBKG includes information extracted from\\nthe UMLS under a distributor licensing agreement, and\
+    \ consumers of the UBKG must have a UMLS license83.\\nThe UBKG\\u2019s Neo4j database, which contains licensed UMLS content,\
+    \ should not be stored in public repositories.\\nSoftware Versions: We used Neo4j Desktop 1.5.7 for general development,\
+    \ analyses, and prototyping for the\\nanalyses in this paper. We used Neo4j 5.14 for server-side hosting of Petagraph\
+    \ and for larger queries.\\nPython 3.10 was used for data formatting and preprocessing, such as in preparation of the\
+    \ edge and node\\nsource CSV files, as well as for Petagraph build testing.\\nPath and connectivity analyses were performed\
+    \ using igraph v1.2.1184 in RStudio 2022.12.0.35374 and R\\nv4.2.275.\\nReceived: 24 May 2024; Accepted: 4 November 2024;\\\
+    nPublished: xx xx xxxx\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"1.\\t Nicholson, D. N. & Greene, C.\
+    \ S. Constructing knowledge graphs and their biomedical applications. Comput. Struct. Biotechnol. J.\\n18, 1414\\u20131428\
+    \ (2020).\\n2.\\t Moon, C. et al. Learning Drug-Disease-Target Embedding (DDTE) from knowledge graphs to inform drug repurposing\
+    \ hypotheses.\\nJ. Biomed. Inform. 119, 103838 (2021).\\n3.\\t Alves, V. M. et al. Knowledge-based approaches to drug\
+    \ discovery for rare diseases. Drug Discov. Today https://doi.org/10.1016/j.\\ndrudis.2021.10.014 (2021).\\n4.\\t Zheng,\
+    \ S. et al. PharmKG: a dedicated knowledge graph benchmark for biomedical data mining. Brief. Bioinform. 22 (2021).\\\
+    n5.\\t Alshahrani, M. & Hoehndorf, R. Drug repurposing through joint learning on knowledge graphs and literature. bioRxiv\
+    \ 385617,\\nhttps://doi.org/10.1101/385617 (2018).\\n6.\\t Chandak, P., Huang, K. & Zitnik, M. Building a knowledge graph\
+    \ to enable precision medicine. Sci Data 10, 67 (2023).\\n7.\\t Steenwinckel, B. et al. Facilitating the Analysis of COVID-19\
+    \ Literature Through a Knowledge Graph. in The Semantic Web \\u2013 ISWC\\n2020 344\\u2013357, https://doi.org/10.1007/978-3-030-62466-8_22\
+    \ (Springer International Publishing, 2020).\\n8.\\t Cernile, G. et al. Network graph representation of COVID-19 scientific\
+    \ publications to aid knowledge discovery. BMJ Health Care\\nInform 28 (2021).\\n9.\\t Reese, J. T. et al. KG-COVID-19:\
+    \ A Framework to Produce Customized Knowledge Graphs for COVID-19 Response. Patterns (N Y)\\n2, 100155 (2021).\\n10.\\\
+    t Domingo-Fern\\u00e1ndez, D. et al. COVID-19 Knowledge Graph: a computable, multi-modal, cause-and-effect knowledge model\
+    \ of\\nCOVID-19 pathophysiology. Bioinformatics 37, 1332\\u20131334 (2021).\"\n  },\n  {\n    \"name\": \"Zhang, P. et\
+    \ al. Toward a Coronavirus Knowledge Graph. Genes 12, (2021)\",\n    \"text\": \"12.\\t Chen, C., Ross, K. E., Gavali,\
+    \ S., Cowart, J. E. & Wu, C. H. COVID-19 knowledge graph from semantic integration of biomedical\\nliterature and databases.\
+    \ Bioinformatics https://doi.org/10.1093/bioinformatics/btab694 (2021).\\n13.\\t Ostaszewski, M. et al. COVID19 Disease\
+    \ Map, a computational knowledge repository of virus-host interaction mechanisms. Mol.\\nSyst. Biol. 17, e10387 (2021).\\\
+    n14.\\t Zhao, L. et al. Biological knowledge graph-guided investigation of immune therapy response in cancer with graph\
+    \ neural network.\\nBrief. Bioinform. https://doi.org/10.1093/bib/bbad023 (2023).\\n15.\\t Zhu, Y., Zhou, Y., Liu, Y.,\
+    \ Wang, X. & Li, J. SLGNN: Synthetic lethality prediction in human cancers based on factor-aware knowledge\\ngraph neural\
+    \ network. Bioinformatics, https://doi.org/10.1093/bioinformatics/btad015 (2023).\\n16.\\t Jha, A., Khan, Y., Sahay, R.\
+    \ & d\\u2019Aquin, M. Metastatic Site Prediction in Breast Cancer using Omics Knowledge Graph and Pattern\\nMining with\
+    \ Kirchhoff\\u2019s Law Traversal. https://doi.org/10.1101/2020.07.14.203208.\\n17.\\t Choi, W. & Lee, H. Identifying\
+    \ disease-gene associations using a convolutional neural network-based model by embedding a\\nbiological knowledge graph\
+    \ with entity descriptions. PLoS One 16, e0258626 (2021).\\n18.\\t Feng, F. et al. GenomicKB: a knowledge graph for the\
+    \ human genome. Nucleic Acids Res. 51, D950\\u2013D956 (2023).\\n19.\\t Shefchek, K. A. et al. The Monarch Initiative\
+    \ in 2019: an integrative data and analytic platform connecting phenotypes to genotypes\\nacross species. Nucleic Acids\
+    \ Res. 48, D704\\u2013D715 (2020).\\n\\n27\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n20.\\t Birney, E., Vamathevan, J. & Goodhand, P. Genomics\
+    \ in healthcare: GA4GH looks to 2022. bioRxiv 203554, https://doi.\\norg/10.1101/203554 (2017).\\n21.\\t Silverstein,\
+    \ J. C. et al. The Unified Biomedical Knowledge Graph (UBKG). GitHub https://github.com/x-atlas-consortia/ubkg-etl\\n(2023).\\\
+    n22.\\t Bodenreider, O. The Unified Medical Language System (UMLS): integrating biomedical terminology. Nucleic Acids\
+    \ Research 32\"\n  },\n  {\n    \"name\": \"D\\u2013270 (2004)\",\n    \"text\": \"23.\\t HuBMAP Consortium. The human\
+    \ body at cellular resolution: the NIH Human Biomolecular Atlas Program. Nature 574, 187\\u2013192\\n(2019).\\n24.\\t\
+    \ SenNet Consortium. NIH SenNet Consortium to map senescent cells throughout the human lifespan to understand physiological\\\
+    nhealth. Nat Aging 2, 1090\\u20131100 (2022).\\n25.\\t NIH Common Fund Data Ecosystem Data Distillery Partnership Repository.\
+    \ GitHub https://github.com/nih-cfde/data-distillery.\\n26.\\t Ahooyi, T. M., Stear, B. J. & Taylor, D. M. Positioning\
+    \ Genomic Features in Biomedical Knowledge Graphs using the Homo sapiens\\nChromosomal Location Ontology for GRCh38 (HSCLO38).\
+    \ bioRxiv 2024.02.15.580505, https://doi.org/10.1101/2024.02.15.580505\\n(2024).\\n27.\\t Simmons, J. A. & Silverstein,\
+    \ J. C. Unified Biomedical Knowledge Graph (UBKG) Source Contexts documentation. Unified Biomedical\\nKnowledge Graph\
+    \ (UBKG) documentation pages https://ubkg.docs.xconsortia.org/contexts/#umls-source-context-umls-graph.\\n28.\\t Jackson,\
+    \ R. et al. OBO Foundry in 2021: operationalizing open data principles to evaluate ontologies. Database 2021 (2021).\\\
+    n29.\\t BioPortal. National Center for Biomedical Ontology https://bioportal.bioontology.org/.\\n30.\\t UniProt Consortium.\
+    \ UniProt: the Universal Protein Knowledgebase in 2023. Nucleic Acids Res. 51, D523\\u2013D531 (2023).\\n31.\\t Harrow,\
+    \ J. et al. GENCODE: the reference human genome annotation for the ENCODE Project. Genome Res. 22 (2012).\\n32.\\t Yates,\
+    \ B., Gray, K. A., Jones, T. E. M. & Bruford, E. A. Updates to HCOP: the HGNC comparison of orthology predictions tool.\
+    \ Brief.\\nBioinform. 22 (2021).\\n33.\\t K\\u00f6hler, S. et al. The Human Phenotype Ontology in 2021. Nucleic Acids\
+    \ Res. 49, D1207\\u2013D1217 (2021).\\n34.\\t Seal, R. L. et al. Genenames.org: the HGNC resources in 2023. Nucleic Acids\
+    \ Res. 51, D1003\\u2013D1009 (2023).\\n35.\\t Callahan, T. J. et al. An open source knowledge graph ecosystem for the\
+    \ life sciences. Sci Data 11, 363 (2024).\\n36.\\t Groza, T. et al. The International Mouse Phenotyping Consortium: comprehensive\
+    \ knockout phenotyping underpinning the study\\nof human disease. Nucleic Acids Res. 51, D1038\\u2013D1045 (2023).\\n37.\\\
+    t Eppig, J., Blake, J., Bult, C., Kadin, J. & Richardson, J. The Mouse Genome Database (MGD): facilitating mouse as a\
+    \ model for human\\nbiology and disease. Nucleic Acids Res. 43, D726\\u2013D736 (2014).\\n38.\\t Subramanian, A. et al.\
+    \ Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles.\\nProc. Natl.\
+    \ Acad. Sci. USA 102, 15545\\u201315550 (2005).\\n39.\\t Liberzon, A. et al. The Molecular Signatures Database (MSigDB)\
+    \ hallmark gene set collection. Cell Syst 1, 417\\u2013425 (2015).\\n40.\\t Harrison, P. W. et al. Ensembl 2024. Nucleic\
+    \ Acids Res. 52, D891\\u2013D899 (2024).\"\n  },\n  {\n    \"name\": \"Dekker, J. et al. The 4D nucleome project. Nature\
+    \ 549, 219\\u2013226 (2017)\",\n    \"text\": \"42.\\t Asp, M. et al. A Spatiotemporal Organ-Wide Gene Expression and\
+    \ Cell Atlas of the Developing Human Heart. Cell 179, 1647\\u20131660.\\ne19 (2019).\\n43.\\t Landrum, M. J. et al. ClinVar:\
+    \ improving access to variant interpretations and supporting evidence. Nucleic Acids Res. 46,\"\n  },\n  {\n    \"name\"\
+    : \"D1062\\u2013D1067 (2018)\",\n    \"text\": \"44.\\t Louden, D. N. MedGen: NCBI\\u2019s Portal to Information on Medical\
+    \ Conditions with a Genetic Component. Med. Ref. Serv. Q. 39,\\n183\\u2013191 (2020).\\n45.\\t Vasilevsky, N. A. et al.\
+    \ Mondo: Unifying diseases for the world, by the world. bioRxiv https://doi.org/10.1101/2022.04.13.22273750\\n(2022).\\\
+    n46.\\t Malone, J. et al. Modeling sample variables with an Experimental Factor Ontology. Bioinformatics 26, 1112\\u20131118\
+    \ (2010).\\n47.\\t National Library of Medicine. Medical Subject Headings (MESH). NIH - National Library of Medicine https://www.nlm.nih.gov/\\\
+    nmesh/meshhome.html (2020).\\n48.\\t Lamb, J. et al. The Connectivity Map: using gene-expression signatures to connect\
+    \ small molecules, genes, and disease. Science 313,\\n1929\\u20131935 (2006).\\n49.\\t Rouillard, A. D. et al. The harmonizome:\
+    \ a collection of processed datasets gathered to serve and mine knowledge about genes and\\nproteins. Database 2016 (2016).\\\
+    n50.\\t Hastings, J. et al. ChEBI in 2016: Improved services and an expanding collection of metabolites. Nucleic Acids\
+    \ Research 44,\"\n  },\n  {\n    \"name\": \"D1214\\u2013D1219 (2016)\",\n    \"text\": \"51.\\t Mungall, C. J., Torniai,\
+    \ C., Gkoutos, G. V., Lewis, S. E. & Haendel, M. A. Uberon, an integrative multi-species anatomy ontology.\\nGenome Biol.\
+    \ 13, R5 (2012).\\n52.\\t York, W. S. et al. GlyGen: Computational and Informatics Resources for Glycoscience. Glycobiology\
+    \ 30, 72\\u201373 (2020).\"\n  },\n  {\n    \"name\": \"GlyGen Datasets. https://data.glygen.org\",\n    \"text\": \"\
+    54.\\t Boutet, E. et al. UniProtKB/Swiss-Prot, the Manually Annotated Section of the UniProt KnowledgeBase: How to Use\
+    \ the Entry View.\"\n  },\n  {\n    \"name\": \"Methods Mol. Biol. 1374, 23\\u201354 (2016)\",\n    \"text\": \"55.\\\
+    t Christine E. Seidman, MD. Harvard Medical School, Boston, MA, USA. National Heart, Lung, and Blood Institute (NHLBI)\
+    \ Bench\\nto Bassinet Program: The Gabriella Miller Kids First Pediatric Research Program of the Pediatric Cardiac Genetics\
+    \ Consortium\"\n  },\n  {\n    \"name\": \"(PCGC)\",\n    \"text\": \"56.\\t Duan, Q. et al. LINCS Canvas Browser: interactive\
+    \ web app to query, browse and interrogate LINCS L1000 gene expression\\nsignatures. Nucleic Acids Res. 42, W449\\u201360\
+    \ (2014).\\n57.\\t Subramanian, A. et al. A Next Generation Connectivity Map: L1000 Platform and the First 1,000,000.\
+    \ Profiles. Cell 171, 1437\\u20131452.\\ne17 (2017).\\n58.\\t Baldarelli, R. M., Smith, C. L., Ringwald, M., Richardson,\
+    \ J. E. & Bult, C. J. Mouse Genome Informatics Group Mouse\\nGenomeInformatics: an integrated knowledgebase system for\
+    \ the laboratory mouse. Genetics 227 (2024).\\n59.\\t Simmons, J. A. & Silverstein, J. C. Unified Biomedical Knowledge\
+    \ Graph (UBKG) Source Contexts. xconsortia.org https://ubkg.docs.\\nxconsortia.org/contexts/ (2024).\\n60.\\t Stear, B.\
+    \ J., Mohseni Ahooyi, T. & Taylor, D. M. Petagraph Project. GitHub https://github.com/TaylorResearchLab/Petagraph.\\n61.\\\
+    t Callahan, T. J. owl-nets: Transforming OWL for statistical learning. github.com https://github.com/callahantiff/owl-nets.\\\
+    n62.\\t Van Harmelen, F. & McGuinness, D. L. OWL web ontology language overview. World Wide Web Consortium (W3C)\\nRecommendation\
+    \ 69, 70 (2004).\\n63.\\t Callahan, T. J., Tripodi, I. J., Hunter, L. E. & Baumgartner, W. A. A Framework for Automated\
+    \ Construction of Heterogeneous Large-\\nScale Biomedical Knowledge Graphs. bioRxiv 2020.04.30.071407, https://doi.org/10.1101/2020.04.30.071407\
+    \ (2020).\\n64.\\t OBO_Foundry. OBO Relations Ontology 2023-01-04 Release. OBO Relations Ontology at GitHub https://github.com/oborel/obo-\\\
+    nrelations, https://doi.org/10.5281/zenodo.32899.\\n65.\\t Simmons, J. A. & Silverstein, J. C. UBKG Edge Node Format instructions.\
+    \ xconsortia.org https://ubkg.docs.xconsortia.org/\\nformats/#ubkg-edgesnodes-format.\\n66.\\t O\\u2019Leary, N. A. et\
+    \ al. Reference sequence (RefSeq) database at NCBI: current status, taxonomic expansion, and functional annotation.\\\
+    nNucleic Acids Res. 44, D733\\u201345 (2016).\\n\\n28\\nScientific Data |         (2024) 11:1338  | https://doi.org/10.1038/s41597-024-04070-w\\\
+    nwww.nature.com/scientificdata\\nwww.nature.com/scientificdata/\\n67.\\t Neo4j. Neo4j Operations Manual: Import for the\
+    \ Neo4j Admin and Neo4j CLI. Neo4j Operations Manual Documentation https://\\nneo4j.com/docs/operations-manual/current/tools/neo4j-admin/neo4j-admin-import/#import-tool-header-format.\\\
+    n68.\\t Simmons, J. A. & Silverstein, J. C. UBKG ETL Generation Framework, OWLNETS-UMLS-GRAPH-12.py. github.com https://github.\\\
+    ncom/x-atlas-consortia/ubkg-etl/blob/main/generation_framework/owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py\\n69.\\t National\
+    \ Library of Medicine (US). UMLS\\u00ae Reference Manual [Internet]. (National Library of Medicine, 2009).\\n70.\\t Sayers,\
+    \ E. W. et al. Database resources of the National Center for Biotechnology Information. Nucleic Acids Res. 52, D33\\u2013D43\
+    \ (2024).\\n71.\\t Stear, B. J., Mohseni Ahooyi, T. & Taylor, D. M. Petagraph Data Source Descriptions and Schema Reference.\
+    \ https://github.com/\\nTaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md.\\n72.\\t Osumi-Sutherland, D. et\
+    \ al. Cell type ontologies of the Human Cell Atlas. Nat. Cell Biol. 23, 1129\\u20131135 (2021).\"\n  },\n  {\n    \"name\"\
+    : \"Kolde, R. Pheatmap: Pretty Heatmaps R Package Version 1.0.12. (2019)\",\n    \"text\": \"74.\\t Posit team. RStudio:\
+    \ Integrated Development Environment for R. (Posit Software, PBC, Boston, MA, 2022).\\n75.\\t R Core Team. R: A Language\
+    \ and Environment for Statistical Computing. (R Foundation for Statistical Computing, Vienna, Austria,\\n2022).\\n76.\\\
+    t National Institutes of Health. UMLS Metathesaurus. U.S. National Library of Medicine (2009).\\n77.\\t Stear, B., Taylor,\
+    \ D. & Ahooyi, T. Petagraph. Center For Open Science https://doi.org/10.17605/OSF.IO/6JTC9 (2023).\\n78.\\t Topol, E.\
+    \ J. Failing the Public Health \\u2014 Rofecoxib, Merck, and the FDA. New England Journal of Medicine 351, 1707\\u20131709\
+    \ (2004).\\n79.\\t Lupo, P. J. et al. Association Between Birth Defects and Cancer Risk Among Children and Adolescents\
+    \ in a Population-Based\\nAssessment of 10 Million Live Births. JAMA Oncol 5, 1150\\u20131158 (2019).\\n80.\\t Schraw,\
+    \ J. M. et al. Cancer diagnostic profile in children with structural birth defects: An assessment in 15,000 childhood\
+    \ cancer\\ncases. Cancer 126, 3483\\u20133492 (2020).\\n81.\\t Neo4j The Neo4j. Graph Data Science library manual v2.13.\
+    \ https://neo4j.com/docs/graph-data-science/2.13/.\\n82.\\t How to License and Access the Unified Medical Language System\\\
+    u00ae (UMLS\\u00ae) Data. National Library of Medicine: UMLS https://\\nwww.nlm.nih.gov/databases/umls.html.\\n83.\\t\
+    \ UMLS - Metathesaurus License Agreement. National Library of Medicine: UMLS https://www.nlm.nih.gov/research/umls/\\\
+    nknowledge_sources/metathesaurus/release/license_agreement.html.\\n84.\\t Csardi, G. & Nepusz, T. & Others. The igraph\
+    \ software package for complex network research. InterJournal, complex systems 1695,\\n1\\u20139 (2006).\\n85.\\t Meehan,\
+    \ T. F. et al. Logical Development of the Cell Ontology. BMC Bioinformatics 12, 6 (2011).\\n86.\\t Schriml, L. M. et al.\
+    \ The Human Disease Ontology 2022 update. Nucleic Acids Res. 50, D1255\\u2013D1261 (2022).\"\n  },\n  {\n    \"name\"\
+    : \"Acknowledgements\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Funding for this project is acknowledged from\
+    \ the NIH Common Fund, through the Office of Strategic\",\n    \"text\": \"Coordination/Office of the NIH Director under\
+    \ awards R03OD030600 and OT2OD030162 (D.M.T), and\\nOT2OD026663, OT2OD026675 (J.C.S.); The Department of Biomedical Informatics\
+    \ at The Children\\u2019s Hospital\\nof Philadelphia (D.M.T.). We would like to thank Charles Borromeo at the University\
+    \ of Pittsburgh for his early\\nwork on UBKG.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"\
+    T.M.A. and B.J.S. wrote code for analyses and figures. B.J.S., T.M.A., J.A.S., D.M.T. and J.C.S. wrote and edited\\nthe\
+    \ paper. T.M.A., D.M.T. and B.J.S. designed the Petagraph schema. J.C.S. designed the U.B.K.G. schema, based\\non the\
+    \ NIH UMLS. B.J.S. and T.M.A. implemented and managed Petagraph\\u2019s build. J.A.S. and J.C.S. designed the\\nUBKG build\
+    \ process. D.M.T. conceived of, supervised, and funded work on Petagraph.\"\n  },\n  {\n    \"name\": \"Competing interests\"\
+    ,\n    \"text\": \"The authors declare no competing interests.\\nAdditional information\\nCorrespondence and requests\
+    \ for materials should be addressed to D.M.T.\\nReprints and permissions information is available at www.nature.com/reprints.\\\
+    nPublisher\\u2019s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and\\ninstitutional\
+    \ affiliations.\\nOpen Access This article is licensed under a Creative Commons Attribution-NonCommercial-\\nNoDerivatives\
+    \ 4.0 International License, which permits any non-commercial use, sharing, distribu-\\ntion and reproduction in any medium\
+    \ or format, as long as you give appropriate credit to the original author(s)\\nand the source, provide a link to the\
+    \ Creative Commons licence, and indicate if you modified the licensed mate-\\nrial. You do not have permission under this\
+    \ licence to share adapted material derived from this article or parts of\\nit. The images or other third party material\
+    \ in this article are included in the article\\u2019s Creative Commons licence,\\nunless indicated otherwise in a credit\
+    \ line to the material. If material is not included in the article\\u2019s Creative\\nCommons licence and your intended\
+    \ use is not permitted by statutory regulation or exceeds the permitted\\nuse, you will need to obtain permission directly\
+    \ from the copyright holder. To view a copy of this licence, visit\\nhttp://creativecommons.org/licenses/by-nc-nd/4.0/.\\\
+    n\\n\\u00a9 The Author(s) 2024\"\n  }\n]"
+  funding: 'Coordination/Office of the NIH Director under awards R03OD030600 and OT2OD030162 (D.M.T), and
+
+    OT2OD026663, OT2OD026675 (J.C.S.); The Department of Biomedical Informatics at The Children’s Hospital
+
+    of Philadelphia (D.M.T.). We would like to thank Charles Borromeo at the University of Pittsburgh for his early
+
+    work on UBKG.'
+  author_contributions: 'T.M.A. and B.J.S. wrote code for analyses and figures. B.J.S., T.M.A., J.A.S., D.M.T. and J.C.S.
+    wrote and edited
+
+    the paper. T.M.A., D.M.T. and B.J.S. designed the Petagraph schema. J.C.S. designed the U.B.K.G. schema, based
+
+    on the NIH UMLS. B.J.S. and T.M.A. implemented and managed Petagraph’s build. J.A.S. and J.C.S. designed the
+
+    UBKG build process. D.M.T. conceived of, supervised, and funded work on Petagraph.'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information
+
+    Correspondence and requests for materials should be addressed to D.M.T.
+
+    Reprints and permissions information is available at www.nature.com/reprints.
+
+    Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and
+
+    institutional affiliations.
+
+    Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-
+
+    NoDerivatives 4.0 International License, which permits any non-commercial use, sharing, distribu-
+
+    tion and reproduction in any medium or format, as long as you give appropriate credit to the original author(s)
+
+    and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed mate-
+
+    rial. You do not have permission under this licence to share adapted material derived from this article or parts of
+
+    it. The images or other third party material in this article are included in the article’s Creative Commons licence,
+
+    unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative
+
+    Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted
+
+    use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit
+
+    http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+
+    © The Author(s) 2024'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\",\n   \
+    \ \"page\": 10\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  },\n  {\n    \"id\": \"fig_p12_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p12_1.png\"\
+    ,\n    \"page\": 12\n  },\n  {\n    \"id\": \"fig_p14_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_1.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p15_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p15_1.png\"\
+    ,\n    \"page\": 15\n  },\n  {\n    \"id\": \"fig_p16_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p16_1.png\"\
+    ,\n    \"page\": 16\n  },\n  {\n    \"id\": \"fig_p17_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p17_1.png\"\
+    ,\n    \"page\": 17\n  },\n  {\n    \"id\": \"fig_p19_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p19_1.png\"\
+    ,\n    \"page\": 19\n  },\n  {\n    \"id\": \"fig_p20_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p20_1.png\"\
+    ,\n    \"page\": 20\n  },\n  {\n    \"id\": \"fig_p22_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p22_1.png\"\
+    ,\n    \"page\": 22\n  },\n  {\n    \"id\": \"fig_p24_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p24_1.png\"\
+    ,\n    \"page\": 24\n  },\n  {\n    \"id\": \"fig_p25_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p25_1.png\"\
+    ,\n    \"page\": 25\n  },\n  {\n    \"id\": \"fig_p26_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p26_1.png\"\
+    ,\n    \"page\": 26\n  }\n]"
+references:
+  reference_count: 11
+associated:
+  code_repositories: "[\n  {\n    \"url\": \"https://github.com/dbmi-pitt/ubkg/blob/main/scripts/README-\",\n    \"description\"\
+    : \"\"\n  }\n]"

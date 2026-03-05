@@ -1,0 +1,85 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/Organization/How to think about the differences between FROs and private ARPA programs.pdf
+
+citation:
+  title: HOW TO THINK ABOUT THE DIFFERENCES BETWEEN FROS AND PRIVATE ARPA PROGRAMS
+  year: '2021'
+content:
+  sections: "[\n  {\n    \"name\": \"HOW TO THINK ABOUT THE DIFFERENCES BETWEEN FROS\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"AND PRIVATE ARPA PROGRAMS\",\n    \"text\": \"Inside baseball differences between two institutional structures\
+    \ that seem similar from the\\noutside\\nAuthor(s)\"\n  },\n  {\n    \"name\": \"BEN REINHARDT\",\n    \"text\": \"Date\
+    \ Published\\n2021.12.13\\nIt\\u2019s easy to see the difference between ARPA-style programs and Focused Research Organizations\
+    \ as\\nmere semantics. Each structure seeks to achieve similar goals \\u2014 enabling public-good technical work\\nthat\
+    \ would otherwise languish; usually because it is too research-y or creates value that is too hard to\\ncapture for a\
+    \ startup, but requires more engineering effort, collaboration, or scale than academia can\\nhandle (more awesome sci-fi\
+    \ shit). Each structure is focus agnostic \\u2014 capable of going after everything\\nfrom brain-mapping to next generation\
+    \ electronics to climate change. Indeed, the line between them is\\nnebulous: you could come up with dozens of ideas that\
+    \ either structure could enable. Each structure\\nleverages empowered leaders: the CEO of an FRO or the PM of an ARPA\
+    \ program. Despite these\\nsimilarities, it\\u2019s important to distinguish between them because the how matters: some\
+    \ ideas that\\nwould thrive as an ARPA program would wither as an FRO and vice versa. We could think of different\\nideas\
+    \ as being either more FRO shaped or more ARPA shaped (and of course there are many ideas that\\nare neither FRO nor PARPA\
+    \ shaped \\u2014 let\\u2019s not start thinking that everything looks like a nail).\\nIt\\u2019s important to note that\
+    \ the comparable unit of research management is between a single FRO and a\\nsingle ARPA-style program. FROs themselves\
+    \ are program or project-level organizations. I\\u2019ll start by\\ncomparing FROs and ARPA-style programs directly, but\
+    \ it\\u2019s worth noting that PARPA\\u2019s hypothesis is\\nthat it\\u2019s important to start and run multiple ARPA-style\
+    \ programs under a single organizational\\numbrella, while FROs have much more independence.\\nAt a high level, FRO-shaped\
+    \ ideas are ready to focus on execution from day one. ARPA programs require\\nmore path discovery before switching to\
+    \ execution mode. This idea-level difference cashes out in\\nseveral differences in execution.\"\n  },\n  {\n    \"name\"\
+    : \"/28/25, 11:45 PM\",\n    \"text\": \"How to think about the differences between FROs and private ARPA programs\\nhttps://spec.tech/library/fros\\\
+    n1/4\\n\\nOne key difference between ARPA-style programs and FROs is the amount of money involved from day\\none and the\
+    \ shape of funding over time. After a short search period for a core team, FRO-shaped ideas\\nshould be able to effectively\
+    \ deploy ~$10m in the first year or so and ~$50m over the course of several\\nyears. The ability to accelerate so quickly\
+    \ means that the idea needs to be fairly clean cut, with a clear\\nidea of what success means and a strong hypothesis\
+    \ about what work will get you there. PARPA\\nprograms ramp more slowly, from ~$200k over ~six months to ~$5 million over\
+    \ ~18 months to $30m,\\nFRO-level funding, with go/nogo gates between different stages. Most ARPA-style program do aspire\
+    \ to\\nget to FRO levels of funding, but the nature of their activities (more initial uncertainty about goals,\\ncorrect\
+    \ approaches, and feasibility) means that many won\\u2019t get there and even those that will wouldn\\u2019t\\neffectively\
+    \ use that much money effectively from day one.\\nFROs and ARPA-style programs have different org charts. (Org charts\
+    \ matter!) FROs have a core team\\nthat does all of the research design and large chunk of the work, perhaps contracting\
+    \ some execution\\nout. This core team is ideally autonomous from the FRO\\u2019s funding source. In ARPA-style programs\
+    \ the\\n\\u201ccore team\\u201d is a single PM, who coordinates external collaborators doing different projects. These\\\
+    ncollaborators do all of the work and a good chunk of research design. Over time, an ARPA-style program\\ncould internalize\
+    \ work as coordination costs go up, but doing that is not a given. Like funding shapes\\nand other differences, the different\
+    \ structures are meant to address different sorts of work. Distributed\\nwork enables ARPA-style programs to try several\
+    \ tracks in parallel without internal politics: this is\\nimportant because ARPA-style programs involve much more uncertainty\
+    \ about approaches. The\\nexternal work also allows an ARPA-style program to re-factor, re-combine, or prune different\\\
+    napproaches or projects without anybody leaving their home org or being fired. External research can\\ngive ARPA-style\
+    \ programs access to expertise and equipment that would otherwise be hard to hire or\\npurchase. FRO\\u2019s internalized\
+    \ research enables tight iteration loops and complete focus on the project\\nwhich are some of the most important things\
+    \ when success is primarily a matter of execution.\\nA hard truth is that the differences in both funding and org structures\
+    \ of FROs and ARPA-style\\nprograms make it much more appealing to run an FRO, all things held equal. FROs give you both\\\
+    nmore direct control and a larger pool of money to play with sooner. For those of us who just want\\nthere to be more\
+    \ counterfactually impactful work, this incentive bias means that it\\u2019s especially\\nimportant to be honest about\
+    \ which things will make poor FROs but good PARPA programs.\\nTo distill these differences into discriminating questions:\\\
+    n1. Can you describe every step of the process to achieve the goal in executable detail?\"\n  },\n  {\n    \"name\": \"\
+    Is it clear which overall approach to tackle the idea is the right one?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"Does the project need extremely rare equipment or expertise?\",\n    \"text\": \"4. Does the project look like putting\
+    \ together a number of lego pieces into a working system?\\n5. Do you want to explore a number of possible high-level\
+    \ system concepts or general approaches\\nbefore committing to a specific goal? The crux question of program design is\
+    \ when to commit \\u2014\\nFROs need strong conviction that it\\u2019s worthwhile to commit from day one.\\n6. Is part\
+    \ of the impact indirect? Will a chunk of the counterfactual impact come from kicking off a\\ndiscipline, creating a community,\
+    \ or showing that something is possible?\"\n  },\n  {\n    \"name\": \"/28/25, 11:45 PM\",\n    \"text\": \"How to think\
+    \ about the differences between FROs and private ARPA programs\\nhttps://spec.tech/library/fros\\n2/4\"\n  },\n  {\n \
+    \   \"name\": \"Does the idea require doing things at scale?\",\n    \"text\": \"It\\u2019s important to note that most\
+    \ of these comparisons are on a spectrum. I might say \\u201cFROs are\\nindependent organizations\\u201d but sometimes\
+    \ there are porous barriers between them and other\\norganizations: some of the researchers might technically be employees\
+    \ of the funding organization or\\nbe contracted from a more permanent research organization. At the same time, I might\
+    \ say \\u201cARPA-style\\nprograms are distributed\\u201d but it might make sense to build a team to do a specific piece\
+    \ of the work.\\nFROs\\nClear goal from day one\\nTight coupling between work-streams from day one\\nStrong conviction\
+    \ about the right approach at the project level early on\\nMost work done under one organizational roof, outsourcing routine\
+    \ aspects to contractors but\\nnot widely distributing the fundamental research questions.\\nQuickly ramp up to $10-50m\
+    \ range to focus on scalable execution not achievable in existing\\norganizational settings.\\nPARPA Programs\\nMight\
+    \ take 6 months to a year to nail down a goal\\nProjects are initially parallel with coupling increasing over time\\nUnclear\
+    \ about the right approach\\nNaturally leverages existing organizations and forms networks among them to develop new\\\
+    nsystem level ideas, approaches or concepts.\\nThanks to Adam Marblestone for reading and commenting on a draft of this.\"\
+    \n  },\n  {\n    \"name\": \"UNLOCK THE FUTURE\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SUBSCRIBE TO OUR NEWSLETTER\
+    \ TO STAY IN THE LOOP\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DONATE - SPECULATIVE TECHNOLOGIES IS A REGISTERED\
+    \ 501(C)(3)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"/28/25, 11:45 PM\",\n    \"text\": \"How to think about\
+    \ the differences between FROs and private ARPA programs\\nhttps://spec.tech/library/fros\\n3/4\\n\\n\\u00a9 2025 Speculative\
+    \ Technologies.\\nCreated by And\\u2013Now and Anson Yu.\"\n  },\n  {\n    \"name\": \"/28/25, 11:45 PM\",\n    \"text\"\
+    : \"How to think about the differences between FROs and private ARPA programs\\nhttps://spec.tech/library/fros\\n4/4\"\
+    \n  }\n]"
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n   \
+    \ \"page\": 3\n  }\n]"

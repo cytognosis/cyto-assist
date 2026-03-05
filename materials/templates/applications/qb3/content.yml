@@ -1,0 +1,56 @@
+# QB3 Early-Stage Mentoring Application — Content
+#
+# Template: _template.yml (QB3 Early-Stage Mentoring Application)
+# Submission: Winter 2026 (2025-10-10)
+# Applicant: Shahin Mohammadi / Cytognosis Foundation
+
+elevator_pitch:
+  five_words: "Detecting disease before symptoms emerge"
+  pitch: |
+    Cytognosis builds AI-powered noninvasive sensors that detect cellular disease signatures before people become patients.
+
+    To achieve this, we're building two synergistic components:
+
+    1. Multimodal AI maps early cellular/molecular disease drivers (think RDoC, not DSM - biology, not just symptoms)
+
+    2. Noninvasive sensors measure these biomarkers at scale (blood draws, not brain biopsies)
+
+    First focus: Cross-neuropsychiatric disorders - retiring symptom-based diagnostics with molecular precision.
+
+    The moonshot: Catch disease 5-10 years earlier when prevention actually works, making it accessible to everyone through noninvasive monitoring
+
+contact:
+  name:
+    first: "Shahin"
+    last: "Mohammadi"
+  email: "mohammadi@cytognosis.org"
+  phone: "(765) 409-1883"
+
+company:
+  company_name: "Cytognosis Foundation"
+  location:
+    city: "San Carlos"
+    state: "CA"
+  incorporated: "Yes"
+  team_description: |
+    Two decades of pioneering models at the frontier of mathematics and biology across academia (Purdue, MIT, and Broad Institute) and industry (insitro and GenBio AI), recently made the leap to start my own hybrid nonprofit/PBC to balance purpose and profit to bring early diagnostics to patients everywhere.
+
+technology:
+  problem: |
+    To both identify early cellular signatures and noninvasive sensors to monitor them to allow early cellular diagnostics ("Cytognosis") years before clinical symptoms emerge.
+  customer: |
+    Everyone—before they become patients.
+    We're not targeting diseased populations; we're catching warning signs in healthy people when they can easily be addressed, before disease defines their identity. By the time someone is an "Alzheimer's patient," they've had years of brain damage. We detect cellular dysfunction years earlier when prevention works.
+  solution: |
+    We are building technologies for mapping (Cytoverse) and tracking (Cytoscope) of health states. On the former side, we are building multimodal foundation models, using many of the recent single-cell atlases that we have been leading in the past few years. The second part, however, is much less behind as even if we have the best markers, if we can't measure them noninvasively, we haven't really solved any problems. Recent emergence of PET tracer imaging and MRS technologies that allow measurement of specific molecular readouts being unique hopes for creating new datasets that allows us to bridge noninvasive imaging modalities with detailed molecular readouts.
+  has_data: "No"
+  differentiator: |
+    We are targeting two separate sensing end-points: extending continuous glucose-sensing techniques to other disease relevant markers, and building noninvasive consumer-grade technologies that allows us to quantify molecular/cellular readouts from the brain. Neither of these areas are explored in any other companies so far that I am aware of, unfortunately.
+  ip_situation: |
+    Currently have not filled any IPs.
+  deck: null
+
+needs:
+  mentor_needs: |
+    Most of my personal work has been on building models to identify biomarkers, but the missing gap is to complement these with noninvasive sensing devices that allows us to measure and track these markers in individuals. My hope in the internship program is to develop and derisk the sensing technology part, and envision a path forward for its manufacturing.
+  referral_source: "Word of Mouth"

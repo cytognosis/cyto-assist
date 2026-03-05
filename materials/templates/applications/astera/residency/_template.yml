@@ -1,0 +1,290 @@
+# Astera Institute Residency — Application Template
+
+## Metadata
+category: application
+organization: Astera Institute
+program: Residency Program
+cohort: Fall 2026
+deadline: "2026-04-19"
+start_date: "2026-08-17"
+duration: "12-18 months"
+compensation: "$125K-$250K (W2)"
+location: "Emeryville, CA (in-person required)"
+visa_sponsorship: true
+relocation_support: true
+url: "https://jobs.ashbyhq.com/astera/8af55a7d-c8f5-4dc1-8ce8-a21c14b3dbb0"
+program_page: "https://astera.org/residency/"
+last_verified: "2026-03-03"
+source_format: ashby_json
+
+## Tracks (select one or more)
+tracks:
+  - id: neuro-ai
+    label: "Neuroscience and Artificial Intelligence"
+    description: "Ambitious projects at the interface of neuroscience and AI — deepen understanding of the biological brain, enable more powerful/robust/interpretable artificial systems"
+    examples:
+      - "Mathematical frameworks for learning beyond gradient descent"
+      - "Computational frameworks for large-scale neuroscience datasets"
+      - "Representation/structure learning for causal inference"
+      - "Bottom-up brain modeling grounded in connectomics"
+      - "Neurally inspired models of perception or intelligence"
+      - "New techniques for measuring/manipulating neural circuits at scale"
+      - "Cross-disciplinary efforts linking neural mechanisms and ML architectures"
+  - id: life-sciences
+    label: "Life Sciences and Open Science"
+    description: "Ambitious projects accelerating progress in life science with clear real-world utility and impact"
+    examples:
+      - "New technologies/platforms for AI-ready missing data generation in life science"
+      - "Infrastructure/tools to make research sharing more dynamic, machine-readable, reusable"
+      - "Computational tools for data-driven decision-making in science funding"
+  - id: other
+    label: "Other"
+    description: "Projects that don't fit neatly into above tracks but align with Astera's mission"
+
+## Application Process
+stages:
+  - stage: 1
+    name: "Initial Application"
+    description: "Basic info + 2-min video + 8 questions (≤1000 chars each)"
+  - stage: 2
+    name: "Introductory Conversation"
+    description: "15-25 minute call with Astera team"
+  - stage: 3
+    name: "Detailed Project Proposal"
+    description: "Full proposal with preliminary budget and milestones"
+  - stage: 4
+    name: "Executive Conversations"
+    description: "Deeper discussions on scope, budget, milestones"
+  - stage: 5
+    name: "References"
+  - stage: 6
+    name: "Offers Extended"
+    timeline: "Early June 2026"
+
+## Fields
+
+### Section 1: General Questions
+
+fields:
+  - id: name
+    title: "Name of primary applicant"
+    type: string
+    required: true
+
+  - id: pronouns
+    title: "Pronouns of primary applicant"
+    type: string
+    required: false
+
+  - id: email
+    title: "Email of primary applicant"
+    type: email
+    required: true
+
+  - id: resume
+    title: "Resume of primary applicant"
+    type: file
+    required: true
+
+  - id: location
+    title: "Location of primary applicant"
+    type: location
+    required: false
+
+  - id: relocate
+    title: "Are all applicants willing to relocate to the Bay Area, if selected for this program?"
+    type: select
+    options: ["Yes", "No"]
+    required: true
+
+  - id: work_authorization
+    title: "Are all applicants legally authorized to work in the US?"
+    type: boolean
+    required: true
+
+  - id: visa_sponsorship
+    title: "Will any applicants require visa sponsorship?"
+    type: boolean
+    required: true
+    note: "Astera will consider sponsorship of relevant visas for qualified applicants."
+
+  - id: accommodations
+    title: "Reasonable accommodations are available to qualified applicants with disabilities throughout the application process. If you may need assistance or accommodation to complete any part of the process, please let us know here."
+    type: string
+    required: false
+
+  - id: referral
+    title: "How did you hear about us? And if someone recommended you, please add that here, too."
+    type: string
+    required: false
+
+  - id: team_info
+    title: "Please add names, pronouns, emails and locations of co-founders/other team members here, as well as any other notes regarding basic information of the team"
+    type: long_text
+    required: false
+
+  - id: team_resumes
+    title: "Please upload as 1 consolidated pdf file resumes for co-founders here"
+    type: file
+    required: false
+
+### Section 2: Residency Application Questions
+section_instructions: "All questions other than the first two have a 1000-character limit. If you don't know the answer to a question or it doesn't seem applicable to your circumstances, say that. Aim for clear, concise answers – bullet points are fine."
+
+fields:
+  - id: track_selection
+    title: "To what track(s) are you applying?"
+    type: multi_select
+    options: ["Neuroscience and Artificial Intelligence", "Life Sciences and Open Science", "Other"]
+    required: true
+    note: "Review the JD for details of specific interest within each track."
+
+  - id: video
+    title: "Video: Who you are and what you are building"
+    type: file
+    required: true
+    constraints:
+      max_duration: "2 minutes"
+    note: "Simple shot with the team, no additional production needed."
+
+  - id: project_summary
+    title: "Describe what you intend to create during your residency in 2 sentences or less"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 300
+    maps_to_framework: "heilmeier_q1"
+    shared_question_group: "problem_gap_innovation"
+
+  - id: technical_approach
+    title: "Technically speaking, how will you achieve this? What steps, tools, and resources are required?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    maps_to_framework: "heilmeier_q3"
+    shared_question_group: "technical_approach"
+
+  - id: team_fit
+    title: "Why are you the right person/team to work on this project?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    shared_question_group: "team_capability"
+
+  - id: conviction
+    title: "How did you develop conviction that this project is worth your effort? How much progress have you made?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    shared_question_group: "conviction_progress"
+
+  - id: users
+    title: "Who do you envision using your residency's outputs, and how?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    maps_to_framework: "heilmeier_q4"
+    shared_question_group: "impact_who_cares"
+
+  - id: why_astera
+    title: "Why is the Astera residency the right fit for this work? Why isn't this problem likely to be adequately addressed (at this stage) by academia, government, or industry?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    maps_to_framework: "fro_justification"
+    shared_question_group: "why_fro_not_startup"
+
+  - id: scope
+    title: "Which parts of your vision are in scope for a 12-18 month residency, and which are intentionally out of scope?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    shared_question_group: "scope_milestones"
+
+  - id: open_science
+    title: "How do you plan to approach producing open, public-domain outputs during the residency, and what considerations or tradeoffs do you anticipate?"
+    type: long_text
+    required: true
+    constraints:
+      max_characters: 1000
+    maps_to_framework: "openness_commitment"
+    shared_question_group: "openness"
+
+  - id: saved_responses
+    title: "Have you saved a copy of your responses elsewhere to refer back to if you move forward?"
+    type: select
+    options: ["Yes"]
+    required: false
+
+### Section 3: Links
+
+fields:
+  - id: linkedin
+    title: "LinkedIn"
+    type: url
+    required: true
+
+  - id: twitter
+    title: "X (Twitter)"
+    type: url
+    required: false
+
+  - id: github
+    title: "Github"
+    type: url
+    required: false
+
+  - id: website
+    title: "Website or Portfolio"
+    type: url
+    required: false
+
+  - id: other_link
+    title: "Other"
+    type: url
+    required: false
+
+## Evaluation Criteria
+# From the main residency page (astera.org/residency/):
+criteria:
+  - "Mission alignment with Astera's vision for open science and public goods"
+  - "Technical ambition and feasibility"
+  - "Team capability and track record"
+  - "Clear 12-18 month deliverables"
+  - "Open science commitment"
+  - "Why not academia/government/industry — structural justification"
+
+## Open Science Expectations
+# "We expect residents to publish openly and often, producing accessible outputs and
+#  sharing learnings — including what didn't work — so others can build on the full
+#  arc of the work. That said, we recognize that some projects have future commercial
+#  potential, and we're happy to work through any tensions between openness and those
+#  interests during the application process."
+
+## Cytognosis Pitch Angle
+# Full analysis: materials/contents/grants/astera/astera-institute-reference.md
+#
+# PRIMARY Track: Life Sciences and Open Science
+# Align with: "New technologies, workflows, or platforms for generation of
+#  multidimensional, information-rich, AI-ready missing data in life science"
+# Leverage: Open science commitment, FRO model justification, continuous spectrum mapping
+#
+# SECONDARY Track: Neuroscience and Artificial Intelligence
+# Align with: "Representation/structure learning for causal inference" and
+#  "Computational frameworks for analyzing and interpreting large-scale datasets"
+# Leverage: Cytoverse as causal health coordinate system, Cytonome on-device AI
+#
+# KEY DIFFERENTIATOR: Both Astera and Cytognosis are 501(c)(3) foundations
+# building open public goods. Cytognosis's Apache 2.0/CC BY 4.0 licensing
+# directly matches Astera's open science policy. South San Francisco location
+# makes in-person Emeryville requirement trivial.
+#
+# NOTE: Astera's 2025-2026 strategic shift to neuroscience/neuro-AI makes
+# dual-track application stronger. Frame Cytoverse's continuous biological
+# axes as "representation learning for causal inference" in health.

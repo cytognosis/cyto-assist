@@ -1,0 +1,307 @@
+schema_version: 1.0.0
+# BioCypher schema configuration for Cytognosis Knowledge Graph
+# Biolink Model 3.2.1 compliant
+
+# NODE TYPES
+gene:
+  represented_as: node
+  preferred_id: ensembl
+  label_in_input: gene
+  properties:
+    id: str
+    symbol: str
+    name: str
+
+transcript:
+  represented_as: node
+  preferred_id: ensembl
+  label_in_input: transcript
+  properties:
+    id: str
+
+protein:
+  represented_as: node
+  preferred_id: ensembl
+  label_in_input: protein
+  properties:
+    id: str
+    uniprot_id: str
+
+disease:
+  represented_as: node
+  preferred_id: mondo
+  label_in_input: disease
+  properties:
+    id: str
+    name: str
+
+chemical:
+  represented_as: node
+  preferred_id: pubchem
+  label_in_input: chemical
+  properties:
+    id: str
+    name: str
+
+variant:
+  represented_as: node
+  preferred_id: rsid
+  label_in_input: variant
+  properties:
+    id: str
+    chromosome: str
+    position: int
+    reference: str
+    alternate: str
+
+phenotype:
+  represented_as: node
+  preferred_id: hpo
+  label_in_input: phenotype
+  properties:
+    id: str
+    name: str
+
+clinical_trial:
+  represented_as: node
+  preferred_id: pharmaproject_id
+  label_in_input: clinical_trial
+  properties:
+    id: str
+    title: str
+
+publication:
+  represented_as: node
+  preferred_id: pmid
+  label_in_input: publication
+  properties:
+    id: str
+    title: str
+    year: int
+
+author:
+  represented_as: node
+  preferred_id: orcid
+  label_in_input: author
+  properties:
+    id: str
+    name: str
+
+pathway:
+  represented_as: node
+  preferred_id: reactome
+  label_in_input: pathway
+  properties:
+    id: str
+    name: str
+
+biological_process:
+  represented_as: node
+  preferred_id: go
+  label_in_input: biological_process
+  properties:
+    id: str
+    name: str
+
+molecular_function:
+  represented_as: node
+  preferred_id: go
+  label_in_input: molecular_function
+  properties:
+    id: str
+    name: str
+
+cellular_component:
+  represented_as: node
+  preferred_id: go
+  label_in_input: cellular_component
+  properties:
+    id: str
+    name: str
+
+anatomy:
+  represented_as: node
+  preferred_id: uberon
+  label_in_input: anatomy
+  properties:
+    id: str
+    name: str
+
+cell_type:
+  represented_as: node
+  preferred_id: cl
+  label_in_input: cell_type
+  properties:
+    id: str
+    name: str
+
+exposure:
+  represented_as: node
+  preferred_id: mesh
+  label_in_input: exposure
+  properties:
+    id: str
+    name: str
+
+# EDGE TYPES
+interacts_with:
+  represented_as: edge
+  label_in_input: interacts_with
+  source: protein
+  target: protein
+
+targets:
+  represented_as: edge
+  label_in_input: targets
+  source: chemical
+  target: protein
+
+indication:
+  represented_as: edge
+  label_in_input: indication
+  source: chemical
+  target: disease
+
+contraindication:
+  represented_as: edge
+  label_in_input: contraindication
+  source: chemical
+  target: disease
+
+associated_with:
+  represented_as: edge
+  label_in_input: associated_with
+  source: gene
+  target: disease
+
+has_phenotype:
+  represented_as: edge
+  label_in_input: has_phenotype
+  source: disease
+  target: phenotype
+
+expressed_in:
+  represented_as: edge
+  label_in_input: expressed_in
+  source: gene
+  target: anatomy
+
+participates_in:
+  represented_as: edge
+  label_in_input: participates_in
+  source: gene
+  target: pathway
+
+has_function:
+  represented_as: edge
+  label_in_input: has_function
+  source: gene
+  target: molecular_function
+
+involved_in:
+  represented_as: edge
+  label_in_input: involved_in
+  source: gene
+  target: biological_process
+
+located_in:
+  represented_as: edge
+  label_in_input: located_in
+  source: gene
+  target: cellular_component
+
+side_effect:
+  represented_as: edge
+  label_in_input: side_effect
+  source: chemical
+  target: phenotype
+
+variant_in:
+  represented_as: edge
+  label_in_input: variant_in
+  source: variant
+  target: gene
+
+pathogenic_for:
+  represented_as: edge
+  label_in_input: pathogenic_for
+  source: variant
+  target: disease
+
+parent_of:
+  represented_as: edge
+  label_in_input: parent_of
+  source:
+    [
+      disease,
+      pathway,
+      anatomy,
+      phenotype,
+      biological_process,
+      molecular_function,
+      cellular_component,
+    ]
+  target:
+    [
+      disease,
+      pathway,
+      anatomy,
+      phenotype,
+      biological_process,
+      molecular_function,
+      cellular_component,
+    ]
+
+translates_to:
+  represented_as: edge
+  label_in_input: translates_to
+  source: gene
+  target: protein
+
+transcribes_to:
+  represented_as: edge
+  label_in_input: transcribes_to
+  source: gene
+  target: transcript
+
+chemical_binds:
+  represented_as: edge
+  label_in_input: chemical_binds
+  source: chemical
+  target: protein
+
+investigated_in:
+  represented_as: edge
+  label_in_input: investigated_in
+  source: chemical
+  target: clinical_trial
+
+trial_studies:
+  represented_as: edge
+  label_in_input: trial_studies
+  source: clinical_trial
+  target: disease
+
+pharmacogenomic:
+  represented_as: edge
+  label_in_input: pharmacogenomic
+  source: variant
+  target: chemical
+
+l2g_prediction:
+  represented_as: edge
+  label_in_input: l2g_prediction
+  source: variant
+  target: gene
+
+mentioned_in:
+  represented_as: edge
+  label_in_input: mentioned_in
+  source: [chemical, disease, gene, variant, protein]
+  target: publication
+
+authored_by:
+  represented_as: edge
+  label_in_input: authored_by
+  source: publication
+  target: author

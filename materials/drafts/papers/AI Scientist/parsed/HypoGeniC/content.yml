@@ -1,0 +1,1279 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/HypoGeniC.pdf
+
+citation:
+  year: '2024'
+content:
+  abstract: 'AI holds promise for transforming scientific
+
+    processes, including hypothesis generation.
+
+    Prior work on hypothesis generation can be
+
+    broadly categorized into theory-driven and data-
+
+    driven approaches. While both have proven
+
+    effective in generating novel and plausible hy-
+
+    potheses, it remains an open question whether
+
+    they can complement each other. To address
+
+    this, we develop the first method that combines
+
+    literature-based insights with data to perform
+
+    LLM-powered hypothesis generation. We ap-
+
+    ply our method on five different datasets and
+
+    demonstrate that integrating literature and data
+
+    outperforms other baselines (8.97% over few-
+
+    shot, 15.75% over literature-based alone, and
+
+    3.37% over data-driven alone). Additionally,
+
+    we conduct the first human evaluation to as-
+
+    sess the utility of LLM-generated hypotheses
+
+    in assisting human decision-making on two
+
+    challenging tasks: deception detection and AI
+
+    generated content detection. Our results show
+
+    that human accuracy improves significantly
+
+    by 7.44% and 14.19% on these tasks, respec-
+
+    tively. These findings suggest that integrat-
+
+    ing literature-based and data-driven approaches
+
+    provides a comprehensive and nuanced frame-
+
+    work for hypothesis generation and could open
+
+    new avenues for scientific inquiry.
+
+    1'
+  sections: "[\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"\\u201cIt is the theory that decides what can be\\nobserved.\\\
+    u201d\\n\\u2014Albert Einstein\\nLarge language models (LLMs) excel at syn-\\nthesizing information and hold promise for\
+    \ trans-\\nforming hypothesis generation, a critical yet un-\\nderstudied step in scientific discoveries. Many re-\\ncent\
+    \ studies recognize this potential and use LLMs\\nto generate hypotheses (e.g., Yang et al., 2024b;\\nBatista and Ross,\
+    \ 2024). We broadly categorize\\nthem into theory-driven and data-driven methods.\\n*Equal contributions.\\nOn one hand,\
+    \ theory-driven approaches leverage\\nLLMs to review existing literature and generate\\nnovel hypotheses/ideas (Yang et\
+    \ al., 2024b; Baek\\net al., 2024). These methods have shown promising\"\n  },\n  {\n    \"name\": \"results in terms\
+    \ of the hypotheses\\u2019 novelty, valid-\",\n    \"text\": \"ity, and usefulness to researchers, while remain-\\ning\
+    \ grounded in established human knowledge (Si\\net al., 2024). However, they come with notable lim-\\nitations: they require\
+    \ high-quality literature, strug-\\ngle to adapt to new data, and lack empirical support.\\nData-driven approaches, on\
+    \ the other hand, propose\\nhypotheses by discovering patterns in data (Zhou\\net al., 2024; Qiu et al., 2024). These\
+    \ hypotheses are\\ndata-adaptive and can exhibit strong performance\\nin explaining the data. However, they could be too\\\
+    noverly tailored to the specific datasets used, which\\ncan hinder their generalizability.\\nWe hypothesize that theory\
+    \ can guide the discov-\\nery from data and propose to integrate literature-\\nbased and data-driven hypothesis generation\
+    \ (see\\nFigure 1). For the data-driven component, we use\\nHYPOGENIC as the backbone (Zhou et al., 2024).\\nHYPOGENIC\
+    \ leverages an LLM to initialize hy-\\npotheses from a small number of examples and\\nthen updates them iteratively to\
+    \ improve the qual-\\nity of hypotheses. To enhance this process with\\nliterature insights, we introduce a literature-based\\\
+    nhypothesis agent. This agent interacts with the\\ndata-driven hypothesis agent (HYPOGENIC), refin-\\ning and maintaining\
+    \ a shared pool of hypotheses\\nthrough continuous collaboration, ensuring that the\\nhypotheses benefit from both data-driven\
+    \ adaptabil-\\nity and the grounding of existing scientific knowl-\\nedge. In addition to the refinement approach, we\\\
+    nalso propose to directly unionize literature-based\\nand data-driven hypotheses.\\nTo comprehensively evaluate these\
+    \ hypotheses,\\nwe conduct automatic and human evaluation to as-\\nsess their generalizability, utility, and novelty.\
+    \ We\\napply our method to address research questions in\\nsocial sciences: deception detection, AI generated\\narXiv:2410.17309v3\
+    \  [cs.AI]  8 Jan 2025\\n\\nFigure 1: The literature-based approach (A) leverages existing human knowledge to generate\
+    \ hypotheses but\\nstruggles to adapt to new data and lacks empirical grounding. The data-driven approach (B) relies on\
+    \ large datasets\\nto generate hypotheses, enabling adaptation to diverse scenarios but risking overfitting. The literature\
+    \ + data\\napproach (C) combines the strengths of both, grounding hypotheses in human knowledge while incorporating\\\
+    nempirical data to enhance adaptiveness. See algorithmic details in \\u00a7 2.\\ncontent (AIGC) detection, mental stress\
+    \ detection,\\nand persuasive argument prediction. Automatic\\nevaluation results show that integrating literature\\nand\
+    \ data outperforms other baselines: 8.97% over\\nfew-shot, 15.75% over literature-based alone, and\\n3.37% over data-driven\
+    \ alone in accuracy on out-of-\\ndistribution datasets, a measure of generalizability.\\nMoreover, we conduct the first\
+    \ study to assess\\nthe utility of AI-generated hypotheses in improving\\nhuman decision-making and show that our gener-\\\
+    nated hypotheses improve human accuracy by 7.44%\\nand 14.19% on deception detection and AIGC de-\\ntection. Additionally,\
+    \ we find that literature-based\\nand data-driven hypotheses complement each other,\\nas one set often contains novel\
+    \ information not\\nfound in the other set.\\nIn sum, we make the following contributions:\\n\\u2022 We propose the first\
+    \ approach to using both lit-\\nerature information and data for LLM-powered\\nhypothesis generation.\\n\\u2022 We conduct\
+    \ automatic evaluation to assess the\\nutility of the generated hypotheses in improving\\nLLM predictions. Experiments\
+    \ on five datasets\\ndemonstrate the effectiveness of our approach.\\n\\u2022 We conduct the first human evaluation to\
+    \ test the\\nutility of LLM-generated hypotheses and demon-\\nstrate consistent improvements on two challeng-\\ning tasks.\\\
+    nThe\\ncode\\nand\\ndata\\nare\\navailable\\nat\\nhttps://github.com/ChicagoHAI/\\nhypothesis-generation.\\n2\"\n  },\n\
+    \  {\n    \"name\": \"Methods\",\n    \"text\": \"We formulate the problem of hypothesis generation\\nas follows. Assuming\
+    \ that we have access to liter-\\nature L and observational data D that are relevant\\nto a research question q. Then,\
+    \ we want to develop\\nan AI-powered algorithm f with model M such\\nthat we can generate high-quality hypotheses for\\\
+    nthe research question q, i.e., H = fM(q, L, D).\\nExample research questions include what makes an\\nargument persuasive\
+    \ and what signs are indicative\\nof AI-generated texts. In this work, we consider\\nresearch questions that can be formulated\
+    \ as classi-\\nfication tasks, so we use q and task interchangeably.\\n2.1\\nLiterature-Based Hypothesis Generation\\\
+    nFor the LITERATURE-ONLY method, we start by\\npicking a set of papers P = {p1, p2, ..., pm} for q\\nfrom related papers\
+    \ on Semantic Scholar or Google\\nScholar. We also choose from papers that cited\\nthe original datasets for each task.\
+    \ Subsequently,\\nwe use S2ORC-doc2json to convert the raw PDF\\nversions of the papers to a corpus of JSON files (Lo\\\
+    net al., 2020). We denote the converted papers as\\nC = {doc2json(p) : p \\u2208P}. Passing the full texts\\nof all these\
+    \ papers to a language model would likely\\nexceed its maximum context length. Moreover, we\\nwant to generate hypotheses\
+    \ from the key findings\\nof the relevant papers because some contents, such\\nas technical details, may not help significantly\
+    \ but\\ndistract the LLM. Therefore, we develop a paper\\nsummarizer MS to generate paper summaries S =\\n{MS(pc) : pc\
+    \ \\u2208C} (throughout the paper, we use\\nsubscripts to indicate M with different prompts).\\nLastly, we instruct language\
+    \ models to generate\\nhypotheses HL = MG(S) based on the generated\\npaper summaries, with an emphasis on usefulness\\\
+    nfor carrying out the specific tasks that our literature\\ncorpus focuses on.\\nIn addition to our own implementation,\
+    \ we use\\ncommercial ones such as NOTEBOOKLM (Google,\\n2024) and HYPERWRITE (OthersideAI, 2024) as\\nstrong baselines.\\\
+    n\\n2.2\\nData-Driven Hypothesis Generation\\nOur data-driven hypothesis generation adopts HY-\\nPOGENIC in Zhou et al.\
+    \ (2024). Here we give a\\nbrief overview. Suppose we have a set of obser-\\nvational data in the form of input-label\
+    \ pairs, i.e.,\\nD = {(x1, y1), ..., (xn, yn)}. During the initial-\\nization stage of HYPOGENIC, a generation agent\\\
+    nMG is prompted with a set of initial data instances\\nDinit \\u2282D and asked to generate initial hypotheses\\nH0\\\
+    nD = MG(Dinit). Then, for each of the initial hy-\\npothesis h and for every example (xi, yi) \\u2208Dinit,\\nh is used\
+    \ to prompt an inference agent MI to make\\na prediction \\u02c6yi = MI(xi, h). The initial reward of\\neach hypothesis\
+    \ is computed using:\\nrt(h) := Acc(h, Xt\\nh) + \\u03b1\\ns\\nlog t\\n|Xt\\nh|,\\nAcc(h, X) :=\\nP\\n(xi,yi)\\u2208X\
+    \ 1(yi = MI(xi, h))\\n|X|\\n,\\n(1)\\nwhere rt is the reward function inspired by the\\nupper confidence bound (UCB) algorithm\
+    \ (Auer,\\n2003), Xt\\nh is the set of examples being used to eval-\\nuate hypothesis h up to time t, and \\u03b1 is the\
+    \ reward\\ncoefficient that controls the exploration term of the\\nreward function. We also initialize W = \\u2205, where\\\
+    nW keeps track of the wrongly predicted examples.\\nIn the update stage at time step t + 1, we take\\n(xt+1, yt+1) \\\
+    u2208D, and the top k high-reward hy-\\npotheses. For each h of the selected hypotheses,\\nwe prompt MI to make a prediction\
+    \ MI(xt+1, h).\\nThe accuracy and reward of the k hypotheses are\\nupdated using Eq. 1. Among the k hypotheses, if\\nat\
+    \ least whyp predicted wrong, We add the example\\nto W. If |W| \\u2265wmax, a set of new hypotheses\\nHW = MG(W) is generated\
+    \ and added to Ht+1\\nD .\\nThen the top Hmax hypotheses are kept, and W\\nis reset to \\u2205. After all n examples are\
+    \ visited, we\\ndenote the final hypothesis bank as HD.\\n2.3\\nIntegration of Literature-based and\\nData-driven Hypotheses\\\
+    nOne main contribution of our work is proposing\\nthe first approach to integrate literature-based and\\ndata-driven hypothesis\
+    \ generation so that we can\\neffectively leverage the strengths of each approach,\\nincreasing the generalizability and\
+    \ utility of gener-\\nated hypotheses. We consider two strategies.\\nRefinement of literature-based hypotheses.\\nHYPOREFINE\
+    \ integrates paper summaries S from\\n\\u00a7 2.1 with HYPOGENIC. In the initialization stage,\\na generation agent MG\
+    \ is asked to generate ini-\\ntial hypotheses based on both a set of initial ex-\\namples and paper summaries, given by\
+    \ H0\"\n  },\n  {\n    \"name\": \"L+D =\",\n    \"text\": \"MG(S, Dinit).\\nIn the update stage, we propose an iterative\
+    \ re-\\nfinement approach to integrate patterns from data\\nand key findings from literature into new hypothe-\\nses.\
+    \ Specifically, each time HYPOGENIC generates\\na set of new hypotheses HW, these hypotheses are\\nrefined multiple rounds\
+    \ by a data-driven refinement\\nagent and a literature-based refinement agent. Take\\nMR as the refinement agent, each\
+    \ time HW is\\ngenerated from the wrong examples pool W, it is\\niteratively refined as follows:\\nHi\\nW =\\n(\\nMR(Hi\\\
+    u22121\"\n  },\n  {\n    \"name\": \"W , S)\",\n    \"text\": \"if i mod 2 = 0\\nMR(Hi\\u22121\"\n  },\n  {\n    \"name\"\
+    : \"W , W)\",\n    \"text\": \"if i mod 2 = 1.\\nAfter Nrefine rounds of refinement, the final hypoth-\\nesis bank HNrefine\\\
+    nW\\nis fed back to the HYPOGENIC\\npipeline as HW.\\nThe reward function and update process for the\\nhypothesis bank\
+    \ Ht\\nL+D remain consistent with\\nthose of the original HYPOGENIC.\\nUnion and redundancy elimination.\\nAs the re-\\\
+    nward function of HYPOGENIC focuses only on the\\nhypotheses\\u2019 performance on the datasets at hand,\\nliterature-based\
+    \ hypotheses are sometimes under-\\nvalued during the update stage. On occasions they\\ncan even be replaced by hypotheses\
+    \ that have es-\\npecially good performances on data but are not\\nnecessarily generalizable on real-world tasks. To\\\
+    ncounter this issue, we use a union approach to\\ncombine literature-based and data-based hypothe-\\nses. We first generate\
+    \ two hypothesis banks: one\\nliterature-based hypothesis bank HL and the other\\nbank from HD or HL+D, using HYPOGENIC\
+    \ or\\nHYPOREFINE, respectively. Then we build a re-\\ndundancy checker to remove hypotheses that ex-\\npress overly similar\
+    \ or repeating information in\\neach bank. Lastly, we construct the final hypothesis\\nbank of size Hmax by randomly choosing\
+    \ Hmax\\n2\\nhy-\\npotheses from the literature-based hypothesis bank\\nand adding the top Hmax\\n2\\nhypotheses from\
+    \ the other\\nhypothesis bank based on training accuracies. For\\ndetailed information of the implementation, please\\\
+    nrefer to Appendix B.3.\\n3\\nExperiments\\nIn this section, we introduce our evaluation frame-\\nwork and the tasks to\
+    \ operationalize it.\\n\\n3.1\\nEvaluation Framework\\nFormally evaluating hypotheses requires rigorous\\nprotocols and\
+    \ vast amounts of resources. In this\\nwork, we mainly evaluate our generated hypothe-\\nses along two dimensions: utility\
+    \ and novelty. We\\nperform both automatic and human evaluations to\\nshow that our generated hypotheses can help mod-\\\
+    nels and humans in challenging real-world classifi-\\ncation tasks and bring novel information.\\nAutomatic evaluation\
+    \ on out-of-distribution\\n(OOD) and in-distribution (IND) datasets and\\ncross-model inference.\\nSince we work with\
+    \ clas-\\nsification tasks, a natural way of evaluating the\\nhypotheses is prompting the LLMs to do inference\\nwith\
+    \ the hypotheses. For all methods that generate\\nhypotheses H, with every test example (x, y), we\\nprompt MI to first\
+    \ extract the most relevant hy-\\npotheses to the example and make inference using\\nthe hypotheses, denoted as MI(H,\
+    \ x). For detailed\\ninformation about the prompts, see Appendix A.\\nThen we compute Acc(H, Dtest), defined in eq. 1,\\\
+    nfor a held-out set Dtest. For each task, we report\\naverage accuracy and F1 scores on held-out OOD\\nand IND sets for\
+    \ 5 different random seeds. Since\\nwe are most interested in the generalizability of the\\ngenerated hypotheses, we focus\
+    \ on performance on\\nthe OOD set in the main paper.\\nIn addition to predicting on out-of-distribution\\ndatasets, we\
+    \ test our hypotheses\\u2019 generalizability\\nby taking the hypotheses generated by one model\\nand performing inference\
+    \ with another model.\\nHuman evaluation on utility and novelty.\\nWe\\ndesign human studies to assess the practical utility\\\
+    nof the generated hypotheses on Deception Detec-\\ntion and AIGC Detection. In addition, we evalu-\\nate the perceived\
+    \ clarity, novelty, and plausibility\\nthrough surveys. Screenshots and details of the\\nstudies are in Appendix C. We\
+    \ pay participants at\\nan average hourly rate of $12.\\nHuman Study I: Utility in human decision-\\nmaking. We recruit\
+    \ 60 Prolific participants and\\nrandomly assign them into experimental and con-\\ntrol groups. The control group performs\
+    \ the task\\nwithout hypotheses, while the experiment group is\\ngiven a set of three generated hypotheses to com-\\nplete\
+    \ the same task. Specifically, each participant\\nis randomly assigned 14 instances, and we include\\nattention check\
+    \ questions to ensure the quality of\\nthe collected responses. We evaluate the practical\\nutility of our generated hypotheses\
+    \ by comparing\\nthe performance of the two groups.\\nWe pick the hypotheses based on their impact\\non performance in\
+    \ an ablation setting. Specifically,\\nwe choose the top three hypotheses that cause the\\ngreatest drop in performance\
+    \ when removed from\\nthe hypotheses pool during multi-hypothesis in-\\nference. In addition, to motivate participants\
+    \ to\\nperform at their best, we offer a bonus of $0.1 for\\neach correctly predicted instance.\\nAt the end of the study,\
+    \ participants in the exper-\\niment group are also asked to give overall ratings\\nand an assessment of the given hypotheses.\
+    \ There\\nare five scales: \\u201cNot at all helpful\\u201d, \\u201cSlightly help-\\nful\\u201d, \\u201cModerately helpful\\\
+    u201d, \\u201cVery helpful\\u201d, and\\n\\u201cExtremely helpful\\u201d.\\nHuman study II: Clarity, novelty, and plausi-\\\
+    nbility.\\nWe recruit 30 participants with graduate-\\nlevel degrees in social sciences from prolific.com\\nto evaluate\
+    \ hypotheses generated by HYPOREFINE,\\nNOTEBOOKLM, and HYPERWRITE for Deception\\nDetection. Using a 5-point Likert scale,\
+    \ partici-\\npants assess each hypothesis along three dimen-\\nsions: clarity, novelty, and plausibility. See details\\\
+    nin Appendix C.2.\\nHuman study III: Novelty and nuance.\\nTo com-\\npare data-driven hypotheses and literature-driven\\\
+    nhypotheses, we present one hypothesis of each type\\nto participants and ask them to judge whether the\\nsecond hypothesis\
+    \ provides meaningfully novel in-\\nformation that is not covered in the first hypothesis.\\nWe sample 50 pairs of hypotheses\
+    \ (h1, h2), one\\nfrom literature-based and one from data-driven,\\nwith duplications removed within each group. We\\\
+    nrecruit 10 Prolific participants to annotate whether\\nh2 provides new information to h1 for each pair.\\nEach participant\
+    \ is randomly assigned to annotate\\n15 pairs. For each pair, we take the majority vote\\nto determine the final novelty\
+    \ label.\\n3.2\\nTasks\\nWe consider four tasks in social sciences.\\nDeception Detection is a widely studied problem\\\
+    nin psychology and other social sciences (Granhag\\nand Vrij, 2005). We use the dataset introduced by\\nOtt et al. (2013)\
+    \ (DECEPTIVE REVIEWS), which\\nconsists of 800 genuine hotel reviews and 800 fake\\nhotel reviews, as our IND dataset.\
+    \ For the OOD\\ndataset, we use hotel reviews from different source\\nwebsites and different cities (Li et al., 2013).\\\
+    nAI-Generated Content (AIGC) Detection has at-\\ntracted significant attention in recent years (Tang\\n\\net al., 2023).\
+    \ Most existing works focus on devel-\\noping black-box detection methods and rarely take\\ninterpretability into account\
+    \ (Wu et al., 2024). We\\nthus build our own dataset for this task. We take\\n800 distinct prompts and human-written stories\
+    \ in\\nthe WRITINGPROMPTS dataset (Fan et al., 2018).\\nThen we use the same prompts to generate AI-\\nwritten stories\
+    \ with LLAMA-3.1-70B-INSTRUCT\\n(Dubey et al., 2024) and GPT-4O-MINI (OpenAI,\\n2023), constituting our LLAMAGC and GPTGC\\\
+    ndatasets. The IND data contains stories generated\\nby the corresponding model. The stories generated\\nby the other\
+    \ model are treated as OOD data.\\nPersuasive Argument Prediction examines per-\\nsuasion and social interactions to reveal\
+    \ predictive\\ncues of persuasiveness (Tan et al., 2016). We use\\nPERSUASIVE PAIRS, a dataset with pairs of short\\ntexts\
+    \ constructed by Pauli et al. (2024). Within\\neach pair of texts, one is from existing corpora with\\nsignals of persuasiveness,\
+    \ while the other one is\\ngenerated by an LLM with instructions for it to\\nbe more/less persuasive than the one from\
+    \ exist-\\ning corpora. We formulate this task as predicting\\nthe more persuasive one of each pair of texts. The\\ndataset\
+    \ contains human-annotated ground-truth la-\\nbels and is pre-processed by removing examples\\nwhere there exists disagreement\
+    \ among annotators.\\nThe IND and OOD datasets are then created based\\non different original sources of texts.\\nMental\
+    \ Stress Detection from social media con-\\ntent is an important task in mental health (Lupien\\net al., 2009). We use\
+    \ DREADDIT, a corpus of\\nlengthy Reddit posts with stress status labels devel-\\noped by Turcan and McKeown (2019). The\
+    \ dataset\\ncontains 3.5k post segments annotated using Ama-\\nzon Mechanical Turk, with labels indicating the\\npresence\
+    \ or absence of stress in posts. Our IND\\nand OOD sets are separated based on subreddits\\nthat the posts come from.\\\
+    nFor each task, we split the IND dataset with at\\nleast 200 examples in train set, 300 in test set (on\\nwhich we perform\
+    \ inference), 300 in validation set,\\nand sample at least 300 instances from OOD (see\\nAppendix B.1 for more details).\\\
+    n3.3\\nImplementation and Baselines\\nOur method works with any LLM (M). We use\\nGPT-4O-MINI and LLAMA-3.1-70B-INSTRUCT\\\
+    nin the main paper. We refer to GPT-4O-MINI as\\n\\u201cGPT-4-MINI\\u201d and LLAMA-3.1-70B-INSTRUCT\\nas \\u201cLLAMA-70B-I\\\
+    u201d. We compare our method with\\nthe following baselines.\"\n  },\n  {\n    \"name\": \"Zero-shot and few-shot prompting.\
+    \ We give\",\n    \"text\": \"the LLMs detailed task instructions (zero-shot)\\nand optionally provide three demonstrating\
+    \ ex-\\namples (few-shot). This approach does not in-\\nvolve any hypothesis.\"\n  },\n  {\n    \"name\": \"Zero-shot\
+    \ hypothesis generation. Inspired by\",\n    \"text\": \"Qi et al. (2023), we provide specific task descrip-\\ntions and\
+    \ instructions, and then we prompt the\\nLLMs to generate hypotheses directly without\\nincorporating literature or data.\"\
+    \n  },\n  {\n    \"name\": \"Literature-driven hypothesis generation. We\",\n    \"text\": \"use the implementation in\
+    \ \\u00a72.1. In addition to\\nour own implementation, we compare two of\\nthe recently released agent frameworks for\
+    \ sci-\\nentific writing, NOTEBOOKLM (Google, 2024)\\nand HYPERWRITE (OthersideAI, 2024). We\\nuse the same prompt for\
+    \ NOTEBOOKLM and\\nHYPERWRITE as what we apply in our methods.\\nSee details in Appendix B.5. These methods\\nonly use\
+    \ literature in hypothesis generation.\"\n  },\n  {\n    \"name\": \"Data-driven hypothesis generation. We use\",\n  \
+    \  \"text\": \"HYPOGENIC. See details in \\u00a7 2.2.\\nFor all the hypothesis generation methods we\\nuse, we keep the\
+    \ size of the hypothesis bank H to\\nbe 20 (i.e., Hmax = 20.)\\n4\"\n  },\n  {\n    \"name\": \"Results\",\n    \"text\"\
+    : \"We first present automatic evaluation results to\\ndemonstrate the utility of generated hypotheses for\\nmodel inference.\
+    \ We then show that the generated\\nhypotheses are novel and useful, and can improve\\nhuman decision-making in challenging\
+    \ tasks.\\n4.1\\nAutomatic Evaluation\\nHypotheses generated by combining informa-\\ntion from literature and data achieves\
+    \ the best\\nperformance across all task and model configu-\\nrations (Table 1).\\nFirst, few-shot inference out-\\nperforms\
+    \ zero-shot inference for all task and model\\nconfigurations, with an average improvement of\\n6.84% in accuracy. In\
+    \ addition, few-shot infer-\\nence surpasses zero-shot generation and the best of\\nliterature-based methods on average\
+    \ accuracy by\\n7.21% and 6.78%, respectively, suggesting off-the-\\nshelve LLMs or literature alone does not generate\\\
+    neffective hypotheses for predictive purposes. In\\nfact, NOTEBOOKLM and HYPERWRITE can gen-\\nerate some invalid or irrelevant\
+    \ hypotheses, which\\ndegrades their inference performance (see Table 17\\nin Appendix E.2).\\n\\nModel\"\n  },\n  {\n\
+    \    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DREADDIT\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"text\": \"\
+    No hypothesis\\nZero-shot\\n55.47\\n50.00\\n56.33\\n81.24\\n64.60\\nFew-shot k=3\\n65.56\\n51.11\\n64.22\\n83.64\\n75.00\\\
+    nZero-shot generation\\n68.69\\n49.00\\n53.00\\n86.08\\n65.00\\nLiterature-based\"\n  },\n  {\n    \"name\": \"LITERATURE-ONLY\"\
+    ,\n    \"text\": \"59.22\\n49.00\\n54.00\\n78.80\\n67.68\"\n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"\
+    61.63\\n49.67\\n52.67\\n82.36\\n68.76\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"53.03\\n49.33\\n51.67\\\
+    n68.96\\n62.28\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n    \"text\": \"75.22\\n81.67\\n68.56\\n82.20\\\
+    n76.56\\nLiterature + Data (This work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"77.78\\n55.33\\n63.33\\\
+    n89.04\\n78.04\\nLiterature \\u222aHYPOGENIC\\n72.41\\n83.00\\n69.22\\n89.88\\n78.20\\nLiterature \\u222aHYPOREFINE\\\
+    n77.19\\n55.33\\n63.00\\n89.52\\n79.24\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"B-I\",\n    \"text\": \"No hypothesis\\nZero-shot\\n62.87\\n58.67\\n63.00\\n85.60\\n64.56\\nFew-shot k=3\\n68.56\\\
+    n70.45\\n76.00\\n86.80\\n69.44\\nZero-shot generation\\n56.28\\n50.67\\n55.67\\n88.16\\n66.16\\nLiterature-based\"\n \
+    \ },\n  {\n    \"name\": \"LITERATURE-ONLY\",\n    \"text\": \"64.25\\n50.00\\n49.67\\n80.56\\n66.04\"\n  },\n  {\n  \
+    \  \"name\": \"HYPERWRITE\",\n    \"text\": \"58.62\\n50.67\\n54.00\\n83.24\\n74.40\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\"\
+    ,\n    \"text\": \"57.81\\n49.33\\n50.67\\n67.64\\n66.56\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n  \
+    \  \"text\": \"62.06\\n78.67\\n78.00\\n88.44\\n75.48\\nLiterature + Data (This work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\"\
+    ,\n    \"text\": \"72.16\\n67.00\\n66.67\\n87.52\\n78.92\\nLiterature \\u222aHYPOGENIC\\n73.72\\n81.33\\n78.67\\n86.72\\\
+    n72.56\\nLiterature \\u222aHYPOREFINE\\n71.75\\n66.67\\n65.67\\n88.76\\n74.80\\nTable 1: Accuracy scores on the held-out\
+    \ OOD datasets. Literature + Data outperforms all other methods in every\\nmodel and task configurations. The bolded numbers\
+    \ outperform the few-shot method (p < 0.05), as determined by\\na paired t-test using five random seeds. We show the full\
+    \ results with F1 scores in Table 8.\\nIn contrast, HYPOGENIC consistently outper-\\nforms few-shot inference, improving\
+    \ average ac-\\ncuracy by 5.61%, highlighting the advantage of\\ndata-driven hypotheses. Compared to few-shot\\ninference,\
+    \ the hypotheses also offer more inter-\\npretable insights. Furthermore, our best hypoth-\\nesis generation method combining\
+    \ literature and\\ndata outperforms HYPOGENIC by 3.37% on aver-\\nage (i.e., an improvement of 11.92% over few-shot\"\n\
+    \  },\n  {\n    \"name\": \"methods and 16.54% over literature-based meth-\",\n    \"text\": \"ods for GPT-4-MINI, and\
+    \ 6.03% over few-shot\"\n  },\n  {\n    \"name\": \"methods and 14.97% over literature-based methods\",\n    \"text\"\
+    : \"for LLAMA-70B-I), demonstrating the benefit of\\nincorporating literature with data.\\nFor DECEPTIVE REVIEWS, PERSUASIVE\
+    \ PAIRS,\\nand DREADDIT, refining the hypotheses with lit-\\nerature consistently improves inference accuracy\\ncompared\
+    \ to HYPOGENIC, with a 3.92% improve-\\nment on average. On the other hand, refining the hy-\\npotheses with literature\
+    \ does not help with GPTGC\\nand LLAMAGC, but the union of HYPOGENIC and\\nhypotheses generated from literature consistently\\\
+    nperforms the best. Comparing with HYPOGENIC\\nfor these two tasks, refining the hypotheses with\\nliterature actually\
+    \ results in an accuracy drop by\\n13.64%. This is likely due to that the literature for\\nAIGC detection has relatively\
+    \ few insights on inter-\\npretable features to detect AI generated contents,\\nand refining the data-driven hypotheses\
+    \ with that\\ninformation degrades performance.\\nTo further illustrate our approach, we present\\na case study of our\
+    \ generated hypotheses in Ta-\\nble 2. For most cases, LITERATURE-ONLY and HY-\\nPOGENIC generate different hypotheses\
+    \ as in Case\\nI: one is about first-person singular pronouns, while\\nthe other one is about past experiences. We include\\\
+    nmore details on the differences between hypothe-\\nses generated by different methods in \\u00a7 4.2. More\\nexamples\
+    \ of hypotheses generated using LITERA-\\nTURE\\u222aHYPOREFINE are in Table 16. Under some\\ncases, the methods can generate\
+    \ similar hypotheses,\\nand HYPOREFINE improves the quality of the hy-\\n\\nCase I: LITERATURE-ONLY and HYPOGENIC generate\
+    \ different hypotheses\\nLITERATURE-ONLY: Deceptive reviews often contain a higher frequency of first-person singular\
+    \ pro-\\nnouns, while truthful reviews may use these pronouns less frequently.\\nHYPOGENIC: Reviews that reference the\
+    \ reviewer\\u2019s previous experiences with the hotel brand or similar\\nhotels are more likely to be truthful, while\
+    \ reviews that do not provide any context or comparison to past\\nexperiences are more likely to be deceptive.\\nCase\
+    \ II: LITERATURE-ONLY and HYPOGENIC generate similar hypotheses\\nLITERATURE-ONLY: Truthful reviews often provide a balanced\
+    \ perspective, while deceptive reviews\\nmay seem overly promotional or biased towards a competitor.\\nHYPOGENIC: Reviews\
+    \ that express a balanced perspective, mentioning both positive and negative\\naspects of the stay, are more likely to\
+    \ be truthful, whereas reviews that are overly positive or negative\\nwithout nuance tend to be deceptive.\\nHYPOREFINE:\
+    \ Reviews that present a balanced perspective by discussing both positive and negative\\naspects of the stay, particularly\
+    \ with specific examples (e.g., \\\"The location was fantastic, but the air\\nconditioning was broken\\\"), are more likely\
+    \ to be truthful, while reviews that are excessively positive or\\nnegative without acknowledging any redeeming qualities\
+    \ (e.g., \\\"This is the best hotel ever!\\\" or \\\"I will\\nnever stay here again!\\\") tend to be more deceptive, as\
+    \ they may reflect an attempt to manipulate reader\\nemotions rather than provide an honest assessment.\\nTable 2: Examples\
+    \ of generated hypotheses from different methods. We show cases where LITERATURE-ONLY and\\nHYPOGENIC generate different\
+    \ hypotheses or similar hypotheses, and how HYPOREFINE combines them in the\\ncase if they express unifiable ideas.\\\
+    npothesis. In Case II, all three hypotheses focus on\\nbalanced perspectives being indicative of truthful\\nreviews. HYPOREFINE\
+    \ incorporates the \\u201creviews\\nthat seem to be promoting a competitor\\u201d insight\\nfrom LITERATURE-ONLY, while\
+    \ also capturing the\\nemphasis on \\u201clack of nuance\\u201d from HYPOGENIC.\\nBy doing so, HYPOREFINE offers a more\
+    \ nuanced\\nhypothesis that not only explains how deceptive\\nreviews may manipulate reader emotions, but also\\nprovides\
+    \ specific examples to illustrate how bal-\\nanced perspectives can contribute to truthful assess-\\nments. This combination\
+    \ of insights from litera-\\nture and data allows HYPOREFINE to offer a more\\ncomprehensive and explanatory hypothesis.\
+    \ We in-\\nclude another case study to compare the generated\\nhypotheses from SciMON (Wang et al., 2024) and\\nHYPOREFINE\
+    \ in Appendix E.1, demonstrating the\\ndifference between research idea generation and\\nthe hypothesis generation task\
+    \ we focus on.\\nPerformance on IND held-out datasets.\\nSimilar\\nto Table 1, combining literature and data achieves\\\
+    nthe best accuracy and F1 scores in most cases on\\nthe held-out IND datasets (see Table 9 in the Ap-\\npendix). For some\
+    \ cases, such as using Llama on\\nthe IND datasets for GPTGC, LLAMAGC, and\\nPERSUASIVE PAIRS, HYPOGENIC gets the top\\\
+    nperformance compared to other methods. This is\\nnot surprising, since HYPOGENIC generates hy-\\npotheses by looking\
+    \ at IND data only. In contrast,\\nour methods that take information from both liter-\\nature and data may generate hypotheses\
+    \ that are\\nmore generally applicable but with slightly worse\\nperformance on the IND data. Thus in Table 1, the\\nhypotheses\
+    \ generated from both literature and data\\nperforms the best on all methods for OOD datasets.\\nGenerated hypotheses\
+    \ can be effectively trans-\\nferred to a different model.\\nTo further check\\nthe generalization behavior of our generated\
+    \ hy-\\npotheses, we take the hypotheses from the best-\\nperforming method with our literature+data ap-\\nproach and\
+    \ then use the other model to perform\\ninference. Table 3 shows that the generated hy-\\npotheses from one model remain\
+    \ effective for the\\nother model, the performance exhibits no signifi-\\ncant change in most cases (drop <5% in 11 out\
+    \ of\\n20 cases). Even with this performance drop, our\"\n  },\n  {\n    \"name\": \"methods still outperform the few-shot\
+    \ baseline by\",\n    \"text\": \"3.76% and 3.66% in OOD and IND settings. This\\nfinding further demonstrates the robustness\
+    \ of our\\nhypothesis generation and inference.\\nA significant outlier case is for LLAMAGC OOD:\\nwhen using LLAMA-70B-I-generated\
+    \ hypotheses\\nfor GPTGC OOD and ask GPT-4-MINI to perform\\nhypothesis-based inference, the inference perfor-\\nmance\
+    \ can degrade significantly. This can be due\\nto innate deficits in the task setting, as LLMs tend\\nto favor and better\
+    \ detect their own writing (Pan-\\nickssery et al., 2024).\\n\\nGeneration Model\\nInference Model\"\n  },\n  {\n    \"\
+    name\": \"DECEPTIVE REVIEWS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"GPTGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"DREADDIT\",\n    \"text\": \"OOD Accuracy\\nOOD Accuracy\\nOOD Accuracy\\nOOD Accuracy\\\
+    nOOD Accuracy\"\n  },\n  {\n    \"name\": \"GPT-4-MINI\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPT-4-MINI\"\
+    ,\n    \"text\": \"77.78\\n83.00\\n69.22\\n89.88\\n79.24\"\n  },\n  {\n    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"\
+    72.53 (\\u21935.25)\\n71.67 (\\u219311.33)\\n76.33 (\\u21917.11)\\n86.88 (\\u21933.00)\\n72.36 (\\u21936.88)\"\n  },\n\
+    \  {\n    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"\
+    73.72\\n81.33\\n78.67\\n88.76\\n78.92\"\n  },\n  {\n    \"name\": \"GPT-4-MINI\",\n    \"text\": \"70.31 (\\u21933.41)\\\
+    n57.00 (\\u219324.33)\\n74.67 (\\u21934.00)\\n89.36 (\\u21910.60)\\n77.28 (\\u21931.64)\\nGeneration Model\\nInference\
+    \ Model\\nIND Accuracy\\nIND Accuracy\\nIND Accuracy\\nIND Accuracy\\nIND Accuracy\"\n  },\n  {\n    \"name\": \"GPT-4-MINI\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPT-4-MINI\",\n    \"text\": \"70.76\\n73.00\\n68.33\\n90.52\\n70.88\"\
+    \n  },\n  {\n    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"62.20 (\\u21938.56)\\n69.00 (\\u21934.00)\\n81.67 (\\u219113.34)\\\
+    n90.40 (\\u21930.12)\\n74.88 (\\u21914.00)\"\n  },\n  {\n    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"LLAMA-70B-I\",\n    \"text\": \"72.60\\n78.33\\n80.67\\n91.24\\n78.68\"\n  },\n  {\n    \"name\": \"\
+    GPT-4-MINI\",\n    \"text\": \"66.28 (\\u21936.32)\\n68.00 (\\u219310.33)\\n68.33 (\\u219312.34)\\n89.88 (\\u21931.36)\\\
+    n68.60 (\\u219310.08)\\nTable 3: Cross-model inference performance.\\nClarity\\nNovelty\\nPlausibility\"\n  },\n  {\n\
+    \    \"name\": \"HYPOREFINE\",\n    \"text\": \"4.22 \\u00b1 0.07\\n2.85 \\u00b1 0.10\\n4.21 \\u00b1 0.08\"\n  },\n  {\n\
+    \    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"3.71 \\u00b1 0.09\\u2217\\n3.01 \\u00b1 0.10\\n3.65 \\u00b1 0.10\\u2217\"\
+    \n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"3.08 \\u00b1 0.12\\u2217\\n2.15 \\u00b1 0.11\\u2217\\n3.32\
+    \ \\u00b1 0.13\\u2217\\nTable 4: Human ratings on hypotheses generated by\\nHYPOREFINE, NOTEBOOKLM, and HYPERWRITE. *\\\
+    nindicates that the difference between the rating with\\nHYPOREFINE is statistically significant (p <0.001).\\nOur hypothesis\
+    \ generation method is robust to\\ndifferent prompts and hyperparameters, and\\nit is effective for smaller models.\\\
+    nWe conduct\\nadditional experiments to test the robustness of\\nour method with different prompts, hyperparame-\\nters,\
+    \ and with LLAMA-3.1-8B-INSTRUCT. For the\\nOOD setting, in Table 11 and Table 13, we show\\nthat the average performance\
+    \ of our method only\\ndrop by 0.20% and 0.07% with different prompts\\nand hyperparameters, respectively. In Table 10,\
+    \ we\\nfurther show that with LLAMA-3.1-8B-INSTRUCT,\\nour literature + data approach outperforms all\\nbaselines, with\
+    \ an average accuracy improvement\\nof 15.27%, 13.04%, and 4.88% over few-shot,\\nliterature-based methods, and HYPOGENIC,\
+    \ re-\\nspectively. These results highlight the robustness\\nof our method and its scalability and reproducibil-\\nity\
+    \ with smaller models. Full details are in Ap-\\npendix D.\\n4.2\\nHuman Evaluation\\nGenerated hypotheses improve human\
+    \ decision-\\nmaking in both AIGC Detection and Deception\\nDetection.\\nWe experiment with the GPTGC task\\nfor AIGC\
+    \ Detection, and the average human ac-\\ncuracy improves by 14.19% (58.86% \\u219273.05%)\\nwhen we provide hypotheses\
+    \ as assistance. We per-\\nform a statistical t-test and obtain a p-value of 0.01,\\nindicating that the improvement is\
+    \ significant. In\\nDeception Detection, the introduction of hypothe-\\nses boosts human accuracy by 7.44% (57.14% \\\
+    u2192\\n64.58%), with a p-value of 0.04.\\nWhen hypotheses are present, participants would\\nuse them to assist decision-making\
+    \ for over 90%\\nof the time. All three presented hypotheses are\\nselected to be used with frequency greater than\\n30%\
+    \ (Table 5, Table 6 in the Appendix). For ex-\\nample, the most used hypothesis, with frequency\\nof 44.55%, in AIGC detection\
+    \ is \\u201cHuman-written\\ntexts tend to have a more conversational tone and\\ncolloquial language, while AI-generated\
+    \ texts tend\\nto be more formal and lack idiomatic expressions.\\u201d\\nFor both tasks, 100% of the participants find\
+    \ the\\nhypotheses to be helpful, and over 40% find them\\nto be \\u201cVery helpful\\u201d or \\u201cExtremely helpful\\\
+    u201d.\\nHYPOREFINE hypotheses are rated higher in\\nclarity and plausibility compared to those gener-\\nated by existing\
+    \ methods (Table 4).\\nHypotheses\\ngenerated by HYPOREFINE achieve statistically\\nsignificantly higher clarity and plausibility\
+    \ scores\\nthan those generated by NOTEBOOKLM and HY-\\nPERWRITE. In terms of novelty, NOTEBOOKLM\\nreceives slightly\
+    \ higher ratings; however, the dif-\\nference between NOTEBOOKLM and HYPORE-\\nFINE is not statistically significant.\
+    \ Recall that hy-\\npotheses generated by NOTEBOOKLM do not have\\nstrong predictive power. In other words, gener-\\nating\
+    \ \\u201cnovel\\u201d hypotheses is easier if they are not\\nconstrained by plausibility.\\nHumans rate literature-based\
+    \ and data-driven\\nhypotheses as distinct.\\nWe assign novelty labels\\nto hypothesis pairs based on a majority vote\
+    \ from\\nthree human annotators, who evaluate whether a\\nhypothesis give meaningfully different information\\n(\\u201cnovel\\\
+    u201d) from another. 84% and 80% of the hy-\\npotheses are rated novel for Deception Detection\\nand AIGC Detection, respectively,\
+    \ demonstrating\\nthe complementarity between literature-based and\\ndata-driven approaches.\\n\\nHypotheses\\nFrequency\
+    \ of Selection\\nHypothesis 1: AI-generated texts tend to use more elaborate and descriptive\\nlanguage, including adjectives\
+    \ and adverbs, to create a sense of atmosphere and\\nimmersion. Human-written texts, on the other hand, tend to be more\
+    \ concise\\nand straightforward in their language use.\\n38.79%\\nHypothesis 2: Human-written texts are more likely to\
+    \ contain errors or id-\\niosyncrasies in grammar and punctuation, reflecting the natural imperfections\\nof human writing,\
+    \ while AI-generated texts typically maintain a higher level of\\ngrammatical accuracy.\\n34.55%\\nHypothesis 3: Human-written\
+    \ texts tend to have a more conversational tone\\nand colloquial language, while AI-generated texts tend to be more formal\
+    \ and\\nlack idiomatic expressions.\\n44.55%\\nNo hypothesis selected\\n3.94%\\nTable 5: How often participants use hypotheses\
+    \ in AIGC Detection. We allow users to select multiple hypotheses\\nfor each instance they make prediction on, so the\
+    \ total frequency can exceed 100%.\\n5\\nRelated Work\\nLiterature-based research idea generation.\\nBaek et al. (2024),\
+    \ Wang et al. (2024), and Gha-\\nfarollahi and Buehler (2024) use LLMs to build\\nknowledge graphs from literature and\
+    \ generate re-\\nsearch ideas, such as proposing new problem se-\\ntups, methodologies, or evaluation frameworks.\\nUnlike\
+    \ their focus on ideation, our work gener-\\nates hypotheses to explain a phenomenon with real\\nobservations (see Appendix\
+    \ E.1 for detailed com-\\nparison). Yang et al. (2024b) generates hypothe-\\nses from raw web data but relies on annotated\
+    \ hy-\\npotheses from literature. These methods require\\nextensive adaptation, so we developed our own\\nliterature-based\
+    \ approach.\\nData-driven hypothesis generation.\\nBesides\\nHYPOGENIC, we review additional works on dis-\\ncovering\
+    \ unseen patterns from data. Zhong et al.\\n(2023) discovers patterns by analyzing difference\\nbetween large corpora.\
+    \ Pham et al. (2024) makes\\ndiscovery by generating and refining interpretable\\ntopics. Romera-Paredes et al. (2024)\
+    \ uncovers new\\nsolutions in open math problems by iteratively up-\\ndating programs. Qiu et al. (2024) and Yang et al.\\\
+    n(2024a) evaluate LLMs\\u2019 ability in performing in-\\nductive reasoning in synthetic settings. Batista and\\nRoss\
+    \ (2024) uses LLMs to generate hypotheses\\nand conducts comprehensive experiments to study\\nhuman engagements with headlines.\
+    \ We choose\\nHYPOGENIC as the backbone for data-driven hy-\\npothesis generation as their tasks are most similar\\nto\
+    \ ours, and their approach to hypothesis updates\\nintegrates naturally into our refinement process.\\nAutomated scientific\
+    \ research with LLMs.\\nThere is growing interest in developing LLM-\\npowered methods and multi-agent frameworks to\\\
+    nassist scientific research. Lu et al. (2024) designs\\nan LLM agent to generate full research papers. Li\\net al. (2024)\
+    \ proposes a method to generate research\\nideas from existing literature and automatically im-\\nplement and execute\
+    \ experiments. In contrast, our\\nwork focuses primarily on hypothesis generation,\\nas we believe it is crucial to preserve\
+    \ human agency\\nand oversight in the scientific research process.\\nTo evaluate LLM generated hypotheses, Qi et al.\\\
+    n(2023) examines whether they contain novel infor-\\nmation not found in existing literature. Si et al.\\n(2024) asks\
+    \ experts to rate the novelty of LLM-\\nproposed research ideas in the NLP domain. While\\nthese studies highlight LLMs\\\
+    u2019 ability to generate\\nnovel hypotheses, they do not conduct human sub-\\nject experiments to validate the effectiveness\
+    \ of hy-\\npotheses. To this end, we conduct the first human\\nstudy to test the utility of LLM-generated hypothe-\\nses\
+    \ in supporting human decision-making.\\nSignificant efforts have also been made to evalu-\\nate and benchmark multi-agent\
+    \ frameworks on data\\nanalysis tasks (Majumder et al., 2024; Gu et al.,\\n2024; Hu et al., 2024; Chen et al., 2024; Huang\\\
+    net al., 2024; Guo et al., 2024), literature processing\\nand information retrieval tasks (Press et al., 2024;\\nAjith\
+    \ et al., 2024; Kang and Xiong, 2024; Zhang\\net al., 2024), and more general research tasks (Tian\\net al., 2024; Jansen\
+    \ et al., 2024).\\n6\"\n  },\n  {\n    \"name\": \"Conclusion\",\n    \"text\": \"We propose a novel approach that integrates\
+    \ litera-\\nture and data to generate hypotheses, with extensive\\nand systematic evaluations. Our method consis-\\ntently\
+    \ outperforms all baselines, including existing\\nliterature-based and data-driven approaches. Fur-\\n\\nthermore, human\
+    \ evaluations reveal that our gen-\\nerated hypotheses also improve human decision-\\nmaking in challenging tasks.\\n7\\\
+    nLimitations\\nOur automated evaluation uses two recent mod-\\nels on datasets across various domains, showing\\nthe effectiveness\
+    \ of our method across diverse set-\\ntings. However, we did not further evaluate our hy-\\npotheses on some tasks that\
+    \ require representations\\nbeyond natural language, such as math problem\\nsolving and code generation.\\nThe literature\
+    \ corpus used for literature-based\\nhypothesis generation is limited in terms of size and\\ncollection method. The collection\
+    \ is carried out by\\nmanually searching and collecting up to 10 papers\\non Semantic Scholar or Google Scholar. Though\\\
+    nwith the limited literature corpus we already show\\nthat our methods yield competent performance, a\\nnatural future\
+    \ direction is to enhance the literature\\ncomponent with automatic and scalable retrieval.\\nSimilarly, we achieved satisfactory\
+    \ performance\\nacross different models and tasks with the initial set\\nof hyperparameters. However, we did not perform\\\
+    nan exhaustive hyperparameter search, which may\\nhave yielded further enhancements to the perfor-\\nmance of our methods.\
+    \ This represents a limitation\\nof our study that could be addressed in future work.\\nOur experiments with human subjects\
+    \ is a proof\\nof concept. The number of participants in our hu-\\nman evaluation is relatively small. As a result, we\\\
+    ndo not believe that we have the statistical power to\\ndistinguish, for example, the difference between\\nHYPOGENIC and\
+    \ HYPOREFINE. Although this\\nis not the focus of our study, we encourage fu-\\nture work to conduct large-scale experiments\
+    \ in\\nfocused domains to validate the hypotheses gener-\\nated through human-AI collaboration.\\nLast but not least,\
+    \ we manually chose three hy-\\npotheses through ablation-style study and subjec-\\ntive judgment for experiments with\
+    \ human subjects.\\nWe believe this process is the essence of human-\\nAI collaboration in future scientific processes.\
+    \ It\\nrequires future exploration to identify the optimal\\ncollaboration regime.\"\n  },\n  {\n    \"name\": \"Acknowledgments\"\
+    ,\n    \"text\": \"We thank members of the Chicago Human+AI Lab\\nfor their helpful comments. We also thank the\\nanonymous\
+    \ participants on Prolific for participating\\nin our study. This work is supported in part by NSF\\ngrants IIS-2126602\
+    \ and an award from the Sloan\\nFoundation.\"\n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"Anirudh Ajith,\
+    \ Mengzhou Xia, Alexis Chevalier, Tanya\\nGoyal, Danqi Chen, and Tianyu Gao. 2024.\\nLit-\\nSearch: A retrieval benchmark\
+    \ for scientific literature\\nsearch. Preprint, arXiv:2407.18940.\\nPeter Auer. 2003.\\nUsing confidence bounds for\\\
+    nexploitation-exploration trade-offs. J. Mach. Learn.\\nRes., 3:397\\u2013422.\\nJinheon Baek, Sujay Kumar Jauhar, Silviu\
+    \ Cucerzan,\\nand Sung Ju Hwang. 2024. ResearchAgent: Iterative\\nresearch idea generation over scientific literature\
+    \ with\\nlarge language models. Preprint, arXiv:2404.07738.\\nRafael M. Batista and James Ross. 2024. Words that\\nwork:\
+    \ Using language to generate hypotheses.\\nZiru Chen, Shijie Chen, Yuting Ning, Qianheng Zhang,\\nBoshi Wang, Botao Yu,\
+    \ Yifei Li, Zeyi Liao, Chen\\nWei, Zitong Lu, Vishal Dey, Mingyi Xue, Frazier N.\\nBaker, Benjamin Burns, Daniel Adu-Ampratwum,\\\
+    nXuhui Huang, Xia Ning, Song Gao, Yu Su, and Huan\\nSun. 2024. ScienceAgentBench: Toward rigorous as-\\nsessment of language\
+    \ agents for data-driven scientific\\ndiscovery. Preprint, arXiv:2410.05080.\\nGiovanni Da San Martino, Seunghak Yu, Alberto\\\
+    nBarr\\u00f3n-Cede\\u00f1o, Rostislav Petrov, and Preslav Nakov.\"\n  },\n  {\n    \"name\": \"Fine-grained analysis of\
+    \ propaganda in news\",\n    \"text\": \"article. In Proceedings of EMNLP-IJCNLP.\\nSon Doan, Amanda Ritchart, Nicholas\
+    \ Perry, Juan D\\nChaparro, and Mike Conway. 2017. How do you\\n#relax when you\\u2019re #stressed? a content analysis\
+    \ and\\ninfodemiology study of stress-related tweets. JMIR\\nPublic Health and Surveillance, 3(2):e35.\\nAbhimanyu Dubey,\
+    \ Abhinav Jauhri, Abhinav Pandey,\\nand et al. 2024. The llama 3 herd of models. Preprint,\\narXiv:2407.21783.\\nAngela\
+    \ Fan, Mike Lewis, and Yann Dauphin. 2018.\\nHierarchical neural story generation. In Proceedings\\nof ACL.\\nAlireza\
+    \ Ghafarollahi and Markus J. Buehler. 2024. Sci-\\nAgents: Automating scientific discovery through\\nmulti-agent intelligent\
+    \ graph reasoning. Preprint,\\narXiv:2409.05556.\\nPierpaolo Goffredo, Mariana Chaves, Serena Villata,\\nand Elena Cabrio.\
+    \ 2023. Argument-based detection\\nand classification of fallacies in political debates. In\\nProceedings of EMNLP.\\\
+    nGoogle. 2024. NotebookLM.\\nP\\u00e4r Anders Granhag and Aldert Vrij. 2005. Deception\\ndetection. Psychology and law:\
+    \ An empirical per-\\nspective, pages 43\\u201392.\\n\\nKen Gu, Ruoxi Shang, Ruien Jiang, Keying Kuang,\\nRichard-John\
+    \ Lin, Donghe Lyu, Yue Mao, Youran\\nPan, Teng Wu, Jiaqian Yu, Yikun Zhang, Tianmai M.\\nZhang, Lanyi Zhu, Mike A. Merrill,\
+    \ Jeffrey Heer,\\nand Tim Althoff. 2024. BLADE: Benchmarking lan-\\nguage model agents for data-driven science. Preprint,\\\
+    narXiv:2408.09667.\\nSiyuan Guo, Cheng Deng, Ying Wen, Hechang Chen,\\nYi Chang, and Jun Wang. 2024. DS-Agent: Auto-\\\
+    nmated data science by empowering large language\\nmodels with case-based reasoning. In Proceedings\\nof ICML.\\nXueyu\
+    \ Hu, Ziyu Zhao, Shuang Wei, Ziwei Chai, Qianli\\nMa, Guoyin Wang, Xuwu Wang, Jing Su, Jingjing\\nXu, Ming Zhu, Yao Cheng,\
+    \ Jianbo Yuan, Jiwei Li,\\nKun Kuang, Yang Yang, Hongxia Yang, and Fei Wu.\"\n  },\n  {\n    \"name\": \"InfiAgent-DABench:\
+    \ Evaluating agents on\",\n    \"text\": \"data analysis tasks. In Proceedings of ICML, Pro-\\nceedings of Machine Learning\
+    \ Research.\\nQian Huang, Jian Vora, Percy Liang, and Jure Leskovec.\"\n  },\n  {\n    \"name\": \"MLAgentBench: Evaluating\
+    \ language agents\",\n    \"text\": \"on machine learning experimentation. In Proceed-\\nings of ICML.\\nPeter Jansen,\
+    \ Marc-Alexandre C\\u00f4t\\u00e9, Tushar Khot,\\nErin Bransom,\\nBhavana Dalvi Mishra,\\nBod-\\nhisattwa Prasad Majumder,\
+    \ Oyvind Tafjord, and\\nPeter Clark. 2024. DISCOVERYWORLD: A vir-\\ntual environment for developing and evaluating\\nautomated\
+    \ scientific discovery agents.\\nPreprint,\\narXiv:2406.06769.\\nHao Kang and Chenyan Xiong. 2024. ResearchArena:\\nBenchmarking\
+    \ llms\\u2019 ability to collect and orga-\\nnize information as research agents.\\nPreprint,\\narXiv:2406.10291.\\nJiwei\
+    \ Li, Myle Ott, and Claire Cardie. 2013. Identi-\\nfying manipulated offerings on review portals. In\\nProceedings of\
+    \ EMNLP.\\nJiwei Li, Myle Ott, Claire Cardie, and Eduard Hovy.\"\n  },\n  {\n    \"name\": \"Towards a general rule for\
+    \ identifying decep-\",\n    \"text\": \"tive opinion spam. In Proceedings of ACL.\\nRuochen Li, Teerth Patel, Qingyun\
+    \ Wang, and Xinya Du.\"\n  },\n  {\n    \"name\": \"MLR-Copilot: Autonomous machine learn-\",\n    \"text\": \"ing research\
+    \ based on large language models agents.\\nPreprint, arXiv:2408.14033.\\nKyle Lo, Lucy Lu Wang, Mark Neumann, Rodney Kin-\\\
+    nney, and Daniel Weld. 2020. S2ORC: The semantic\\nscholar open research corpus. In Proceedings of ACL,\\nOnline.\\nChris\
+    \ Lu, Cong Lu, Robert Tjarko Lange, Jakob Foer-\\nster, Jeff Clune, and David Ha. 2024. The AI scien-\\ntist: Towards\
+    \ fully automated open-ended scientific\\ndiscovery. Preprint, arXiv:2408.06292.\\nSonia J Lupien, Bruce S McEwen, Megan\
+    \ R Gunnar,\\nand Christine Heim. 2009. Effects of stress through-\\nout the lifespan on the brain, behaviour and cognition.\\\
+    nNature Reviews Neuroscience, pages 434\\u2013445.\\nBodhisattwa Prasad Majumder, Harshit Surana, Dhruv\\nAgarwal, Bhavana\
+    \ Dalvi Mishra, Abhijeetsingh\\nMeena, Aryan Prakhar, Tirth Vora, Tushar Khot,\\nAshish Sabharwal, and Peter Clark. 2024.\
+    \ Discov-\\neryBench: Towards data-driven discovery with large\\nlanguage models. Preprint, arXiv:2407.01725.\\nSushil\
+    \ Kumar Maurya, Dinesh Singh, and Ashish Ku-\\nmar Maurya. 2022. Deceptive opinion spam detec-\\ntion approaches: a literature\
+    \ survey. Applied Intelli-\\ngence, 53(2):2189\\u20132234.\\nOpenAI. 2023. GPT-4 technical report.\\nOthersideAI. 2024.\
+    \ HyperWrite.\\nMyle Ott, Claire Cardie, and Jeffrey T. Hancock. 2013.\\nNegative deceptive opinion spam. In Proceedings\
+    \ of\"\n  },\n  {\n    \"name\": \"NAACL\",\n    \"text\": \"Arjun Panickssery, Samuel R. Bowman, and Shi Feng.\"\n  },\n\
+    \  {\n    \"name\": \"Llm evaluators recognize and favor their own\",\n    \"text\": \"generations. Preprint, arXiv:2404.13076.\\\
+    nAmalie Brogaard Pauli, Isabelle Augenstein, and Ira\\nAssent. 2024. Measuring and benchmarking large\\nlanguage models\\\
+    u2019 capabilities to generate persuasive\\nlanguage. Preprint, arXiv:2406.17753.\\nChau Minh Pham, Alexander Hoyle, Simeng\
+    \ Sun, and\\nMohit Iyyer. 2024. Topicgpt: A prompt-based topic\\nmodeling framework. In Proceedings of NAACL.\\nMartin\
+    \ Potthast, Tim Gollub, Kristof Komlossy, Se-\\nbastian Schuster, Matti Wiegmann, Erika Patricia\\nGarces Fernandez, Matthias\
+    \ Hagen, and Benno Stein.\"\n  },\n  {\n    \"name\": \"Crowdsourcing a large corpus of clickbait on\",\n    \"text\"\
+    : \"Twitter. In Proceedings of COLING.\\nOri Press, Andreas Hochlehnert, Ameya Prabhu,\\nVishaal Udandarao, Ofir Press,\
+    \ and Matthias Bethge.\"\n  },\n  {\n    \"name\": \"CiteME: Can language models accurately cite\",\n    \"text\": \"\
+    scientific claims? Preprint, arXiv:2407.12861.\\nBiqing Qi, Kaiyan Zhang, Haoxiang Li, Kai Tian, Si-\\nhang Zeng, Zhang-Ren\
+    \ Chen, and Bowen Zhou. 2023.\\nLarge language models are zero shot hypothesis pro-\\nposers. In NeurIPS 2023 Workshop\
+    \ on Instruction\\nTuning and Instruction Following.\\nLinlu Qiu, Liwei Jiang, Ximing Lu, Melanie Sclar,\\nValentina Pyatkin,\
+    \ Chandra Bhagavatula, Bailin\\nWang, Yoon Kim, Yejin Choi, Nouha Dziri, and Xi-\\nang Ren. 2024. Phenomenal yet puzzling:\
+    \ Testing\\ninductive reasoning capabilities of language models\\nwith hypothesis refinement. In Proceedings of ICLR.\\\
+    nBernardino\\nRomera-Paredes,\\nMohammadamin\\nBarekatain,\\nAlexander Novikov,\\nMatej Balog,\\nM Pawan Kumar, Emilien\
+    \ Dupont, Francisco JR\\nRuiz, Jordan S Ellenberg, Pengming Wang, Omar\\nFawzi, et al. 2024. Mathematical discoveries\
+    \ from\\nprogram search with large language models. Nature,\\n625(7995):468\\u2013475.\\n\\nChenglei Si, Diyi Yang, and\
+    \ Tatsunori Hashimoto.\"\n  },\n  {\n    \"name\": \"Can LLMs generate novel research ideas? a\",\n    \"text\": \"large-scale\
+    \ human study with 100+ NLP researchers.\\nPreprint, arXiv:2409.04109.\\nChenhao Tan,\\nVlad Niculae,\\nCristian Danescu-\\\
+    nNiculescu-Mizil, and Lillian Lee. 2016. Winning ar-\\nguments: Interaction dynamics and persuasion strate-\\ngies in\
+    \ good-faith online discussions. In Proceedings\\nof WWW.\\nRuixiang Tang,\\nYu-Neng Chuang,\\nand Xia Hu.\"\n  },\n \
+    \ {\n    \"name\": \"The science of detecting llm-generated texts\",\n    \"text\": \"Preprint, arXiv:2303.07205.\\nMinyang\
+    \ Tian, Luyu Gao, Shizhuo Dylan Zhang, Xinan\\nChen, Cunwei Fan, Xuefei Guo, Roland Haas, Pan Ji,\\nKittithat Krongchon,\
+    \ Yao Li, Shengyan Liu, Di Luo,\\nYutao Ma, Hao Tong, Kha Trinh, Chenyu Tian, Zi-\\nhan Wang, Bohao Wu, Yanyu Xiong, Shengzhu\
+    \ Yin,\\nMinhui Zhu, Kilian Lieret, Yanxin Lu, Genglin Liu,\\nYufeng Du, Tianhua Tao, Ofir Press, Jamie Callan,\\nEliu\
+    \ Huerta, and Hao Peng. 2024.\\nSciCode: A\\nresearch coding benchmark curated by scientists.\\nPreprint, arXiv:2407.13168.\\\
+    nElsbeth Turcan and Kathleen McKeown. 2019. Dread-\\ndit: A reddit dataset for stress analysis in social me-\\ndia. Preprint,\
+    \ arXiv:1911.00133.\\nJean H.M. Wagemans. 2023. How to identify an ar-\\ngument type? on the hermeneutics of persuasive\\\
+    ndiscourse. Journal of Pragmatics, 203:117\\u2013129.\\nXiangxuan Wan and Li Tian. 2024. User stress detec-\\ntion using\
+    \ social media text: A novel machine learn-\\ning approach. International Journal of Computers\\nCommunications & Control,\
+    \ 19.\\nQingyun Wang, Doug Downey, Heng Ji, and Tom Hope.\"\n  },\n  {\n    \"name\": \"SciMON: Scientific inspiration\
+    \ machines opti-\",\n    \"text\": \"mized for novelty. In Proceedings of ACL.\\nXuewei Wang, Weiyan Shi, Richard Kim,\
+    \ Yoojung\\nOh, Sijia Yang, Jingwen Zhang, and Zhou Yu. 2020.\\nPersuasion for good: Towards a personalized per-\\nsuasive\
+    \ dialogue system for social good. Preprint,\\narXiv:1906.06725.\\nJason Wei, Xuezhi Wang, Dale Schuurmans, Maarten\\\
+    nBosma, Ed H. Chi, Quoc Le, and Denny Zhou. 2022.\\nChain of thought prompting elicits reasoning in large\\nlanguage models.\
+    \ In Proceedings of NeurIPS.\\nJunchao Wu, Shu Yang, Runzhe Zhan, Yulin Yuan,\\nDerek F. Wong, and Lidia S. Chao. 2024.\
+    \ A survey\\non llm-generated text detection: Necessity, methods,\\nand future directions. Preprint, arXiv:2310.14724.\\\
+    nZonglin Yang, Li Dong, Xinya Du, Hao Cheng, Erik\\nCambria, Xiaodong Liu, Jianfeng Gao, and Furu Wei.\\n2024a. Language\
+    \ models as inductive reasoners. In\\nProceedings of EACL.\\nZonglin Yang, Xinya Du, Junxian Li, Jie Zheng, Sou-\\njanya\
+    \ Poria, and Erik Cambria. 2024b. Large lan-\\nguage models for automated open-domain scientific\\nhypotheses discovery.\
+    \ In Proceedings of ACL.\\nXingjian Zhang, Yutong Xie, Jin Huang, Jinge Ma,\\nZhaoying Pan, Qijia Liu, Ziyang Xiong, Tolga\
+    \ Er-\\ngen, Dongsub Shim, Honglak Lee, and Qiaozhu\\nMei. 2024. MASSW: A new dataset and benchmark\\ntasks for ai-assisted\
+    \ scientific workflows. Preprint,\\narXiv:2406.06357.\\nRuiqi Zhong, Peter Zhang, Steve Li, Jinwoo Ahn, Dan\\nKlein, and\
+    \ Jacob Steinhardt. 2023. Goal driven dis-\\ncovery of distributional differences via language de-\\nscriptions. In Proceedings\
+    \ of NeurIPS.\\nYangqiaoyu Zhou, Haokun Liu, Tejes Srivastava,\\nHongyuan Mei, and Chenhao Tan. 2024. Hypoth-\\nesis generation\
+    \ with large language models. arXiv\\npreprint arXiv:2404.04326.\\n\\nA\\nPrompts\\nAll our prompts for LLMs are separated\
+    \ into sys-\\ntem prompts and user prompts. System prompts\\ncontain role and tone information, followed by de-\\ntailed\
+    \ descriptions of the task and the expected\\nresponse format. User prompts contain useful in-\\nformation for hypothesis\
+    \ generation, refinement, or\\ninference, including information from literature, in-\\nstances from datasets, and previously\
+    \ generated hy-\\npotheses. Below are some examples of the prompts\\nthat we use for each task.\\nA.1\\nDeception Detection\\\
+    nSystem Prompt\\nYou're a professional hotel review analyst.\\nGiven a set of hotel reviews, we want to generate\\nhypotheses\
+    \ that are useful for predicting whether\\na review is truthful or deceptive. In other words,\\nwe want to know whether\
+    \ the review is written by\\na someone who actually lived in the hotel.\\nUsing the given examples, please propose\\n<num_hypotheses>\
+    \ possible hypothesis pairs.\\nThese hypotheses should identify specific patterns\\nthat occur across the provided reviews.\\\
+    nEach hypothesis should contain a pair of the\\nfollowing:\\na. A hypothesis about what makes reviews more\\nlikely to\
+    \ be truthful\\nb. The opposite hypothesis about what makes\\nreviews more likely to be deceptive\\nGenerate them in the\
+    \ format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nThe hypotheses should analyze what\
+    \ kind of reviews\\nare likely to be truthful or deceptive.\\nUser Prompt\\nWe have seen some hotel reviews:\\n\\u00b7\\\
+    u00b7\\u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nPlease generate hypotheses that are useful for\\npredicting whether\
+    \ a review is truthful or\\ndeceptive.\\nPropose <num_hypotheses> possible hypotheses.\\nGenerate them in the format of\
+    \ 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nProposed hypotheses:\\nExample 1: Data-Based\
+    \ Hypothesis Generation with\\nHypoGeniC.\\nSystem Prompt\\nYou're a professional hotel review analyst.\\nGiven some key\
+    \ findings from a series of research\\npapers, we want to generate hypotheses that are\\nuseful for predicting whether\
+    \ a review is truthful\\nor deceptive. In other words, we want to know\\nwhether the review is written by a someone who\\\
+    nactually lived in the hotel.\\nUsing the given relevant literatures, please\\npropose <num_hypotheses> possible hypothesis\
+    \ pairs.\\nThese hypotheses should identify specific patterns\\nthat occur across the provided reviews.\\nEach hypothesis\
+    \ should contain a pair of the\\nfollowing:\\na. A hypothesis about what makes reviews more\\nlikely to be truthful\\\
+    nb. The opposite hypothesis about what makes\\nreviews more likely to be deceptive\\nGenerate them in the format of 1.\
+    \ [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nThe hypotheses should analyze what kind of reviews\\\
+    nare likely to be truthful or deceptive.\\nUser Prompt\\nWe have some key findings from a series of\\nresearch papers\
+    \ that might be useful for\\ngenerating the required <num_hypotheses>.\\nhypotheses:\\n\\u00b7\\u00b7\\u00b7 information\
+    \ from literature here \\u00b7\\u00b7\\u00b7\\nPlease generate hypotheses that are useful for\\npredicting whether a review\
+    \ is truthful or\\ndeceptive.\\nWhen generating hypotheses, remember not to\\noveruse your own knowledge. Always refer\
+    \ to the\\nkey findings from research papers provided.\\nDirectly cite passages in the key findings when\\ngenerating\
+    \ a hypothesis.\\nPropose <num_hypotheses> possible hypotheses.\\nRemember to generate <num_hypotheses> hypotheses!\\\
+    nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nProposed hypotheses:\\\
+    nExample 2: Literature-Based Hypothesis Generation.\\nSystem Prompt\\nYou are a helpful assistant for summarizing key\\\
+    nfindings in research papers on a given topic.\\nUser Prompt\\nSummarize the following research paper, focusing\\nONLY\
+    \ on this question: What is useful for one to\\ndecide whether a review is truthful or deceptive\\nin real life?\\nFocus\
+    \ on hypotheses of what kind of reviews tend\\nto be deceptive, do not include technical details\\nin the paper.\\n...\\\
+    nliterature texts here ...\\nExample 3: Paper Summarization.\\nSystem Prompt\\nYou're a social scientist working on a\
+    \ project to\\nidentify deceptive hotel reviews.\\nGiven a set of hotel reviews, we want to generate\\nhypotheses that\
+    \ are useful for predicting whether\\na review is truthful or deceptive. In other words,\\nwe want to know whether the\
+    \ review is written by\\na someone who actually lived in the hotel.\\nUsing the given examples, refine the hypothesis\\\
+    npairs provided.\\nThe desired hypotheses should identify specific\\npatterns that occur across the provided reviews.\\\
+    nEach hypothesis should contain a pair of the\\nfollowing:\\na. A hypothesis about what makes reviews more\\nlikely to\
+    \ be truthful\\nb. The opposite hypothesis about what makes\\nreviews more likely to be deceptive\\nGenerate refined hypotheses\
+    \ in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe hypotheses should\
+    \ analyze what kind of reviews\\nare likely to be truthful or deceptive.\\nUser Prompt\\nWe have seen some hotel reviews:\\\
+    n\\u00b7\\u00b7\\u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nWe have some hypotheses need to be refined:\\n...\\\
+    nhypotheses to be refined here ...\\nPlease refine these hypotheses to make them more\\nspecific and useful for predicting\
+    \ whether a\\nreview is truthful or deceptive.\\nWhen refining the hypotheses, feel free to change\\nthe key information\
+    \ or topic of a hypothesis based\\non the provided prevailing patterns in data if\\nyou think it is necessary.\\nGenerate\
+    \ refined hypotheses in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\n\\\
+    nRefined hypotheses:\\nExample 4: Hypothesis Refinement Based on Data.\\nSystem Prompt\\nYou're a social scientist working\
+    \ on a project to\\nidentify deceptive hotel reviews.\\nGiven a set of hotel reviews, we want to generate\\nhypotheses\
+    \ that are useful for predicting whether\\na review is truthful or deceptive. In other words,\\nwe want to know whether\
+    \ the review is written by\\na someone who actually lived in the hotel.\\nUsing the given relevant literatures, refine\
+    \ the\\nhypothesis pairs provided.\\nThe desired hypotheses should identify specific\\npatterns that occur across the\
+    \ provided reviews.\\nEach hypothesis should contain a pair of the\\nfollowing:\\na. A hypothesis about what makes reviews\
+    \ more\\nlikely to be truthful\\nb. The opposite hypothesis about what makes\\nreviews more likely to be deceptive\\nGenerate\
+    \ refined hypotheses in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe\
+    \ hypotheses should analyze what kind of reviews\\nare likely to be truthful or deceptive.\\nUser Prompt\\nWe have some\
+    \ key findings from a series of\\nresearch papers that might be useful for\\ngenerating hypotheses:\\n\\u00b7\\u00b7\\\
+    u00b7 information from literature here \\u00b7\\u00b7\\u00b7\\nWe have some hypotheses need to be refined:\\n...\\nhypotheses\
+    \ to be refined here ...\\nPlease refine these hypotheses to make them more\\nspecific and useful for predicting whether\
+    \ a\\nreview is truthful or deceptive.\\nWhen refining the hypotheses, feel free to change\\nthe key information or topic\
+    \ of a hypothesis based\\non the provided key findings if you think it is\\nnecessary.\\nGenerate refined hypotheses in\
+    \ the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nRefined hypotheses:\\nExample\
+    \ 5: Hypothesis Refinement Based on Literature.\\nSystem Prompt\\nYou are a professional deceptive detection agent\\nand\
+    \ your job is to determine whether a hotel\\nreview is truthful or deceptive.\\nIn other words, we want to know whether\
+    \ the review\\nis written by someone who had real experiences\\nwith the hotel.\\nFrom past experiences, you learned some\
+    \ patterns.\\nYou need to determine whether each of the patterns\\nholds for the current hotel review, and also\\npredict\
+    \ whether the current hotel review is\\ntruthful or deceptive.\\nGive an answer. The answer should be one word (\\ntruthful\
+    \ or deceptive).\\nGive your final answer in the format of {Final\\nanswer: answer}\\nUser Prompt\\nOur learned patterns:\
+    \ <generated_hypotheses>\\nA hotel review is the following: <review>\\nGiven the pattern you learned above, give an\\\
+    nanswer of whether the hotel review above is\\ndeceptive or truthful.\\nThink step by step.\\nFirst step: Think about\
+    \ which pattern can be\\napplied to the hotel review.\\nSecond step: Based on the pattern, is this hotel\\nreview deceptive\
+    \ or truthful?\\nFinal step: give your final answer in the format\\nof {Final answer: answer}\\nExample 6: Multiple-Hypothesis-Based\
+    \ Inference.\\nA.2\\nAI-Generated Content (AIGC) Detection\\nSystem Prompt\\nYou are a professional writer.\\nYou will\
+    \ be given a story prompt. Your task is to\\nwrite a coherent and creative story based on the\\nprompt. Ensure the story\
+    \ has a clear structure,\\nengaging characters, and stays true to the prompt'\\ns core idea. Keep the language clear and\\\
+    nappropriate to the story's tone.\\nUser Prompt\\n...\\nstory-writing prompt here ...\\nexample:\\n[ WP ] You 've been\
+    \ able to read minds since you\\nturned 7 . Mostly you watch people 's thoughts\\npassively and undetected but one day\
+    \ someone talks\\nback .\\\\n\\nExample 7: AIGC Detection Dataset Generation.\\nSystem Prompt\\nYou're a an AI generated\
+    \ content detection expert.\\nYou are great at detecting what type of text is\\ngenerated by AI.\\nGiven a set of texts,\
+    \ we want to generate\\nhypotheses that are useful for predicting whether\\na piece of text is generated by AI. In other\
+    \ words,\\nwe want to know whether the text is written by a\\nhuman or generated by AI.\\nYour task is to identify what\
+    \ patterns or traits\\nshow up more in AI generated texts, and what shows\\nup more in human written texts.\\nFocus on\
+    \ the\\ngeneralizable insight that can be applied in other\\ncontexts. Ignore things that are specific to this\\nstory.\
+    \ Do not make references this story they may\\nnot be for others.\\nUsing the given examples, please propose\\n<num_hypotheses>\
+    \ possible hypothesis pairs.\\nWhen proposing hypothesis, look closely into the\\ngiven examples and identify specific\
+    \ patterns that\\noccur across the provided text examples.\\nThe hypotheses should be clear, easy to understand,\\nand\
+    \ have specific details such that one can apply\\nthe hypotheses to predict whether a piece of text\\nis written by human\
+    \ or AI.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nThe\
+    \ hypotheses should analyze what kind of text is\\nlikely to be written by human or AI.\\nUser Prompt\\nWe have seen some\
+    \ texts:\\n...\\nmore examples here ...\\nPlease generate hypotheses that are useful for\\npredicting predicting whether\
+    \ a piece of text is\\nwritten by human or AI.\\nPropose <num_hypotheses> possible hypotheses.\\nGenerate them in the\
+    \ format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nWhen proposing hypothesis, look\
+    \ closely into the\\ngiven examples and identify specific patterns that\\noccur across the provided text examples.\\nPlease\
+    \ make sure that the hypotheses are:\\ni. clear (i.e., precise , not too wordy , and easy\\nto understand);\\nii. generalizable\
+    \ to novel situations (i.e., they\\nwould make sense if applied to other AI generated\\ncontent detection experiments\
+    \ or other messaging\\ncontexts);\\niii. empirically plausible (i.e., this is a\\ndimension on which messages can vary\
+    \ on);\\niv. unidimensional (i.e., avoid hypotheses that\\n\\nlist multiple constructs so if there are many\\nthings changing\
+    \ , pick one);\\nv. usable (i.e., a human equipped with this\\ninsight could use it to predict if a new piece of\\ntext\
+    \ is generated AI in a similar way)\\nProposed hypotheses:\\nExample 8: Data-Based Hypothesis Generation with\\nHypoGeniC.\\\
+    nSystem Prompt\\nYou're a professional AI content detector.\\nGiven some key findings from a series of research\\npapers,\
+    \ we want to generate hypotheses that are\\nuseful for detecting whether a piece of text is\\nwritten by human or AI.\\\
+    nYour task is to identify what patterns or traits\\nshow up more in AI generated texts, and what shows\\nup more in human\
+    \ written texts.\\nFocus on the\\ngeneralizable insight that can be applied in other\\ncontexts. Ignore things that are\
+    \ specific to this\\nstory. Do not make references this story they may\\nnot be for others.\\nUsing the given relevant\
+    \ literatures, please\\npropose <num_hypotheses> possible hypothesis pairs.\\nThese hypotheses should identify specific\
+    \ patterns\\nthat occur across the provided texts.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis],\
+    \ ... <num_hypotheses>. [hypothesis].\\nThe hypotheses should analyze what kind of text is\\nlikely to be written by human\
+    \ or AI.\\nUser Prompt\\nWe have some key findings from a series of\\nresearch papers that might be useful for\\ngenerating\
+    \ the required <num_hypotheses>\\nhypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature here \\u00b7\\u00b7\\\
+    u00b7\\nPlease generate hypotheses that are useful for\\npredicting whether a piece of text is written of\\nhuman or AI.\\\
+    nPropose <num_hypotheses> possible hypotheses.\\nRemember to generate <num_hypotheses> hypotheses!\\nGenerate them in\
+    \ the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nProposed hypotheses:\\nExample\
+    \ 9: Literature-Based Hypothesis Generation.\\nSystem Prompt\\nYou are a helpful assistant for summarizing key\\nfindings\
+    \ in research papers on a given topic.\\nUser Prompt\\nSummarize the following research paper, focusing\\nONLY on this\
+    \ question: What is useful for one to\\ndetect whether some text is generated by AI?\\nFocus on hypotheses of what kind\
+    \ of text tend to\\nbe generated by AI, do not include technical\\ndetails in the paper.\\n...\\nliterature texts here\
+    \ ...\\nExample 10: Paper Summarization.\\nSystem Prompt\\nYou're a an AI generated content detection expert.\\nYou are\
+    \ great at detecting what type of text is\\ngenerated by AI.\\nGiven a set of texts, we want to generate\\nhypotheses\
+    \ that are useful for predicting whether\\na piece of text is generated by AI. In other words,\\nwe want to know whether\
+    \ the text is written by a\\nhuman or generated by AI.\\nUsing the given examples, refine the hypothesis\\npairs provided.\\\
+    nThe desired hypotheses should identify specific\\npatterns that occur across the provided text\\nexamples.\\nGenerate\
+    \ refined hypotheses in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe\
+    \ hypotheses should analyze what kind of text is\\nlikely to be written by human or AI.\\nUser Prompt\\nWe have seen some\
+    \ texts:\\n\\u00b7\\u00b7\\u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nWe have some hypotheses need to be refined:\\\
+    n...\\nhypotheses to be refined here ...\\nPlease refine these hypotheses to make them more\\nspecific and useful for\
+    \ predicting whether a piece\\nof text is written by human or AI.\\nWhen refining the hypotheses, feel free to change\\\
+    nthe key information or topic of a hypothesis based\\non the provided prevailing patterns in data if\\nyou think it is\
+    \ necessary.\\nGenerate refined hypotheses in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\\
+    n[hypothesis].\\nRefined hypotheses:\\nExample 11: Hypothesis Refinement Based on Data.\\nSystem Prompt\\nYou're a an\
+    \ AI generated content detection expert.\\nYou are great at detecting what type of text is\\ngenerated by AI.\\nGiven\
+    \ a set of texts, we want to generate\\nhypotheses that are useful for predicting whether\\na piece of text is generated\
+    \ by AI. In other words,\\nwe want to know whether the text is written by a\\nhuman or generated by AI.\\nUsing the given\
+    \ relevant literatures, refine the\\nhypothesis pairs provided.\\nThe desired hypotheses should identify specific\\npatterns\
+    \ that occur across the provided text\\nexamples.\\nGenerate refined hypotheses in the format of 1. [\\nhypothesis], 2.\
+    \ [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe hypotheses should analyze what kind of text is\\nlikely to\
+    \ be written by human or AI.\\nUser Prompt\\nWe have some key findings from a series of\\nresearch papers that might be\
+    \ useful for\\ngenerating hypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature here \\u00b7\\u00b7\\u00b7\\\
+    nWe have some hypotheses need to be refined:\\n...\\nhypotheses to be refined here ...\\nPlease refine these hypotheses\
+    \ to make them more\\nspecific and useful for predicting whether a piece\\nof text is written by human or AI.\\nWhen refining\
+    \ the hypotheses, feel free to change\\nthe key information or topic of a hypothesis based\\non the provided prevailing\
+    \ patterns in data if\\nyou think it is necessary.\\nGenerate refined hypotheses in the format of 1. [\\nhypothesis],\
+    \ 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nRefined hypotheses:\\nExample 12:\\nHypothesis Refinement Based\
+    \ on\\nLiterature.\\nSystem Prompt\\nYou are an AI generated content detection agent\\nand want to determine whether a\
+    \ piece of text is\\nwritten by a human or generated by an AI. In other\\nwords, we want to know whether the text is\\\
+    nwritten by a human or generated by AI.\\nFrom past experiences, you learned some patterns.\\nYou need to determine whether\
+    \ each of the patterns\\nholds for the current text, and also predict\\nwhether the current text is written by human or\
+    \ AI.\\nGive an answer. The answer should be one word (AI\\nor HUMAN).\\n\\nGive your final answer in the format of \\\
+    \"Final\\nanswer: ANSWER\\\"\\nUser Prompt\\nOur learned patterns: <generated_hypotheses>\\nNew text:\\nHere is a story:\
+    \ <story>\\nGiven the patterns you learned above, give an\\nanswer of whether the current text is written by\\nhuman or\
+    \ AI.\\nThink step by step.\\nFirst step: Think about which pattern can be\\napplied to the story.\\nSecond step: Based\
+    \ on the pattern, is this story\\nwritten by human or AI?\\nYou must give your final answer in the format of \\\"\\nFinal\
+    \ answer: ANSWER\\\".\\nExample 13: Multiple-Hypothesis-Based Inference.\\nA.3\\nMental Stress Detection\\nSystem Prompt\\\
+    nYou're a psychologist and social scientist\\nstudying people's stress and their online posts.\\ngiven a set of reddit\
+    \ posts, we want to generate\\nhypotheses that are useful for deciding people's\\nstress status (has stress or no stress)\
+    \ based on\\nreddit post.\\nUsing the given examples, please propose\\n<num_hypotheses> possible hypothesis pairs.\\nThese\
+    \ hypotheses should identify specific patterns\\nthat occur across the provided posts.\\nEach hypothesis should contain\
+    \ a pair of the\\nfollowing:\\na. A hypothesis about what makes the post more\\nlikely to indicate that the poster has\
+    \ stress\\nb. The opposite hypothesis about what makes the\\npost more likely to indicate that the poster does\\nnot have\
+    \ stress\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nThe\
+    \ hypotheses should analyze what kind of posts\\nare likely to indicate stress or no stress.\\nUser Prompt\\nWe have seen\
+    \ some reddit posts:\\n\\u00b7\\u00b7\\u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nPlease generate hypotheses that\
+    \ are useful for\\ndeciding people's stress status (has stress or no\\nstress) based on reddit post.\\nPropose <num_hypotheses>\
+    \ possible hypotheses.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\\
+    nProposed hypotheses:\\nExample 14: Data-Based Hypothesis Generation with\\nHypoGeniC.\\nSystem Prompt\\nYou're a psychologist\
+    \ and social scientist\\nstudying people's stress and their online posts.\\nGiven some key findings from a series of research\\\
+    npapers, we want to generate hypotheses that are\\nuseful for deciding people's stress status (has\\nstress or no stress)\
+    \ based on reddit post.\\nUsing the given relevant literatures, please\\npropose <num_hypotheses> possible hypothesis\
+    \ pairs.\\nThese hypotheses should identify specific patterns\\nthat occur across the provided posts.\\nEach hypothesis\
+    \ should contain a pair of the\\nfollowing:\\na. A hypothesis about what makes the post more\\nlikely to indicate that\
+    \ the poster has stress\\nb. The opposite hypothesis about what makes the\\npost more likely to indicate that the poster\
+    \ does\\nnot have stress\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\\
+    nThe hypotheses should analyze what kind of posts\\nare likely to indicate stress or no stress.\\nUser Prompt\\nWe have\
+    \ some key findings from a series of\\nresearch papers that might be useful for\\ngenerating the required <num_hypotheses>\\\
+    nhypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature here \\u00b7\\u00b7\\u00b7\\nPlease generate hypotheses\
+    \ that are useful for\\ndeciding people's stress status (has stress or no\\nstress) based on reddit post.\\nPropose <num_hypotheses>\
+    \ possible hypotheses.\\nRemember to generate <num_hypotheses> hypotheses!\\nGenerate them in the format of 1. [hypothesis],\
+    \ 2.\\n[hypothesis], ... <num_hypotheses>. [hypothesis].\\nProposed hypotheses:\\nExample 15: Literature-Based Hypothesis\
+    \ Generation.\\nSystem Prompt\\nYou are a helpful assistant for summarizing key\\nfindings in research papers on a given\
+    \ topic.\\nUser Prompt\\nSummarize the following research paper, focusing\\nONLY on this question: What is useful for\
+    \ one to\\njudge whether a reddit poster has stress based on\\none of their reddit post content?\\nFocus on hypotheses\
+    \ of what kind of posts indicate\\nstress, do not include technical details in the\\npaper.\\n...\\nliterature texts here\
+    \ ...\\nExample 16: Paper Summarization.\\nSystem Prompt\\nYou're a psychologist and social scientist working\\non a project\
+    \ to identify whether a person has\\nstress based on reddit posts.\\ngiven a set of reddit posts, we want to generate\\\
+    nhypotheses that are useful for deciding people's\\nstress status (has stress or no stress) based on\\nreddit post.\\\
+    nUsing the given examples, refine the hypothesis\\npairs provided.\\nThe desired hypotheses should identify specific\\\
+    npatterns that occur across the provided posts.\\nEach hypothesis should contain a pair of the\\nfollowing:\\na. A hypothesis\
+    \ about what makes the post more\\nlikely to indicate that the poster has stress\\nb. The opposite hypothesis about what\
+    \ makes the\\npost more likely to indicate that the poster does\\nnot have stress\\nGenerate refined hypotheses in the\
+    \ format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe hypotheses should analyze\
+    \ what kind of posts\\nare likely to indicate stress or no stress.\\nUser Prompt\\nWe have seen some reddit posts:\\n\\\
+    u00b7\\u00b7\\u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nWe have some hypotheses need to be refined:\\n...\\nhypotheses\
+    \ to be refined here ...\\nPlease refine these hypotheses to make them more\\nspecific and useful for deciding people's\
+    \ stress\\nstatus (has stress or no stress) based on reddit\\npost.\\nGenerate refined hypotheses in the format of 1.\
+    \ [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nRefined hypotheses:\\nExample 17: Hypothesis\
+    \ Refinement Based on Data.\\n\\nSystem Prompt\\nYou're a psychologist and social scientist working\\non a project to\
+    \ identify whether a person has\\nstress based on reddit posts.\\ngiven a set of reddit posts, we want to generate\\nhypotheses\
+    \ that are useful for deciding people's\\nstress status (has stress or no stress) based on\\nreddit post.\\nUsing the\
+    \ given relevant literatures, refine the\\nhypothesis pairs provided.\\nThe desired hypotheses should identify specific\\\
+    npatterns that occur across the provided posts.\\nEach hypothesis should contain a pair of the\\nfollowing:\\na. A hypothesis\
+    \ about what makes the post more\\nlikely to indicate that the poster has stress\\nb. The opposite hypothesis about what\
+    \ makes the\\npost more likely to indicate that the poster does\\nnot have stress\\nGenerate refined hypotheses in the\
+    \ format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\n[hypothesis].\\nThe hypotheses should analyze\
+    \ what kind of posts\\nare likely to indicate stress or no stress.\\nUser Prompt\\nWe have some key findings from a series\
+    \ of\\nresearch papers that might be useful for\\ngenerating hypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature\
+    \ here \\u00b7\\u00b7\\u00b7\\nWe have some hypotheses need to be refined:\\n...\\nhypotheses to be refined here ...\\\
+    nPlease refine these hypotheses to make them more\\nspecific and useful for deciding people's stress\\nstatus (has stress\
+    \ or no stress) based on reddit\\npost.\\nGenerate refined hypotheses in the format of 1. [\\nhypothesis], 2. [hypothesis],\
+    \ ... <num_hypotheses>.\\n[hypothesis].\\nRefined hypotheses:\\nExample 18:\\nHypothesis Refinement Based on\\nLiterature.\\\
+    nSystem Prompt\\nYou're a psychologist and social scientist working\\non a project to identify whether a person has\\\
+    nstress based on reddit posts.\\nFrom past experiences, you learned some patterns.\\nYou need to determine whether each\
+    \ of the patterns\\nholds for the current reddit post, and also\\npredict whether the poster of the reddit post has\\\
+    nstress or not based on the content of the post.\\nGive an answer. The answer should be \\\"has stress\\\"\\nor \\\"no\
+    \ stress\\\".\\nGive your final answer in the format of {Final\\nanswer: answer}\\nUser Prompt\\nOur learned patterns:\
+    \ <generated_hypotheses>\\nA reddit post is the following: <post>\\nGiven the pattern you learned above, give an\\nanswer\
+    \ of whether the poster of the reddit post\\nhas stress or not based on the content of the post.\\nThink step by step.\\\
+    nFirst step: Think about which pattern can be\\napplied to the reddit post.\\nSecond step: Based on the pattern, does\
+    \ the poster\\nof a reddit post has stress or not? Answer should\\nbe \\\"has stress\\\" or \\\"no stress\\\".\\nFinal\
+    \ step: give your final answer in the format\\nof {Final answer: answer}\\nExample 19: Multiple-Hypothesis-Based Inference.\\\
+    nA.4\\nPersuasive Argument Prediction\\nSystem Prompt\\nYou are an intelligent rhetorician and debater who\\nmasters persuasiveness\
+    \ in language.\\nGiven a pair of arguments, you are asked to\\ndetermine which one of them uses more persuasive\\nlanguage.\
+    \ The two arguments are often on the same\\ntopic and are similar, so focus on their\\ndifferences.\\nWhat difference\
+    \ between the two arguments makes\\none more persuasive than the other?\\nYou will be given a set of observations of the\\\
+    nformat:\\nArgument 1: [argument_1]\\nArgument 2: [argument_2]\\nObservation: The first/second argument uses more\\npersuasive\
+    \ language.\\nBased on the observations, please generate\\nhypotheses that are useful for explaining why one\\nargument\
+    \ uses more persuasive language than the\\nother.\\nThese hypotheses should identify patterns, phrases,\\nwordings etc.\
+    \ that occur across the provided\\nexamples. They should also be generalizable to new\\ninstances.\\nPlease propose <num_hypotheses>\
+    \ possible\\nhypotheses and generate them in the format of 1. [\\nhypothesis], 2. [hypothesis], ... <num_hypotheses>.\\\
+    n[hypothesis].\\nUser Prompt\\nHere are the Observations:\\n\\u00b7\\u00b7\\u00b7 more examples here \\u00b7\\u00b7\\\
+    u00b7\\nPlease generate hypotheses that can help determine\\nwhich argument uses more persuasive language.\\nPlease propose\
+    \ <num_hypotheses> possible\\nhypotheses.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>.\
+    \ [hypothesis].\\nProposed hypotheses:\\nExample 20: Data-Based Hypothesis Generation with\\nHypoGeniC.\\nSystem Prompt\\\
+    nYou are an intelligent rhetorician and debater who\\nmasters persuasiveness in language.\\nGiven a pair of arguments,\
+    \ you are asked to\\ndetermine which one of them uses more persuasive\\nlanguage. The two arguments are often on the same\\\
+    ntopic and are similar, so focus on their\\ndifferences.\\nWhat difference between the two arguments makes\\none more\
+    \ persuasive than the other?\\nYou will be given a set of literature of the\\nformat:\\nTitle: [title]\\nKey Findings:\
+    \ [summary]\\nBased on the literature, please generate\\nhypotheses that are useful for explaining why one\\nargument\
+    \ uses more persuasive language than the\\nother.\\nThese hypotheses should identify patterns, phrases,\\nwordings etc.\
+    \ that you can find in the literature.\\nThey should also be generalizable to new\\ninstances.\\nPlease propose <num_hypotheses>\
+    \ refined hypotheses\\nand generate them in the format of 1. [hypothesis\\n], 2. [hypothesis], ... <num_hypotheses>. [\\\
+    nhypothesis].\\nUser Prompt\\nHere are some key findings from a series of\\nresearch papers that might be useful for\\\
+    ngenerating hypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature here \\u00b7\\u00b7\\u00b7\\nPlease generate\
+    \ hypotheses that can help determine\\nwhich argument uses more persuasive language.\\nPlease propose <num_hypotheses>\
+    \ possible\\nhypotheses.\\nGenerate them in the format of 1. [hypothesis], 2.\\n\\n[hypothesis], ... <num_hypotheses>.\
+    \ [hypothesis].\\nProposed hypotheses:\\nExample 21: Literature-Based Hypothesis Generation.\\nSystem Prompt\\nYou are\
+    \ a helpful assistant for summarizing key\\nfindings in research papers on a given topic.\\nUser Prompt\\nSummarize the\
+    \ following research paper, focusing\\nONLY on this question: What characterizes texts\\nthat use more persuasive language?\
+    \ In other words,\\nhow can one determine which one of two sentences\\nuses more persuasive language?\\nFocus on hypotheses\
+    \ of what characterizes texts\\nthat use more persuasive language, do not include\\ntechnical details in the paper.\\\
+    n...\\nliterature texts here ...\\nExample 22: Paper Summarization.\\nSystem Prompt\\nYou are an intelligent rhetorician\
+    \ and debater who\\nmasters persuasiveness in language.\\nGiven a pair of arguments, you are asked to\\ndetermine which\
+    \ one of them uses more persuasive\\nlanguage. The two arguments are often on the same\\ntopic and are similar, so focus\
+    \ on their\\ndifferences.\\nWhat difference between the two arguments makes\\none more persuasive than the other?\\nYou\
+    \ will be given a set of observations of the\\nformat:\\nArgument 1: [argument_1]\\nArgument 2: [argument_2]\\nObservation:\
+    \ The first/second argument uses more\\npersuasive language.\\nBased on the observations, please refine\\nhypotheses provided\
+    \ to make them more useful for\\nexplaining why one argument uses more persuasive\\nlanguage than the other.\\nThese hypotheses\
+    \ should identify patterns, phrases,\\nwordings etc. that occur across the provided\\nexamples. They should also be generalizable\
+    \ to new\\ninstances.\\nPlease propose <num_hypotheses> refined hypotheses\\nand generate them in the format of 1. [hypothesis\\\
+    n], 2. [hypothesis], ... <num_hypotheses>. [\\nhypothesis].\\nUser Prompt\\nHere are the Observations:\\n\\u00b7\\u00b7\\\
+    u00b7 more examples here \\u00b7\\u00b7\\u00b7\\nAnd here are the previous hypotheses:\\n...\\nhypotheses to be refined\
+    \ here ...\\nPlease generate refined hypotheses that can help\\ndetermine which argument uses more persuasive\\nlanguage.\\\
+    nPlease propose <num_hypotheses> refined hypotheses.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis],\
+    \ ... <num_hypotheses>. [hypothesis].\\nRefined hypotheses:\\nExample 23: Hypothesis Refinement Based on Data.\\nSystem\
+    \ Prompt\\nYou are an intelligent rhetorician and debater who\\nmasters persuasiveness in language.\\nGiven a pair of\
+    \ arguments, you are asked to\\ndetermine which one of them uses more persuasive\\nlanguage. The two arguments are often\
+    \ on the same\\ntopic and are similar, so focus on their\\ndifferences.\\nWhat difference between the two arguments makes\\\
+    none more persuasive than the other?\\nYou will be given a set of literature of the\\nformat:\\n\\u00b7\\u00b7\\u00b7\
+    \ information from literature here \\u00b7\\u00b7\\u00b7\\nBased on the literature, please refine hypotheses\\nprovided\
+    \ to make them more useful for explaining\\nwhy one argument uses more persuasive language\\nthan the other.\\nThese hypotheses\
+    \ should identify patterns, phrases,\\nwordings etc. that you can find in the literature.\\nThey should also be generalizable\
+    \ to new\\ninstances.\\nPlease propose <num_hypotheses> refined hypotheses\\nand generate them in the format of 1. [hypothesis\\\
+    n], 2. [hypothesis], ... <num_hypotheses>. [\\nhypothesis].\\nUser Prompt\\nHere are some key findings from a series of\\\
+    nresearch papers that might be useful for\\ngenerating hypotheses:\\n\\u00b7\\u00b7\\u00b7 information from literature\
+    \ here \\u00b7\\u00b7\\u00b7\\nAnd here are the previous hypotheses:\\n...\\nhypotheses to be refined here ...\\nPlease\
+    \ generate refined hypotheses that can help\\ndetermine which argument uses more persuasive\\nlanguage.\\nPlease propose\
+    \ <num_hypotheses> refined hypotheses.\\nGenerate them in the format of 1. [hypothesis], 2.\\n[hypothesis], ... <num_hypotheses>.\
+    \ [hypothesis].\\nRefined hypotheses:\\nExample 24:\\nHypothesis Refinement Based on\\nLiterature.\\nSystem Prompt\\nYou\
+    \ are an intelligent rhetorician and debater who\\nmasters persuasiveness in language.\\nGiven a pair of arguments, you\
+    \ are asked to\\ndetermine which one of them uses more persuasive\\nlanguage. The two arguments are often on the same\\\
+    ntopic and are similar, so focus on their\\ndifferences.\\nFrom past experiences, you learned some patterns.\\nNow, at\
+    \ each time, you should apply the learned\\npatterns to a new pair of arguments and determine\\nwhich one uses more persuasive\
+    \ language.\\nThe answer for the more persuasive language should\\nbe of the form \\\"the _ argument\\\" where _ is either\\\
+    nfirst or second.\\nPlease give your final answer in the format of {\\nFinal answer: the _ argument uses more persuasive\\\
+    nlanguage}\\nUser Prompt\\nOur learned patterns: <generated_hypotheses>\\nGiven the patterns you learned above, determine\\\
+    nwhich of the following arguments uses more\\npersuasive language:\\nArgument 1: <first_argument>\\nArgument 2: <second_argument>\\\
+    nThink step by step.\\nStep 1: Think about which learned patterns can be\\napplied to the arguments.\\nStep 2: Analyze\
+    \ the difference between \\\"Argument\\n1\\\" and \\\"Argument 2\\\".\\nStep 3: Based on the pattern, which argument uses\\\
+    nmore persuasive language?\\nYou MUST give your final answer in the following\\nformat:\\nFinal answer: the _ argument\
+    \ uses more persuasive\\nlanguage.\\nExample 25: Multiple-Hypothesis-Based Inference.\\n\\nB\\nAutomated Experiments\\\
+    nImplementation Details\\nB.1\\nPartitioning of IND and OOD datasets\\nDeception Detection\\nAs stated in Section 4.1,\\\
+    nour IND datasets are from DECEPTIVE REVIEWS,\\nwhich contains 800 truthful hotel reviews from the\\nweb and 800 deceptive\
+    \ reviews gathered from Me-\\nchanical Turk (Ott et al., 2013). The OOD dataset,\\nFOUR-CITIES (Li et al., 2013) consists\
+    \ of 640 hotel\\nreviews from four cities and different web sources\\nfollowing the same procedure as DECEPTIVE RE-\"\n\
+    \  },\n  {\n    \"name\": \"VIEWS\",\n    \"text\": \"AI-Generated Content (AIGC) Detection\\nAs\\ndiscussed in Section\
+    \ 4.1, our AIGC Detection task\\nconsists of two subtasks, GPTGC and LlamaGC.\\nThe IND dataset for GPTGC contains GPT\
+    \ gener-\\nated stories and human-written stories, while the\\none for LlamaGC includes Llama-generated stories\\nand\
+    \ human-written stories. The OOD dataset of\\nGPTGC is the IND dataset of LlamaGC and vice\\nversa.\\nMental Stress Detection\\\
+    nIND and OOD datasets\\nare separated based on the source subreddits, or\\ntopic-specific communities, from which the\
+    \ Reddit\\nposts are collected. Instances of the IND dataset\\nare from ptsd, anxiety, and domestic violence sub-\\nreddits,\
+    \ while those of OOD dataset are from rela-\\ntionships and homeless subreddits.\\nPersuasive Argument Prediction\\nIND\
+    \ and\\nOOD\\ndatasets\\nare\\npartitioned\\naccording\\nto\\nthe source corpora of the non-LLM-generated\\ntexts.\\nExamples\
+    \ from IND datasets are from\\nElecDeb60to20 (Goffredo et al., 2023), Persuasion\\nFor Good (Wang et al., 2020), and Webis-Clickbait-\\\
+    n17 (Potthast et al., 2018), while OOD dataset is\\nfrom PT-Corpus (Da San Martino et al., 2019).\\nB.2\\nSpecificity\
+    \ Boost\\nWe further observed that sometimes the solely\\nliterature-based hypotheses generated by gpt-4o-\\nmini are\
+    \ often too short and brief, making it harder\\nto apply during inference. To address this, we add\\na LLM-based specificity\
+    \ booster after the literature-\\nbased hypothesis generation that adds more con-\\ncrete illustrations and examples to\
+    \ each of the hy-\\npotheses based solely on its pre-training knowledge.\\nSpecifically we apply the specificity booster\
+    \ on\\nour Deception Detection, Mental Stress Detection,\\nand Persuasive Argument Prediction tasks. The\\nspecificity\
+    \ booster is not applied to Llama-3.1-70B-\\nInstruct because it can already generate reasonably\\nspecific hypotheses.\\\
+    nB.3\\nRefinement and Union Implementation\\nRefinement\\nis implemented as an extension\\nbased on the original HypoGeniC\
+    \ pipeline. Dur-\\ning the initialization stage, an LLM MG is in-\\nstructed to generate an initial hypothesis bank\\\
+    nH0\\nL+D based on a set of initial examples Dinit\\nand a series of generated paper summaries S, i.e.,\\nH0\\nL+D = MG(S,\
+    \ Dinit). These initial hypotheses\\nare then evaluated and re-ranked using the same re-\\nward function as in HypoGeniC.\
+    \ In the update stage\\nat time t, if the size of the wrong examples bank\\nW reaches wmax, a set of new hypotheses is\
+    \ gener-\\nated by feeding both the wrong examples bank and\\npaper summaries to MG. Ht\\nL+D is then updated\\nwith the\
+    \ new hypothesis according to the reward,\\nfollowing the same procedure as HypoGeniC.\\nUnion and Redundancy Elimination\\\
+    nis imple-\\nmented by combining the hypothesis bank gen-\\nerated using HYPOGENIC HD or HYPOREFINE\\nHL+Dand the bank\
+    \ generated by our literature-\\nbased hypothesis generation method. We first gen-\\nerate the two hypothesis banks separately\
+    \ using\\nHYPOGENIC, HYPOREFINE, and LITERATURE-\\nONLY, following the procedures described above\\nand in Section 3.\
+    \ Each hypothesis bank is then fed\\nto a redundancy checker module. For a hypoth-\\nesis bank of size 20, the LLM-based\
+    \ redundancy\\nchecker checks each pair of hypotheses and see\\nif one entails the other, with results recorded as a\\\
+    n20 \\u00d7 20 matrix A of 1 (redundant) or 0 (not redun-\\ndant). To create the new no-redundancy hypothesis\\nbank Hnew,\
+    \ we first rank the hypotheses based on\\ntheir training accuracy. Each time we take the best-\\nperforming hypothesis\
+    \ h out of the original hypoth-\\nesis bank H and check if there exists a hypothesis\\nhnew in Hnew such that redundancy\
+    \ is recorded in\\nA for the pair h and hnew, i.e., Ah,hnew = 1 or\\nAhnew,h = 1. If yes, h is moved out of the original\\\
+    nbank H and skipped; if not, h is moved to Hnew\\nwith a rank determined by its training accuracy.\\nAfter removing redundancies\
+    \ of hypothesis\\nbanks, we unite two hypothesis banks to create\\na final bank Hfinal with a balanced prioritization\\\
+    nstrategy.\\nWe first move the top 10 hypotheses\\nfrom the HYPOGENIC or HYPOREFINE hypothe-\\nsis bank to Hfinal. If\
+    \ there is less than 10 hypothe-\\nses in the banks, we move all hypotheses to Hfinal.\\n\\nThen we randomly choose hypotheses\
+    \ from the\\nliterature-based hypothesis bank until the size of\\nHfinal reaches 20.\\nB.4\\nMultiple-Hypothesis Inference\\\
+    nImplementation\\nDuring multiple-hypothesis based inference, each\\ntime we feed a LLM with our final hypothesis bank\\\
+    nH of size 20 (see Appendix B.5) and an instance\\n(x, _) of our IND or OOD datasets with labels re-\\nmoved. The LLM\
+    \ MI is asked to generate an an-\\nswer for the given instance using Chain-of-Thought\\nprompting (Wei et al., 2022) that\
+    \ considers both the\\nrelevance of the hypotheses to the given instance\\nand the utility of the hypothesis bank (see\
+    \ Appendix\\nA for the exact prompts we used). The prediction\\nis denoted as \\u02c6y = MI(H, x). We then compute\\nthe\
+    \ average accuracy for all data instances in the\\nheld-out IND and OOD sets with the model predic-\\ntions. For F1 scores,\
+    \ we report the macro-averaged\\nF1 scores.\\nB.5\\nTechnical Details of NotebookLM and\\nHyperWrite\\nNotebookLM is an\
+    \ LLM-powered research as-\\nsistance tool that generates source-grounding re-\\nsponses to user prompts.\\nSpecifically\
+    \ in our\\ncase, collected literature are uploaded in the Note-\\nbookLM interface, followed by a hypothesis gener-\\\
+    nation prompt asking to generate hypotheses based\\non given literature. Given its functionality and our\\nusage, it is\
+    \ placed under the literature-based hy-\\npothesis generation category in our evaluations.\\nFor HyperWrite, we use its\
+    \ Hypothesis Maker\\nfunction, which is an AI-driven tool that gener-\\nates hypotheses based on a given research question.\\\
+    nThough there is no publicly available technical re-\\nport for this tool, it generally leverages LLM\\u2019s pre-\\ntraining\
+    \ knowledge and literature information to\\nproduce hypotheses.\\nB.6\\nHyperparameters\\nWe use the same set of hyperparameters\
+    \ across all\\ntasks, models, and methods.\\nDuring the training stage of HypoGeniC, the\\nlimit of the hypothesis bank\
+    \ size, Hmax, is set to\\n20, and the size of training set is set to 200. In the\\ninitialization stage, we set num_init\
+    \ = 10. In the\\nupdate stage, we use reward coefficient \\u03b1 = 0.5,\\nwmax = 10, k = 10, and generate 10 hypothesis\\\
+    nper update.\\nIn our HYPOREFINE method, the round of re-\\nfinement Nrefine is set to 6.\\nWe use 5 random seeds for\
+    \ multiple-hypothesis\\ninference: 11376, 8271, 39660, 543, 3.\\nAcross all tasks and methods and for both\\nGPT-4o-mini\
+    \ and Llama-3.1-70B-Instruct, we use\\ntemperature = 1 \\u00d7 10\\u22125 and max_tokens =\\n4000.\\nB.7\\nLicensing Details\\\
+    nDECEPTIVE REVIEWS is released under CC BY-\\nNC-SA 3.0, and PERSUASIVE PAIRS is released\\nunder CC BY-NC 4.0. The WRITINGPROMPTS\\\
+    ndataset which we use to create the AIGC Detec-\\ntion datasets are under MIT License. The LLA-\\nMAGC and GPTGC datasets\
+    \ will be released un-\\nder the same licensing as this work, CC BY 4.0\\nLicense, should it be accepted. DREADDIT and\\\
+    nFOUR-CITIES do not have licenses specified in their\\noriginal papers, but are considered under CC BY\\n4.0 and CC BY-NC-SA\
+    \ 3.0 license respectively as\\nthey are ACL materials.\\nFor the LLMs, GPT-4-MINI is a proprietary and\\nnot released\
+    \ under any open-source license, while\\nLLAMA-70B-I is released under Llama 3.1 Com-\\nmunity License Agreement.\\nThroughout\
+    \ our study, we find that we are in\\ncompliance with the licensing agreements of all the\\ndatasets and models used in\
+    \ this work.\\nB.8\\nEstimated Cost\\nFor LLAMA-70B-I, we run all of our experiments\\nwith 4 NVIDIA A100s, and it takes\
+    \ on average\\n1.5 hours to run all of our hypothesis genera-\\ntion pipelines, including HYPOGENIC, HYPORE-\\nFINE, LITERATURE\\\
+    u222aHYPOGENIC , and LITER-\\nATURE\\u222aHYPOREFINE . With GPT-4-MINI, the\\naverage cost for running the same pipelines\
+    \ is $0.6.\\nC\\nHuman Study Details\\nC.1\\nDecision-making Utility Study Details\\nThe instructions of the practical\
+    \ relevance study\\ncan be found in Figure 6 and Figure 8. For the\\ninterface, we present an example of the control\\\
+    ngroup interface for Deception Detection in Figure 7,\\nand examples of the experiment group interface in\\nFigure 9.\\\
+    nThe subjects of the control group are instructed\\nto perform deception detection or AIGC (GPTGC)\\ndetection tasks without\
+    \ any assistance from the hy-\\npotheses. Subjects in the experiment group are\\n\\nHypotheses\\nFrequency of Selection\\\
+    nHypothesis 1: Reviews that present a balanced perspective by detailing both\\npositive and negative experiences with\
+    \ specific examples (e.g., \\u201cthe room was\\nspacious and clean, but the noise from the street was disruptive at night\\\
+    u201d) are\\nmore likely to be truthful, whereas reviews that express extreme sentiments\\nwithout acknowledging any redeeming\
+    \ qualities (e.g., \\u201ceverything was perfect\\u201d\\nor \\u201cit was a total disaster\\u201d) are more likely to\
+    \ be deceptive.\\n50.00%\\nHypothesis 2: Reviews that mention specific dates of stay or unique circum-\\nstances surrounding\
+    \ the visit (e.g., \\u201cWe stayed during the busy Memorial Day\\nweekend and faced long lines\\u201d) are more likely\
+    \ to be truthful, while reviews\\nthat use vague temporal references (e.g., \\u201cI stayed recently\\u201d) without concrete\\\
+    ndetails are more likely to be deceptive, as they often lack the specificity that\\nsuggests a real and engaged experience.\\\
+    n34.44%\\nHypothesis 3: Reviews that provide detailed sensory descriptions of the hotel\\nexperience, such as the specific\
+    \ decor of the room, the quality of bedding,\\nand the overall ambiance (e.g., \\u201cthe room featured luxurious furnishings,\
+    \ high-\\nthread-count sheets, and soft lighting that created a relaxing atmosphere\\u201d) are\\nmore likely to be truthful,\
+    \ while reviews that use vague or overly simplistic\\ndescriptors (e.g., \\u201cthe hotel was nice and comfortable\\u201d)\
+    \ are more likely to be\\ndeceptive.\\n46.39%\\nNo hypothesis selected\\n7.50%\\nTable 6: How often humans use hypotheses\
+    \ in Deception Detection human study. We allow users to select multiple\\nhypotheses for each instance they make prediction\
+    \ on, so the total frequency can exceed 100%.\\nasked to first read the presented 3 hypotheses and\\nthen make their predictions\
+    \ on the given instance.\\nThey are then required to choose which ones, if\\nany, of the hypotheses that were used in\
+    \ their pre-\\ndiction. At the end of the study, participants in\\nthe experiment group are also asked to give over-\\\
+    nall rating and assessment of the helpfulness of the\\ngiven hypotheses. There are five scales: \\u201cNot at all\\nhelpful\\\
+    u201d, \\u201cSlightly helpful\\u201d, \\u201cModerately helpful\\u201d,\\n\\u201cVery helpful\\u201d, and \\u201cExtremely\
+    \ helpful\\u201d.\\nWe\\nchoose\\ntop\\n3\\nhypotheses\\nfrom\\nthe\\nhypothesis\\nbank\\ngenerated\\nusing\"\n  },\n\
+    \  {\n    \"name\": \"LITERA-\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TURE\\u222aHYPOREFINE\",\n    \"text\"\
+    : \"that cause the greatest\\ndrop in performance when removed from the\\nhypotheses pool during multi-hypothesis inference.\\\
+    nThe chosen hypotheses for Deception Detection\\nand AIGC Detection can be found in Table 5 and\\nTable 6.\\nWe recruit\
+    \ 30 participants for the control group\\nand 30 for the experimental group. For the control\\ngroup, 4 people timed out,\
+    \ and 25 out of the remain-\\ning 26 participants passed attention checks. For the\\nexperimental group, 3 people timed\
+    \ out, and 22\\nout of the remaining 27 passed attention checks.\\nWe compute human accuracy based on responses\\nfrom\
+    \ people who finished tasks in time and passed\\nattention checks. The average time spent is around\\n25 minutes and participants\
+    \ are timed out by the\\nsystem if they spend more than 60 minutes in the\\nstudy, which can happen when they accidentally\\\
+    nleave the study website tab open but forget to do\\nthe task.\\nC.2\\nLikert Rating Survey Details\\nWe provide summaries\
+    \ of existing findings in De-\\nception Detection to annotators and ask them to\\nrate the hypotheses in terms of clarity,\
+    \ novelty, and\\nplausibility. Each metric has five scales, which we\\ninclude in Table 7. In particular, we manually\
+    \ se-\\nlect five representative hypotheses from the set of\\nhypotheses generated by the different methods. We\\nreport\
+    \ the average human ratings in Table 4. The\\ninstructions can be found in figure Figure 2, and the\\ninterface for annotation\
+    \ can be found in Figure 3.\\nC.3\\nNovelty and Nuance Study Details\\nFor the Novelty and Nuance Study, we present\\\
+    nthe instructions for AIGC Detection in Figure 4.\\nWe showcase the interfaces for AIGC Detection in\\nFigure 5.\\nFor\
+    \ both Deception Detection and AIGC Detec-\\ntion, the two hypothesis banks compared are gener-\\nated using LITERATURE-ONLY\
+    \ and HYPOGENIC\\nrespectively.\\nWe recruit 10 participants each task and all par-\\nticpants passed attention the check\
+    \ question.\\n\\nCriteria\\nTexts\\nClarity\\n1. Highly ambiguous (The hypothesis is presented in a highly ambiguous manner,\
+    \ lacking clear\\ndefinition and leaving significant room for interpretation or confusion.)\\n2. Somewhat clear but vague\
+    \ (The hypothesis is somewhat defined but suffers from vague terms\\nand insufficient detail, making it challenging to\
+    \ grasp its meaning or how it could be tested.)\\n3. Moderately clear (The hypothesis is stated in a straightforward manner,\
+    \ but lacks the depth or\\nspecificity needed to fully convey its nuances, assumptions, or boundaries.)\\n4. Clear and\
+    \ precise (The hypothesis is clearly articulated with precise terminology and suffi-\\ncient detail, providing a solid\
+    \ understanding of its assumptions and boundaries with minimal\\nambiguity.)\\n5. Exceptionally clear (The hypothesis\
+    \ is exceptionally clear, concise, and specific, with every\\nterm and aspect well-defined, leaving no room for misinterpretation\
+    \ and fully encapsulating its\\nassumptions, scope, and testability.)\\nNovelty\\n1. Not novel (The hypothesis has already\
+    \ been shown, proven, or is widely known, closely\\nmirroring existing ideas without introducing any new perspectives.)\\\
+    n2. Minimally novel (The hypothesis shows slight novelty, introducing minor variations or\\nnuances that build upon known\
+    \ ideas but do not offer significant new insights.)\\n3. Moderately novel (The hypothesis demonstrates moderate novelty,\
+    \ presenting some new\\nperspectives or angles that provide meaningful, but not groundbreaking, avenues for exploration.)\\\
+    n4. Notably novel (The hypothesis is notably novel, offering unique nuances or perspectives that\\nare well-differentiated\
+    \ from existing ideas, representing valuable and fresh contributions to the\\nfield.)\\n5. Highly novel (The hypothesis\
+    \ is highly novel, introducing a pioneering perspective or idea\\nthat has not been previously explored, opening entirely\
+    \ new directions for future research.)\\nPlausibility\\n1. Not plausible (The hypothesis does not make sense at all, lacking\
+    \ logical or empirical\\ngrounding and failing to align with established knowledge or principles.)\\n2. Minimally plausible\
+    \ (The hypothesis has significant plausibility challenges, making sense\\nin limited contexts but contradicting existing\
+    \ evidence or lacking coherence with established\\ntheories.)\\n3. Moderately plausible (The hypothesis makes sense overall\
+    \ and aligns with general principles\\nor existing knowledge but has notable gaps or uncertainties that raise questions\
+    \ about its validity.)\\n4. Mostly plausible (The hypothesis is mostly plausible, grounded in logical reasoning and exist-\\\
+    ning evidence, with only minor uncertainties or assumptions that could reasonably be addressed.)\\n5. Highly plausible\
+    \ (The hypothesis is highly plausible, fully aligning with established knowledge\\nand logical reasoning, will likely\
+    \ be supported in experiments or theoretical consistency, and\\nhighly likely to be true.)\\nTable 7: Criteria used for\
+    \ human evaluation of the generated hypotheses.\\nC.4\\nIRB\\nWe received IRB exempt (and will provide study\\nnumber\
+    \ in the non-anonymous version of the pa-\\nper). For both of the human studies, we present a\\ndetailed description of\
+    \ the study, incentives, risks\\nand benefits, confidentiality, and contacts & ques-\\ntions in our consent form. The\
+    \ study proceeds only\\nif the participant agrees to give consent.\\nD\\nAdditional Experiments\\nIn this section, we\
+    \ include more analysis on the\\nrobustness of our hypothesis generation methods.\\nD.1\\nLlama-3.1-8B-Instruct Results\\\
+    nIn Table 10, we show the performance of Llama-\\n3.1-8B-Instruct on the OOD and IND datasets for\\nall tasks. We show\
+    \ that our approach with literature\\n+ data outperforms all other methods in 8 of the\\n10 total configurations. Across\
+    \ the 10 configura-\\ntions, our method outperforms few-shot inference\\nby 15.27% on average, and it outperforms the\
+    \ best\\nof literature-based methods and HYPOGENIC by\\n13.04% and 4.88%, respectively. This result fur-\\nther shows\
+    \ the effectiveness of our approach and\\nprovides evidence that our method can be applied\\nwith smaller models, highlighting\
+    \ its scalability\\nand reproducibility.\\nD.2\\nRobustness to Prompt Variations\\nSince our framework heavily relies\
+    \ on LLMs, we\\nperform a robustness test of our hypothesis gen-\\neration method with different prompt variations.\\\
+    nCompared with the original prompts, we consider\\nthree prompt variations: modifying the hypothe-\\nsis generation prompt\
+    \ for MG, inference prompt\\n\\nFigure 2: Instruction page for likert rating.\\nfor MI, and both prompts. We show performance\\\
+    nof all model and task configurations using these\\nprompt variations in Table 11 and Table 12 for\\nOOD and IND settings,\
+    \ respectively. For the OOD\\ndatasets, the accuracy only decreases by 0.20% on\\naverage. For the 90 different configurations,\
+    \ 71 of\\nthem have a performance drop of less than 5%, and\\n48 of them get an accuracy improvement. Addition-\\nally,\
+    \ with the IND datasets, the average accuracy\\ngets an increase of 0.01%. 74 out of the 90 con-\\nfigurations have a\
+    \ performance drop of less than\\n5%, where 50 of them get an improvement. These\\nadditional results further illustrate\
+    \ the robustness\\nof our method against variations of prompts.\\nD.3\\nHyperparameter Search\\nAs introduced in \\u00a7\
+    \ 2 and Appendix B.6, our hy-\\npothesis generation methods have some hyperpa-\\nrameters. Throughout all main experiments\
+    \ in \\u00a7 4,\\nwe use the same set of hyperparameters, which is\\nadopted from HYPOGENIC. As we show in \\u00a7 4,\\\
+    nthis default choice of hyperparameters works con-\\nsistently well across all different model and task\\nconfigurations,\
+    \ highlighting the robustness of our\\nframework. Here we conduct an additional hyper-\\nparameter search of Hmax. We\
+    \ show the results of\\nusing Hmax = 10, 20, 30 in Table 13 and Table 14,\\nfor the OOD and IND settings, respectively.\\\
+    nFor the OOD datasets, changing Hmax\\n=\\n10, 20, 30 results in an average accuracy decrease\\nof only 0.07%. Out of\
+    \ the 60 different configu-\\nrations, 51 of them get an accuracy drop of less\\nthan 5%, where 31 of them get an increase.\
+    \ More-\\nover, with the IND datasets, different choices of\\nHmax = 10, 20, 30 degrades average accuracy by\\n0.23%.\
+    \ In 51 out of 60 cases, we get a performance\\ndrop of less than 5%, and we get an improvement\\nfor 26 cases. These\
+    \ results suggest that although\\nour default choice of hyperparameters may not be\\noptimal for all tasks, our method\
+    \ is able to perform\\nconsistently well. This again highlights the robust-\\nness of our hypothesis generation framework\
+    \ with\\ndifferent hyperparameters.\\nE\\nExamples of Generated Hypotheses\\nand Qualitative Analysis\\nE.1\\nComparing\
+    \ Hypotheses from SciMON\\nand Ours\\nIn \\u00a7 5, we briefly introduce the difference between\\nresearch idea generation\
+    \ and our hypothesis genera-\\ntion work. To better illustrate this difference, we in-\\nclude a detailed comparison in\
+    \ Table 15, consisting\\nthe generated research idea from SciMON (Wang\\net al., 2024), generated hypothesis with HYPORE-\\\
+    n\\nModel\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS OOD\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LLAMAGC OOD\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC\
+    \ OOD\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS OOD\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"DREADDIT OOD\",\n    \"text\": \"Accuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\\
+    nF1\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"text\": \"No\
+    \ hypothesis\\nZero-shot\\n55.47\\n45.77\\n50.00\\n35.03\\n56.33\\n47.15\\n81.24\\n80.90\\n64.60\\n59.91\\nFew-shot k=3\\\
+    n65.56\\n64.01\\n51.11\\n43.37\\n64.22\\n61.55\\n83.64\\n83.36\\n75.00\\n73.37\\nZero-shot generation\\n68.69\\n68.39\\\
+    n49.00\\n34.54\\n53.00\\n41.15\\n86.08\\n85.99\\n65.00\\n60.58\\nLiterature-based\"\n  },\n  {\n    \"name\": \"LITERATURE-ONLY\"\
+    ,\n    \"text\": \"59.22\\n57.31\\n49.00\\n33.45\\n54.00\\n41.65\\n78.80\\n78.62\\n67.68\\n64.52\"\n  },\n  {\n    \"\
+    name\": \"HYPERWRITE\",\n    \"text\": \"61.63\\n57.97\\n49.67\\n33.76\\n52.67\\n39.96\\n82.36\\n82.09\\n68.76\\n65.92\"\
+    \n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"53.03\\n49.12\\n49.33\\n33.04\\n51.67\\n37.96\\n68.96\\n67.50\\\
+    n62.28\\n56.41\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n    \"text\": \"75.22\\n75.14\\n81.67\\n81.61\\\
+    n68.56\\n67.62\\n82.20\\n81.71\\n76.56\\n75.71\\nLiterature + Data (This work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\"\
+    ,\n    \"text\": \"77.78\\n77.71\\n55.33\\n45.77\\n63.33\\n62.20\\n89.04\\n89.02\\n78.04\\n77.28\\nLiterature \\u222aHYPOGENIC\\\
+    n72.41\\n71.62\\n83.00\\n82.96\\n69.22\\n68.39\\n89.88\\n89.87\\n78.20\\n77.52\\nLiterature \\u222aHYPOREFINE\\n77.19\\\
+    n77.17\\n55.33\\n45.77\\n63.00\\n61.81\\n89.52\\n89.51\\n79.24\\n78.61\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"B-I\",\n    \"text\": \"No hypothesis\\nZero-shot\\n62.87\\n58.45\\n58.67\\n50.79\\\
+    n63.00\\n57.61\\n85.60\\n85.59\\n64.56\\n59.98\\nFew-shot k=3\\n68.56\\n67.25\\n70.45\\n67.53\\n76.00\\n74.97\\n86.80\\\
+    n86.76\\n69.44\\n66.47\\nZero-shot generation\\n56.28\\n40.27\\n50.67\\n35.90\\n55.67\\n45.61\\n88.16\\n88.13\\n66.16\\\
+    n62.59\\nLiterature-based\"\n  },\n  {\n    \"name\": \"LITERATURE-ONLY\",\n    \"text\": \"64.25\\n53.97\\n50.00\\n33.33\\\
+    n49.67\\n33.76\\n80.56\\n80.51\\n66.04\\n61.93\"\n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"58.62\\n31.37\\\
+    n50.67\\n35.36\\n54.00\\n42.10\\n83.24\\n83.10\\n74.40\\n73.12\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\"\
+    : \"57.81\\n36.91\\n49.33\\n33.61\\n50.67\\n35.90\\n67.64\\n66.41\\n66.56\\n62.83\\nData-driven\"\n  },\n  {\n    \"name\"\
+    : \"HYPOGENIC\",\n    \"text\": \"62.06\\n56.89\\n78.67\\n78.53\\n78.00\\n77.26\\n88.44\\n88.38\\n75.48\\n74.55\\nLiterature\
+    \ + Data (This work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"72.16\\n71.85\\n67.00\\n66.37\\n66.67\\\
+    n63.53\\n87.52\\n87.48\\n78.92\\n78.55\\nLiterature \\u222aHYPOGENIC\\n73.72\\n73.02\\n81.33\\n81.19\\n78.67\\n78.06\\\
+    n86.72\\n86.64\\n72.56\\n70.78\\nLiterature \\u222aHYPOREFINE\\n71.75\\n71.33\\n66.67\\n65.79\\n65.67\\n62.67\\n88.76\\\
+    n88.73\\n74.80\\n73.55\\nTable 8: Accuracy and F1 scores on the held-out OOD datasets. Literature + data outperforms all\
+    \ other methods\\nin every model and task configurations. The bolded numbers outperform the few-shot method with statistical\\\
+    nsignificance, as determined by a paired t-test using five random seeds.\\nFINE, and an existing finding from Li et al.\
+    \ (2014)\\non Deception Detection. For the SciMON gener-\\nated idea, we adopted from Table 11 in Wang et al.\\n(2024).\
+    \ These examples show that SciMON aims\\nto generate ideas for a potential research project,\\nwhere our method focus\
+    \ on generating possible ex-\\nplanations of a phenomenon. In addition, compar-\\ning with the existing finding from Li\
+    \ et al. (2014),\\nour generated hypothesis is highly relevant to the\\nfield of interest, i.e., Deception Detection.\\\
+    nE.2\\nExample Hypotheses\\nWe include examples of generated hypotheses us-\\ning our LITERATURE\\u222aHYPOREFINE approach\\\
+    nand GPT-4-MINI, together with a brief qualitative\\nanalysis of its source in Table 16. We also show-\\ncase example\
+    \ hypotheses generated using NOTE-\\nBOOKLM and HYPERWRITE on DECEPTIVE RE-\\nVIEWS that are invalid or irrelevant in\
+    \ Table 17.\\nThese hypotheses can lead to degraded inference\\nperformance for theses two methods.\\n\\nModel\"\n  },\n\
+    \  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS IND\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"LLAMAGC IND\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC IND\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS IND\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DREADDIT\
+    \ IND\",\n    \"text\": \"Accuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\"\n  },\n  {\n\
+    \    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"text\": \"No hypothesis\\nZero-shot\\\
+    n56.56\\n51.66\\n56.33\\n47.15\\n50.00\\n35.03\\n83.72\\n83.59\\n62.32\\n56.24\\nFew-shot k=3\\n62.60\\n61.40\\n63.67\\\
+    n61.54\\n54.78\\n49.50\\n85.24\\n85.14\\n67.48\\n63.59\\nZero-shot generation\\n60.16\\n60.15\\n54.33\\n44.36\\n49.67\\\
+    n33.18\\n87.72\\n87.71\\n62.24\\n56.11\\nLiterature-based\"\n  },\n  {\n    \"name\": \"LITERATURE-ONLY\",\n    \"text\"\
+    : \"65.60\\n64.53\\n52.00\\n39.58\\n50.00\\n33.33\\n78.80\\n78.80\\n62.76\\n56.91\"\n  },\n  {\n    \"name\": \"HYPERWRITE\"\
+    ,\n    \"text\": \"58.88\\n54.29\\n52.67\\n39.96\\n49.67\\n33.76\\n86.16\\n86.13\\n64.96\\n60.18\"\n  },\n  {\n    \"\
+    name\": \"NOTEBOOKLM\",\n    \"text\": \"50.40\\n48.79\\n51.67\\n37.96\\n49.33\\n33.04\\n75.92\\n75.78\\n60.52\\n53.37\\\
+    nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n    \"text\": \"68.32\\n67.60\\n72.33\\n71.70\\n66.33\\n64.88\\\
+    n84.68\\n84.52\\n70.40\\n67.90\\nLiterature + Data (This work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\"\
+    : \"68.56\\n68.43\\n62.33\\n57.08\\n57.33\\n54.41\\n89.76\\n89.75\\n70.76\\n68.31\\nLiterature \\u222aHYPOGENIC\\n68.76\\\
+    n67.66\\n73.00\\n72.49\\n68.33\\n67.54\\n89.84\\n89.84\\n70.88\\n68.46\\nLiterature \\u222aHYPOREFINE\\n70.76\\n70.68\\\
+    n60.33\\n54.30\\n55.00\\n51.65\\n90.52\\n90.52\\n69.88\\n67.21\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"B-I\",\n    \"text\": \"No hypothesis\\nZero-shot\\n58.32\\n50.19\\n63.00\\n57.61\\n58.67\\\
+    n50.79\\n86.28\\n86.26\\n64.80\\n60.08\\nFew-shot k=3\\n62.92\\n58.48\\n76.89\\n75.97\\n73.00\\n70.89\\n87.80\\n87.79\\\
+    n68.28\\n64.81\\nZero-shot generation\\n53.68\\n41.02\\n55.67\\n45.61\\n50.67\\n35.90\\n88.80\\n88.80\\n70.52\\n68.39\\\
+    nLiterature-based\"\n  },\n  {\n    \"name\": \"LITERATURE-ONLY\",\n    \"text\": \"62.96\\n58.39\\n51.33\\n36.23\\n49.67\\\
+    n22.61\\n80.32\\n80.32\\n66.08\\n62.09\"\n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"52.28\\n26.75\\n54.00\\\
+    n42.10\\n50.67\\n35.36\\n87.48\\n87.46\\n71.12\\n69.24\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"57.12\\\
+    n35.31\\n50.67\\n35.90\\n49.33\\n33.61\\n71.16\\n70.91\\n68.72\\n65.59\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\"\
+    ,\n    \"text\": \"64.44\\n61.24\\n78.33\\n78.21\\n80.67\\n79.97\\n91.24\\n91.22\\n74.68\\n73.48\\nLiterature + Data (This\
+    \ work)\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"71.68\\n71.42\\n71.00\\n70.14\\n75.33\\n74.38\\n88.92\\\
+    n88.89\\n78.68\\n78.22\\nLiterature \\u222aHYPOGENIC\\n70.28\\n68.76\\n78.33\\n78.13\\n80.00\\n79.22\\n89.36\\n89.33\\\
+    n70.68\\n68.28\\nLiterature \\u222aHYPOREFINE\\n72.60\\n67.80\\n71.00\\n70.14\\n74.00\\n72.84\\n90.88\\n90.88\\n73.20\\\
+    n71.60\\nTable 9: Accuracy and F1 scores on the held-out IND datasets. Literature + data outperforms all other methods\
+    \ in 7\\nout of 10 configurations. For LLAMA-70B-I on GPTGC, LLAMAGC, and PERSUASIVE PAIRS, HYPOGENIC\\nperforms the best.\
+    \ This is likely due to that the literature in these tasks do not offer helpful information for the\\nIND data, but they\
+    \ can still provide useful information for the tasks in general. As in Table 8, our approaches with\\nliterature + data\
+    \ performs the best in all configurations for the OOD datasets.\\n\\nFigure 3: Annotation page for likert rating.\\n\\\
+    nFigure 4: Instruction page for novelty check.\\n\\nFigure 5: Annotation page for novelty check.\\nFigure 6: Instruction\
+    \ page for prediction task without hypotheses.\\n\\nFigure 7: Annotation page for prediction task without hypotheses.\\\
+    n\\nFigure 8: Instruction page for prediction task with the guide of hypotheses.\\n\\nFigure 9: Annotation page for prediction\
+    \ task with the guide of hypotheses.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"DECEPTIVE REVIEWS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n \
+    \   \"name\": \"GPTGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"DREADDIT\",\n    \"text\": \"Accuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\nF1\\nAccuracy\\\
+    nF1\\nOOD\\nNo hypothesis\\nZero-shot\\n48.25\\n41.37\\n48.00\\n32.43\\n52.00\\n40.48\\n63.96\\n47.15\\n62.80\\n57.40\\\
+    nFew-shot k=3\\n54.00\\n53.09\\n46.20\\n33.78\\n53.20\\n44.35\\n77.96\\n77.79\\n63.32\\n57.81\\nZero-shot generation\\\
+    n25.25\\n20.97\\n48.53\\n32.68\\n59.00\\n53.76\\n76.88\\n76.84\\n60.56\\n54.68\\nLiterature-based\"\n  },\n  {\n    \"\
+    name\": \"LITERATURE-ONLY\",\n    \"text\": \"55.22\\n55.19\\n47.27\\n32.10\\n54.67\\n48.74\\n84.08\\n84.08\\n62.64\\\
+    n57.32\"\n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"55.28\\n48.30\\n47.33\\n33.30\\n47.00\\n36.29\\n81.00\\\
+    n80.99\\n61.88\\n56.19\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"52.09\\n47.01\\n49.00\\n32.89\\n50.67\\\
+    n36.42\\n58.84\\n58.83\\n62.20\\n56.89\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n    \"text\": \"64.72\\\
+    n64.00\\n63.53\\n60.48\\n70.33\\n68.97\\n78.96\\n78.89\\n68.64\\n66.18\\nLiterature + Data (This work)\"\n  },\n  {\n\
+    \    \"name\": \"HYPOREFINE\",\n    \"text\": \"56.91\\n51.33\\n65.80\\n64.92\\n81.33\\n81.14\\n87.44\\n87.44\\n68.20\\\
+    n67.85\\nLiterature \\u222aHYPOGENIC\\n54.34\\n44.51\\n63.93\\n61.00\\n70.60\\n69.21\\n83.84\\n83.76\\n71.52\\n69.75\\\
+    nLiterature \\u222aHYPOREFINE\\n61.91\\n61.34\\n65.73\\n64.68\\n81.07\\n80.85\\n85.96\\n85.93\\n68.80\\n67.28\\nIND\\\
+    nNo hypothesis\\nZero-shot\\n50.88\\n41.34\\n52.26\\n40.98\\n48.00\\n32.43\\n70.92\\n49.05\\n63.76\\n58.39\\nFew-shot\
+    \ k=3\\n58.20\\n54.86\\n51.80\\n43.89\\n47.33\\n33.49\\n71.84\\n71.55\\n63.20\\n57.81\\nZero-shot generation\\n28.64\\\
+    n22.60\\n49.20\\n35.16\\n50.27\\n39.36\\n78.00\\n77.79\\n61.60\\n55.51\\nLiterature-based\"\n  },\n  {\n    \"name\":\
+    \ \"LITERATURE-ONLY\",\n    \"text\": \"56.72\\n56.48\\n50.00\\n36.68\\n52.20\\n44.32\\n80.88\\n80.79\\n60.32\\n53.78\"\
+    \n  },\n  {\n    \"name\": \"HYPERWRITE\",\n    \"text\": \"53.12\\n42.51\\n48.66\\n36.80\\n47.00\\n33.03\\n79.48\\n79.28\\\
+    n61.20\\n55.04\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"50.84\\n44.57\\n50.47\\n36.52\\n48.67\\n32.74\\\
+    n63.72\\n63.47\\n63.40\\n58.47\\nData-driven\"\n  },\n  {\n    \"name\": \"HYPOGENIC\",\n    \"text\": \"57.60\\n54.29\\\
+    n71.80\\n70.61\\n70.07\\n68.66\\n79.16\\n79.06\\n66.12\\n62.53\\nLiterature + Data (This work)\"\n  },\n  {\n    \"name\"\
+    : \"HYPOREFINE\",\n    \"text\": \"54.88\\n47.44\\n63.73\\n62.87\\n82.27\\n82.01\\n85.44\\n85.44\\n69.92\\n69.06\\nLiterature\
+    \ \\u222aHYPOGENIC\\n52.84\\n41.59\\n71.33\\n70.15\\n70.33\\n68.98\\n82.04\\n81.88\\n67.48\\n64.76\\nLiterature \\u222aHYPOREFINE\\\
+    n61.40\\n58.89\\n64.13\\n63.30\\n82.33\\n82.09\\n86.32\\n86.32\\n67.56\\n65.35\\nTable 10: Accuracy and F1 scores of Llama-3.1-8B-Instruct\
+    \ on the OOD and IND datasets. Literature + data\\noutperforms all other methods in 4 out of 5 configurations for both\
+    \ OOD and IND datasets. This further validates\\nthe effectiveness of our methods even on smaller models.\\n\\nModel\"\
+    \n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DREADDIT\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Original prompt\\n77.78\\n55.33\\n63.33\\n89.04\\\
+    n78.04\\nPrompt Variation 1\\n73.28 (\\u21934.50)\\n49.33 (\\u21936.00)\\n83.33 (\\u219120.00)\\n91.80 (\\u21912.76)\\\
+    n83.40 (\\u21915.36)\\nPrompt Variation 2\\n69.69 (\\u21938.09)\\n66.67 (\\u219111.34)\\n69.33 (\\u21916.00)\\n89.40 (\\\
+    u21910.36)\\n75.60 (\\u21932.44)\\nPrompt Variation 3\\n74.06 (\\u21933.72)\\n49.00 (\\u21936.33)\\n56.00 (\\u21937.33)\\\
+    n91.20 (\\u21912.16)\\n71.20 (\\u21936.84)\\nLiterature \\u222aHYPOGENIC\\nOriginal prompt\\n72.41\\n83.00\\n69.22\\n89.88\\\
+    n78.20\\nPrompt Variation 1\\n74.53 (\\u21912.12)\\n80.33 (\\u21932.67)\\n61.33 (\\u21937.89)\\n90.20 (\\u21910.32)\\\
+    n74.20 (\\u21934.00)\\nPrompt Variation 2\\n68.91 (\\u21933.50)\\n49.33 (\\u219333.67)\\n70.00 (\\u21910.78)\\n91.60 (\\\
+    u21911.78)\\n74.60 (\\u21933.60)\\nPrompt Variation 3\\n73.75 (\\u21911.34)\\n49.00 (\\u219334.00)\\n69.00 (\\u21930.22)\\\
+    n88.60 (\\u21931.28)\\n71.60 (\\u21936.60)\\nLiterature \\u222aHYPOREFINE\\nOriginal prompt\\n77.19\\n55.33\\n63.00\\\
+    n89.52\\n79.24\\nPrompt Variation 1\\n69.69 (\\u21937.50)\\n49.67 (\\u21935.66)\\n82.33 (\\u219119.33)\\n90.40 (\\u21910.82)\\\
+    n81.40 (\\u21912.16)\\nPrompt Variation 2\\n72.03 (\\u21935.16)\\n70.67 (\\u219115.34)\\n63.67 (\\u21910.67)\\n90.20 (\\\
+    u21910.68)\\n78.60 (\\u21930.64)\\nPrompt Variation 3\\n69.38 (\\u21937.81)\\n49.00 (\\u21936.33)\\n57.33 (\\u21935.67)\\\
+    n90.00 (\\u21910.48)\\n78.20 (\\u21931.04)\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"B-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Original prompt\\\
+    n72.16\\n67.00\\n66.67\\n87.52\\n78.92\\nPrompt Variation 1\\n63.13 (\\u21939.03)\\n66.00 (\\u21931.00)\\n68.33 (\\u21911.66)\\\
+    n90.60 (\\u21913.08)\\n81.60 (\\u21912.68)\\nPrompt Variation 2\\n70.47 (\\u21931.69)\\n81.00 (\\u219114.00)\\n74.67 (\\\
+    u21918.00)\\n84.20 (\\u21933.32)\\n70.80 (\\u21938.12)\\nPrompt Variation 3\\n68.13 (\\u21934.03)\\n74.00 (\\u21917.00)\\\
+    n74.00 (\\u21917.33)\\n89.40 (\\u21911.88)\\n81.40 (\\u21912.48)\\nLiterature \\u222aHYPOGENIC\\nOriginal prompt\\n73.72\\\
+    n81.33\\n78.67\\n86.72\\n72.56\\nPrompt Variation 1\\n74.38 (\\u21910.66)\\n70.67 (\\u219310.66)\\n80.33 (\\u21911.66)\\\
+    n90.00 (\\u21913.28)\\n75.60 (\\u21913.04)\\nPrompt Variation 2\\n72.97 (\\u21930.75)\\n78.33 (\\u21933.00)\\n85.33 (\\\
+    u21916.66)\\n85.00 (\\u21931.72)\\n74.40 (\\u21911.84)\\nPrompt Variation 3\\n75.63 (\\u21911.91)\\n80.00 (\\u21931.33)\\\
+    n83.67 (\\u21915.00)\\n88.40 (\\u21911.68)\\n75.00 (\\u21912.44)\\nLiterature \\u222aHYPOREFINE\\nOriginal prompt\\n71.75\\\
+    n66.67\\n65.67\\n88.76\\n74.80\\nPrompt Variation 1\\n66.72 (\\u21935.03)\\n66.00 (\\u21930.67)\\n68.33 (\\u21912.66)\\\
+    n89.00 (\\u21910.24)\\n75.40 (\\u21910.60)\\nPrompt Variation 2\\n77.97 (\\u21916.22)\\n81.00 (\\u219114.33)\\n74.67 (\\\
+    u21919.00)\\n88.80 (\\u21910.04)\\n72.80 (\\u21932.00)\\nPrompt Variation 3\\n69.53 (\\u21932.22)\\n74.00 (\\u21917.33)\\\
+    n74.00 (\\u21918.33)\\n89.60 (\\u21910.84)\\n73.80 (\\u21931.00)\\nTable 11: Accuracy numbers on OOD datasets with 4 different\
+    \ sets of prompts. The prompts used for the results\\nin Table 1, Table 8, and Table 9 are indicated with \\\"original\
+    \ prompt\\\". The prompt variations contain different\\nparaphrases of the original prompts for hypothesis generation\
+    \ and hypothesis-based inference. Results show the\\nrobustness of our methods to different prompts.\\n\\nModel\"\n  },\n\
+    \  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS\",\n    \"text\": \"\
+    \"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DREADDIT\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"text\": \"\"\
+    \n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Original prompt\\n68.56\\n62.33\\n57.33\\n89.76\\n70.76\\\
+    nPrompt Variation 1\\n65.40 (\\u21933.16)\\n52.00 (\\u219310.33)\\n84.67 (\\u219127.34)\\n89.80 (\\u21910.04)\\n73.20\
+    \ (\\u21912.44)\\nPrompt Variation 2\\n67.00 (\\u21931.56)\\n68.33 (\\u21916.00)\\n59.67 (\\u21912.34)\\n88.80 (\\u21930.96)\\\
+    n69.80 (\\u21930.96)\\nPrompt Variation 3\\n68.60 (\\u21910.04)\\n53.33 (\\u21939.00)\\n53.00 (\\u21934.33)\\n88.60 (\\\
+    u21931.16)\\n69.40 (\\u21931.36)\\nLiterature \\u222aHYPOGENIC\\nOriginal prompt\\n68.76\\n73.00\\n68.33\\n89.84\\n70.88\\\
+    nPrompt Variation 1\\n69.20 (\\u21910.44)\\n75.00 (\\u21912.00)\\n54.67 (\\u219313.66)\\n88.40 (\\u21931.44)\\n65.80 (\\\
+    u21935.08)\\nPrompt Variation 2\\n67.60 (\\u21931.16)\\n57.00 (\\u219316.00)\\n60.67 (\\u21937.66)\\n91.20 (\\u21911.36)\\\
+    n69.00 (\\u21931.88)\\nPrompt Variation 3\\n70.20 (\\u21911.44)\\n54.67 (\\u219318.33)\\n59.33 (\\u21939.00)\\n87.20 (\\\
+    u21932.64)\\n66.80 (\\u21934.08)\\nLiterature \\u222aHYPOREFINE\\nOriginal prompt\\n70.76\\n60.33\\n55.00\\n90.52\\n69.88\\\
+    nPrompt Variation 1\\n64.00 (\\u21936.76)\\n51.67 (\\u21938.66)\\n85.67 (\\u219130.67)\\n90.20 (\\u21930.32)\\n71.20 (\\\
+    u21911.32)\\nPrompt Variation 2\\n67.00 (\\u21933.76)\\n66.33 (\\u21916.00)\\n54.67 (\\u21930.33)\\n90.80 (\\u21910.28)\\\
+    n70.80 (\\u21910.92)\\nPrompt Variation 3\\n65.00 (\\u21935.76)\\n54.33 (\\u21936.00)\\n52.33 (\\u21932.67)\\n89.80 (\\\
+    u21930.72)\\n70.80 (\\u21910.92)\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"text\": \"\"\n  },\n  {\n    \"name\":\
+    \ \"B-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Original prompt\\n71.68\\n71.00\\\
+    n75.33\\n88.92\\n78.68\\nPrompt Variation 1\\n61.80 (\\u21939.88)\\n73.00 (\\u21912.00)\\n80.00 (\\u21914.67)\\n91.20\
+    \ (\\u21912.28)\\n80.80 (\\u21912.12)\\nPrompt Variation 2\\n70.80 (\\u21930.88)\\n77.00 (\\u21916.00)\\n79.00 (\\u21913.67)\\\
+    n89.80 (\\u21910.88)\\n74.60 (\\u21934.08)\\nPrompt Variation 3\\n70.00 (\\u21931.68)\\n79.00 (\\u21918.00)\\n70.33 (\\\
+    u21935.00)\\n92.00 (\\u21913.08)\\n80.00 (\\u21911.32)\\nLiterature \\u222aHYPOGENIC\\nOriginal prompt\\n70.28\\n78.33\\\
+    n80.00\\n89.36\\n70.68\\nPrompt Variation 1\\n69.80 (\\u21930.48)\\n70.33 (\\u21938.00)\\n83.00 (\\u21913.00)\\n91.80\
+    \ (\\u21912.44)\\n76.20 (\\u21915.52)\\nPrompt Variation 2\\n72.20 (\\u21911.92)\\n79.33 (\\u21911.00)\\n92.33 (\\u219112.33)\\\
+    n89.60 (\\u21910.24)\\n74.20 (\\u21913.52)\\nPrompt Variation 3\\n73.20 (\\u21912.92)\\n81.00 (\\u21912.67)\\n82.00 (\\\
+    u21912.00)\\n92.40 (\\u21913.04)\\n75.20 (\\u21914.52)\\nLiterature \\u222aHYPOREFINE\\nOriginal prompt\\n72.60\\n71.00\\\
+    n74.00\\n90.88\\n73.20\\nPrompt Variation 1\\n64.80 (\\u21937.80)\\n73.00 (\\u21912.00)\\n80.00 (\\u21916.00)\\n89.80\
+    \ (\\u21931.08)\\n76.20 (\\u21913.00)\\nPrompt Variation 2\\n75.20 (\\u21912.60)\\n77.00 (\\u21916.00)\\n74.67 (\\u21910.67)\\\
+    n91.40 (\\u21910.52)\\n74.00 (\\u21910.80)\\nPrompt Variation 3\\n67.20 (\\u21935.40)\\n79.00 (\\u21918.00)\\n70.33 (\\\
+    u21933.67)\\n92.40 (\\u21911.52)\\n77.60 (\\u21913.40)\\nTable 12: Accuracy numbers on IND datasets with 4 different sets\
+    \ of prompts.\\nModel\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE\
+    \ REVIEWS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\":\
+    \ \"GPTGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"DREADDIT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"MINI\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Hmax = 10\\n78.75 (\\\
+    u21910.97)\\n52.00 (\\u21933.33)\\n48.67 (\\u219314.66)\\n88.80 (\\u21930.24)\\n78.20 (\\u21910.16)\\nHmax = 20\\n77.78\\\
+    n55.33\\n63.33\\n89.04\\n78.04\\nHmax = 30\\n79.69 (\\u21911.91)\\n48.67 (\\u21936.66)\\n66.67 (\\u21913.34)\\n90.40 (\\\
+    u21911.36)\\n76.40 (\\u21931.64)\\nLiterature \\u222aHYPOGENIC\\nHmax = 10\\n73.00 (\\u21930.59)\\n68.00 (\\u219315.00)\\\
+    n60.33 (\\u21938.89)\\n90.60 (\\u21910.72)\\n79.80 (\\u21911.60)\\nHmax = 20\\n72.41\\n83.00\\n69.22\\n89.88\\n78.20\\\
+    nHmax = 30\\n74.60 (\\u21912.19)\\n87.67 (\\u21914.67)\\n82.33 (\\u219113.11)\\n90.80 (\\u21910.92)\\n75.40 (\\u21932.80)\\\
+    nLiterature \\u222aHYPOREFINE\\nHmax = 10\\n73.80 (\\u21933.39)\\n51.33 (\\u21934.00)\\n49.00 (\\u219314.00)\\n89.40 (\\\
+    u21930.12)\\n75.80 (\\u21933.44)\\nHmax = 20\\n77.19\\n55.33\\n63.00\\n89.52\\n79.24\\nHmax = 30\\n76.40 (\\u21930.79)\\\
+    n49.33 (\\u21936.00)\\n67.67 (\\u21914.67)\\n90.80 (\\u21911.28)\\n74.20 (\\u21935.04)\"\n  },\n  {\n    \"name\": \"\
+    LLAMA\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"B-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\"\
+    ,\n    \"text\": \"Hmax = 10\\n73.59 (\\u21911.43)\\n71.33 (\\u21914.33)\\n77.67 (\\u219110.00)\\n84.00 (\\u21933.52)\\\
+    n79.00 (\\u21910.08)\\nHmax = 20\\n72.16\\n67.00\\n66.67\\n87.52\\n78.92\\nHmax = 30\\n71.09 (\\u21931.07)\\n72.33 (\\\
+    u21915.33)\\n78.33 (\\u219111.66)\\n90.00 (\\u21912.48)\\n72.80 (\\u21936.12)\\nLiterature \\u222aHYPOGENIC\\nHmax = 10\\\
+    n70.20 (\\u21933.52)\\n78.33 (\\u21933.00)\\n81.00 (\\u21912.33)\\n86.80 (\\u21910.08)\\n69.60 (\\u21932.96)\\nHmax =\
+    \ 20\\n73.72\\n81.33\\n78.67\\n86.72\\n72.56\\nHmax = 30\\n66.00 (\\u21937.72)\\n86.67 (\\u21915.34)\\n81.00 (\\u21912.33)\\\
+    n89.20 (\\u21912.48)\\n75.80 (\\u21913.24)\\nLiterature \\u222aHYPOREFINE\\nHmax = 10\\n69.20 (\\u21932.55)\\n71.33 (\\\
+    u21914.66)\\n77.67 (\\u219112.00)\\n87.20 (\\u21931.56)\\n77.80 (\\u21914.00)\\nHmax = 20\\n71.75\\n66.67\\n65.67\\n88.76\\\
+    n74.80\\nHmax = 30\\n69.60 (\\u21932.15)\\n72.33 (\\u21915.66)\\n78.33 (\\u219112.66)\\n85.20 (\\u21933.56)\\n71.80 (\\\
+    u21933.00)\\nTable 13: Accuracy numbers on OOD datasets with different limits on the hypothesis bank size Hmax.\\n\\nModel\"\
+    \n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DECEPTIVE REVIEWS\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"LLAMAGC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"GPTGC\",\n    \"text\":\
+    \ \"\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DREADDIT\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"GPT-4\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MINI\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Hmax = 10\\n65.60 (\\u21932.94)\\n53.67 (\\u21938.66)\\\
+    n49.67 (\\u21937.66)\\n89.00 (\\u21930.76)\\n69.80 (\\u21930.96)\\nHmax = 20\\n68.56\\n62.33\\n57.33\\n89.76\\n70.76\\\
+    nHmax = 30\\n67.40 (\\u21931.16)\\n59.33 (\\u21933.00)\\n66.00 (\\u21918.67)\\n92.20 (\\u21912.44)\\n70.80 (\\u21910.04)\\\
+    nLiterature \\u222aHYPOGENIC\\nHmax = 10\\n69.60 (\\u21910.84)\\n68.00 (\\u21935.00)\\n74.33 (\\u21916.00)\\n90.20 (\\\
+    u21910.36)\\n69.80 (\\u21931.08)\\nHmax = 20\\n68.76\\n73.00\\n68.33\\n89.84\\n70.88\\nHmax = 30\\n68.00 (\\u21930.76)\\\
+    n77.00 (\\u21915.00)\\n86.67 (\\u219118.34)\\n90.20 (\\u21910.36)\\n66.00 (\\u21934.88)\\nLiterature \\u222aHYPOREFINE\\\
+    nHmax = 10\\n67.40 (\\u21933.36)\\n53.67 (\\u21936.66)\\n49.33 (\\u21935.67)\\n88.40 (\\u21932.12)\\n68.00 (\\u21931.88)\\\
+    nHmax = 20\\n70.76\\n60.33\\n55.00\\n90.52\\n69.88\\nHmax = 30\\n65.40 (\\u21935.36)\\n57.33 (\\u21933.00)\\n67.33 (\\\
+    u219112.33)\\n90.40 (\\u21930.12)\\n68.00 (\\u21931.88)\"\n  },\n  {\n    \"name\": \"LLAMA\",\n    \"text\": \"\"\n \
+    \ },\n  {\n    \"name\": \"B-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Hmax\
+    \ = 10\\n66.80 (\\u21934.88)\\n72.33 (\\u21911.33)\\n79.00 (\\u21913.67)\\n87.80 (\\u21931.12)\\n79.20 (\\u21910.52)\\\
+    nHmax = 20\\n71.68\\n71.00\\n75.33\\n88.92\\n78.68\\nHmax = 30\\n68.40 (\\u21933.28)\\n82.33 (\\u219111.33)\\n77.33 (\\\
+    u21912.00)\\n91.40 (\\u21912.48)\\n71.20 (\\u21937.48)\\nLiterature \\u222aHYPOGENIC\\nHmax = 10\\n63.00 (\\u21937.28)\\\
+    n78.67 (\\u21910.34)\\n85.33 (\\u21915.33)\\n88.60 (\\u21930.76)\\n66.00 (\\u21934.68)\\nHmax = 20\\n70.28\\n78.33\\n80.00\\\
+    n89.36\\n70.68\\nHmax = 30\\n62.60 (\\u21937.68)\\n86.33 (\\u21918.00)\\n80.33 (\\u21910.33)\\n90.00 (\\u21910.64)\\n74.60\
+    \ (\\u21913.92)\\nLiterature \\u222aHYPOREFINE\\nHmax = 10\\n65.40 (\\u21938.20)\\n72.33 (\\u21911.33)\\n79.00 (\\u21915.00)\\\
+    n89.80 (\\u21931.08)\\n72.20 (\\u21931.00)\\nHmax = 20\\n72.60\\n71.00\\n74.00\\n90.88\\n73.20\\nHmax = 30\\n68.40 (\\\
+    u21934.20)\\n72.33 (\\u21911.33)\\n77.33 (\\u21913.33)\\n88.20 (\\u21932.68)\\n70.80 (\\u21932.40)\\nTable 14: Accuracy\
+    \ numbers on IND datasets with different limits on the hypothesis bank size Hmax.\\nMethod\\nExample Hypotheses and Findings\\\
+    nSciMON (Wang et al., 2024)\\nExploiting Social Media for Irish Language Learning: An Anal-\\nysis of Twitter Data. In\
+    \ this context, we use social media data,\\nparticularly from Twitter, as a method for Irish language learning,\\nbecause\
+    \ it provides a rich source of authentic and diverse language\\nexamples that can be used to enhance learning opportunities\
+    \ for\\nL2 learners in a minority language setting.\"\n  },\n  {\n    \"name\": \"HYPOREFINE\",\n    \"text\": \"Reviews\
+    \ that provide specific accounts of the checkin and check-\\nout processes, including exact times, the names of staff\
+    \ members\\ninvolved, and descriptions of any unique features or services uti-\\nlized (e.g., \\\"I used the self-check-in\
+    \ kiosk at 3 PM\\\"), are more\\nlikely to be truthful. Conversely, reviews that mention issues like\\nlong wait times\
+    \ or check-in problems without contextual details\\nor specific examples (e.g., \\\"the check-in took too long\\\") are\
+    \ more\\nlikely to be deceptive.\\nLi et al. (2014)\\nDeceptive reviews often contain a higher frequency of first-person\\\
+    nsingular pronouns, while truthful reviews may use these pronouns\\nless frequently.\\nTable 15: Examples of generated\
+    \ hypotheses from SciMON, HYPOREFINE, and findings from (Li et al., 2014).\\nNote that the SciMON idea is about creating\
+    \ a new method, where our hypothesis is about a new explanation for\\ndeception detection. We also show an existing finding\
+    \ from Li et al. (2014) on deception detection, demonstrating\\nthat our generated hypothesis is highly relevant to the\
+    \ field of interest.\\n\\nDataset\\nGenerated Hypothesis\\nLiterature Source/Novel\"\n  },\n  {\n    \"name\": \"DECEPTIVE\
+    \ REVIEWS\",\n    \"text\": \"Deceptive reviews often contain a higher frequency of\\nfirst-person singular pronouns,\
+    \ while truthful reviews\\nmay use these pronouns less frequently.\\nLi et al. (2014)\\nThe use of repetitive phrasing\
+    \ across multiple reviews is\\na strong indicator of deception, while truthful reviews are\\nmore likely to exhibit unique\
+    \ language and perspectives.\\nMaurya et al. (2022)\\nReviews that provide specific accounts of the check-\\nin and check-out\
+    \ processes, including exact times, the\\nnames of staff members involved, and descriptions of\\nany unique features or\
+    \ services utilized (e.g., \\\"I used\\nthe self-check-in kiosk at 3 PM\\\"), are more likely to be\\ntruthful. Conversely,\
+    \ reviews that mention issues like\\nlong wait times or check-in problems without contextual\\ndetails or specific examples\
+    \ (e.g., \\\"the check-in took too\\nlong\\\") are more likely to be deceptive.\\nNovel (from data)\\nGPTGC and LLAMAGC\\\
+    nAI-generated content may struggle with maintaining co-\\nherence over longer passages, while human writing typi-\\ncally\
+    \ maintains clarity and focus.\\nTang et al. (2023)\\nAI-generated texts are more likely to follow conventional\\nnarrative\
+    \ structures, while human-written texts may ex-\\nperiment with form and structure.\\nNovel (from data)\"\n  },\n  {\n\
+    \    \"name\": \"DREADDIT\",\n    \"text\": \"Posts that show erratic posting behavior or changes in\\ntone (e.g., from\
+    \ positive to negative) are more likely to\\nindicate stress, while consistent posting patterns with a\\nstable tone are\
+    \ more likely to indicate no stress.\\nWan and Tian (2024)\\nPosts that exhibit avoidance behaviors (e.g., avoiding\\\
+    nsocial situations or responsibilities) are more likely to\\nindicate stress, while posts that demonstrate proactive\\\
+    nengagement with challenges are more likely to indicate\\nno stress.\\nDoan et al. (2017)\\nPosts that reflect on personal\
+    \ struggles with mental\\nhealth or addiction (e.g., \\\"I was a severe addict\\\") are\\nmore likely to indicate that\
+    \ the poster has stress, while\\nposts that discuss academic or professional experiences\\nwithout emotional turmoil (e.g.,\
+    \ \\\"I\\u2019ve explained the\\naforementioned to people\\\") are more likely to indicate\\nthat the poster does not\
+    \ have stress.\\nNovel (from data)\"\n  },\n  {\n    \"name\": \"PERSUASIVE PAIRS\",\n    \"text\": \"Persuasive texts\
+    \ that incorporate rhetorical devices, such\\nas rhetorical questions and direct appeals, are more likely\\nto engage\
+    \ the reader and compel them to consider the\\nwriter\\u2019s viewpoint.\\nWagemans (2023)\\nTexts that utilize strong,\
+    \ action-oriented verbs are gen-\\nerally more persuasive, as they convey confidence and\\nurgency, compelling the audience\
+    \ to take action.\\nNovel (from data)\\nArguments that include a clear and compelling call to\\naction are more persuasive,\
+    \ as they provide the audience\\nwith a specific next step to take, reinforcing the urgency\\nand importance of the message.\\\
+    nNovel (from data)\\nTable 16: Examples of generated hypotheses using our method accompanied by labels indicating their\
+    \ sources. For\\nhypotheses from literature, we include the specific paper, while for hypotheses that are not explicitly\
+    \ suggested by\\nour literature base, we set the label to \\\"Novel (from data)\\\".\\n\\nMethod\\nInvalid or Irrelevant\
+    \ Hypothesis\"\n  },\n  {\n    \"name\": \"NOTEBOOKLM\",\n    \"text\": \"**Truthful reviews are more likely to be written\
+    \ in a style and tone that aligns\\nwith the reviewer\\u2019s demographic information available on the platform, if any.**\\\
+    nConversely, deceptive reviews might exhibit inconsistencies between the writing\\nstyle and the reviewer\\u2019s claimed\
+    \ demographic, signaling a potential fabrication.\\n**Truthful reviews are more likely to be posted at various times and\
+    \ days, reflecting\\nthe organic behavior of genuine guests.** Conversely, deceptive reviews, particularly\\nthose orchestrated\
+    \ by paid posters, might be posted in clusters or at unusual times,\\nindicating a coordinated effort.\\n**Truthful reviews\
+    \ are more likely to be written in a way that aligns with the overall\\nsentiment expressed in the review\\u2019s star\
+    \ rating.** Conversely, deceptive reviews\\nmight show inconsistency between the sentiment expressed in the written content\\\
+    nand the assigned star rating, indicating a potential attempt to manipulate perception.\"\n  },\n  {\n    \"name\": \"\
+    HYPERWRITE\",\n    \"text\": \"**Relevant Images:** Truthful reviews are more likely to include relevant images.\\nDeceptive\
+    \ reviews less likely to include images.\\n**First-Person Pronouns:** Truthful reviews use first-person pronouns (I, my).\\\
+    nDeceptive reviews use third-person (one).\\n**Overly Formal Language:** Deceptive reviews use overly formal language.\
+    \ Truth-\\nful reviews use conversational tone.\\nTable 17: Examples of generated hypotheses using NOTEBOOKLM and HYPERWRITE\
+    \ on DECEPTIVE REVIEWS\\nthat are invalid or irrelevant, leading to degraded inference performance for these methods.\"\
+    \n  }\n]"
+  acknowledgments: 'We thank members of the Chicago Human+AI Lab
+
+    for their helpful comments. We also thank the
+
+    anonymous participants on Prolific for participating
+
+    in our study. This work is supported in part by NSF
+
+    grants IIS-2126602 and an award from the Sloan
+
+    Foundation.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n    \"\
+    page\": 2\n  },\n  {\n    \"id\": \"fig_p23_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p23_1.png\",\n \
+    \   \"page\": 23\n  },\n  {\n    \"id\": \"fig_p26_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p26_1.png\"\
+    ,\n    \"page\": 26\n  },\n  {\n    \"id\": \"fig_p27_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p27_1.png\"\
+    ,\n    \"page\": 27\n  },\n  {\n    \"id\": \"fig_p28_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p28_1.png\"\
+    ,\n    \"page\": 28\n  },\n  {\n    \"id\": \"fig_p28_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p28_2.png\"\
+    ,\n    \"page\": 28\n  },\n  {\n    \"id\": \"fig_p29_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p29_1.png\"\
+    ,\n    \"page\": 29\n  },\n  {\n    \"id\": \"fig_p30_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p30_1.png\"\
+    ,\n    \"page\": 30\n  },\n  {\n    \"id\": \"fig_p31_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p31_1.png\"\
+    ,\n    \"page\": 31\n  }\n]"
+references:
+  reference_count: 25

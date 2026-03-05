@@ -1,0 +1,1174 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/AI Scientist/Natural language processing in drug discovery.pdf
+
+identifiers:
+  doi: 10.1080/17460441.2025.2490835
+  pmid: '40298230'
+citation:
+  title: 'Natural language processing in drug discovery: bridging the gap between text and therapeutics with artiﬁcial intelligence'
+  year: '2025'
+  journal: Expert Opinion on Drug Discovery
+  volume: '20'
+  pages: 765-783
+  publisher: Informa UK Limited
+  authors: Christine Ann Withers, Amina Mardiyyah Rufai, Aravind Venkatesan, Santosh Tirunagari, Sebastian Lobentanzer, Melissa
+    Harrison, Barbara Zdrazil
+content:
+  sections: "[\n  {\n    \"name\": \"REVIEW\",\n    \"text\": \"Natural language processing in drug discovery: bridging the\
+    \ gap between text and\\ntherapeutics with artificial intelligence\\nChristine Ann Withers\\na*, Amina Mardiyyah Rufai\\\
+    nb*, Aravind Venkatesanb, Santosh Tirunagari\\nb,\\nSebastian Lobentanzer\\nc,d,e, Melissa Harrison\\nb and Barbara Zdrazil\\\
+    na,e\\naChemical Biology Services, European Molecular Biology Laboratory, European Bioinformatics Institute (EMBL-EBI),\
+    \ Wellcome Genome Campus,\\nHinxton, UK; bLiterature Services, European Molecular Biology Laboratory, European Bioinformatics\
+    \ Institute (EMBL-EBI), Wellcome Genome\\nCampus, Hinxton, UK; cInstitute of Computational Biology, Helmholtz Centre,\
+    \ Munich, Germany; dFaculty of Medicine and Heidelberg University\\nHospital, Heidelberg University, Institute for Computational\
+    \ Biomedicine, Heidelberg, Germany; eOpen Targets, European Bioinformatics Institute\\n(EMBL-EBI), Cambridge, UK\"\n \
+    \ },\n  {\n    \"name\": \"Introduction: The field of Natural Language Processing (NLP) within the life sciences has exploded\
+    \ in its\",\n    \"text\": \"capacity to aid the extraction and analysis of data from scientific texts in recent years\
+    \ through the\\nadvancement of Artificial Intelligence (AI). Drug discovery pipelines have been innovated and acceler\\\
+    u00ad\\nated by the uptake of AI/Machine Learning (ML) techniques.\\nAreas covered: The authors provide background on\
+    \ Named Entity Recognition (NER) in text \\u2013 from\\ntagging terms in text using ontologies to entity identification\
+    \ via ML models. They also explore the use\\nof Knowledge Graphs (KGs) in biological data ingestion, manipulation, and\
+    \ extraction, leading into the\\nmodern age of Large Language Models (LLMs) and their ability to maneuver complex and\
+    \ abundant\\ndata. The authors also cover the main strengths and weaknesses of the many methods available when\\nundertaking\
+    \ NLP tasks in drug discovery. Literature was derived from searches utilizing Europe PMC,\\nResearchRabbit and SciSpace.\\\
+    nExpert opinion: The mass of scientific data that is now produced each year is both a huge positive for\\npotential innovation\
+    \ in drug discovery and a new hurdle for researchers to overcome. Notably, methods\\nshould be selected to fit a use case\
+    \ and the data available, as each method performs optimally under\\ndifferent conditions.\"\n  },\n  {\n    \"name\":\
+    \ \"ARTICLE HISTORY\",\n    \"text\": \"Received 28 November 2024\\nAccepted 4 April 2025\"\n  },\n  {\n    \"name\":\
+    \ \"KEYWORDS\",\n    \"text\": \"Drug discovery; Natural\\nlanguage processing; named\\nentity recognition; large\\nlanguage\
+    \ model; knowledge\\ngraph; machine learning;\\ndeep learning; ontology\"\n  },\n  {\n    \"name\": \"Introduction\",\n\
+    \    \"text\": \"Drug discovery is an inherently complex and knowledge-\\nintensive process, involving large volumes of\
+    \ scientific litera\\u00ad\\nture, clinical trial data, patents, electronic health records, and\\nother textual resources.\
+    \ Given the tremendous pace of growth\\nof such data and the need for integrating information from\\nmultiple sources\
+    \ and even multiple scientific domains, it is\\nwise to automate and standardize the data retrieval processes\\nin order\
+    \ to make them reproducible. Moreover, rather than\\nanalyzing unstructured textual data, an approach that effi\\u00ad\\\
+    nciently\\ndelivers\\nstructured\\ninformation\\n\\u2013\\nincluding\\na standardized semantic understanding of such information\
+    \ \\u2013\\nis desired.\\nBefore the widespread use of Natural Language Processing\\n(NLP) techniques, information extraction\
+    \ from large amounts\\nof text was carried out using simpler, rule-based, and/or sta\\u00ad\\ntistical methods. Examples\
+    \ include the use of keyword-based,\\nRegular expressions (RegEx)-based and rule-based pattern\\nmatching systems [1].\
+    \ These methods often depend on expert-\\ndefined rules to identify or infer relevant information in a text.\\nFor the\
+    \ statistical methods used in this area, methods for\\nranking and identifying the most relevant terms in large col\\\
+    u00ad\\nlections of text such as TF-IDF (Term Frequency-Inverse\\nDocument Frequency) are worth mentioning [2]. Likewise,\\\
+    nclustering (such as K-means clustering) [3] and Topic-\\nmodeling approaches (such as Latent Dirichlet Allocation\\n(LDA))\
+    \ [4] provide the statistical basis for automatically group\\u00ad\\ning documents or terms that are semantically similar\
+    \ without\\nrequiring a deep linguistic understanding. While all these\"\n  },\n  {\n    \"name\": \"methods still have\
+    \ their place in Drug Discovery and related\",\n    \"text\": \"fields, they generally work better for well-defined tasks,\
+    \ and\\nthey would require more manual intervention, e.g. for defining\\nrules to be applied. However, these methods are\
+    \ all known to\\nlack context understanding. The handling of synonyms, for\\ninstance, becomes a cumbersome manual task.\
+    \ Therefore,\\nsuch earlier methods have somewhat limited scope.\\nNLP is a field of artificial intelligence (AI) which\
+    \ aims to\\ndevelop computational methods that make human language\\nunderstandable and interpretable by computers. Within\
+    \ the\\nlife sciences, NLP has become vital when working on drug\\ndiscovery research and target identification [5,6].\
+    \ Using NLP\"\n  },\n  {\n    \"name\": \"methods can allow us to gain an understanding of, e.g. the\",\n    \"text\"\
+    : \"CONTACT Barbara Zdrazil\\nbzdrazil@ebi.ac.uk\\nChemical Biology Services, European Molecular Biology Laboratory, European\
+    \ Bioinformatics Institute (EMBL-\\nEBI), Wellcome Genome Campus, Hinxton, Cambridgeshire CB10 1SD, UK\\n*These authors\
+    \ contributed equally.\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \", VOL. 20, NO. 6, 765\\u2013783\",\n    \"text\": \"https://doi.org/10.1080/17460441.2025.2490835\\\
+    n\\u00a9 2025 The Author(s). Published by Informa UK Limited, trading as Taylor & Francis Group.\\nThis is an Open Access\
+    \ article distributed under the terms of the Creative Commons Attribution License (http://creativecommons.org/licenses/by/4.0/),\
+    \ which permits unrestricted use,\\ndistribution, and reproduction in any medium, provided the original work is properly\
+    \ cited. The terms on which this article has been published allow the posting of the Accepted\\nManuscript in a repository\
+    \ by the author(s) or with their consent.\\n\\nknown state of biology surrounding a disease or drug target of\\ninterest.\
+    \ This processing of biological corpora can help to find\\nand strengthen confidence in relationships between diseases\\\
+    nand potential drug-targets, those being specific molecules in\\nthe body (most commonly proteins), as well as investigate\
+    \ the\\nunderlying reasons why two concepts are linked. For example,\\nshared links to a biological mechanism of both\
+    \ a protein and\\na cell type can inform researchers on the context in which\\na given protein plays a role in a mechanism.\\\
+    nHowever, in order to extract this information from a text\\ncorpus, the drug discovery researcher needs to implement\\\
+    na complex chain of technical steps. The corpus needs to be\\ntokenized (transforming words into elements amenable to\\\
+    nNLP), sentenced (splitting these tokens into manageable seg\\u00ad\\nments), normalized (e.g. with respect to upper and\
+    \ lower\\ncase), and lemmatized (reducing inflections of words to their\\nstems; e.g. \\u2018involved\\u2019 and \\u2018involving\\\
+    u2019 to \\u2018involve\\u2019). These tech\\u00ad\\nnical representations of words then need to be processed to\\nannotate\
+    \ them semantically; the researcher may need to\\ndetermine the function of each word (\\u2018part-of-speech\\u2019),\
+    \ their\\ndependencies (\\u2018what is the object of the verb\\u2019), and determine\\ntheir semantic roles (\\u2018who\
+    \ does what to whom\\u2019). Finally, the\\nresearcher may want to map entities, such as cell types and\\nmolecular mechanisms,\
+    \ to existing concepts (potentially from\\nontologies), which involves named entity recognition (NER),\\nconcept normalization\
+    \ or named entity linking (NEL), and\\nextraction of events or relationships. Additional tasks can\\ninvolve document-level\
+    \ annotation and classification, cluster\\u00ad\\ning, summarization, disambiguation, and coreference resolu\\u00ad\\\
+    ntion. Once all these technical steps can be performed with\\nreasonable accuracy, the NLP pipeline can process text for\
+    \ the\\nresearcher automatically.\\nWith this confidence in our understanding of potential dis\\u00ad\\nease \\u2013 drug\
+    \ \\u2013 target links, we can proceed to develop new\\ndrugs with sound backing of evidence indicating that they will\\\
+    nbe more likely to succeed in clinical trials. Extending this further,\\nthis type of data can aid in the potential repositioning\
+    \ of drugs,\\nhelping to repurpose approved drugs to fit new therapeutic\\nuse-cases. A pertinent example of drug repositioning\
+    \ for suc\\u00ad\\ncess would be the massive efforts that happened globally at the\\noutbreak of the COVID-19 pandemic\
+    \ [7]. Bioinformatics meth\\u00ad\\nodologies including Machine Learning (ML)-based NLP and\\nknowledge graph (KG) generation\
+    \ were used to demonstrate\\nthe promising idea of repositioning the drug baricitinib, which\\nhad been approved to treat\
+    \ rheumatoid arthritis, to treat hos\\u00ad\\npitalized patients with COVID-19 [8]. These initial assessments\\nled to\
+    \ the successful approval and use of the drug to treat\\nCOVID-19 [9] and this is but one of many examples of drug\\nrepositioning\
+    \ success during the pandemic.\\nEvidence supporting a candidate drug target or drug being\\nfunctionally tied to a disease\
+    \ matters because the odds are\\nstacked against clinical trials succeeding. Only around 13.8%\\nof all trials make it\
+    \ through phases I-III to approval [10]. The\\nexponential increase in the volume of biological data now\\nbeing produced\
+    \ has created huge potential for knowledge to\\ngain insights from. However, in consequence, manually\\ncurated ontologies\
+    \ can no longer match the pace of publica\\u00ad\\ntions, mainly due to the lack of flexibility in these earlier\\nmeans\
+    \ of Named Entity Recognition (NER). While manually\\ncurated ontologies have their place, they remain very precise\\\
+    nin their core tasks and can be used to train ML models [11],\\ninstances of novel concepts that have not been curated\
+    \ into\\nontologies can be missed. In drug discovery, there is impor\\u00ad\\ntance in striking a balance between acknowledging\
+    \ well-\\nconnected concepts and being agile enough to link novel\\nconnections as they appear in research.\\nIn this\
+    \ review, we present an overview of NLP techniques\\ncurrently available to drug discovery professionals, including\\\
+    ninformation retrieval, Named Entity Recognition (NER), rela\\u00ad\\ntionship extraction, and text classification. Each\
+    \ of these\\napproaches addresses specific challenges in processing and\\ninterpreting unstructured biomedical text, facilitating\
+    \ the\\nidentification of novel drug candidates, mechanisms of action,\\nand safety profiles. Further, we evaluate advances\
+    \ to these\\nprinciples via deep learning (DL) methods. Deep learning is\\na subset of machine learning, and utilizes\
+    \ multi-layered neural\\nnetworks to analyze data hierarchically, uncovering complex\\npatterns that traditional machine\
+    \ learning methods \\u2013 limited\\nto simpler data representations \\u2013 often fail to detect. Recently,\\ntransformative\\\
+    ntechnologies\\nin\"\n  },\n  {\n    \"name\": \"NLP,\",\n    \"text\": \"particularly\\nLarge\\nLanguage Models (LLMs),\
+    \ have driven substantial improve\\u00ad\\nments across various NLP tasks. Current trends highlight the\\nimpressive capabilities\
+    \ of LLMs in handling large-scale,\\nunstructured biomedical data, making them promising tools\\nfor drug discovery. However,\
+    \ questions arise about their prac\\u00ad\\ntical integration to sensitive and high-stakes tasks, such as\\nArticle highlights\\\
+    n\\u25cfNatural Language Processing (NLP) methods are crucial for drug\\ndiscovery, enabling the extraction of insights\
+    \ from vast biomedical\\nliterature. NLP helps identify drug targets, relationships between\\ndiseases and proteins, and\
+    \ aids in drug repositioning, as seen with\\nthe repurposing of baricitinib for COVID-19 treatment.\\n\\u25cfVarious NLP\
+    \ techniques, including Named Entity Recognition (NER),\\nrelationship extraction, and text classification, are used to\
+    \ process\\nunstructured biomedical data. Recent advances, particularly in deep\\nlearning (DL) and Large Language Models\
+    \ (LLMs), have significantly\\nimproved NLP capabilities, though challenges in reliability, interpret\\u00ad\\nability,\
+    \ and computational requirements remain.\\n\\u25cfOntologies and Knowledge Graphs (KGs) are key tools in organizing\\\
+    nand interpreting biological data. KGs store complex relationships\\nbetween biological entities, and embeddings from\
+    \ models like BERT\\nenable better contextual understanding of data. Combining KGs with\\nmachine learning can help uncover\
+    \ new patterns and relationships in\\ndrug discovery, improving efficiency and outcomes.\\n\\u25cfTraditional methods\
+    \ like string-matching and rule-based approaches\\nfor relationship extraction have limitations in scalability and context\\\
+    nawareness. Machine learning (ML) models, while improving recall and\\nhandling complex relationships, still face challenges\
+    \ like false posi\\u00ad\\ntives, data quality requirements, and the need for expert-driven\\nfeature engineering.\\n\\\
+    u25cfDeep learning models, particularly Transformer architectures like\\nBERT, have improved the ability to capture complex\
+    \ contextual\\nrelationships in biomedical texts, enhancing performance in tasks\\nlike Named Entity Recognition (NER).\
+    \ However, these models rely\\nheavily on large, high-quality annotated datasets and still struggle\\nwith long-range\
+    \ dependencies and data scalability in the context of\\ndrug discovery.\\n\\u25cfGPT models are versatile, autoregressive\
+    \ language models that excel\\nin text generation and task adaptability through instruction fine-\\ntuning, with applications\
+    \ in drug discovery, but they face challenges\\nlike \\u2018hallucinations\\u2019 and data limitations, which can be mitigated\
+    \ by\\ntechniques like RLHF, RAG, and specialized prompting or fine-tuning.\\n766\"\n  },\n  {\n    \"name\": \"C. A.\
+    \ WITHERS ET AL\",\n    \"text\": \"decision-making in drug discovery, where reliability and fac\\u00ad\\ntuality are\
+    \ critical.\\nThroughout this review, when referring to LLMs, we will\\ngenerally be referencing current GPT-like models\
+    \ unless stated\\notherwise. Both BERT-like and GPT-like models originate from\\nthe Transformer architecture, which is\
+    \ briefly discussed in this\\narticle. BERT-like models, considered early LLMs, use only the\\nencoder component of Transformers\
+    \ and are widely used for\\napplications requiring semantic and syntactic understanding\\nof text, such as text classification\
+    \ or entity recognition. They\\nare often referred to as \\u2018representative models\\u2019 because they\\nfocus on text\
+    \ comprehension rather than generation. On the\\nother hand, GPT-like models are decoder-only architectures\\noptimized\
+    \ for generative tasks.\\nWe explore these differences in terms of their underlying\\ndesign and the ways they process\
+    \ and represent information,\\nelucidating their respective strengths and limitations in the\\ncontext of drug discovery.\
+    \ In addition, Generative models are\\ndiscussed extensively in a dedicated section of the article.\\nAll traditional\
+    \ and deep NLP methods carry both benefits\\nand limitations, with each suited for different use-cases. For\\nexample,\
+    \ while rule-based systems and conventional machine\\nlearning methods are often interpretable and domain-specific,\\\
+    nthey may lack the scalability and adaptability offered by deep\\nlearning approaches. Conversely, LLMs, despite their\
+    \ impress\\u00ad\\nive capabilities, require substantial computational resources\\nand are prone to challenges such as\
+    \ hallucination and inter\\u00ad\\npretability issues.\\nFinally, we will evaluate the landscape of NLP in drug\\ndiscovery,\
+    \ highlighting both established methods and cutting-\\nedge advancements. By analyzing the capabilities and limita\\u00ad\\\
+    ntions of existing approaches, we identify opportunities where\\nemerging technologies can address current gaps, thereby\\\
+    nenhancing the utility and accessibility of NLP tools.\\nAddressing these challenges has the potential to significantly\\\
+    nstreamline the preclinical development pipeline, reducing\\nboth time and costs associated with drug discovery.\\nMoreover,\
+    \ by enabling more precise and efficient analysis of\\nbiomedical data, NLP can contribute to improved therapeutic\\noutcomes,\
+    \ ultimately advancing the broader goal of delivering\\nbetter healthcare solutions to patients.\"\n  },\n  {\n    \"\
+    name\": \"Methodology for the review\",\n    \"text\": \"Literature was searched through Europe PMC, ResearchRabbit\\\
+    nand SciSpace. We then accessed exclusively literature that was\\neither open source or in keeping with EBI license agreements.\\\
+    nWe adhere generally to the rule that the most up-to-date and\\nvaluable AI/ML-related literature is ~10 years old max.\\\
+    nHowever, there is a requirement to reference foundational\\npapers regardless of their publishing date, due to the prece\\\
+    u00ad\\ndents they set.\"\n  },\n  {\n    \"name\": \"Using ontologies for named entity recognition\",\n    \"text\":\
+    \ \"More traditional means of recognizing and uniquely categor\\u00ad\\nizing terms in textual data include the use of\
+    \ vocabularies\\ncontaining terms, alongside any synonyms of said term, linked\\ntogether by relations to create ontologies.\
+    \ These definitions of\\nterms and relations defined in ontologies can be thought of as\\ntrees, a subtype of graphical\
+    \ structures [12], meaning they are\\neasily translatable into Knowledge Graphs [13]. An example of\\nthis from the Experimental\
+    \ Factor Ontology (EFO) demon\\u00ad\\nstrates these concepts. Consider the entity \\u2018lung,\\u2019 with the\\nunique\
+    \ identifier (UID) UBERON_0002048 [13,14]. This entity\\nis a subclass of the \\u2018respiratory system\\u2019 entity,\
+    \ with many cell\\ntypes, such as \\u2018lung secretory cell,\\u2019 being linked to it through\\na relation named \\\
+    u2018part of\\u2019 (Figure 1). Unique identifiers (UIDs)\\nare commonplace in NER \\u2013 using ontologies to allow cross-\\\
+    nreferencing of different ontological sources. In addition to the\\nability to \\u2018ground\\u2019 or normalize terms\
+    \ found in-text to unique\\nconcepts, UIDs are integral in many downstream processes\\nlike KG generation. Strictly defining\
+    \ concepts in this manner\\nallows for strong compliance with the FAIR principles\\n(Findable, Accessible, Interoperable,\
+    \ Reusable), encouraging\\nopen source and interoperable data among scientists [15].\\nAnother benefit of ontologies is\
+    \ the ability to find crossovers\\nbetween identified entities through the graph-like structure\\nthat an ontology provides.\
+    \ This can prove useful when trying\\nto assess data relating to hypothesis-driven questions\\na researcher may wish to\
+    \ answer. An example of such\\na question may be: \\u2018what association is there of a given dis\\u00ad\\nease to a given\
+    \ gene?\\u2019 Downstream analysis of data collected\\nthrough NER, be that via ontologies or NER models, often still\\\
+    nrequires the grounding of identified terms in text.\\nUsing ontologies via NER can be considered as literal string-\\\
+    nmatching of terms which map to UIDs in texts and, although\\nNER via ontologies provides a very precise means of identify\\\
+    u00ad\\ning terms, unless there is an introduction of \\u2018rules\\u2019 around\\nentity annotation in-text there is\
+    \ a risk of false positives\\n(incorrectly tagged terms) being introduced. Rules in this\\ncase may include the use of\
+    \ no-go terms, where if an entity\\nhit is found but this hit co-occurs with a no-go term in a range\\nof \\u2018x\\u2019\
+    \ words, that hit would be excluded. If we were interested\\nin annotating proteins like the ataxia-telangiectasia mutated\\\
+    n(ATM) protein for example, we could theoretically run the risk\\nof incorrectly annotating a mention of a bank ATM. This\\\
+    nproblem of capturing false positives still happens with NER\\nmodels, but the hope is that models are more context-aware.\\\
+    nAmbiguity in definitions within ontologies can also be hard to\\nalign on, at times rules categorizing certain terms\
+    \ can be hard\\nto maintainfor example, defining the edge \\u2018is_a\\u2019 between\\nentities is very open ended and\
+    \ can lead to disagreement\\namongst curators [13].\\nIt is often possible, especially using well-curated and long-\\\
+    nstanding ontologies, to link a string in a piece of text to an\\nontological term. However, when found entities cannot\
+    \ be\\ngrounded to an ontology, because a corresponding concept\\ndoes not exist, we lose information that decreases recall\
+    \ \\u2013 the\\nfraction of true positives recovered over all true positives \\u2013\\nleading to a lack of coverage of\
+    \ novel concepts or new trends\\nin research [16]. Biomedical terminology is extensive; it has\\nbeen recorded that diseases\
+    \ and syndromes alone account for\\nover 220 million entities identified in text. Approximately\\n76.6% of these entities\
+    \ can be grounded to entities in the\\nEFO, however, this still represents only 7.6% of all unique\\nlabels found in text.\
+    \ The rest represent a huge amount of\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\"\
+    : \"767\\n\\nheterogeneous, infrequent labels that escape normalizing\\nthrough string-matching to ontologies [17]. This\
+    \ risk of miss\\u00ad\\ning terms increases with the volume of scientific texts that are\\nnow produced. It has been estimated\
+    \ that the annual growth\\nrate of published literature across the four largest publishing\\ndatabases is 4.1% [18]; with\
+    \ this new methods need to strike\\na balance between confidence in the identification of terms\\nand the discovery of\
+    \ new scientific findings [19].\"\n  },\n  {\n    \"name\": \"Relationship extraction from text\",\n    \"text\": \"Beyond\
+    \ the scope of NER in drug discovery research, scientists\\noften want to associate entities to one another following\
+    \ their\\nidentification in-text in order to discern relationships between\\nthem. Relationship extraction from text can\
+    \ be as simple as\\ncollecting data on the co-occurrence of named entities of\\na given type. Using co-occurrence works\
+    \ on the assumption\\nthat if particular entities occur more commonly in a sentence\\ntogether than others, they are more\
+    \ likely to be related. The\\nteams at Europe PMC and Open Targets \\u2013 a public\\u2013private\\npartnership for providing\
+    \ gene-disease associations together\\nwith their sources of evidence \\u2013 are using drug target \\u2013 dis\\u00ad\\\
+    nease co-occurrence in the literature as evidence for association\\nbetween entities [17]. For example, if a protein is\
+    \ found to be\\nmore likely to co-occur in-text with a disease, then it could be\\nassumed that the protein plays a part\
+    \ in some aspect of the\\ndisease. A simple demonstration of the use of co-occurrence\\nof entities to derive relationships\
+    \ is GoGene, a web-interface\\nwherein users enter a search term and receive a list of genes,\\nidentified through the\
+    \ Gene Ontology, prioritized by co-\\noccurrence of the gene with the grounded search term enti\\u00ad\\nties [20,21].\\\
+    nWhilst co-occurrences are measurable and simple to use,\\nrelying on co-occurrence alone depends on strong assump\\u00ad\\\
+    ntions. Entities mentioned together in an article could be\\nentirely unrelated or the text could even negate any relation\\\
+    u00ad\\nship existing between them. This weakness can be partly\\nremedied by part-of-speech (POS) tagging. POS tagging\\\
+    ninvolves using parsers to identify POS: nouns, verbs, adjectives\\nand adverbs. Once identified, these can be used to\
+    \ find triples\\nof words, most commonly, \\u2018Subject-Verb-Object\\u2019 triples. POS-\\ntagging and focus on terms\
+    \ of interest can build patterns with\\nentities such as protein \\u2013 protein interactions, including\\nsearching for\
+    \ a pattern such as [protein]\\u2013[bind*]\\u2013[protein];\\nbind* being mapped to all words of the stem, i.e. binds,\\\
+    nbinding, etc. These efforts allow for collation of protein bind\\u00ad\\ning triplets and the subsequent reconstruction\
+    \ of protein \\u2013\\ninteraction pathways [22]. These triples can also be annotated\\nwith negation. For example, the\
+    \ edge [protein]\\u2013[bind*]\\u2013[pro\\u00ad\\ntein] can become [protein]\\u2013[not*bind*]\\u2013[protein]. Extracted\\\
+    nrelationships between entities styled in the triple format suit\\ningestion into KGs well.\"\n  },\n  {\n    \"name\"\
+    : \"Knowledge graphs in natural language\",\n    \"text\": \"processing\\nIn the age of rapid expansion of scientific\
+    \ data, it is paramount\\nthat researchers correctly store and handle data. KGs are a way\\nto store information as graphs\
+    \ (nodes and edges) and are\\noften both machine- and human-readable. Technically, they\\nFigure 1. Illustration of the\
+    \ \\u2018lung\\u2019 entity sourced from EFO, alongside its parent class \\u2018respiratory system\\u2019 and a sample\
+    \ of cell types which are related by the \\u2018partOf\\u2019\\nrelation to the entity \\u2018lung.\\u2019 Unique identifiers\
+    \ for these entities are sourced from Uberon, exemplary of importing source information from one ontology into\\nanother.\
+    \ The EFO also demonstrates cross-referencing where an entity such as \\u2018lung\\u2019 has references to multiple ontologies\
+    \ including the medical subject headings\\n(MeSH) and NCI thesaurus ontologies.\\n768\"\n  },\n  {\n    \"name\": \"C.\
+    \ A. WITHERS ET AL\",\n    \"text\": \"can take the form of labeled property graphs, as implemented\\nby Neo4j [23]. Neo4j\
+    \ uses a specialized graph query language,\\nCypher, optimized to retrieve information from graph-\\nstructured databases.\
+    \ Benefits of KGs in comparison to tabu\\u00ad\\nlar-based databases such as SQL include the lack of need to\\nuse foreign\
+    \ keys and JOIN operations [24] between tables to\\nextract relationships from data. For highly connected data, KGs\\\
+    nare far more usable and can extract more complicated rela\\u00ad\\ntionships between data compared to tabular structures.\
+    \ A KG\\u2019s\\nstructure is defined by schema, as shown in (Figure 2), defin\\u00ad\\ning the relationships between\
+    \ the entity types present in the\\ngraph. Similar to ontology structures, a KG schema will contain\\n\\u2018nodes\\u2019\
+    \ (or \\u2018vertices\\u2019) connected by \\u2018edges\\u2019 (or \\u2018relations\\u2019). In\\nthe case of the KG shown\
+    \ in Figure 2, we have a simplified\\ndefinition of entity types and their relationships pertaining to\\nthe central dogma\
+    \ of molecular biology [26]. Entities of\\na given type, such as Glucose-6-phosphatase which is\\na \\u2018protein,\\\
+    u2019 would be related to relevant entities via edges.\\nAn example here would be the triple (Glucose-6-phospha\\u00ad\\\
+    ntase)\\u2013[HAS_FUNCTION]\\u2013(gluconeogenesis), with gluconeogen\\u00ad\\nesis being a \\u2018molecular function\\\
+    u2019 entity.\\nWhile Figure 2 is a simple demonstration of nodes being\\nlinked by edges, a large number of details can\
+    \ be added to\\nthis pattern. We can consider \\u2018protein\\u2019 entities and their link\\nto \\u2018molecular function\\\
+    u201d entities \\u2013 these molecular functions\\nwill be part of biological processes. Proteins will be part of\\nbiological\
+    \ pathways and these pathways linked to pheno\\u00ad\\ntypes of disease. All of this can be added to this KG\\u2019s schema\\\
+    ntogether with detailed metadata for each entity type, such as\\ndata provenance, cross-references from external databases,\\\
+    nand experimental results. KGs hold the potential to embody\\naspects of the massive complexity of biology, facilitating\
+    \ the\\ndiscovery of trends in the aggregated data. KG schemas are\\nimportant to consider from a design perspective as\
+    \ their\\nefficient design enables the most high-quality insight to be\\ngained from the data available. Methods to then\
+    \ normalize\\ndata to a defined schema can be chosen appropriately. More\\ntraditional dictionary-based approaches of\
+    \ normalization\\nmay be considered sufficient where data is consistent; for\\nthe most part dictionaries are still regarded\
+    \ as an apt means\\nby which to standardize and consolidate data from multiple\\nsources [27]. Novel methods to assist\
+    \ in this generation of\\ndata for KGs include the use of models, which can define\\nentities in text which are not found\
+    \ in predefined dictionaries\\nas well as the notion of hierarchical classification models\\nwhich allow for more fine-grained\
+    \ NER. More granular\\nattempts at term classification aim to remove ambiguity\\nwithin captured terms [28].\\nRelationships\
+    \ between two entities, such as the aforemen\\u00ad\\ntioned co-occurrences in text or identification of subject \\u2013\\\
+    nverb \\u2013 object triples, can be used to add weights to KG\\nedges. Additional evidence can be used to determine the\\\
+    nstrength of a link between two entities; the ability to use\\nmulti-faceted data \\u2013 including scientific texts,\
+    \ clinical trial out\\u00ad\\ncomes, experimental results, and genomic sequencing data \\u2013\\ncasts a wide net over\
+    \ what can be learned about subject areas\\nof interest through KGs. However, this abundance of data\\nremains to be an\
+    \ issue. Molecular genomics data alone is\\nexpected to exceed four exabytes in 2025 [29] and patient\\nlevel data are\
+    \ also becoming more and more available to\\nresearchers through medical research programmes and wear\\u00ad\\nable technologies\
+    \ [30].\\nFigure 2. Demonstration of a knowledge graph schema describing the central dogma of molecular biology (simplified).\
+    \ This schema was instantiated in Neo4j\\u2019s aura\\nconsole user interface and sets the scene of how a KG is to be\
+    \ planned out, with data then being imported to comply with the defined schema. Neo4j aura DB\\nconsole accessible at\
+    \ [25]. Screenshot used with permission of Neo4j.\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n\
+    \    \"text\": \"769\\n\\nUtilisation of KGs for uncovering patterns in big data can\\ninclude network inference of relationships\
+    \ through ML models\\n[31], for instance via BioBLP (BioBERT for Link Prediction),\\na flexible framework overlaying multimodal\
+    \ data so that dif\\u00ad\\nferent sources can complement each other and lead to novel\\ninsights [32]. With BioBLP, data\
+    \ are handled appropriately in\\norder to be represented as embeddings. Embeddings are\\nvectors or numbers which represent\
+    \ a piece of data in a lower-\\ndimensional space. Each number in a vector represents some\\naspect of the data point\
+    \ it is representing and with embed\\u00ad\\ndings being quite large vectors, they can hold features such as\\ncontexts\
+    \ in which a data point is seen. We assume that more\\nsimilar concepts would appear more closely together in vector\\\
+    nspace.\\nEmbeddings can be categorized based on the type of data\\nthey encode. In NLP, embeddings typically take the\
+    \ form of\\nword or sentence embeddings. Word embeddings represent\\nindividual words or tokens, focusing on word-level\
+    \ relation\\u00ad\\nships. Older methods used to generate these types of embed\\u00ad\\ndings include Bag-of-words (BoW),\
+    \ Word2Vec [33] and GloVe\\n(Global Vectors for Word Representation) [34]. These methods\\ntypically used static embeddings,\
+    \ meaning that each word had\\na fixed representation regardless of the context in which it\\nappears. One key limitation\
+    \ here was inability to account for\\npolysemy, the phenomenon where words have multiple mean\\u00ad\\nings depending\
+    \ on the context. For example, the term \\u2018recep\\u00ad\\ntor\\u2019 in drug discovery can refer to a biological receptor\
+    \ (e.g.\\na protein or molecule involved in signal transduction) or a drug\\nreceptor (the target that binds to a drug\
+    \ molecule to produce\\nits effect). In this example, Word2Vec would produce the same\\nvector for the word \\u2018receptor\\\
+    u2019 regardless of whether it means\\ndifferent things in both contexts. Conversely, newer models like\\nBERT (Bidirectional\
+    \ Encoder Representations from Transformers)\\nand other transformer-based architectures (discussed later in\\nthe text)\
+    \ produce contextualized embeddings, where the repre\\u00ad\\nsentation of a word changes depending on its surrounding\\\
+    nwords. Word embeddings are commonly used in tasks such as\\nword similarity, analogy, and part-of-speech tagging.\\nOn\
+    \ the other hand, sentence embeddings capture the\\nmeaning of entire sentences, encoding the broader relation\\u00ad\\\
+    nships between words in a sentence. These embeddings\\naccount for both syntactic structure and the semantic interac\\\
+    u00ad\\ntions of words to understand how they function together in\\ncontext. Unlike word embeddings, which focus on individual\\\
+    nwords, sentence embeddings reflect how the sequence of\\nwords and their relationships contribute to the overall mean\\\
+    u00ad\\ning of the sentence. This makes them especially useful for\\ntasks requiring a holistic understanding of text,\
+    \ such as sen\\u00ad\\ntence classification, question answering, and relationship\\nextraction [33].\\nTraditional methods\
+    \ for generating sentence embeddings\\nshared similar limitations to those seen with word embed\\u00ad\\ndings, particularly\
+    \ in fully capturing the complex and contex\\u00ad\\ntual nature of language. Common approaches included BoW,\\nTF-IDF\
+    \ (Term Frequency-Inverse Document Frequency), and\\naveraging word embeddings. These methods typically gener\\u00ad\\\
+    nated sentence-level embeddings by aggregating word-level\\nembeddings, often leading to oversimplification of the seman\\\
+    u00ad\\ntic and syntactic relationships in the sentence. While\\ntechniques such as TF-IDF are still widely used due to\
+    \ their\\nsimplicity and interpretability, they fall short in capturing dee\\u00ad\\nper contextual meanings and relationships\
+    \ within a sentence.\\nSince NLP primarily focuses on textual data, recent\\napproaches often employ newer embedding models\
+    \ such as\\nBERT [35] or BioBERT [36] for the advantages they offer in\\nprocessing sequential data. Conversely, other\
+    \ data formats,\\nsuch as images, are better handled by deep learning architec\\u00ad\\ntures like Convolutional Neural\
+    \ Networks (CNNs). CNNs are\\ndesigned to process spatial data and are particularly effective\\nat recognizing patterns\
+    \ and features in visual data, such as\\nprotein structures, 2D or 3D molecular structures, and micro\\u00ad\\nscopy images\
+    \ used to analyze cellular responses to drug treat\\u00ad\\nments. While CNNs are well-suited for these tasks, some of\\\
+    nthem, like protein structures, can also be processed by trans\\u00ad\\nformer models when adapted to handle such tasks.\
+    \ A good\\nexample here is AlphaFold [37].\\nOnce embeddings are generated, they are aggregated to\\nform a unified representation\
+    \ of an entity. This can be done\\nthrough simple concatenation or by averaging the embed\\u00ad\\ndings. A graph consisting\
+    \ of embedded entities can then be\\ninterpreted using statistical functions like cosine similarity or\\nEuclidean distance\
+    \ [38], which help assess the relative similarity\\nbetween entities. For instance, comparing the embeddings of\\nthe\
+    \ diseases \\u2018heart disease\\u2019 and \\u2018coronary thrombosis\\u2019 would\\nlikely show them as more similar\
+    \ to one another than to\\na condition like \\u2018epilepsy,\\u2019 as the embedding structure captures\\nsubtle relationships\
+    \ that go beyond mere word matching.\\nKoscielny et al. integrated data from the Open Targets\\nplatform [39] with clinical\
+    \ trials outcomes in a KG representing\\ndrugs, genes and diseases. Then, using a tensor factorization\\nmodel, the group\
+    \ represented links between genes, diseases\\nand clinical trial results \\u2013 this included the prediction of miss\\\
+    u00ad\\ning pieces of tensors. A major outcome of this paper showed\\nthat enriching the tensor factorization model with\
+    \ KG embed\\u00ad\\ndings led to improved predictions of drug target pairs [40].\\nKGs and LLMs can interface both ways\
+    \ \\u2013 as shown by Open\\nTargets, KGs can be used to induce factuality in LLMs and\\nLLMs can be used to produce KGs,\
+    \ highlighting their comple\\u00ad\\nmentary roles in advancing biomedical knowledge discovery.\\nA dedicated section\
+    \ later in this article delves deeper into the\\ninterplay between LLMs and KGs, exploring their interoper\\u00ad\\nability\
+    \ and applications in drug discovery.\"\n  },\n  {\n    \"name\": \"Machine learning models for natural language\",\n\
+    \    \"text\": \"processing\\nThe limitations of using older methods such as string-\\nmatching to ontologies and rule-based\
+    \ approaches for rela\\u00ad\\ntionship extraction have often become too cumbersome to\\nconsider using these methods\
+    \ alone following the introduc\\u00ad\\ntion of machine learning into NLP. For the moment, one\\nirreplaceable aspect\
+    \ of utilizing ontologies for NER is the\\nassignment of unique identifiers to tagged terms. Grounding\\nterms to ontologies\
+    \ in this way makes the data more FAIR for\\ncollaboration across working groups as well as more intero\\u00ad\\nperable\
+    \ for downstream data analysis and integration [15]. For\\nnow, high confidence in NER-tagged terms can be ensured\\n770\"\
+    \n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n    \"text\": \"when they are grounded to a curated ontology. Oftentimes\\\
+    nmodel-derived tagging is deemed as accurate, with extra trust\\nin the tagging being confirmed by the grounding of a\
+    \ term to\\nan ontology.\\nFalse positives can arise when using ontologies, given that\\nstring matching in this way lacks\
+    \ context awareness. By using\\nML models, we hope to contextualize terms to their textual sur\\u00ad\\nroundings, reducing\
+    \ ambiguities that would lead to false map\\u00ad\\npings in the traditional approach. In comparison to predefined\\nterms,\
+    \ it is observed that ML models can have a lower precision,\\na reduced number of true positives categorized by the model\\\
+    noverall, and much higher recall [41]. A large factor in ensuring\\nthat a model performs to the best of its ability is\
+    \ to ensure high-\\nquality annotated data is used for training and validation.\\nAnnotations refer to the labels or metadata\
+    \ assigned to raw\\ndata, providing the model with the necessary context to learn\\npatterns and make predictions. An\
+    \ example in NER would be\\nannotating words or phrases in a sentence with their correspond\\u00ad\\ning entity types,\
+    \ such as \\u2018drug\\u2019 or \\u2018disease.\\u2019 Complementing this\\nprocess is feature engineering, where domain\
+    \ experts manually\\ncreate and select meaningful features from the raw data to\\nimprove the model\\u2019s ability to\
+    \ detect complex patterns. This can\\ninclude transforming raw data into numerical representations,\\ncombining existing\
+    \ features, or applying specialized techniques\\nto extract relevant insights. This could be in the form of creating\\\
+    nnumerical representations, combining features present in the\\ndata, or applying specialized transformations to extract\
+    \ insights\\nthat drive better performance in ML models. For NER, these fea\\u00ad\\ntures would be domain-specific terms,\
+    \ syntactic structures, and\\nentity relationships that could help the model more accurately\\nrecognize and classify\
+    \ entities based on learned patterns between\\nthese relevant features and output pairs. Difficulties can always\\narise;\
+    \ humans debate on concepts being of a certain entity type.\\nExamples here would include distinguishing between adverse\\\
+    nevents and phenotypic features of a disease.\\nSupervised learning models \\u2013 models trained on labeled\\ndata \\\
+    u2013 are commonly used for NER tasks. Biological texts are\\nused to train the model and in these cases are manually\\\
+    ntagged with entity types of interest. A variety of models can\\nbe adopted for this aim. Older models include conditional\\\
+    nrandom fields (CRFs), first introduced in 2001 [42,43], and\\ntheir predecessor, Hidden Markov Models (HMMs) [44,45].\\\
+    nHMMs, while effective at modeling sequential data, were\\nsoon surpassed by CRFs, as CRFs account for contextual\\ndependencies\
+    \ between neighboring words more effectively,\\nmaking them better suited for text mining.\\nAs ML methods became popular\
+    \ in drug discovery, models\\nsuch as Naive Bayes [46], Logistic Regression [47], and Support\\nVector Machines (SVMs)\
+    \ [48] became prominent for NER tasks.\\nBoth Naive Bayes and Logistic Regression are probabilistic\\nmodels, but they\
+    \ differ in their assumptions and applications.\\nNaive Bayes models are based on Bayes\\u2019 theorem and are\\nknown\
+    \ for their simplicity and efficiency in text classification.\\nThey assume that features in the data are conditionally\
+    \ inde\\u00ad\\npendent, an assumption that, while simplifying computation,\\nmay not always hold in complex datasets.\
+    \ Logistic Regression,\\nin contrast, assumes a linear relationship between input fea\\u00ad\\ntures and the target, making\
+    \ it primarily applicable to linearly\\nseparable data. It remains a foundational algorithm for classi\\u00ad\\nfication\
+    \ problems.\\nAn illustrative application of ML in drug discovery is a study\\non cancer type classification using biomedical\
+    \ literature [49].\\nIn this study, SVM, Naive Bayes, and Logistic Regression mod\\u00ad\\nels were used to classify abstracts\
+    \ and full-text articles. The\\nworkflow involved preprocessing the text, extracting features\\nusing TF-IDF, and evaluating\
+    \ model predictions against\\nMedical Subject Headings (MeSH) terms to assess accuracy.\\nA key contribution of this work\
+    \ was the development of the\\nSparkText framework, which leverages a Big Data infrastruc\\u00ad\\nture to efficiently\
+    \ process large-scale text data. SVM proved to\\nbe the most effective model, achieving an accuracy of 93.81%.\\nTable\
+    \ 1 summarizes the key features and limitations of the\\nML models discussed in this section. While all these ML models\\\
+    nstill find suitable application in less complex tasks, they are not\\nthe most capable methods available today. The potential\
+    \ of\\ncurrent state-of-the-art models is discussed in the following\\nsections.\"\n  },\n  {\n    \"name\": \"Deep learning\
+    \ methods for natural language\",\n    \"text\": \"processing\\nFeature engineering is effective in ML models, but becomes\\\
+    ninherently restrictive when applied to the complex, large-scale\\nbiological datasets used in modern drug discovery.\
+    \ Feature\\nTable 1. An overview of key features of machine learning models showing their features and limitations.\\\
+    nArchitectures\\nType of\\nArchitecture\\nKey Features\\nLimitations\\nHidden Markov\\nModels\"\n  },\n  {\n    \"name\"\
+    : \"(HMM)\",\n    \"text\": \"Probabilistic\\n(Graphical\\nmodel)\\nModel sequential data, for example part-of-\\nspeech\
+    \ tagging\\nAssume observations are independent of the current state which often isn\\u2019t\\ntrue in language. HMMs\
+    \ also struggle with long-range dependencies\\nwhich could include things like negation of statements in text\\nConditional\\\
+    nRandom\\nFields (CRF)\\nProbabilistic\\n(Graphical\\nmodel)\\nModel sequential data without independence\\nassumptions\
+    \ as in HMMs\\nComputationally expensive as CRFs look at long stretches of texts. CRFs also\\nrequire large amounts of\
+    \ labelled data for training\\nNaive Bayes\\nProbabilistic\\n(Bayesian\\nclassifier)\\nSimple and efficient; models assume\
+    \ feature\\nindependence which simplifies computation\\nAssuming feature independence can prove unrealistic in complex\
+    \ datasets\\nLogistic\\nRegression\\nProbabilistic\\n(Linear\\nclassifier)\\nAssumes a linear relationship between features;\\\
+    nsuited for binary classification; outputs\\nprobabilities\\nLimited to linear decisions; may require feature engineering\
+    \ with complex\\ndatasets\\nSupport Vector\\nMachines\"\n  },\n  {\n    \"name\": \"(SVM)\",\n    \"text\": \"Kernel-based\\\
+    nclassifier\\nCapable of handling high-dimensional data\\nspaces; capable of classification and\\nregression tasks\\nComputationally\
+    \ expensive with large datasets; class weights must be\\nconsidered if data is imbalanced\"\n  },\n  {\n    \"name\":\
+    \ \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\": \"771\\n\\nengineering is labor-intensive, requires significant\
+    \ domain\\nexpertise, and lacks scalability, making it difficult to capture\\nthe full complexity of biological systems.\
+    \ Moreover, ML mod\\u00ad\\nels often struggle with generalization, that is, when faced with\\nnew or underrepresented\
+    \ data, such as novel compounds or\\nbiological targets not adequately represented in the training\\nset, their predictive\
+    \ accuracy declines. This is one key limita\\u00ad\\ntion where deep learning (DL) models offer potential solu\\u00ad\\\
+    ntions. Key architectural differences between ML and DL\\nmodels are illustrated in Figure 3.\\nDL models excel at automatically\
+    \ learning features directly\\nfrom data. This capability arises from their use of deep neural\\nnetworks, which can process\
+    \ high-dimensional inputs and\\nuncover complex patterns and intricate structures within the\\ndata they are processing\
+    \ [51]. In the context of NLP for drug\\ndiscovery, this ability enables DL models to analyze vast bio\\u00ad\\nmedical\
+    \ literature and clinical datasets, identifying associations\\nbetween compounds, diseases, and molecular targets, thus\\\
+    naiding in tasks such as drug repurposing and candidate prior\\u00ad\\nitization. Another strength is their ability to\
+    \ integrate multi\\u00ad\\nmodal data with data extracted from biological texts.\\nStructured data linking, small molecule\
+    \ structures and known\\ndrug-targets to extracted concepts from text can generate\\nmore holistic insights from NLP-derived\
+    \ findings. These exam\\u00ad\\nples of structured data can inform a model on what is known to\\nbe safe and tractable\
+    \ in the context of target prioritization.\\nExtrapolation from a candidate drug target to its related biolo\\u00ad\\\
+    ngical pathways can direct target identification too when con\\u00ad\\nsidering both target safety and selectivity. Such\
+    \ data integration\\nis beneficial when identifying therapeutic candidates as targets\\noften play roles in multiple biological\
+    \ pathways [52,53].\\nUnderstanding the nuances of the role of various drug targets\\nbetter informs researchers on the\
+    \ strategy to adopt in target\\nprioritization and drug-design. Many examples of Computer-\\nAided Drug Design (CADD)\
+    \ demonstrate this [54].\\nIn earlier DL approaches for NER in drug discovery, conven\\u00ad\\ntional architectures such\
+    \ as CNNs and Long Short-Term Memory\\nnetworks (LSTMs) were widely adopted. Among these, Bi-\\ndirectional LSTMs (Bi-LSTMs)\
+    \ combined with CRFs became pop\\u00ad\\nular due to their ability to model sequential data and capture\\nrelationships\
+    \ between words and their corresponding labels. Bi-\\nLSTMs are a variant of LSTMs able to process input sequences in\\\
+    nforward and backward directions. Bi-LSTMs have been explored\\nwith CRFs for NER tasks [33].\\nLSTMs represent one of\
+    \ the earliest neural language mod\\u00ad\\nels designed to overcome the limitations of statistical models\\nlike HMMs\
+    \ and the vanishing gradient issues in traditional\\nRecurrent Neural Networks (RNNs) [55]. RNNs have a memory\\nof the\
+    \ sequences which they ingest. This is helpful to maintain\\nthe context of the text, however, longer sequences fall victim\\\
+    nto vanishing gradient issues due to the fact that their gradi\\u00ad\\nents or \\u2018signals\\u2019 become weaker as\
+    \ they are repeatedly fed to\\nthe model with additional data each time the model iterates.\\nLSTMs addressed this issue\
+    \ by introducing conditional mem\\u00ad\\nory, making them more effective at word-level processing and\\nrecognizing dependencies\
+    \ across sequences.\\nSeveral limitations persist with CNNs and LSTMs. CNNs,\\nthough effective at capturing local features\
+    \ and spatial hier\\u00ad\\narchies, struggle to model long-range dependencies and com\\u00ad\\nplex contextual relationships\
+    \ [56]. LSTMs, though benefiting\\nfrom having a conditional memory that allows them to cap\\u00ad\\nture relationships\
+    \ from words situated in a sequence whether\\nnear or far, still have difficulties maintaining information\\nacross longer\
+    \ sequences [57]. For example, in the context of\\ntrying to understand the broader context of a drug\\u2019s function\\\
+    nacross a research paper or clinical trial. These limitations have\\nled to the growing adoption of Transformer architectures,\\\
+    nwhich excel at modeling context and dependencies across\\nentire sequences more effectively.\\nThe Transformer architecture\
+    \ was introduced in 2017 by\\nVaswani et al. in the landmark paper \\u2018Attention is All You\\nNeed\\u2019 [57]. Transformers\
+    \ leverage self-attention mechanisms,\\nenabling the model to determine the relative importance of\\nwords in a sequence\
+    \ independently of their positions. This\\nFigure 3. An illustration of the architectural difference between ML and DL.\
+    \ Network image reproduced from [50].\\n772\"\n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n    \"text\": \"allows\
+    \ transformers to capture relationships across entire\\nsequences more effectively and handle long-term dependen\\u00ad\\\
+    ncies more efficiently than earlier DL models [56]. One signifi\\u00ad\\ncant advantage of the transformer architecture\
+    \ is its ability to\\nsupport parallel computation. Unlike the sequential nature of\\nRNNs and LSTMs, which process data\
+    \ step-by-step, transfor\\u00ad\\nmers can process entire sequences simultaneously, thanks to\\ntheir multi-head attention\
+    \ mechanism. The multi-head atten\\u00ad\\ntion mechanism, wherein multiple attention \\u2018heads\\u2019 operate\\nconcurrently,\
+    \ enables the model to focus on different parts of\\na sequence simultaneously. Each head independently learns\\nrelationships\
+    \ within the sequence, resulting in richer represen\\u00ad\\ntations and faster processing. This efficient parallelization\
+    \ of\\ndata leads to significantly faster training and inference times\\ncompared to their predecessor, making transformers\
+    \ easily\\nscalable to large datasets.\\nThe original Transformer design is an encoder \\u2013 decoder\\nmodel, initially\
+    \ developed for sequence \\u2013 to \\u2013 sequence tasks,\\nincluding applications like DNA or protein sequence analysis\
+    \ in\\ndrug discovery. Since its introduction, numerous adaptations\\nof the Transformer architecture have been developed,\
+    \ includ\\u00ad\\ning encoder-only models such as BERT [35] and decoder-only\\nmodels such as GPT (Generative Pretrained\
+    \ Transformers) [58].\\nTable 2 provides a structured overview highlighting BERT and\\nGPT models\\u2019 similarities,\
+    \ differences and their complementary\\napplication scenarios, particularly in NLP-driven tasks for drug\\ndiscovery.\\\
+    nThe emergence of Transformers, specifically GPT, also\\nmarked a major shift in the way models are being trained\\nand\
+    \ used in NLP. Traditional training strategies, which relied\\nheavily on task-specific training and large annotated datasets\\\
+    nare gradually being replaced by the \\u2018pretraining/finetuning\\u2019\\nparadigm (illustrated on the basis of BioBERT\
+    \ in Figure 4). In\\nthis approach, models are first trained on a massive corpora of\\nunannotated text in a self-supervised\
+    \ or semi-supervised man\\u00ad\\nner, allowing the model to autonomously learn general\\nlinguistic structures, including\
+    \ syntax and semantics [58]. The\\npretrained model then serves as a foundational or base model,\\nadaptable through fine-tuning\
+    \ using smaller, task-specific\\ndatasets to specific target tasks such as NER. Models trained\\nin this way are often\
+    \ referred to as \\u2018pretrained language\\nmodels.\\u2019 One key benefit of these pretrained models is their\\nversatility\
+    \ \\u2013 they are not limited to a single task and in fact can\\nbe adapted to a wide range of tasks. This contrasts\
+    \ with\\ntraditional ML or DL methods, where models are typically\\ntrained from scratch on labeled datasets and tailored\
+    \ to spe\\u00ad\\ncific tasks, such as text classification or entity recognition.\\nThese models cannot easily be reused\
+    \ for different tasks with\\u00ad\\nout undergoing the entire training process again.\\nIn drug discovery, BERT and its\
+    \ biomedical variants (e.g.\\nBioBERT, PubMedBERT) [36,59\\u201361] have proven highly effec\\u00ad\\ntive for NER tasks.\
+    \ Notably, fine-tuning on a smaller quantity of\\nhigh-quality data yields significant performance gains, and the\\nfine-tuning\
+    \ process typically requires less training time com\\u00ad\\npared to previous DL models [35,62]. Additionally, the archi\\\
+    u00ad\\ntecture of BERT-like models makes them particularly adept at\\ntasks like NER due to their bidirectional attention\
+    \ mechanism.\\nThis mechanism is similar to how bi-LSTMs function but differs\\nin that BERT utilizes the attention mechanism\
+    \ to explicitly\\nmodel contextual relationships.\\nA piece of work utilizing NER models for the assessment of\\nclinical\
+    \ trials data came from the Open Targets group in 2024\\n[63]. This work combined the power of two ML model styles to\\\
+    ncategorize the reasons why clinical trials were halted or failed.\\nFirstly, a LSTM was generated to create vectors representing\\\
+    ncategories of stop reasons for clinical trialsfor example, safety\\nissues or a lack of funding. The LSTM generation\
+    \ to create this\\nnetwork relied on the manual curation of a large set of train\\u00ad\\ning data, where reasons for\
+    \ stopping a clinical trial were first\\nmanually labeled for 3124 trials. Further manual annotation\\nwas then also required\
+    \ to produce a test set. The paper then\\nproceeded with these representations of reasons for trial\\nTable 2. An overview\
+    \ of key features of BERT and GPT models showing their differences and primary use-cases.\\nFeature\"\n  },\n  {\n   \
+    \ \"name\": \"BERT\",\n    \"text\": \"GPT\\nArchitecture type\\nEncoder-only transformer;\\nDecoder-only transformer;\\\
+    nInput processing type\\nProcesses input bidirectionally\\nUses autoregressive, unidirectional processing in a left-to-right\
+    \ manner\\nPrimary application\\nExcel at task requiring representing texts/language\\nExcel at text generation tasks\\\
+    nExample use-cases\\nBiomedical NER, text classification, etc\\nSummarisation tasks, conversation agents, etc\\nFigure\
+    \ 4. A depiction of the pre-training and fine-tuning workflow using BioBERT as an illustrative example. Reproduced from\
+    \ [36].\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\": \"773\\n\\nfailure and a BERT\
+    \ model was specialized to categorize the\\nlisted reasons why given clinical trials failed and assessment\\ncould then\
+    \ be carried forward. One major finding was the\\nhalting of a given clinical trial owing to inference of\\na relationship\
+    \ between a drug target (gene/protein) lacking\\nstrong genetic associations to a candidate drug\\u2019s intended\\ndisease.\
+    \ This backs up the consistent findings that genetic\\nevidence supports candidate drug success in trial [64].\\nOne persisting\
+    \ challenge with DL models \\u2013 including trans\\u00ad\\nformer architectures \\u2013 is their heavy reliance on large\
+    \ amounts\\nof annotated data; generally, more data leads to better per\\u00ad\\nformance on downstream tasks. While transformer\
+    \ models\\noffer many potential benefits due to being pre-trained on\\nmassive corpora, their performance during fine-tuning\
+    \ still\\ndepends heavily on the availability of substantial high-quality\\nannotated datasets. Noisy or inconsistently\
+    \ annotated datasets\\ncan drastically reduce a model\\u2019s performance.\\nNotably, a significant advantage of transformer\
+    \ architec\\u00ad\\ntures over other DL methods is their ability to leverage tech\\u00ad\\nniques such as zero-shot and\
+    \ few-shot learning when data\\navailability is limited. Zero-shot learning allows models to\\ngeneralize to unseen tasks\
+    \ without prior task-specific training\\nby defining the output labels directly, making it suitable for\\nprototyping\
+    \ tasks such as drug classification or biomedical\\ntext tagging using unlabeled data. This enables human\\nexperts to\
+    \ quickly assess model performance and correct\\nerrors to accelerate data annotation. On the other hand, few-\\nshot\
+    \ learning guides the model using only a small number of\\nannotated examples, helping the model understand correct\\\
+    ninput-output pairs for specialized tasks. These concepts, intro\\u00ad\\nduced with the release of the GPT [58], have\
+    \ gained wide\\u00ad\\nspread traction and will be explored further in the following\\nsection dedicated to \\u2018Generative\
+    \ large language models.\\u2019\\nNevertheless, while aiming for larger datasets is ideal, smal\\u00ad\\nler amounts of\
+    \ high-quality data still yield better results than\\nlarger, lower-quality datasets. As K\\u00fchnel et al. [65] demon\\\
+    u00ad\\nstrates on a COVID-19 NER task, BERT\\u2019s performance is highly\\nsensitive to the quality of the training\
+    \ data.\\nThese data-related challenges are especially pronounced in\\nthe domain of drug discovery, where NER remains\
+    \ a difficult\\ntask despite advances in DL and NLP [66]. Biomedical texts are\\ninherently complex, characterized by\
+    \ high length, dense rela\\u00ad\\ntionships, and domain-specific terms. A single sentence may\\nreference multiple interactions\
+    \ between different entities, and\\nthe same entity (e.g. a protein or gene) may be classified\\ndifferently based on\
+    \ its context. Gene names can also be\\ndifferent depending on whether they are in a human or\\nanimal model. This makes\
+    \ entity disambiguation a significant\\nchallenge [67]. While pretrained language models have shown\\npromising results,\
+    \ they still face notable limitations. Even\\nwhen trained on a large amount of biomedical corpora,\\nthese models can\
+    \ still struggle to capture the nuances of\\ncomplex biomedical relationships due to their fixed context\\nwindows [67].\
+    \ A fixed context window defines the maximum\\nnumber of tokens or words a model can process in a single\\ninput sequence.\
+    \ A token can either be a word, a subword,\\na character and can include punctuation marks; in English for\\nexample,\
+    \ a token is about three-fourth of a word, with 100\\ntokens approximately equal to 75 words. BERT-like models\\ntypically\
+    \ use a maximum length of 512 tokens, thus requiring\\nlong texts to be split to fit within this limit. This can hinder\
+    \ the\\nmodel\\u2019s ability to grasp cross-sentence or cross-paragraph\\nrelationships essential to understanding long\
+    \ \\u2013 range depen\\u00ad\\ndencies, which are prevalent in biomedical literature. For\\ninstance, critical relationships\
+    \ between a drug candidate and\\nits mechanism of action might span several sentences or an\\nentire paragraph, necessitating\
+    \ the consideration of the full\\nparagraph context to capture relevant associations.\\nThis limitation also spurred interest\
+    \ in LongFormer-type\\n[68] models, a modified transformer architecture designed to\\nhandle extended contexts more effectively.\
+    \ Notwithstanding,\\nresearch in this area is still limited, primarily due to the\\nincreased computational demands associated\
+    \ with these mod\\u00ad\\nels. While a higher context window can help capture long-\\nrange dependencies, there is a trade\
+    \ off with computational\\ncosts. Scalability remains a significant issue, as incorporating\\nnew entity labels into a\
+    \ pretrained model often requires exten\\u00ad\\nsive re-fine tuning on a corpus containing mentions of the\\nnew entities.\
+    \ This highlights another challenge where balan\\u00ad\\ncing data needs, computational efficiency, and the accuracy of\\\
+    nspecialized knowledge extraction is a trade-off.\\nTable 3 presents a summary of all the architectures dis\\u00ad\\ncussed\
+    \ in this section as well as their key features and\\nlimitations.\"\n  },\n  {\n    \"name\": \"Generative large language\
+    \ models\",\n    \"text\": \"Recently, interest in GPT-like models has surged, largely due\\nto the release of OpenAI\\\
+    u2019s ChatGPT (GPT 3.5] [69]) in 2022.\\nUnlike BERT, GPT models \\u2013 part of the broader family of\\nmodern day \\\
+    u2018Large Language Models\\u2019 (LLMs) \\u2013 are autore\\u00ad\\ngressive language models, originally designed for\
+    \ next-word\\nTable 3. A summary of architectures discussed in the deep learning for drug discovery section, their features\
+    \ and limitations.\\nArchitectures\\nType of\\nArchitecture\\nKey Features\\nLimitations\\nCNNs\\nClassic-DL\\nCapture\
+    \ local features and spatial hierarchies; efficient for processing short\\ninput windows\\nStruggle with modeling long-range\
+    \ dependencies\\nand contextual relationships\\nLSTMs\\nClassic-DL\\nConditional memory to capture relationships in sequential\
+    \ data; effective for\\nmaintaining text context over time\\nProne to difficulties with long-term dependencies;\\nsequential\
+    \ processing limits parallelization\\nBi-LSTMs-\\nCRF\\nClassic-DL\\nBidirectional context capture; CRFs enhance sequence\
+    \ labeling by modeling\\ninter-label dependencies\\nComputationally intensive; limited scalability for\\nlarge datasets\\\
+    nBERT-like\\nmodels\\nTransformer-\\nbased\\nBidirectional attention mechanism; pretrained on large corpora; adaptable\
+    \ via\\nfine-tuning for tasks like NER\\nContext window limited to 512 tokens; challenges\\nwith long-range dependencies\\\
+    nLongformers\\nTransformer-\\nbased\\nEfficient attention mechanism to handle long sequences; suited for tasks\\nrequiring\
+    \ extended context\\nHigh computational demands; scalability\\nchallenges\\n774\"\n  },\n  {\n    \"name\": \"C. A. WITHERS\
+    \ ET AL\",\n    \"text\": \"prediction tasks (Figure 5). This means that given a text or\\nsequence, a GPT model would\
+    \ generate the next probable\\nword in a left-to-right manner. While this next-word predic\\u00ad\\ntion function mirrors\
+    \ older statistical language models, GPT\\nmodels are different in their foundation on transformer archi\\u00ad\\ntectures\
+    \ and extensive pretraining on vast corpora. Their\\nautoregressive nature makes them particularly well-suited\\nfor text\
+    \ generation and completion tasks, earning them wide\\u00ad\\nspread recognition for impressive performance across various\\\
+    nnatural language understanding (NLU) and natural language\\ngeneration (NLG) tasks.\\nSince their first introduction\
+    \ in 2018, GPT models have seen\\nseveral iterations [58,69,71,72], the latest being GPT4 [73]. The\\nrelease and widespread\
+    \ adoption of ChatGPT in both research\\nand industry also spurred the development of similar genera\\u00ad\\ntive pretrained\
+    \ language models available as either proprie\\u00ad\\ntary or open-source models. Proprietary models are typically\\\
+    naccessible only through subscription-based services or pay\\u00ad\\nwalls, while open-source models are freely available\
+    \ for use\\nand modification, sometimes subject to terms of use agree\\u00ad\\nments. Notable proprietary examples include\
+    \ [74\\u201376], while\\nopen-source counterparts include the LLaMA family of models\\n[77\\u201379], Mixtral [80,81],\
+    \ and others [82\\u201384]. Many open-source\\nmodels are hosted on platforms like the Hugging Face model\\nrepository\
+    \ [85], enabling researchers and developers to\\nexplore and adapt them for diverse applications. This trend\\nalso extends\
+    \ to the biomedical domain, wherein specialized\\nvariants such as BioGPT [86], BioMedGPT [87], and others [88]\\nhave\
+    \ been developed, reflecting a pattern similar to that seen\\nwith BERT-based models. As we will discuss later, smaller\\\
+    nspecialized models often outperform their general-purpose\\ncounterparts, particularly in domain-specific applications\
+    \ and\\ntasks that require highly contextualized knowledge [48,49].\\nOne key strength of these LLMs is their advanced\
+    \ NLU\\nabilities, stemming from their specialized training to follow\\ninstructions. This in turn makes them easily adaptable\
+    \ to\\ndiverse tasks and domains, including highly specialized\\nareas like drug discovery. For example, the original\
+    \ GPT-4\\nreport [73] highlighted applications where LLMs can poten\\u00ad\\ntially streamline labor-intensive tasks,\
+    \ such as compound\\nsimilarity analysis and chemical structure re-engineering \\u2013\\nsaving time and resources, allowing\
+    \ researchers to focus on\\nhigh-level analysis. Other promising applications include\\nautomating data retrieval, efficient\
+    \ mining of scientific lit\\u00ad\\nerature,\\nand\\nquerying\\nof\\ndatabases\\nfor\\nknowledge\\nextraction.\\nChatGPT\
+    \ has been tested in a study involving the devel\\u00ad\\nopment of an anti-addiction drug platform aimed at cocaine\\\
+    naddiction treatments [89]. Here, ChatGPT was integrated into\\na persona-based research model, with each \\u2018persona\\\
+    u2019 repre\\u00ad\\nsenting a distinct area of expertise: a drug discovery specia\\u00ad\\nlist, a diffusion model expert,\
+    \ and a coding assistant for\\nPython-based scripting and figure generation. This work\\nresulted in the development of\
+    \ a framework \\u2013 \\u2018the\\nStochastic Generative Network Complex (SGNC)\\u2019 - which\\ncould generate multiple\
+    \ promising drug candidates for com\\u00ad\\nbating cocaine addiction. However, despite these promising\"\n  },\n  {\n\
+    \    \"name\": \"results, the authors noted several inherent limitations asso\\u00ad\",\n    \"text\": \"ciated with LLMs.\
+    \ One of which is their tendency to \\u2018halluci\\u00ad\\nnate,\\u2019 meaning they may generate inaccurate or misleading\\\
+    ninformation that appears factually correct. This risk is parti\\u00ad\\ncularly concerning in fields like drug discovery,\
+    \ where mis\\u00ad\\ninformation could have severe implications. To mitigate this\\nhallucinating effect, the researchers\
+    \ added an extra layer of\\nvalidation to corroborate ChatGPT\\u2019s outputs by cross-\\nreferencing them with expert\
+    \ opinions and existing scientific\\nliterature.\\nBroadly speaking, the validation process for LLMs can be\\nachieved\
+    \ either manually \\u2013 by human experts in a process\\nknown as \\u2018red teaming\\u2019 - or through advanced methods\
+    \ such\\nas Reinforcement Learning from Human Feedback (RLHF) [69].\\nReinforcement learning (RL) is a deep learning subfield\
+    \ with\\nroots in psychology and control theory, where it was tradition\\u00ad\\nally studied as an independent field.\
+    \ The RL approach is\\ncentered on sequential decision-making, where agents (com\\u00ad\\nputers or robots) learn through\
+    \ experience, mirroring how\\nhumans and animals learn via trial and error. What makes it\\ndifferent from ML or other\
+    \ DL approaches is that here the\\nagent operates within an environment where it is given spe\\u00ad\\ncific goals and\
+    \ encouraged to discover strategies to achieve\\nthem. For each action the agent takes toward its goal, it\\nreceives\
+    \ feedback: rewards for desired actions and penalties\\nfor undesired ones. In RLHF, this mechanism is adapted to\\nLLMs\
+    \ by incorporating human feedback into the learning\\nprocess. After the standard pretraining phase, the LLM is\\ntasked\
+    \ with generating outputs for specific tasks, such as\\nsummarization, question-answering (QA), or NER. Human\\nexperts\
+    \ then evaluate these outputs, selecting responses that\\nbest align with desired performance. Based on this feedback,\\\
+    na reward model is trained to optimize and reinforce outputs\\nthat match human preferences. This reward model is subse\\\
+    u00ad\\nquently used to fine-tune the LLM\\u2019s responses, aligning its\\noutputs more closely with human expectations\
+    \ and signifi\\u00ad\\ncantly reducing the risk of generating hallucinations or mis\\u00ad\\nleading information.\\nWhile\
+    \ RLHF can reduce hallucinations, it does not entirely\\neliminate them. Several factors contribute to hallucinations,\\\
+    none of the primary ones being a model\\u2019s limited knowledge\\nor insufficient context for a specific task [90]. Although\
+    \ LLMs\\nperform well on straightforward tasks, they often struggle with\\ncomplex, domain-specific tasks \\u2013 such\
+    \ as those encountered in\\nFigure 5. An illustration of the difference between BERT and GPT. BERT predicts\\nhidden words\
+    \ in a sequence, while GPT uses a left-to-right transformer to\\npredict the next possible word in a sequence. In the\
+    \ figure, letters\\nA-E represent tokens, where BERT predicts masked tokens in sequences and\\nGPT generates the next\
+    \ probable token. Reproduced from [70].\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\"\
+    : \"775\\n\\ndrug discovery. This performance disparity arises partly\\nbecause LLMs rely heavily on exposure to similar\
+    \ tasks or\\ndomains during their pre-training phase [90]. In scenarios\\nwhere the model lacks direct or analogous pre-training\
+    \ data,\\nit may attempt to fill gaps by generating outputs that appear\\nplausible but lack a factual basis.\\nIn addition\
+    \ to RLHF, other techniques are increasingly\\nbeing explored to reduce hallucinations in LLMs, particularly\\nfor tasks\
+    \ demanding factual accuracy. Two prominent\\napproaches are Retrieval-Augmented Generation (RAG) and\\nKGs. Although\
+    \ both RAG and KGs have long been used in\\nvarious computational tasks, their integration with LLMs has\\ngained traction\
+    \ as a means to enhance factual grounding in\\ncritical fields like drug discovery.\\nLLMs can use RAG to enable real-time\
+    \ retrieval of up-to-\\ndate information on topics such as chemical compounds, gene\\ntargets, or molecular pathways.\
+    \ Typically, retrieval here refers\\nto semantic search of an embedding space of pre-generated\\ntext embeddings, usually\
+    \ handled by a vector database. The\\nquality of the retrieval (i.e. the level of relevance of retrieved\\ninformation\
+    \ to the user\\u2019s query) depends largely on the quality\\nof the embedding algorithm applied to the input text and,\
+    \ to\\na lesser extent, on the implementation of the retrieval and\\nreranking algorithms [91]. This retrieval capability\
+    \ allows the\\nmodel to generate outputs grounded in current, data and\\ntask-specific knowledge, reducing the likelihood\
+    \ of outdated\\nor inaccurate information and thus helping mitigate hallucina\\u00ad\\ntions. However, the content and\
+    \ nature of the provided RAG\\nfragments has a great impact on the quality of generation.\\nMisalignment between the model\\\
+    u2019s internal knowledge and\\nwhat is provided via RAG can lead to a tug-of-war between\\nthe two sources, which is\
+    \ an area of active research [92]. Using\\na multi-component system that involves decisions at various\\nstages always\
+    \ harbors the danger of reasoning fragility and\\nthus requires robust benchmarking and monitoring frame\\u00ad\\nworks\
+    \ if applied in sensitive contexts [93].\\nConversely, KGs benefit LLMs by providing structured\\nknowledge, enhancing\
+    \ interpretability, and grounding outputs\\nin known facts [94]. In drug discovery, KGs can be beneficial in\\nthat they\
+    \ provide contextual linkages of drugs to known\\nadverse events, relevant biomarkers, and interactions with\\nbiological\
+    \ targets. For tasks like NER, this interconnected\\nknowledge can enable LLMs to interpret complex inter-entity\\nrelationships\
+    \ more effectively, ultimately boosting accuracy.\\nKGs can be used with LLMs in different ways, either by way\\nof grounding\
+    \ the LLMs response to accurate information or\\nusing an LLM to construct a KG itself.\\nIn a compelling example of integrating\
+    \ retrieval capabil\\u00ad\\nities with LLMs [95], joint NER and relation extraction tasks\\nwere examined using two prominent\
+    \ LLMs \\u2013 GPT-3.5 [69] and\\nLLama-2 [78]. These LLMs were used to extract complex\\nscientific knowledge from large\
+    \ datasets in materials chem\\u00ad\\nistry, covering tasks such as linking dopants with host mate\\u00ad\\nrials, cataloging\
+    \ metal-organic frameworks, and gathering\\ncomposition, phase, morphology, and application data. This\\napproach exemplifies\
+    \ the flexibility of LLMs in scientific text\\nprocessing, demonstrating effective information extraction\\nfrom both\
+    \ single-sentence and multi-sentence contexts.\\nImportantly, the study highlighted a key advantage of LLMs\\nover BERT-like\
+    \ models, which often struggle with inter-\\nsentence relationships due to their fixed context window.\\nBeyond simple\
+    \ entity extraction, the LLMs in this study gen\\u00ad\\nerated structured outputs, such as JSON objects, that\\nmapped\
+    \ intricate relationships between entities. This ability\\nto produce structured formats like JSON or CSV on the fly is\\\
+    nanother advantage of LLMs. While this research focused on\\nmaterials chemistry, the methodology has clear applications\\\
+    nfor drug discovery, where challenges like identifying drug-\\ntarget interactions or mapping biochemical pathways simi\\\
+    u00ad\\nlarly demand advanced handling of complex entity relation\\u00ad\\nships within large datasets.\\nWhile this study\
+    \ shows the flexibility of LLMs like GPT-3.5\\nand LLama-2 in processing complex documents over models\\nlike BERT, it\
+    \ is important to note that these models do not\\npossess unlimited context length. Instead, they leverage\\nextended\
+    \ context windows to manage long-range dependen\\u00ad\\ncies more effectively than BERT-like models. There are also key\\\
+    ndifferences in how GPT-like models and Longformers handle\\nthese extended contexts. As earlier discussed, GPT-like models\\\
+    nare trained for next-word prediction in a causal, unidirectional\\nmanner, whereas Longformers adopt a BERT-like, masked\\\
+    nbidirectional attention approach. While each has its own appli\\u00ad\\ncations and limitations, a detailed discussion\
+    \ of both is beyond\\nthe scope of this paper.\\nAnother notable attribute demonstrated by LLMs is their\\n\\u2018emergent\
+    \ ability\\u2019 [96], which allows them to perform sophis\\u00ad\\nticated tasks without explicit fine-tuning. This means\
+    \ LLMs can\\neffectively handle tasks they were not specifically trained for\\nby drawing on the extensive knowledge acquired\
+    \ during pre-\\ntraining. This foundational knowledge is key to their success in\\nzero-shot and few-shot learning scenarios.\
+    \ With the remark\\u00ad\\nable flexibility of modern LLMs, these paradigms are often\\nimplemented through prompt-based\
+    \ learning, where carefully\\ncrafted prompts guide the model to generate task-specific\\noutputs efficiently. This process\
+    \ of carefully designing input\\nqueries or instructions to steer the model\\u2019s responses toward\\ndesired\\noutcomes\\\
+    nis\\ncalled\\n\\u2018Prompting\\u2019\\nor\\n\\u2018Prompt\\nEngineering.\\u2019 In essence, it involves reverse-engineering\
+    \ what\\nthe model has learned and guiding it using specific instruc\\u00ad\\ntions or formats to achieve the desired\
+    \ outputs.\\nPrompting or prompt engineering is the process of care\\u00ad\\nfully designing and structuring prompts to\
+    \ guide an LLM to\\nproduce a specific, desired output for a given task. Prompting\\ngained significant attention through\
+    \ OpenAI\\u2019s work on GPT-2\\n[71] and GPT-3 [72], where it was shown to achieve impressive\"\n  },\n  {\n    \"name\"\
+    : \"results in zero-shot and few-shot learning scenarios. Since\",\n    \"text\": \"then, prompt engineering has become\
+    \ an active area of\\nresearch and a potential alternative to extensive fine-tuning.\\nChatGPT\\u2019s release in 2022\
+    \ further highlighted the versatility of\\nprompting, showing how LLMs can handle a broad range of\\ntasks through flexible,\
+    \ open-ended instructions. This flexibility\\nnot only facilitates rapid prototyping across diverse applica\\u00ad\\ntions\
+    \ but also enhances accessibility, enabling even non-\\ntechnical users to interact meaningfully with complex models.\\\
+    nIn NLP, a prompt is the initial text or input given to a model\\nto elicit a specific response or behavior. Prompts can\
+    \ take the\\n776\"\n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n    \"text\": \"forms of natural language instructions\
+    \ or specialized tokens,\\nlike \\u2018[SIL]\\u2019 for silence or \\u2018[UNK]\\u2019 for unknown words, which\\ndirect\
+    \ the model to manage specific cases or focus on parti\\u00ad\\ncular information. Natural language prompts are often\
+    \ open-\\nended and task-specific, usually crafted to work with genera\\u00ad\\ntive models like GPT. In contrast, specialized\
+    \ tokens are pre\\u00ad\\ndefined inputs designed to control certain model behaviors\\nand are used broadly across different\
+    \ DL models, including\\ntransformers and LSTMs. Additionally, specialized prompting\\ntechniques, such as \\u2018soft\
+    \ prompting\\u2019 and \\u2018prefix tuning,\\u2019 lever\\u00ad\\nage learned embeddings rather than explicit text, allowing\
+    \ for\\nmore nuanced and task-specific guidance of model behavior.\\nIn the context of NER for drug discovery, LLMs can\
+    \ be\\nprompted in a zero-shot manner to extract drug names or\\nidentify protein interactions from unstructured biomedical\\\
+    ntexts, without prior examples. In a few-shot setting, the pro\\u00ad\\ncess would involve providing examples that classify\
+    \ certain\\nterms as drugs or illustrations of protein interactions. Once\\nthese annotated examples are provided, unlabeled\
+    \ samples\\ncan then be introduced, and the model is expected to gen\\u00ad\\nerate responses that align with the established\
+    \ patterns.\\nBuilding on basic prompting, advanced strategies have\\nbeen developed to further refine LLM reasoning capabilities.\\\
+    nOne such technique, chain-of-thought prompting [97],\\ninvolves breaking down complex tasks into smaller, logical\\nsteps.\
+    \ For example, in drug discovery, this might involve guid\\u00ad\\ning the model to first identify a biomolecule, then\
+    \ examine its\\nrole in a pathway, and finally predict potential drug interac\\u00ad\\ntions. This sequential structure\
+    \ could improve the model\\u2019s\\nperformance on multi-step tasks by encouraging logical pro\\u00ad\\ngression. Tree-of-thought\
+    \ prompting [98], introduced in 2023,\\nextends this idea by allowing the model to explore multiple\\nsolution paths in\
+    \ a hierarchical manner, beneficial for tasks\\nwhere biological relationships may involve multiple potential\\npathways\
+    \ or ambiguous connections.\\nIn some cases, prompting strategies have been paired with\\nRAG and KGs to improve model\
+    \ performance. In a notable\\nexample [99], zero-shot prompting was combined with a two-\\nstage retrieval model to tackle\
+    \ the challenge of matching\\npatients to clinical trials. Given the need for high factuality\\nrequired for this task,\
+    \ the approach used a RAG module to\\nretrieve relevant information, which was then incorporated\\ninto the prompt, guiding\
+    \ the model\\u2019s decision-making for\\ngreater precision. Additionally, the two-stage retrieval struc\\u00ad\\nture\
+    \ improved latency, accelerating token processing and\\nenhancing data efficiency without compromising accuracy \\u2013\\\
+    nbenefits particularly valuable in production environments\\nwhere fast inference is essential.\\nNotwithstanding, it\
+    \ is worth emphasizing that designing\\neffective prompts is a crucial aspect of fully leveraging the\\nfew-shot learning\
+    \ capabilities of large language models.\\nThoughtfully crafted and clear instructions can guide models\\ntoward generating\
+    \ more accurate and contextually relevant\\noutputs. Techniques often employed include role-playing,\\nbreaking down instructions\
+    \ into step-by-step prompts to facil\\u00ad\\nitate reasoning, problem description, or directing the model\\ntoward desired\
+    \ outputs by specifying formats, such as \\u2018Return\\nthe result in 2 or 3 sentences\\u2019 or \\u2018Provide the output\
+    \ in JSON\\nformat.\\u2019 Equally important are prompt engineering considera\\u00ad\\ntions for security, particularly\
+    \ in mitigating risks such as\\nprompt injection attacks.\\nFine-tuning LLMs on custom data is another common\\napproach\
+    \ used to gain more control over the model\\u2019s beha\\u00ad\\nvior. This method becomes particularly advantageous when\\\
+    nthere is access to quality task-specific data and a need to\\naddress privacy concerns, especially when handling sensitive\\\
+    ninformation, such as proprietary data in drug development.\\nWhile prompting generalist LLMs like ChatGPT can be efficient\\\
+    nfor certain downstream tasks, fine-tuning allows for models to\\noperate in a controlled environment, making it ideal\
+    \ for sensi\\u00ad\\ntive applications. Moreover, this approach also allows for the\\ndevelopment of specialized models\
+    \ tailored to specific tasks,\\nlike recognizing entities related to drug targets or cell types. In\\nmany cases, smaller,\
+    \ specialized models can outperform larger,\\ngeneralist models.\\nRecently, a generalist LLM fine-tuned model derived\
+    \ from\\nan earlier Google model, PaLM-2 [84] was designed to address\\nvarious tasks in the drug discovery pipeline by\
+    \ leveraging\\nknowledge across diverse therapeutic modalities [100]. It was\\ntrained using 709 datasets covering 66\
+    \ tasks on drug discovery\\nto equip the model to predict and process a wide variety of\\nchemical or biological entities\
+    \ including small molecules, pro\\u00ad\\nteins, nucleic acids, cell lines and diseases. Tx-LLM shows\\ncompetitive performance\
+    \ over generalist LLMs, achieving\\nstate-of-the-art results in 43 out of 66 drug discovery tasks,\\nwith superior outcomes\
+    \ in 22 of those tasks. One significant\\nfinding from this research is the evidence of positive transfer\\namong datasets\
+    \ involving different drug types, indicating that\\nfine-tuning an LLM on biological sequences has an effect on\\nits\
+    \ performance on molecular datasets. The authors further\\nargued that Tx-LLM could possibly serve as an end-to-end\\\
+    ntool for therapeutic development, where it can allow for\\nusers to query a single model on the different steps involved\\\
+    nin the drug development process.\\nSeveral finetuning techniques exist, with traditional super\\u00ad\\nvised learning\
+    \ being one of the most common approaches.\\nFor LLMs, this can take the form of instruction finetuning,\\nwhere the model\
+    \ learns from specific input \\u2013 output pairings\\nguided by instructional prompts, or classification finetuning\\\
+    nwith strictly input-to-distinct-output pairs. In instruction fine\\u00ad\\ntuning, each pairing includes instructions\
+    \ aiming to guide the\\nmodel on how to perform specific tasks. For example, one\\ninstruction might teach the model to\
+    \ identify drug \\u2013 target\\ninteractions, while another could focus on classifying proteins\\nbased on their functions.\
+    \ A sample instruction-based learning\\ndataset illustrating this approach on a biomedical text is\\nshown in Table 4.\\\
+    nIn contrast, classification fine-tuning trains models for more\\nnarrowly defined tasks, where they predict categories\
+    \ based\\nsolely on labels seen during training. This method is effective\\nfor consistent classification tasks with structured\
+    \ data, such as\\ncategorizing diseases. However, classification fine-tuned mod\\u00ad\\nels are limited to known classes,\
+    \ whereas instruction fine-\\ntuned models can adapt to a wider variety of tasks, as illu\\u00ad\\nstrated in Table 1.\
+    \ Both approaches are best suited to specific\\nuse cases. Instruction fine-tuning is advantageous when the\"\n  },\n\
+    \  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\": \"777\\n\\nmodel must perform multiple tasks\
+    \ based on user instructions,\\nmaking it ideal for chatbot applications, as seen with models\\nlike ChatGPT. On the other\
+    \ hand, classification finetuning is\\nhighly effective for tasks requiring precise or discriminative\\ncategorization\
+    \ of data.\\nNevertheless, choosing between these approaches involves\\nbalancing versatility against resource constraints.\
+    \ Although\\ninstruction finetuning offers the flexibility to handle multiple\\ntasks within a single model, it requires\
+    \ a diverse, high-quality\\ndataset and significant computational resources. In contrast,\\nclassification fine-tuning\
+    \ involves less data and compute\\npower, but its scope is limited to the specific classes the\\nmodel has been trained\
+    \ to recognize. In both cases, data\\nquality remains paramount, as the performance of fine-tuned\\nmodels heavily depends\
+    \ on the quality of the annotations.\\nThis trade-off between data quality vs quantity remains per\\u00ad\\nsistent, as\
+    \ seen with previous DL models.\\nTo address this limitation of requiring substantial data,\\nthere is growing interest\
+    \ in exploring synthetic data genera\\u00ad\\ntion from small samples of real data using other LLMs.\\nA notable example\
+    \ is Alpaca [101]. Synthetic data generation\\nis a means of data augmentation which helps improve\\nmodel robustness\
+    \ by providing additional examples that\\nclosely approximate the diversity of real data. In drug\\ndiscovery, integrating\
+    \ human-written prompts with model-\\ngenerated\\nones\\ncan\\nprovide\\nsignificant\\nadvantages.\\nHowever, careful\
+    \ evaluation of the generated outputs is\\nnecessary to ensure they remain evidence-based and adhere\\nto ethical standards.\\\
+    nIn parallel, there are ongoing efforts to create high-quality\\ninstruction-based datasets [102\\u2013104] to build more\
+    \ effective\\nresources for training. These initiatives aim to provide\\ncurated, domain-specific data that can enhance\
+    \ model per\\u00ad\\nformance on complex tasks, especially in areas where tradi\\u00ad\\ntional data collection is impractical\
+    \ or limited. Through these\\ncombined efforts, the field is making strides toward over\\u00ad\\ncoming data-related challenges,\
+    \ ultimately improving fine-\\ntuning processes for LLMs in drug discovery applications. In\\nthe context of drug discovery,\
+    \ the provision of domain-\\nspecific tasks may aid in the understanding of a model\\u2019s\\nlogic. Opacity in LLMs can\
+    \ be a large blocker for their uptake\\nin the life sciences given that at times a user cannot see why\\na model has generated\
+    \ a given response. Sectioning the\\nmodel\\u2019s work into distinct tasks can allow researchers to\\nunderstand how\
+    \ a model makes decisions.\\nTable 5 provides an overview of notable open-source\\ninstruction fine-tuning datasets, including\
+    \ several designed\\nfor general and biomedical applications.\\nTable 4. An example representation of an instruction-finetuning\
+    \ dataset on a sample snippet of text.\\nInstruction\\nInput\\noutput\\nTask-type\\nINST: Summarise the role of Prostaglandin\
+    \ E2\\n(PGE2) in neuroblastoma progression\\nNeuroblastoma is the most common\\nextracranial solid tumour in childhood\
+    \ and\\narises from neural crest cells of the\\ndeveloping sympathetic nervous system.\\nProstaglandin E2 (PGE2) has been\
+    \ identified\\nas a key pro-inflammatory mediator of the\\ntumour microenvironment (TME) that\\npromotes neuroblastoma\
+    \ progression . . .\\n. . . . . . . . . . . . . . . .\\nPGE2 acts as a pro-inflammatory mediator\\nwithin the tumour microenvironment,\\\
+    npromoting neuroblastoma progression.\\nSummarisation\\nINST: Explain the interaction between miR-\\n574-5p and CUGBP1\
+    \ and its effects on\\nPGE2 biosynthesis in the provided\\nparagraph\\nThe interaction between miR-574-5p and\\nCUGBP1\
+    \ induces mPGES-1 expression, which\\nin turn contributes to PGE2 biosynthesis in\\nneuroblastoma cells\\nNLU\\nINST:\
+    \ Describe the significance of tetraspanin\\ncomposition on the surface of sEV in\\nneuroblastoma\\nThe tetraspanin composition\
+    \ on the surface of\\nsEV is associated with the function of sEV-\\nderived miR-574-5p, suggesting that sEVs not\\nonly\
+    \ transport microRNAs but may also\\ninfluence their functional activity in the\\ntumour microenvironment.\\nNLU\\nINST:\
+    \ Extract all entities related to cell types\\nmentioned in the text\\nNeuroblastoma\\nNeural crest cells\\nSympathetic\
+    \ nervous system\\nEntity\\nextraction\"\n  },\n  {\n    \"name\": \"(NER)\",\n    \"text\": \"INST: Identify and extract\
+    \ key molecules and\\nproteins involved in neuroblastoma\\nprogression from the text\\n- Prostaglandin E2 (PGE2)\\n- microRNA\
+    \ miR-574-5p\\n- CUG-binding protein 1 (CUGBP1)\\n- microsomal prostaglandin E2 synthase 1\\n(mPGES-1)\\nRelationship\\\
+    nextraction\\nINST: From the given text, extract\\nrelationship instances between miR-574-\\n5p, receptors, and their\
+    \ effects in the TME\\nof neuroblastoma and lung carcinoma.\\n- sEV-derived miR-574-5p \\u2192 Acts as TLR7/8\\nligand\
+    \ \\u2192 Induces \\u03b1-SMA expression in\\nfibroblasts (Neuroblastoma TME)\\n- sEV-derived miR-574-5p \\u2192 Paracrine\
+    \ function\\n\\u2192 Promotes fibroblast differentiation\\n(Neuroblastoma TME)\\n- sEV-derived miR-574-5p \\u2192 Autocrine\
+    \ function\\n\\u2192 Inhibits PGE2 biosynthesis (Lung\\ncarcinoma TME)\\nRelationship\\nextraction\\nTable 5. An overview\
+    \ of some impactful open-source instruction fine-tuning datasets.\\nDataset Name\\nSource\\nDomain\\nKey Characteristics\\\
+    nAlpaca\\nStanford\\nGeneral\\nSynthetic instruction-response pairs\\nMedInstruct\\nStanford\\nClinical\\nSynthetically\
+    \ generated medical instruction-response pairs\\nBioInstruct\\nUniversity of Massachusetts\\nBiomedical/Clinical\\nSame\
+    \ as above\\nUltraMedical\\nTsinghua University\\nBiomedical\\nDiverse biomedical instructions consisting of both manual\
+    \ and synthetic pairs\\n778\"\n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n    \"text\": \"\"\n  },\n  {\n    \"\
+    name\": \"Expert opinion\",\n    \"text\": \"While it is not the focus of this review article to comprehen\\u00ad\\nsively\
+    \ discuss papers that have used NLP in drug discovery,\\nit is useful to put the described methodologies in the con\\\
+    u00ad\\ntext of practical applications. A few such applications have\\nbeen described above, such as Drug Repurposing\
+    \ and\\nTarget Identification, e.g. by extracting drug-target-disease\\nrelationships from text. The extraction of metadata\
+    \ needed\\nto better assess the directionality of effects, or the disease\\nrelevance, such as mode-of-action information,\
+    \ biomarkers\\netc., also benefits from NLP techniques. In the area of per\\u00ad\\nsonalized medicine, NLP techniques\
+    \ have proven successful\\nfor, e.g. diagnosis of genetic disease by the use of whole-\\ngenome sequencing and NLP-enabled\
+    \ automated pheno\\u00ad\\ntyping [105].\\nAs described earlier, NLP allows setting different entities in\\nsemantic context\
+    \ by entity-relationship extraction (such as\\ndiseases, drug targets, proteins, biomarkers, pathways, etc.),\\nwhich\
+    \ provides a means to weigh the importance of a specific\\nassociation between related entities. Representing the\\nextracted\
+    \ entities in the form of a Knowledge Graph can\\nfurther serve as a comprehensive map of biomedical informa\\u00ad\\\
+    ntion helping to uncover new insights and supporting data-\\ndriven decision-making in drug discovery. Another key advan\\\
+    u00ad\\ntage is the possibility to extract key information from clinical\\ntrial reports such as outcomes, adverse events,\
+    \ dosages, and\\npatient demographics, providing a streamlined approach to\\nunderstanding trial results across multiple\
+    \ studies [106]. In\\na more prospective way, the use of NLP can help identify\\ntrends and patterns of innovation in\
+    \ drug discovery [107].\\nWe can see further examples of such innovation in the demon\\u00ad\\nstration of NLP models\
+    \ being used to screen electronic health\\nrecords (EHRs) for indications of cognitive impairment in indi\\u00ad\\nviduals;\
+    \ this early detection would prove incredibly positive for\\nimproving patient outcomes [108]. By mining patent data,\
+    \ NLP\\ncan help identify new chemical entities or new uses for exist\\u00ad\\ning chemicals, facilitating the identification\
+    \ of novel drug\\ncandidates.\\nIn the future, it will be useful to harmonize approaches to\\nNLP in drug discovery at\
+    \ multiple levels in order to help the\\ncommunity implement these suggestions according to best\\npractices. Since the\
+    \ software and tools of the end-to-end\\nworkflow are currently fragmented, our opinion is that\\na dedicated tool that\
+    \ encapsulates this process as a software\\nlibrary would be most appropriate. We have previously devel\\u00ad\\noped\
+    \ knowledge management and LLM application frame\\u00ad\\nworks for the biomedical domain [109]; in our most recent\\\
+    nrelease, we indicate knowledge extraction as the next step for\\nour ecosystem [93]. The particular application of the\
+    \ ecosys\\u00ad\\ntem to drug target discovery will also be driven by an ongoing\\nproject under the Open Targets consortium\
+    \ [110] with con\\u00ad\\ntributors from academia and industry. In the following, we\\nbriefly outline the tasks that\
+    \ will be provided under the\\numbrella of the planned framework.\\nThe general idea is to encapsulate the tasks we identified\\\
+    nabove as an end-to-end application framework (working title:\\n\\u2018BioGather\\u2019) to guide the drug discovery researcher\
+    \ through\\nthe sequential steps of knowledge extraction, starting from\\nunstructured information, via the technical\
+    \ preprocessing, to\\nthe downstream tasks such as NER, NEL, and classification.\\nSimilar to our previous frameworks,\
+    \ BioGather will provide\\nhigh-level access to each part of the process via a modular\\napproach. For instance, going\
+    \ back to one of the introductory\\nexamples (\\u2018shared links to a biological mechanism of both\\na protein and a\
+    \ cell type can inform researchers on the context\\nin which a given protein plays a role in a mechanism\\u2019), the\\\
+    nframework would take the user through a guided sequence of\\nsteps to tokenize and split sentences, normalize and clean\\\
+    ncases, remove stop words, lemmatize words into stems,\\nparse dependencies, and apply both traditional and next-\\ngeneration\
+    \ classification methods for NER and NEL as\\ndescribed in Tables 1 and 3. Each individual step can be\\nimplemented using\
+    \ various techniques and technical back\\u00ad\\nends, which BioGather will make accessible via a unified\\ninterface.\\\
+    nFurther, the semantic context of the knowledge to be\\nextracted will be supplied via the established mechanism\\nthat\
+    \ is already used by the knowledge representation and\\nknowledge application frameworks [91,107]. Using shared\\nsemantic\
+    \ definitions for the different stages of knowledge\\nmanagement comes with the advantage of coherent data\\nhandling\
+    \ and allows the user to resolve ambiguities automa\\u00ad\\ntically. Synchronising knowledge extraction, representation,\\\
+    nand application via these shared definitions facilitates bidirec\\u00ad\\ntional synergies between the components of\
+    \ the knowledge\\nmanagement system.\\nThe long-standing manual approaches to Natural Language\\nProcessing (NLP), which\
+    \ lean on human-curated ontologies for\\nentity tagging and agreement on interpretation of results\\nthrough human review,\
+    \ are no longer fully capable of coping\\nwith the volume of data they now must face. These methods\\nare very human-friendly\
+    \ and transparent in their workings and\\nfor this reason they are not completely replaceable at present.\\nWorking groups\
+    \ still do need the ability to democratize data in\\nthe sense of it being FAIR. Even from the point of view of\\ngenerating\
+    \ KGs , the need for grounding entities and cross-\\nreferencing identifiers over different data sources is vital to\\\
+    ngain insight from the powerful abilities KGs lend us to finding\\npatterns in multi-modal data. There is plenty of positivity\
+    \ to\\ntake from the ability that ML models must tag types of data in\\ntext and suggest a suitable entity to ground terms\
+    \ too if\\nneeded. Complexity arises with knowing how much faith to\\nput in a model\\u2019s ability to do all of this\
+    \ to a high enough\\nstandard; with this the requirement of human review is still\\nneeded. For this reason, the frameworks\
+    \ mentioned above put\\nhigh emphasis on modular and transparent benchmarking of\\nspecific research tasks [93].\\nKGs\
+    \ are a very useful interface for data, being both human\\nand machine interpretable. They allow integration of multiple\\\
+    ntypes of data and, subsequently, discovery of patterns not\\nvisible to the human eye. Simple relationships between con\\\
+    u00ad\\ncepts can be weighted and validated in a KG structure allow\\u00ad\\ning thresholds to be used to see above the\
+    \ noise often present\\nin biological data. There are also large benefits to KGs interfa\\u00ad\\ncing with LLMs, whether\
+    \ to improve an LLM\\u2019s reasoning or to\\nbe generated by an LLM.\"\n  },\n  {\n    \"name\": \"EXPERT OPINION ON\
+    \ DRUG DISCOVERY\",\n    \"text\": \"779\\n\\nLLMs indeed address longstanding challenges in NLP for\\ndrug discovery\
+    \ by processing larger data volumes than tradi\\u00ad\\ntional ML or manual human efforts. Their expanded context\\nwindows,\
+    \ ranging from 1024 tokens in earlier GPT models to\\n128K in GPT-4 and models like Mixtral, enable handling more\\ncomprehensive,\
+    \ multi-step tasks essential for data-intensive\\nfields like drug discovery. Additionally, their advanced natural\\nlanguage\
+    \ understanding (NLU) capabilities allow for immedi\\u00ad\\nate applications, for example a prompting task on summariz\\\
+    u00ad\\ning lengthy articles on successful drug treatments. This can aid\\nin seeing disease landscapes during early drug\
+    \ development.\\nLLMs could be valuable in market research, especially when\\npatient-level data is accessible to pharmaceutical\
+    \ companies.\\nThey could help uncover the current standard of care for\\na disease and identify market gaps where a new\
+    \ drug might\\noutperform existing treatments. While the generated outputs\\nstill require moderation, LLMs can reduce\
+    \ the manual effort\\ninvolved by summarizing key insights quickly. This allows\\nresearchers to avoid spending days sifting\
+    \ through data, as\\nthe model can provide a concise summary of the most rele\\u00ad\\nvant outcomes.\\nThe output of\
+    \ LLM pipelines could have severe financial\\nand human health implications if they were to be accepted\\nwithout verification.\
+    \ While they can accelerate target selection\\nand prioritization in drug discovery, there is a risk of hallucina\\u00ad\\\
+    ntion or the generation of unreliable answers (e.g. concerning\\ntarget safety). Additionally, LLMs are prone to biases,\
+    \ particu\\u00ad\\nlarly in areas that are underrepresented in their training data.\\nAt present, the pharmaceutical industry\
+    \ does not rely on\\nmodel outputs as fully accurate without human validation.\\nScientific experts, or a \\u2018human-in-the-loop\\\
+    u2019 approach, remain\\nessential for fact-checking and supporting the hypotheses\\ngenerated by models.\\nHallucinations,\
+    \ or fabricated outputs, are intrinsic to LLMs\\nand, while they cannot be fully eliminated, they can be\\nreduced. In\
+    \ fields like drug discovery, it is essential for users\\nto understand these limitations and the underlying mechanics.\\\
+    nThis awareness helps determine when to trust or deploy the\\nmodels and recognize scenarios where they may fail.\\nAdditionally,\
+    \ there is a trade-off between closed-source and\\nopen-source models in terms of control, cost, and flexibility.\\nClosed-source\
+    \ models, accessed through API calls, can reduce\\nthe computational overhead, but they come with concerns\\naround data\
+    \ privacy, interpretability, and escalating costs\\ndue to frequent usage. Additionally, their lack of transparency\\\
+    nmakes it difficult to understand how the models function\\ninternally. In contrast, open-source models offer greater\
+    \ con\\u00ad\\ntrol and customization, but managing them at scale requires\\nsubstantial computational resources and technical\
+    \ expertise.\\nA similar trade-off exists when choosing between prompting,\\nfine-tuning, or RAG methods. While prompting\
+    \ is quick and\\nresource-efficient, requiring no infrastructure setup, it may not\\nalways provide the depth of understanding\
+    \ that fine-tuning or\\nRAG can offer.\\nRed teaming \\u2013 a practice in which a team of experts\\nintentionally tries\
+    \ to find vulnerabilities, weaknesses, or\\nharmful behaviors in the model \\u2013 is another method used\\nto control\
+    \ the behavior and generation abilities of LLMs,\\nespecially to prevent unintended outcomes, such as the\\nexposure of\
+    \ sensitive information like anonymized patient\\ndata. However, red teaming is resource-intensive, time-\\nconsuming,\
+    \ and prone to expert bias, often failing to cover\\nall edge cases. To address these limitations, integrating red\\nteaming\
+    \ with automated methods within a comprehensive\\nquality assurance pipeline can enhance its effectiveness. For\\ninstance,\
+    \ systematically generating adversarial prompts that\\ntarget ambiguous questions and challenging biomedical ter\\u00ad\\\
+    nminology, and incorporating counterexamples from bench\\u00ad\\nmark datasets, can improve model robustness testing.\\\
+    nAdditionally, leveraging biomedical knowledge bases (e.g.\\nUMLS, PubMed, and DrugBank) for automated fact-\\nchecking,\
+    \ named entity verification, and consistency checks\\ncan complement manual efforts and streamline the overall\\nprocess.\\\
+    nBiological data are so multifaceted that there is no single\\nperfect way of analysis. Given the complexity of data and\\\
+    nresearch questions asked, it is advised to select data carefully\\nand choose the method of analysis with consideration.\
+    \ Each of\\nthe methods covered in this review lends itself to specific use\\ncases; considering the best combination\
+    \ of use cases and\\navailable data will lead to the most successful outcome.\\nAbbreviations\\nAI\\nArtificial Intelligence\\\
+    nATM\\nAtaxia-Telangiectasia Mutated\"\n  },\n  {\n    \"name\": \"BERT\",\n    \"text\": \"Bidirectional\\nEncoder\\\
+    nRepresentations\\nfrom\\nTransformers\\nBi-LSTM Bidirectional Long Short-Term Memory network\\nBioBLP\\nBio BERT for\
+    \ Link Prediction\\nBoW\\nBag-of-Words\"\n  },\n  {\n    \"name\": \"CADD\",\n    \"text\": \"Computer-Aided Drug Design\\\
+    nCNN\\nConvolutional Neural Network\\nCRF\\nConditional Random Field\\nDL\\nDeep Learning\\nEFO\\nExperimental Factor\
+    \ Ontology\\nEHR\\nElectronic Health Record\"\n  },\n  {\n    \"name\": \"FAIR\",\n    \"text\": \"Findable Accessible\
+    \ Interoperable Reusable\\nGloVE\\nGlobal Vectors\\nGPT\\nGenerative Pretrained Transformer\\nHMM\\nHidden Markov Model\\\
+    nKG\\nKnowledge Graph\\nLLM\\nLarge Language Model\"\n  },\n  {\n    \"name\": \"LSTM\",\n    \"text\": \"Long Short-Term\
+    \ Memory network\\nML\\nMachine Learning\\nMeSH\\nMedical Subject Headings\\nNER\\nNamed Entity Recognition\\nNLG\\nNatural\
+    \ Language Generation\\nNLP\\nNatural Language Processing\\nNLU\\nNatural Language Understanding\\nPOS\\npPart-Of-Speech\\\
+    nQA\\nQuestion Answering\\nRAG\\nRetrieval-Augmented Generation\"\n  },\n  {\n    \"name\": \"RLHF\",\n    \"text\": \"\
+    Reinforcement Learning from Human Feedback\\nRNN\\nRecurrent Neural Network\"\n  },\n  {\n    \"name\": \"SGNC\",\n  \
+    \  \"text\": \"Stochastic Generative Network Complex\\nSVM\\nSupport Vector Machine\"\n  },\n  {\n    \"name\": \"TF-IDF\"\
+    ,\n    \"text\": \"Term Frequency-Inverse Document Frequency\\nUID\\nUnique Identifier\"\n  },\n  {\n    \"name\": \"\
+    UMLS\",\n    \"text\": \"Unified Medical Language System\\n780\"\n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n\
+    \    \"text\": \"\"\n  },\n  {\n    \"name\": \"Acknowledgments\",\n    \"text\": \"In compliance with the International\
+    \ Committee of Medical Journal Editors\\n(ICMJE) recommendations, the authors acknowledge the utilization of AI\\nservices\
+    \ in this work: the authors of this article used ChatGPT (GPT-4) by\\nOpenAI exclusively for proofreading for English\
+    \ grammatical and/or lan\\u00ad\\nguage errors. It was also used to help summarise the key messages from\\nthe text in\
+    \ the Article Highlights Box. All sentences revised by GPT-4 were\\nreviewed and verified by the authors. No content was\
+    \ generated by the\\nGPT-4 or any other AI service.\"\n  },\n  {\n    \"name\": \"Funding\",\n    \"text\": \"This work\
+    \ is funded by Open Targets, under [OTAR3088] (\\u201cAutomating\\nKnowledge Management\\u201d). B Zdrazil and M Harrison\
+    \ also receive funding\\nfrom the European Bioinformatics Institute of the European Molecular\\nBiology Laboratory (EMBL-EBI).\\\
+    nDeclaration of interest\\nThe authors have no other relevant affiliations or financial involvement\\nwith any organization\
+    \ or entity with a financial interest in or financial\\nconflict with the subject matter or materials discussed in the\
+    \ manuscript\\napart from those disclosed.\\nReviewer disclosures\\nPeer reviewers on this manuscript have no relevant\
+    \ financial or other\\nrelationships to disclose.\"\n  },\n  {\n    \"name\": \"ORCID\",\n    \"text\": \"Christine Ann\
+    \ Withers\\nhttp://orcid.org/0009-0005-5428-7822\\nAmina Mardiyyah Rufai\\nhttp://orcid.org/0009-0003-1275-5160\\nSantosh\
+    \ Tirunagari\\nhttp://orcid.org/0000-0002-9064-1965\\nSebastian Lobentanzer\\nhttp://orcid.org/0000-0003-3399-6695\\nMelissa\
+    \ Harrison\\nhttp://orcid.org/0000-0003-3523-4408\\nBarbara Zdrazil\\nhttp://orcid.org/0000-0001-9395-1515\"\n  },\n \
+    \ {\n    \"name\": \"References\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Sarawagi S. Information extraction.\
+    \ Hanover (MA): Now Publishers\",\n    \"text\": \"Inc; 2008.\"\n  },\n  {\n    \"name\": \"Salton G, Wong A, Yang CS.\
+    \ A vector space model for automatic\",\n    \"text\": \"indexing. Commun ACM. 1975;18(11):613\\u2013620. doi: 10.1145/\\\
+    n361219.361220\"\n  },\n  {\n    \"name\": \"Cam LML, Neyman J. Proceedings of the Fifth berkeleysymposium\",\n    \"\
+    text\": \"on mathematical statistics and probability. Berkeley and Los\\nAngeles, California: University of California\
+    \ Press; 1967.\"\n  },\n  {\n    \"name\": \"Blei DM, Ng AY, Jordan MI. Latent dirichlet allocation. J Mach Learn\",\n\
+    \    \"text\": \"Res. 2003;3(null):993\\u20131022.\"\n  },\n  {\n    \"name\": \"Department of Computer Science, Adeyemi\
+    \ College of Education,\",\n    \"text\": \"Ondo, Nigeria, Iroju OG, Olaleke JO. A systematic review of natural\\nlanguage\
+    \ processing in healthcare. IJITCS. 2015;7(8):44\\u201350. doi: 10.\\n5815/ijitcs.2015.08.07\\n\\u2022 This paper is a\
+    \ nice demonstration of the capabilities of NLP in\\ninforming drug repositioning theories, showing a real use-case\\\
+    nof NLP technologies alongside other drug discovery solutions,\\nleading to a rapid introduction of a drug as a treatment\
+    \ for\\nCOVID-19 during the early stages of the pandemic.\"\n  },\n  {\n    \"name\": \"Pun FW, Ozerov IV, Zhavoronkov\
+    \ A. Ai-powered therapeutic target\",\n    \"text\": \"discovery. Trends Pharmacol Sci. 2023;44(9):561\\u2013572. doi:\
+    \ 10.1016/j.\\ntips.2023.06.010\"\n  },\n  {\n    \"name\": \"Suryasa IW, Rodr\\u00edguez-G\\u00e1mez M, Koldoris T. COVID-19\
+    \ pandemic\",\n    \"text\": \"ijhs. 2021;5(2):vi\\u2013ix. doi: 10.53730/ijhs.v5n2.2937\"\n  },\n  {\n    \"name\": \"\
+    Smith DP, Oechsle O, Rawling MJ, et al. Expert-augmented compu\\u00ad\",\n    \"text\": \"tational drug repurposing identified\
+    \ baricitinib as a treatment for\\nCOVID-19. Front Pharmacol. 2021;12:709856.\"\n  },\n  {\n    \"name\": \"Kalil AC,\
+    \ Patterson TF, Mehta AK, et al. Baricitinib plus remdesivir\",\n    \"text\": \"for hospitalized adults with covid-19.\
+    \ N Engl J Med. 2021;384\\n(9):795\\u2013807. doi: 10.1056/NEJMoa2031994\"\n  },\n  {\n    \"name\": \"Wong CH, Siah KW,\
+    \ Lo AW. Estimation of clinical trial success rates\",\n    \"text\": \"and related parameters. Biostatistics. 2019;20(2):273\\\
+    u2013286. doi: 10.\\n1093/biostatistics/kxx069\"\n  },\n  {\n    \"name\": \"Kulmanov M, Smaili FZ, Gao X, et al. Semantic\
+    \ similarity and\",\n    \"text\": \"machine learning with ontologies. Brief Bioinform. 2021;22(4):\\nbbaa199. doi: 10.1093/bib/bbaa199\"\
+    \n  },\n  {\n    \"name\": \"Bard JBL, Rhee SY. Ontologies in biology: design, applications and\",\n    \"text\": \"future\
+    \ challenges. Nat Rev Genet. 2004;5(3):213\\u2013222. doi: 10.1038/\\nnrg1295\"\n  },\n  {\n    \"name\": \"Smith B, Ceusters\
+    \ W, Klagges B, et al. Relations in biomedical\",\n    \"text\": \"ontologies. Genome Biol. 2005;6(5):R46. doi: 10.1186/gb-2005-\\\
+    n6-5-r46\"\n  },\n  {\n    \"name\": \"Malone J, Holloway E, Adamusiak T, et al. Modeling sample vari\\u00ad\",\n    \"\
+    text\": \"ables with an experimental factor ontology. Bioinformatics. 2010;26\\n(8):1112\\u20131118. doi: 10.1093/bioinformatics/btq099\"\
+    \n  },\n  {\n    \"name\": \"Wilkinson MD, Dumontier M, Aalbersberg I, et al. The FAIR guiding\",\n    \"text\": \"principles\
+    \ for scientific data management and stewardship. Sci\\nData. 2016;3(1):160018.\"\n  },\n  {\n    \"name\": \"Ruas P,\
+    \ Couto FM. NILINKER: attention-based approach to NIL\",\n    \"text\": \"entity linking. J Biomed Inform. 2022;132:104137.\"\
+    \n  },\n  {\n    \"name\": \"Tirunagari S, Saha S, Venkatesan A, et al. Lit-otar framework for\",\n    \"text\": \"extracting\
+    \ biological evidences from literature [Internet]. 2024\\n[cited 2025 Feb 21]. Available from: http://biorxiv.org/lookup/doi/\\\
+    n10.1101/2024.03.06.583722\"\n  },\n  {\n    \"name\": \"Bornmann L, Haunschild R, Mutz R. Growth rates of modern\",\n\
+    \    \"text\": \"science: a latent piecewise growth curve approach to model pub\\u00ad\\nlication numbers from established\
+    \ and new literature databases.\\nHumanit Soc Sci Commun. 2021;8(1):224. doi: 10.1057/s41599-021-\\n00903-w\"\n  },\n\
+    \  {\n    \"name\": \"Shilo S, Rossman H, Segal E. Axes of a revolution: challenges and\",\n    \"text\": \"promises of\
+    \ big data in healthcare. Nat Med. 2020;26(1):29\\u201338. doi:\\n10.1038/s41591-019-0727-5\"\n  },\n  {\n    \"name\"\
+    : \"Plake C, Royer L, Winnenburg R, et al. GoGene: gene annotation in\",\n    \"text\": \"the fast lane. Nucleic Acids\
+    \ Res. 2009;37(Web Server):W300\\u2013W304.\\ndoi: 10.1093/nar/gkp429\"\n  },\n  {\n    \"name\": \"Ashburner M, Ball\
+    \ CA, Blake JA, et al. Gene ontology: tool for the\",\n    \"text\": \"unification of biology. Nat Genet. 2000;25(1):25\\\
+    u201329.\"\n  },\n  {\n    \"name\": \"Ling MH, Lefevre C, Nicholas KR, et al. Reconstruction of protein-\",\n    \"text\"\
+    : \"protein interaction pathways by mining subject-verb-objects inter\\u00ad\\nmediates. In: Rajapakse J, Schmidt B Volkert\
+    \ G, editors. Pattern\\nrecognition in bioinformatics. Berlin Heidelberg: Springer; 2007. p.\\n286\\u2013299.\"\n  },\n\
+    \  {\n    \"name\": \"Neo4j graph database & analytics \\u2013 the Leader in graph databases\",\n    \"text\": \"[internet].\
+    \ Graph database & analytics. 2025 [cited 2025 Feb 21].\\nAvailable from: https://neo4j.com/\"\n  },\n  {\n    \"name\"\
+    : \"Lausen G. Relational databases in RDF: keys and foreign keys. In:\",\n    \"text\": \"Christophides V, Collard M Gutierrez\
+    \ C, editors. Semantic web,\\nontologies and databases [Internet]. Berlin Heidelberg: Springer\\nBerlin Heidelberg; 2008.\
+    \ p. 43\\u201356. [cited 2025 Feb 21]. Available\\nfrom: https://doi.org/10.1007/978-3-540-70960-2_3\"\n  },\n  {\n  \
+    \  \"name\": \"Neo4j Aura DB Console. Neo4j. [cited 2025 Apr 1st]. Available from:\",\n    \"text\": \"https://neo4j.com/docs/aura/classic/auradb/getting-started/con\\\
+    nnect-database/#_neo4j_workspace\"\n  },\n  {\n    \"name\": \"Crick F. Central dogma of molecular biology. Nature. 1970;227\"\
+    ,\n    \"text\": \"(5258):561\\u2013563. doi: 10.1038/227561a0\"\n  },\n  {\n    \"name\": \"Li L, Wang P, Yan J, et al.\
+    \ Real-world data medical knowledge\",\n    \"text\": \"graph:\\nconstruction\\nand\\napplications.\\nArtif\\nIntell\\\
+    nMed.\\n2020;103:101817.\"\n  },\n  {\n    \"name\": \"Zhong L, Wu J, Li Q, et al. A comprehensive survey on automatic\"\
+    ,\n    \"text\": \"knowledge graph construction. ACM Comput Surv. 2024;56\\n(4):1\\u201362. doi: 10.1145/3618295\"\n \
+    \ },\n  {\n    \"name\": \"Callahan TJ, Tripodi IJ, Stefanski AL, et al. An open source knowl\\u00ad\",\n    \"text\"\
+    : \"edge graph ecosystem for the life sciences. Sci Data. 2024;11\\n(1):363. doi: 10.1038/s41597-024-03171-w\"\n  },\n\
+    \  {\n    \"name\": \"EXPERT OPINION ON DRUG DISCOVERY\",\n    \"text\": \"781\"\n  },\n  {\n    \"name\": \"Agrawal R,\
+    \ Prabakaran S. Big data in digital healthcare: lessons\",\n    \"text\": \"learnt and recommendations for general practice.\
+    \ Heredity\\n(Edinb). 2020;124(4):525\\u2013534. doi: 10.1038/s41437-020-0303-2\"\n  },\n  {\n    \"name\": \"Meijer D,\
+    \ Beniddir MA, Coley CW, et al. Empowering natural product\",\n    \"text\": \"science with AI: leveraging multimodal\
+    \ data and knowledge graphs.\\nNat Prod Rep. 2025. doi: https://doi.org/10.1039/D4NP00008K\"\n  },\n  {\n    \"name\"\
+    : \"Daza D, Alivanistos D, Mitra P, et al. BioBLP: a modular framework\",\n    \"text\": \"for learning on multimodal\
+    \ biomedical knowledge graphs.\\nJ Biomed Semant. 2023;14(1):20.\"\n  },\n  {\n    \"name\": \"Mikolov T, Chen K, Corrado\
+    \ G, et al. Efficient estimation of word\",\n    \"text\": \"representations in vector space [Internet]. arXiv; 2013 [cited\
+    \ 2025\\nFeb 21]. Available from: https://arxiv.org/abs/1301.3781\"\n  },\n  {\n    \"name\": \"Pennington J, Socher R,\
+    \ Manning C. Glove: global vectors for word\",\n    \"text\": \"representation. In: Proceedings of the 2014 Conference\
+    \ on\\nEmpirical Methods in Natural Language Processing (EMNLP)\\n[Internet]; Doha, Qatar. Association for Computational\
+    \ Linguistics;\\n2014. p. 1532\\u20131543. [cited 2025 Feb 21]. Available from: http://\\naclweb.org/anthology/D14-1162\"\
+    \n  },\n  {\n    \"name\": \"Devlin J, Chang M-W, Lee K, et al. BERT: pre-training of deep\",\n    \"text\": \"bidirectional\
+    \ transformers for language understanding [Internet].\\narXiv. 2018 [cited 2025 Feb 21]. Available from: https://arxiv.org/\\\
+    nabs/1810.04805\"\n  },\n  {\n    \"name\": \"Lee J, Yoon W, Kim S, et al. BioBERT: a pre-trained biomedical\",\n    \"\
+    text\": \"language representation model for biomedical text mining.\\nBioinformatics. 2020 Feb;36(4):1234\\u20131240.\
+    \ doi: 10.1093/bioinfor\\nmatics/btz682\"\n  },\n  {\n    \"name\": \"Jumper J, Evans R, Pritzel A, et al. Highly accurate\
+    \ protein structure\",\n    \"text\": \"prediction with AlphaFold. Nature. 2021;596(7873):583\\u2013589.\\n\\u2022\\u2022\
+    \ AlphaFold has been hugely impactful in drug discovery and\\nhas immediately become a widely used source of protein\\\
+    nstructure predictions. The works by DeepMind and EBI have\\nproved invaluable as an open-source database enabling end-\\\
+    nusers to form hypothesis about potential druggability of\\nproteins.\"\n  },\n  {\n    \"name\": \"Shirkhorshidi AS,\
+    \ Aghabozorgi S, Wah TY. A comparison study on\",\n    \"text\": \"similarity and dissimilarity measures in clustering\
+    \ continuous data.\\nDalby AR, editor. PLOS ONE. 2015;10(12):e0144059.\"\n  },\n  {\n    \"name\": \"Buniello A, Suveges\
+    \ D, Cruz-Castillo C, et al. Open targets platform:\",\n    \"text\": \"facilitating therapeutic hypotheses building in\
+    \ drug discovery.\\nNucleic Acids Res. 2025;53(D1):D1467\\u2013D1475.\"\n  },\n  {\n    \"name\": \"Ye C, Swiers R, Bonner\
+    \ S, et al. A knowledge graph-enhanced\",\n    \"text\": \"tensor factorisation model for discovering drug targets. IEEE/ACM\\\
+    nTrans Comput Biol Bioinf. 2022;19(6):3070\\u20133080. doi: 10.1109/TCBB.\\n2022.3197320\"\n  },\n  {\n    \"name\": \"\
+    Lamiroy B, Sun T. Computing precision and recall with missing or\",\n    \"text\": \"uncertain ground truth. In: Kwon\
+    \ Y-B Ogier J-M, editors. Graphics\\nrecognition\\nnew\\ntrends\\nand\\nchallenges\\n[internet].\\nBerlin\\nHeidelberg:\
+    \ Springer Berlin Heidelberg; 2013 [cited 2025 Feb 21].\\np. 149\\u2013162. Available from: https://doi.org/10.1007/978-3-642-\\\
+    n36824-0_15\"\n  },\n  {\n    \"name\": \"Lafferty JD, McCallum A, Pereira FCN. Conditional random fields:\",\n    \"\
+    text\": \"probabilistic models for segmenting and labeling sequence data.\\nIn: Proceedings of the Eighteenth International\
+    \ Conference on\\nMachine Learning; San Francisco (CA). Morgan Kaufmann\\nPublishers Inc.; 2001. p. 282\\u2013289.\"\n\
+    \  },\n  {\n    \"name\": \"Settles B. ABNER: an open source tool for automatically tagging\",\n    \"text\": \"genes,\
+    \ proteins and other entity names in text. Bioinformatics.\\n2005;21(14):3191\\u20133192. doi: 10.1093/bioinformatics/bti475\"\
+    \n  },\n  {\n    \"name\": \"Durbin R. Biological sequence analysis: probabilistic models of\",\n    \"text\": \"proteins\
+    \ and nucleic acids. Cambridge: Cambridge University\\nPress & Assessment; 1998.\"\n  },\n  {\n    \"name\": \"Eddy SR.\
+    \ What is a hidden Markov model? Nat Biotechnol. 2004;22\",\n    \"text\": \"(10):1315\\u20131316. doi: 10.1038/nbt1004-1315\"\
+    \n  },\n  {\n    \"name\": \"Zhang H. The optimality of naive Bayes. Aa. 2004;1(2):3\",\n    \"text\": \"\"\n  },\n  {\n\
+    \    \"name\": \"The origins of logistic regression by J.S. Cramer: SSRN [Internet]\",\n    \"text\": \"[cited 2025 Feb\
+    \ 21]. Available from: https://papers.ssrn.com/sol3/\\npapers.cfm?abstract_id=360300\"\n  },\n  {\n    \"name\": \"Tong\
+    \ S, Koller D. Support vector machine active learning with\",\n    \"text\": \"application sto text classification. In:\
+    \ Proceedings of the\\nSeventeenth International Conference on Machine Learning; San\\nFrancisco (CA). Morgan Kaufmann\
+    \ Publishers Inc.; 2000. p.\\n999\\u20131006.\"\n  },\n  {\n    \"name\": \"Ye Z, Tafti AP, He KY, et al. SparkText: biomedical\
+    \ text mining on\",\n    \"text\": \"big data framework. PLOS ONE. 2016;11(9):e0162721.\"\n  },\n  {\n    \"name\": \"\
+    Neural Networks From Scratch. VictorZhou.com. 2019 [cited 2025\",\n    \"text\": \"Apr 4th]. Available from: https://victorzhou.com/series/neural-\\\
+    nnetworks-from-scratch/\"\n  },\n  {\n    \"name\": \"LeCun Y, Bengio Y, Hinton G. Deep learning. Nature. 2015;521\",\n\
+    \    \"text\": \"(7553):436\\u2013444.\"\n  },\n  {\n    \"name\": \"Gashaw I, Ellinghaus P, Sommer A, et al. What makes\
+    \ a good drug\",\n    \"text\": \"target?. Drug Discov Today. 2012;17:S24\\u2013S30. doi: 10.1016/j.drudis.\\n2011.12.008\"\
+    \n  },\n  {\n    \"name\": \"Katsila T, Spyroulias GA, Patrinos GP, et al. Computational\",\n    \"text\": \"approaches\
+    \ in target identification and drug discovery. Comput\\nStruct Biotechnol J. 2016;14:177\\u2013184.\"\n  },\n  {\n   \
+    \ \"name\": \"Niu Y, Lin P. Advances of computer-aided drug design (CADD) in\",\n    \"text\": \"the development of anti-Azheimer\\\
+    u2019s-disease drugs. Drug Discov\\nToday. 2023;28(8):103665. doi: 10.1016/j.drudis.2023.103665\"\n  },\n  {\n    \"name\"\
+    : \"Hochreiter S, Schmidhuber J. Long Short-Term Memory. Neural\",\n    \"text\": \"Comput. 1997;9(8):1735\\u20131780.\
+    \ doi: 10.1162/neco.1997.9.8.1735\"\n  },\n  {\n    \"name\": \"Choi SR, Lee M. Transformer Architecture and Attention\"\
+    ,\n    \"text\": \"Mechanisms in Genome Data Analysis: A Comprehensive Review.\\nBiology (Basel). 2023;12(7):1033. doi:\
+    \ 10.3390/biology12071033\"\n  },\n  {\n    \"name\": \"Vaswani A, Shazeer N, Parmar N, et al. Attention Is All You Need\"\
+    ,\n    \"text\": \"[Internet]. arXiv; 2023 [cited 2024 Sep 12]. Available from: http://\\narxiv.org/abs/1706.03762\"\n\
+    \  },\n  {\n    \"name\": \"Radford A, Narasimhan K, Salimans T, et al. Improving Language\",\n    \"text\": \"Understanding\
+    \ by Generative Pre-Training.\"\n  },\n  {\n    \"name\": \"Fang L, Chen Q, Wei C-H, et al. Bioformer: an efficient transformer\"\
+    ,\n    \"text\": \"language model for biomedical text mining [Internet]. arXiv; 2023\\n[cited 2025 Feb 21]. Available\
+    \ from: https://arxiv.org/abs/2302.01588\"\n  },\n  {\n    \"name\": \"Beltagy I, Lo K, Cohan A. SciBERT: A Pretrained\
+    \ Language Model for\",\n    \"text\": \"Scientific Text [Internet]. arXiv; 2019 [cited 2025 Apr 2]. Available\\nfrom:\
+    \ http://arxiv.org/abs/1903.10676\"\n  },\n  {\n    \"name\": \"Gu Y, Tinn R, Cheng H, et al. Domain-Specific Language\
+    \ Model\",\n    \"text\": \"Pretraining for Biomedical Natural Language Processing. ACM\\nTrans Comput Healthcare. 2022;3(1):1\\\
+    u201323. doi: 10.1145/3458754\"\n  },\n  {\n    \"name\": \"Zhou Y, Srikumar V. A closer look at how fine-tuning changes\
+    \ BERT\",\n    \"text\": \"[Internet]. arXiv; 2021 [cited 2025 Feb 21]. Available from: https://\\narxiv.org/abs/2106.14282\"\
+    \n  },\n  {\n    \"name\": \"Razuvayevskaya O, Lopez I, Dunham I, et al. Genetic factors asso\\u00ad\",\n    \"text\"\
+    : \"ciated with reasons for clinical trial stoppage. Nat Genet. 2024;56\\n(9):1862\\u20131867. doi: 10.1038/s41588-024-01854-z\"\
+    \n  },\n  {\n    \"name\": \"Minikel EV, Painter JL, Dong CC, et al. Refining the impact of\",\n    \"text\": \"genetic\\\
+    nevidence\\non\\nclinical\\nsuccess.\\nNature.\\n2024;629\\n(8012):624\\u2013629.\"\n  },\n  {\n    \"name\": \"K\\u00fchnel\
+    \ L, Fluck J. We are not ready yet: limitations of state-of-the-\",\n    \"text\": \"art disease named entity recognizers.\
+    \ J Biomed Semantics. 2022;13\\n(1):26.\"\n  },\n  {\n    \"name\": \"Pakhale K. Comprehensive overview of named entity\
+    \ recognition:\",\n    \"text\": \"models, domain-specific applications and challenges [Internet].\\narXiv; 2023 [cited\
+    \ 2025 Feb 21]. Available from: https://arxiv.org/\\nabs/2309.14084\"\n  },\n  {\n    \"name\": \"Jehangir B, Radhakrishnan\
+    \ S, Agarwal R. A survey on Named Entity\",\n    \"text\": \"Recognition \\u2014 datasets, tools, and methodologies. Nat\
+    \ Language\\nProcess J. 2023;3:100017. doi: 10.1016/j.nlp.2023.100017\"\n  },\n  {\n    \"name\": \"Beltagy I, Peters\
+    \ ME, Cohan A. Longformer: the long-document\",\n    \"text\": \"transformer [Internet]. arXiv; 2020 [cited 2025 Feb 21].\
+    \ Available\\nfrom: https://arxiv.org/abs/2004.05150\"\n  },\n  {\n    \"name\": \"Ouyang L, Wu J, Jiang X, et al. Training\
+    \ language models to follow\",\n    \"text\": \"instructions with human feedback [Internet]. arXiv; 2022 [cited\"\n  },\n\
+    \  {\n    \"name\": \"Feb 21]. Available from: http://arxiv.org/abs/2203.02155\",\n    \"text\": \"\"\n  },\n  {\n   \
+    \ \"name\": \"Wu J. Literature review on vulnerability detection using NLP\",\n    \"text\": \"technology [Internet].\
+    \ arXiv. 2021 [cited 2025 Feb 21]. Available\\nfrom: https://arxiv.org/abs/2104.11230\"\n  },\n  {\n    \"name\": \"Radford\
+    \ A, Wu J, Child R, et al. Language models are unsuper\\u00ad\",\n    \"text\": \"vised multitask learners. 2019 [cited\
+    \ 2025 Feb 21]. Available\\nfrom: https://www.semanticscholar.org/paper/Language-Models\\n- a r e - U n s u p e r v i\
+    \ s e d - M u l t i t a s k - L e a r n e r s - R a d f o r d - W u\\n/9405cc0d6169988371b2755e573cc28650d14dfe\\n782\"\
+    \n  },\n  {\n    \"name\": \"C. A. WITHERS ET AL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Brown T, Mann B, Ryder\
+    \ N, et al. Language models are few-shot\",\n    \"text\": \"learners. Advances in Neural Information Processing Systems\\\
+    n[Internet]. Curran Associates, Inc.; 2020 [cited 2025 Feb 21]. p.\\n1877\\u20131901. Available from: https://papers.nips.cc/paper/2020/\\\
+    nhash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html\"\n  },\n  {\n    \"name\": \"GPT-4 Technical Report [Internet].\
+    \ [cited 2025 Feb 21]. Available\",\n    \"text\": \"from: https://arxiv.org/html/2303.08774v6\"\n  },\n  {\n    \"name\"\
+    : \"Introducing the next generation of Claude [Internet]. [cited 2025\",\n    \"text\": \"Feb 21]. Available from: https://www.anthropic.com/news/claude-\\\
+    n3-family\"\n  },\n  {\n    \"name\": \"Team G, Anil R, Borgeaud S, et al. Gemini: a family of highly capable\",\n   \
+    \ \"text\": \"multimodal models [Internet]. arXiv. 2023 [cited 2025 Feb 21].\\nAvailable from: https://arxiv.org/abs/2312.11805\"\
+    \n  },\n  {\n    \"name\": \"Team G, Georgiev P, Lei VI, et al. Gemini 1.5: Unlocking multimodal\",\n    \"text\": \"\
+    understanding across millions of tokens of context [Internet]. arXiv;\\n2024 [cited 2025 Feb 21]. Available from: https://arxiv.org/abs/\\\
+    n2403.05530\"\n  },\n  {\n    \"name\": \"Touvron H, Lavril T, Izacard G, et al. LLaMA: open and efficient\",\n    \"\
+    text\": \"foundation language models [Internet]. arXiv; 2023 [cited 2025 Feb\\n21]. Available from: http://arxiv.org/abs/2302.13971\"\
+    \n  },\n  {\n    \"name\": \"Touvron H, Martin L, Stone K, et al. Llama 2: open foundation and\",\n    \"text\": \"fine-tuned\
+    \ chat models [Internet]. arXiv; 2023 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2307.09288\"\n  },\n\
+    \  {\n    \"name\": \"Grattafiori A, Dubey A, Jauhri A, et al. The llama 3 herd of models\",\n    \"text\": \"[Internet].\
+    \ arXiv. 2024 [cited 2025 Feb 21]. Available from: http://\\narxiv.org/abs/2407.21783\"\n  },\n  {\n    \"name\": \"Jiang\
+    \ AQ, Sablayrolles A, Mensch A, et al. Mistral 7B [Internet]\",\n    \"text\": \"arXiv; 2023 [cited 2025 Feb 21]. Available\
+    \ from: http://arxiv.org/\\nabs/2310.06825\"\n  },\n  {\n    \"name\": \"Jiang AQ, Sablayrolles A, Roux A, et al. Mixtral\
+    \ of experts [Internet]\",\n    \"text\": \"arXiv; 2024 [cited 2025 Feb 21]. Available from: http://arxiv.org/abs/\\n2401.04088\"\
+    \n  },\n  {\n    \"name\": \"Almazrouei E, Alobeidli H, Alshamsi A, et al. The falcon series of\",\n    \"text\": \"open\
+    \ language models [Internet]. arXiv; 2023 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2311.16867\"\n \
+    \ },\n  {\n    \"name\": \"Abdin M, Aneja J, Awadalla H, et al. Phi-3 technical report: a highly\",\n    \"text\": \"\
+    capable language model locally on your phone [Internet]. arXiv;\\n2024 [cited 2025 Feb 21]. Available from: http://arxiv.org/abs/2404.\\\
+    n14219\"\n  },\n  {\n    \"name\": \"Anil R, Dai AM, Firat O, et al. PaLM 2 technical report [Internet]\",\n    \"text\"\
+    : \"arXiv; 2023 [cited 2025 Feb 21]. Available from: http://arxiv.org/abs/\\n2305.10403\"\n  },\n  {\n    \"name\": \"\
+    Hugging face \\u2013 The AI community building the future. Internet\",\n    \"text\": \"2025 [cited 2025 Feb 21]. Available\
+    \ from: https://huggingface.co/\"\n  },\n  {\n    \"name\": \"Luo R, Sun L, Xia Y, et al. BioGPT: generative pre-trained\
+    \ transfor\\u00ad\",\n    \"text\": \"mer for biomedical text generation and mining. Brief Bioinform.\\n2022;23(6):bbac409.\
+    \ doi: 10.1093/bib/bbac409\"\n  },\n  {\n    \"name\": \"Luo Y, Zhang J, Fan S, et al. BioMedGPT: open multimodal gen\\\
+    u00ad\",\n    \"text\": \"erative pre-trained transformer for BioMedicine [Internet]. arXiv;\\n2023 [cited 2025 Feb 21].\
+    \ Available from: http://arxiv.org/abs/\\n2308.09442\\n\\u2022 This paper introduces a multimodal LLM for biomedical appli\\\
+    u00ad\\ncations \\u201cBioMEDGPT\\u201d. It extends traditional LLMs by incorpor\\u00ad\\nating multimodal capabilities,\
+    \ making it a crucial resource for\\nbiomedical NLP. This is particularly valuable for drug discov\\u00ad\\nery, where\
+    \ insights often emerge from combining diverse\\nmodalities, such as molecular interactions, clinical literature,\\nand\
+    \ genomic data.\"\n  },\n  {\n    \"name\": \"Luo L, Ning J, Zhao Y, et al. Taiyi: a bilingual fine-tuned large\",\n \
+    \   \"text\": \"language model for diverse biomedical tasks. J Am Med Inform\\nAssoc. 2024;31(9):1865\\u20131874.\"\n\
+    \  },\n  {\n    \"name\": \"Wang R, Feng H, Wei G-W. ChatGPT in drug discovery: a case study\",\n    \"text\": \"on anti-cocaine\
+    \ addiction drug development with chatbots\\n[Internet]. arXiv; 2023 [cited 2025 Feb 21]. Available from: http://\\narxiv.org/abs/2308.06920\"\
+    \n  },\n  {\n    \"name\": \"Huang L, Yu W, Ma W, et al. A Survey on Hallucination in Large\",\n    \"text\": \"Language\
+    \ Models: Principles, Taxonomy, Challenges, and Open\\nQuestions. ACM Trans Inf Syst. 2025;43(2):1\\u201355. doi: 10.1145/\\\
+    n3703155\"\n  },\n  {\n    \"name\": \"Zhu Y, Yuan H, Wang S, et al. Large language models for informa\\u00ad\",\n   \
+    \ \"text\": \"tion retrieval: a survey [Internet]. arXiv; 2024 [cited 2025 Apr 2].\\nAvailable from: http://arxiv.org/abs/2308.07107\"\
+    \n  },\n  {\n    \"name\": \"Wu K, Wu E, Zou J. ClashEval: quantifying the tug-of-war between\",\n    \"text\": \"an LLM\\\
+    u2019s internal prior and external evidence [Internet]. arXiv; 2025\\n[cited 2025 Feb 21]. Available from: http://arxiv.org/abs/2404.10198\"\
+    \n  },\n  {\n    \"name\": \"Lobentanzer S, Feng S, Bruderer N, et al. A platform for the biome\\u00ad\",\n    \"text\"\
+    : \"dical application of large language models. Nat Biotechnol. 2025;43\\n(2):166\\u2013169.\"\n  },\n  {\n    \"name\"\
+    : \"Pan S, Luo L, Wang Y, et al. Unifying large language models and\",\n    \"text\": \"knowledge graphs: a roadmap [Internet].\
+    \ 2024 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2306.08302\"\n  },\n  {\n    \"name\": \"Dagdelen J,\
+    \ Dunn A, Lee S, et al. Structured information extraction\",\n    \"text\": \"from scientific text with large language\
+    \ models. Nat Commun.\\n2024;15(1):1418.\"\n  },\n  {\n    \"name\": \"Wei J, Tay Y, Bommasani R, et al. Emergent Abilities\
+    \ of large\",\n    \"text\": \"language models [Internet]. arXiv; 2022 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2206.07682\"\
+    \n  },\n  {\n    \"name\": \"Wei J, Wang X, Schuurmans D, et al. Chain-of-thought prompting\",\n    \"text\": \"elicits\
+    \ reasoning in large language models [Internet]. arXiv; 2023\\n[cited 2025 Feb 21]. Available from: http://arxiv.org/abs/2201.11903\"\
+    \n  },\n  {\n    \"name\": \"Yao S, Yu D, Zhao J, et al. Tree of thoughts: deliberate problem\",\n    \"text\": \"solving\
+    \ with large language models [Internet]. arXiv; 2023 [cited\"\n  },\n  {\n    \"name\": \"Feb 21]. Available from: http://arxiv.org/abs/2305.10601\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Wornow M, Lozano A, Dash D, et al. Zero-shot clinical trial patient\"\
+    ,\n    \"text\": \"matching with LLMs [Internet]. arXiv; 2024 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2402.05125\"\
+    \n  },\n  {\n    \"name\": \"Chaves JMZ, Wang E, Tu T, et al. Tx-LLM: a large language model\",\n    \"text\": \"for therapeutics\
+    \ [Internet]. arXiv; 2024 [cited 2025 Feb 21].\\nAvailable from: http://arxiv.org/abs/2406.06316\"\n  },\n  {\n    \"\
+    name\": \"Stanford CRFM [Internet]. [cited 2025 Feb 21]. Available from:\",\n    \"text\": \"https://crfm.stanford.edu/2023/03/13/alpaca.html\"\
+    \n  },\n  {\n    \"name\": \"Han W, Fang M, Zhang Z, et al. MedINST: Meta Dataset of\",\n    \"text\": \"Biomedical Instructions.\
+    \ In: Al-Onaizan Y, Bansal M Chen Y-N, edi\\u00ad\\ntors. Findings of the Association for Computational Linguistics:\\\
+    nEMNLP 2024 [Internet]. Miami (FL): Association for Computational\\nLinguistics; 2024 [cited 2025 Apr 2]. p. 8221\\u20138240.\
+    \ Available from:\\nhttps://aclanthology.org/2024.findings-emnlp.482/\"\n  },\n  {\n    \"name\": \"Tran H, Yang Z, Yao\
+    \ Z, et al. BioInstruct: instruction tuning of large\",\n    \"text\": \"language models for biomedical natural language\
+    \ processing. J Am\\nMed Inform Assoc. 2024;31(9):1821\\u20131832. doi: 10.1093/jamia/ocae122\\n\\u2022\\u2022 This work\
+    \ is key to advancing instruction tuning for biomedi\\u00ad\\ncal NLP. It demonstrates the impact of instruction tuning\
+    \ on\\nimproving biomedical text comprehension. As the field\\nevolves this is crucial for building models that better\
+    \ under\\u00ad\\nstand domain-specific queries for downstream applications.\"\n  },\n  {\n    \"name\": \"Zhang X, Tian\
+    \ C, Yang X, et al. AlpaCare: instruction-tuned large\",\n    \"text\": \"language models for medical application [Internet].\
+    \ arXiv; 2025\\n[cited 2025 Apr 2]. Available from: http://arxiv.org/abs/2310.14558\"\n  },\n  {\n    \"name\": \"Clark\
+    \ MM, Hildreth A, Batalov S, et al. Diagnosis of genetic diseases\",\n    \"text\": \"in seriously ill children by rapid\
+    \ whole-genome sequencing and\\nautomated phenotyping and interpretation. Sci Transl Med.\\n2019;11(489):eaat6177.\"\n\
+    \  },\n  {\n    \"name\": \"Vora B, Kuruvilla D, Kim C, et al. Applying Natural Language\",\n    \"text\": \"Processing\
+    \ to ClinicalTrials.gov: mRNA cancer vaccine case study.\\nClin Transl Sci. 2023;16(12):2417\\u20132420.\"\n  },\n  {\n\
+    \    \"name\": \"Lee J-S, Hsiang J. Patent classification by fine-tuning BERT language\",\n    \"text\": \"model. World\
+    \ Patent Inf. 2020;61:101965.\"\n  },\n  {\n    \"name\": \"Tyagi T, Magdamo CG, Noori A, et al. NeuraHealth: an automated\"\
+    ,\n    \"text\": \"screening pipeline to detect undiagnosed cognitive impairment in\\nelectronic health records with deep\
+    \ learning and natural language\\nprocessing [Internet]. arXiv; 2022 [cited 2025 Feb 21]. Available\\nfrom: http://arxiv.org/abs/2202.00478\"\
+    \n  },\n  {\n    \"name\": \"Lobentanzer S, Aloy P, Baumbach J, et al. Democratizing knowl\\u00ad\",\n    \"text\": \"\
+    edge representation with BioCypher. Nat Biotechnol. 2023;41\\n(8):1056\\u20131059.\"\n  },\n  {\n    \"name\": \"Hulcoop\
+    \ DG, Trynka G, McDonagh EM. Open Targets: 10 years of\",\n    \"text\": \"partnership in target discovery. Nat Rev Drug\
+    \ Discov [Internet].\\n2024 [cited 2025 Feb 21]. doi: 10.1038/d41573-024-00204-2\"\n  },\n  {\n    \"name\": \"EXPERT\
+    \ OPINION ON DRUG DISCOVERY\",\n    \"text\": \"783\"\n  }\n]"
+  acknowledgments: 'In compliance with the International Committee of Medical Journal Editors
+
+    (ICMJE) recommendations, the authors acknowledge the utilization of AI
+
+    services in this work: the authors of this article used ChatGPT (GPT-4) by
+
+    OpenAI exclusively for proofreading for English grammatical and/or lan­
+
+    guage errors. It was also used to help summarise the key messages from
+
+    the text in the Article Highlights Box. All sentences revised by GPT-4 were
+
+    reviewed and verified by the authors. No content was generated by the
+
+    GPT-4 or any other AI service.'
+  funding: 'This work is funded by Open Targets, under [OTAR3088] (“Automating
+
+    Knowledge Management”). B Zdrazil and M Harrison also receive funding
+
+    from the European Bioinformatics Institute of the European Molecular
+
+    Biology Laboratory (EMBL-EBI).
+
+    Declaration of interest
+
+    The authors have no other relevant affiliations or financial involvement
+
+    with any organization or entity with a financial interest in or financial
+
+    conflict with the subject matter or materials discussed in the manuscript
+
+    apart from those disclosed.
+
+    Reviewer disclosures
+
+    Peer reviewers on this manuscript have no relevant financial or other
+
+    relationships to disclose.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p1_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_2.png\",\n   \
+    \ \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_3.png\",\n\
+    \    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_4.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_5.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_6.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_7.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_8.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_9.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_10.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_11.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_12.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_13.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_14.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_15.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_16.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_17.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p1_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_18.png\"\
+    ,\n    \"page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\"\
+    ,\n    \"page\": 2\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p12_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p12_1.png\"\
+    ,\n    \"page\": 12\n  }\n]"

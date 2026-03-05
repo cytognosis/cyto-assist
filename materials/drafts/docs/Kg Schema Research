@@ -1,0 +1,468 @@
+# Biomedical Knowledge Graph Schema Research
+
+Comprehensive analysis of 20 KG papers from `materials/drafts/papers/KG/` to inform the Cytognosis KG schema design.
+
+---
+
+## 1. Papers Analyzed
+
+| Paper | Journal | Year | Focus | Key Contribution |
+|-------|---------|------|-------|-------------------|
+| **PrimeKG** | Scientific Data | 2023 | Disease-centric KG | 10 node types, 30 edge types, 129K nodes, 4M edges, 20 data sources |
+| **CKG** | Nature Biotechnology | 2022 | Clinical proteomics | 36 node types, 47 relationship types, 20M nodes, 220M edges |
+| **BioCypher** | Nature Biotechnology | 2023 | KG framework | Modular input/ontology/output adapters, OWL-based |
+| **BioPathNet** | Nature Biomedical Engineering | 2026 | Link prediction | Path-based reasoning on KGs, uses PrimeKG |
+| **FoodAtlas** | Unified KG paper | 2024 | Food-disease-chemical | Food-chemical-disease-flavor-bioactivity entities |
+| **Petagraph** | — | — | Integrated KG | Cross-domain biological knowledge integration |
+| **OmniPath** | Nature Methods | 2016 | Signaling pathways | Intercellular signaling, ligand-receptor, TF-target |
+| **Open Targets** | Nucleic Acids Research | — | Drug target validation | Genetic evidence for target-disease associations |
+| **RNA-KG v2.0** | — | — | Non-coding RNA | lncRNA, miRNA, piRNA interactions |
+| **PROTON** | — | — | Biomedical KG | Extended entity types and relations |
+| **PubMed KG** | Scientific Data | 2020 | Literature KG | Publication-entity mining relationships |
+| **Desiderata** | — | — | KG design principles | Best practices for biomedical KG construction |
+| **HRA KG** | — | — | Human Reference Atlas | Anatomical structures, cell types, biomarkers |
+| **ClinVec** | — | — | Clinical embeddings | Clinical concept embeddings |
+| **NetworkCommons** | — | — | Network resources | Standardized network biology resources |
+| **OLS4** | — | — | Ontology lookup | Ontology Lookup Service infrastructure |
+| **Homo Sapiens Chromosomal** | — | — | Genomic location | Chromosomal location ontology |
+| **Improving BioKG Quality** | — | — | KG quality | Error detection, quality metrics |
+
+---
+
+## 2. Consolidated Entity Types
+
+### Core Biomedical Entities
+
+| Entity Type | PrimeKG Nodes | CKG Nodes | Primary Identifier | Ontology/DB | Attributes |
+|-------------|---------------|-----------|-------------------|-------------|------------|
+| **Gene/Protein** | 27,671 | ✓ | Entrez Gene ID | UniProt, HGNC, Ensembl | name, symbol, sequence, function, expression |
+| **Disease** | 17,080 | ✓ | MONDO ID | MONDO, OMIM, ICD-10, SNOMED-CT, MedDRA, Orphanet | definition, prevalence, symptoms, causes, risk factors |
+| **Drug** | 7,957 | ✓ | DrugBank ID | DrugBank, Drug Central, ATC | description, mechanism, state, half-life, molecular weight, TPSA, cLogP |
+| **Pathway** | 2,516 | ✓ | Reactome ID | Reactome, KEGG | name, hierarchy, species |
+| **Biological Process** | 28,642 | ✓ | GO term | Gene Ontology | definition, hierarchy |
+| **Molecular Function** | 11,169 | ✓ | GO term | Gene Ontology | definition, hierarchy |
+| **Cellular Component** | 4,176 | ✓ | GO term | Gene Ontology | definition, hierarchy |
+| **Phenotype/Effect** | 15,311 | ✓ | HPO ID | Human Phenotype Ontology | definition, hierarchy |
+| **Anatomy/Tissue** | 14,035 | ✓ | UBERON ID | UBERON | name, parent structures |
+| **Exposure** | 818 | — | MeSH/CTD ID | CTD | name, type |
+
+### Extended Entities (from CKG + other papers)
+
+| Entity Type | Source Paper | Primary Identifier | Ontology/DB | Attributes |
+|-------------|-------------|-------------------|-------------|------------|
+| **Metabolite** | CKG | HMDB ID | HMDB, ChEBI, PubChem | formula, mass, SMILES |
+| **Food** | CKG, FoodAtlas | FoodOn ID | FoodOn, FooDB, USDA | nutrients, compounds |
+| **Chemical/Compound** | FoodAtlas | PubChem CID | PubChem, ChEBI, ChEMBL | SMILES, molecular properties |
+| **Protein Complex** | CKG | CORUM ID | CORUM | subunits, function |
+| **Transcript** | CKG | Ensembl Transcript | Ensembl | sequence, biotype |
+| **Variant** | CKG, PrimeKG | ClinVar/dbSNP ID | ClinVar, dbSNP, gnomAD | consequence, allele frequency, pathogenicity |
+| **Publication** | CKG, PubMed KG | PubMed ID | PubMed/MEDLINE | title, abstract, authors, journal, year |
+| **Modified Protein** | CKG | UniProt + mod site | UniProt, PhosphoSitePlus | modification type, site, abundance |
+| **Peptide** | CKG | Sequence-based | — | sequence, charge, mass |
+| **Functional Region** | CKG | InterPro ID | InterPro, Pfam | type, location |
+| **Protein Structure** | CKG | PDB ID | PDB, AlphaFold | resolution, method |
+| **GWAS Study** | CKG | GWAS Catalog ID | GWAS Catalog | trait, sample size, p-value |
+| **Somatic Mutation** | CKG | COSMIC ID | COSMIC, cBioPortal | cancer type, frequency |
+| **Chromosome** | CKG | Chromosome name | — | length, band |
+| **Cell Type** | HRA KG | Cell Ontology ID | Cell Ontology (CL) | lineage, markers |
+| **lncRNA / ncRNA** | RNA-KG | RNAcentral ID | RNAcentral, NONCODE | sequence, function |
+
+### Experimental/Clinical Entities (from CKG)
+
+| Entity Type | Primary Identifier | Purpose |
+|-------------|-------------------|---------|
+| **Project** | Internal ID | Groups experiments |
+| **Subject** | Internal ID | De-identified individual |
+| **Biological Sample** | Internal ID | Collected specimen |
+| **Analytical Sample** | Internal ID | Processed for analysis |
+| **Clinical Variable** | SNOMED-CT | Measured clinical parameter |
+| **Experiment** | Internal ID | Measurement run |
+
+---
+
+## 3. Consolidated Relation Types
+
+### Drug-Disease Relations
+
+| Relation | Source | Directionality | Count (PrimeKG) |
+|----------|--------|---------------|-----------------|
+| indication | Drug Central, DrugBank | Drug → Disease | 18,776 |
+| contraindication | Drug Central | Drug → Disease | 61,350 |
+| off-label use | Drug Central | Drug → Disease | 5,136 |
+| treats | FoodAtlas (chemical) | Chemical → Disease | — |
+| worsens | FoodAtlas | Chemical → Disease | — |
+
+### Protein/Gene Relations
+
+| Relation | Source | Directionality | Count |
+|----------|--------|---------------|-------|
+| protein-protein interaction | BioGRID, STRING, IntAct, CORUM, HuRI | Protein ↔ Protein | 642,150 |
+| drug target | DrugBank | Drug → Protein | 26,118 |
+| drug enzyme | DrugBank | Drug → Protein | included |
+| drug carrier | DrugBank | Drug → Protein | included |
+| drug transporter | DrugBank | Drug → Protein | included |
+| disease-protein association | DisGeNET | Disease → Protein | 160,822 |
+| expressed in anatomy (present) | Bgee | Protein → Anatomy | 3,036,406 |
+| expressed in anatomy (absent) | Bgee | Protein → Anatomy | 39,774 |
+| annotated in pathway | Reactome | Protein → Pathway | 85,292 |
+| biological process | Entrez Gene/GO | Protein → BP | 289,610 |
+| molecular function | Entrez Gene/GO | Protein → MF | 139,060 |
+| cellular component | Entrez Gene/GO | Protein → CC | 166,804 |
+| phenotype association | HPO, DisGeNET | Protein → Phenotype | 6,660 |
+
+### Disease/Phenotype Relations
+
+| Relation | Source | Count |
+|----------|--------|-------|
+| disease-phenotype (positive) | HPO annotations | 300,634 |
+| disease-phenotype (negative) | HPO annotations | 2,386 |
+| disease-disease (hierarchy) | MONDO | 64,388 |
+| exposure-disease | CTD | 4,608 |
+
+### Other Relations
+
+| Relation | Description | Source |
+|----------|-------------|--------|
+| drug-drug (synergistic) | Synergistic interactions | DrugBank |
+| drug-phenotype (side effect) | Adverse reactions | SIDER |
+| pathway-pathway (hierarchy) | Reactome hierarchy | Reactome |
+| anatomy-anatomy | UBERON hierarchy | UBERON |
+| phenotype-phenotype | HPO hierarchy | HPO |
+| GO term hierarchies | BP-BP, MF-MF, CC-CC | Gene Ontology |
+| exposure-exposure | Co-exposure | CTD |
+| exposure-protein | Exposure target | CTD |
+| food-contains-chemical | Composition | FooDB, FoodAtlas |
+| variant-found_in-gene | Genomic location | ClinVar |
+
+### CKG-Specific Relations (47 types)
+
+Key additional relationships from CKG that PrimeKG lacks:
+
+| CKG Relation | Description |
+|--------------|-------------|
+| MENTIONED_IN_PUBLICATION | Literature text mining |
+| TRANSLATED_INTO | Gene → Protein |
+| TRANSCRIBED_INTO | Gene → Transcript |
+| IS_SUBSTRATE_OF | Protein → Enzyme |
+| CURATED_TARGETS | Drug → Protein (curated) |
+| HAS_MODIFICATION | Protein → Modified Protein |
+| HAS_SIDE_EFFECT | Drug → Side Effect |
+| VARIANT_FOUND_IN_GENE | Variant → Gene |
+| VARIANT_IS_CLINICALLY_RELEVANT | Variant annotation |
+| TARGETS_CLINICALLY_RELEVANT_VARIANT | Drug → Variant |
+| IS_SUBUNIT_OF | Protein → Complex |
+| HAS_QUANTIFIED_PROTEIN | Sample → Protein (experimental) |
+
+---
+
+## 4. Primary Data Sources Catalog
+
+### Tier 1: Core Resources (used by both PrimeKG and CKG)
+
+| Resource | Domain | Data Type | License |
+|----------|--------|-----------|---------|
+| **UniProt** | Proteins | Protein sequences, annotations | CC-BY |
+| **DrugBank** | Drugs | Comprehensive drug data | CC-BY-NC |
+| **Gene Ontology** | Functions | BP, MF, CC annotations | CC-BY |
+| **Reactome** | Pathways | Curated pathways | CC0 |
+| **DisGeNET** | Gene-Disease | Curated associations | ODbL |
+| **Human Phenotype Ontology** | Phenotypes | Phenotype annotations | Custom |
+| **MONDO** | Diseases | Disease ontology | CC-BY |
+| **UBERON** | Anatomy | Multi-species anatomy | CC-BY |
+| **PubMed/MEDLINE** | Literature | 35M+ abstracts | NLM terms |
+| **CTD** | Toxicogenomics | Exposure-disease links | Custom |
+
+### Tier 2: Interaction/Network Resources
+
+| Resource | Domain | Data Type |
+|----------|--------|-----------|
+| **STRING** | PPI | Protein-protein interactions |
+| **BioGRID** | PPI | Curated physical interactions |
+| **IntAct** | PPI | Molecular interactions |
+| **CORUM** | Complexes | Protein complexes |
+| **HuRI** | PPI | Binary protein interactions |
+| **OmniPath** | Signaling | Signaling, regulatory, ligand-receptor |
+| **Pathway Commons** | Pathways | Integrated pathway data |
+| **ConsensusPathDB** | Pathways | Integrates 12+ pathway DBs |
+| **KEGG** | Pathways | Metabolic/signaling pathways |
+
+### Tier 3: Clinical & Pharmacological Resources
+
+| Resource | Domain | Data Type |
+|----------|--------|-----------|
+| **Drug Central** | Drug-disease | Indications, contraindications |
+| **SIDER** | Side effects | Drug adverse reactions |
+| **ClinVar** | Variants | Clinical variant annotations |
+| **OMIM** | Genetic diseases | Mendelian disease catalog |
+| **Orphanet** | Rare diseases | Rare disease descriptions |
+| **UMLS** | Medical concepts | Unified medical terminology |
+| **SNOMED-CT** | Clinical terms | Clinical terminology |
+
+### Tier 4: Specialized Resources
+
+| Resource | Domain | Data Type |
+|----------|--------|-----------|
+| **Bgee** | Expression | Gene expression patterns |
+| **HMDB** | Metabolites | Human metabolite data |
+| **ChEBI** | Chemistry | Chemical entities |
+| **PubChem** | Chemistry | Chemical structures/bioactivities |
+| **ChEMBL** | Bioactivity | Drug-like molecules |
+| **FooDB** | Food | Food-chemical composition |
+| **RNAcentral** | RNA | Non-coding RNA sequences |
+| **PhosphoSitePlus** | PTMs | Post-translational modifications |
+| **GnomAD** | Variants | Population allele frequencies |
+| **Open Targets** | Drug targets | Genetic evidence for targets |
+
+---
+
+## 5. Ontology Mapping Strategy
+
+```mermaid
+graph TD
+    A[Disease] -->|primary| B[MONDO]
+    B -->|maps to| C[OMIM]
+    B -->|maps to| D[SNOMED-CT]
+    B -->|maps to| E[ICD-10/11]
+    B -->|maps to| F[MedDRA]
+    B -->|maps to| G[Orphanet]
+    B -->|maps to| H[UMLS CUI]
+    B -->|maps to| I[Disease Ontology]
+    B -->|maps to| J[MeSH]
+
+    K[Gene/Protein] -->|primary| L[UniProt]
+    L -->|maps to| M[Entrez Gene]
+    L -->|maps to| N[HGNC]
+    L -->|maps to| O[Ensembl]
+
+    P[Drug] -->|primary| Q[DrugBank]
+    Q -->|maps to| R[Drug Central]
+    Q -->|maps to| S[ATC Code]
+    Q -->|maps to| T[PubChem CID]
+    Q -->|maps to| U[ChEMBL]
+
+    V[Pathway] -->|primary| W[Reactome]
+    W -->|augment| X[KEGG]
+    W -->|augment| Y[Pathway Commons]
+```
+
+---
+
+## 6. Framework Recommendation: BioCypher
+
+Based on the analysis, **BioCypher** is the recommended framework for building the Cytognosis KG:
+
+### Why BioCypher
+
+1. **Modular architecture**: Input adapters (data sources) + Ontology mapping + Output adapters (Neo4j, ArangoDB, PostgreSQL, CSV)
+2. **OWL ontology backbone**: Uses Biolink Model or custom OWL as the canonical schema
+3. **Reproducible configs**: YAML-based, shareable configuration files
+4. **Active community**: Maintained by Saez-Rodriguez lab (Heidelberg), Nature Biotech publication
+5. **Existing adapters**: OmniPath, CROssBAR, Dependency Map already integrated
+6. **LLM-ready**: Structured knowledge for GPT/LLM integration
+
+### BioCypher Architecture for Cytognosis
+
+```mermaid
+flowchart LR
+    subgraph "Input Adapters"
+        A1[UniProt]
+        A2[DrugBank]
+        A3[DisGeNET]
+        A4[Reactome]
+        A5[PrimeKG]
+        A6[OmniPath]
+        A7[Cytoscope Data]
+    end
+
+    subgraph "BioCypher Core"
+        B1[Schema Config YAML]
+        B2[Ontology Mapping]
+        B3[Entity Resolution]
+    end
+
+    subgraph "Output Adapters"
+        C1[Neo4j]
+        C2[PostgreSQL]
+        C3[NetworkX]
+        C4[Cytonome API]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
+    A5 --> B1
+    A6 --> B1
+    A7 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> C1
+    B3 --> C2
+    B3 --> C3
+    B3 --> C4
+```
+
+---
+
+## 7. Proposed Cytognosis KG Schema
+
+### Node Types (18 core + 6 Cytognosis extensions)
+
+#### Core Biomedical (from literature)
+
+| Node Type | Primary ID | Ontology | Priority |
+|-----------|-----------|----------|----------|
+| Gene | Entrez Gene ID | HGNC | P0 |
+| Protein | UniProt ID | UniProt | P0 |
+| Disease | MONDO ID | MONDO | P0 |
+| Drug | DrugBank ID | DrugBank | P0 |
+| Phenotype | HPO ID | HPO | P0 |
+| Pathway | Reactome ID | Reactome | P0 |
+| Biological Process | GO ID | GO | P1 |
+| Molecular Function | GO ID | GO | P1 |
+| Cellular Component | GO ID | GO | P1 |
+| Anatomy | UBERON ID | UBERON | P1 |
+| Cell Type | CL ID | Cell Ontology | P1 |
+| Metabolite | HMDB ID | HMDB, ChEBI | P1 |
+| Variant | ClinVar ID | ClinVar, dbSNP | P1 |
+| Exposure | MeSH ID | CTD | P2 |
+| ncRNA | RNAcentral ID | RNAcentral | P2 |
+| Protein Complex | CORUM ID | CORUM | P2 |
+| Publication | PubMed ID | PubMed | P2 |
+| Chemical | PubChem CID | PubChem, ChEBI | P2 |
+
+#### Cytognosis Extensions
+
+| Node Type | Description | ID Scheme |
+|-----------|-------------|-----------|
+| **Health State** | Temporal cellular state vector from Cytoverse | Internal UUID + timestamp |
+| **Biosignal** | Continuous sensor reading from Cytoscope | Internal UUID + modality |
+| **Biomarker** | Measurable indicator with trajectory | LOINC code + analyte |
+| **Intervention** | Beyond drugs: lifestyle, diet, exercise | Internal + ontology mapping |
+| **Individual** | De-identified person profile | Internal UUID (HIPAA-safe) |
+| **Measurement** | Single measurement event | Internal UUID + timestamp |
+
+### Edge Types (35 core + 10 Cytognosis extensions)
+
+#### Core Relations
+
+| # | Relation | Source Node | Target Node | Source DB |
+|---|----------|-------------|-------------|----------|
+| 1 | interacts_with | Protein | Protein | STRING, BioGRID, IntAct |
+| 2 | targets | Drug | Protein | DrugBank |
+| 3 | indication | Drug | Disease | Drug Central |
+| 4 | contraindication | Drug | Disease | Drug Central |
+| 5 | off_label_use | Drug | Disease | Drug Central |
+| 6 | associated_with | Disease | Protein | DisGeNET |
+| 7 | has_phenotype_pos | Disease | Phenotype | HPO |
+| 8 | has_phenotype_neg | Disease | Phenotype | HPO |
+| 9 | expressed_in | Protein | Anatomy | Bgee |
+| 10 | participates_in | Protein | Pathway | Reactome |
+| 11 | has_function | Protein | Molecular Function | GO |
+| 12 | involved_in | Protein | Biological Process | GO |
+| 13 | located_in | Protein | Cellular Component | GO |
+| 14 | side_effect | Drug | Phenotype | SIDER |
+| 15 | synergizes_with | Drug | Drug | DrugBank |
+| 16 | parent_of | Disease | Disease | MONDO |
+| 17 | parent_of | Pathway | Pathway | Reactome |
+| 18 | parent_of | Anatomy | Anatomy | UBERON |
+| 19 | parent_of | Phenotype | Phenotype | HPO |
+| 20 | parent_of | GO term | GO term | GO |
+| 21 | exposure_causes | Exposure | Disease | CTD |
+| 22 | variant_in | Variant | Gene | ClinVar |
+| 23 | pathogenic_for | Variant | Disease | ClinVar |
+| 24 | subunit_of | Protein | Complex | CORUM |
+| 25 | mentioned_in | Any entity | Publication | Text mining |
+| 26 | regulates | ncRNA | Gene | RNA-KG |
+| 27 | expressed_in_celltype | Gene | Cell Type | HRA, Bgee |
+| 28 | metabolized_to | Metabolite | Metabolite | HMDB |
+| 29 | contains | Food/Compound | Chemical | FooDB |
+| 30 | is_substrate_of | Protein | Protein (enzyme) | CKG |
+| 31 | translates_to | Gene | Protein | UniProt |
+| 32 | transcribes_to | Gene | Transcript | Ensembl |
+| 33 | has_modification | Protein | PTM | PhosphoSitePlus |
+| 34 | synthetic_lethality | Gene | Gene | SynLethDB |
+| 35 | signaling | Protein | Protein | OmniPath |
+
+#### Cytognosis Extension Relations
+
+| # | Relation | Source | Target | Description |
+|---|----------|--------|--------|-------------|
+| 36 | precedes | Health State | Health State | Temporal progression |
+| 37 | indicates_risk | Biomarker | Disease | Risk quantification |
+| 38 | intercepts | Intervention | Health State | Disease trajectory change |
+| 39 | measured_by | Biomarker | Measurement | Assay/device link |
+| 40 | produces_signal | Individual | Biosignal | Sensor data source |
+| 41 | maps_to_state | Biosignal | Health State | Signal → state mapping |
+| 42 | has_measurement | Individual | Measurement | Clinical measurements |
+| 43 | mechanistically_causes | (any) | (any) | Causal mechanism path |
+| 44 | temporally_associated | Health State | Phenotype | Time-linked |
+| 45 | recommended_for | Intervention | Individual | Personalized recommendation |
+
+---
+
+## 8. Identifier Cross-Reference Table
+
+| Entity Type | Primary | Secondary | Tertiary |
+|-------------|---------|-----------|----------|
+| Gene | Entrez Gene ID | HGNC symbol | Ensembl Gene ID |
+| Protein | UniProt ID | Entrez Gene ID | PDB ID |
+| Disease | MONDO ID | OMIM ID | ICD-10 code |
+| Drug | DrugBank ID | PubChem CID | ATC code |
+| Pathway | Reactome ID | KEGG ID | WikiPathways ID |
+| Phenotype | HPO ID | UMLS CUI | SNOMED-CT |
+| Anatomy | UBERON ID | FMA ID | — |
+| Metabolite | HMDB ID | ChEBI ID | PubChem CID |
+| Variant | ClinVar ID | dbSNP rsID | HGVS notation |
+| Cell Type | CL ID | — | — |
+| Exposure | MeSH ID | CTD chem ID | CAS number |
+
+---
+
+## 9. Implementation Roadmap
+
+### Phase 1: Foundation (P0 entities)
+
+1. **Set up BioCypher** with OWL schema definition
+2. **Ingest PrimeKG** as the foundation (10 node types, 30 edge types, 4M edges)
+3. **Add ClinVar variants** and map to genes/diseases
+4. **Deploy Neo4j** instance with basic Cypher queries
+5. **Build REST API** for programmatic access
+
+### Phase 2: Extension (P1 entities)
+
+1. **Add CKG-style clinical entities** (samples, subjects, measurements)
+2. **Integrate OmniPath** for signaling pathway detail
+3. **Add metabolomics** via HMDB/ChEBI
+4. **Add cell type annotations** via Cell Ontology + HRA
+5. **Build Cytognosis-specific entities** (Health State, Biosignal, Biomarker)
+
+### Phase 3: Intelligence (P2 + ML)
+
+1. **Add RNA-KG** for non-coding RNA interactions
+2. **Add literature mining** via PubMed KG
+3. **Implement link prediction** using BioPathNet/TxGNN approach
+4. **Build temporal reasoning** for health state trajectories
+5. **Deploy Cytonome** causal inference on KG subgraphs
+
+### Phase 4: Clinical Translation
+
+1. **Integrate clinical lab values** (LOINC-coded)
+2. **Build individual health profiles** (HIPAA-compliant)
+3. **Connect Cytoscope sensor data** to KG entities
+4. **Enable federated learning** across instances (CKG vision)
+5. **Launch API for health interception recommendations**
+
+---
+
+## 10. Key Design Decisions
+
+> [!IMPORTANT]
+> These decisions require discussion before implementation.
+
+1. **Graph database**: Neo4j (mature, Cypher) vs. ArangoDB (multi-model) vs. PostgreSQL with AGE extension
+2. **Ontology backbone**: Biolink Model (standard) vs. custom OWL (flexible)
+3. **Disease grouping**: Follow PrimeKG's ClinicalBERT-based approach or use MONDO hierarchy directly
+4. **Temporal modeling**: Property on edges (timestamp) vs. separate temporal nodes
+5. **Scale target**: Millions (PrimeKG-scale) vs. billions (CKG-scale with publications)
+6. **Update cadence**: Quarterly (like PrimeKG) vs. continuous (like CKG)

@@ -1,0 +1,528 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/OmniPath.pdf
+
+identifiers:
+  doi: 10.1093/nar/gkaf1126
+  pmid: '41251164'
+citation:
+  title: 'OmniPath: int egr at ed kno wledg ebase f or multi-omics analysis'
+  year: '2026'
+  journal: Nucleic Acids Research
+  volume: '54'
+  pages: D652-D660
+  publisher: Oxford University Press (OUP)
+  authors: Dénes Türei, Jonathan Schaul, Nicolàs Palacio-Escat, Balázs Bohár, Yunfan Bai, Francesco Ceccarelli, Elif Çevrim,
+    Macabe Daley, Melih Darcan, Daniel Dimitrov, Tunca Doğan, Daniel Domingo-Fernández, Aurelien Dugourd, Attila Gábor, Lejla
+    Gul, Benjamin A Hall, Charles Tapley Hoyt, Olga Ivanova, Michal Klein, Toby Lawrence, Diego Mañanes, Dezső Módos, Sophia
+    Müller-Dott, Márton Ölbei, Christina Schmidt, Bünyamin Şen, Fabian J Theis, Atabey Ünlü, Erva Ulusoy, Alberto Valdeolivas,
+    Tamás Korcsmáros, Julio Saez-Rodriguez
+content:
+  abstract: 'Analysis and interpretation of omics data largely benefit from the use of prior kno wledge. Ho w e v er, this
+    kno wledge is fragmented across
+
+    resources and often is not directly accessible for analytical methods. We de v eloped OmniPath ( https:// omnipathdb.org/
+    ), a database combining
+
+    diverse molecular knowledge from 168 resources. It covers causal protein–protein, gene regulatory, microRNA, and enzyme–post-translational
+
+    modification interactions, cell–cell communication, protein comple x es, and inf ormation about the function, localization,
+    str uct ure, and many
+
+    other aspects of biomolecules. It prioritizes literature curated data, and complements it with predictions and large scale
+    databases. To enable
+
+    interactiv e bro wsing of this large corpus of kno wledge, w e de v eloped OmniPath Explorer, which also includes a large
+    language model agent
+
+    that has direct access to the database. Python and R/Bioconductor client packages and a Cytoscape plugin create easy access
+    to customized
+
+    prior knowledge for omics analysis environments, such as scverse. OmniPath can be broadly used for the analysis of bulk,
+    single-cell, and spatial
+
+    multi-omics data, especially for mechanistic and causal modeling.
+
+    Received: August 15, 2025. Revised: September 29, 2025. Accepted: October 3, 2025
+
+    © The Author(s) 2025. Published by Oxford University Press.
+
+    This is an Open Access article distributed under the terms of the Creative Commons Attribution License ( https:// creativecommons.org/
+    licenses/by/ 4.0/ ),
+
+    which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly
+    cited.
+
+    Downloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest on 04 March 2026
+
+
+    OmniPath: integrated knowledgebase for multi-omics analysis'
+  sections: "[\n  {\n    \"name\": \"D 653\",\n    \"text\": \"Gr aphical abstr act\"\n  },\n  {\n    \"name\": \"Introduction\"\
+    ,\n    \"text\": \"Bulk, single-cell, and spatial omics technologies provide rich\\ninformation for understanding biological\
+    \ processes, but inter-\\npreting molecular mechanisms and their deregulation in dis-\\nease remains a challenge. The\
+    \ use of prior knowledge within\\nanalytical methods largely expands the extractable informa-\\ntion and broadens the\
+    \ scope of testable hypotheses. In partic-\\nular, by estimating the activity [ 1 ] of key processes using prior\\nknowledge\
+    \ of signatures\\u2014pathway [ 2 ], transcription factor\\n(TF) [ 2 , 3 ], kinase [ 5 ], receptor [ 6 ], or ligand\\\
+    u2013receptor [ 7 ]\\nactivities\\u2014the biological interpretability is greatly enhanced\\nand potential causal drivers\
+    \ can be more easily identified,\\nwhile the dimensionality of the data is reduced, increasing the\\nstatistical power\
+    \ [ 8 ]. Furthermore, the integrated outcome of\\nthese estimations can be connected by a variety of network in-\\nference\
+    \ methods [ 9 , 10 ] to derive context-specific mechanisms.\\nDatabases of prior knowledge have therefore become essential\\\
+    nresources for omics data analysis.\\nMaking prior knowledge available for analysis pipelines is\\na challenge on its\
+    \ own: it is scattered across many databases\\nand it is not clear which ones are the best suited for the appli-\\ncation\
+    \ at hand. Furthermore, each requires different and of-\\nten significant effort to input into the tools. Excellent origi-\\\
+    nnal [ 11 \\u201314 ] and combined [ 15 ] databases exist, each with a\\ndifferent focus. Nevertheless these are often\
+    \ limited by var-\\nious caveats, such as lack of domain knowledge, coverage\\nrequired by analysis workflows, in particular\
+    \ literature cu-\\nrated, as well as causal interactions, and ease of integration\\nto analysis tools. This challenge\
+    \ prompted us to develop Om-\\nniPath, a database combining a growing number of diverse,\\ncurated and complementary resources.\
+    \ When first published\\n[ 16 ], it only covered causal signaling interactions, and over\\nthe years it expanded to include\
+    \ TF\\u2013target (regulons) and\\nenzyme\\u2013post-translational modification (PTM) relationships,\\nmolecular function\
+    \ and localization, intercellular communi-\\ncation, protein complexes, and various other types of molecu-\\nlar knowledge,\
+    \ as described in a subsequent publication [ 17 ].\\nSince then, we included 65 new resources, developed an in-\\nteractive\
+    \ web page, extended the features of the web API (in-\\ncluding provenance details and license support), implemented\\\
+    na higher performance server and added numerous convenient\\nutilities to the Python and R client packages (e.g. identi-\\\
+    nfier and orthology translation). Here we present these nov-\\nelties and briefly outline our ongoing and future development\\\
+    nplans.\\nData content\\nOmniPath consists of five major database domains: interac-\\ntions, enzyme\\u2013substrate, complexes,\
+    \ annotations , and inter-\\ncellular (Fig. 1 A). These domains are integrated databases\\nthat we build by combining\
+    \ source databases\\u2014what we re-\\nfer to as resources (for a complete list of resources, see\"\n  },\n  {\n    \"\
+    name\": \"Supplementary Table S1 ); while within the domains we also\",\n    \"text\": \"define application-specific subsets\
+    \ of resources, which we call\\ndatasets. Licensing conditions are included for each resource,\\nwith the majority of\
+    \ them being available for commercial use\\n(Fig. 1 B\\u2013C and Supplementary Table S1 ). We also classified\\nresources\
+    \ by their maintenance status, i.e. updates happen-\\ning frequently, infrequently or never. Strikingly, the majority\\\
+    nof interaction resources and literature references come from\\ndatabases which have been published only once without\
+    \ sub-\\nsequent updates (Fig. 1 B\\u2013D and Supplementary Table S1 ).\\nIn the integrated database multiple resources\
+    \ supporting the\\nsame record suggest a higher confidence, while combining the\\nunique content from each resource increases\
+    \ the coverage. In\\nthe interactions domain only 22% of the records are unique\\nto a single resource, while in the complexes\
+    \ domain > 60%,\\nlargely due to a lack of agreement between complex predic-\\ntion methods (Fig. 1 E).\\nThe interactions\
+    \ domain contains 1419 006 unique molec-\\nular interactions from 115 different resources: it covers signal-\\ning, gene\
+    \ regulatory (TF\\u2013target gene), microRNA (miRNA)\\u2013\\ngene, and a limited set of drug\\u2013target interactions.\
+    \ Within\\nthese interaction types, various datasets are available: the\\ncore omnipath dataset contains literature-curated,\
+    \ causal\\nprotein\\u2013protein interactions (PPIs), while further interactions\\nwithout literature references are provided\
+    \ in separate datasets:\\npathwayextr a (causal) , kinaseextr a (kinase\\u2013substrate), and li-\\ngrecextra (ligand\\\
+    u2013receptor). The largest sources of curated\\ncausal signaling interactions are the SIGNOR [ 11 ], SignaLink\\n[ 18\
+    \ ], and SPIKE [ 19 ] databases (Fig. 1 A). Within TF reg-\\nulons, the tf_target dataset contains literature-curated\
+    \ TF\\u2013\\ntarget interactions, while collectri and dorothea datasets rep-\\nresent comprehensive gene regulatory networks\
+    \ from Collec-\\nTRI [ 3 ] and DoRothEA [ 4 ], respectively, compiled from sev-\\neral curated, high-throughput and predicted\
+    \ sources. Each in-\\nteraction includes information about its direction and whether\\nit has a stimulatory or inhibitory\
+    \ effect. Hereafter, we refer to\\nthis information as \\u201ccausality\\u201d, as they are direct, physical in-\\nteractions\
+    \ with known biochemical background, though we\\nnote that it reflects only putative causal effects.\\nDownloaded from\
+    \ https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 654\"\
+    ,\n    \"text\": \"T\\u00fcrei et al.\\nFigure 1. Data content of OmniPath. ( A ) Resource distribution across database\
+    \ categories\\u2014Treemap showing relative sizes of individual resources\\nwithin their database domain and subcategory.\
+    \ The size of each cell is proportional to the number of records. ( B ) Number of resources in each database\\ndomain,\
+    \ by maintenance and license categories. ( C ) Percentage of records by database domain and by maintenance and license\
+    \ category. ( D ) Literature\\nreference count by database and maintenance status. ( E ) Resource overlap within the databases:\
+    \ percentage of entries appearing in 1, 2, 3, 4, or 5 +\\nresources. Interactive versions of these visualizations are\
+    \ available at https:// explore.omnipathdb.org / .\\nThe enzyme\\u2013substrate domain is a collection of 115 215\\nenzyme\\\
+    u2013PTM interactions from 18 resources. Each record de-\\nscribes the residue, site, and type of modification, most pre-\\\
+    ndominantly phosphorylation, followed by dephosphorylation\\nand acetylation. PhosphoSitePlus [ 20 ] contributes the major-\\\
+    nity of curated evidence, complemented by further curated and\\nprediction-based resources.\\nThe complexes database enumerates\
+    \ 52 086 human pro-\\ntein complexes, integrating 18 resources, annotated with sto-\\nichiometry and literature references.\
+    \ CORUM [ 21 ] and Com-\\nplex Portal [ 22 ] are the primary sources of curated complexes,\\naccompanied by several smaller\
+    \ or prediction-based resources.\\nThe largest database domain in OmniPath is the annota-\\ntions with its 5895 462 entries,\
+    \ providing a broad variety\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest on 04 March\
+    \ 2026\\n\\nOmniPath: integrated knowledgebase for multi-omics analysis\"\n  },\n  {\n    \"name\": \"D 655\",\n    \"\
+    text\": \"of protein and gene function, localization, structure, and ex-\\npression information. This includes pathway\
+    \ memberships,\\nroles in biological processes and diseases, for example, the\\nfunctional gene sets from MSigDB [ 23\
+    \ ]; various classifica-\\ntions, such as the protein families from HGNC [ 24 ]; protein\\nlocalizations\\u2014for example,\
+    \ CSPA [ 25 ] to annotate cell sur-\\nface proteins; and weighted functional signatures, such as the\\npathway response\
+    \ scores from PROGENy [ 2 ] or cytokine re-\\nsponses from CytoSig [ 26 ]. The data extracted from the 67\\nresources\
+    \ ( Supplementary Table S1 ) is provided as it is, with-\\nout integration across resources.\\nThe intercell domain integrates\
+    \ annotation resources into\\na curated atlas of cell\\u2013cell communication. Using the func-\\ntion, localization and\
+    \ structure annotations described above,\\nit classifies proteins into categories such as ligand, receptor,\\ntransporter,\
+    \ matrix protein, or secreted enzyme, and tags them\\nwith membrane associations and subcellular localization [ 17 ].\\\
+    nIn the R and Python clients, these annotations can be merged\\nwith molecular interactions, enabling application-specific\
+    \ cus-\\ntomization, for example, by establishing tissue-specific ligand\\u2013\\nreceptor networks [ 27 ].\\nThe interactions\
+    \ and enzyme\\u2013substrate database domains,\\nbuilt with human data, are translated to mouse and rat by or-\\nthologous\
+    \ gene pairs. For this translation, we used NCBI Ho-\\nmoloGene [ 28 ], Ensembl [ 29 ], and the Orthologous Matrix\\n(OMA;\
+    \ 9). Our translation utilities are available in the py-\\npath and OmnipathR packages, allowing translation to other\\\
+    norganisms.\\nWeb page\\nWith the current update, we introduce OmniPath Explorer, an\\ninteractive web application ( https://\
+    \ explore.omnipathdb.org/ )\\nto access the OmniPath resource. OmniPath Explorer consists\\nof browsable pages of database\
+    \ content and a chat assistant\\n(Fig. 2 A\\u2013C).\\nThe first allows users to search for protein and gene names\\nand\
+    \ explore the data through an easy-to-use but comprehen-\\nsive graphical interface. Contents of the five database do-\\\
+    nmains are presented in five different views. The left side con-\\ntrol panel enables filtering by a broad range of variables,\\\
+    nfor example, type, causality, amount of evidence for interac-\\ntions (Fig. 2 A), or location, scope and causality for\
+    \ intercell.\\nIn the interactions part, all partners of a given molecule ap-\\npear as a list, with the interaction type\
+    \ and causality encoded\\nby colors and symbols. The provenances are also included\\nfor each interaction, with links\
+    \ to the original databases\\nand articles in PubMed. The annotations part groups the re-\\nsources by topic, and presents\
+    \ data from the selected ones\\nin tabular format. Alternatively, free text search in annota-\\ntion records is also available\
+    \ (Fig. 2 B). In all views, proteins\\nof interest are presented at the top, with a basic overview\\nfrom UniProt [ 31\
+    \ ]: the organism, molecular weight, polypep-\\ntide length, and literature statements about the functions,\\nlocalization,\
+    \ function, classification, Gene Ontology, PTM\\ninformation, and links to PubMed and further resources\\n(Fig. 2 D).\\\
+    nThe chat part integrates an LLM assistant that accepts nat-\\nural language questions, writes and executes SQL queries,\
+    \ and\\ninterprets the results to provide answers. The generated SQL\\nqueries and their output are shown alongside the\
+    \ answers,\\nthese can be checked for correctness, edited, and exported as\\ntables (Fig. 2 C). The LLM is provided with\
+    \ an expanding set of\\nquery templates which guide it to formulate queries. This en-\\nables noncomputational users to\
+    \ explore the database content\\nand flexibly access and integrate data across multiple tables or\\nresources.\\nWeb API\\\
+    nThe web service serves data in tabular or JSON format, and\\nconsists of five main endpoints (query types), corresponding\\\
+    nto the five database domains of OmniPath. It supports the fil-\\ntering of records by practically any of the variables:\
+    \ by re-\\nsources, molecules, organisms, and other variables specific for\\nthe database domains, for example, filter\
+    \ TF regulons accord-\\ning to specific confidence levels [ 4 ], or PTM residues at the\\nenzyme\\u2013substrate domain,\
+    \ or cell\\u2013cell communication roles at\\nthe intercell domain. Optional columns can be selected by the\\nfields parameter.\
+    \ Annotations are returned as a long-format\\ndata frame and require pivoting into wide format, which is\\nsupported by\
+    \ the client packages.\\nWe recently added two new columns to the interaction\\nrecords, both containing JSON blobs. The\
+    \ extra_attrs column\\nincludes resource-specific interaction attributes, such as the\\nmechanism or detection method\
+    \ of the interaction. The client\\npackages are able to extract specific variables from the JSON\\nblob to data frame\
+    \ columns. The evidences column contains\\nthe provenance information in full detail. This enables the\\nclient packages\
+    \ to do precise filtering, for example, discard-\\ning all information that is not licensed for commercial use.\\nLicense-based\
+    \ filtering is also supported by the web API\\u2019s li-\\ncense parameter.\\nCausality of interactions is represented\
+    \ by three columns\\n(is_directed, is_stimulation, is_inhibition) ; in addition, \\u201ccon-\\nsensus\\u201d alternatives\
+    \ of these columns provide a majority vote\\nacross all resources.\\nThe web service also features a few auxiliary queries\
+    \ that\\nprovide meta-information about the contents. The databases\\nand datasets queries return the list of resources\
+    \ and datasets\\nin the interactions domain, the queries query returns the list\\nof valid parameters for each query,\
+    \ while the resources query\\nmaps the use of resources within the databases, and also in-\\ncludes license information.\
+    \ The annotations_summary and in-\\ntercell_summary queries, for each resource, list all variables\\nand all possible\
+    \ values.\\nPython, R, and Cytoscape clients\\nThe omnipath Python package is available in the PyPI\\nrepository ( https://\
+    \ pypi.org/ project/ omnipath/ ), while the\\nOmnipathR R package ( https:// bioconductor.org/ packages/\\nOmnipathR )\
+    \ is part of Bioconductor [ 33 ]. Query types, inter-\\naction types and interaction datasets are represented in the\\\
+    nPython package by classes, in the R package by functions. All\\nweb service query parameters can be provided as arguments\\\
+    nto the \\u201cget\\u201d method of the Python classes and similarly to\\nthe functions in the R package. The results\
+    \ are returned as\\ndata frames. Both packages provide utilities to pivot the\\nannotation data frames from long to wide\
+    \ format, combine\\nnetworks and annotations, translate data to other organisms\\nby orthologous gene pairs, and update\
+    \ the causality of inter-\\nactions based on detailed provenance data in the evidences\\ncolumn.\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458\
+    \ by guest on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 656\",\n    \"text\": \"T\\u00fcrei et al.\\n(A)\\n(C)\\n(D)\\\
+    n(B)\\nFigure 2. The OmniPath Explorer web application. ( A ) Interaction browser. ( B ) Annotation browser. ( C ) Chat\
+    \ interface to the OmniPath large language\\nmodel (LLM) agent. ( D ) Main page search and menu; protein datasheet.\\\
+    nBesides the OmniPath client functionalities, OmnipathR\\nprovides direct access to 26 resources ( Supplementary Table\\\
+    nS1 ), among them several metabolomics related ones, such\\nas MetalinksDB [ 34 ], a network of annotated metabolite-\\\
+    nprotein interactions combining 14 resources, or RaMP-\\nDB [ 35 ], a comprehensive resource of metabolite identi-\\nfiers\
+    \ and structures. OmnipathR also comes with a prior\\nknowledge processing toolkit, including translation utilities\\\
+    nfor 102 identifier types, orthologous gene pair translation\\n(by HomoloGene, Ensembl [ 29 ], and OMA [ 30 ]), transla-\\\
+    ntion ambiguity analysis, handling of organism names, traver-\\nsal of the Gene Ontology [ 36 ] tree, full featured clients\\\
+    nto the Ensembl BioMart [ 29 ], KEGG [ 37 ], and UniProt\\n[ 32 ] APIs. It is able to convert interaction data frames\
+    \ to\\nigraph [ 38 ] networks or deliver them to Bio Model Analyzer\\n[ 39 ].\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458\
+    \ by guest on 04 March 2026\\n\\nOmniPath: integrated knowledgebase for multi-omics analysis\"\n  },\n  {\n    \"name\"\
+    : \"D 657\",\n    \"text\": \"Figure 3. Technical architecture of OmniPath. The combined database, built from 168 different\
+    \ resources by the pypath Python software suite, is publicly\\na v ailable through the HTTP API at https:// omnnipathdb.org/\
+    \ . The OmniPath Explorer web app allows interactive browsing with LLM assistance, while\\nclient packages for R, Python,\
+    \ and Cytoscape provide convenient access and utilities for seamless integration into analysis workflows. The components\\\
+    nnew or largely renewed in the current update are highlighted in orange boxes and marked with orange stars.\\nThe OmniPath\
+    \ Cytoscape app [ 40 ] supports the interac-\\ntions, enzyme\\u2013substrate, and a limited set of the annotations\\ndatabase\
+    \ domains. It imports the data directly into Cytoscape\\nfrom the datasets and resources specified by the user.\\nImplementation\\\
+    nThe database build and the web API of OmniPath are im-\\nplemented in a suite of Python packages (Fig. 3 ). The py-\\\
+    npath package is responsible for resource-specific parsing and\\ncompiling the combined databases. It features a number\
+    \ of\\nprocessing utilities, most importantly, the identifier and or-\\nthologous gene pair translation. The pypath.inputs\
+    \ module\\nis a collection of clients for 200 original resources. These\\nclients use the download-manager and cache-manager\
+    \ pack-\\nages for robust network transactions and local caching.\\nThe pypath.core module builds the OmniPath databases.\
+    \ All\\nclients and the complete database build are tested daily by an\\nautomated pipeline and a status report is published\
+    \ at https:\\n// status.omnipathdb.org/ . For original resources that became\\ntemporarily or permanently inaccessible,\
+    \ we host these on\\nour own server at https:// rescued.omnipathdb.org/ . Another\\nPython package, the omnipath-server\
+    \ loads the databases into\\nPostgreSQL and operates the web service. OmniPath Ex-\\nplorer is a TypeScript application\
+    \ built with the Next.js frame-\\nwork, and uses the same PostgreSQL database as the web API\\n(Fig. 3 ). The database\
+    \ is updated periodically, with the old\\nversions archived at https:// archive.omnipathdb.org/ . By de-\\nfault, the\
+    \ LLM agent uses the openly-accessible Google Gem-\\nini Flash 2.5 model.\"\n  },\n  {\n    \"name\": \"Discussion\",\n\
+    \    \"text\": \"OmniPath is an integrated database combining 168 molecular\\nresources into a single, continuously updated\
+    \ framework, in-\\ncluding signed and directed PPIs, enzyme\\u2013PTM relationships,\\nligand\\u2013receptor pairs, protein\
+    \ complexes, and extensive func-\\ntional annotations. By harmonizing data from all these diverse\\nresources, OmniPath\
+    \ facilitates access to prior-knowledge for\\na broad range of use cases. The OmniPath Explorer presents\\nall evidence\
+    \ for molecular interactions and comprehensive an-\\nnotations in one place. This allows users to explore interac-\\ntively\
+    \ the complete knowledgebase and quickly look up spe-\\ncific information and find the most suitable resources for their\\\
+    nanalysis. The web API and its clients for popular bioinfor-\\nmatics environments (Python, R, Cytoscape) enable effort-\\\
+    nless creation of customized prior knowledge for diverse ap-\\nplications. With its coverage of small and curated resources,\\\
+    nOmniPath also fills a critical gap among other large meta-\\nresources, such as STRING [ 13 ] or PathwayCommons [ 15\
+    \ ],\\nand major interaction or pathway databases with original cu-\\nration effort, like IntAct [ 12 ] or Reactome [\
+    \ 14 ]. The heteroge-\\nneous curation protocols and quality of constituting resources\\ncan be seen as a potential weakness\
+    \ of OmniPath as an inte-\\ngrated database; however, alternatives\\u2014literature mined net-\\nworks [ 41 ], high-throughput\
+    \ screens [ 12 ], correlation-based\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest\
+    \ on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 658\",\n    \"text\": \"T\\u00fcrei et al.\\napproaches [ 13 ]\\u2014come\
+    \ with their own limitations, while an\\nintegrated database creates new opportunities to search for\\npotentially erroneous\
+    \ records, and also to compile on demand\\nany custom combination of the resources.\\nIntegrating a multitude of resources\
+    \ in a uniform format\\nopens the way towards their benchmarking, as it is done,\\nfor example, in NetworkCommons [ 10\
+    \ ] to evaluate the per-\\nformance of network inference methods. Including various\\ninteraction types\\u2014signaling\
+    \ pathways, transcriptional, and\\nmiRNA regulation, ligand\\u2013receptor, etc\\u2014in a uniform net-\\nwork, together\
+    \ with the annotations and the above mentioned\\ninference methods, enables the generation and investigation\\nof complex,\
+    \ multilayered hypotheses that would be limitedly\\npossible with other resources.\\nThe integrative design of OmniPath\
+    \ translates into prac-\\ntical impact across diverse tasks in the analysis of omics\\ndata. The client packages feature\
+    \ integrations with several\\ndownstream analysis tools. For example, integration with\\nthe enrichment package Decoupler\
+    \ [ 1 ] enables seamless use\\nof signature-based TF, pathway, kinase, and cytokine activ-\\nity estimations in bulk and\
+    \ single-cell workflows, including\\nwithin scverse [ 42 ], as well as automated cell type anno-\\ntations using PanglaoDB\
+    \ [ 43 ]. Similarly, OmniPath delivers\\nhighly customizable ligand\\u2013receptor networks directly into\\nthe LIANA\
+    \ + [ 7 ] cell\\u2013cell communication inference frame-\\nwork, also part of the scverse ecosystem. Networks from Om-\\\
+    nniPath are readily available in the CORNETO [ 44 ] network\\noptimization framework, its multi-omics causal variant COS-\\\
+    nMOS [ 45 ], and further network inference methods in Net-\\nworkCommons [ 10 ], to derive context-specific mechanisms\\\
+    nfrom omics data. For metabolism, OmniPath not only deliv-\\ners prior knowledge in the MetaProViz R package [ 46 ], but\\\
+    nalso enables connecting knowledge and metabolomics fea-\\ntures with its extensive identifier translation utilities.\
+    \ Omni-\\nPath is also connected to other prior-knowledge processing\\nsystems: the curated knowledge from OmniPath is\
+    \ presented\\nin the INDRA natural language processing system for molec-\\nular interactions [ 41 ]; a script is available\
+    \ to write OmniPath\\ninteractions into neo4j importable CSV using the BioCypher\\nlibrary [ 47 ]; while OmniPath\\u2019s\
+    \ prior-knowledge processing\\ntoolkit is used in building the CROssBARv2 database [ 48 ].\\nThe server-client architecture\
+    \ isolates resource-specific\\ndownload and processing from analysis workflows, for a re-\\nduced complexity and enhanced\
+    \ robustness. Built-in support\\nfor resource license constraints facilitates applications in com-\\nmercial settings\
+    \ by keeping compliance straightforward. Om-\\nniPath Explorer\\u2019s LLM agent turns text-based questions into\\nSQL\
+    \ queries. This user-friendly mode of operation assists both\\nnew and advanced users to design database queries, while\
+    \ di-\\nrectly answering natural language questions for noncompu-\\ntational users. We are integrating OmniPath into BioContex-\\\
+    ntAI, a collection of biomedical LLM agents [ 49 ], to facilitate\\nintegration with LLMs via the model context protocol.\
+    \ We\\nconsider the current implementation to be only a first step to-\\nwards LLM assistance. Through an improved integration\
+    \ with\\nthe knowledge contained in OmniPath, and access to addi-\\ntional computational tools, our LLM agent may evolve\
+    \ to an-\\nswer more complex questions and contribute to larger tasks\\ntogether with other LLMs. We aim to iterate on\
+    \ our imple-\\nmentation by continuously learning about its current utility\\nand limitations from user feedback.\\nIn\
+    \ our future work, we also plan covering more metabolite,\\ndrug, and microbiome-related knowledge, with special focus\\\
+    non causal relationships and functional annotations. We intend\\nto further develop OmniPath Explorer with more views,\
+    \ richer\\ninteractivity, and information presented in each view. In the\\nPython client side, we have plans to further\
+    \ improve the in-\\ntegration with network inference methods in NetworkCom-\\nmons and single-cell workflows of the scverse\
+    \ ecosystem.\\nWe remain committed to developing OmniPath as a free\\nopen-source resource for the community, particularly\
+    \ for re-\\nsearchers analyzing omics data. We welcome feedback, con-\\ntent suggestions, feature requests, and bug reports,\
+    \ which can\\nbe submitted via GitHub ( https:// github.com/ saezlab ) or email\\n( omnipathdb@gmail.com ).\"\n  },\n\
+    \  {\n    \"name\": \"Funding\",\n    \"text\": \"D.T. was supported by the Landesinstitut f\\u00fcr Bioinformatik-\\\
+    ninfrastruktur in Baden-W\\u00fcrttemberg. J.S. was supported by\\nthe European Union\\u2019s Horizon 2020 Programme [grant\
+    \ no.\\n965193 (DECIDER)]. N.P.E. acknowledges the support of\\nthe German Research Foundation (DFG) through the CRC\\\
+    n1550 \\u201cMolecular Circuits of Heart Disease\\u201d [grant no. DFG-\\n508152189]. The work of L.G., B.B., and T.K.\
+    \ was sup-\\nported by the UKRI BBSRC Institute Strategic Programme\\nFood Microbiome and Health [BB/X011054/1 and its\
+    \ con-\\nstituent project BBS/E/F/000PR13631]. T.D., E.\\u00c7., M.D., B. \\u00b8S .,\\nA.\\u00dc., and EU were supported\
+    \ by TUBITAK ARDEB 3501\\nCareer Development Program [project no: 120E531]. S.M.D.\\nwas funded by the LiSyM-cancer network\
+    \ supported by the\\nGerman Federal Ministry of Research, Technology and Space\\n(BMFTR) [031L0257B]. D.M. acknowledges\
+    \ financial sup-\\nport from Imperial College London through an Imperial Col-\\nlege Research Fellowship grant award.\
+    \ C.S. was funded by\\nSmartCare [03LW0233K]. Funding to pay the Open Access\\npublication charges for this article was\
+    \ provided by the Euro-\\npean Bioinformatics Institute (EMBL-EBI).\\nA c kno wledg ements\\nWe are grateful to \\u00d6mer\
+    \ Kaan Vural, Tennur K\\u0131l\\u0131\\u00e7, Ahmet Ri-\\nfaioglu, and Forrest Hyde for their contributions in the py-\\\
+    npath.inputs module and to Daniele Bottazzi, Jannik Franken,\\nEdwin Carre\\u00f1o, and Youssef Zerta for their ongoing\
+    \ contri-\\nbutions to related software packages.\"\n  },\n  {\n    \"name\": \"Author contributions : D\\u00e9nes T\\\
+    u00fcrei (Conceptualization\",\n    \"text\": \"[lead], Data curation [lead], Software [lead], Supervision\\n[lead], Writing\\\
+    u2014original draft [lead], Writing\\u2014review and\\nediting [lead]), Jonathan Schaul (Software [lead], Visual-\\nization\
+    \ [lead], Writing\\u2014review & editing [equal]), Nicol\\u00e0s\\nPalacio-Escat (Software [lead], Visualization [lead],\
+    \ Writing\\u2014\\nreview & editing [equal]), Bal\\u00e1zs Boh\\u00e1r (Software [lead]),\\nYunfan Bai (Data curation\
+    \ [equal], Software [equal]),\\nFrancesco Ceccarelli (Software [equal]), Elif \\u00c7evrim (Soft-\\nware [equal]), Macabe\
+    \ Daley (Software [equal]), Melih Dar-\\ncan (Software [equal]), Daniel Dimitrov (Software [equal]),\\nTunca Do \\u02d8gan\
+    \ (Software [equal], Supervision [equal]), Daniel\\nDomingo-Fern\\u00e1ndez (Software [equal]), Aurelien Dugourd\\n(Software\
+    \ [equal], Supervision [equal]), Attila G\\u00e1bor (Project\\nadministration [equal], Software [equal]), Lejla Gul (Project\\\
+    nadministration [equal], Software [equal], Supervision [equal],\\nWriting\\u2014review & editing [equal]), Benjamin A\
+    \ Hall (Soft-\\nware [equal]), Charles Hoyt (Software [equal]), Olga Ivanova\\n(Software [equal]), Michal Klein (Software\
+    \ [equal]), Toby\\nLawrence (Software [equal]), Diego Ma\\u00f1anes (Software\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458\
+    \ by guest on 04 March 2026\\n\\nOmniPath: integrated knowledgebase for multi-omics analysis\"\n  },\n  {\n    \"name\"\
+    : \"D 659\",\n    \"text\": \"[equal]), Dezs \\u02ddo M\\u00f3dos (Software [equal]), Sophia M\\u00fcller-\\nDott (Software\
+    \ [equal]), M\\u00e1rton \\u00d6lbei (Software [equal]),\\nChristina Schmidt (Supervision [equal]), B\\u00fcnyamin \\\
+    u00b8S en (Soft-\\nware [equal]), Fabian Theis (Software [equal], Supervision\\n[equal]), Atabey \\u00dcnl\\u00fc (Software\
+    \ [equal]), Erva Ulusoy (Soft-\\nware [equal]), Alberto Valdeolivas (Software [equal]), Tam\\u00e1s\\nKorcsm\\u00e1ros\
+    \ (Conceptualization [lead], Supervision [equal],\\nWriting\\u2014review and editing [lead]), Julio Saez-Rodriguez\\n(Conceptualization\
+    \ [lead], Supervision [equal], Writing\\u2014\\nreview & editing [lead]).\"\n  },\n  {\n    \"name\": \"Supplementary\
+    \ data\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary data is available at NAR online\",\n    \"text\"\
+    : \"Conflict of interest\\nJSR reports in the last 3 years funding from GSK and\\nPfizer, and fees and honoraria from\
+    \ Travere Therapeutics,\\nStadapharm, Astex, Owkin, Pfizer, Grunenthal, Tempus, and\\nModerna. Work of T.K. and B.B. was\
+    \ partially supported by\\nRoche. F.J.T. consults for Immunai Inc., CytoReason Ltd, Cel-\\nlarity, BioT uring Inc., V\
+    \ alinor Discovery, and Genbio.AI Inc.,\\nand has an ownership interest in RN.AI Therapeutics, Der-\\nmagnostix GmbH and\
+    \ Cellarity. A.V. is currently an employee\\nand shareholder of F. Hoffmann-La Roche Ltd.\"\n  },\n  {\n    \"name\":\
+    \ \"Data availability\",\n    \"text\": \"The pypath Python package is available at https://github.\\ncom/ saezlab/ pypath\
+    \ , the auxiliary packages are linked from\\nthis repository. The web API implementation is available at\\nhttps:// github.com/\
+    \ saezlab/ omnipath-server , while the Omni-\\nPath Explorer app at https:// github.com/ saezlab/ omnipath-\\nnext . OmnipathR\
+    \ is provided at https:// github.com/ saezlab/\\nOmnipathR , the omnipath Python client at https://github.\\ncom/ saezlab/\
+    \ omnipath and the Cytoscape app at https://\\ngithub.com/ saezlab/ Omnipath _ Cytoscape . All these compo-\\nnents are\
+    \ free software, the database build, web app, server,\\nand Cytoscape app are distributed under GPLv3 license, while\\\
+    nOmnipathR and omnipath client packages under MIT license.\\nOmniPath data is available at https:// omnipathdb.org/ and\\\
+    nby the web app at https:// explore.omnipathdb.org/ , under the\\nlicenses of the constituting resources. Old releases\
+    \ of Om-\\nniPath are accessible at https:// archive.omnipathdb.org/ , and\\noriginal resources hosted by OmniPath at\
+    \ https://rescued.\\nomnipathdb.org/.\\nThe code has been archived in the following Zenodo repos-\\nitories:\\npypath:\
+    \ https:// doi.org/ 10.5281/ zenodo.17294424\\nomnipath-next: https:// doi.org/ 10.5281/ zenodo.17294409\\nOmnipathR:\
+    \ https:// doi.org/ 10.5281/ zenodo.17294392\\nomnipath (Python client): https:// doi.org/ 10.5281/ zenodo.\\n17294394\\\
+    nomnipath-server:\\nhttps:// doi.org/ 10.5281/ zenodo.\\n17294418\"\n  },\n  {\n    \"name\": \"References\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"Badia-I-Mompel P, V\\u00e9lez Santiago J, Braunger J et al. decoupleR:\",\n \
+    \   \"text\": \"ensemble of computational methods to infer biological activities\\nfrom omics data. Bioinforma Adv 2022;2:vbac016.\\\
+    nhttps:// doi.org/ 10.1093/ bioadv/ vbac016\"\n  },\n  {\n    \"name\": \"Schubert M, Klinger B, Kl\\u00fcnemann M et\
+    \ al. Perturbation-response\",\n    \"text\": \"genes reveal signaling footprints in cancer gene expression. Nat\\nCommun\
+    \ 2018;9:20.\\nhttps:// doi.org/ 10.1038/ s41467- 017- 02391- 6\"\n  },\n  {\n    \"name\": \"M\\u00fcller-Dott S, Tsirvouli\
+    \ E, Vazquez M et al. Expanding the\",\n    \"text\": \"coverage of regulons from high-confidence prior knowledge for\\\
+    naccurate estimation of transcription factor activities. Nucleic Acids\\nRes 2023;51:10934\\u201349. https:// doi.org/\
+    \ 10.1093/ nar/ gkad841\"\n  },\n  {\n    \"name\": \"Garcia-Alonso L, Holland C, Ibrahim M et al. Benchmark and\",\n\
+    \    \"text\": \"integration of resources for the estimation of human transcription\\nfactor activities. Genome Res 2019;\
+    \ 29:1363\\u201375.\\nhttps:// doi.org/ 10.1101/ gr.240663.118\"\n  },\n  {\n    \"name\": \"Wirbel J, Cutillas P, Saez-Rodriguez\
+    \ J. Phosphoproteomics-based\",\n    \"text\": \"profiling of kinase activities in cancer cells. In: Von Stechow L\\n(ed.),\
+    \ Cancer Systems Biology . New York: Springer, 2018, 1711,\\npp. 103\\u201332.\"\n  },\n  {\n    \"name\": \"Barsi S,\
+    \ Varga E, Dimitrov D et al. RIDDEN: data-driven inference\",\n    \"text\": \"of receptor activity from transcriptomic\
+    \ data. PLoS Comput Biol\\n2025;21:e1013188. https:// doi.org/ 10.1371/ journal.pcbi.1013188\"\n  },\n  {\n    \"name\"\
+    : \"Dimitrov D, Sch\\u00e4fer P, Farr E et al. LIANA + provides an all-in-one\",\n    \"text\": \"framework for cell\\\
+    u2013cell communication inference. Nat Cell Biol\\n2024;26:1613\\u201322. https:// doi.org/ 10.1038/ s41556- 024- 01469-\
+    \ w\"\n  },\n  {\n    \"name\": \"Sch\\u00e4fer PSL, Dimitrov D, Villablanca EJ et al. Integrating\",\n    \"text\": \"\
+    single-cell multi-omics and prior biological knowledge for a\\nfunctional characterization of the immune system. Nat Immunol\\\
+    n2024;25:405\\u201317. https:// doi.org/ 10.1038/ s41590- 024- 01768- 2\"\n  },\n  {\n    \"name\": \"Garrido-Rodriguez\
+    \ M, Zirngibl K, Ivanova O et al. Integrating\",\n    \"text\": \"knowledge and omics to decipher mechanisms via large-scale\\\
+    nmodels of signaling networks. Mol Syst Biol 2022;18:e11036.\\nhttps:// doi.org/ 10.15252/ msb.202211036\"\n  },\n  {\n\
+    \    \"name\": \"Paton V, T\\u00fcrei D, Ivanova O et al. NetworkCommons: bridging\",\n    \"text\": \"data, knowledge\
+    \ and methods to build and evaluate\\ncontext-specific biological networks. Bioinformatics\\n2025;41:btaf048. https://\
+    \ doi.org/ 10.1093/ bioinformatics/ btaf048\"\n  },\n  {\n    \"name\": \"Lo Surdo P, Iannuccelli M, Contino S et al.\
+    \ SIGNOR 3.0, the\",\n    \"text\": \"SIGnaling network open resource 3.0: 2022 update. Nucleic Acids\\nRes 2023; 51:D631\\\
+    u20137. https:// doi.org/ 10.1093/ nar/ gkac883\\n12. del Toro N, Shrivastava A, Ragueneau E et al. The IntAct\\ndatabase:\
+    \ efficient access to fine-grained molecular interaction\\ndata. Nucleic Acids Res 2022; 50:D648\\u201353.\\nhttps://\
+    \ doi.org/ 10.1093/ nar/ gkab1006\"\n  },\n  {\n    \"name\": \"Szklarczyk D, Nastou K, Koutrouli M et al. The STRING\
+    \ database\",\n    \"text\": \"in 2025: protein networks with directionality of regulation.\\nNucleic Acids Res 2025;\
+    \ 53:D730\\u20137.\\nhttps:// doi.org/ 10.1093/ nar/ gkae1113\"\n  },\n  {\n    \"name\": \"Milacic M, Beavers D, Conley\
+    \ P et al. The Reactome Pathway\",\n    \"text\": \"Knowledgebase 2024. Nucleic Acids Res 2024; 52:D672\\u20138.\\nhttps://\
+    \ doi.org/ 10.1093/ nar/ gkad1025\"\n  },\n  {\n    \"name\": \"Rodchenkov I, Babur O, Luna A et al. Pathway Commons 2019\"\
+    ,\n    \"text\": \"Update: integration, analysis and exploration of pathway data.\\nNucleic Acids Res 2019;48:D489\\u201397.\\\
+    nhttps:// doi.org/ 10.1093/ nar/ gkz946\"\n  },\n  {\n    \"name\": \"T\\u00fcrei D, Korcsm\\u00e1ros T, Saez-Rodriguez\
+    \ J. OmniPath: guidelines\",\n    \"text\": \"and gateway for literature-curated signaling pathway resources.\\nNat Methods\
+    \ 2016;13:966\\u20137.\"\n  },\n  {\n    \"name\": \"T\\u00fcrei D, Valdeolivas A, Gul L et al. Integrated intra- and\"\
+    ,\n    \"text\": \"intercellular signaling knowledge for multicellular omics analysis.\\nMol Syst Biol 2021;17:e9923.\"\
+    \n  },\n  {\n    \"name\": \"Csabai L, Fazekas D, Kadlecsik T et al. SignaLink3: a multi-layered\",\n    \"text\": \"\
+    resource to uncover tissue-specific signaling networks. Nucleic\\nAcids Res 2022; 50:D701\\u20139. https:// doi.org/ 10.1093/\
+    \ nar/ gkab909\"\n  },\n  {\n    \"name\": \"Paz A, Brownstein Z, Ber Y et al. SPIKE: a database of highly\",\n    \"\
+    text\": \"curated human signaling pathways. Nucleic Acids Res 2011;\\n39:D793\\u20139. https:// doi.org/ 10.1093/ nar/\
+    \ gkq1167\"\n  },\n  {\n    \"name\": \"Hornbeck PV, Zhang B, Murray B et al. PhosphoSitePlus, 2014:\",\n    \"text\"\
+    : \"mutations, PTMs and recalibrations. Nucleic Acids Res 2015;\\n43:D512\\u201320. https:// doi.org/ 10.1093/ nar/ gku1267\"\
+    \n  },\n  {\n    \"name\": \"Steinkamp R, Tsitsiridis G, Brauner B et al. CORUM in 2024:\",\n    \"text\": \"protein complexes\
+    \ as drug targets. Nucleic Acids Res\\n2025;53:D651\\u20137. https:// doi.org/ 10.1093/ nar/ gkae1033\\nDownloaded from\
+    \ https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 660\"\
+    ,\n    \"text\": \"T\\u00fcrei et al.\"\n  },\n  {\n    \"name\": \"Balu S, Huget S, Medina Reyes JJ et al. Complex portal\
+    \ 2025:\",\n    \"text\": \"predicted human complexes and enhanced visualisation tools for\\nthe comparison of orthologous\
+    \ and paralogous complexes.\\nNucleic Acids Res 2025; 53:D644\\u201350.\\nhttps:// doi.org/ 10.1093/ nar/ gkae1085\"\n\
+    \  },\n  {\n    \"name\": \"Liberzon A, Subramanian A, Pinchback R et al. Molecular\",\n    \"text\": \"signatures database\
+    \ (MSigDB) 3.0. Bioinformatics\\n2011;27:1739\\u201340. https:// doi.org/ 10.1093/ bioinformatics/ btr260\"\n  },\n  {\n\
+    \    \"name\": \"Seal RL, Braschi B, Gray K et al. Genenames.org: the HGNC\",\n    \"text\": \"resources in 2023. Nucleic\
+    \ Acids Res 2023;51:D1003\\u20139.\\nhttps:// doi.org/ 10.1093/ nar/ gkac888\"\n  },\n  {\n    \"name\": \"Bausch-Fluck\
+    \ D, Hofmann A, Bock T et al. A mass\",\n    \"text\": \"spectrometric-derived cell surface protein atlas. PLoS One\\\
+    n2015;10:e0121314. https:// doi.org/ 10.1371/ journal.pone.0121314\"\n  },\n  {\n    \"name\": \"Jiang P, Zhang Y, Ru\
+    \ B et al. Systematic investigation of cytokine\",\n    \"text\": \"signaling activity at the tissue and single-cell levels.\
+    \ Nat Methods\\n2021;18:1181\\u201391. https:// doi.org/ 10.1038/ s41592- 021- 01274- 5\"\n  },\n  {\n    \"name\": \"\
+    Poletti M, Treveil A, Csabai L et al. Mapping the\",\n    \"text\": \"epithelial\\u2013immune cell interactome upon infection\
+    \ in the gut and\\nthe upper airways. Npj Syst Biol Appl 2022;8:15.\\nhttps:// doi.org/ 10.1038/ s41540- 022- 00224- x\"\
+    \n  },\n  {\n    \"name\": \"Sayers EW, Beck J, Bolton EE et al. Database resources of the\",\n    \"text\": \"National\
+    \ Center for Biotechnology Information in 2025. Nucleic\\nAcids Res 2025;53:D20\\u20139. https:// doi.org/ 10.1093/ nar/\
+    \ gkae979\"\n  },\n  {\n    \"name\": \"Dyer SC, Austine-Orimoloye O, Azov AG et al. Ensembl 2025\",\n    \"text\": \"\
+    Nucleic Acids Res 2025; 53:D948\\u201357.\\nhttps:// doi.org/ 10.1093/ nar/ gkae1071\"\n  },\n  {\n    \"name\": \"Altenhoff\
+    \ AM, Train C-M, Gilbert KJ et al. OMA orthology in\",\n    \"text\": \"2021: website overhaul, conserved isoforms, ancestral\
+    \ gene order\\nand more. Nucleic Acids Res 2021; 49:D373\\u20139.\\nhttps:// doi.org/ 10.1093/ nar/ gkaa1007\"\n  },\n\
+    \  {\n    \"name\": \"UniProt Consortium T, Bateman A, Martin M-J et al. UniProt: the\",\n    \"text\": \"Universal Protein\
+    \ Knowledgebase in 2025. Nucleic Acids Res\\n2025; 53:D609\\u201317. https:// doi.org/ 10.1093/ nar/ gkae1010\"\n  },\n\
+    \  {\n    \"name\": \"UniProt Consortium T, Bateman A, Martin M-J et al. UniProt: the\",\n    \"text\": \"Universal Protein\
+    \ Knowledgebase in 2025. Nucleic Acids Res\\n2025; 53:D609\\u201317. https:// doi.org/ 10.1093/ nar/ gkae1010\"\n  },\n\
+    \  {\n    \"name\": \"Huber W, Carey VJ, Gentleman R et al. Orchestrating\",\n    \"text\": \"high-throughput genomic\
+    \ analysis with Bioconductor. Nat\"\n  },\n  {\n    \"name\": \"Methods 2015;12:115\\u201321. https:// doi.org/ 10.1038/\
+    \ nmeth.3252\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Farr E, Dimitrov D, Schmidt C et al. MetalinksDB: a flexible\
+    \ and\",\n    \"text\": \"contextualizable resource of metabolite-protein interactions. Brief\\nBioinform 2024;25:bbae347.\
+    \ https:// doi.org/ 10.1093/ bib/ bbae347\"\n  },\n  {\n    \"name\": \"Braisted J, Patt A, Tindall C et al. RaMP-DB 2.0:\
+    \ a renovated\",\n    \"text\": \"knowledgebase for deriving biological and chemical insight from\\nmetabolites, proteins,\
+    \ and genes. Bioinformatics 2023;39:btac726.\\nhttps:// doi.org/ 10.1093/ bioinformatics/ btac726\"\n  },\n  {\n    \"\
+    name\": \"The Gene Ontology Consortium, Aleksander SA, Balhoff J et al.,\",\n    \"text\": \"The Gene Ontology knowledgebase\
+    \ in 2023. Genetics\\n2023;224:iyad031.\"\n  },\n  {\n    \"name\": \"Kanehisa M, Furumichi M, Sato Y et al. KEGG: biological\
+    \ systems\",\n    \"text\": \"database as a model of the real world. Nucleic Acids Res 2025;\\n53:D672\\u20137. https://\
+    \ doi.org/ 10.1093/ nar/ gkae909\"\n  },\n  {\n    \"name\": \"Csardi G, Nepusz T. The igraph software package for complex\"\
+    ,\n    \"text\": \"network research. InterJournal, Complex Systems 2006;1695:1\\u20139.\"\n  },\n  {\n    \"name\": \"\
+    Benque D, Bourton S, Cockerton C et al. Bio Model Analyzer:\",\n    \"text\": \"visual tool for modeling and analysis\
+    \ of biological networks. In:\\nComputer Aided Verification (CAV) 2012. LNCS 7358 . Berlin,\\nHeidelberg: Springer Verlag,\
+    \ 2012, 686\\u201392.\"\n  },\n  {\n    \"name\": \"Ceccarelli F, Turei D, Gabor A et al. Bringing data from curated\"\
+    ,\n    \"text\": \"pathway resources to Cytoscape with OmniPath. Bioinformatics\\n2020;36:2632\\u20133. https:// doi.org/\
+    \ 10.1093/ bioinformatics/ btz968\"\n  },\n  {\n    \"name\": \"Bachman JA, Gyori BM, Sorger PK. Automated assembly of\"\
+    ,\n    \"text\": \"molecular mechanisms at scale from text mining and curated\\ndatabases. Mol Syst Biol 2023;19:e11325.\\\
+    nhttps:// doi.org/ 10.15252/ msb.202211325\"\n  },\n  {\n    \"name\": \"Virshup I, Bredikhin D, Heumos L et al. The scverse\
+    \ project\",\n    \"text\": \"provides a computational ecosystem for single-cell omics data\\nanalysis. Nat Biotechnol\
+    \ 2023;41:604\\u20136.\\nhttps:// doi.org/ 10.1038/ s41587- 023- 01733- 8\"\n  },\n  {\n    \"name\": \"Franz\\u00e9n\
+    \ O, Gan L, Bj\\u00f6rkegren J. PanglaoDB: a web server for\",\n    \"text\": \"exploration of mouse and human single-cell\
+    \ RNA sequencing data.\\nDatabase J Biol Databases Curation 2019;2019:baz046.\"\n  },\n  {\n    \"name\": \"Rodriguez-Mier\
+    \ P, Garrido-Rodriguez M, Gabor A et al. Unifying\",\n    \"text\": \"multi-sample network inference from prior knowledge\
+    \ and omics\\ndata with CORNETO. Nat Mach Intell 2025;7:1168\\u201386.\\nhttps:// doi.org/ 10.1038/ s42256- 025- 01069-\
+    \ 9\"\n  },\n  {\n    \"name\": \"Dugourd A, Lafrenz P, Ma\\u00f1anes D et al. Modeling causal signal\",\n    \"text\"\
+    : \"propagation in multi-omic factor space with COSMOS. bioRxiv,\\nhttps:// doi.org/ 10.1101/ 2024.07.15.603538 , 19 Jult\
+    \ 2024,\\npreprint: not peer reviewed.\"\n  },\n  {\n    \"name\": \"Schmidt C, Turei D, Prymidis D et al. Integrated\
+    \ metabolomics\",\n    \"text\": \"data analysis to generate mechanistic hypotheses with MetaProViz.\\nbioRxiv , https://\
+    \ doi.org/ 10.1101/ 2025.08.18.670781 , 22 August\\n2025, preprint: not peer reviewed.\"\n  },\n  {\n    \"name\": \"\
+    Lobentanzer S, Aloy P, Baumbach J et al. Democratizing\",\n    \"text\": \"knowledge representation with BioCypher. Nat\
+    \ Biotechnol\\n2023;41:1056\\u20139. https:// doi.org/ 10.1038/ s41587- 023- 01848- y\"\n  },\n  {\n    \"name\": \"Do\
+    \ \\u02d8gan T, Atas H, Joshi V et al. CROssBAR: comprehensive\",\n    \"text\": \"resource of biomedical relations with\
+    \ knowledge graph\\nrepresentations. Nucleic Acids Res 2021; 49:e96.\"\n  },\n  {\n    \"name\": \"Kuehl M, Schaub DP,\
+    \ Carli F et al. Community-based biomedical\",\n    \"text\": \"context to unlock agentic systems. bioRxiv ,\\nhttps://\
+    \ doi.org/ 10.1101/ 2025.07.21.665729 , 25 July 2025,\\npreprint: not peer reviewed.\\nReceived: August 15, 2025. Revised:\
+    \ September 29, 2025. Accepted: October 3, 2025\\n\\u00a9 The Author(s) 2025. Published by Oxford University Press.\\\
+    nThis is an Open Access article distributed under the terms of the Creative Commons Attribution License ( https:// creativecommons.org/\
+    \ licenses/ by/ 4.0/ ), which permits unrestricted reuse,\\ndistribution, and reproduction in any medium, provided the\
+    \ original work is properly cited.\\nDownloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest\
+    \ on 04 March 2026\"\n  }\n]"
+  funding: 'D.T. was supported by the Landesinstitut für Bioinformatik-
+
+    infrastruktur in Baden-Württemberg. J.S. was supported by
+
+    the European Union’s Horizon 2020 Programme [grant no.
+
+    965193 (DECIDER)]. N.P.E. acknowledges the support of
+
+    the German Research Foundation (DFG) through the CRC
+
+    1550 “Molecular Circuits of Heart Disease” [grant no. DFG-
+
+    508152189]. The work of L.G., B.B., and T.K. was sup-
+
+    ported by the UKRI BBSRC Institute Strategic Programme
+
+    Food Microbiome and Health [BB/X011054/1 and its con-
+
+    stituent project BBS/E/F/000PR13631]. T.D., E.Ç., M.D., B. ¸S .,
+
+    A.Ü., and EU were supported by TUBITAK ARDEB 3501
+
+    Career Development Program [project no: 120E531]. S.M.D.
+
+    was funded by the LiSyM-cancer network supported by the
+
+    German Federal Ministry of Research, Technology and Space
+
+    (BMFTR) [031L0257B]. D.M. acknowledges financial sup-
+
+    port from Imperial College London through an Imperial Col-
+
+    lege Research Fellowship grant award. C.S. was funded by
+
+    SmartCare [03LW0233K]. Funding to pay the Open Access
+
+    publication charges for this article was provided by the Euro-
+
+    pean Bioinformatics Institute (EMBL-EBI).
+
+    A c kno wledg ements
+
+    We are grateful to Ömer Kaan Vural, Tennur Kılıç, Ahmet Ri-
+
+    faioglu, and Forrest Hyde for their contributions in the py-
+
+    path.inputs module and to Daniele Bottazzi, Jannik Franken,
+
+    Edwin Carreño, and Youssef Zerta for their ongoing contri-
+
+    butions to related software packages.'
+  author_contributions: '[lead], Data curation [lead], Software [lead], Supervision
+
+    [lead], Writing—original draft [lead], Writing—review and
+
+    editing [lead]), Jonathan Schaul (Software [lead], Visual-
+
+    ization [lead], Writing—review & editing [equal]), Nicolàs
+
+    Palacio-Escat (Software [lead], Visualization [lead], Writing—
+
+    review & editing [equal]), Balázs Bohár (Software [lead]),
+
+    Yunfan Bai (Data curation [equal], Software [equal]),
+
+    Francesco Ceccarelli (Software [equal]), Elif Çevrim (Soft-
+
+    ware [equal]), Macabe Daley (Software [equal]), Melih Dar-
+
+    can (Software [equal]), Daniel Dimitrov (Software [equal]),
+
+    Tunca Do ˘gan (Software [equal], Supervision [equal]), Daniel
+
+    Domingo-Fernández (Software [equal]), Aurelien Dugourd
+
+    (Software [equal], Supervision [equal]), Attila Gábor (Project
+
+    administration [equal], Software [equal]), Lejla Gul (Project
+
+    administration [equal], Software [equal], Supervision [equal],
+
+    Writing—review & editing [equal]), Benjamin A Hall (Soft-
+
+    ware [equal]), Charles Hoyt (Software [equal]), Olga Ivanova
+
+    (Software [equal]), Michal Klein (Software [equal]), Toby
+
+    Lawrence (Software [equal]), Diego Mañanes (Software
+
+    Downloaded from https://academic.oup.com/nar/article/54/D1/D652/8326458 by guest on 04 March 2026
+
+
+    OmniPath: integrated knowledgebase for multi-omics analysis'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\",\n    \"\
+    page\": 5\n  },\n  {\n    \"id\": \"fig_p5_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_2.png\",\n   \
+    \ \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_3.png\",\n\
+    \    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_4.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p5_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_5.png\"\
+    ,\n    \"page\": 5\n  }\n]"
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://github.\",\n    \"accession\": \"\",\n    \"database\": \"\",\n    \"\
+    description\": \"\"\n  },\n  {\n    \"url\": \"https://rescued.\",\n    \"accession\": \"\",\n    \"database\": \"\",\n\
+    \    \"description\": \"\"\n  }\n]"

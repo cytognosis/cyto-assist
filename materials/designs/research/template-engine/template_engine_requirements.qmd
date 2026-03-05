@@ -1,0 +1,212 @@
+---
+title: "Template Engine — Standards & Requirements"
+subtitle: "Templated Document Processing, Generation, and Verification"
+author:
+  - name: "Shahin Mohammadi"
+    affiliation: "Cytognosis Foundation"
+date: 2026-03-02
+date-format: "MMMM D, YYYY"
+version: "1.0"
+status: "Draft"
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    self-contained: true
+  pdf:
+    documentclass: article
+    papersize: letter
+    fontsize: 11pt
+    toc: true
+    number-sections: true
+    pdf-engine: lualatex
+  docx:
+    toc: true
+    number-sections: true
+  gfm:
+    toc: true
+
+crossref:
+  tbl-prefix: "Table"
+
+bibliography: references.bib
+---
+
+# Purpose {#sec-purpose}
+
+This document defines the formal requirements for selecting a standards-based, open-source toolchain for **templated document processing, generation, and verification**. The selected tool(s) must support:
+
+- Creating structured documents from **templates** (layout/style specification) and **content** (material/data)
+- Producing high-quality outputs across **multiple formats** (HTML, PDF, DOCX, EPUB)
+- Using **text-only, VCS-friendly** source files for both templates and content
+- Rendering **scientific/technical content** (equations, diagrams, code)
+- Integrating seamlessly into **AI-agent-driven automation workflows**
+
+::: {.callout-note}
+## Decision Context
+This specification was developed after a comparative analysis of 10 candidate tools. See the companion document: [Template Engine Comparative Analysis — Top 10](template_engine_comparative_analysis_top10.md).
+:::
+
+---
+
+# Requirements Classification {#sec-classification}
+
+Requirements are classified into three tiers with weighted scoring:
+
+| Tier | Label | Multiplier | Meaning |
+|------|-------|:----------:|---------|
+| **R** | Required | ×3 | Candidate is **disqualified** without this capability |
+| **SP** | Strongly Preferred | ×2 | **Significant penalty** for absence |
+| **P** | Preferred | ×1 | **Positive differentiator** when present |
+
+: Requirements tier definitions and scoring weights {#tbl-tiers}
+
+---
+
+# Requirements {#sec-requirements}
+
+## Licensing & Ecosystem {#sec-licensing}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-1** | **SP** | The tool/library **shall be open-source** with an OSI-approved license (e.g., MIT, Apache-2, GPL). |
+| **R-2** | **P** | The tool **should be widely adopted** with strong community support, measurable via GitHub stars (>1k), active maintenance, and ecosystem plugins/extensions. |
+
+: Licensing & ecosystem requirements {#tbl-req-licensing}
+
+## Input Formats & Version Control {#sec-input}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-3** | **P** | **Shall support multiple, widely accepted input formats** for both template specification and content material (e.g., Markdown, YAML frontmatter, Jupyter Notebooks, reStructuredText). |
+| **R-4** | **SP** | Both the **template specification and content material shall be text-only formats** (e.g., Markdown + YAML, not binary formats) to enable tracking with standard VCS tools such as `git`. |
+| **R-5** | **P** | If only a single/few input formats are supported, there **shall exist open-source tools** (e.g., Pandoc) that can convert to/from other standard formats seamlessly. |
+
+: Input format & VCS requirements {#tbl-req-input}
+
+## Media & Visual Content {#sec-media}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-6** | **R** | **Shall support embedded images** in documents (PNG, JPEG, SVG, PDF). |
+| **R-7** | **P** | **Should provide options to adjust size, position, and style** of embedded images (width, height, alignment, captions, alt-text). |
+| **R-8** | **P** | If image styling is not natively supported, preprocessing via external tools (e.g., ImageMagick) is acceptable but counts as a negative signal. |
+
+: Media & visual content requirements {#tbl-req-media}
+
+## Scientific & Technical Content {#sec-scientific}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-9** | **SP** | **Shall support mathematical equations** via standard LaTeX math notation, rendered correctly in all output formats (HTML via MathJax/KaTeX, PDF via LaTeX, DOCX via equation objects). |
+| **R-10** | **SP** | **Shall support diagram generation** from text-based specifications at compile/render time. Must support at least one of: Mermaid, Graphviz (DOT), or PlantUML. |
+
+: Scientific & technical content requirements {#tbl-req-scientific}
+
+## Output Formats {#sec-output}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-11** | **P** | **Shall support multiple output formats**, including at minimum: HTML, PDF, DOCX, and at least one additional format (EPUB, Markdown, presentations). |
+| **R-12** | **P** | If only a few output formats are natively supported: (a) there must exist OSS tools to chain conversions, **and** (b) the natively supported format(s) must be text-based/git-trackable (e.g., Markdown → PDF via Pandoc + LaTeX). |
+
+: Output format requirements {#tbl-req-output}
+
+## AI & Automation Integration {#sec-ai}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-13** | **P** | The tool **should be widely adopted by LLMs/AI agents** — either via native knowledge, standard skills/plugins, or MCP servers — enabling seamless integration into multi-agent automation workflows. |
+
+: AI & automation integration requirements {#tbl-req-ai}
+
+## Dynamic Content & Computation {#sec-dynamic}
+
+| ID | Tier | Requirement |
+|----|:----:|-------------|
+| **R-14** | **P** | **Should support dynamic content generation**, including execution of code cells (Python, R, Julia) and inline rendering of their outputs (figures, tables, text) in the final document. |
+
+: Dynamic content requirements {#tbl-req-dynamic}
+
+---
+
+# Evaluation Criteria {#sec-evaluation}
+
+## Scoring Scale
+
+Each candidate is scored **0–3** per requirement:
+
+| Score | Meaning |
+|:-----:|---------|
+| **3** | Fully supported natively, out-of-the-box |
+| **2** | Supported with minimal configuration or first-party plugin |
+| **1** | Achievable via third-party OSS tools or chaining |
+| **0** | Not supported or prohibitively difficult |
+
+: Per-requirement scoring scale {#tbl-scoring}
+
+## Weighted Aggregation
+
+Each per-requirement score is multiplied by the tier weight (see @tbl-tiers), then summed across all requirements.
+
+**Maximum possible score:**
+
+$$
+\text{Max} = \underbrace{(1 \times 3 \times 3)}_{\text{Required}} + \underbrace{(4 \times 2 \times 3)}_{\text{Strongly Preferred}} + \underbrace{(7 \times 1 \times 3)}_{\text{Preferred}} = 9 + 24 + 21 = 54
+$$ {#eq-max-score}
+
+## Summary by Tier
+
+| Tier | Count | Weight | Max Contribution |
+|------|:-----:|:------:|:----------------:|
+| Required | 1 | ×3 | 9 |
+| Strongly Preferred | 4 | ×2 | 24 |
+| Preferred | 7 | ×1 | 21 |
+| **Total** | **12** | | **54** |
+
+: Score contribution by tier {#tbl-score-summary}
+
+::: {.callout-important}
+## Disqualification Rule
+Any candidate scoring **0** on a Required (R) tier requirement is automatically disqualified, regardless of total score.
+:::
+
+---
+
+# Known Candidates {#sec-candidates}
+
+The following tools were pre-identified for evaluation:
+
+1. **Quarto** — Open-source scientific/technical publishing system (Posit/Pandoc-based). Partial positive bias due to widespread data science adoption.
+2. **Pandoc** — Universal document converter ("Swiss Army knife" of markup).
+3. **Typst** — Modern typesetting system, LaTeX alternative.
+4. **Jupyter Book** — Publication-quality books from computational content.
+5. **Sphinx** — Python documentation generator.
+6. **R Markdown / Bookdown** — R-based literate programming (predecessor to Quarto).
+7. **Docusaurus** — Meta's documentation website framework.
+8. **Hugo** — Fastest static site generator (Go).
+9. **mdBook** — Markdown-based book builder (Rust).
+10. **Markdoc** — Stripe's Markdown documentation framework.
+
+::: {.callout-tip}
+## Excluded Candidates
+**Docmosis** was considered but excluded: it is a commercial (proprietary) product, failing requirement R-1 (open-source, strongly preferred).
+:::
+
+---
+
+# Deliverables {#sec-deliverables}
+
+This requirements process produces the following artifacts:
+
+| # | Artifact | Path | Format |
+|:-:|----------|------|--------|
+| 1 | Requirements specification (this document) | `standards/template_engine_requirements.qmd` | `.qmd` |
+| 2 | Quarto format specification | `standards/template_engine_quarto.md` | `.md` |
+| 3 | Comparative analysis — top 10 | `standards/template_engine_comparative_analysis_top10.md` | `.md` |
+| 4 | Requirements document template | `templates/requirements/requirements_template.qmd` | `.qmd` |
+
+: Deliverables produced from this requirements process {#tbl-deliverables}

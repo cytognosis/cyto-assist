@@ -1,0 +1,1464 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/BioPathNet.pdf
+
+identifiers:
+  doi: 10.1038/s41551-025-01598-z
+  pmid: '41559192'
+citation:
+  title: Enhancing link prediction in biomedical  knowledge graphs with BioPathNet
+  journal: Nature Biomedical Engineering
+  year: '2026'
+  publisher: Springer Science and Business Media LLC
+  authors: Emy Yue Hu, Svitlana Oleshko, Samuele Firmani, Hui Cheng, Zhaocheng Zhu, Maria Ulmer, Matthias Arnold, Maria Colomé-Tatché,
+    Jian Tang, Sophie Xhonneux, Annalisa Marsico
+content:
+  sections: "[\n  {\n    \"name\": \"methods are limited in capturing this complexity. We present BioPathNet,\",\n    \"text\"\
+    : \"a graph neural network framework based on the neural Bellman\\u2013Ford\\nnetwork (NBFNet), addressing limitations\
+    \ of traditional representation-based\\nlearning methods through path-based reasoning for LP in biomedical\\nknowledge\
+    \ graphs. Unlike node-embedding frameworks, BioPathNet learns\\nrepresentations between node pairs by considering all\
+    \ relations along paths,\\nenhancing prediction accuracy and interpretability, and allowing visualization\\nof influential\
+    \ paths and biological validation. BioPathNet leverages a\"\n  },\n  {\n    \"name\": \"background regulatory graph for\
+    \ enhanced message passing and uses\",\n    \"text\": \"stringent negative sampling to improve precision and scalability.\
+    \ BioPathNet\\noutperforms or matches existing methods across diverse tasks including\\ngene function annotation, drug\\\
+    u2013disease indication, synthetic lethality\\nand lncRNA\\u2013target interaction prediction. Our study identifies promising\\\
+    nadditional drug indications for diseases such as acute lymphoblastic\\nleukaemia and Alzheimer\\u2019s disease, validated\
+    \ by medical experts and clinical\\ntrials. In addition, we prioritize putative synthetic lethal gene pairs and\\nregulatory\
+    \ lncRNA\\u2013target interactions. BioPathNet\\u2019s interpretability will\\nenable researchers to trace prediction\
+    \ paths and gain molecular insights.\\nBiological entities interact in complex ways, crucial for sustaining life1.\\nUnderstanding\
+    \ these interactions is central to systems biology, with\\nnetwork analysis playing a key role2. Biological networks are\
+    \ repre-\\nsented as graphs, where nodes can represent genes, proteins, diseases\\nand more, and edges denote associations\
+    \ between them. Edges in a\\nbiological graph can signify co-regulation between genes or causal\\nrelationship (regulatory\
+    \ network)3,4, physical interactions (in protein\\u2013\\nprotein interaction networks (PPI)5,6), as well as disease\\\
+    u2013gene associa-\\ntions (such as in disease\\u2013gene networks7,8), among many.\\nDespite increasing high-throughput\
+    \ experiments, our grasp of\\nbiological networks is incomplete, leaving many interactions undis-\\ncovered. Due to the\
+    \ expense and time involved in wet lab experiments,\\ncomputational methods such as link prediction (LP) are very important\\\
+    nfor inferring potential associations within these networks based on the\\nunderlying topology9. LP is applied across\
+    \ network biology for diverse\\ntasks ranging from predicting protein interactions to inferring gene\\nregulatory networks10.\
+    \ By revealing hidden connections, LP facilitates\\nthe discovery of biomarkers, drug targets and insights into biological\\\
+    nReceived: 9 September 2024\\nAccepted: 2 December 2025\\nPublished online: xx xx xxxx\\nCheck for updates\\n1Computational\
+    \ Health Center, Helmholtz Center Munich, Oberschlei\\u00dfheim, Germany. 2School of Life Sciences, Technical University\
+    \ of Munich, Freising,\\nGermany. 3School of Computation, Information and Technology, Technical University of Munich,\
+    \ Munich, Germany. 4Mila \\u2013 Qu\\u00e9bec AI Institute, Montr\\u00e9al,\\nQuebec, Canada. 5Universit\\u00e9 de Montr\\\
+    u00e9al, Montr\\u00e9al, Quebec, Canada. 6Department of Psychiatry and Behavioural Sciences, Duke University, Durham,\\\
+    nNC, USA. 7Faculty of Biology, Ludwig-Maximilian University of Munich, Planegg-Martinsried, Germany. 8CIFAR AI Chair,\
+    \ Toronto, Ontario, Canada.\\n9HEC Montr\\u00e9al, Montr\\u00e9al, Quebec, Canada. 10These authors contributed equally:\
+    \ Emy Yue Hu, Svitlana Oleshko, Samuele Firmani, Hui Cheng.\\n11These authors jointly supervised this work: Sophie Xhonneux,\
+    \ Annalisa Marsico.\\ne-mail: annalisa.marsico@helmholtz-munich.de\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    nedge-specific attention mechanism. This approach preserves distinct\\nrepresentations for nodes and edges while leveraging\
+    \ its architecture\\nto incorporate information from higher-order neighbourhoods to be\\nused in downstream tasks44.\\\
+    nWith the rapid accumulation of biomedical data, understanding\\ndisease biology and molecular factors\\u2019 roles in\
+    \ phenotypic outcomes\\nis crucial for personalized diagnostics and treatments. KGs have also\\nbecome the dominant knowledge\
+    \ representation in biomedicine, lever-\\naging databases such as UniProt45, Gene Ontology46,47 and DrugBank48.\\nLP tasks\
+    \ in biomedical KGs, such as the COVID-19 drug candidate explo-\\nration49 with RotatE and DistMult, OntoProtein\\u2019s\
+    \ Gene Ontology-based\\nKG for protein language model pretraining50, and the node-embedding\\nalgorithms for multimodal\
+    \ biomedical KGs51, enhance drug discovery\\nand predict disease co-morbidities. Further, task-specific KGs and\\nframeworks\
+    \ such as BioCypher52 further support KG construction,\\naiding predictive modelling for drug adverse reactions, repurposing\\\
+    nand biological concept associations. One of the latest state-of-the-art\\nbiomedical KG, PrimeKG, integrates 20 primary\
+    \ resources including\\nDisGeNet, MONDO Disease Ontology and DrugBank53, encompass-\\ning 17,080 diseases and 4 million\
+    \ relationships. It includes diverse\\ndisease-associated data such as protein perturbations, biological pro-\\ncesses,\
+    \ pathways, phenotypes and drug therapeutic actions, including\\n\\u2018indications\\u2019 and \\u2018contraindications\\\
+    u2019 drug\\u2013disease edges. The method\\nTxGNN54 leverages PrimeKG via the R-GCN framework, to perform\\nzero-shot\
+    \ inference of drug\\u2013disease indications and contraindica-\\ntions on diseases with no known treatment and minimal\
+    \ molecular\\nunderstanding, efficiently handling therapeutic tasks through adaptive\\naggregation and iterative optimization\
+    \ of embeddings.\\nOn the basis of the assumption that representing head entities in a\\ngraph while considering their\
+    \ path to specific tail nodes might enhance\\nrepresentation learning and lead to more accurate LPs, researchers\\nstarted\
+    \ developing representation learning frameworks for LP based\\non the paths between two nodes. The first application of\
+    \ this concept is\\nthe study from ref. 55, which introduce KG4SL, a graph neural network\\n(GNN) model that integrates\
+    \ KG message-passing for synthetic lethal-\\nity (SL) prediction, leveraging a KG with 11 entity types and 24 relevant\\\
+    nrelationships associated with SL. Further, the neural Bellman\\u2013Ford\\nnetwork (NBFNet) introduces a framework for\
+    \ LP inspired by tradi-\\ntional path-based methods56. It represents node pairs as the sum of\\nall path representations\
+    \ (of a given length), each derived from edge\\nrepresentations, and it employs a graph neural network with learned\\\
+    noperators for efficient path formulation solutions, scalable to large\\ngraphs with low time complexity. NBFNet works\
+    \ with both homogene-\\nous and multirelational graphs, supporting LP across different graph\\ntypes. Combining traditional\
+    \ path-based methods with GNNs, NBFNet\\ndemonstrates superior performance compared with node-embedding\"\n  },\n  {\n\
+    \    \"name\": \"methods. In addition, path-embedding methods offer better interpret-\",\n    \"text\": \"ability by visualizing\
+    \ important paths used for prediction, facilitating\\nverification of biological plausibility.\\nTo tackle LP in biological\
+    \ KGs, we introduce BioPathNet, a message-\\npassing neural network for path representation learning, built on\\nNBFNet.\
+    \ As opposed to node-embedding approaches, BioPathNet\\nuses path-based reasoning to learn representations between source\\\
+    nand target nodes on the basis of relations along the path. We introduce\\nkey design choices in BioPathNet to adapt and\
+    \ extend the NBFNet algo-\\nrithm for LP tasks on biomedical KGs, which are inherently \\u2018noisy\\u2019 due\\nto false\
+    \ positives from experiments, data sparsity, redundant edges\\nand relations, and knowledge bias (for example, well-studied\
+    \ disease\\ngenes being overrepresented and highly connected). A crucial enhance-\\nment is the incorporation of a background\
+    \ regulatory graph (BRG) for\\nmessage passing, which not only improves BioPathNet\\u2019s performance\\nbut also enhances\
+    \ its scalability. This makes biomedical LP feasible\\nfor tasks such as drug repurposing, where running NBFNet out of\\\
+    nthe box is computationally prohibitive. In addition, we implement a\\nbiological entity-type-aware negative sampling\
+    \ scheme, which can\\ninteractions11,12. To predict potential relationships between uncon-\\nnected nodes, one prevalent\
+    \ class of methods uses similarity metrics\\nfrom traditional graph analysis, such as Personalized PageRank, Jaccard\\\
+    nor Katz index13,14. These metrics have been used for predicting disease\\u2013\\ngene associations15, including non-coding\
+    \ RNA\\u2013disease relationships\\nand drug\\u2013disease associations16.\\nWhile traditional graph metrics have been\
+    \ successful in biological\\nLP, representation-based learning offers greater expressiveness for\\ncapturing the nuances\
+    \ and complexity of nodes in a graph. Nodes are\\nmapped to low-dimensional vector representations called embeddings\\\
+    nusing shallow and deep nonlinear transformations. Optimized embed-\\ndings position nodes with similar network neighbourhoods\
+    \ closely in\\nthe embedding space so that links between nodes can be predicted\\non the basis of their similarity in\
+    \ this space17. Methods include matrix\\nfactorization (for example, Mashup18) and random walk approaches\\n(for example,\
+    \ DeepWalk19, node2vec20, struc2vec21).\\nNetwork embedding techniques have been successful in drug\\nrepurposing, adverse\
+    \ drug reaction prediction, gene function pre-\\ndiction and protein\\u2013protein interaction network completion22\\\
+    u201325. For\\ninstance, ref. 26 introduced the multiscale interactome, integrating\\ndisease-associated proteins, drug\
+    \ targets and biological functions\\nusing biased random walks for node embeddings. GeneWalk predicts\\ngene functions\
+    \ via network representation learning with random\\nwalks27. Reference 28 constructed a multimodal network of genes\\\
+    nand polygenic risk scores for diseases to uncover associations between\\nCOVID-19 genes, co-morbidities and genetic predispositions28\\\
+    u201330.\\nRecent efforts use heterogeneous multirelational networks, more\\nspecifically knowledge graphs (KGs), to better\
+    \ represent biological\\ncomplexities by modelling facts as subject\\u2013predicate\\u2013object (SPO)\\ntriplets. KG\
+    \ research is increasingly applied to tasks such as question\\nanswering and information retrieval, with a key challenge\
+    \ being LP by\\nestimating missing triplet components. Knowledge Graph Embedding\\n(KGE) effectively learns low-rank representations\
+    \ of entities and rela-\\ntions, preserving graph structure and encoding relation semantics by\\noptimizing a training\
+    \ loss that maximizes scores for positive triplets\\nwhile minimizing those for corrupted triplets31. KGE methods, such\\\
+    nas TransE31, DistMult32, ComplEx33 and RotatE34, have shown notable\\nperformance in several benchmark tests, but they\
+    \ are often limited\\nto one-hop relations. In large biomedical KGs, relationships between\\nentities are intricate and\
+    \ may involve multihop paths. Methods such\\nas SEAL35 and Grail36 address this by embedding subgraph structures\\naround\
+    \ links, but their scalability is limited due to the need to generate\\nsubgraphs for each link, creating bottlenecks\
+    \ in large-scale predictions.\\nUnlike KGEs, deep learning methods\\u2014particularly graph con-\\nvolutional networks\
+    \ (GCNs)37, a class of message passing neural\\nnetworks (MPNNs)\\u2014have substantially advanced KGEs38,39. These\\\
+    nmodels have greatly improved performance in biological tasks such\\nas drug\\u2013target interaction prediction40,41,\
+    \ polypharmacy side effect\\nmodelling25, tissue-specific protein function prediction23,24 and drug\\u2013\\ndisease indication\
+    \ discovery42. In addition, they have been applied to\\nmultirelational and heterogeneous graphs to capture diverse entity\\\
+    nassociation semantics.\\nFor example, the relational graph convolutional network (R-GCN)\\nfor multirelational KGs38\
+    \ learns node embeddings by aggregating\\ntransformed feature vectors of neighbouring nodes via a normalized\\nsum and\
+    \ uses the DistMult factorization model for LP. While R-GCN\\nincorporates relation-specific transformations based on\
+    \ edge type\\nand direction, making it well suited for multirelational data in KGs, it\\ndoes not explicitly learn a representation\
+    \ for relations. More expressive\"\n  },\n  {\n    \"name\": \"methods include relation-aware graph attention network\
+    \ (RAGAT), a\",\n    \"text\": \"GAT-based model that utilizes relation-specific network parameters to\\nlearn embeddings\
+    \ for both entities and relations, combining them into\\njoint embeddings for each relation type43. Similarly, the heterogeneous\\\
+    ngraph transformer (HGT) models graph heterogeneity by employing\\nnode- and edge-type-dependent parameters, including\
+    \ a node- and\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nbe combined\
+    \ with adaptive sampling based on local graph density.\\nThis improves decision boundary accuracy across tasks and further\\\
+    nboosts BioPathNet\\u2019s performance. We evaluated BioPathNet on diverse\\nbiomedical KGs with varying network properties,\
+    \ relation types and\\nnode types, demonstrating its effectiveness in LP across multiple tasks,\\nincluding gene function\
+    \ prediction, zero-shot disease\\u2013drug target\\ninteraction prediction, SL gene pair identification and long non-coding\\\
+    nRNA (lncRNA)\\u2013gene regulatory inference. We show that the BRG not\\nonly improves BioPathNet\\u2019s scalability\
+    \ over NBFNet but also enhances\\nperformance across all tasks. In addition, the node-type-aware (NTA)\\nnegative sampling\
+    \ scheme improves decision boundary accuracy and\\nfurther boosts performance in most LP tasks.\\nBioPathNet was benchmarked\
+    \ against the original NBFNet,\\nthree KGE baselines and seven state-of-the-art methods, including\\ntask-agnostic models\
+    \ for heterogeneous graphs and long-range rela-\\ntionship learning, as well as LP task-specific approaches. We show that\\\
+    nBioPathNet consistently outperforms these methods across tasks or,\\nin a few cases, achieves comparable performance.\\\
+    nFinally, we showcase BioPathNet\\u2019s ability to naturally interpret\\npredictions through biological pathways and\
+    \ uncover biological knowl-\\nedge. We illustrate this with two examples in disease\\u2013drug indication\\nprediction,\
+    \ focusing on acute lymphoblastic leukaemia (ALL) and\\nAlzheimer\\u2019s disease (AD).\"\n  },\n  {\n    \"name\": \"\
+    Results\",\n    \"text\": \"BioPathNet: path embedding as alternative to node\\nembedding for graph completion on biomedical\
+    \ KGs\\nA KG is a heterogeneous directed graph comprising various types of\\nentity (nodes) connected by relationships\
+    \ (edges). For instance, nodes\\nmight represent diseases, genes and drugs, and relationships such\\nas \\u2018indication\
+    \ for\\u2019 or \\u2018involved in\\u2019. KGs are typically structured as tri-\\nplets (head node, relationship, tail\
+    \ node), such as (drug A, indication,\\ndisease B) or (gene C, involved in, disease D). The task of KG comple-\\ntion\
+    \ involves estimating the missing components of these triplets.\\nFor example, one might predict the tail entities given\
+    \ a head entity\\nand a specific relationship, such as predicting drugs as indications\\nfor diseases, on the basis of\
+    \ existing triplets (that is, existing know\\u00ad\\nledge). KG completion methods can be broadly categorized into\\nembedding-based\
+    \ and path-based approaches (Fig. 1a). Embedding-\\nbased approaches encode entities in a KG into lower-dimensional\\\
+    nspaces, preserving graph structure by minimizing distances or maxi-\\nmizing similarities between head, relation and\
+    \ tail embeddings.\\nA path embedding-based LP approach, instead, captures the struc-\\ntural information of KGs by learning\
+    \ representations for pairs of nodes\\n(instead of single nodes) through paths. Intuitively, path embeddings\\ncapture\
+    \ logical relationships between head and tail nodes in a graph.\\nInstead of explicitly enumerating rules, as in traditional\
+    \ logic-based LP,\\nthey represent paths as high-dimensional vectors and leverage neural\\nnetworks for a nonlinear learning\
+    \ process. NBFNet56 learns node pair\\nrepresentations by parameterizing them as the generalized sum of\\npath representations,\
+    \ with each path representation as the general-\\nized product of edge representations along the path (Figs. 1b and 7).\\\
+    nThis path formulation can be efficiently solved using the generalized\\nBellman\\u2013Ford algorithm based on dynamic\
+    \ programming. Moreover,\\nthe efficiency is further enhanced by learning the operators of the\\ngeneralized Bellman\\\
+    u2013Ford algorithm with a message-passing graph\\nneural network (see Methods).\\nBioPathNet extends the NBFNet framework\
+    \ to address the\\nunique challenges of biomedical KGs, which are large, incomplete,\\nprone to noisy relations due to\
+    \ experimental errors or false positive\\nPath\\nrepresentation\\nNode\\nrepresentation\\nPrediction\\nof relationship\\\
+    na    Two ways of KG completion\\nWithout BRG\\nWith BRG\\nBRG\\nc    Features of Biomedical KG\\nd    Link prediction\
+    \ without BRG\\ne    Link prediction with BRG\\nh\\nr\\nt\\nh\\nt\\ng    SANS\\nh\\nt\\n1-hop neighbours from node h\\\
+    n2-hop neighbours from node h\\nk-hop neighbourhood (k = 2)\\n.........\\nNegative triplets\\nInput\\nOutput\\nMessage\
+    \ passing\\nb    Path-representation learning with BioPathNet\\nf    NTA negative sampling\"\n  },\n  {\n    \"name\"\
+    : \"NTA = YES\",\n    \"text\": \".........\\nNegative triplets\"\n  },\n  {\n    \"name\": \"NTA = NO\",\n    \"text\"\
+    : \".........\\nNegative triplets\\nPositive triplet\\nr\\nh\\nt\\nt'\\nt'\\nh\\nr\\nt\\nh\\nr\\nt\\nPositive triplet\\\
+    nr\\nh\\nt\\nt'\\nQuery\\nPrediction\\nNode type 2\\nNode type 1\\nAnswer\\nNode type 3\\nFig. 1 | Link prediction in\
+    \ biological KGs. a, Node embedding vs path-\\nrepresentation learning. b, Illustration of how the generalized Bellman\\\
+    u2013Ford\\nalgorithm operates in NBFNet and BioPathNet to solve the shortest path problem\\nbetween a head (h) and tail\
+    \ (t) entity through specific relationships (r). The method\\nleverages message-passing GNNs to learn path representations,\
+    \ while a subsequent\\nmultilayer perceptron differentiates between positive and negative relationships\\n(more details\
+    \ in Methods). c, Illustration of BioPathNet\\u2019s first design choice:\\nintegrating a BRG to enrich gene connections,\
+    \ improving message passing and\\ninformation flow beyond supervised training edges. d,e, Illustration of prediction\\\
+    npaths between head nodes (blue) and tail nodes (orange) in two scenarios: without\\nBRG (d) and with BRG connections\
+    \ (e). f, Illustration of the NTA negative sampling\\nprocedure, where negative triplets are sampled only if their node\
+    \ types match\\nthe positive triplets, compared to a non-type-aware approach, which samples\\nnegatives uniformly without\
+    \ considering tail node type. g, Illustration of the SANS\\nprocedure, where negative triplets are selected on the basis\
+    \ of both the node type\\nof positive triplets and the local graph density surrounding each positive triplet.\\n\\nNature\
+    \ Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nassignments, and enriched with diverse\
+    \ yet often redundant informa-\\ntion. First, on top of a primary KG (G1), for which we want to learn and\\ngenerate predictions,\
+    \ it introduces a secondary KG, the BRG or G2. The\\nBRG serves the goal of improving entity connectivity during message\\\
+    npassing (Fig. 1c\\u2013e) and thereby enriching the representation of tri-\\nplets through the incorporation of additional\
+    \ paths and relationships,\\nwithout affecting loss computation, guaranteeing a scalable solution\\nalso with very large\
+    \ KGs. In fact, unlike NBFNet, which targets general\\ngraph completion, BioPathNet optimizes the model\\u2019s loss only\
+    \ on\\nthe links of interest, that is, training edges in G1 (and corresponding\\nnegative triplets). Predictions can be\
+    \ made without or with leveraging\\na BRG during the message-passing step (see Methods) BRG (Fig. 1c).\\nFor example,\
+    \ as illustrated in Fig. 1d, when predicting the missing link\\nbetween a head node and a tail node, messages can be passed\
+    \ between\\ntype 1 and type 2 nodes, resulting in a certain prediction path (Fig. 1d).\\nAlternatively, as illustrated\
+    \ in Fig. 1e, a BRG can be integrated, and\\npredictions are made going through the relation edges involving node\\ntypes\
+    \ 2 and 3. The integration of a BRG in BioPathNet enhances both\\nprediction accuracy and interpretability, demonstrated\
+    \ in the follow-\\ning sections, by enriching the representation of the primary task. This\\nenables the exploration of\
+    \ subnetworks, such as interaction partners\\naround specific node pairs, facilitating the derivation of mechanistic\\\
+    nhypotheses from the broader biological context. BioPathNet also\\nintroduces a stricter NTA negative sampling strategy\
+    \ (Fig. 1f), where\\nnegative triplets are drawn with preserved tail node types, allowing\\nnot only to improve the model\\\
+    u2019s decision boundary but also ensuring\\nbiologically meaningful sampling. In addition, to improve decision\\nboundary,\
+    \ we integrate the SANS strategy from ref. 57 into our NTA\\nsampling (Fig. 1g), accounting for local graph structure\
+    \ and density\\ninstead of uniformly sampling negative triplets.\\nBioPathNet accurately predicts links across different\\\
+    nbiomedical tasks\\nOverview of the different LP tasks. We evaluate BioPathNet on bio-\\nmedical LP across four distinct\
+    \ tasks, framing the problem as learning\\nthe distribution of logical rules from a KG, and use the learned rules to\\\
+    nperform inference, that is, predict new links on the same graph (trans-\\nductive setting) or on a new graph (inductive\
+    \ setting). We evaluate\\nBioPathNet across diverse biomedical tasks, testing its adaptability to\\nKGs of varying size,\
+    \ complexity, sparsity, noise and bias.\\nThe first LP task we evaluate with BioPathNet is \\u2018gene function\\nprediction\\\
+    u2019, which consists of assigning biological terms, such as\\nmolecular pathways, to specific genes (Fig. 2a). We use\
+    \ as G1, a KG\\nlinking genes to pathway terms from KEGG via the \\u2018function of\\u2019 rela-\\ntion, sourced from\
+    \ ConsensusPathDB58 and consisting of 32,000\\nedges (Supplementary Table 1). G1 is then split into training, valida-\\\
+    ntion and testing edges. During training, training triplets are used for\\nmessage passing (that is, referred to as training\
+    \ graph from G1), while\\nremoving the specific triplets of the batch for learning path repre-\\nsentations. This graph\
+    \ is also used during validation and testing, in\\naddition to a potential G2/BRG (see below). In this context, if gene\
+    \ x\\nhas functions y and z, and gene w is assigned to function z, then gene\\nw is also likely to have function y, and\
+    \ we can think of BioPathNet as\\nlearning logical rules such as: \\u2018function_of(y, x) \\u2227 function_of(z, x) \\\
+    u2227\\nfunction_of(z, w) \\u2192 function_of(y, w)\\u2019 (Fig. 2a). Introducing a BRG for\\nmessage passing (G2) (connected\
+    \ to the original G1, extracted from\\nPathway Commons59\\u201361 encompassing ~1.8 million edges and 13 dif-\\nferent\
+    \ relation types between genes and chemicals, including PPIs\\n(Supplementary Tables 1 and 2)) allows BioPathNet to infer\
+    \ gene\\u2013\\nfunction links through alternative paths, enabling the learning of\\nmore expressive rules. For example,\
+    \ if gene x has function k, inter-\\nacts with gene k in a PPI network, and gene z phosphorylates gene\\nw, then gene\
+    \ w is also likely to be assigned to function y. This can be\\nexpressed as the following logical rule: \\u2018function_of(y,\
+    \ x) \\u2227 interact(x,\\nk) \\u2227 phosphorylation(k, w) \\u2192 function(y, w)\\u2019 (Fig. 2a).\\nThe next LP task\
+    \ predicts disease\\u2013drug indications by repurpos-\\ning existing drugs for new conditions using PrimeKG (Supplementary\\\
+    nFig. 1a)53 (see Methods). This task is more challenging than the previous\\none, as it is conducted in a zero-shot setting\\\
+    u2014where the target disease\\nhas minimal molecular characterization and no existing treatments\\u2014\\nfollowing the\
+    \ approach from TxGNN54, a state-of-the-art node- and\\nrelation-based embedding method for this task (see Methods). We\\\
+    napplied BioPathNet to five disease areas: \\u2018adrenal gland,\\u2019 \\u2018anaemia,\\u2019\\n\\u2018cardiovascular,\\\
+    u2019 \\u2018cell proliferation,\\u2019 and \\u2018mental health\\u2019, splitting the\\ntask into corresponding subtasks.\
+    \ BioPathNet was trained on drug\\u2013\\ndisease edges (for example, \\u2018indication\\u2019, \\u2018contraindication\\\
+    u2019) of all other\\ndiseases except for the disease area of interest, while the remaining\\nPrimeKG graph served as\
+    \ the BRG (G2) for message passing. A BRG with\\n~5.7 million edges and 30 relation types for message passing, including\\\
+    ndrug\\u2013drug, protein\\u2013protein and disease\\u2013disease interactions from\\nPrimeKG, was solely used for message\
+    \ passing (Supplementary Table 3).\\nIn this zero-shot prediction context (Fig. 2b), if drug x is indicated\\nfor disease\
+    \ y, which shares the same disease protein k with disease\\nw, then drug x is probably an indication for w: \\u2018indication(x,\
+    \ y) \\u2227 dis-\\nease_protein(y, k) \\u2227 disease_protein(w, k) \\u2192 indication(x, w)\\u2019.\\nThe third LP task\
+    \ focuses on predicting links between synthetic\\nlethality gene pairs (Fig. 2c). SL occurs when the simultaneous muta-\\\
+    ntion of two genes leads to cell death, while the mutation of either gene\\nalone is non-lethal62, and this is of high\
+    \ interest in anti-cancer therapies.\\nData from SynLethDB-v.2.0, pre-processed by KR4SL55, includes SL\\npairs curated\
+    \ from biochemical assays, databases, predictions and text\\nmining, with confidence scores prioritizing experimental\
+    \ evidence.\\nThe G1 graph contains ~20,000 gene\\u2013gene SL edges, and learning logi-\\ncal rules in this setting (without\
+    \ a BRG) corresponds to, for example:\\n\\u2018synth_leth(x, z) \\u2227 synth_leth(z, y) \\u2192 synth_leth(x, y)\\u2019,\
+    \ that is, if x and z are\\nan SL pair and z and y are an SL pair, then x and y are likely to be an SL pair.\\nWhen including\
+    \ a BRG (G2), this adds ~380,000 connections across 48\\nrelation types, including additional SL links and gene\\u2013Gene\
+    \ Ontology\\n(GO) term association links under \\u2018molecular function\\u2019, \\u2018cellular pro-\\ncess\\u2019 and\
+    \ \\u2018cellular compartment\\u2019 categories on top of the training graph\\nfrom G1. In this case, BioPathNet can learn\
+    \ more sophisticated rules of\\nthe type: \\u2018synth_leth(x, z) \\u2227 contributes_to(z, w) \\u2227 contributes_to(y,\
+    \ w)\\n\\u2192 synth_leth(x, y)\\u2019, where a path through genes z and y and their shared\\nmolecular function k under\
+    \ the relation \\u2018contributes_to\\u2019 is chosen to\\ninfer an SL relationship between x and y.\\nThe final LP task\
+    \ applies BioPathNet to predicting regulatory\\ninteractions between long non-coding RNAs (lncRNAs) and genes\\n(Fig.\
+    \ 2d). LncRNAs\\u2014transcripts over 200 nucleotides long that do not\\nencode proteins\\u2014play essential roles in\
+    \ gene regulatory networks and\\nare implicated in numerous diseases. However, most remain function-\\nally non-characterized\
+    \ despite genomic consortia63 estimating over\\n200,000 potential transcripts. Identifying lncRNA targets is a crucial\\\
+    nstep in understanding their functions, and predictive methods are\\ninvaluable in this process to guide experiments.\
+    \ The G1 graph for this\\ntask was built from regulatory lncRNA\\u2013target (gene\\u2013mRNA) interac-\\ntions sourced\
+    \ from LncTarD (2.0)64, which contains ~6,000 experi-\\nmentally validated lncRNA\\u2013target interactions in human diseases,\\\
+    ncategorized into seven regulatory mechanisms (including \\u2018epigenetic\\u2019,\\n\\u2018transcriptional\\u2019 and\
+    \ \\u2018sponge regulation\\u2019) (Supplementary Tables 4\\nand 5). The BRG (G2), sourced from Pathway Commons, is the\
+    \ same G2\\nused for gene function prediction. Since small chemical molecules lack\\ndirect links to lncRNAs, we included\
+    \ only the PPI component, result-\\ning in ~1.1 million edges and 7 relation types. In this context, if lncRNA\\nx regulates\
+    \ gene z, and gene z interacts with gene y in a PPI network\\n(Fig. 2d), it is likely that lncRNA x also regulates gene\
+    \ y, and the corre-\\nsponding logical rule can be formulated as: \\u2018lncRNA_regulation(x, z)\\n\\u2227 interact(z,\
+    \ y) \\u2192 lncRNA_regulation(x, y)\\u2019.\\nFor each of the four LP tasks, BioPathNet was trained, validated\\nand\
+    \ tested on parts of the data of G1 (see Methods). Performance was\\nevaluated using the NTA negative sampling scheme,\
+    \ with and without\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nG2 for\
+    \ message passing. In more detail, for gene function prediction,\\nBioPathNet was trained on gene\\u2013function triplets,\
+    \ with negatives gen-\\nerated only from non-occurring gene\\u2013function pairs (same node type\\nas positives), excluding\
+    \ gene\\u2013gene, function\\u2013function or gene\\u2013com-\\npound interactions to preserve positive node types. For\
+    \ drug repur-\\nposing, BioPathNet was trained on drug\\u2013disease indication triplets,\\non each disease split separately\
+    \ as in TxGNN54, to simulate zero-shot\\nconditions, a scenario where no approved drugs for the disease of\\ninterest\
+    \ were seen in training. These splits provide challenging yet\\nrealistic evaluation scenarios, mimicking zero-shot drug\
+    \ repurposing\\n(see Methods). Negatives were sampled exclusively from non-occurring\\ndrug\\u2013disease pairs, excluding\
+    \ gene\\u2013gene, disease\\u2013disease, gene\\u2013GO\\nK\\nDisease protein\\nDisease protein\\nPhenotype\\nprotein\\\
+    nDisease\\nprotein\\nContraindication\\nIndication\\nIndication\\nProtein\\nprotein\\nInteract with\\nprotein\\nInteract\
+    \ with\\nprotein\\nTranscriptional\\nregulation\\ny\\nx\\nFunction of\\nFunction of\\nz\\nw\\nFunction of\\nk\\nInteracts\
+    \ with\\nPhosphorylates\\nA\\ufb00ects\\nControls\\nexpression\\nFunction of\\nComplex\\nInteracts with\\nInteracts with\\\
+    nFunction of ?\\nSL?\\nx\\ny\\nDisease\\ndisease\\nz\\nw\\nx\\nz\\ny\\nSL\\nSL\\nw\\nParticipates\\nContributes\\nto\\\
+    nContributes\\nto\\nContributes\\nto\\nSL\\nContributes\\nto\\nActive\\nin\\nEnables\\nEpigenetic\\nregulation\\nEpigenetic\
+    \ regulation ?\\nExpression\\nassociation\\nInteraction\\nwith mRNA\\nSponge\\nInteracts with\\n2\\n3.3\\n6.2\\n4\\n2.4\\\
+    n4.2\\n7.3\\n5\\n0\\n14.9\\n11.7\\n13.7\\n0\\n14.9\\n1.6\\n11\\n3.6\\n\\u20134.2\\n20\\n7\\n0\\n2.2\\n25.7\\n9.3\\n\\\
+    u20136\\n3.1\\n11.7\\n4.5\\n3\\n\\u201317\\n\\u201317\\n\\u20139\\n1.4\\n3\\n0\\n1.6\\n5.7\\n6.3\\n0\\n3.4\\n4.3\\n\\\
+    u20132.8\\n6.9\\n2.8\\n\\u20132.1\\n2.8\\n3.4\\n0\\n1.4\\n5\\n2\\n26\\n1.4\\n5\\n4.5\\n4\\n0.9\\n4\\n3\\n2.6\\n0.97\\\
+    n4\\n3.8\\n3.3\\n\\u20130.2\\n3\\n6.6\\n3.3\\n2.3\\n2.5\\n7.9\\n3.8\\n16\\n21.3\\n24\\n20\\n100\\n100\\n100\\n100\\n100\\\
+    n100\\n100\\n100\\n100\\n100\\n100\\n100\\n100\\n100\\n100\\n100\\n23.5\\n45.7\\n84\\n65.4\\n17\\n30\\n81\\n58.4\\n1.6\\\
+    n1.5\\n6.3\\n4\\n25\\n94\\n100\\n78\\n20\\n100\\n80\\n60\\n40\\n20\\n0\\n10\\n0\\n\\u201310\\n\\u201320\\nIncrement %\\\
+    nIncrement %\\nz\\nx\\ny\\nCellular component (CC)\\nGene\\nMolecular function (MF)\\nBiological process (BP)\\nPathway\\\
+    nOther\\nMicroRNA\\nlncRNA\\nProtein-coding gene\\nProtein PPI\\nGene\\nChemical\\nPathway\\nQuery/answer\\nEdge in G1\\\
+    nEdge in G2 (BRG)\\nGene\\nDrug\\nPhenotype\\nDisease\\nIndication ?\\nGene function\\nprediction\\nDrug repurposing\\\
+    nindication prediction\\nSL prediction\\nlncRNA\\u2013target\\nprediction\\nMRR\"\n  },\n  {\n    \"name\": \"HITS@1\"\
+    ,\n    \"text\": \"NTA\\nAdrenal gland NTA\\nAdrenal gland NTA SANS\\nAnaemia NTA\\nAnemia NTA SANS\\nCardiovascular NTA\\\
+    nCardiovascular NTA SANS\\nCell proliferation NTA\\nCell proliferation NTA SANS\\nMental health NTA\\nMental health NTA\
+    \ SANS\\nUnthresholded NTA\\nUnthresholded NTA SANS\\nThresholded NTA\\nThresholded NTA SANS\\nNTA\\nGene function prediction\\\
+    nAdrenal gland\\nAnaemia\\nCardiovascular\\nCell proliferation\\nMental health\\nThresholded\\nUnthresholded\\nlncRNA\\\
+    u2013target prediction\"\n  },\n  {\n    \"name\": \"NTA SANS\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"NTA SANS\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HITS@3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HITS@10\"\
+    ,\n    \"text\": \"SL\\nprediction\\nDrug repurposing\\nindication prediction\\nMRR\"\n  },\n  {\n    \"name\": \"HITS@1\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HITS@3\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HITS@10\"\
+    ,\n    \"text\": \"a    Gene function annotation KG\\nb    Drug repurposing KG\\nc    Synthetic lethality KG\\nd    lncRNA\\\
+    u2013target KG\\ne    Negative sampling ablation\\nf    BRG ablation\\nFig. 2 | Overview of the four LP tasks across different\
+    \ KGs and impact of\\nBioPathNet\\u2019s design choices on performance. a, Schematic of the gene function\\nprediction\
+    \ KG, linking genes, chemicals and cellular pathways. Training triplets\\n(G1: gene\\u2013pathway links extracted from\
+    \ KEGG) are in black; BRG edges (extracted\\nfrom Pathway Commons for message passing) are in red. b, Simplified schematic\\\
+    nof the PrimeKG graph for disease\\u2013drug indication prediction, connecting, for\\nexample, genes, diseases, drugs\
+    \ and phenotypes. G1 edges (disease\\u2013drug links)\\nare in black; BRG edges (all other relations) are in red. c, Schematic\
+    \ of synthetic\\nlethality KG for gene pair prediction. G1 edges (SL links) are in black; BRG edges\\nare in red and include\
+    \ additional SL interactions alongside associated nodes\\n(cellular components, molecular functions, biological processes\
+    \ and pathways).\\nd, LncRNA-mediated regulation KG from LncTarD 2.0, with BRG from Pathway\\nCommons. The graph features\
+    \ six node types (lncRNAs, microRNAs, mRNAs,\\npseudogenes, transcription factors and proteins), with regulatory relationships\\\
+    nin black and BRG protein interactions in red. e,f, Ablation study results on the\\nNTA and SANS (e) and on the BRG (f)\
+    \ showing performance changes vs original\\nBioPathNet, that is, increases in green and decreases expressed as percentages\
+    \ in\\nred across five seeds for each experimental task.\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    nterm and other interactions to preserve positive node types. For the\\nSL task, BioPathNet was trained in both transductive\
+    \ and inductive\\nsettings on: (1) gene\\u2013gene pairs with an SL confidence score above 0.3\\n(thresholded data, filtered\
+    \ by confidence score, see Methods) and (2)\\ngene\\u2013gene SL pairs regardless of confidence score (unthresholded\\\
+    ndata). This allowed us to evaluate the impact of noisy labels on model\\nperformance. Negatives were sampled exclusively\
+    \ from non-occurring\\ngene\\u2013gene lethality pairs, avoiding gene\\u2013GO term or other cross-type\\ntriplets. For\
+    \ this task, we also trained BioPathNet in an inductive set-\\nting, predicting SL links between gene pairs on an inference\
+    \ graph\\ndistinct from the training graph, following a split based on nodes of\\nKnowledge Representation for Synthetic\
+    \ Lethality (KR4SL). This setup\\nallowed us to assess BioPathNet\\u2019s ability to generalize to unseen data.\\nFor\
+    \ lncRNA target prediction, BioPathNet was trained on triplets where\\nthe head node is an lncRNA and the tail node a\
+    \ target of various types\\n(for example, microRNA, protein-coding gene, another lncRNA or\\nother; see Fig. 2d), linked\
+    \ by a regulatory mechanism (for example, \\u2018epi-\\ngenetic regulation\\u2019 or \\u2018sponge interaction\\u2019).\
+    \ Negatives were generated\\nas above by corrupting positive lncRNA\\u2013target triplets while preserving\\nnode types;\
+    \ for instance, if a positive triplet involved an lncRNA and\\na protein-coding gene, only non-occurring lncRNA\\u2013protein\
+    \ interac-\\ntions were sampled. We report for each task the mean reciprocal rank\\n(MRR), which measures how well the\
+    \ model ranked correct pairs among\\nnegatives, and Hits@k (k\\u2009=\\u20091, 3, 10), which quantifies the proportion\
+    \ of\\npositive triplets among the top-k predictions\\u2014both standard metrics\\nfor KG\\u2013LP problems (Table 1).\\\
+    nBioPathNet\\u2019s performance and evaluation of design choices. Table 1\\nsummarizes the results of KG completion across\
+    \ the four tasks, dem-\\nonstrating that BioPathNet achieves an MRR consistently better than\\nrandom for all LP tasks\
+    \ (see Methods), indicating strong predictive\\ncapability. The model performs particularly well in drug\\u2013disease\
+    \ indi-\\ncation prediction for the disease categories of adrenal gland, anaemia\\nand cell proliferation, achieving an\
+    \ MRR above 0.4 in all three cases\\nand Hits@10 scores ranging from 58% to 100%. Performance is slightly\\nlower for\
+    \ other disease categories, such as \\u2018mental health\\u2019, with \\u2018cardio-\\nvascular\\u2019 diseases posing\
+    \ the greatest challenge, yielding an MRR of\\n0.2 and a Hits@10 score of 30%. While the drug repurposing tasks pri-\\\
+    nmarily focus on predicting disease\\u2013drug indications, BioPathNet also\\nperforms well in identifying disease\\u2013drug\
+    \ contraindications, with an\\naverage MRR of 0.53 (Supplementary Table 6). BioPathNet performs\\nwell on the gene function\
+    \ prediction task, achieving an MRR of 0.6\\nand a Hits@10 score of 72%. For the SL pair prediction task, perfor-\\nmance\
+    \ improved substantially when low-confidence SL edges were\\nfiltered out from the graph, with MRR increasing from 0.31\
+    \ to 0.36\\nand Hits@10 rising from 44% to 50%. Finally, for the lncRNA\\u2013target\\nprediction task\\u2014one of the\
+    \ most challenging due to graph sparsity and\\nrelational uncertainty\\u2014BioPathNet achieved an MRR of 0.19, outper-\\\
+    nforming random predictions. These results underscore BioPathNet\\u2019s\\nversatility in handling diverse LP tasks across\
+    \ different biomedical KGs,\\nregardless of task-specific complexities.\\nTo assess the impact of key design choices,\
+    \ such as BioPath-\\nNet\\u2019s NTA negative sampling or SANS, as well as the use of a BRG, we\\nconducted ablation studies.\
+    \ We compared performance with and\\nwithout NTA and SANS and evaluated BioPathNet with and without\\na BRG for message\
+    \ passing alone on all four benchmarked tasks.\\nBioPathNet benefits significantly from incorporating NTA sampling\\nand\
+    \ BRG (Supplementary Tables 6\\u20139). In the gene prediction task,\\nsampling negatives from the same node type as the\
+    \ tail node improves\\nMRR by 4% and Hits@k by 2\\u20136.2% compared to random sampling\\n(Supplementary Table 7). Similar\
+    \ gains are observed for SL and lncRNA\\u2013\\ntarget KGs (Supplementary Tables 8 and 9, respectively). For drug\\u2013dis-\\\
+    nease indication prediction, MRR improves across all disease splits, with\\nincreases ranging from 1.6% (cell proliferation)\
+    \ to 13.7% (adrenal gland),\\nalongside larger Hits@k improvements compared with other tasks in\\nalmost all cases (Supplementary\
+    \ Table 6). While applying SANS alone\\nresulted in minimal performance gains, the greatest improvement\\noccurred when\
+    \ SANS\\u2014accounting for local graph structure during\\nnegative sampling\\u2014was combined with NTA sampling (Fig.\
+    \ 2e). This\\ncombination enhanced performance in gene function, SL and lncRNA\\u2013\\ntarget LP tasks. However, for\
+    \ drug\\u2013disease indication prediction (and\\ncontraindication), the benefits were only partially observed across\\\
+    nsome metrics, with a notable exception in the cardiovascular disease\\nsplit, where SANS reduced prediction performance.\
+    \ In addition, SANS\\nsampling was computationally expensive due to the random walk\\nsearch (even when limited to length\
+    \ 2, see Methods), so we report exper-\\niments with this setting disabled for the remaining part of the section.\\nUsing\
+    \ a BRG for message passing in addition to the train-\\ning graph of G1 improved performance across all tasks (Fig. 2f\
+    \ and\"\n  },\n  {\n    \"name\": \"Supplementary Table 10), with metrics gains ranging from 1.5\\u20136.3%\",\n    \"\
+    text\": \"for lncRNA\\u2013target target prediction, 16\\u201324% for gene\\u2013function predic-\\ntion, and up to 84%\
+    \ for SL. In the zero-shot disease\\u2013indication LP task,\\nremoving the BRG and running BioPathNet solely on the G1\
+    \ bipartite\\ntraining disease\\u2013drug graph severely disrupted connectivity. In fact,\\nhere we tackle a zero-shot\
+    \ drug repurposing problem, where a disease\\nin the test set is simulated by removing all known treatments and similar\\\
+    ndiseases in the training set, making message passing very difficult. This\\nprevented BioPathNet from identifying meaningful\
+    \ paths for predic-\\ntion and led to a drastic performance drop\\u2014an expected outcome by\\ndesign. Given that this\
+    \ task is originally meant to make full use of the\\nPrimeKG graph53 (training graph from G1+BRG), we considered the\\\
+    nablation experiment unfair in this context.\\nTable 1 | BioPathNet performance on all four LP tasks, reported as MRR,\
+    \ and Hits@k for k\\u2009=\\u20091, 3 and 10\\nLP task\\nMRR\\nHits@1\\nHits@3\\nHits@10\\nGene function prediction\\\
+    n0.547\\u2009\\u00b1\\u20090.002 (0.01)\\n0.457\\u2009\\u00b1\\u20090.004\\n0.593\\u2009\\u00b1\\u20090.006\\n0.723\\\
+    u2009\\u00b1\\u20090.009\\nDrug\\u2013disease indication (adrenal gland)\\n0.83\\u2009\\u00b1\\u20090.04 (0.0001)\\n0.67\\\
+    u2009\\u00b1\\u20090.06\\n1.0\\u2009\\u00b1\\u20090.0\\n1.0\\u2009\\u00b1\\u20090.0\\nDrug\\u2013disease indication (anaemia)\\\
+    n0.458\\u2009\\u00b1\\u20090.004 (0.0001)\\n0.417\\u2009\\u00b1\\u20090.0\\n0.44\\u2009\\u00b1\\u20090.01\\n0.58\\u2009\\\
+    u00b1\\u20090.04\\nDrug\\u2013disease indication (cardiovascular)\\n0.23\\u2009\\u00b1\\u20090.008 (0.0001)\\n0.19\\u2009\\\
+    u00b1\\u20090.01\\n0.24\\u2009\\u00b1\\u20090.02\\n0.30\\u2009\\u00b1\\u20090.02\\nDrug\\u2013disease indication (cell\
+    \ proliferation)\\n0.61\\u2009\\u00b1\\u20090.009 (0.0001)\\n0.55\\u2009\\u00b1\\u20090.03\\n0.65\\u2009\\u00b1\\u20090.009\\\
+    n0.725\\u2009\\u00b1\\u20090.007\\nDrug\\u2013disease indication (mental health)\\n0.361\\u2009\\u00b1\\u20090.006 (0.0001)\\\
+    n0.312\\u2009\\u00b1\\u20090.005\\n0.35\\u2009\\u00b1\\u20090.009\\n0.49\\u2009\\u00b1\\u20090.006\\nSynthetic lethality,\
+    \ transductive, thr\\u2009=\\u20090.0\\n0.311\\u2009\\u00b1\\u20090.002 (0.001)\\n0.1815\\u2009\\u00b1\\u20090.0005\\\
+    n0.2933\\u2009\\u00b1\\u20090.0009\\n0.4434\\u2009\\u00b1\\u20090.0008\\nSynthetic lethality, transductive, thr\\u2009=\\\
+    u20090.3\\n0.3586\\u2009\\u00b1\\u20090.0002 (0.001)\\n0.2151\\u2009\\u00b1\\u20090.0004\\n0.3388\\u2009\\u00b1\\u20090.0002\\\
+    n0.5094\\u2009\\u00b1\\u20090.0002\\nSynthetic lethality, inductive, thr\\u2009=\\u20090.0\\n0.354\\u2009\\u00b1\\u20090.002\
+    \ (0.002)\\n0.209\\u2009\\u00b1\\u20090.003\\n0.379\\u2009\\u00b1\\u20090.001\\n0.541\\u2009\\u00b1\\u20090.001\\nSynthetic\
+    \ lethality, inductive, thr\\u2009=\\u20090.3\\n0.403\\u2009\\u00b1\\u20090.002 (0.002)\\n0.246\\u2009\\u00b1\\u20090.003\\\
+    n0.4321\\u2009\\u00b1\\u20090.0007\\n0.6083\\u2009\\u00b1\\u20090.0007\\nlncRNA\\u2013target gene pairs\\n0.189\\u2009\\\
+    u00b1\\u20090.002 (0.01)\\n0.095\\u2009\\u00b1\\u20090.003\\n0.204\\u2009\\u00b1\\u20090.003\\n0.383\\u2009\\u00b1\\u20090.003\\\
+    nErrors represent the s.e.m. values across five seeds. Values in brackets correspond to expected MRR for random performance\
+    \ (random MRR) (see \\u2018Model evaluation\\u2019 in Methods).\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    nTo evaluate BRG quality and potential biases in LP, we conducted\\nperturbation experiments. Biological networks, such\
+    \ as PPIs, often\\nexhibit study bias, where well-studied disease-related proteins have\\nhigher node degrees. We first\
+    \ analysed bias toward high-degree nodes,\\na common issue in LP, where models favour well-connected nodes,\\npotentially\
+    \ reducing generalization to low-degree nodes. By computing\\nand visualizing MRR stratified by node degree across all\
+    \ tasks (Fig. 3a),\\nwe find no correlation between performance and query node degree\\nfor three of the four tasks: gene\
+    \ function prediction, SL and lncRNA,\\nsuggesting no bias toward genes, lncRNAs or pathway hubs. However,\\nfor drug\
+    \ repurposing, we observe a weak positive correlation (0.23),\\nindicating a tendency of the model to associate drug indications\
+    \ with\\nwell-characterized drugs or diseases.\\nWe next assessed the impact on BioPathNet performance (meas-\\nured by\
+    \ the MRR) of introducing random noise into the BRG by either\\nadding random edges at varying proportions (10\\u201380%)\
+    \ or removing\\na    MRR stratified by query node degree\\n0.5\\n1.5\\n1.0\\n2.0\\n2.5\\n3.0\\n3.5\\n4.0\\n4.5\\n5.0\\\
+    n5.5\\n6.0\\n6.5\\n7.0\\n7.5\\n8.0\\n8.5\\n9.0\\n1,234\\n1,235\\n1,236\\n1,237\\n1,238\\nlog(node degree)\\nSeed\\nGene\
+    \ function prediction\\ncorr = \\u20130.013 \\u00b1 0.005\\nSynthetic lethality prediction\\ncorr = 0.089 \\u00b1 0.002\\\
+    nlog(node degree)\\n1,234\\n1,235\\n1,236\\n1,237\\n1,238\\nSeed\\nDrug repurposing: cell proliferation\\ncorr = 0.23\
+    \ \\u00b1 0.01\\nlncRNA\\u2013gene target prediction\\ncorr = 0.017 \\u00b1 0.009\\n42\\n908\\n1,234\\n3,407\\n6,688\\\
+    nSeed\\nlog(node degree)\\n14\\n42\\n88\\n314\\n1,618\\n2,011\\nSeed\\nContraindication\\nIndication\\nlog(node degree)\\\
+    nAdding\\nrandom edges\\nRemoving\\nrandom edges\\nRemoving\\ntop five\\nrelations\\nRemoving\\nhigh-degree\\nnodes\\\
+    n0.450\\nNo perturbation\\nAdd 10%\\nAdd 20%\\nAdd 50%\\nAdd 80%\\nRemove 10%\\nRemove 20%\\nRemove 50%\\nRemove 80%\\\
+    nRemove all\\nChemical a\\ufb00ects\\nInteracts with\\nControls state change of\\nIn complex with\\nCatalysis precedes\\\
+    nTop 5%\\nNo perturbation\\nAdd 10%\\nAdd 20%\\nAdd 50%\\nAdd 80%\\nRemove 10%\\nRemove 20%\\nRemove 50%\\nRemove 80%\\\
+    nRemove all\\nDrug\\u2013drug\\nAnatomy protein present\\nProtein\\u2013protein\\nBioprocess protein\\nTop 5%\\nDisease\
+    \ phenotype positive\\nRemoving\\nhigh-degree\\nnodes\\nRelation\\nContraindication\\nIndication\\nAdding\\nrandom\\nedges\\\
+    nRemoving\\nrandom\\nedges\\nRemoving\\ntop five\\nrelations\\nRemoving\\nhigh-degree\\nnodes\\n0.175\\n0.180\\n0.185\\\
+    n0.190\\n0.195\\n0.200\\n0.20\\n0.25\\n0.30\\nAdding\\nrandom\\nedges\\nRemoving\\nrandom\\nedges\\nRemoving\\ntop five\\\
+    nrelations\\nRemoving\\nhigh-degree\\nnodes\\n0..475\\n0.500\\n0.525\\n0.550\\n0.575\\n0\\n0.2\\n0.4\\n0.6\\nb    Perturbation\
+    \ experiments\\nGene function prediction\\nDrug repurposing: cell proliferation\\nSynthetic lethality prediction\\nlncRNA\\\
+    u2013target prediction\\nAdding\\nrandom edges\\nRemoving\\nrandom edges\\nRemoving\\ntop five\\nrelations\\n0\\n0.1\\\
+    n0.2\\n0.3\\n0.4\\n0.5\\n0.6\\n0.7\\n0.8\\n0.9\\n1.0\\nMRR\\n0\\n0.1\\n0.2\\n0.3\\n0.4\\n0.5\\n0.6\\n0.7\\n0.8\\n0.9\\\
+    n1.0\\nMRR\\n0\\n0.1\\n0.2\\n0.3\\n0.4\\n0.5\\n0.6\\n0.7\\n0.8\\n0.9\\n1.0\\nMRR\\n0\\n0.1\\n0.2\\n0.3\\n0.4\\n0.5\\n0.6\\\
+    n0.7\\n0.8\\n0.9\\n1.0\\nMRR\\n0.5\\n1.5\\n1.0\\n2.0\\n2.5\\n3.0\\n3.5\\n4.0\\n4.5\\n5.0\\n5.5\\n6.0\\n6.5\\n7.0\\n7.5\\\
+    n8.0\\n0\\n0.5\\n1.5\\n1.0\\n2.0\\n2.5\\n3.0\\n3.5\\n4.0\\n4.5\\n5.0\\n5.5\\n6.0\\n6.5\\n7.0\\n7.5\\n8.0\\n0\\n0.5\\n1.5\\\
+    n1.0\\n2.0\\n2.5\\n3.0\\n3.5\\n4.0\\n4.5\\n5.0\\n5.5\\n6.0\\n6.5\\n7.0\\n7.5\\n8.0\\n0\\nMRR\\nMRR\\nMRR\\nMRR\\nNo perturbation\\\
+    nAdd 10%\\nAdd 20%\\nAdd 50%\\nAdd 80%\\nRemove 10%\\nRemove 20%\\nRemove 50%\\nRemove 80%\\nRemove all\\nInvolved in\
+    \ biological process\\nPart of cellular component\\nLocated in cellular component\\nParticipates to pathway\\nSynthetic\
+    \ lethality\\nTop 5%\\nEnables molecule function\\nNo perturbation\\nAdd 10%\\nAdd 20%\\nAdd 50%\\nAdd 80%\\nRemove 10%\\\
+    nRemove 20%\\nRemove 50%\\nRemove 80%\\nRemove all\\nInteracts with\\nIn complex with\\nControls state change of\\nControls\
+    \ expression of\\nTop 5%\\nCatalysis precedes\\nFig. 3 | Bias evaluation and edge perturbation. a, MRR on the test set\
+    \ from\\nG1 stratified by query node degree across the four LP tasks, with scatterplots\\nshowing values from five seeds\
+    \ and average Spearman correlation \\u00b1 s.e. b, MRR\\non the test set for the four LP tasks following systematic BRG\
+    \ edge perturbation,\\nincluding progressive random edge addition and edge removal at varying\\npercentages, as well as\
+    \ individual removal of the top five relation types.\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    nedges at varying proportions (10\\u2013100%), as well as removing the top\\n5% highest-degree nodes. In addition, we\
+    \ investigated whether specific\\nrelation types contribute more to performance or whether BioPathNet\\nprimarily benefits\
+    \ from the overall connectivity provided by the BRG.\\nTo test this, we removed the top 5 relation types (based on edge\
+    \ count)\\nfor each task and evaluated performance changes. The results show\\nthat the effects of these perturbations\
+    \ vary by task and depend on the\\nspecific BRG (Fig. 3b). For gene function prediction, adding random\\nedges slightly\
+    \ decreases performance, suggesting BioPathNet\\u2019s robust-\\nness to noise. However, the biggest performance drops\
+    \ occur with\\nprogressive random edge deletions, ultimately reducing performance\\nto levels seen without the BRG (Fig.\
+    \ 3b, top left corner). The impact\\nof removing individual relation types on BioPathNet\\u2019s performance\\nfor gene\
+    \ function prediction varied by relation. Some had a greater\\neffect than others, particularly \\u2018chemical affects\\\
+    u2019 (gene\\u2013chemical\\ncompound interactions), \\u2018interacts with\\u2019 (protein\\u2013protein interac-\\ntions)\
+    \ and \\u2018in complex with\\u2019 (protein complexes). For drug repurpos-\\ning, adding random edges had no significant\
+    \ impact on BioPathNet\\u2019s\\nperformance, while performance degradation was only observed\\nwhen 50\\u201380% of random\
+    \ connections were removed (Fig. 3b, top\\nright corner). Among the top 5 relations, removing individual relation\\ntypes\
+    \ from the PrimeKG BRG had no noticeable effect for drug\\u2013disease\\nindication prediction, except a modest decrease\
+    \ for \\u2018disease phenotype\\npositive\\u2019, indicating whether a disease is linked to the presence of a\\nrelated\
+    \ phenotype. The same relation has an even stronger effect on\\nthe performance of contraindication prediction, together\
+    \ with rela-\\ntion type \\u2018anatomy protein present\\u2019, which specifies the body part or\\ntissue where a gene\
+    \ is expected to be expressed or, conversely, absent.\\nAlthough we cannot exclude the possibility that any other relation\
+    \ type\\nof the 25 remaining relation types from PrimeKG might have a stronger\\neffect on BioPathNet performance, these\
+    \ results suggest that biomedi-\\ncal KGs exhibit redundancy, with certain connection types being more\\ncritical than\
+    \ others for this task.\\nFor the lncRNA\\u2013target prediction task, we observe trends similar\\nto those in gene function\
+    \ prediction, where adding or removing edges\\nleads to modest but consistent performance declines (Fig. 3b, bottom\\\
+    nright corner). In addition, different BRG relation types, such as \\u2018control\\nstate change of\\u2019 and \\u2018controls\
+    \ expression of\\u2019, appear more informative\\ncompared with gene function, pointing to the regulatory relationship\\\
+    nbeing more relevant in the context of lncRNA\\u2013target gene regulation.\\nFinally, across all tasks, we observe a\
+    \ substantial performance\\ndrop when removing the top 5% of high-degree nodes from the BRG.\\nThis aligns with expectations,\
+    \ as predictive paths are more likely to\\ntraverse network hubs. For SL, the BRG, constructed by the authors of\\nKR4SL,\
+    \ includes various gene, pathway and GO relations, along with\\nan additional SL-specific component. Our findings suggest\
+    \ that non-SL\\nrelations in the BRG do not improve performance and may even be\\ndetrimental. Instead, only the additional\
+    \ SL component significantly\\nenhances performance, highlighting the overall low quality of the\\nSynLethDB graph (Fig.\
+    \ 3b, bottom left corner). Overall, our analysis\\nsuggests that the connectivity of the graph, augmented by the BRG,\\\
+    nseems to be more critical for performance, rather than individual rela-\\ntion types. To test this, we computed the average\
+    \ shortest path between\\nhead and tail nodes (as a proxy for connectivity) across all perturba-\\ntion experiments for\
+    \ each LP task. We observed a negative correlation\\nbetween task-specific MRR performance and shortest path length\\\
+    n(\\u22120.15 and \\u22120.31 for drug repurposing, contraindication and indication;\\n\\u22120.06 for gene function;\
+    \ \\u22120.33 for lncRNA\\u2013target prediction; and \\u22120.58\\nfor SL). These findings support our hypothesis that\
+    \ performance drops\\nare primarily driven by disruptions in graph connectivity.\\nComparison with baselines\\nWe compared\
+    \ BioPathNet\\u2019s performance to various baselines, includ-\\ning general LP models applied across all four LP tasks\
+    \ and task-specific\"\n  },\n  {\n    \"name\": \"methods designed for individual LP challenges. We selected\",\n    \"\
+    text\": \"general-purpose baselines to evaluate their ability to handle various\\nbiomedical tasks compared to BioPathNet,\
+    \ which is also designed and\\ntested on different LP tasks. In contrast, task-specific baselines are\\noptimized for\
+    \ a particular task, potentially giving them an advantage\\non that task over more generalized models.\\nBioPathNet vs\
+    \ general GNN-based LP method. We systematically\\ncompared BioPathNet to general LP prediction methods, such as\\nR-GCN,\
+    \ which generates node embeddings on heterogeneous graphs;\\nHGT, a GNN-based framework with node- and edge-type dependent\\\
+    nattention for heterogeneous graphs; and RAGAT, a GAT-based model\\nincorporating node- and edge-type-aware message passing.\
+    \ Finally,\\nwe compared BioPathNet to the original NBFNet across all tasks. To\\nensure fairness, baselines were trained\
+    \ on the full KG (training graph\\nfrom G1+BRG) whenever computationally feasible. For R-GCN, RAGAT\\nand HGT, we also\
+    \ applied the same NTA-based negative sampling as\\nBioPathNet, allowing a direct assessment of node embedding on het-\\\
+    nerogeneous graphs versus path embedding, without confounding\\neffects from differing negative sampling strategies. Hyperparameter\\\
+    ntuning to find the best-performing configuration was done for all\\ngeneral baselines, when possible, to utilize these\
+    \ methods at their best\\n(Extended Methods \\u2018Baseline methods used for comparison\\u2019).\\nFor SL and lncRNA prediction,\
+    \ BioPathNet and NBFNet performed\\nsimilarly across metrics. BioPathNet slightly outperformed other base-\\nlines on\
+    \ SL prediction, while HGT matched its MRR on the lncRNA task\\nbut lagged in Hits@3\\u201310. Interestingly, while BioPathNet\
+    \ and NBFNet\\nremained consistent across tasks, HGT struggled with SL prediction,\\nshowing the lowest performance, whereas\
+    \ RAGAT performed surpris-\\ningly well. Conversely, for lncRNA prediction, HGT was clearly superior\\nto RAGAT. Overall,\
+    \ R-GCN was the weakest performer across all LP tasks.\\nOn the function prediction task, BioPathNet outperformed all\\\
+    nKGE baselines. It achieved a sustantial performance increase, averag-\\ning 42% higher MRR and 24% higher Hits@10 over\
+    \ RAGAT, the weakest\\nbaseline. However, its improvement over HGT, the second-best model,\\nwas modest, with only a 2.2%\
+    \ gain in MRR and 3.2% gain in Hits@10. HGT\\nremained competitive, showing performance close to that of BioPath-\\nNet\
+    \ across all evaluated metrics (MRR and Hits@1,3,10).\\nFor the more challenging drug repurposing task, specifically,\\\
+    nzero-shot disease\\u2013drug prediction, BioPathNet demonstrated a clear\\nadvantage over GNN-based methods such as HGT\
+    \ and R-GCN across\\nall disease splits. Our experiments show that these methods struggle\\nto capture the complexity\
+    \ of the KG, often yielding extremely low\\nperformance, with some metrics approaching random values (Fig. 4a).\\nIn addition,\
+    \ due to the large scale of the drug repurposing graph (~5 mil-\\nlion edges), baselines such as RAGAT and NBFNet were\
+    \ computationally\\ninfeasible, requiring over 48\\u2009h per epoch on GPUs. Since computational\\nefficiency is crucial\
+    \ in practical applications, we analysed the relation-\\nship between model training time (as a proxy for efficiency)\
+    \ and perfor-\\nmance. While it became obvious that node embedding-based methods\\nsuch as R-GCN and HGT are computationally\
+    \ efficient for biomedical\\nLP tasks, compared to path-based methods, even on large graphs, this\\nefficiency comes at\
+    \ the cost of lower performance in most cases (Fig. 4).\\nAlthough NBFNet performed similarly to BioPathNet on smaller\\\
+    ntasks such as lncRNA\\u2013target prediction and SL, its training time was,\\non average, 80 times higher (for example,\
+    \ gene function prediction).\\nA similar trend was observed for RAGAT, which had, on average, the\\nsecond-highest runtime\
+    \ across all baselines. In addition, despite utiliz-\\ning GPU resources, NBFNet was infeasible to run on the drug repurpos-\\\
+    ning task, and RAGAT failed on both drug repurposing and gene function\\nprediction due to memory limitations, with per-epoch\
+    \ training times\\nexceeding 48\\u2009h. Overall, BioPathNet demonstrated a strong balance\\nbetween accuracy and computational\
+    \ efficiency.\\nBioPathNet vs task-specific baselines. Gene function prediction has\\nbeen approached through various\
+    \ paradigms, but only recently have\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    ndeep learning methods framed it as an LP task, assigning biological\\nfunctions to genes via pathway or GO term annotation.\
+    \ To benchmark\\nBioPathNet for this task, we compared it to BIONIC, a proven method\\nfor generating gene embeddings\
+    \ from multiple networks and applying\\nthem to downstream tasks, particularly gene function assignment in\\na semi-supervised\
+    \ setting. We trained and evaluated BIONIC using\\nthe same data split as BioPathNet and optimized its settings for peak\\\
+    nperformance (see Extended Methods). Since BIONIC classifies genes\\na    Comparison against general link prediction baselines\\\
+    nb    Computational resources\\nGeneral LP methods\\nTask-specific methods\\n0\\n0\\n10\\n20\\n30\\n40\\n50\\n10\\n20\\\
+    n30\\n40\\n50\\n60\\n60\\n0.1\\n0.2\\n0.3\\n0.4\\n0.5\\n0\\n0.2\\n0.4\\n0.6\\nTraining time (h)\\nMRR\\nTask\\nGene function\
+    \ prediction\\nSL prediction (thr = 0.0)\\nDrug repurposing (CP)\\nlncRNA\\u2212target prediction\\nModel \\u2014 general\\\
+    nBioPathNet\\nHGT\\nNBFNet\"\n  },\n  {\n    \"name\": \"RAGAT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"R-GCN\"\
+    ,\n    \"text\": \"BioPathNet\\nBioPathNet \\u2014 indication\\nBioPathNet \\u2014 inductive\\nlncBIONIC\\nBIONIC \\u2014\
+    \  gene function\\nModel \\u2014 specific\\nDeepLGP\\nDreamWalk IC\\nDreamWalk OC\"\n  },\n  {\n    \"name\": \"KR4SL\"\
+    ,\n    \"text\": \"KR4SL \\u2014 inductive\\nTxGNN\\nSL prediction (thr = 0.0)\\nSL prediction (thr = 0.3)\\nlncRNA\\\
+    u2212target prediction\\nDrug repurposing (CP)\\nDrug repurposing (CV)\\nDrug repurposing (MH)\\nGene function prediction\\\
+    nDrug repurposing (AG)\\nDrug repurposing (AN)\\nMRR\\nHits@1\\nHits@3\\nHits@10\\n0\\n0.2\\n0.4\\n0.6\\n0\\n0.2\\n0.4\\\
+    n0.1\\n0.2\\n0.3\\n0.4\\n0\\n0.25\\n0.50\\n0.75\\n1.00\\n0\\n0.1\\n0.2\\n0.3\\n0.1\\n0.2\\n0.3\\n0.4\\n0.5\\n0.3\\n0.4\\\
+    n0.5\\n0.6\\n0.7\\n0\\n0.2\\n0.4\\n0.6\\n0.1\\n0.2\\n0.3\\n0.4\\nMetric\\nValue\\nModel \\u2014 general\\nBioPathNet\\\
+    nHGT\\nNBFNet\"\n  },\n  {\n    \"name\": \"RAGAT\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"R-GCN\",\n    \"\
+    text\": \"NA\\n354 h\\n94 h\\n*\\n*\\nMRR\\nHits@1\\nHits@3\\nHits@10\\nMRR\\nHits@1\\nHits@3\\nHits@10\\nFig. 4 | Comparison\
+    \ with general LP baselines across tasks and runtime\\nanalysis. a, BioPathNet benchmarked against R-GCN, HGT, RAGAT and\
+    \ NBFNet\\nacross multiple LP tasks, including gene function prediction, drug repurposing\\n(indications for adrenal gland\
+    \ (AD), anaemia (AN), cell proliferation (CP),\\ncardiovascular (CV) and mental health (MH)), synthetic lethality gene\
+    \ pair\\nprediction (unfiltered, thr\\u2009=\\u20090; filtered, thr\\u2009=\\u20090.3) and lncRNA\\u2013target prediction.\\\
+    nPerformance metrics include MRR and Hits@1, 3, 10 for each task. Individual data\\npoints represent different seeds (N\
+    \ = 5) and are summarized in boxplots, with\\nthe bottom and top edges indicating the 25% and 75% percentiles, the line\
+    \ in the\\nbox representing the median, and whiskers extending to 1.5\\u00d7 the interquartile\\nrange on both sides.\
+    \ b, MRR vs training time (hours) for BioPathNet compared to\\ngeneral LP methods across all four tasks (left) and task-specific\
+    \ baselines (right).\\nThe circles highlight BioPathNet, and the asterisk indicates that, for the lncRNA\\ninteraction\
+    \ task, the KG made from the node intersection between DeepLGP and\\nBioPathNet was used to ensure a fair comparison.\\\
+    n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\ninto functional categories,\
+    \ we assessed both models on forward rela-\\ntions (gene-to-function) and the bidirectional setting used in BioPath-\\\
+    nNet. While BIONIC trained much faster (0.04\\u2009min per epoch, Fig. 4b,\\nright panel), BioPathNet consistently outperformed\
+    \ it across all met-\\nrics (Fig. 5a).\\nWe benchmarked BioPathNet on drug repurposing, predicting\\ndrug\\u2013disease\
+    \ indications and contraindications in a zero-shot setting,\\nagainst two state-of-the-art models, DREAMwalk and TxGNN.\
+    \ DREAM-\\nwalk is a deep learning framework that predicts drug\\u2013disease indica-\\ntions by integrating associations\
+    \ through a random walk algorithm to\\nidentify therapeutic connections42. TxGNN54 is a state-of-the-art graph\\nneural\
+    \ network model designed to predict drug\\u2013disease relation-\\nships in zero-shot scenarios, which builds embeddings\
+    \ of nodes and\\nrelations from PrimeKG (Supplementary Fig. 1a)53. As the hierarchical\\ngraph used in DREAMwalk was unavailable,\
+    \ we reconstructed it via\\ntwo methods (see Methods), resulting in two versions: DREAMwalk_IC\\n(inferred connections\
+    \ via semantic similarity) and DREAMwalk_OC\\n(importing original PrimeKG connections). Following TxGNN\\u2019s data\\\
+    nsplit54 (commit \\u20181000aac\\u2019), we evaluated BioPathNet, DREAMwalk\\nand TxGNN on five zero-shot disease areas:\
+    \ adrenal gland, anaemia,\\ncardiovascular, cell proliferation and mental health. For each split, we\\nassessed performance\
+    \ in predicting ground-truth drugs for \\u2018indica-\\ntion\\u2019 and \\u2018contraindication\\u2019 relations, ranking\
+    \ drugs (tail nodes) on\\nthe basis of their probability p(drug\\u2223disease, relation), for all three\"\n  },\n  {\n\
+    \    \"name\": \"methods. BioPathNet outperformed DREAMwalk across all tasks and\",\n    \"text\": \"achieved higher area\
+    \ under the precision-recall curve (AUPRC) value\\nthan TxGNN in two of five disease areas for contraindications and all\\\
+    nfive for indications (Supplementary Fig. 1b). The performance differ-\\nence, \\u0394 (Fig. 5b), calculated as BioPathNet\\\
+    u2019s AUPRC minus TxGNN\\u2019s, was\\npositive for indications (5.9\\u201322.6 percentage points). For contraindica-\\\
+    ntions, TxGNN performed better in adrenal gland, cardiovascular and\\nmental health with \\u0394 values of \\u22124.6,\
+    \ \\u22120.2 and \\u22122.0 percentage points,\\nForward\\n0\\n0.2\\n0.4\\n0.6\\nMetric value\\nMetric value\\nMetric\
+    \ value\\n0.8\\nForward + reverse\\n0\\n0.2\\n0.4\\n0.6\\n0.8\\nForward\\nForward + reverse\\nBioPathNet\"\n  },\n  {\n\
+    \    \"name\": \"BIONIC\",\n    \"text\": \"Model\\nHits@k\\n0\\n0.25\\n0.50\\n0.75\\n1.00\\na    Gene function prediction\\\
+    nHits@k\\nc    Drug repurposing: cell proliferation\\nIndication\\n0\\n0.2\\n0.4\\n0.6\\n0\\n0.2\\n0.4\\n0.6\\nContraindication\\\
+    nModel\\nContraindication\\nIndication\\nBioPathNet\\nTxGNN\\nDreamwalkIC\\nDreamwalkOC\\n0\\n0.25\\n0.50\\n0.75\\n1.00\\\
+    nd    Synthetic lethality prediction\\nUnthresholded Thresholded\\nModel\\nBioPathNet\"\n  },\n  {\n    \"name\": \"KR4SL\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"NDCG\",\n    \"text\": \"Precision\\nRecall\"\n  },\n  {\n    \"name\"\
+    : \"NDCG\",\n    \"text\": \"Precision\\nRecall\\n\\u22120.01\\n0.01\\n0.03\\n0.05\\n\\u22120.01\\n0.03\\n0.07\\n0.11\\\
+    nDifference in metric\\nMetric@k\\nk = 10\\nk = 20\\nk = 50\\nTransductive\\nInductive\\nTransductive\\nInductive\\nTransductive\\\
+    nInductive\\n0.26\\n0.28\\n0.30\\n0.32\\n0.34\\n0.36\\n0.38\\n0.40\\nMRR\\nBioPathNet is better\\nBioPathNet is better\\\
+    ne    lncRNA\\u2013target prediction\\nComplete\\nIntersection\\n0\\n10\\n20 30 40 50\\n0\\n0.25\\n0.50\\n0.75\\n1.00\\\
+    nk\\nBioPathNet\\nlncBIONIC\\nDeepLGP\\nModel\\nHits@k\\nComplete\\n0\\n0.05\\n0.10\\n0.15\\n0.20\\nIntersection\\n0.1\\\
+    n0.2\\n0.3\\n0.4\\n0.5\\nMRR\\nMRR\"\n  },\n  {\n    \"name\": \"AUPRC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"AUPRC\",\n    \"text\": \"F1\\nF1\\nb    Drug repurposing: all splits\\nMRR\\nMRR\"\n  },\n  {\n    \"name\": \"AUPRC\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"AUPRC\",\n    \"text\": \"F1\\nF1\\nMRR\\nMRR\"\n  },\n  {\n    \"name\"\
+    : \"AUPRC\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"AUPRC\",\n    \"text\": \"F1\\nF1\\n0\\n10\\n20 30 40 50\\\
+    n0\\n10\\n20 30 40 50\\nk\\n0\\n10\\n20 30 40 50\\n0\\n10\\n20 30 40 50\\nk\\n0\\n10\\n20 30 40 50\\nDisease\\narea\\\
+    nAdrenal gland\\nAnaemia\\nCardiovascular\\nCell proliferation\\nMental health\\nContraindication\\nIndication\\n0\\n0.1\\\
+    n0.2\\n0.3\\n\\u20130.2\\n\\u20130.1\\n0\\n0.1\\nDifference in AUPRC\\nBioPathNet is better\\nTxGNN is better\\nBioPathNet\
+    \ is better\\nFig. 5 | Benchmarking BioPathNet against task-specific baselines.\\na, Performance comparison between BioPathNet\
+    \ and BIONIC for gene function\\nprediction, reported as MRR, AUPRC and F1 (left), and Recall@k (right),\\nevaluated on\
+    \ both forward and forward+reverse edges. b, Difference in AUPRC\\nvalues between BioPathNet and TxGNN across disease\
+    \ area splits (adrenal gland,\\nanaemia, cardiovascular, cell proliferation, mental health). c, Drug repurposing\\nperformance\
+    \ comparison between BioPathNet, DREAMwalk_IC (inferred\\nconnections) and DREAMwalk_OC (original connections), reported\
+    \ as MRR,\\nAUPRC and F1 (left), and Recall@k (right), evaluated on both indication and\\ncontraindication edges. d, Top:\
+    \ performance differences between BioPathNet\\nand KR4SL in both transductive and inductive settings, evaluated on unfiltered\\\
+    n(thr = 0, left panels) and filtered (thr = 0.3, right panels) data for NDCG, precision\\nand recall at different k values.\
+    \ Bottom: MRR comparison between BioPathNet\\nand KR4SL in both transductive and inductive settings. e, Performance\\\
+    ncomparison of BioPathNet with lncBIONIC and DeepLGP for lncRNA\\u2013target\\nprediction, reported as MRR, AUPRC and\
+    \ F1 (left), and Recall@k (right). In all\\nplots, individual data points (corresponding to different seeds, N = 5) are\
+    \ shown.\\nBox bounds are defined in Fig. 4. Bar plots display the mean, with error bars\\nrepresenting the standard deviation.\\\
+    n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nrespectively. Aggregating AUPRC\
+    \ across indications and contrain-\\ndications, BioPathNet surpassed DREAMwalk by 61% and TxGNN by\\n20.2% on average\
+    \ (Supplementary Table 11). Despite being the least\\nperformant model, DREAMwalk remains notable for its efficiency,\\\
+    nsignificantly outperforming random predictions while requiring mini-\\nmal training time, making it a viable option for\
+    \ practical applications\\n(Fig. 4b, right panel) A detailed breakdown of BioPathNet, DREAMwalk\\nand TxGNN in terms of\
+    \ MRR, AUPRC, F1 and Recall@k for the cell\\nproliferation disease area split is illustrated in Fig. 5c. BioPathNet\\\
+    noutperformed DREAMwalk across all metrics and exceeded TxGNN\\nin indication prediction for cell proliferation. This\
+    \ trend was consist-\\nent across all disease splits, with BioPathNet demonstrating a more\\nsubstantial performance gain\
+    \ in indication prediction compared\\nwith contraindication (Fig. 5b and Supplementary Table 11). In the\\ncell proliferation\
+    \ split, 178 diseases had known indications, with an\\naverage of 5.58 indications per disease. For 60 out of 178 diseases,\\\
+    nall known treatments were prioritized within the top 10 predictions\\nsampled from a list of 7,000 drug candidates. Recall@k\
+    \ quantifies the\\nproportion of ground-truth items found within the top-k predictions.\\nFor instance, at k = 20, the\
+    \ recall for indication across all diseases was\\n0.619 for BioPathNet, meaning that 61.9% of the ground-truth drugs\\\
+    nwere found within the top 20 predictions. In contrast, Recall@20 for\\nTxGNN was 0.539 and 0.259 for DREAMwalk.\\nFor\
+    \ the SL task, we benchmarked BioPathNet in both transductive\\nand inductive settings against KR4SL55, a state-of-the-art\
+    \ GNN-based\\nmethod that leverages path-representation learning to predict and\\nexplain SL gene pairs (Extended Methods).\
+    \ We tested thresholds from 0\\nto 0.8 (in 0.1 increments) from SythLethDB, corresponding to increas-\\ning confidence\
+    \ scores on reported SL interactions, to assess their\\nimpact on BioPathNet and KR4SL (Supplementary Fig. 2b). However,\\\
+    nour primary evaluation focused on thresholded data (SL confidence\\nscore >0.3, to balance data quality and performance)\
+    \ and unthres-\\nholded data, which corresponds to the original KR4SL dataset with\\nunfiltered interactions. BioPathNet\
+    \ outperformed KR4SL in MRR\\nacross both transductive and inductive settings, as well as for both\\nthresholded and unthresholded\
+    \ data (Fig. 5d), while having a con-\\nsiderably lower training time compared with KR4SL (Fig. 4b). While\\ngains in\
+    \ NDCG@k, Precision@k and Recall@10-20-50 were modest\\n(Fig. 5d, and Supplementary Tables 4, 5, 13 and 14), they remained\\\
+    nconsistently positive.\\nDespite the availability of databases on RNA interactions, global\"\n  },\n  {\n    \"name\"\
+    : \"methods for predicting lncRNA\\u2013target interactions remain limited,\",\n    \"text\": \"with most focusing on\
+    \ specific interaction types. BioPathNet addresses\\na broader challenge: prioritizing lncRNA\\u2013target interactions\
+    \ (physical,\\nregulatory, direct and indirect) using LP. Among recent deep learning\\nframeworks, we selected DeepLGP65\
+    \ for benchmarking due to its supe-\\nrior performance in lncRNA\\u2013target classification. DeepLGP integrates\\ngenomic\
+    \ location, expression and miRNA interactions to construct a\\ngene interaction network. It employs a GCN encoder to extract\
+    \ fea-\\ntures, which are combined with original lncRNA and gene features\\nand processed by a convolutional neural network\
+    \ classifier. Trained\\non LncRNA2Target v.2.0, DeepLGP utilizes additional public datasets\\nfor feature computation.\
+    \ Since BioPathNet and DeepLGP use differ-\\nent datasets, each model was trained separately but evaluated on a\\nshared\
+    \ test set. In addition, we adapted BIONIC, originally designed for\\ngene function prediction, for lncRNA\\u2013target\
+    \ prediction (lncBIONIC).\\nBioPathNet was benchmarked against lncBIONIC, following the same\\ntraining procedure and\
+    \ evaluating both forward and forward+reverse\\ninteractions (see \\u2018Comparison with baselines\\u2019 in Extended\
+    \ Methods).\\nlncBIONIC achieved a test set MRR of just 0.04, significantly lower than\\nBioPathNet\\u2019s 0.19, and\
+    \ performed worse across all metrics (Fig. 5e).\\nHowever, it still demonstrated some predictive capability despite\\\
+    nnot being designed for this task. DeepLGP, while achieving a lower\\nMRR than BioPathNet (0.25 vs 0.33 on the intersection\
+    \ test set), nearly\\nmatched BIONIC in Hits@k and outperformed it in AUPRC and F1 score\\n(Fig. 5e). Overall, task-specific\
+    \ baselines performed better for their\\nintended tasks than general LP methods, even when compared with\\nmore general\
+    \ complex models.\\nBioPathNet\\u2019s interpretability and human-curated evaluation\\nOne key advantage of NBFNet is\
+    \ its ability to provide interpretable\\npredictions through paths, which are crucial for understanding the\\nrationale\
+    \ behind specific predictions. Intuitively, these interpreta-\\ntions should highlight paths that influence the prediction\
+    \ the most. In\\nBioPathNet, this follows the NBFNet framework (see Methods), where\\nthe top-k path interpretations for\
+    \ a prediction are formally defined\\nas the first derivative (gradient of the prediction) with respect to\\neach path\
+    \ between a head and a tail node. We present below a general\\noverview and quantitative evaluation of the most important\
+    \ nodes\\nand node types in top explanation paths across the different LP tasks,\\naimed at assessing the biological plausibility\
+    \ of the model\\u2019s outputs.\\nIn addition, we provide several interpretability examples, each illus-\\ntrating how\
+    \ BioPathNet\\u2019s top-ranked paths for a given triplet can be\\nnaturally understood.\\nGlobal explanation analysis.\
+    \ We conducted a global analysis of the\\nkey node types driving top predictions for a specific LP task. For each\\npredicted\
+    \ triplet, we selected the top 50 test-set predictions consist-\\nently recovered in at least 3 out of 5 random seeds,\
+    \ ensuring robustness\\nbefore extracting explanations. For each, we identified the top 10 most\\ninfluential explanation\
+    \ paths (see Methods), then summarized the\\nmost frequent node types across these paths (Supplementary Fig. 3),\\nhighlighting\
+    \ the 5 most commonly traversed nodes within each type.\\nThis analysis was performed for all 5 disease-specific drug\
+    \ indication\\ntasks and synthetic lethality prediction. We excluded aggregation for\\ntasks involving general cellular\
+    \ processes (for example, gene or lncRNA\\nfunction prediction), where the broader functional diversity made such\\nsummaries\
+    \ less informative.\\nOur results show that node types such as \\u2018drug\\u2019 and \\u2018disease\\u2019 from\\nPrimeKG\
+    \ most strongly explain disease\\u2013drug indications, followed\\nby \\u2018gene\\u2019 and \\u2018phenotype\\u2019 node\
+    \ types (Supplementary Fig. 3). From a\\nqualitative assessment, the most frequent nodes along explanation\\npaths align\
+    \ well with the prediction tasks. For example, in the cell pro-\\nliferation disease split, top disease nodes relate to\
+    \ cancer subtypes or\\nprocesses such as somatic mutations and uncontrolled growth, while\\ntop drug nodes such as tetramin,\
+    \ rucaparib and altretamine are chemo-\\ntherapeutics used in oncology, suggesting that the model repurposes\\nexisting\
+    \ cancer drugs plausibly. In the mental health task, top-ranked\\nnodes include antipsychotic drugs and central nervous\
+    \ system-related\\ngenes (for example, HTR1D, HTR1F, HDAC6) associated with depression,\\nanxiety and neurological disorders66,67.\
+    \ While less dominant than \\u2018dis-\\nease\\u2019 and \\u2018drug\\u2019 nodes, \\u2018phenotype\\u2019 and \\u2018anatomy\\\
+    u2019 types play a notable\\nrole, especially in mental health (where drugs often treat symptoms\\nsuch as seizures) and\
+    \ anaemia (where liver-related phenotypes are\\ncommon), as shown in Supplementary Fig. 3.\\nConsistent with perturbation\
+    \ experiments on synthetic lethality\\nprediction, gene\\u2013gene interactions, and thus the \\u2018gene\\u2019 node\
+    \ type, are\\nthe primary drivers of BioPathNet\\u2019s predictions, with much smaller\\ncontributions from \\u2018cellular\
+    \ component (CC)\\u2019, \\u2018molecular function\\n(MF)\\u2019, \\u2018biological process (BP)\\u2019 and \\u2018pathway\\\
+    u2019. Despite their lower overall\\ninfluence, the most frequently traversed nodes are highly relevant to\\ncancer. Notably,\
+    \ proto-oncogenes KRAS, NRAS and HRAS\\u2014key members\\nof the RAS family and frequently mutated in cancer\\u2014are\
+    \ among the top\\ncontributors. Other influential nodes include the plasma membrane,\\ncrucial for cancer cell homeostasis,\
+    \ and signalling pathways such as the\\nRAS/BRAF cascade, which are central to tumour progression.\\nTo more quantitatively\
+    \ compare our explanations with established\\nbiomedical knowledge, we conducted overrepresentation analysis on\\nthe\
+    \ most influential genes\\u2014those most frequently appearing in the top\\n10 explanation paths (as described above).\
+    \ Specifically, we analysed\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    nDisGeNET terms, including human diseases, symptoms and associated\\nmolecular mechanisms from the literature, for four\
+    \ disease splits from\\nthe drug repurposing task, and KEGG pathways for the synthetic lethal-\\nity and cell proliferation\
+    \ tasks, the latter to enable a better comparison\\nwith known cancer pathways. Results, shown in Supplementary Fig. 4,\\\
+    nhighlight the top 10 enriched (adjusted P < 0.01 from Fisher\\u2019s exact\\ntest, Benjamini\\u2013Hochberg correction)\
+    \ and least enriched terms (as\\ncontrols). We observe strong concordance between our explanation\\nnodes and established\
+    \ knowledge: for example, statistically significant\\nterms align with known KEGG cancer pathways in the synthetic lethality\\\
+    nand cell proliferation tasks. DisGeNET analysis further supports the\\nbiological relevance of our explanations: genes\
+    \ from top explanation\\npaths are highly enriched for disease-relevant terms. In the cardio-\\nvascular diseases split,\
+    \ enriched terms include \\u2018hypertensive disease\\u2019,\\n\\u2018atherosclerosis\\u2019, \\u2018coronary heart disease\\\
+    u2019, \\u2018myocardial infarction\\u2019 and\\n\\u2018hypertension\\u2019. Similar patterns emerge for mental health,\
+    \ adrenal\\ngland and anaemia, reinforcing the plausibility and domain alignment\\nof the model\\u2019s explanations.\\\
+    nCase study 1: interpreting disease\\u2013drug indication predictions for\\nALL. As a first example, in the context of\
+    \ the drug repurposing task,\\nwe closely examined individual disease predictions within the cell\\nproliferation split,\
+    \ focusing on drug associations for ALL, a complex\\ncancer characterized by the abnormal proliferation of lymphoid cells\\\
+    nin the blood and bone marrow, leading to impaired immune func-\\ntion68. BioPathNet correctly ranked the only known contraindication,\\\
+    nAprostadil, at rank 1 with a probability score of 0.73 and placed all 21\\nknown indications within the top 34 predictions\
+    \ (Fig. 6a). Among the\\nhighest-ranked known treatments (in orange) were clofarabine, tenipo-\\nside and methotrexate,\
+    \ while the top-ranked unknown treatments (in\\nblue) included dasatinib and bosutinib (Fig. 6a, left). Dasatinib, ranked\\\
+    nwith a probability score of 0.724, is absent in PrimeKG but is already\\nused for Philadelphia chromosome-positive ALL\
+    \ (Ph+ ALL). Bosutinib,\\npredicted for ALL with a probability score of 0.721, was further analysed\\nthrough path visualization\
+    \ to explain its ranking.\\nWhile BioPathNet uses all paths from source to target node for the\\nprediction, the visualization\
+    \ highlights the ten most important paths\\nranked by gradient in an ad hoc pseudo-linear explanation, with edge\\nwidth\
+    \ indicating recurrence across these paths. The most important\\npath, marked in red, links bosutinib to ALL through key\
+    \ disease genes\\nAICDA and DUX4 (refs. 69\\u201371). This path traverses \\u2018Ph+ ALL\\u2019, \\u2018chronic\\nmyelogenous\
+    \ leukaemia\\u2019, \\u2018BCR-ABL1 positive\\u2019 and the gene BCR, before\\nconnecting to \\u2018bosutinib\\u2019 via\
+    \ the \\u2018drug protein\\u2019 relation (Fig. 6d, right).\\nOriginally approved for chronic myeloid leukaemia in 201272,73,\
+    \ bosu-\\ntinib is now being investigated for ALL74.\\nCase study 2: hypothesis generation for treatment of gastric can-\\\
+    ncer. To demonstrate BioPathNet\\u2019s ability to generate hypotheses for\\nlab testing and evaluation, we investigated\
+    \ gastric cancer. Similar\\nto ALL, both known contraindications and indications were ranked\\nhighly (all 5 contraindications\
+    \ in the top 6, and 5 out of 6 indications in\\nthe top 5) (Fig. 6b, left). One previously undiscovered drug predicted\\\
+    nfor gastric cancer treatment was acitretin, an oral retinoid similar to\\nVitamin A, indicated for skin diseases such\
+    \ as psoriasis73. Although\\nuntested for gastric cancer, acitretin has been considered in combina-\\ntion with clarithromycin\
+    \ for cutaneous squamous cell carcinoma due\\nto its apoptosis-inducing properties75,76. Interestingly, all paths from\\\
+    ngastric cancer to acitretin in the interpretability plot pass through\\nRBP1 (retinol-binding protein 1), annotated with\
+    \ the \\u2018retinoic acid\\nbiosynthesis process\\u2019 (Fig. 6b, right). Recent studies suggest this path-\\nway\\u2019s\
+    \ involvement in gastric cancer treatment and provide pre-clinical\\nevidence supporting the use of all-trans retinoic\
+    \ acid (ATRA)77,78. By\\nvisualizing important paths between drugs and diseases, researchers\\ncan verify the predictions\\\
+    u2019 plausibility and generate hypotheses for\\nfurther laboratory validation.\\nCase study 3: predicting drug indications\
+    \ for AD. For the final experi-\\nment in the drug repurposing task, we aimed to investigate a disease\\nnot analysed\
+    \ by TxGNN to evaluate how well BioPathNet generalizes to\\nanother case study. Here we examined the indication predictions\
+    \ for\\nAlzheimer\\u2019s disease together with medical experts. AD is a neurode-\\ngenerative disorder characterized\
+    \ by extracellular amyloid beta and\\nintracellular tau protein accumulation in the brain. While AMYLOID and\\nTAU proteins\
+    \ are central to AD, the exact mechanisms remain unclear.\\nEmerging evidence suggests that additional pathways, such\
+    \ as immu-\\nnoinflammation and bioenergetic dysregulation, may offer promising\\ntherapeutic targets79\\u201381. Presently,\
+    \ US Food and Drug Administration\\n(FDA)-approved treatments include only two disease-modifying and\\nfive symptomatic\
+    \ treatments, none of which provide a cure for AD.\\nTo explore the potential of BioPathNet for such complex and hetero-\\\
+    ngeneous diseases, we trained BioPathNet on a data split tailored for\\nzero-shot prediction on a custom-defined Alzheimer\\\
+    u2019s disease area\\nsplit. Here we followed the disease evaluation code as provided by\\nTxGNN to exclude all treatments\
+    \ for Alzheimer\\u2019s, as well as closely\\nrelated diseases (for example, dementia) (Supplementary Table 15). We\\\
+    nthen evaluated the top 20 predictions for indications and contraindica-\\ntions for Alzheimer\\u2019s disease.\\nAmong\
+    \ the top 14 predictions, BioPathNet successfully retrieved\\n7 out of 8 drugs classified as known treatments in PrimeKG,\
+    \ including\\n4 out of 7 FDA-approved AD treatments (Fig. 6c). It also identified\\nepicriptine, a nootropic with an unknown\
+    \ mode of action, and ace-\\ntylcarnitine, involved in \\u03b2-oxidation of fatty acids82. Known AD drugs\\nwith low probability\
+    \ scores included pramiracetam (ranked 344),\\nmemantine (ranked 412), lecanemab (ranked 2,250) and aducanumab\\n(ranked\
+    \ 2,216)83\\u201386. Notably, two drugs in clinical trials, nicotine (Phase\\nII trial for cognition; NCT02720445) and\
+    \ bupropion (Phase III trials for\\nagitation in AD; NCT05557409, NCT04947553)87, were among the top\\n20 newly predicted\
+    \ indications. These predictions were linked to BDNF,\\na gene crucial for synaptic maintenance and plasticity88, with\
+    \ both\\ndrugs shown to elevate BDNF protein levels89,90. In addition, everoli-\\nmus, a selective mTOR inhibitor, was\
+    \ predicted with high probability.\\nRapamycin and its analogue everolimus are being evaluated for AD\\ntreatment91,92,\
+    \ with everolimus offering favourable pharmacokinet-\\nics93. Therefore, everolimus may present an additional candidate\
+    \ for\\ntargeting the hyperactivated mTOR pathway in AD.\\nAdditional examples. Supplementary Figs. 5\\u20137 provide\
+    \ additional\\nexamples of BioPathNet\\u2019s predictions and their biological interpreta-\\ntion in gene function prediction,\
+    \ SL pairs and lncRNA\\u2013target target\\nprediction. For instance, the association between CRY1 and the \\u2018circa-\\\
+    ndian rhythm\\u2019 pathway is explained by the key path highlighted in red:\\nCRY1 protein in complex with \\u2192 PER3\
+    \ interacts with \\u2192 ARNTL\\nfunction of \\u2192 \\u2018Circadian rhythm\\u2019 (Supplementary Fig. 5). This path\
+    \ is\\nbiologically meaningful, as it captures the well-established mechanism\\nby which the essential transcription factors\
+    \ ARNTL and CLOCK regulate\\ncircadian rhythm. They upregulate PER3 and CRY2 gene expression94,95,\\nwhich then form heterodimers\
+    \ to repress their own transcription,\\nestablishing a negative feedback loop96,97.\\nIn SL prediction, two notable examples\
+    \ involve putative SL gene\\npairs consistently identified across model runs (seeds) with an aver-\\nage MRR of 0.75.\
+    \ The first pair, EYA4 and MUS81, connects transcrip-\\ntion, eye development and DNA repair with a key DNA repair enzyme\\\
+    n(MUS81). BioPathNet ranks MUS81 as EYA4 genes as the seventh strong-\\nest SL partner (Supplementary Fig. 6c), revealing\
+    \ an explanation sub-\\ngraph with multiple paths through shared processes such as DNA\\nrepair, supporting their SL relationship\
+    \ (Supplementary Fig. 6a). The\\nsecond gene pair, POLB and BRCA1, involves POLB, a base-excision\\nrepair polymerase\
+    \ linked to Werner syndrome and oesophageal can-\\ncer. BioPathNet consistently ranks BRCA1 among POLB\\u2019s top 20\
+    \ SL\\ngene partners (Supplementary Fig. 6d). The explanation subgraph\\n(Supplementary Fig. 6b) highlights the top 10\
+    \ paths between POLB and\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nDrug\\\
+    nprotein\\nDisease\\nprotein\\nDisease\\nphenotype\\nDisease\\nphenotype\\nChronic myelogenous leukaemia, BCR-ABL1 positive\\\
+    nAsparaginase E. chrysanthemi\\nCytarabine\\nMercaptopurine\\nMethylprednisolone\\nPegaspargase\\nNelarabine\\nDaunorubicin\\\
+    nPrednisone\\nDexamethasone\\nImatinib\\nPrednisolone\\nAsparaginase E. coli\\nDoxorubicin\\nBetamethasone\\nVindesine\\\
+    nMethotrexate\\nBosutinib\\nTeniposide\\nClofarabine\\nDasatinib\\n0\\n0.2 0.4 0.6\\nProbability\\nDrugs\\nIndication\\\
+    na    Top drug predictions for ALL\\nBCR\\nDisease\\nprotein\\nDrug\\nprotein\\nBioprocess\\nprotein\\nb    Top drug predictions\
+    \ for gastric cancer\\nOrphenadrine\\nPhenylephrine\\nMeprobamate\\nAsenapine\\nBethanechol\\nPravastatin\\nChlorpheniramine\\\
+    nHydrocodone\\nDipyridamole\\nCodeine\\nTrolnitrate\\nCarisoprodol\\nDextropropoxyphene\\nTranexamic acid\\nCa\\ufb00eine\\\
+    nOxycodone\\nMethoxsalen\\nAripiprazole\\nPhenobarbital\\nSuccinylcholine\\nDrugs\\nContraindication\\nAripiprazole\\\
+    nHydroxychloroquine\\nBenzylpenicillin\\nAlprostadil\\nIndomethacin\\nSulfadiazine\\nAcetylcarnitine\\nEverolimus\\nDeutetrabenazine\\\
+    nUridine triacetate\\nEpicriptine\\nBupropion\\nAmantadine\\nNicotine\\nTetrabenazine\\nGalantamine\\nRivastigmine\\nTacrine\\\
+    nDonepezil\\nIpidacrine\\nProbability\\nIndication\\nc    Top drug predictions for Alzheimer\\u2019s disease\\nindication\\\
+    nDisease\\nprotein\\nExposure\\ndisease\\nd    Tacrine for Alzheimer\\u2019s\\ne    Nicotine for Alzheimer\\u2019s\\nDrugs\\\
+    nIndication\\nOxetacaine\\nBamipine\\nXylitol\\nPadeliporfin\\nTezacitabine\\nCidofovir\\nArtenimol\\nUlimorelin\\nPotassium\
+    \ nitrate\\nVitamin A\\nFloxuridine\\nTopiramate\\nAcitretin\\nUrelumab\\nPramiracetam\\nDocetaxel\\nCapecitabine\\nTegafur\\\
+    nFluorouracil\\nOteracil\\nAlzheimer\\u2019s  disease without neurofibrillary tangles\\nAlzheimer\\u2019s  disease\"\n\
+    \  },\n  {\n    \"name\": \"MS4A4A\",\n    \"text\": \"Senile plaques\\nCreutzfeldt-Jakob\\u2019s\"\n  },\n  {\n    \"\
+    name\": \"ENO1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SNAR-I\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"HLA-DRB5\",\n    \"text\": \"Tacrine\\nCerebellar degeneration\"\n  },\n  {\n    \"name\": \"VSNL1\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"UNC5C\",\n    \"text\": \"Nicotine\\nNicotine dependence\\nDisease\\nprotein\\nInherited\
+    \ disease susceptibility\"\n  },\n  {\n    \"name\": \"BDNF\",\n    \"text\": \"Alzheimer\\u2019s  disease\\nSilicon dioxide\\\
+    nAlzheimer\\u2019s  disease, susceptibility to, mitocondrial\"\n  },\n  {\n    \"name\": \"CHRNB2\",\n    \"text\": \"\
+    Particulate matter\"\n  },\n  {\n    \"name\": \"B ALL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"DUX4\",\n  \
+    \  \"text\": \"ALL (disease)\\nPrecursor lymphoblastic lymphoma/leukaemia\\nAcute biphenotypic leukaemia\\nAcute leukaemia\
+    \ (disease)\\nPrecursor T cell ALL\"\n  },\n  {\n    \"name\": \"AICDA\",\n    \"text\": \"Ph-positive ALL\\nBosutinib\\\
+    nRetinoic acid biosynthetic process\\nAcitretin\"\n  },\n  {\n    \"name\": \"HIKESHI\",\n    \"text\": \"\"\n  },\n \
+    \ {\n    \"name\": \"RBP1\",\n    \"text\": \"Stomach\\nColon\"\n  },\n  {\n    \"name\": \"ING1\",\n    \"text\": \"\
+    Gastric carcinoma\\nGastic cancer\"\n  },\n  {\n    \"name\": \"CCAT1\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"SPZ1\",\n    \"text\": \"Increased level of L-fucose in urine\\nTreatment\\nKnown\\nUnknown\\nTreatment\\nKnown\\\
+    nUnknown\\nTreatment\\nKnown\\nUnknown\\nDrug\\nAnatomy\\nDisease\\nExposure\\nGenes\\nPhenotype\\nDrug\\nAnatomy\\nDisease\\\
+    nExposure\\nGenes\\nPhenotype\\nDrug\\nDisease\\nExposure\\nGenes\\nPhenotype\\n0\\n0.2\\n0.4\\n0.6\\nProbability\\n0\\\
+    n0\\n0.2\\n0.4\\n0.2\\n0.4\\n0.6\\n0.6\\nProbability\\nFig. 6 | BioPathNet uncovers drug\\u2013disease indications and\
+    \ molecular\\nmechanisms. a,b, ALL (a) and gastric cancer (b) in the cell proliferation domain.\\nLeft: predicted drug\
+    \ indications ranked by BioPathNet probability (orange,\\nknown; light blue, newly predicted). Right: gradient-based path\
+    \ importance for\\nbosutinib in ALL (a) and acitretin in gastric cancer (b), showing the top ten most\\nimportant paths\
+    \ (edge width\\u2009=\\u2009weight defined as the number of paths that pass\\nthrough this edge, highest-weight path in\
+    \ red). c, Top 20 contraindications and\\nindications for Alzheimer\\u2019s disease, ranked by BioPathNet probability\
+    \ (orange,\\nknown treatments in PrimeKG; light blue, newly predicted). d,e, Path importance\\nvisualizations for tacrine\
+    \ (d, known) and nicotine (e, newly predicted), showing\\nthe top ten most important paths (edge width\\u2009=\\u2009weight\
+    \ defined as the number of\\npaths that pass through this edge, highest-weight path in red).\\n\\nNature Biomedical Engineering\\\
+    nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nBRCA1, emphasizing shared biological processes such as DNA repair,\\\
+    nreplication, cellular homeostasis and apoptotic signalling, relevant\\nto SL in cancer.\\nFor the lncRNA\\u2013target\
+    \ prediction task, we analysed PVT1, a\\nMYC regulator frequently overexpressed in cancers and critical for\\ntumour progression.\
+    \ The top 5 novel predictions are reported in\"\n  },\n  {\n    \"name\": \"Supplementary Fig. 7a,b, together with the\
+    \ top 10 most relevant paths,\",\n    \"text\": \"ranked by gradient (Supplementary Fig. 7c\\u2013g). BioPathNet inferred\\\
+    nrelationships for all 5 predictions through bipartite graphs, with PVT1\\nand other lncRNAs clustering separately from\
+    \ target and co-regulated\\ngenes, reflecting the biological principle that genes in the same regula-\\ntory network share\
+    \ common factors.\\nLiterature supports PVT1\\u2019s involvement in cervical cancer via\\nEZH2-mediated repression of\
+    \ MIR200B98 and its potential role in\\nmelanoma through MIR200C99. PVT1\\u2013EZH2 regulation appears in\\nall 5 predictions\
+    \ (Supplementary Fig. 7c\\u2013g), highlighting EZH2 pro-\\ntein\\u2019s role in PVT1 regulation across cancers such as\
+    \ gastric, thyroid,\\nglioma and hepatocellular carcinoma. BioPathNet also predicts an\\ninteraction between PVT1 and\
+    \ SUZ12 (Supplementary Fig. 7a,b), a\\nPRC2 member, identifying a path via APTR, an oncogenic lncRNA\\nthat represses\
+    \ CDKN1A/p21 through PRC2, involving EZH2\\nand SUZ12.\"\n  },\n  {\n    \"name\": \"Discussion\",\n    \"text\": \"Biomedical\
+    \ KGs structure information by representing entities (genes,\\nproteins, diseases, drugs) as nodes and their relationships\
+    \ (interactions,\\nassociations, regulations) as edges. Despite high-throughput experi-\\nments, many relationships in\
+    \ these graphs remain undiscovered. Link\\nGNN layers\\na\\nb\\nInitializing\\nsource node\\nbased on query\\nObtaining\
+    \ path\\nembeddings\\nMessage\\npassing\\nhq\\n(t) (u, v) \\u2190 (\\nhv\\n(t) \\u2190 Aggregate ({Message(hX\\n(t\\u20131),\
+    \ wq (x, r, v))|(x, r, v) \\u2208 \\u03b5(v) } \\u222a {hv\\n(0)})\\nhq\\n(0) (u, v)\\nhv\\n(0)\\n(x, v) \\u2208\\u03b5\\\
+    nLearnable parameters in red\\nMessage\\nAggregate\\nCombine\\nMLP\\nObtaining hv\\n(t)\\npath representation from source\
+    \ node u to node v\\nover nodes x1 and x2, and relations r1, r2\\nW\\n}\\nActivation(\\nLayerNorm(\\n)\\n)\\n(\\n)\\nu\\\
+    nv\\nx1\\nx2\\nr2\\nr1\\nndim = 32\\nhx1\\nhx2\\nhx1\\nwq(x2, r2, v)\\nwq(x2, r2, v)\\nwq(x2, r2, v)\\nwq(x1, r1, v)\\\
+    nwq(x1, r1, v)\\nwq(x1, r1, v)\\nQuery\\nq\\n=\\nq\\n=\\nWr2 + br2\\nWr1 + br1\\nq\\nhv\\n(t) =\\nhx2\\n(t-1)\\nhx1\\\
+    n(t-1)\\nhq\\n(t\\u20131) (u, x)\\nwq (x, r, v))\\nFig. 7 | Model architecture. a, Overview: to predict a query relation\
+    \ between a\\nsource node and other nodes, the source node is initialized with the query\\nembedding, while others are\
+    \ set to zero (boundary condition). Message passing\\nis performed over t GNN layers (for example, t = 4), producing embeddings\
+    \ that\\nrepresent paths from the source node. These embeddings are then fed into a\\nmultilayer perceptron (MLP) to predict\
+    \ the query relation. b, Message passing\\n(for example, using the DistMult function (multiplication) for messages and\\\
+    nsummation for aggregation): the embedding of node v (relative to source node u)\\nis updated on the basis of incoming\
+    \ messages from neighbours x1, x2 and the\\nboundary condition. Messages are computed by multiplying neighbour\\nembeddings\
+    \ (h(t\\u22121)\\nx1\\n, h(t\\u22121)\\nx2\\n) with relation embeddings (wq(x1, r1, v), wq(x2, r2, v))\\n(purple), aggregated\
+    \ via summation (pink) and combined with h(0)\\nv  through a\\nlinear layer, layer norm and activation function (blue).\
+    \ Relation embeddings\\n(wq(x1, r1, v), wq(x2, r2, v)) can be learned dynamically dependently on the query\\nq as Wrq\
+    \ + br.\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nprediction (LP) methods\
+    \ are crucial for inferring missing or potential\\nassociations by analysing network topology.\\nIn this work, we introduce\
+    \ BioPathNet, in which we extend\\nNBFNet56, a message-passing neural network designed to leverage\\nthe power of path\
+    \ representation learning for LP on biomedical KGs.\\nBioPathNet introduces several advancements compared to NBFNet,\\\
+    nincluding the use of a BRG for improved message passing and a NTA\\nnegative sampling strategy to improve learning precision\
+    \ and address\\ngraph heterogeneity, design choices that were crucial to improving\\nthe performance of specific tasks.\
+    \ We evaluated BioPathNet on LP\\ntasks across diverse biomedical KGs, varying in size, sparsity and qual-\\nity, including\
+    \ gene function assignment using KEGG pathways from\\nPathway Commons, zero-shot disease\\u2013drug indication prediction\\\
+    nfrom PrimeKG, SL gene pair prediction from SynLethDB, and infer-\\nence of regulatory relationships between lncRNAs and\
+    \ target genes\\nfrom LncTarD 2.0. Our results demonstrate BioPathNet\\u2019s versatility\\nin biomedical LP, consistently\
+    \ performing better than random, with\\nvarying degrees of success depending on the task. Ablation studies\\nfurther highlight\
+    \ the advantages of key design choices, such as NTA\\nnegative sampling and the use of a BRG for message passing. Unlike\\\
+    nstandard NBFNet, NTA enables biologically meaningful sampling by\\nensuring that negative triplets share the same node\
+    \ type as positives,\\nimproving MRR performance by 5\\u20139% across tasks and up to 15\\u201320% for\\nHits@1\\u20133\
+    \ in specific cases. Since Hits@k measures how often positive\\ntriplets rank among the top predictions, this improvement\
+    \ is espe-\\ncially crucial for biological practical applications, where top-ranked\\npredictions may be prioritized for\
+    \ experimental validation. The SANS\\nprocedure, which dynamically adjusts negative sample selection based\\non graph\
+    \ density, modestly improved BioPathNet\\u2019s performance in\\ntasks such as gene function prediction, lncRNA\\u2013target\
+    \ prediction and\\nSL. However, its impact on drug\\u2013disease indication and contraindica-\\ntion prediction was variable,\
+    \ enhancing performance in some cases\\nwhile proving detrimental in others. Among the four tasks used to\\nevaluate BioPathNet,\
+    \ two (gene function prediction and lncRNA\\u2013tar-\\nget prediction) use Pathway Commons as a BRG for message passing.\\\
+    nThe other two (drug repurposing and SL prediction) leverage unused\\nedges (excluding those in supervised training) as\
+    \ the BRG. Our ablation\\nstudy confirms the BRG\\u2019s impact across all tasks. For gene function\\nprediction, the\
+    \ Pathway Commons-derived BRG significantly boosted\\nperformance (16\\u201324% improvement in MRR, Hits@1-3-10), while\
+    \ its\\neffect on lncRNA\\u2013target prediction was more modest (1.5\\u20136.3%), sug-\\ngesting that a tailored BRG,\
+    \ perhaps incorporating a chromatin graph\\nto account for lncRNA nuclear regulatory functions, could further\\nenhance\
+    \ results for this task. The ablation of the BRG was especially\\ncrucial for the zero-shot drug repurposing task, where\
+    \ its removal\\nseverely disrupted PrimeKG\\u2019s connectivity, leading to poor perfor-\\nmance (although still above\
+    \ random). For SL, other BRG relations did\\nnot directly benefit the task, but the additional SL links within the BRG\\\
+    nwere essential, as demonstrated by full BRG ablation and individual\\nedge-type ablation experiments. Perturbation experiments\
+    \ across the\\nfour tasks further revealed that no single relation type within the BRG\\nsignificantly impacted performance,\
+    \ except for minor effects in a few\\ncases. This suggests that graphs often contain redundancy and noise,\\nunderscoring\
+    \ the need for the biomedical KG community to focus on\\nKG denoising techniques and manual curation (for example, filtering\
+    \ SL\\nlinks in SynLethDB improved performance). In addition, connectivity\\nbetween the training graph from G1 and the\
+    \ BRG is the most critical fac-\\ntor, with a strong positive correlation between their connectivity and\\nmodel performance\
+    \ (MRR). BioPathNet\\u2019s performance was minimally\\naffected by redundant connections, demonstrating its robustness\
+    \ to\\nnoise. This suggests that meaningful paths between head and tail nodes\\ncan still be identified using path-embedding\
+    \ methods, even in noisy or\\nprogressively sparser graphs. Since other path-based and KGE-based\"\n  },\n  {\n    \"\
+    name\": \"methods lack ablation analyses on edges and relation types, it is dif-\",\n    \"text\": \"ficult to generalize\
+    \ this conclusion, highlighting the need for further\\nbaseline evaluations in this area. The advantage of using the BRG\
+    \ in\\nBioPathNet extends beyond improving LP task performance. While\\nNBFNet could theoretically be trained on the full\
+    \ training graph from\\nG1+BRG graph (as attempted here) to achieve comparable or slightly\\nlower performance than BioPathNet,\
+    \ doing so is computationally\\nimpractical\\u2014even across multiple GPUs\\u2014except perhaps for SL, as\\ndemonstrated\
+    \ by our runtime and resource consumption analysis. As\\na result, training NBFNet on G1 alone remains the only viable\
+    \ option.\\nBy leveraging the BRG solely for message passing (without evaluating\\nBRG edges in the loss), BioPathNet\
+    \ not only improves or maintains\\nperformance but also ensures a feasible training process. This is one\\nof the key\
+    \ advantages of BioPathNet, which ensures not only sustain-\\nability and lower infrastructure costs but also scalability,\
+    \ guaranteeing\\nits future use on even larger datasets and evolving biomedical KGs\\nwithout becoming prohibitive.\\\
+    nWhen benchmarked against general-purpose baselines, BioPath-\\nNet not only outperformed one-hop KGE methods such as\
+    \ TransE,\\nDistMult and RotatE, as expected, but also consistently surpassed\\nmore expressive node-embedding models\
+    \ such as R-GCN, RAGAT and\\nHGT across all tasks, with performance gains in MRR ranging from\\n2% for gene function prediction\
+    \ to 87% for drug repurposing. This\\nunderscores the strength and expressiveness of path representation\\nlearning over\
+    \ methods that compute node and relation embeddings\\nseparately, even when incorporating graph heterogeneity in their\\\
+    nrepresentations. However, the superior accuracy and performance of\\npath representation learning in BioPathNet come\
+    \ at the cost of higher\\ncomputational training time and resource requirements compared\\nwith node embedding methods,\
+    \ which are faster to train (for example,\\nHGT is up to 20 times faster, while R-GCN is 3 times faster on the gene\\\
+    nfunction prediction task). However, BioPathNet was the most efficient\\namong path-based baselines, with a per-epoch\
+    \ training time 23 times\\nshorter than that of KR4SL and, on average, 9\\u201380 times lower than that\\nof NBFNet across\
+    \ tasks.\\nWhen compared against task-specific baselines across the four dif-\\nferent LP tasks, BioPathNet outperformed\
+    \ drug repurposing-specific\\nbaselines DREAMwalk and state-of-the-art TxGNN across all five\\nzero-shot disease splits\
+    \ (adrenal gland, anaemia, cardiovascular, cell\\nproliferation and mental health), with an average AUPRC increase of\\\
+    n60.8% over DREAMwalk and 23.2% increase over TxGNN. In addition,\\nBioPathNet achieved higher Recall@k values, prioritizing\
+    \ known treat-\\nments better in the top predictions. Specifically, BioPathNet recovered\\n61.9% of known treatments at\
+    \ k\\u2009=\\u200920, compared with 53.9% with TxGNN.\\nThis is especially valuable in biology, as BioPathNet\\u2019s\
+    \ enhanced prior-\\nitization reduces the number of predictions requiring verification for\\nbiological plausibility during\
+    \ hypothesis generation or experimental\\nvalidation. It must be noted that performance on the drug indication\\ntask\
+    \ varies markedly across disease splits, with MRR ranging from\\n>0.6\\u20130.8 for cell proliferation and adrenal gland\
+    \ to 0.23\\u20130.36 for\\ncardiovascular and mental health. Similar trends were reported in\\nthe original TxGNN paper54,\
+    \ suggesting that this variability reflects\\nintrinsic properties of the disease splits, such as disease complexity\\\
+    nand the amount of available knowledge (for example, known drugs\\nor molecular mechanisms in the graph), rather than\
+    \ differences in\\nmodelling approaches. Supporting this, we observed a strong Pearson\\ncorrelation (r\\u2009=\\u20090.81)\
+    \ between task performance and the average con-\\nnectivity of drugs in the G1 graph (Supplementary Fig. 8), indicating\\\
+    nthat performance is closely tied to how well subdiseases are linked to\\ndrugs known from other indications. While in\
+    \ predicting contraindica-\\ntions, BioPathNet largely outperformed DREAMwalk which largely fails\\non this task, it showed\
+    \ comparable or slightly worse results compared\\nwith TxGNN (BioPathNet MRR of 0.53 vs 0.56 for TxGNN) and higher\\nperformance\
+    \ variance.\\nBioPathNet outperforms both general and task-specific GNN\"\n  },\n  {\n    \"name\": \"methods due to its\
+    \ unique encoding approach, which captures\",\n    \"text\": \"path representations rather than individual entity embeddings.\
+    \ Its\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nbiomedical KG-specific\
+    \ design and enhanced scalability improve upon\\nits NBFNet baseline (Fig. 4b). When compared to node embedding\"\n  },\n\
+    \  {\n    \"name\": \"methods such as DREAMwalk and TxGNN, additional advantages and\",\n    \"text\": \"limitations emerge.\
+    \ BioPathNet\\u2019s superior prediction accuracy comes\\nat the cost of longer training time. DREAMwalk, while the least\
+    \ accu-\\nrate for drug indication prediction, is extremely fast to train, making\\nit valuable for practical applications.\
+    \ TxGNN, although slower than\\nDREAMwalk due to its pre-training phase, enhances disease nodes with\\nlimited molecular\
+    \ characterization using a gated auxiliary embedding.\\nIn contrast, BioPathNet leverages non-drug\\u2013disease triplets\
+    \ for mes-\\nsage passing within a BRG but does not require separate pre-training\\nand fine-tuning, offering greater\
+    \ flexibility across different regulatory\\ngraphs. However, its higher variance compared with TxGNN may result\\nfrom\
+    \ the absence of pre-training, which helps stabilize predictions.\\nPath-embedding methods such as BioPathNet enhance\
+    \ represen-\\ntations with multihop relationships and offer greater interpretability\\nthan node embeddings by tracing\
+    \ and visualizing paths as well as\\ninfluent nodes, which aids in verifying predictions and hypothesis\\ngeneration.\
+    \ Incorporating a BRG further improves path expressiveness\\nand interpretability, revealing crucial paths and validating\
+    \ predic-\\ntions, such as in the case of Alzheimer\\u2019s disease. Node-embedding\"\n  },\n  {\n    \"name\": \"methods,\
+    \ although easy to understand (via t-distributed stochastic\",\n    \"text\": \"neighbor embedding or uniform manifold\
+    \ approximation and projec-\\ntions), lack intrinsic interpretability, requiring post hoc frameworks\\nsuch as TxGNN.\
+    \ Path embeddings capture richer context and can be\\ninterpreted more easily, but are more abstract and less intuitive\
+    \ for\\ndownstream tasks.\\nWe demonstrate the versatility of BioPathNet in addressing diverse\\nproblems across various\
+    \ KGs and in SL, also in the inductive setting.\\nHowever, the task of inferring lncRNA\\u2013target regulatory relationship\\\
+    nis the hardest for all methods, including BioPathNet, maybe due to\\nthe quality and uncertainty of both training data\
+    \ and BRG. Here we\\nattempt this task making use of an lncRNA\\u2013target-specific KG coupled\\nwith a BRG. Despite\
+    \ a test MRR of 0.19 (lower than for tasks such as\\ndrug repurposing or SL) indicating that BioPathNet could probably\\\
+    nbenefit from more training data, BioPathNet still strongly learns the\\nstructure of the lncRNA\\u2013targets regulatory\
+    \ graph by leveraging mul-\\ntiple paths in the sparse graph and by that, compensating for the lack\\nof direct connections.\\\
+    nAs an additional remark, under the open-world assumption, evalu-\\nating model performance on incomplete KGs may not\
+    \ fully reflect their\\ncapabilities. Metrics, such as MRR, can degrade in scenarios with high\\nincompleteness, where\
+    \ missing links correlate with specific entities, as\\ndiscussed in ref. 100. Biomedical KGs exhibit uneven gaps in knowledge\\\
+    ndistribution, influenced by factors such as prevalence and complexity,\\npotentially underestimating BioPathNet\\u2019s\
+    \ performance, particularly\\nin tasks such as lncRNA\\u2013target prediction.\\nLimitations of BioPathNet include potential\
+    \ biases in the training\\ndata. For example, while BioPathNet successfully retrieved almost all\\nknown treatments for\
+    \ AD in its top predictions, it missed FDA-approved\\ndrugs such as pramiracetam, memantine and lecanemab, which were\\\
+    nnot listed in the PrimeKG database and lacked disease indications. As a\\nresult, the model could not learn their connections\
+    \ and did not identify\\nthem as potential treatments. Predictions for known symptom-treating\\ndrugs focused on neuropsychiatric-related\
+    \ diseases, but emphasizing\\nmolecular interactions could uncover more disease-modifying treat-\\nments. Future improvements\
+    \ might involve excluding message passing\\nover dominant relations such as indications and prioritizing molecular\\ninteractions\
+    \ to elucidate mechanisms underlying less-understood\\ndiseases such as Alzheimer\\u2019s. Lastly, BioPathNet uses a distinct\
+    \ BRG\\nfor each task, which may introduce biases based on the chosen BRG.\\nWhile we assess the impact of node degree,\
+    \ relation type removal and\\nrandom edge perturbations, task performance may highly depend on\\nBRG selection. Although\
+    \ an ideal solution would be a unified, denoised\\nbiomedical KG for all tasks, the complexity of biomedical KGs makes\\\
+    nthis challenging. Preliminary results suggest that task-specific BRGs\\nyield better performance. For instance, replacing\
+    \ the SL BRG with the\\ngene function BRG led to comparable or lower MRR, while substituting\\nthe PrimeKG portion with\
+    \ Pathway Commons dramatically reduced\\ndrug repurposing performance due to missing drug\\u2013gene connections.\\nAs\
+    \ highlighted in ref. 52, task-specific KGs are crucial for the success of\\ncertain tasks, and future work should explore\
+    \ in more detail the extent\\nto which different tasks benefit from distinct previous knowledge.\\nIn summary, BioPathNet\
+    \ is a path-embedding method for link\\nprediction on biological KGs, achieving state-of-the-art performance\\nin tasks\
+    \ such as gene function prediction, drug indication, synthetic\\nlethality and mRNA\\u2013lncRNA interactions. Its interpretability\
+    \ frame-\\nwork highlights key prediction paths, improving biological plausibility\\nand bias detection. Future directions\
+    \ include refining and denoising\\nbiomedical KGs, leveraging condition-specific knowledge and integrat-\\ning node features.\
+    \ Ultimately, BioPathNet could serve as a foundation\\nfor predictive models in biomedical KGs, accelerating hypothesis\\\
+    ngeneration across biology and medicine.\"\n  },\n  {\n    \"name\": \"Methods\",\n    \"text\": \"KG completion\\nA knowledge\
+    \ graph KG = {(u, r, v)}u,v\\u2208E,r\\u2208R is a heterogeneous directed\\ngraph where nodes E represent entities, relations\
+    \ R represent edges,\\nand triplets (u, r, v) define connections, with u (head) linking to v (tail)\\nvia r (relation).\
+    \ The graph is considered heterogeneous because differ-\\nent entities may have different types, for example, a node representing\\\
+    na gene versus a node representing a disease. The graph is directed\\nbecause (u, r, v) being in the KG does not imply\
+    \ (v, r, u) is contained as\\nwell. KG completion involves predicting the missing links, that is, tail\\nprediction (u,\
+    \ r, ?), predicting the tail entity given the head entity and\\nthe relationship101.\\nNBFNet\\nBioPathNet is a path-representation\
+    \ learning-based method for graph\\ncompletion built upon the NBFNet framework56, which performs link\\nprediction (LP)\
+    \ by learning representations for each path from the\\nquery entity u to potential tail entities v. More specifically,\
+    \ in NBFNet,\\nthe path formulation is represented by a generalized sum of path repre-\\nsentations between u and v (Fig.\
+    \ 7a,b and neural Bellman\\u2013Ford network\\n(NBFNet) in Extended Methods).\\nNBFNet\\u2019s learning framework relies\
+    \ on the generalized Bellman\\u2013\\nFord algorithm for path representation and its neural abstraction.\\nGeneralized\
+    \ Bellmann\\u2013Ford path representation. To achieve a scal-\\nable path formulation, NBFNet utilizes a generalized version\
+    \ of the\\nBellman\\u2013Ford dynamic programming algorithm102.\\nThis generalization transforms the original Bellman\\\
+    u2013Ford algo-\\nrithm for shortest path calculation into a versatile framework that\\nsimultaneously computes pair representations\
+    \ hq(u, v) for a given entity\\nu, query relation q, and all entities v in a graph.\\nh(0)\\nq (u, v) \\u2190\\u0001q(u\
+    \ = v)\\n(1)\\nh(t)\\nq (u, v) \\u2190(\\u2a01(x,v)\\u2208\\u2130h(t\\u22121)\\nq\\n(u, x) \\u2297wq(x, r, v)) \\u2295h(0)\\\
+    nq (u, v)\\n(2)\\nIn this formulation, the first equation initializes the boundary\\ncondition on the source node (equation\
+    \ (1)), representing the shortest\\npath between u and v at the start. If the head and tail nodes coincide\\n(u = v),\
+    \ the boundary condition is set to the generalized \\u0001, which cor-\\nresponds to 0 in the shortest path context (that\
+    \ is, the shortest distance\\nbetween a node and itself is zero) and to \\u221e in the case u \\u2260 v. Equation\\n(2)\
+    \ describes the Bellman\\u2013Ford iteration, updating the shortest\\npath distance between u and v. In each iteration,\
+    \ the representation\\nfrom the previous layer (t \\u2212 1) is multiplied by the transition edge\\n\\nNature Biomedical\
+    \ Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nrepresentation wq to obtain the new representation\
+    \ hq(u, v). The algo-\\nrithm propagates the boundary condition from the source node to its\\nneighbours. It is important\
+    \ to note that there is a distinction between\\nquery relation q and the relation r in the graph. The query relation q\
+    \ is\\nused to initialize the source node (boundary condition), while the\\ntransition edge representations wq(x, r, v)\
+    \ are obtained by the multi-\\nplication of relation r in the graph. Both embeddings are learned. Using\\nthe distributive\
+    \ properties of multiplication, all prefixes are computed\\nsimultaneously. This iterative process continues, assessing\
+    \ potential\\ntarget nodes, until all paths from the source to the tail node are covered\\nafter t iterations, where t\
+    \ is the path length (Fig. 7b). For a more detailed\\ndescription, see Extended Methods in Supplementary Information.\\\
+    nNeural formulation. By abstracting the boundary condition in equa-\\ntion (1) to an indicator function, the multiplication\
+    \ operator in equation\\n(2) to a message passing formulation, and the summation operator\\nto a general aggregation function,\
+    \ NBFNet extends the generalized\\npath formulation of the Bellman\\u2013Ford algorithm into a graph neural\\nnetwork\
+    \ framework.\\nh(0)\\nv\\n\\u2190Indicator(u, v, q)\\n(3)\\nh(t)\\nv\\n\\u2190Aggregate({Message(h(t\\u22121)\\nx\\n,\
+    \ wq(x, r, v))|(x, r, v) \\u2208\\u2130(v)} \\u222a{h(0)\\nv }) (4)\\nFor the indicator function, NBFNet learns the query\
+    \ relation\\nembedding q and assigns q to node v if v equals the source node u.\\nMessage passing uses the DistMult32\
+    \ relational operator (multiplica-\\ntion) for messages and summation for aggregation over t GNN lay-\\ners, generating\
+    \ path embeddings from the source node. Each node\\nembedding hv (always relative to source u) is updated by multiplying\\\
+    nneighbour embeddings with relation embeddings, aggregating via\\npermutation-invariant functions (for example, summation\
+    \ or principal\\nneighbourhood aggregation), and combining with hv(0) through a\\nlinear layer, normalization layer (LayerNorm)\
+    \ and activation sigmoid\\nfunction. Relation embeddings can be dynamically learned on the\\nbasis of the query q (Fig.\
+    \ 7b). LayerNorm standardizes node embed-\\ndings across features by normalizing activations, and by that, acts as a\\\
+    nregularizer by reducing sensitivity to small variations in node features,\\nhelping prevent overfitting.\\nUnlike typical\
+    \ GNNs, which compute pair representations as inde-\\npendent node embeddings h(u) and h(v), NBFNet conditions each\\\
+    nnode\\u2019s representation hq(u) and hq(v) on the source node and query\\nrelation q. The resulting pair representation\
+    \ hq(u, v) is then used for\\nLP, predicting the tail entity v given the head entity u and relation q.\\nThis is formulated\
+    \ as the conditional likelihood of the tail entity v as:\\np(v|u, q) = \\u03c3( f(hq(u, v)))\\n(5)\\nwhere \\u03c3(_)\
+    \ is the sigmoid function and f(_) is a feed-forward neural\\nnetwork. Practically, the model weights are learned using\
+    \ the training\\nedge distribution (Fig. 7a), and the trained model is then applied to the\\ntest edge distribution to\
+    \ infer new edges.\\nBioPathNet: biomedical KG completion\\nConsidering the unique characteristics of biological KGs,\
+    \ we introduce\\nBioPathNet, a graph neural network framework based on NBFNet56.\\nBioPathNet is designed to predict missing\
+    \ links in biomedical KGs.\\nPath representation in BioPathNet. As a path-based reasoning\\nmethod, path representations\
+    \ hq(u, v) in BioPathNet are learned start-\\ning at a source node u to all potential target nodes v on the basis of\\\
+    nthe relations r along the path, following the NBFNet parametrization\\n(equations (3) and (4)) but with important enhancements\
+    \ that make\\nBioPathNet more suited for biological KGs. We improve NBFNet in\\ntwo key ways: first, by refining its negative\
+    \ sampling strategy to con-\\nsider entity-type information, and second, by introducing a BRG, a\\nmessage-passing-only\
+    \ graph that enhances efficiency and learning in\\nLP tasks. These design choices enable BioPathNet to effectively handle\\\
+    ndiverse biomedical KGs.\\nNegative sampling in BioPathNet. During training, for each positive\\ntriplet (u, r, v), n\
+    \ negative samples (u, r, v\\u2032) are generated by corrupting\\none of the entities v in the positive sample (that is,\
+    \ substituting the true\\nnode tail v with another node v\\u2032) to create a negative triplet. In the basic\\nNBFNet,\
+    \ the \\u2018self-adversarial negative sampling\\u2019 from RotatE34 is used,\\nwhere instead of uniformly sampling n\
+    \ negative samples per positive\\nsample, the weights of negative samples are softly redistributed on the\\nbasis of the\
+    \ current model embeddings, thereby forcing the model to\\ndiscriminate on the basis of hard negative samples from positive\
+    \ sam-\\nples. A parameter called \\u2018adversarial temperature\\u2019 controls the softness\\nof this weight distribution\
+    \ and represents a hyperparameter\\nfor BioPathNet.\\nTo further improve the decision boundary and ensure biologically\\\
+    nmeaningful sampling, BioPathNet implements a NTA negative sampling\\nscheme. This means that when sampling negative v\\\
+    u2032 for training, we\\nconsider the node type and sample v\\u2032 only from the same type as v. This\\napproach also\
+    \ reduces the sample space and challenges the learning\\ntask by compelling the model to learn a decision boundary with\
+    \ suf-\\nficiently difficult negative samples.\\nIn addition to NTA, BioPathNet incorporates SANS, as proposed in\\nref.\
+    \ 57. This method generates negative samples on the basis of graph\\ndensity, restricting them to the k-hop neighbourhood\
+    \ of the head node\\nand using random walks to approximate local neighbourhoods. In our\\ncase we used k = 2, which is\
+    \ a reasonable choice given that biomedical\\nnetworks are typically well connected and shallow, with an average\\ndiameter\
+    \ of ~4\\u20136. Sampling negatives from similar-density regions can\\nmitigate biases due to local graph structure and\
+    \ improves generaliza-\\ntion in sparser graph areas. Negative sampling strategies were tested\\nin ablation experiments.\\\
+    nIncorporation of a BRG. Compared to the original NBFNet, BioPathNet\\nincorporates additional entity and relation information,\
+    \ referred to as\\nthe BRG or G2, for message passing. Among the four tasks used to\\nevaluate the performance of BioPathNet,\
+    \ gene function prediction and\\nlncRNA\\u2013target prediction utilize Pathway Commons, an external data-\\nbase of protein\\\
+    u2013protein and protein\\u2013chemical interactions, as the BRG\\n(see Supplementary Table 2). In contrast, drug repurposing\
+    \ and SL\\nprediction define the BRG using the unused edges of the dataset,\\nexcluding relations explicitly used for\
+    \ supervised training, referred to\\nas G1. The incorporation of a BRG provides additional edges (knowl-\\nedge) that\
+    \ are used solely for message passing, enhancing the predic-\\ntion of links of interest (Fig. 1c). For example, in predicting\
+    \ the missing\\nlink (u, r, v), where (u, r, v) always comes from the target KG G1, messages\\ncan be passed only along\
+    \ paths in G1, yielding a prediction path such\\nas in Fig. 1d. Alternatively, a BRG G2 can be used to further inform\
+    \ the\\npredictions, leveraging additional knowledge (for example, including\\nrelations between type 2 and 3 nodes),\
+    \ as illustrated in Fig. 1e. Conse-\\nquently, in BioPathNet, equation (4) is modified to always take (u, r, ?)\\nfrom\
+    \ G1 but to aggregate and send messages across all edges G1 \\u222a G2.\\nIn equation (4), the edges (x, r, z) \\u2208\\\
+    u2130(v) come from G1 \\u222a G2 rather than\\njust G1.\\nBioPathNet training and LP. During the training of the model\
+    \ in a\\nsupervised setting, the negative log-likelihood is minimized between\\npositive samples (u, r, v) and negative\
+    \ samples (u, r, v\\u2032), generated\\naccording to the sampling scheme outlined above.\\nLKG = \\u2212log p(u, q, v)\
+    \ \\u2212\\nn\\n\\u2211\\ni=1\\n1\\nn log(1 \\u2212p(u, q, v\\u2032\\ni))\\n(6)\\n\\nNature Biomedical Engineering\\nArticle\\\
+    nhttps://doi.org/10.1038/s41551-025-01598-z\\nwhere n is the number of negative samples per positive sample and\\n(u,\
+    \ q, v\\u2032\\ni) is the ith negative sample for KGs.\\nImportantly, the additional edges from the BRG are not used for\\\
+    nsampling positive and negative triplets, ensuring that the computation\\nof the loss in equation (6) remains unchanged.\
+    \ After performing LP with\\nthe modified message passing scheme, BioPathNet ranks all candidate\\ntail entities according\
+    \ to their likelihood p(v\\u2223u, q) to form a true triplet\\nwith a given head entity and relation q as the query. The\
+    \ same approach\\nis used for the prediction of v given u and r\\u22121 for the reverse relation of\\nr. It is important\
+    \ to notice that in the transductive setting, the same\\nBRG is used for training and inference, ensuring identical graphs.\
+    \ In\\ncontrast, inductive tasks such as SL predictions use separate BRGs,\\nwith part reserved for training and another\
+    \ for inference, where the\\ninference graph includes unseen nodes.\\nInterpretation of prediction: visualization of most\\\
+    nimportant paths\\nLeveraging the NBFNet framework, BioPathNet predictions can be\\ndirectly interpreted through paths.\
+    \ This feature is crucial for biomedi-\\ncal tasks, where understanding the mechanisms behind each prediction\\nis essential.\
+    \ These interpretations highlight the paths that contribute\\nthe most to the prediction p(v\\u2223u, q). Using local\
+    \ interpretation meth-\\nods, we approximated the local landscape of BioPathNet with a linear\\nmodel over the set of\
+    \ all paths, and the importance was then defined\\nby its weight in the linear model, which can then be computed as the\\\
+    npartial derivative of the prediction with respect to the path56. Formally,\\nthe top-k path interpretations for p(u,\
+    \ q, v) are defined as:\\nP1, P2, \\u2026 , Pk = top \\u2212kP\\u2208Puv\\n\\u2202p(u, q, v)\\n\\u2202P\\n(7)\\nWhile\
+    \ directly computing the importance of all paths is intractable,\\nNBFNet approximates them with edge importance. Specifically,\
+    \ the\\nimportance of each path is approximated by the sum of the impor-\\ntance of edges in that path, and therefore\
+    \ intuitively, the top-k path\\ninterpretations are equivalent to the top-k longest paths on the edge\\nimportance graph.\\\
+    nFor the visualization plot, we considered the top 10 most impor-\\ntant paths ranked by gradient, with the edge width\
+    \ reflecting the num-\\nber of times an edge appears in paths. Furthermore, the most important\\npath is highlighted in\
+    \ red. In summary, our interpretability allows\\npredictions to be assessed by their biological plausibility for hypothesis\\\
+    ngeneration or validation in the laboratory.\\nBioPathNet training on four different biomedical tasks\\nGene function\
+    \ prediction task: identifying gene\\u2013pathway asso-\\nciations. For this task, we used the KG from the KEGG database\
+    \ (G1),\\nextracted from ConsensuPathDB, to train the model on gene (G)\\u2013\\npathway (P) interactions in transductive\
+    \ setting. In addition, we uti-\\nlized a BRG containing regulatory relationships between gene\\u2013gene\\n(G\\u2013G),\
+    \ gene\\u2013chemical (G\\u2013C) and chemical\\u2013chemical (C\\u2013C) interac-\\ntions obtained from Pathway Commons\
+    \ (G2)59,60. These interactions\\nwere represented as triplets in the format (node1, relationType,\\nnode2), such as (BABAM1,\
+    \ interacts-with, PSMD14) (Supplementary\\nTables 1 and 2). During data preprocessing of G1, we removed KEGG\\npathways\
+    \ with fewer than 10 annotations to genes and retained only the\\nbiggest connected component of the BRG, thereby removing\
+    \ 11 nodes\\npresent in components of only 2\\u20133 nodes. We trained BioPathNet using\\n70% of the P\\u2013G triplets\
+    \ from the G1, which were randomly split, with and\\nwithout incorporating the underlying BRG as a message-passing graph.\\\
+    nWe used 10% of the G1 P\\u2013G triplets for validation, and the remaining\\n20% of G1 were reserved for testing. During\
+    \ training, training triplets\\nwere used as the message-passing graph (that is, training graph), while\\nremoving the\
+    \ specific triplets of the batch for learning path repre-\\nsentations. This graph was also used during validation and\
+    \ testing, in\\naddition to a potential G2/BRG. Hyperparameters, including adver-\\nsarial temperature and number of negatives\
+    \ per positive sample, were\\noptimized on the basis of the validation MRR, resulting in an optimal\\nset of parameters\
+    \ for downstream analysis (Supplementary Table 16).\\nDrug repurposing task: predicting unknown drug\\u2013disease associa-\\\
+    ntions. This task is based on PrimeKG53 (Supplementary Fig. 1a), splitting\\nthe data into training, validation and test\
+    \ sets (Supplementary Table 3).\\nFor training, validation and testing of BioPathNet, we used the same\\ndata and data\
+    \ splits as defined by TxGNN54, reflecting a zero-shot pre-\\ndiction scenario at a proportion of 0.83:0.12:0.05. By using\
+    \ the TxGNN\\ncode (https://github.com/mims-harvard/TxGNN from 12 Apr 2023,\\ncommit \\u20181000aac\\u2019), the splits\
+    \ were created by removing all indication\\nand contraindication triplets for a disease area from training, along\\nwith\
+    \ 95% of connections to biomedical entities (for example, proteins,\\nphenotypes)54, simulating minimal molecular characterization\
+    \ and no\\ntherapeutic knowledge. While TxGNN constructs reverse edges, we\\nremoved them beforehand, as BioPathNet inherently\
+    \ adds reverse tri-\\nplets during reasoning. Five zero-shot disease areas were used: adrenal\\ngland disorders, anaemia,\
+    \ cardiovascular diseases, cell proliferation\\ndiseases (for example, various cancers) and mental health conditions\\\
+    n(Supplementary Table 3). BioPathNet was trained in a supervised man-\\nner using only drug\\u2013disease edges (indication,\
+    \ contraindication)\\nin G1, while the rest of PrimeKG served as the BRG (G2) for message\\npassing. After removing reverse\
+    \ relations, 5.7 million directed edges\\nwere used for message passing per prediction setting, consisting of\\nprotein\\\
+    u2013protein or disease\\u2013disease relations. The training and valida-\\ntion sets averaged 33,000 and 4,000 edges,\
+    \ respectively, across five\\ndisease areas (Supplementary Table 3).\\nWe further created our custom data split with TxGNN\\\
+    u2019s \\u2018dis-\\nease_eval\\u2019 code to evaluate performance in predicting drugs for the\\nneurodegenerative disorder\
+    \ Alzheimer\\u2019s disease. Drugs that were\\nassociated with various AD diseases were moved to the test set\\n(Supplementary\
+    \ Table 17). All models were trained for 10 epochs,\\nemploying an early stopping mechanism that retained the best model\\\
+    nbased on validation set performance (MRR, see below). The final hyper-\\nparameters, including the number of negatives\
+    \ per positive sample for\\nall five disease area splits, are reported in Supplementary Table 12. All\\nexperiments were\
+    \ repeated for five different data-split seeds, using the\\nexact seeds employed by TxGNN to ensure a fair comparison.\
+    \ Each data\\nsplit seed resulted in slightly different training and validation sets for\\neach disease area due to the\
+    \ random removal of edges to simulate the\\nzero-shot scenario for the disease under study every time.\\nSL prediction\
+    \ task: identifying unknown SL gene pairs. For\\nthis task, we used the SynLethDB-v.2.0 (ref. 103) data as a KG\\n(Supplementary\
+    \ Table 18). In transductive setting, BioPathNet was\\ntrained on pre-processed data, that is, the SL gene pairs extracted\
+    \ from\\nSynLethDB-v.2.0 (G1), as provided by KR4SL55 and downloaded from\\ntheir GitHub repository (https://github.com/JieZheng-ShanghaiTech/\\\
+    nKR4SL from 8 Dec 2023, commit \\u201861b5c84\\u2019). In detail, the SL gene pairs\\nfrom SynLethDB-v.2.0 for humans\
+    \ were randomly split into train, vali-\\ndation and test triplets at a ratio of 7:1:2, following the data split of\\\
+    nKR4SL (Supplementary Tables 19 and 20). The pre-processed data were\\nmodified to fit the BioPathNet format by removing\
+    \ the reverse edges\\nintroduced by KR4SL for SL gene pairs (following the same preproc-\\nessing scheme as in the drug\
+    \ repurposing task), as reverse edges are\\nimplicitly added by BioPathNet by default.\\nOn top of the SL pairs, SynLethDB-v.2.0\
+    \ constructs a KG includ-\\ning relations between gene entities, pathways and three types of\\nGO term: biological processes\
+    \ (BP), molecular functions (MF) and\\ncellular components (CC) augmented using OntoProtein50. While\\nSL pairs were used\
+    \ for supervised training (G1), the rest of the KG\\n(G2), augmented by additional SL pairs, was used as BRG for mes-\\\
+    nsage passing only, following the same scheme from previous tasks\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\\
+    n(Supplementary Table 18). Hyperparameters, including the number of\\nnegatives per positive sample, were optimized on\
+    \ the basis of the vali-\\ndation MRR, resulting in an optimal set of parameters for downstream\\nanalysis (Supplementary\
+    \ Table 21). In transductive setting, BioPathNet\\nwas trained and evaluated on SynLethDB SL pairs across confidence\\\
+    nthresholds from 0.1 to 0.8. For final training, pairs with confidence\\nthresholds below 0.3 were excluded, removing\
+    \ most if not all compu-\\ntationally predicted interactions (Supplementary Fig. 2a). The final\\ndataset included 8,770\
+    \ training, 3,172 validation, 6,254 test, and 13,161\\nknown SL pairs in the BRG (Supplementary Table 18). The filtered\
+    \ set is\\nreferred to as \\u2018thresholded data,\\u2019 while the original is \\u2018unthresholded\\ndata\\u2019, which\
+    \ includes all SL pairs from SynLethDB-v.2.0 without filtering\\nby confidence score. For both thresholded and unthresholded\
+    \ data, we\\nalso trained BioPathNet in the inductive setting, using the data split\\nfrom the KR4SL study, ensuring that\
+    \ training and testing graphs\\u2019 node\\nsets were not overlapping (Supplementary Table 22). All experiments\\nwere\
+    \ run for five random seeds and the optimal hyperparameters are\\nreported in Supplementary Table 21.\\nSince SL relationships\
+    \ are symmetric between genes, the final\\nscore for a gene v to be an SL partner of gene u was computed by con-\\nsidering\
+    \ both the feed-forward neural network transformed represen-\\ntation of tail node v given head node u and the SL relation,\
+    \ f(hq(u, v)),\\nas well as the transformed symmetric representation, f(hq\\u22121(u, v)). Thus,\\nthe final SL score\
+    \ for a gene v to be an SL partner of gene u from BioPath-\\nNet is reported as:\\np(v|u) = \\u03c3 (\\nf(hq(u, v)) +\
+    \ f(hq\\u22121(u, v))\\n2\\n)\\n(8)\\nLncRNA\\u2013target prediction task: identifying unknown lncRNA\\u2013gene\\nrelationships.\
+    \ For this task, we used the LncTarD 2.0 database64, where\\ninteractions are categorized into seven mechanisms of lncRNA\\\
+    u2013target\\nregulation: \\u2018ceRNA or sponge\\u2019, \\u2018chromatin looping\\u2019, \\u2018epigenetic regu-\\nlation\\\
+    u2019, \\u2018expression association\\u2019, \\u2018interact with mRNA\\u2019, \\u2018interact with\\nprotein\\u2019 and\
+    \ \\u2018transcriptional regulation\\u2019. Missing gene information\\n(for example, Ensembl IDs, gene names) was resolved\
+    \ using Gencode\\nand HGNC mapping. Due to the scarcity of chromatin looping inter-\\nactions (12 pairs), we relabelled\
+    \ them as \\u2018transcriptional regulation\\u2019\\nafter a manual literature review, consolidating interactions into\
+    \ six\\ndistinct types.\\nOn top of the lncRNA\\u2013target interactions from LncTarD 2.0 KG, we\\nadded the BRG derived\
+    \ from Pathway Commons (G2), the same BRG\\nused for the gene function prediction task. As there is no direct link\\nbetween\
+    \ small molecules and lncRNA, we only used PPI, discarding\\nother types of relation (Supplementary Tables 23 and 24).\
+    \ To enable\\nNTA negative sampling, node entities in G1 were labelled with six dif-\\nferent categories: \\u2018lncRNA\\\
+    u2018, \\u2018mRNA\\u2019, \\u2018microRNA\\u2019, \\u2018transcription factor\\u2019,\\n\\u2018protein\\u2019 and \\\
+    u2018protein_ppi\\u2019 (this last one to specifically identify nodes\\nfrom PPI interactions from the BRG, whose edges\
+    \ were only used for\\nmessage passing and not for supervised training). The optimal param-\\neters of BioPathNet in this\
+    \ setting, determined through the MRR on the\\nvalidation set, are reported in Supplementary Table 25.\\nComparison with\
+    \ baselines\\nWe compared BioPathNet against several general-purpose baselines,\\nnamely: the graph neural network-based\
+    \ R-GCN, which extends GCNs\\nfor multirelational data by using relation-specific weight matrices to\\naggregate neighbour\
+    \ information while preserving relational seman-\\ntics104; HGT, a GNN model which captures graph heterogeneity with\\\
+    ntype-dependent parameters, preserving distinct representations while\\nintegrating high-order neighbour information44;\
+    \ RAGAT, an embedding\\nmethod which introduces node- and edge-type specific message pass-\\ning functions on a heterogeneous\
+    \ graph43; and the original NBFNet56.\\nFor gene function and lncRNA\\u2013target prediction, we compared\\nBioPathNet\
+    \ to BIONIC, a GCN-based biological network integration\\nframework that learns gene embeddings in an unsupervised or\
+    \ semi-\\nsupervised manner42. BIONIC generates separate gene embeddings\\nfrom multiple networks and integrates them\
+    \ into a unified representa-\\ntion for downstream tasks. Here, it was trained to predict functional\\nclasses for genes\
+    \ and multiple targets for each lncRNA (referred to as\\nlncBIONIC in the latter case).\\nFor the drug repurposing prediction\
+    \ task, we compared BioPath-\\nNet to TxGNN54 and DREAMwalk42. TxGNN is a state-of-the-art model\\nfor predicting drug\\\
+    u2013disease relationships in zero-shot scenarios\\nwhere minimal previous information or treatment history is avail-\\\
+    nable53. Leveraging PrimeKG53, a comprehensive biomedical KG, TxGNN\\nuses R-GCNs to learn embeddings of drugs and diseases,\
+    \ capturing\\ncomplex interactions by mapping them into a shared latent space.\\nDREAMwalk constructs a fixed biomedical\
+    \ KG including a drug\\u2013drug\\nand disease\\u2013disease similarity network, along with links connecting\\ndrugs and\
+    \ diseases to a PPI network. It generates embeddings via a\\nheterogeneous Skip-gram model and classifies drug\\u2013disease\
+    \ asso-\\nciations with XGBoost. Since the original graph (built from the ATC\\nclassification and from the Medical Subject\
+    \ Heading (MeSH)) was una-\\nvailable, we reconstructed it in two ways: (1) DREAMwalk_IC, mapping\\nDrugBank and MONDO\
+    \ (MeSH-inclusive) hierarchies used in PrimeKG\\nto compute drug\\u2013drug and disease\\u2013disease semantic similarity,\
+    \ and\\n(2) DREAMwalk_OC, directly extracting connections from PrimeKG.\\nFor the SL pair prediction task, BioPathNet\
+    \ was benchmarked\\nagainst KR4SL, a path-representation learning GNN-based method\\ndesigned specifically for the explainable\
+    \ prediction of SL gene pairs\\nin cancer55 in both transductive and inductive setting.\\nFor the lncRNA\\u2013target\
+    \ prediction task, BioPathNet was bench-\\nmarked against BIONIC, as described earlier, and DeepLGP, a\\ntask-specific\
+    \ baseline. DeepLGP65 prioritizes lncRNA target genes\\nby integrating lncRNA and gene features (such as genomic location,\\\
+    nexpression and miRNA interactions) with graph features extracted\\nvia a GCN encoder.\\nAll baseline methods were retrained\
+    \ using optimal parameters,\\neither selected on the basis of validation MRR when possible, or set to\\nthe default values\
+    \ recommended by the original authors, to ensure a\\nfair comparison. Detailed descriptions of each baseline and the specif-\\\
+    nics of the final model parameters are provided in \\u2018Baseline methods\\nused for comparison\\u2019 in Extended Methods.\\\
+    nModel evaluation\\nVarious metrics were used to evaluate BioPathNet on a held-out test\\nset (part of the G1) across\
+    \ different tasks and compare its performance\\nwith baseline methods. For all tasks, methods were evaluated on the\\\
+    nbasis of: mean rank (MR), the average rank of the true positive among all\\npredicted candidates; mean reciprocal rank\
+    \ (MRR), the average of the\\nreciprocal ranks of the first relevant item; and Hits@k, the proportion\\nof true positives\
+    \ ranked within the top-k predictions. Values for these\\nmetrics range [0, 1], and the larger the value, the better the\
+    \ model (for\\nan extensive explanation of these metrics, see Extended Methods\\nin Supplementary Information). The random\
+    \ MRR represents the\\nexpected mean reciprocal rank if predictions were made by randomly\\nguessing, meaning the correct\
+    \ answer is equally likely to appear in any\\npossible ranking position among all negatives, with the final value\\ndepending\
+    \ on the number of available negative candidates for each\\npositive sample.\\nWhile node embedding models the conditional\
+    \ probability of pre-\\ndicting the tail entity v given the head entity u and relation r, evaluating\\nthe joint probability\
+    \ of u, v and r may be more comprehensive. To ensure\\nconsistency with TxGNN in drug prediction, we also used AUPRC to\\\
+    nsummarize precision and recall across thresholds, along with specific-\\nity and F1 score at a 0.5 threshold, using TxGNN\\\
+    u2019s evaluation code. This\\napproach assesses the performance of each disease node. For details on\\ncomputing AUPRC\
+    \ in the comparison between BioPathNet and TxGNN,\\nsee Extended Methods in Supplementary Information.\\n\\nNature Biomedical\
+    \ Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nFor the SL prediction task, we compared the seed-wise\
+    \ perfor-\\nmance of our model with the performance of KR4SL using metrics\\ninherent to the KR4SL framework\\u2019s code,\
+    \ specifically NDCG@k,\\nRecall@k and Precision@k (see \\u2018Model evaluation\\u2019 in Extended Meth-\\nods). Moreover,\
+    \ we computed MRR for both BioPathNet and KR4SL by\\nfirst calculating MRR for each query gene and then averaging gene-wise\\\
+    nMRRs over all query genes. For the SL task, we ensured that predicted\\ntriplets (SL relationships) already present in\
+    \ the BRG were excluded\\nfrom the performance evaluation, guaranteeing a reliable assessment\\nof generalization performance.\\\
+    nReporting summary\\nFurther information on research design is available in the Nature\\nPortfolio Reporting Summary linked\
+    \ to this article.\"\n  },\n  {\n    \"name\": \"Data availability\",\n    \"text\": \"Gene function prediction data are\
+    \ available from Pathway Commons\\nand ConsensusDB (see Methods for details). For drug\\u2013disease pre-\\ndiction, PrimeKG\
+    \ data and splits were downloaded via TxGNN. Syn-\\nLethDB data, processed by KR4SL, were obtained from their GitHub,\\\
+    nand lncRNA target prediction data from LncTarD 2.0. Further preproc-\\nessing was done to fit BioPathNet\\u2019s data\
+    \ format, and all scripts can be\\nfound on GitHub at https://github.com/emyyue/BioPathNet (ref. 105).\\nA bash script\
+    \ to download all necessary data from the corresponding\\nlocations is also provided on GitHub at https://github.com/emyyue/\\\
+    nBioPathNet/blob/main/data/download.sh (ref. 106).\"\n  },\n  {\n    \"name\": \"Code availability\",\n    \"text\": \"\
+    The BioPathNet model and all code necessary for reproducing our\"\n  },\n  {\n    \"name\": \"results are publicly available\
+    \ via GitHub at https://github.com/emyyue/\",\n    \"text\": \"BioPathNet (ref. 105).\"\n  },\n  {\n    \"name\": \"References\"\
+    ,\n    \"text\": \"1.\\nTavassoly, I., Goldfarb, J. & Iyengar, R. Systems biology primer:\\nthe basic methods and approaches.\
+    \ Essays Biochem. 62, 487\\u2013500\\n(2018).\\n2.\\nBarabasi, A.-L. & Oltvai, Z. Network biology: understanding the\\\
+    ncell\\u2019s functional organization. Nat. Rev. Genet. 5, 101\\u2013113 (2004).\\n3.\\nSmith, J., Theodoris, C. & Davidson,\
+    \ E. H. A gene regulatory\\nnetwork subcircuit drives a dynamic pattern of gene expression.\\nScience 318, 794\\u2013797\
+    \ (2007).\\n4.\\nKarlebach, G. & Shamir, R. Modelling and analysis of gene\\nregulatory networks. Nat. Rev. Mol. Cell\
+    \ Biol. 9, 770\\u2013780 (2008).\\n5.\\nWalhout, A. J. M. & Vidal, M. High-throughput yeast two-hybrid\\nassays for large-scale\
+    \ protein interaction mapping. Methods 24,\\n297\\u2013306 (2001).\\n6.\\nSafari-Alighiarloo, N., Taghizadeh, M., Rezaei-Tavirani,\
+    \ M.,\\nGoliaei, B. & Peyvandi, A. A. Protein\\u2013protein interaction networks\\n(PPI) and complex diseases. Gastroenterol.\
+    \ Hepatol. Bed Bench 7,\\n17\\u201331 (2014).\\n7.\\nPi\\u00f1ero, J. et al. The disgenet knowledge platform for disease\\\
+    ngenomics: 2019 update. Nucleic Acids Res. 48, 845\\u2013855 (2020).\\n8.\\nGoh, K.-I. et al. The human disease network.\
+    \ Proc. Natl Acad.\\nSci. USA 104, 8685\\u20138690 (2007).\\n9.\\nAl Musawi, A. F., Roy, S. & Ghosh, P. A review of link\
+    \ prediction\\napplications in network biology. IEEE Access 13, 54997\\u201355016\\n(2025).\"\n  },\n  {\n    \"name\"\
+    : \"Wang, Y., You, Z., Li, L. & Chen, Z. A survey of current trends in\",\n    \"text\": \"computational predictions of\
+    \ protein\\u2013protein interactions.\\nFront. Comput. Sci. 14, 144901 (2020).\\n11.\\nAbbas, K. et al. Application of\
+    \ network link prediction in drug\\ndiscovery. BMC Bioinformatics 22, 187 (2021).\"\n  },\n  {\n    \"name\": \"Kumar,\
+    \ A., Singh, S. S., Singh, K. & Biswas, B. Link prediction\",\n    \"text\": \"techniques, applications, and performance:\
+    \ a survey. Phys. A Stat.\\nMech. Appl. 553, 124289 (2020).\"\n  },\n  {\n    \"name\": \"Page, L., Brin, S., Rajeev,\
+    \ M. & Winograd, T. The PageRank citation\",\n    \"text\": \"ranking : bringing order to the web. In The Web Conference\"\
+    \n  },\n  {\n    \"name\": \"(IW3C2, 1999)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Katz, L. A new status index\
+    \ derived from sociometric analysis\",\n    \"text\": \"Psychometrika 18, 39\\u201343 (1953).\"\n  },\n  {\n    \"name\"\
+    : \"Iv\\u00e1n, G. & Grolmusz, V. When the Web meets the cell: using\",\n    \"text\": \"personalized PageRank for analyzing\
+    \ protein interaction\\nnetworks. Bioinformatics 27, 405\\u2013407 (2011).\"\n  },\n  {\n    \"name\": \"Lu, Y., Guo,\
+    \ Y. & Korhonen, A. Link prediction in drug\\u2013target\",\n    \"text\": \"interactions network using similarity indices.\
+    \ BMC Bioinformatics\\n18, 39 (2017).\"\n  },\n  {\n    \"name\": \"Nelson, W. et al. To embed or not: network embedding\
+    \ as a\",\n    \"text\": \"paradigm in computational biology. Front. Genet. 10, 381 (2019).\"\n  },\n  {\n    \"name\"\
+    : \"Cho, H., Berger, B. & Peng, J. Compact integration of\",\n    \"text\": \"multi-network topology for functional analysis\
+    \ of genes. Cell Syst.\\n3, 540\\u2013548.e5 (2016).\"\n  },\n  {\n    \"name\": \"Perozzi, B., Al-Rfou, R. & Skiena,\
+    \ S. DeepWalk: online learning of\",\n    \"text\": \"social representations. In Proc. 20th ACM SIGKDD International\\\
+    nConference on Knowledge Discovery and Data Mining. KDD \\u201814\\n701\\u2013710 (Association for Computing Machinery,\
+    \ 2014).\"\n  },\n  {\n    \"name\": \"Grover, A. & Leskovec, J. node2vec: scalable feature learning for\",\n    \"text\"\
+    : \"networks. In Proc. 22nd ACM SIGKDD International Conference on\\nKnowledge Discovery and Data Mining 855\\u2013864\
+    \ (Association for\\nComputing Machinery, 2016).\"\n  },\n  {\n    \"name\": \"Ribeiro, L. F. R., Saverese, P. H. P. &\
+    \ Figueiredo, D. R. struc2vec:\",\n    \"text\": \"learning node representations from structural identity. In Proc.\\\
+    n23rd ACM SIGKDD International Conference on Knowledge\\nDiscovery and Data Mining 385\\u2013394 (Association for Computing\\\
+    nMachinery, 2017).\"\n  },\n  {\n    \"name\": \"Su, C., Tong, J., Zhu, Y., Cui, P. & Wang, F. Network embedding in\"\
+    ,\n    \"text\": \"biomedical data science. Brief. Bioinform. 21, 182\\u2013197 (2020).\"\n  },\n  {\n    \"name\": \"\
+    Mohamed, S. K., Nounu, A. & Nov\\u00e1\\u010dek, V. Biological applications\",\n    \"text\": \"of knowledge graph embedding\
+    \ models. Brief. Bioinform. 22,\\n1679\\u20131693 (2021).\"\n  },\n  {\n    \"name\": \"Zitnik, M. & Leskovec, J. Predicting\
+    \ multicellular function through\",\n    \"text\": \"multi-layer tissue networks. Bioinformatics 33, 190\\u2013198 (2017).\"\
+    \n  },\n  {\n    \"name\": \"Zitnik, M., Agrawal, M. & Leskovec, J. Modeling polypharmacy\",\n    \"text\": \"side effects\
+    \ with graph convolutional networks. Bioinformatics 34,\\n457\\u2013466 (2018).\"\n  },\n  {\n    \"name\": \"Ruiz, C.,\
+    \ Zitnik, M. & Leskovec, J. Identification of disease\",\n    \"text\": \"treatment mechanisms through the multiscale\
+    \ interactome.\\nNat. Commun. 12, 1796 (2021).\"\n  },\n  {\n    \"name\": \"Ietswaart, R., Gyori, B. M., Bachman, J.\
+    \ A., Sorger, P. K. &\",\n    \"text\": \"Churchman, L. S. GeneWalk identifies relevant gene functions\\nfor a biological\
+    \ context using network representation learning.\\nGenome Biol. 22, 55 (2021).\"\n  },\n  {\n    \"name\": \"Hu, Y. et\
+    \ al. Network embedding across multiple tissues and data\",\n    \"text\": \"modalities elucidates the context of host\
+    \ factors important for\\nCOVID-19 infection. Front. Genet. 13, 909714 (2022).\"\n  },\n  {\n    \"name\": \"Mikolov,\
+    \ T., Chen, K., Corrado, G. & Dean, J. Efficient estimation of\",\n    \"text\": \"word representations in vector space.\
+    \ In International Conference\\non Learning Representations (ICLR, 2013).\"\n  },\n  {\n    \"name\": \"Mikolov, T., Sutskever,\
+    \ I., Chen, K., Corrado, G. & Dean, J. Distributed\",\n    \"text\": \"representations of words and phrases and their\
+    \ compositionality.\\nAdv. Neural Inf. Process. Syst. 26, 3111\\u20133119 (2013).\"\n  },\n  {\n    \"name\": \"Bordes,\
+    \ A., Usunier, N., Garcia-Duran, A., Weston, J. & Yakhnenko,\",\n    \"text\": \"O. Translating embeddings for modeling\
+    \ multi-relational data.\\nIn Proc. 27th International Conference on Neural Information\\nProcessing Systems Vol. 2 2787\\\
+    u20132795 (Curran, 2013).\"\n  },\n  {\n    \"name\": \"Yang, B., Yih, W., He, X., Gao, J. & Deng, L. Embedding entities\"\
+    ,\n    \"text\": \"and relations for learning and inference in knowledge bases. In\\nInternational Conference on Learning\
+    \ Representations (ICLR, 2015).\"\n  },\n  {\n    \"name\": \"Trouillon, T., Welbl, J., Riedel, S., Gaussier, E. & Bouchard,\
+    \ G\",\n    \"text\": \"Complex embeddings for simple link prediction. Proc. Mach.\\nLearn. Res. 48, 2071\\u20132080 (2016).\\\
+    n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\"\n  },\n  {\n    \"name\": \"\
+    Sun, Z., Deng, Z.-H., Nie, J.-Y. & Tang, J. RotatE: knowledge\",\n    \"text\": \"graph embedding by relational rotation\
+    \ in complex space.\\nIn International Conference on Learning Representations\"\n  },\n  {\n    \"name\": \"(ICLR, 2019)\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Chaplot, D. S., Dalal, M., Gupta, S., Malik, J. & Salakhutdinov, R\"\
+    ,\n    \"text\": \"SEAL: self-supervised embodied active learning using\\nexploration and 3D consistency. In Proc. 35th\
+    \ International\\nConference on Neural Information Processing Systems. NIPS \\u201821\\n(Curran, 2021).\"\n  },\n  {\n\
+    \    \"name\": \"Teru, K. K., Denis, E. G. & Hamilton, W. L. Inductive relation\",\n    \"text\": \"prediction by subgraph\
+    \ reasoning. In Proc. 37th International\\nConference on Machine Learning 9448\\u20139457 (PMLR, 2020).\"\n  },\n  {\n\
+    \    \"name\": \"Kipf, T.N. & Welling, M. Variational graph auto-encoders. In NIPS\",\n    \"text\": \"Workshop on Bayesian\
+    \ Deep Learning (NIPS, 2016).\"\n  },\n  {\n    \"name\": \"Schlichtkrull, M. et al. Modeling relational data with graph\"\
+    ,\n    \"text\": \"convolutional networks. In Proc. The Semantic Web: 15th\\nInternational Conference, ESWC 2018 593\\\
+    u2013607 (Springer, 2018).\"\n  },\n  {\n    \"name\": \"Xu, K., Hu, W., Leskovec, J. & Jegelka, S. How powerful are\"\
+    ,\n    \"text\": \"graph neural networks? In International Conference on Learning\\nRepresentations (ICLR, 2019).\"\n\
+    \  },\n  {\n    \"name\": \"Zhang, R., Wang, Z., Wang, X., Meng, Z. & Cui, W. MHTAN-DTI:\",\n    \"text\": \"metapath-based\
+    \ hierarchical transformer and attention network\\nfor drug\\u2013target interaction prediction. Brief. Bioinform. 24,\
+    \ 079\\n(2023).\"\n  },\n  {\n    \"name\": \"Ren, Z. et al. DeepMPF: deep learning framework for predicting\",\n    \"\
+    text\": \"drug\\u2013target interactions based on multi-modal representation\\nwith meta-path semantic analysis. J. Transl.\
+    \ Med. 21, 48 (2023).\"\n  },\n  {\n    \"name\": \"Bang, D., Lim, S., Lee, S. & Kim, S. Biomedical knowledge graph\"\
+    ,\n    \"text\": \"learning for drug repurposing by extending guilt-by-association\\nto multiple layers. Nat. Commun.\
+    \ 21, 48 (2023).\"\n  },\n  {\n    \"name\": \"Liu, X., Tan, H., Chen, Q. & Lin, G. Ragat: relation aware graph\",\n \
+    \   \"text\": \"attention network for knowledge graph completion. IEEE Access\\n9, 20840\\u201320849 (2021).\"\n  },\n\
+    \  {\n    \"name\": \"Hu, Z., Dong, Y., Wang, K. & Sun, Y. Heterogeneous graph\",\n    \"text\": \"transformer. In Proc.\
+    \ The Web Conference 2020. WWW \\u201820\\n2704\\u20132710 (Association for Computing Machinery, 2020).\"\n  },\n  {\n\
+    \    \"name\": \"The UniProt Consortium. UniProt: the Universal Protein\",\n    \"text\": \"Knowledgebase in 2023. Nucleic\
+    \ Acids Res. 51, 523\\u2013531 (2022).\"\n  },\n  {\n    \"name\": \"Ashburner, M. et al. Gene ontology: tool for the\
+    \ unification of\",\n    \"text\": \"biology. Nat. Genet. 25, 25\\u201329 (2000).\"\n  },\n  {\n    \"name\": \"Aleksander,\
+    \ S. A. et al. The gene ontology knowledgebase in\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Genetics 224, iyad031\
+    \ (2023)\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Law, V. et al. DrugBank 4.0: shedding new light on drug\"\
+    ,\n    \"text\": \"metabolism. Nucleic Acids Res. 42, 1091\\u20131097 (2014).\"\n  },\n  {\n    \"name\": \"Zhang, R.\
+    \ et al. Drug repurposing for COVID-19 via knowledge\",\n    \"text\": \"graph completion. J. Biomed. Inform. 115, 103696\
+    \ (2021).\"\n  },\n  {\n    \"name\": \"Zhang, N. et al. Ontoprotein: protein pretraining with gene\",\n    \"text\":\
+    \ \"ontology embedding. In International Conference on Learning\\nRepresentations (ICLR, 2022).\"\n  },\n  {\n    \"name\"\
+    : \"Biswas, S., Mitra, P. & Rao, K. Relation prediction of co-morbid\",\n    \"text\": \"diseases using knowledge graph\
+    \ completion. IEEE/ACM Trans.\\nComput. Biol. Bioinform. 12, 708\\u2013717 (2021).\"\n  },\n  {\n    \"name\": \"Lobentanzer,\
+    \ S. et al. Democratizing knowledge representation\",\n    \"text\": \"with BioCypher. Nat. Biotechnol. 41, 1056\\u20131059\
+    \ (2023).\"\n  },\n  {\n    \"name\": \"Chandak, P., Huang, K. & Zitnik, M. Building a knowledge graph to\",\n    \"text\"\
+    : \"enable precision medicine. Sci. Data 10, 67 (2023).\"\n  },\n  {\n    \"name\": \"Huang, K. et al. A foundation model\
+    \ for clinician-centered drug\",\n    \"text\": \"repurposing. Nat. Med. 30, 3601\\u20133613 (2024).\"\n  },\n  {\n  \
+    \  \"name\": \"Zhang, K., Wu, M., Liu, Y., Feng, Y. & Zheng, J. KR4SL: knowledge\",\n    \"text\": \"graph reasoning for\
+    \ explainable prediction of synthetic lethality.\\nBioinformatics 39, 158\\u2013167 (2023).\"\n  },\n  {\n    \"name\"\
+    : \"Zhu, Z., Zhang, Z., Xhonneux, L.-P. & Tang, J. Neural Bellman\\u2013\",\n    \"text\": \"Ford networks: a general\
+    \ graph neural network framework for\\nlink prediction. Adv. Neural Inf. Process. Syst. 34, 29476\\u201329490\\n(2021).\"\
+    \n  },\n  {\n    \"name\": \"Ahrabian, K., Feizi, A., Salehi, Y., Hamilton, W. L. & Bose, A. J\",\n    \"text\": \"Structure\
+    \ aware negative sampling in knowledge graphs. In Proc.\"\n  },\n  {\n    \"name\": \"Conference on Empirical Methods\
+    \ in Natural Language\",\n    \"text\": \"Processing (EMNLP) 6093\\u20136101 (Association for Computational\\nLinguistics,\
+    \ 2020).\"\n  },\n  {\n    \"name\": \"Kamburov, A., Wierling, C., Lehrach, H. & Herwig, R\",\n    \"text\": \"ConsensusPathDB\\\
+    u2014a database for integrating human functional\\ninteraction networks. Nucleic Acids Res. 37, 623\\u2013628 (2009).\"\
+    \n  },\n  {\n    \"name\": \"Cerami, E. G. et al. Pathway commons, a web resource for\",\n    \"text\": \"biological pathway\
+    \ data. Nucleic Acids Res. 39, 685\\u2013690 (2010).\"\n  },\n  {\n    \"name\": \"Demir, E. et al. The biopax community\
+    \ standard for pathway data\",\n    \"text\": \"sharing. Nat. Biotechnol. 28, 935\\u2013942 (2010).\"\n  },\n  {\n   \
+    \ \"name\": \"Rodchenkov, I. et al. Pathway Commons 2019 Update: integration,\",\n    \"text\": \"analysis and exploration\
+    \ of pathway data. Nucleic Acids Res. 48,\\n489\\u2013497 (2019).\"\n  },\n  {\n    \"name\": \"Kaelin, W. G. Jr. The\
+    \ concept of synthetic lethality in the context of\",\n    \"text\": \"anticancer therapy. Nat. Rev. Cancer 5, 689\\u2013698\
+    \ (2005).\"\n  },\n  {\n    \"name\": \"Zhao, L. et al. NONCODEV6: an updated database dedicated\",\n    \"text\": \"\
+    to long non-coding RNA annotation in both animals and plants.\\nNucleic Acids Res. 49, 165\\u2013171 (2021).\"\n  },\n\
+    \  {\n    \"name\": \"Zhao, H. et al. LncTarD 2.0: an updated comprehensive database\",\n    \"text\": \"for experimentally-supported\
+    \ functional lncRNA\\u2013target\\nregulations in human diseases. Nucleic Acids Res. 51, 199\\u2013207\\n(2023).\"\n \
+    \ },\n  {\n    \"name\": \"Zhao, T., Hu, Y., Peng, J. & Cheng, L. DeepLGP: a novel deep\",\n    \"text\": \"learning method\
+    \ for prioritizing lncRNA target genes.\\nBioinformatics 36, 4466\\u20134472 (2020).\"\n  },\n  {\n    \"name\": \"Middeldorp,\
+    \ C. et al. Anxiety and depression in children and\",\n    \"text\": \"adults: influence of serotonergic and neurotrophic\
+    \ genes? Genes\\nBrain Behav. 9, 808\\u2013816 (2010).\"\n  },\n  {\n    \"name\": \"Bahram Sangani, N. et al. A novel\
+    \ insight into neurological\",\n    \"text\": \"disorders through hdac6 protein\\u2013protein interactions. Sci. Rep.\\\
+    n14, 14666 (2024).\"\n  },\n  {\n    \"name\": \"Pui, C.-H. & Evans, W. E. Acute lymphoblastic leukemia. N. Engl. J\"\
+    ,\n    \"text\": \"Med. 339, 605\\u2013615 (1998).\"\n  },\n  {\n    \"name\": \"Messina, M. et al. AICDA expression in\
+    \ BCR/ABL1-positive acute\",\n    \"text\": \"lymphoblastic leukaemia is associated with a peculiar gene\\nexpression\
+    \ profile. Br. J. Haematol. 152, 727\\u2013732 (2011).\"\n  },\n  {\n    \"name\": \"Tanaka, Y. et al. Transcriptional\
+    \ activities of DUX4 fusions in B-cell\",\n    \"text\": \"acute lymphoblastic leukemia. Haematologica 103, 522\\u2013526\\\
+    n(2018).\"\n  },\n  {\n    \"name\": \"Zhang, J. et al. Deregulation of DUX4 and ERG in acute\",\n    \"text\": \"lymphoblastic\
+    \ leukemia. Nat. Genet. 48, 1481\\u20131489 (2016).\"\n  },\n  {\n    \"name\": \"Mortlock, A. A., Wilson, D. M., Kettle,\
+    \ J. G., Goldberg, F. W. &\",\n    \"text\": \"Foote, K. M. in Comprehensive Medicinal Chemistry III\\n(eds Chackalamannil,\
+    \ S. et al.) 39\\u201375 (Elsevier, 2017).\"\n  },\n  {\n    \"name\": \"Knox, C. et al. DrugBank 6.0: the DrugBank Knowledgebase\
+    \ for\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Nucleic Acids Res. 52, 1265\\u20131275 (2024)\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"Varallo-Rodriguez, C. et al. Bosutinib for the treatment of\",\n    \"text\": \"Philadelphia\
+    \ chromosome-positive leukemias. Expert Opin.\\nOrphan Drugs 3, 599\\u2013608 (2015).\"\n  },\n  {\n    \"name\": \"Zhao,\
+    \ Y., Zhu, Y., Wang, H. & Ji, C. Case report: successful\",\n    \"text\": \"treatment of cutaneous squamous cell carcinoma\
+    \ in three\\npatients with a combination of acitretin and clarithromycin.\\nFront. Oncol. 11, 650974 (2021).\"\n  },\n\
+    \  {\n    \"name\": \"Lin, X.-Y. et al. Acitretin induces apoptosis through CD95\",\n    \"text\": \"signalling pathway\
+    \ in human cutaneous squamous cell\\ncarcinoma cell line SCL-1. J. Cell. Mol. Med. 13, 2888\\u20132898\\n(2009).\"\n \
+    \ },\n  {\n    \"name\": \"Nguyen, P. H. et al. All-trans retinoic acid targets gastric cancer\",\n    \"text\": \"stem\
+    \ cells and inhibits patient-derived gastric carcinoma tumor\\ngrowth. Oncogene 35, 5619\\u20135628 (2016).\"\n  },\n\
+    \  {\n    \"name\": \"Guarrera, L. et al. Anti-tumor activity of all-trans retinoic acid in\",\n    \"text\": \"gastric-cancer:\
+    \ gene-networks and molecular mechanisms.\\nJ. Exp. Clin. Cancer Res. 42, 298 (2023).\\n\\nNature Biomedical Engineering\\\
+    nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\"\n  },\n  {\n    \"name\": \"Heppner, F. L., Ransohoff, R. M. &\
+    \ Becher, B. Immune attack: the\",\n    \"text\": \"role of inflammation in Alzheimer disease. Nat. Rev. Neurosci. 16,\\\
+    n358\\u2013372 (2015).\"\n  },\n  {\n    \"name\": \"Batra, R. et al. The landscape of metabolic brain alterations in\"\
+    ,\n    \"text\": \"Alzheimer\\u2019s disease. Alzheimers Dement. 19, 980\\u2013998 (2023).\"\n  },\n  {\n    \"name\"\
+    : \"Bellenguez, C. et al. New insights into the genetic etiology of\",\n    \"text\": \"Alzheimer\\u2019s disease and\
+    \ related dementias. Nat. Genet. 54,\\n412\\u2013436 (2022).\"\n  },\n  {\n    \"name\": \"Jones, L. L., McDonald, D.\
+    \ A. & Borum, P. R. Acylcarnitines: role in\",\n    \"text\": \"brain. Prog. Lipid Res. 49, 61\\u201375 (2010).\"\n  },\n\
+    \  {\n    \"name\": \"Malykh, A. G. & Sadaie, M. R. Piracetam and piracetam-like\",\n    \"text\": \"drugs: from basic\
+    \ science to novel clinical applications to CNS\\ndisorders. Drugs 70, 287\\u2013312 (2010).\"\n  },\n  {\n    \"name\"\
+    : \"Deardorff, W. J., Feen, E. & Grossberg, G. T. The use of\",\n    \"text\": \"cholinesterase inhibitors across all\
+    \ stages of Alzheimer\\u2019s disease.\\nDrugs Aging 32, 537\\u2013547 (2015).\\n85.\\t van Dyck, C. H. et al. Lecanemab\
+    \ in early Alzheimer\\u2019s disease.\\nN. Engl. J. Med. 388, 9\\u201321 (2023).\"\n  },\n  {\n    \"name\": \"Budd Haeberlein,\
+    \ S. et al. Two randomized phase 3 studies of\",\n    \"text\": \"aducanumab in early Alzheimer\\u2019s disease. J. Prev.\
+    \ Alzheimers Dis.\\n9, 197\\u2013210 (2022).\"\n  },\n  {\n    \"name\": \"Cummings, J. et al. Alzheimer\\u2019s disease\
+    \ drug development\",\n    \"text\": \"pipeline: 2023. Alzheimers Dement. 9, 12385 (2023).\"\n  },\n  {\n    \"name\"\
+    : \"Kowia\\u0144ski, P. et al. BDNF: a key factor with multipotent impact on\",\n    \"text\": \"brain signaling and synaptic\
+    \ plasticity. Cell. Mol. Neurobiol. 38,\\n579\\u2013593 (2018).\"\n  },\n  {\n    \"name\": \"Tafseer, S. et al. Bupropion\
+    \ monotherapy alters neurotrophic and\",\n    \"text\": \"inflammatory markers in patients of major depressive disorder.\\\
+    nPharmacol. Biochem. Behav. 200, 173073 (2021).\"\n  },\n  {\n    \"name\": \"Jamal, M., Does, W., Elzinga, B. M., Molendijk,\
+    \ M. L. & Penninx,\",\n    \"text\": \"B. W. Association between smoking, nicotine dependence, and\\nBDNF Val66Met polymorphism\
+    \ with BDNF concentrations in\\nserum. Nicotine Tob. Res. 17, 323\\u2013329 (2015).\"\n  },\n  {\n    \"name\": \"Mannick,\
+    \ J. B. & Lamming, D. W. Targeting the biology of aging\",\n    \"text\": \"with mTOR inhibitors. Nat. Aging 3, 642\\\
+    u2013660 (2023).\"\n  },\n  {\n    \"name\": \"Kaeberlein, M. & Galvan, V. Rapamycin and Alzheimer\\u2019s disease:\"\
+    ,\n    \"text\": \"time for a clinical trial? Sci. Transl. Med. 11, 4289 (2019).\"\n  },\n  {\n    \"name\": \"MacKeigan,\
+    \ J. P. & Krueger, D. A. Differentiating the mTOR\",\n    \"text\": \"inhibitors everolimus and sirolimus in the treatment\
+    \ of tuberous\\nsclerosis complex. Neuro Oncol. 17, 1550\\u20131559 (2015).\"\n  },\n  {\n    \"name\": \"Gekakis, N.\
+    \ et al. Role of the clock protein in the mammalian\",\n    \"text\": \"circadian mechanism. Science 280, 1564\\u20131569\
+    \ (1998).\"\n  },\n  {\n    \"name\": \"Olkkonen, J. et al. DEC2 blocks the effect of the ARNTL2/NPAS2\",\n    \"text\"\
+    : \"dimer on the expression of PER3 and DBP. J. Circadian Rhythms 15,\\n6 (2017).\"\n  },\n  {\n    \"name\": \"Kume,\
+    \ K. et al. mCRY1 and mCRY2 are essential components of\",\n    \"text\": \"the negative limb of the circadian clock feedback\
+    \ loop. Cell 98,\\n193\\u2013205 (1999).\"\n  },\n  {\n    \"name\": \"Griffin, E. A., Staknis, D. & Weitz, C. J. Light-independent\
+    \ role of\",\n    \"text\": \"CRY1 and CRY2 in the mammalian circadian clock. Science 286,\\n768\\u2013771 (1999).\"\n\
+    \  },\n  {\n    \"name\": \"Zhang, Y. et al. Long noncoding RNA LINP1 regulates repair of\",\n    \"text\": \"DNA double-strand\
+    \ breaks in triple-negative breast cancer.\\nNat. Struct. Mol. Biol. 23, 522\\u2013530 (2016).\"\n  },\n  {\n    \"name\"\
+    : \"Chen, L. et al. Effect of long non-coding RNA PVT1 on cell\",\n    \"text\": \"proliferation and migration in melanoma.\
+    \ Int. J. Mol. Med. 41,\\n1275\\u20131282 (2018).\"\n  },\n  {\n    \"name\": \"Yang, H., Lin, Z. & Zhang, M. Rethinking\
+    \ knowledge graph\",\n    \"text\": \"evaluation under the open-world assumption. In Proc. 36th\\nInternational Conference\
+    \ on Neural Information Processing\\nSystems. NIPS \\u201822 (Curran, 2024).\"\n  },\n  {\n    \"name\": \"Chen, Z. et\
+    \ al. Knowledge graph completion: a review. IEEE\",\n    \"text\": \"Access 8, 192435\\u2013192456 (2020).\"\n  },\n \
+    \ {\n    \"name\": \"Baras, J. S. & Theodorakopoulos, G. Path Problems in Networks\",\n    \"text\": \"(Springer, 2010).\"\
+    \n  },\n  {\n    \"name\": \"Wang, J. et al. SynLethDB 2.0: a web-based knowledge graph\",\n    \"text\": \"database on\
+    \ synthetic lethality for novel anticancer drug\\ndiscovery. Database 2022, baac030 (2022).\"\n  },\n  {\n    \"name\"\
+    : \"Glorot, X. & Bengio, Y. Understanding the difficulty of training\",\n    \"text\": \"deep feedforward neural networks.\
+    \ In Proc. 13th International\\nConference on Artificial Intelligence and Statistics (eds Teh, Y. W. &\\nTitterington,\
+    \ M.) 249\\u2013256 (PMLR, 2010).\"\n  },\n  {\n    \"name\": \"Hu, E. Y. et al. Codebase for BioPathNet to predict links\
+    \ in\",\n    \"text\": \"biomedical knowledge graphs. GitHub https://github.com/\\nemyyue/BioPathNet (2025).\"\n  },\n\
+    \  {\n    \"name\": \"Hu, E. Y. et al. Link to BioPathNet data download. GitHub https://\",\n    \"text\": \"github.com/emyyue/BioPathNet/blob/main/data/download.sh\\\
+    n(2025).\"\n  },\n  {\n    \"name\": \"Acknowledgements\",\n    \"text\": \"We acknowledge funding support from the Helmholtz\
+    \ Association\\nunder CausalCellDynamics (to A.M., E.Y.H., S.F. and S.X.) and the\\njoint research school \\u2018Munich\
+    \ School for Data Science (MUDS)\\u2019\\n(to S.O. and S.F.); the Joachim Herz Foundation (to E.Y.H.); and the\\nNational\
+    \ Institutes of Health/National Institute on Aging through\\ngrants RF1AG059093, U01AG061359 and R01AG081322 (to M.A.).\\\
+    nFurther support to A.M. was obtained by the BMBF Cluster4Future\\nprogramme (Cluster for Nucleic Acid Therapeutics Munich,\\\
+    nCNATM, ID: 03ZU1201AA) and SFB TRR267 (ID: 403584255,\\nproject Z02). We acknowledge the use of ChatGPT and Grammarly\\\
+    nfor text editing.\"\n  },\n  {\n    \"name\": \"Author contributions\",\n    \"text\": \"E.Y.H., S.X., Z.Z., A.M. and\
+    \ J.T. conceived of the project. E.Y.H., S.O.,\\nS.F., H.C., S.X. and Z.Z. implemented the BioPathnet model and\\ncarried\
+    \ out all the analysis. A.M. and S.X. co-supervised the study.\\nE.Y.H., S.O. and A.M. wrote the paper with help from\
+    \ S.F. and S.X.\\nand additional input from all co-authors. All authors reviewed and\\napproved the final paper.\"\n \
+    \ },\n  {\n    \"name\": \"Funding\",\n    \"text\": \"Open access funding provided by Helmholtz Zentrum\\nM\\u00fcnchen\
+    \ - Deutsches Forschungszentrum f\\u00fcr Gesundheit und\\nUmwelt (GmbH).\"\n  },\n  {\n    \"name\": \"Competing interests\"\
+    ,\n    \"text\": \"The authors declare no competing interests.\\nAdditional information\"\n  },\n  {\n    \"name\": \"\
+    Supplementary information The online version\",\n    \"text\": \"contains supplementary material available at\\nhttps://doi.org/10.1038/s41551-025-01598-z.\\\
+    nCorrespondence and requests for materials should be addressed to\\nAnnalisa Marsico.\\nPeer review information Nature\
+    \ Biomedical Engineering thanks\\nRuss Altman, Jie Zheng and the other, anonymous, reviewer(s) for\\ntheir contribution\
+    \ to the peer review of this work. Peer reviewer reports\\nare available.\\nReprints and permissions information is available\
+    \ at\\nwww.nature.com/reprints.\\nPublisher\\u2019s note Springer Nature remains neutral with regard to\\njurisdictional\
+    \ claims in published maps and institutional affiliations.\\nOpen Access This article is licensed under a Creative Commons\\\
+    nAttribution 4.0 International License, which permits use, sharing,\\nadaptation, distribution and reproduction in any\
+    \ medium or format,\\n\\nNature Biomedical Engineering\\nArticle\\nhttps://doi.org/10.1038/s41551-025-01598-z\\nas long\
+    \ as you give appropriate credit to the original author(s) and the\\nsource, provide a link to the Creative Commons licence,\
+    \ and indicate\\nif changes were made. The images or other third party material in this\\narticle are included in the\
+    \ article\\u2019s Creative Commons licence, unless\\nindicated otherwise in a credit line to the material. If material\
+    \ is not\\nincluded in the article\\u2019s Creative Commons licence and your intended\\nuse is not permitted by statutory\
+    \ regulation or exceeds the permitted\\nuse, you will need to obtain permission directly from the copyright\\nholder.\
+    \ To view a copy of this licence, visit http://creativecommons.\\norg/licenses/by/4.0/.\\n\\u00a9 The Author(s) 2026\"\
+    \n  }\n]"
+  acknowledgments: 'We acknowledge funding support from the Helmholtz Association
+
+    under CausalCellDynamics (to A.M., E.Y.H., S.F. and S.X.) and the
+
+    joint research school ‘Munich School for Data Science (MUDS)’
+
+    (to S.O. and S.F.); the Joachim Herz Foundation (to E.Y.H.); and the
+
+    National Institutes of Health/National Institute on Aging through
+
+    grants RF1AG059093, U01AG061359 and R01AG081322 (to M.A.).
+
+    Further support to A.M. was obtained by the BMBF Cluster4Future
+
+    programme (Cluster for Nucleic Acid Therapeutics Munich,
+
+    CNATM, ID: 03ZU1201AA) and SFB TRR267 (ID: 403584255,
+
+    project Z02). We acknowledge the use of ChatGPT and Grammarly
+
+    for text editing.'
+  author_contributions: 'E.Y.H., S.X., Z.Z., A.M. and J.T. conceived of the project. E.Y.H., S.O.,
+
+    S.F., H.C., S.X. and Z.Z. implemented the BioPathnet model and
+
+    carried out all the analysis. A.M. and S.X. co-supervised the study.
+
+    E.Y.H., S.O. and A.M. wrote the paper with help from S.F. and S.X.
+
+    and additional input from all co-authors. All authors reviewed and
+
+    approved the final paper.'
+  funding: 'Open access funding provided by Helmholtz Zentrum
+
+    München - Deutsches Forschungszentrum für Gesundheit und
+
+    Umwelt (GmbH).'
+  competing_interests: 'The authors declare no competing interests.
+
+    Additional information'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p1_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_2.png\",\n   \
+    \ \"page\": 1\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n\
+    \    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_2.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_3.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_4.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_5.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_6.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_7.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_8.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_9.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_10.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_11.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_12.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p3_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_13.png\"\
+    ,\n    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p13_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_1.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p13_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_2.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p13_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_3.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p13_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p13_4.png\"\
+    ,\n    \"page\": 13\n  },\n  {\n    \"id\": \"fig_p14_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_1.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_2.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_3.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_4.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_5.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_6.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_7.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p14_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p14_8.png\"\
+    ,\n    \"page\": 14\n  },\n  {\n    \"id\": \"fig_p24_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p24_1.png\"\
+    ,\n    \"page\": 24\n  }\n]"
+references:
+  reference_count: 33
+associated:
+  data_repositories: "[\n  {\n    \"url\": \"https://github.com/emyyue/BioPathNet\",\n    \"accession\": \"\",\n    \"database\"\
+    : \"\",\n    \"description\": \"\"\n  },\n  {\n    \"url\": \"https://github.com/emyyue/\",\n    \"accession\": \"\",\n\
+    \    \"database\": \"\",\n    \"description\": \"\"\n  }\n]"

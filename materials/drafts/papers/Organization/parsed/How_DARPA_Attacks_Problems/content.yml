@@ -1,0 +1,430 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/Organization/How DARPA Attacks Problems.pdf
+
+citation:
+  year: '2013'
+content:
+  sections: "[\n  {\n    \"name\": \"Harvard Business Review October 2013\",\n    \"text\": \"\"\n  },\n  {\n    \"name\"\
+    : \"HBR.ORG\",\n    \"text\": \"Regina E. Dugan and Kaigham J.\\nGabriel were formerly the director and\\ndeputy director\
+    \ of the Defense Advanced\\nResearch Projects Agency. Dugan is cur-\\nrently a senior vice president at Google's\\nMotorola\
+    \ Mobility business, where she\\nleads the Advanced Technology and\\nProjects (ATAP) group. Gabriel is a corpo-\\nrate\
+    \ vice president at Motorola Mobility\\nand the deputy director of ATAP.\\n\\\"Special Forces\\\"\\nInnovation:\\nHow\
+    \ DARPA\\nAttacks Problems\\nby Regina E. Dugan and Kaigham J. Gabriel\"\n  },\n  {\n    \"name\": \"SPOTLIGHT ON BREAKTHROUGH\
+    \ INNOVATION\",\n    \"text\": \"Over the past 50 years, the Pentagon's Defense Advanced Research\\nProjects Agency (DARPA)\
+    \ has produced an unparalleled number of\\nbreakthroughs. Arguably, it has the longest-standing, most con-\\nsistent track\
+    \ record of radical invention in history. Its innovations\\ninclude the internet; RISC computing; global positioning satellites;\\\
+    nstealth technology; unmanned aerial vehicles, or\\n\\\"drones\\\"; and micro-electro-mechanical systems\\n(MEMS), which\
+    \ are now used in everything from air\\nbags to ink-jet printers to video games like the Wii.\\nThough the U.S. military\
+    \ was the original customer\\nfor DARPA's applications, the agency's advances\\nhave played a central role in creating\
+    \ a host of multi-\\nbillion-dollar industries.\\nWhat makes DARPA's long list of accomplish-\\nments even more impressive\
+    \ is the agency's swift-\\nness, relatively tiny organization, and comparatively\\nmodest budget. Its programs last, on\
+    \ average, only\\nthree to five years. About lOO temporary technical\\nprogram managers and a vibrant mix of contract\\\
+    n\\\"performers\\\"\\u2014individuals or teams drawn from uni-\\nversities, companies of all sizes, labs, government\\\
+    npartners, and nonprofits\\u2014do the project work. The\\nsupport staff comprises only 120 people in finance,\\ncontracting,\
+    \ HR, security, and legal. The annual\\nbudget for the roughly 200 programs that are un-\\nder way at any given time is\
+    \ about $3 billion. With\\nits unconventional approach, speed, and effective-\\nness, DARPA has created a \\\"special\
+    \ forces\\\" model of\\ninnovation.\\nNot surprisingly, in recent decades there have\\nbeen many attempts to apply the\
+    \ DARPA model in\\nother organizations in the private and public sectors.\\nAll those efforts\\u2014or at least the ones\
+    \ with which\\nwe're familiar\\u2014have had mixed results or failed.\\nThese disappointments have led people to conclude\\\
+    nthat the successes of this extraordinary agency sim-\\nply can't be replicated outside the Department of\\nDefense.\\\
+    nWe disagree. We led DARPA from mid-2009 tmtil\\nmid-2012. Since then, we have been implementing\\nthe agency's model\
+    \ of innovation in a new organiza-\\ntion\\u2014the Advanced Technology and Projects (ATAP)\\ngroup at Motorola Mobility,\
+    \ which was acquired by\\nGoogle in May 2012. We believe that the past efforts\"\n  },\n  {\n    \"name\": \"Harvard Business\
+    \ Review October 2013\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"THE INTERNET\",\n    \"text\": \"In 1969, DARPA\
+    \ launched\\nARPANET, the predecessor\\nofthe internet, to allow\\nproject teams working with\\nincompatible computer\
+    \ sys-\\ntems at different locations\\nto communicate with pack-\\nets of data that contained\\nboth messages and routing\\\
+    ninformation. The first ver-\\nsion (in the sketch at right)\\nhad four nodes, at UCLA,\\nUC-Santa Barbara, the\\nStanford\
+    \ Research Institute,\\nand the University of Utah.\\nfailed because the critical and mutually reinforcing\\nelements\
+    \ ofthe DARPA model were not understood,\\nand as a result, only some of them were adopted. Our\\npurpose is to demonstrate\
+    \ that DARPA's approach to\\nbreakthrough innovation is a viable and compelling\\nalternative to the traditional models\
+    \ common in\\nlarge, captive research organizations.\\nThe DARPA model has three elements:\\nAmbitious goals. The agency's\
+    \ projects are de-\\nsigned to harness science and engineering advances\\nto solve real-world problems or create new opportu-\\\
+    nnities. At Defense, GPS was an example ofthe former\\nand stealth technology of the latter. The problems\\nmust be sufficiently\
+    \ challenging that they cannot\\nbe solved without pushing or catalyzing the science.\"\n  },\n  {\n    \"name\": \"\\\
+    \"SPECIAL FORCES\\\" INNOVATION: HOW DARPA ATTACKS PROBLEMS HBR.ORG\",\n    \"text\": \"Idea in Brief,\"\n  },\n  {\n\
+    \    \"name\": \"THE PROBLEM\",\n    \"text\": \"Traditional approaches to corporate\\nresearch and development have difficulty\\\
+    nconsistently delivering breakthrough\\ninnovations.\"\n  },\n  {\n    \"name\": \"WHY THIS HAPPENS\",\n    \"text\":\
+    \ \"Compromises made to reduce risk\\nor to avoid disrupting existing busi-\\nnesses result in evolutionary\\u2014but\
+    \ rarely\\nbreakthrough\\u2014innovations.\"\n  },\n  {\n    \"name\": \"THE SOLUTION\",\n    \"text\": \"A \\\"special\
+    \ forces\\\" style research group\\nmodeled after the Defense Advanced\\nResearch Projects Agency. Its key elements\\\
+    ninclude tackling projects that advance\\nscience and solve significant problems;\\nassembling the best minds from industry\\\
+    nand academia for limited time periods to\\ncreate diverse, agile, and scalable teams;\\nand allowing independence from\
+    \ the main-\\nstream organization in project selection\\nand execution.\\nThe presence of an urgent need for an application\\\
+    ncreates focus and inspires greater genius.\\nTemporary project teams. DARPA brings\\ntogether world-class experts from\
+    \ industry and\\nacademia to work on projects of relatively short\\nduration. Team members are organized and led by\\\
+    nfixed-term technical managers, who themselves\\nare accomplished in their fields and possess excep-\\ntional leadership\
+    \ skills. These projects cire not open-\\nended research programs. Their intensity, sharp\\nfocus, and finite time frame\
+    \ make them attractive\\nto the highest-caliber talent, and the nature of the\\nchallenge inspires unusual levels of collaboration.\
+    \ In\\nother words, the projects get great people to tackle\\ngreat problems with other great people.\\nIndependence.\
+    \ By charter, DARPA has auton-\\nomy in selecting and running projects. Such inde-\\npendence allows the organization\
+    \ to move fast and\\ntake bold risks and helps it persuade the best and\\nbrightest to join.\\nDecoding DARPA\\nDARPA\
+    \ was created in 1958, shortly after the So-\\nviet Union launched Sputnik, the first man-made\\nsatellite to reach space,\
+    \ sparking a national crisis in\\nthe United States. Concern that the Russians had\\nachieved technological superiority\
+    \ led to the forma-\\ntion ofthe agency. Its founding mission was simple:\\n\\\"to prevent and create strategic surprise.\\\
+    \"\\nThe day before we assumed the agency's helm in\\nJuly 2009, one of its former directors took us aside\\nand said:\
+    \ \\\"DARPA is one ofthe gems ofthe nation.\\nTake good care of her.\\\"\\nWe had both held other jobs at DARPA. They\
+    \ in-\\ncluded roles as program mzinagers for micro-electro-\\nmechanical systems and land-mine detection and\\nrunning\
+    \ the electronics technology office. It felt\\nentirely different, however, to be responsible for the\\norganization itself.\\\
+    nBoth of us had a visceral sense that we had been\\nhanded a high-performance engine. We were intent\\non running it at\
+    \ the maximum RPM but also wanted\\nto preserve it for the long term. Truth was, no one\\nseemed to fully understand how\
+    \ the engine worked.\\nAdding to our concerns were disagreements in\\nthe DARPA community that had taken place over the\\\
+    npreceding decade. Out of a desire to contribute more\\ndirectly to current military confiicts, changes had\\nbeen made\
+    \ in how funds were allocated to research-\\ners and how decisions to continue or kill projects\\nwere reached.\\nWith\
+    \ this weighing on us, we set out to discover\\nwhat made DARPA so successful. We began by\\ncomparing notes on what each\
+    \ of us thought were\\nits core attributes. Then we talked with dozens\\nof colleagues\\u2014people who were working or\
+    \ had\\nworked at the agency as program managers and of-\\nfice directors\\u2014as well as leaders from industry cind\\\
+    nuniversities.\\nThis foundational work led us to understand the\\nkey elements ofthe agency's success\\u2014the things\
+    \ we\\nhad to preserve and even strengthen. And although\\nit's too early to declare victory, we think the reason\\nwe\
+    \ have made such rapid progress at Motorola Mo-\\nbility is that we grasped which battles we had to fight\\nin order to\
+    \ translate the DARPA model into one that\\ncould work in industry.\\nA Dedication to Pasteur's Quadrant\\nA central reason\
+    \ DARPA has been so successful\\nover time is its unwavering commitment to work in\\nwhat the late political scientist\
+    \ Donald E. Stokes, of\\nPrinceton, described as \\\"Pasteur's Quadrant.\\\" (See\\nthe exhibit \\\"Expanding Basic Science\
+    \ and Solving\\nSociety's Problems.\\\") It entails pushing the frontiers\\nof basic science to solve a well-defined,\
+    \ use-inspired\\nneed. Stokes named the quadrant for Louis Pasteur,\\none ofthe founders of microbiology. Throughout his\"\
+    \n  },\n  {\n    \"name\": \"MOTION-SENSING\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"MICROMACHINES\",\n    \"\
+    text\": \"In the early 1990s, DARPA\\nbroke new ground in de-\\nvices that combine sensors,\\nactuators, and electronics\\\
+    non a chip. The U.S. military\\nused them in systems that\\ntracked soldiers inside\\nbuildings, armed torpe-\\ndoes,\
+    \ detected biological\\nweapons, and improved\\navionics. Today they provide\\ncritical functions in air bags,\\nvirtual-reality\
+    \ animation,\\ngaming systems like the Wii\\nand Kinect, ink-jet printers,\\nsmartphones, tablets, and\\nhigh-definition\
+    \ TVs.\\nOctober 2013 Harvard Business Review 77\"\n  },\n  {\n    \"name\": \"SPOTLIGHT ON BREAKTHROUGH INNOVATION\"\
+    ,\n    \"text\": \"Expanding Basic Science and Solving Society's Problems\\nThe late political scientist Donald E. Stokes\
+    \ distinguished four categories of\\nresearch and highlighted how basic science can be employed to create\\npractical\
+    \ applications.\\nBohr's Quadrant. Work here is\\ncuriosity-driven basic research, which\\nseeks foundational knowledge\
+    \ without\\nconsideration of practical use. This quad-\\nrant is named for the early-2Oth-century\\natomic physicist Niels\
+    \ Bohr.\\nEdison's Quadrant. This category is\\npure applied research, aimed at finding a\\nsolution to a practical problem,\
+    \ and has\\nno interest in explaining or understanding\\nthe phenomena of a scientific field. It's\\nnamed for the inventor\
+    \ Thomas Edison.\\nPasteur's Quadrant. Research here\\nexpands basic scientific knowledge in\\norder to meet pressing\
+    \ societal needs.\\nThis quadrant is named for Louis Pasteur,\\na founder ofthe field of microbiology,\\nwho invented\
+    \ ways to prevent disease\\nand food spoilage.\\nStokes didn't bother to give the fourth\\nquadrant a label; both the\
+    \ science and\\nthe use here tend to be uninteresting.\"\n  },\n  {\n    \"name\": \"PRACTICAL\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"USE?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"QUEST FOR\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"FUNDAMENTAL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"PURE BASIC\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"UNDERSTANDING?\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RESEARCH\",\n   \
+    \ \"text\": \"\"\n  },\n  {\n    \"name\": \"BOHR\",\n    \"text\": \"YES\"\n  },\n  {\n    \"name\": \"UNNAMED\",\n \
+    \   \"text\": \"\"\n  },\n  {\n    \"name\": \"PUREAPPUED\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"RESEARCH\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"EDISON\",\n    \"text\": \"NO\\nSOURCE DONHID E. SJOtiES, PASTBUR'S\
+    \ QUADRANT: BASIC SCIENCE AND\"\n  },\n  {\n    \"name\": \"TECHNOLOGICAL INNOVATION, BROOKINGS INSTITUTION PRESS, 1997\
+    \ I\",\n    \"text\": \"career, Pasteur conducted research that advanced\\nbasic science\\u2014the fundamental understanding\
+    \ of\\nphenomena\\u2014as part of his quest to address press-\\ning societal needs, such as fighting diseases like tu-\\\
+    nberculosis, anthrax, \\u00a3ind rabies, and preventing food\\nspoilage.\\nDARPA is not the only organization to live\
+    \ in Pas-\\nteur's Quadrant. There are several examples in the\\nlife sciences industry and at the intersection of art\\\
+    nand engineering, for instance.\\nBut in the private sector in general, examples\\nof work in Pasteur's Quadrant are rare.\
+    \ Know-\\ningly or unknowingly, many companies continue\\nto subscribe to the linear model of technological\\ninnovation:\
+    \ Basic research is exploratory; applied\\nresearch connects new discoveries to a practical\\nend; and commercialization\
+    \ is focused on devel-\\noping a product that incorporates the technology\\nand manufacturing it at scale. Many business\
+    \ ex-\\necutives view basic research as high risk, to be un-\\ndertaken with extreme caution because predicting\\nwhat,\
+    \ if anything, the research will produce is hard,\\nand calculating the value of any discoveries can be\\ndifficult.\\\
+    nSome ofthe research that companies conduct-\\nusually a small portion ofthe total R&D budget\\u2014may\\nbe in basic\
+    \ science. But typically, the basic research\\nis dubbed \\\"blue sky,\\\" \\\"exploratory,\\\" or \\\"speculative,\\\"\
+    \\nand is divorced from concrete needs or problems. Qf-\\nten companies try to make this research more practi-\\ncal by\
+    \ mandating that the business units select and\\nfund it. Not surprisingly, the probability that they\\nwill select projects\
+    \ that challenge or even threaten\\nexisting products and services is low. During the\\nnegotiations between the R&D department\
+    \ and the\\nbusiness units, compromises are made. The result\\nis work that is the worst of both worlds. It lands in\\\
+    nthe lower-left quadrant of Stokes's matrix, where the\\nscience is not interesting and no one cares about the\\ngoals\
+    \ being pursued. Talent exits, and projects fail\\nmore often, not less.\\nMost corporate research budgets are devoted\\\
+    nto innovations critical to maintaining companies'\\ncompetitiveness in their existing industries. The re-\\nsearch agenda\
+    \ is dictated by technology road maps\\ndesigned to ensure that R&D investments produce\\nreliable outcomes.\\nA company\
+    \ can usually map user needs and\\nhow existing or emerging technologies should\\nadvance to meet them. The road map often\
+    \ looks\\nthree to five years out, maybe even a decade. Typi-\\ncally, everybody in the industry has developed a\\nsimilar\
+    \ picture. For example, all semiconductor\\nmanufacturers have known how fast to expect cir-\\ncuits and devices to shrink\
+    \ and what manufactur-\\ning advances were needed to achieve increasingly\\nsmaller features. As a result, companies have\
+    \ used\\nessentially the same manufacturing technologies\\nand chosen to differentiate themselves by the types\\nof circuits\
+    \ and products they created, not how they\\nmade them.\\nThe work in Pasteur's Quadrant doesn't exist on\\nroad maps.\
+    \ It results in discoveries that upset the\\ncurrent trajectory and can destroy an existing busi-\\nness. Expecting the\
+    \ research organization execut-\\ning against the road map to simultaneously deliver\\nbreakthrough innovations that challenge\
+    \ the road\\nmap is unrealistic. Instead, companies should create\\na small, dedicated independent organization to work\\\
+    nin Pasteur's Quadrant. They should take to heart the\\nlesson that the U.S. government learned from the\\nlaunch of Sputnik:\
+    \ The best way to prevent surprise\\nis to create it. And if you don't create the surprise,\\nsomeone else will.\\nIdentifying\
+    \ projects. There are two ways of\\nidentifying projects to pursue.\\nOne is to recognize that a scientific field has\\\
+    nemerged or reached an inflection point, and that it\"\n  },\n  {\n    \"name\": \"Harvard Business Review October 2013\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\\"SPECIAL FORCES\\\" INNOVATION: HOW DARPA ATTACKS PROBLEMS HBR.ORG\"\
+    ,\n    \"text\": \"can solve, often in a new way, a practical problem of\\nimportance.\\nMEMS is an example. In the early\
+    \ 1990s, research\\non the use of sensors and actuators to create micro-\\nelectro-mechanical systems that could be built\
+    \ with\\nstandard semiconductor-fabrication methods was\\na promising, emerging field. The lion's share of the\\nresearch\
+    \ was being conducted at universities, largely\\nwith National Science Foundation funding; it was\\naimed at expanding\
+    \ basic scientific knowledge and\\ngoing in a thousand directions.\\nThe DARPA program focused MEMS research\\non delivering\
+    \ new capabilities in three applications\\nof interest to the military: inertial navigation (for\\napplications like tracking\
+    \ soldiers inside buildings\\nand arming weapons), optical switches and displays\\n(for avionics and ground-to-air communication\
+    \ sys-\\ntems), and lightweight laboratories on a chip that\\ncould quickly perform tasks in the field like detect-\\\
+    ning the presence of biological weapons and identify-\\ning remains. The project broke new ground in sev-\\neral areas\
+    \ of science, including plasma physics, fiuid\\ndynamics, and materials.\\nThe second way to identify projects is to uncover\\\
+    nan emerging user need that existing technologies\\ncannot address. An example is DARPA's ongoing\\nhypersonic test-vehicle\
+    \ program to develop an un-\\nmanned glider that can fly at Mach 20 after being\\nboosted to near space. The national\
+    \ security objec-\\ntive is to create the capability to reach any point on\\nthe globe in less than 60 minutes from the\
+    \ continen-\\ntal United States, with a vehicle whose course can\\nbe changed during flight and whose trajectory does\\\
+    nnot signal a ballistic missile launch. At this speed\\nthe surface of the airfoil is 3,500 degrees Fahrenheit,\\nthe\
+    \ temperature of a blast furnace, and is burning\\nas it flies. Overcoming all the challenges involved\\nrequires advancing\
+    \ the science of materials per-\\nformance and assembly, hypersonic aerodynamic\\ncontrol, boundary layer transitions\
+    \ at such speed,\\nheat-transfer-modeling capabilities, and automatic\\nsystems for flight termination.\\nA project portfolio\
+    \ should include a healthy bal-\\nance of both kinds of initiatives\\u2014projects that are\\nfocused on new possibilities\
+    \ created by scientific\\nadvances and projects that are focused on solving\\nlong-standing problems through new scientific\
+    \ de-\\nvelopment. Both can be identi\\u00f1ed through quan-\\ntitative analyses. This instills discipline in project\\\
+    nselection and execution. It is the project leader's\\nfirst task.\"\n  },\n  {\n    \"name\": \"UNMANNED\",\n    \"text\"\
+    : \"\"\n  },\n  {\n    \"name\": \"AERIAL VEHICLES\",\n    \"text\": \"DARPA has been doing re-\\nsearch on remotely piloted\\\
+    naircraft, or drones, since\\nthe 1960s. One of its most\\nrecent inventions is the\\nNano Hummingbird vehicle,\\nwhich\
+    \ weighs less than an\\nAA battery and broadcasts\\nvideo from a tiny onboard\\ncamera. It could allow sol-\\ndiers to\
+    \ scout out threats\\nunobtrusively and from a\\nsafe distance.\"\n  },\n  {\n    \"name\": \"REVOLUTIONARY\",\n    \"\
+    text\": \"\"\n  },\n  {\n    \"name\": \"PROSTHETICS\",\n    \"text\": \"For service members who\\nhave lost limbs, DARPA\\\
+    nis creating advanced\\nprosthetics. It has already\\nproduced artificial arms\\nthat offer an increased\\nrange of motion\
+    \ and dexter-\\nity and currently is working\\nto connect them directly\\nto the brain and simulate\\na sense of touch.\
+    \ In initial\\ntests, human subjects have\\nbeen able to operate the\\nlimbs with their thoughts.\\nTake recent DARPA\
+    \ work in cybersecurity. An\\nanalysis showed that over the past 20 years, the av-\\nerage number of lines of code in\
+    \ a malware program\\nhad held nearly constant, at 125. But as malware\\nproliferated, the number of lines of code needed\
+    \ to\\nprotect computers from it had skyrocketed, to more\\nthan 10 million. It was clear that current efforts were\\\
+    ndivergent with the threat. This prompted the agency\\nto sponsor several initiatives, including one aimed\\nat designing\
+    \ computers that thwart malware by con-\\nstantly changing how they operate at the basic level\\nwhere programs attack\\\
+    u2014but in a way that does not\\naffect users' interactions with the operating system\\nor applications. And at ATAP,\
+    \ quantitative analysis\\nshowed that the percentage of all 3-D printing that\\nwas used to manufacture finished products,\
+    \ not just\\nprototypes, had risen from 4% in 2003 to 25% in 2012,\\nsuggesting it may be possible to make individually\\\
+    ncustomized electronic products en masse, creating\\nthe hardware equivalent of the software ecosystem.\\nDefininga project.\
+    \ Quantitative analysis should\\nalso be used in execution plans to help clarify the\\ngoals of the project and the technical\
+    \ challenges it\\nmust overcome. Both the capabilities and the techni-\\ncal solutions may need to be adjusted as the\
+    \ program\\nproceeds. The original goal may be overtaken by the\\ndiscovery of a different and better application. Some\\\
+    ntechnical challenges may prove easier or more dif-\\nficult than expected. As a result, entirely new prob-\\nlems may\
+    \ need to be solved. Since the project leader\\nhas the best technical insight and project awareness,\\nhe or she must\
+    \ be allowed to make choices about\\nhow to reallocate resources, assess progress, and re-\\nvise goals along the way.\\\
+    nTracking progress. Typical methods for plan-\\nning and tracking product-development projects\\nare not well suited to\
+    \ Pasteur's Quadrant. In product\\ndevelopment, experience with comparable projects\\nis a good guide for estimating the\
+    \ time and resources\\nrequired to hit milestones such as the completion\\nof the design, the production of a successful\
+    \ proto-\\ntype, and ramp-up to full-scale production. Projects\\nin Pasteur's Quadrant require different techniques.\\\
+    nThey involve fast iterations. Planning should be\\nlight and nimble. Progress can be assessed by track-\\ning iterations\
+    \ to see if they are converging on goals,\\nrevealing dead ends, uncovering new applications,\\nor identifying the need\
+    \ for unforeseen scientific\\nadvances.\\nInsisting that a team steaduy hit milestones estab-\\nlished in initial plans\
+    \ can cause it to adhere to a path\\nOctober 2013 Harvard Business Review 79\"\n  },\n  {\n    \"name\": \"SPOTLIGHT ON\
+    \ BREAKTHROUGH INNOVATION\",\n    \"text\": \"that\\u2014based on something the team has learned\\u2014no\\nlonger makes\
+    \ sense. Sometimes a setback or a fail-\\nure is the most effective tool for discovery. If people\\nworking on a particular\
+    \ piece of a project experi-\\nence a failure, it's often because something they\\nencountered surprised them. That's\
+    \ to be expected\\nin high-risk projects. When such events occur, the\\nproject leader has to let the team members press\
+    \ for-\\nward as long as they can see that the approach might\\nProject leaders are\\nfocused on managing\\nconstant flux\\\
+    u2014building,\\nreplanning, changing\\ntack, and moving talent in\\nand out as needs shift.\\nultimately work within\
+    \ project constraints, even if\\nthey deviate from the original course.\\nThat said, if it becomes clear that a given\
+    \ scientific\\napproach won't work or requires multiple miracles\\nin a row, that particular effort should be shut down\\\
+    nand the resources shifted to other approaches. At\\nDARPA or ATAP, performers who sign on to a project\\nunderstand that\
+    \ their participation might end ifthe\\nscience doesn't work, the pace of progress is not\\ncommensurate with other efforts,\
+    \ and ideas for how\\nto make it work cannot be found.\\nTime Limits and Temporary Teams\\nOne of the most effective ways\
+    \ to attract talented\\nperformers from a wide array of disciplines, orga-\\nnizations, and backgrounds\\u2014and to keep\
+    \ them in-\\ntensely focused\\u2014is to set a finite term for a project\\nand staff it with people working under contracts\
+    \ that\\nlast only as long as the jobs they perform contribute\\nto the overall goal.\\nFixed durations and tenures. Projects\
+    \ with set\\ntime frames (up to five years at DARPA and up to two\\nat ATAP), leaders who leave when the projects end,\\\
+    nand the scalability, diversity, and agility of contract\\nperformers have an edge over traditional captive\\nresearch\
+    \ organizations. All of those things make it\\npossible to recruit high-caliber team members from\\na broader pool and\
+    \ get them on board faster. In addi-\\ntion, you can change the makeup of the group more\\nquickly along the way as the\
+    \ team overcomes certain\\ntechnical obstacles and others emerge.\\nIn one project, ATAP was able to contract 40 of\\\
+    nthe world's best computer-vision experts from 30\\nentities (including universities, component suppli-\\ners, and systems\
+    \ integrators) in five countries and\\nsolve the most significant technical challenge in less\\nthem six months. We are\
+    \ convinced that we would\\nnot have been able to hire even a small fraction of\\nthem as permanent employees. Even if\
+    \ we could\\nhave, it would have taken more than a year to recruit\\nthem and get them working.\\nThe DARPA model also\
+    \ allows a company to alter\\nits portfolio of projects faster and at a much lower\\ncost than a conventional internal\
+    \ research organi-\\nzation can. During our recent tenure at the agency,\\nwe were able to shift significant investments\
+    \ from\\nprograms in space and large air and ground systems\\nto programs in cybersecurity, synthetic biology, and\\nadvanced\
+    \ manufacturing in less than a year.\\nIndividual performers can be quickly reassigned\\nto new work as well. If an organization\
+    \ involved in\\nthe project isn't getting results but its work is impor-\\ntiint to achieving program objectives, its\
+    \ efforts may\\nbe redirected and its contract renewed.\\nAnother benefit of limited tenures is that\\u2014com-\\nbined\
+    \ with a clearly articulated important need and\\na scientific challenge\\u2014they create a sense of urgency.\\nThis\
+    \ forces the team to act as a whole to benchmark\\nprogress and to continually challenge \\\"how things\\nhave always\
+    \ been done.\\\" The hypersonic test-vehicle\\nproject didn't set out to investigate the science of fiy-\\ning at Mach\
+    \ 20. It set out to demonstrate within the\\nfive-year program all the technologies necessary to\\nlaunch a vehicle that\
+    \ could fiy from point A to point\\nB at Mach 20 and whose flight could be controlled.\\nOn the first fiight, there was\
+    \ no aerodynamic con-\\ntrol of the vehicle, but we collected nine minutes of\\nMach 17-20 data (more than had been collected\
+    \ in\\n30 years' worth of ground tests combined). Less\\nthan 18 months later, during the second fiight, we\\nachieved\
+    \ more than three minutes of fully aerody-\\nnamically controlled Mach 20 fiight\\u2014a first.\\nAs a practical matter,\
+    \ a high-risk effort by a di-\\nverse set of world-class experts can be sustained\\nfor only a limited period. One reason\
+    \ is the intensity.\\nAnother is that both the problems and the novelty of\"\n  },\n  {\n    \"name\": \"Harvard Business\
+    \ Review October 2013\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\\\"SPECIAL FORCES\\\" INNOVATION: HOW DARPA\
+    \ ATTACKS PROBLEMS HBR.ORG\",\n    \"text\": \"the scientific advances needed to solve them are per-\\nishable. If the\
+    \ desired capability cannot be created\\nwithin a fixed time frame, it is likely that someone\\nelse will create it or\
+    \ come up with another solution.\\nTeams of contractors. DARPA doesn't have any\\nlaboratories of its own. Its programs\
+    \ fund perform-\\ners who work at their respective organizations and\\nget together at least twice a year to review progress\\\
+    nand objectives.\\nDARPA's MEMS program team, for instance, in-\\ncluded experts in basic materials science, design and\\\
+    nsimulation tools, and semiconductor production.\\nThey were employed at the University of Michigan,\\nStanford, and other\
+    \ schools; large companies such\\nas Honeywell, Alcatel, and Analog Devices; a num-\\nber of smaller companies; and government\
+    \ labs such\\nas Sandia and Brookhaven. And the hypersonic test-\\nvehicle program has drawn world-class researchers\\\
+    nin computational fluid dynamics, aerodynamic con-\\ntrol, and materials science, and experts on manufac-\\nturing, rocket\
+    \ control, range safety, data collection,\\nand telemetry.\\nOn DARPA projects, people who normally\\nwouldn't interact\
+    \ collaborate and inform one an-\\nother. A scientist in a new field often has so many\\npossibilities to pursue that\
+    \ it can be difficult to\\nchoose among them and concentrate. And often\\npeople in industry trying to create new applications\\\
+    nencounter a need to make an advance, but some as-\\npect ofthe science blocks them. When these diverse\\nperformers work\
+    \ together, the industry team mem-\\nbers focusing on the applications may say to the sci-\\nentists, \\\"I don't have\
+    \ enough yield here \\\" or \\\"I'm not\\ngenerating enough photons.\\\" And the scientists may\\nsay, \\\"I can solve\
+    \ that problem for you\\\" or \\\"I cannot\\nsolve that problem, but I can solve this one. Does\\nthat help?\\\" The same\
+    \ kind of interactions may hap-\\npen across disciplinary lines. This dynamic produces\\na tremendously creative, fast,\
+    \ iterative cycle and\\ngenerates breakthroughs in time frames that seem\\nimpossibly short.\\nA special breed of project\
+    \ leader. The project\\nleader orchestrates the entire effort. He or she deter-\\nmines what pieces of work are needed\
+    \ to produce a\\nspecific result, conducts a proposal competition, and\\ncontracts organizations to do the work. (These\
+    \ or-\\nganizations assemble whatever subcontractors they\\nrequire.)\\nProject leaders who can successfully lead DARPA-\\\
+    nlike efforts possess the skills of the best CEOs of\\nscience- or engineering-based start-ups. Some\"\n  },\n  {\n  \
+    \  \"name\": \"CARBON\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"COMPOSITES\",\n    \"text\": \"To meet the military's\
+    \ needs\\nfor lighter, more durable\\nmaterials, DARPA created\\nnew forms of substances\\nlike carbon fibers (above),\\\
+    nceramics, and gallium\\narsenide. They are now\\nused in a wide range of\\nproducts\\u2014such as body\\narmor, cell\
+    \ phones, and\\ngolf clubs.\"\n  },\n  {\n    \"name\": \"STEALTH\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    TECHNOLOGY\",\n    \"text\": \"To address the threat\\nposed by the proliferation\\nof advanced networked\\nair defenses,\
+    \ DARPA dra-\\nmatically reduced infrared,\\nvisual, acoustic, and radar\\nsignatures, which led to\\nthe design of new\
+    \ aircraft,\\nsuch as the F-n7 Nighthawk\\n(above).\\nproject leaders may have held such positions. Others\\nmay come\
+    \ from academia, government labs, corpora-\\ntions, and nonprofits. They need to have deep tech-\\nnical or scientific\
+    \ knowledge, be natural risk takers,\\nand be thought leaders who can create a vision that\\ninspires an entire commimity.\\\
+    nProject leaders oversee the collection of per-\\nformers, manage the technical details, and make\\nall major decisions.\
+    \ They handle budgets, contracts,\\nexecution issues, speaking engagements, and cus-\\ntomer relations. At DARPA that\
+    \ may entail explain-\\ning a project in three minutes to a four-star general\\nwho may or may not have a technical background,\\\
+    ndelivering a technical talk at a research conference,\\nor working out intellectual property concerns with\\na university.\\\
+    nMany, but not all, project leaders have PhDs. Typ-\\nically, they're in their thirties or early forties, five to\\n10\
+    \ years past earning their last degree, and already\\nhave made important achievements (delivering a\\nproduct to market,\
+    \ successfully leading a university\\nresearch center, starting a company). Confidence\\nis important. These midcareer\
+    \ leaders may recruit\\npeople who are older and more accomplished; they\\nmust be able to hold their own.\\nThey rarely\
+    \ have MBAs. The skill set that you ac-\\nquire in business school is often about defining the\\nmarket opportunity, writing\
+    \ a plan, and then faith-\\nfully executing it. By contrast, DARPA and ATAP are\\nmore focused on managing constant flux\\\
+    u2014building,\\nreplanning, changing tack, and moving talent in and\\nout as project needs shift.\\nHow do you find such\
+    \ leaders? At DARPA we\\nfound them through our networks and those of\\nthe agency's current and former program manag-\\\
+    ners, office directors, and performers. In the roughly\\nthree years we headed DARPA, about 75 ofthe 100\\nprogram managers\
+    \ changed as programs ended and\\nothers began. We did not have trouble finding exem-\\nplary people to fill those positions.\\\
+    nAt Motorola Mobility, we are tapping our net-\\nworks too, of course. We also have an expanded set\\nof people within\
+    \ Motorola and Google who seek bold,\\nfast, project-based work. Sometimes we find them;\\nmore often, they find us. Additionally,\
+    \ we use indus-\\ntry recruiters to identify talent.\\nDARPA has multiple attractions: Performing\\nservice to your country,\
+    \ the honor of being asked to\\nwork for an elite organization with a storied history,\\nand the opportunity to pursue\
+    \ something amazing,\\noften countercultural.\\nOctober 2013 Harvard Business Review 81\"\n  },\n  {\n    \"name\": \"\
+    SPOTLIGHT ON BREAKTHROUGH INNOVATION\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"HBR.ORG\",\n    \"text\": \"As\
+    \ an example, in 1992, university and industry\\nefforts in MEMS were focusing on the wrong thing\\u2014\\nthe miniaturization\
+    \ of the devices. An unconven-\\ntional minority opinion was that the opportunity\\nlay in the integration of electrical,\
+    \ sensing, and ac-\\ntuation with signal processing and computing, and\\nin building the devices with the same materials\
+    \ and\\nprocesses used to manufacture semiconductors.\\nThat meant placing the highest priority on fabrica-\\ntion, system\
+    \ design, and design tools. DARPA not\\nonly permitted that view to emerge; it encouraged\\nit. As a result, the agency\
+    \ was able to recruit talented\\nleaders and performers.\\nThe DARPA model gives exceptional leaders an\\nenvironment\
+    \ where they can pursue what others\\nmay think is a crazy idea, challenge an entire indus-\\ntry, or catalyze the formation\
+    \ of one. Because they're\\nnot permanent employees, project leaders worry\\nless about rocking the boat and jeopardizing\
+    \ their\\ncareers. They focus instead on changing the world.\\nAnd many of them do.\\nAt ATAP, we give project leaders\
+    \ the right to be\\nimpatient, as we did at DARPA. They refuse to wait\\nfor obstacles to be cleared. (One week of delay\
+    \ is i%\\nof an ATAP project leader's time at the organization.)\\nBecause our structure is flat, they elevate issues\
+    \ al-\\nmost immediately to us. We clear them fast. This cre-\\nates tremendous speed and momentum.\\nATAP doesn't have\
+    \ all of DARPA's attractions. But\\nit does share a vital one: the opportunity to make a\\ndifi'erence and realize a bold\
+    \ vision. In addition, it\\ngives people a chance to work for an elite commer-\\ncially focused team in a fast-paced industry\
+    \ and at\\nhigher compensation than DARPA can offer. As ATAP\\nproves in the coming years that it can innovate like\\\
+    nDARPA, we expect the network of enthusiastic, qual-\\nified candidates to grow.\\nIndependence\\nAn advanced technology\
+    \ and projects group must\\nfunction in ways that differ from the normal com-\\npany. Adjustments are needed in such areas\
+    \ as staff-\\ning, budgeting, and protecting intellectual prop-\\nerty and proprietary information. In addition, the\\\
+    ngroup's breakthrough innovations may lead to new\\nbusinesses that require major departures for the\\ncompany\\u2014or\
+    \ that threaten existing businesses. (If\\nDARPA had needed the U.S. Air Force's authorization\\nto develop stealth technology\
+    \ in the 1970s, the work\\nmay have never been done. The Air Force initially\\ndid not want the technology and repeatedly\
+    \ tried to\"\n  },\n  {\n    \"name\": \"GLOBAL\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"POSITIONING\",\n  \
+    \  \"text\": \"\"\n  },\n  {\n    \"name\": \"SYSTEMS\",\n    \"text\": \"DARPA's involvement in\\ndeveloping a precision\\\
+    nnavigation system that\\nused satellites for the U.S.\\nmilitary dates back to 1959.\\nTwo decades later, the\\nagency\
+    \ digitized GPS signals\\nand created the technology\\nfor small GPS receivers.\\nstop the project. Only the intervention\
+    \ ofthe secre-\\ntary of defense protected DARPA's efforts.) For these\\nreasons, the team must operate with some indepen-\\\
+    ndence from the rest ofthe company.\\nIn a corporation, an advanced projects group\\nshould report to the chief executive\
+    \ officer or the\\noperational executive ultimately responsible for\\nnurturing and protecting innovations. This person\\\
+    nshould have control of significant resources and\\nbroad P&L responsibilities rather than a staff posi-\\ntion. He or\
+    \ she should not be someone who might\\nbe motivated to use the resources to supplement\\nproduct development dollars\
+    \ or to protect an exist-\\ning business area.\\nCrucially, decisions about which projects to pur-\\nsue must not be made\
+    \ by committee. Breakthrough\\ninnovations, by their very nature, do not lend them-\\nselves to consensus. Instead, the\
+    \ parent company\\nshould establish a multiyear budget with critical\\nmass, ensure that the leaders of the advanced re-\\\
+    nsearch group have visibility into\\u2014and the ability to\\ninfluence\\u2014corporate objectives, and then give them\\\
+    nthe freedom to select projects. Within broad limits,\\nthey should also be able to reallocate and repriori-\\ntize spending\
+    \ within the group and among projects\\nover time.\\nGiven how new the DARPA model is to industry,\\nit should come as\
+    \ no surprise that at ATAP it has\\nbeen necessary to challenge existing assumptions\\nabout the way things operate. We've\
+    \ also had to push\\nagainst the mainstream organization's tendency to\\nenforce consistency and uniformity. Uniformity\
+    \ is\\nnot always desirable. When different outcomes are\\nwanted, different approaches are necessary.\\nHiring is a case\
+    \ in point. A high-tech company\\nhas a natural tendency to permanently hire as many\\nworld-class technical minds as\
+    \ possible. That is the\\nright approach for much ofthe organization, where\\nDecisions should not\\nbe made by committee.\\\
+    nBreakthroughs do not lend\\nthemselves to consensus.\"\n  },\n  {\n    \"name\": \"Harvard Business Review October 2013\"\
+    ,\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"SPOTLIGHT ON BREAKTHROUGH INNOVATION\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"HBR.ORG\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"TELEPRESENCE\",\n    \"text\": \"\"\n\
+    \  },\n  {\n    \"name\": \"SURGERY\",\n    \"text\": \"with an eye toward bring-\\ning medical help to the\\nwounded\
+    \ through robots\\non battlefields, DARPA has\\nsupported research on\\nremote surgery. The result-\\ning advances Inelped\
+    \ pave\\nthe way for robotic de-\\nvices such as the Da Vinci\\nSurgical System (right).\\nexperience is essential. It\
+    \ allows the company to\\nbuild a foundation of expertise, execute with greater\\nprobability of success along a road\
+    \ map, generate op-\\nportunities for innovation, motivate employees with\\ncareer advancement, and develop future leaders.\\\
+    nThis approach is precisely the wrong way to build\\na team of project leaders who will challenge the wis-\\ndom of experience\
+    \ and take on risky efforts. For the\\nfirst six months after ATAP was launched, employ-\\nment offers to project leaders\
+    \ often encountered the\\nsame questions: \\\"Why are you hiring this person\\nfor only two years? Why not hire them as\
+    \ a perma-\\nnent employee?\\\" It took a while to get people in the\\nmainstream organization to understand that hiring\\\
+    na technical rock star for his or her entire career might\\nactually be counter to the mission of consistently\\ngenerating\
+    \ breakthrough innovations over time.\\nThe same kinds of concerns were raised about\\ncompensation packages. Project\
+    \ leaders recruited\\nfrom outside the company take a greater risk because\\ntheir jobs will last only two years. It's\
+    \ fair and logical\\nthat their compensation reflect that extra risk and\\nbe greater than what they would earn as permanent\\\
+    nemployees but less than the payoff of a successful\\nstart-up.\\nSimilariy, we had to develop a much shorter, sim-\\\
+    npler nondisclosure agreement for use with prospec-\\ntive external performers. We did this to address the\\nspecific\
+    \ needs of ATAP's diverse community of per-\\nformers, especially start-ups. In its first 14 months,\\nATAP reviewed 200\
+    \ to 300 start-ups and contracted\\nwith over 100 of them. These young companies\\nmove fast and often do not have captive\
+    \ legal re-\\nsources. Our modified NDA, developed with Motoro-\\nla's legal department, recognizes this fact. The result\\\
+    nis that we routinely execute an NDA in less than a day\\nrather than the typical weeks or months.\\nIn the case of intellectual\
+    \ property, ATAP's need\\nfor speed and flexibility dashes with conventional\\napproaches that focus on exclusive ownership\
+    \ of\\nall IP from the beginning. Working with ATAP, Mo-\\ntorola's legal team created development contracts\\nthat ensure\
+    \ access to intellectual property and allow\\nfor future negotiations about exclusivity. In so doing,\\nwe avoid protracted\
+    \ negotiations in the early stages\\nof development. We gain speed and first-mover\\nadvantages.\\nAs a result of adopting\
+    \ the DARPA model, ATAP\\nhas been able to launch eight projects, involving\\nmore than 120 companies and six universities\
+    \ and\\nexpertise from 11 countries, in 14 months. Three of\\nthose projects have produced multiple prototypes\\nthat\
+    \ demonstrated the viabihty of the envisioned\\nproduct. Two of them advanced to low-volume pro-\\nduction, were then\
+    \ further developed in collabora-\\ntion with our colleagues in other parts ofthe com-\\npany, and will soon ship in Motorola\
+    \ products. Some\\nATAP projects have made foundational advances in\\nareas such as big-data analytics, the way graphics\\\
+    nare rendered on mobile devices, and a faster, more\\nsecure way for users to sign on to their smartphones,\\ntablets,\
+    \ or computers. By any measure, this is fast. It\\nwas accomplished with a staff of fewer than 40, in-\\ncluding the project\
+    \ leaders and us.\\nTHERE IS A detrimental divide between efforts to ad-\\nvance science and the development of new products\\\
+    nand applications. The DARPA model is the only ap-\\nproach that has bridged that divide on a sustained\\nbasis. It has\
+    \ allowed the agency to recruit the best\\nscientific and engineering minds, wherever they\\nmight reside, and to engage\
+    \ them to solve difficult\\nproblems.\\nThe \\\"special forces\\\" model is a radical departure\\nfrom the \\\"spend a\
+    \ lot of money on research and\\nhopefully something good will eventually come out\\nof it\\\" approach, which makes companies\
+    \ reluctant\\nto undertake ambirious internal research. DARPA's\\nmodel offers an alternative, and its record of success\\\
+    nproves that breakthrough innovations can be pro-\\nduced consistently, in remarkably short time frames,\\nwith a small,\
+    \ flexible, and agile organization.\\nOur current efforts suggest that organizations\\nin the public and private sectors\
+    \ can dramatically\\nincrease their production of breakthroughs by\\nadopting this model. The products and services cre-\\\
+    nated by these breakthroughs will improve the com-\\npetitiveness of companies and countries. They also\\nmay restore\
+    \ a belief, that we can, indeed, shape the\\nfuture. \\u00dc\\nHBR Reprint R1310C\"\n  },\n  {\n    \"name\": \"Harvard\
+    \ Business Review October 2013\",\n    \"text\": \"Executive Summaries\\n2013\"\n  },\n  {\n    \"name\": \"SPOTLIGHTON\
+    \ BREAKTHROUGH INNOVATION\",\n    \"text\": \"Putting the Breakthrough\\nBack into Innovation\\nTraditional corporate\
+    \ research groups have\\ntremendous difficulty achieving true breakthroughs.\\nThis package lays out the extraordinarily\
+    \ successful\\napproach that DARPA introduced and Google\\nnow uses. It also explores current best practice in\\ncorporate\
+    \ venturing.\"\n  },\n  {\n    \"name\": \"INNOVATION & CREATIVITY\",\n    \"text\": \"'Special Forces\\\" Innovation:\\\
+    nHow DARPA Attacks Problems\\nRegina E. Dugan and Kalgham J. Gabriel\\npage 74\\nThe Pentagon's Defense Advanced Research\\\
+    nProjects Agency arguably has the longest-\\nstanding track record of radical invention in\\nhistory. Over the past so-plus\
+    \ years, DARPA\\nhas produced an unparalleled number of\\nbreakthroughs, including the internet, global\\npositioning\
+    \ satellites, stealth technology, MEMS,\\nand carbon composites. The agency's advances\\nare now used in everything from\
+    \ smartphones\\nto sporting equipment to artificial limbs, and it\\nhas played a central role in creating a host of\\\
+    nmultibillion-dollar industries.\\nWhat makes these accomplishments even\\nmore impressive is DARPA's swiftness (its pro-\\\
+    ngrams last only three to five years) and relatively\\ntiny organization (about 12O permanent staffers)\\nand modest budget\
+    \ (about $3 billion annually for\\nroughly 200 programs). With its unconventional\\nspeed, efficiency, and effectiveness,\
+    \ DARPA has\\ncreated a \\\"special forces\\\" model of innovation.\\nIn this article, two former DARPA leaders who\\\
+    nnow head an advanced research group at Google\\ndecipher the DARPA model and explain how it\\ncan be adapted for the\
+    \ private sector. The model\\nhas three critical, mutually reinforcing elements:\\nAmbitious goals. Projects are designed\
+    \ to\\npush the boundaries of science to solve urgent\\nreal-world problems or create new opportunities.\\nTemporary project\
+    \ teams. DARPA contracts\\nworld-class experts from industry and academia\\nto work on projects with relatively short\
+    \ dura-\\ntions. They are led by about loo technical man-\\nagers who have been brought in for fixed terms.\\nIndependence.\
+    \ By charter, DARPA has au-\\ntonomy in selecting and executing projects. Its\\nmodel also challenges assumptions about\
+    \ how\\npersonnel are hired, and how contracting and in-\\ntellectual property are managed. Such indepen-\\ndence allows\
+    \ the organization to move fast and\\ntake bold risks, and helps it persuade the best\\nand the brightest to join it.\\\
+    nHBR Reprint R1310C\"\n  },\n  {\n    \"name\": \"ENTREPRENEURSHIP\",\n    \"text\": \"Corporate Venturing\\nJosh Lerner\
+    \ | page 86\\nFor decades, large companies have been wary of\\ncorporate venturing. But as R&D organizations\\nface pressure\
+    \ to rein in costs and produce results,\\ncompanies are investing in promising start-ups to\\ngain knowledge and agility.\\\
+    nThe logic of corporate venturing is compel-\\nling: A well-run fund can help a firm respond\\nquickly to changes in markets\
+    \ and gain a better\\nview of threats. In some cases, it can stimulate\\ndemand for a company's own products. And its\\\
+    ninvestments may earn attractive returns. During\\ntheir first three years as public companies, firms\\nbacked by corporate\
+    \ venture funds show better\\nstock price performance, on average, than com-\\npanies backed by traditional VCs.\\nManaging\
+    \ corporate venture funds is not easy.\\nSome companies have seen their venture initia-\\ntives fail, and even firms with\
+    \ successful funds\\nhave struggled to make use of the knowledge\\ngained from start-up investments. Six steps can\\nhelp\
+    \ companies avoid the pitfalls.\\nAlign goals. Corporate venture funds are more\\nsuccessful if the business of the corporate\
+    \ parent\\nand of the portfolio firm overlap.\\nStreamline approvals. A complicated deci-\\nsion process can burden the\
+    \ fund with too many\\ngoals and lead to ineffective investing patterns.\\nProvide powerful incentives. Companies\\nthat\
+    \ don't offer adequate compensation to their\\nventure capitalists will face a steady stream of\\ndefections.\\nTolerate\
+    \ failure. A zero failure rate may indi-\\ncate that the fund is playing it too safe.\\nStick to your commitments. If\
+    \ a company\\nis seen as a fickle investor, professionals will be\\nwary of joining its venture unit, entrepreneurs\\\
+    nwill be reluctant to accept its funds, and inde-\\npendent VCs will be hesitant to join in.\\nHarvest valuable information.\
+    \ Companies\\nneed to invest as much in learning from their\\nstart-ups as they do in making and overseeing\\ndeals.\\\
+    nHBR Reprint R1310D\"\n  },\n  {\n    \"name\": \"Harvard Business Review October 2013\",\n    \"text\": \"Harvard Business\
+    \ Review Notice of Use Restrictions, May 2009\\nHarvard Business Review and Harvard Business Publishing Newsletter content\
+    \ on\\nEBSCOhost is licensed for the private individual use of authorized EBSCOhost users. It is not\\nintended for use\
+    \ as assigned course material in academic institutions nor as corporate learning\\nor training materials in businesses.\
+    \ Academic licensees may not use this content in electronic\\nreserves, electronic course packs, persistent linking from\
+    \ syllabi or by any other means of\\nincorporating the content into course resources. Business licensees may not host\
+    \ this content\\non learning management systems or use persistent linking or other means to incorporate the\\ncontent\
+    \ into learning management systems. Harvard Business Publishing will be pleased to\\ngrant permission to make this content\
+    \ available through such means. For rates and permission,\\ncontact permissions@harvardbusiness.org.\"\n  }\n]"
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p1_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p1_1.png\",\n    \"\
+    page\": 1\n  },\n  {\n    \"id\": \"fig_p2_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p2_1.png\",\n   \
+    \ \"page\": 2\n  },\n  {\n    \"id\": \"fig_p3_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p3_1.png\",\n\
+    \    \"page\": 3\n  },\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p5_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p5_1.png\"\
+    ,\n    \"page\": 5\n  },\n  {\n    \"id\": \"fig_p6_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p6_1.png\"\
+    ,\n    \"page\": 6\n  },\n  {\n    \"id\": \"fig_p7_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p7_1.png\"\
+    ,\n    \"page\": 7\n  },\n  {\n    \"id\": \"fig_p8_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p8_1.png\"\
+    ,\n    \"page\": 8\n  },\n  {\n    \"id\": \"fig_p9_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p9_1.png\"\
+    ,\n    \"page\": 9\n  },\n  {\n    \"id\": \"fig_p10_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p10_1.png\"\
+    ,\n    \"page\": 10\n  },\n  {\n    \"id\": \"fig_p11_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p11_1.png\"\
+    ,\n    \"page\": 11\n  }\n]"

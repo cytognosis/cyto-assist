@@ -1,0 +1,245 @@
+# Effective Altruism Long-Term Future Fund — Template Specification
+#
+# EA Funds application for longtermist projects.
+# Source: funds.effectivealtruism.org (scraped March 2026)
+# Configuration: Long-Term Future Fund + Organization without OP funding
+#
+# Schema Version: 2.0
+
+template:
+  name: "EA Long-Term Future Fund Application"
+  version: "2.0"
+  source: "https://funds.effectivealtruism.org/apply-for-funding"
+  form_url: "https://av20jp3z.paperform.co/"
+  output_formats: [html, pdf]
+  budget_template: "https://docs.google.com/spreadsheets/d/1lhzs0iqxq3Ik1ocab5cOOMXjN6S2R7zauHKWY8vF7iE/copy"
+
+sections:
+  # ─── 1. Fund Selection ──────────────────────────────────────────────────
+  - id: fund_selection
+    title: "Fund Selection"
+    fields:
+      - id: fund
+        label: "Which fund are you applying to?"
+        type: radiogroup
+        required: true
+        options: ["Animal Welfare Fund", "Long-Term Future Fund", "EA Infrastructure Fund"]
+        default: "Long-Term Future Fund"
+
+      - id: secondary_fund
+        label: "Would you also like to be considered by the EA Infrastructure Fund?"
+        type: radiogroup
+        required: true
+        options: ["Yes", "No"]
+        default: "Yes"
+
+      - id: scope_confirmation
+        label: "I confirm that I have read the information about the scope of each fund I am applying to, and that my application falls within the scope of the relevant fund(s)."
+        type: checkbox
+        required: true
+
+  # ─── 2. Eligibility & Basic Info ────────────────────────────────────────
+  - id: eligibility
+    title: "Eligibility & Basic Information"
+    fields:
+      - id: applicant_type
+        label: "Funding from Open Philanthropy"
+        type: radiogroup
+        required: true
+        options:
+          - "INDIVIDUAL"
+          - "ORGANIZATION WITHOUT OPEN PHILANTHROPY FUNDING"
+          - "ORGANIZATION WITH OPEN PHILANTHROPY FUNDING"
+        default: "ORGANIZATION WITHOUT OPEN PHILANTHROPY FUNDING"
+
+      - id: name
+        label: "Name"
+        type: text
+        required: true
+        hint: "Your first and last name"
+
+      - id: organization_name
+        label: "Organization name"
+        type: text
+        required: false
+        hint: "What is the name of your organization (if applicable)? Leave empty unless applying on behalf of a legal entity."
+
+      - id: main_collaborators
+        label: "Main collaborators"
+        type: text
+        required: false
+        hint: "If not part of an organisation, list main collaborators (unless working independently)."
+
+      - id: email
+        label: "Email address"
+        type: email
+        required: true
+
+      - id: additional_emails
+        label: "Additional email addresses"
+        type: text
+        required: false
+        hint: "Separated by commas."
+
+      - id: ev_employment
+        label: "Have you ever been employed by or contracted with Effective Ventures or any associated projects?"
+        type: text
+        required: true
+        hint: "Confirm no previous paid position at EV (CEA, 80,000 Hours, GWWC, GovAI, etc.) or provide details."
+
+  # ─── 3. Project Details ─────────────────────────────────────────────────
+  - id: project_details
+    title: "Project Details"
+    note: "We will always carefully read the short description and summary."
+    fields:
+      - id: short_description
+        label: "How would you describe your project in one sentence?"
+        type: text
+        required: true
+        constraints:
+          maxChars: 120
+        hint: "Be concrete, e.g., '6-month salary to set up a new org...' May be published."
+
+      - id: summary
+        label: "Summary"
+        type: textarea
+        required: true
+        constraints:
+          maxChars: 1000
+        hint: "Summarize proposal in 3-6 sentences. May be published."
+
+      - id: project_goals
+        label: "What are the goals of the project?"
+        type: textarea
+        required: true
+        hint: "What are you trying to achieve? How will this lead to a better future? How does it fit your theory of change?"
+
+      - id: track_record
+        label: "Track record"
+        type: textarea
+        required: true
+        hint: "Describe track record and why well-placed to work on this. Focus on relevant achievements and skills."
+
+      - id: public_portfolio
+        label: "Public Portfolio"
+        type: textarea
+        required: false
+        hint: "Link to best public writing or other relevant public contributions."
+
+      - id: confidential_info
+        label: "Confidential information"
+        type: textarea
+        required: false
+        hint: "Anything to keep confidential? Note: applications may be shared with trusted informal advisors."
+
+  # ─── 4. Logistics & Budget ──────────────────────────────────────────────
+  - id: logistics
+    title: "Logistics & Budget"
+    fields:
+      - id: funding_amount
+        label: "Funding amount and breakdown"
+        type: textarea
+        required: true
+        hint: "How much? What for? Include link to budget using EA Funds template."
+        budget_template: "https://docs.google.com/spreadsheets/d/1lhzs0iqxq3Ik1ocab5cOOMXjN6S2R7zauHKWY8vF7iE/copy"
+
+      - id: start_date
+        label: "Project start date"
+        type: date
+        required: true
+
+      - id: end_date
+        label: "Project end date"
+        type: date
+        required: true
+
+      - id: location
+        label: "Location"
+        type: text
+        required: true
+        hint: "City and Country (or remote)."
+
+      - id: linkedin_cv
+        label: "LinkedIn/CV"
+        type: text
+        required: true
+        hint: "Link to LinkedIn profile or other relevant online CVs/résumés."
+
+      - id: file_upload
+        label: "File upload"
+        type: file
+        required: false
+
+  # ─── 5. Final Questions & Disclosures ───────────────────────────────────
+  - id: disclosures
+    title: "Final Questions & Disclosures"
+    fields:
+      - id: alternative_funding
+        label: "Alternatives to funding"
+        type: textarea
+        required: true
+        hint: "Other funders applied to or planning to? Would you accept partial funding?"
+
+      - id: anything_else
+        label: "Anything else you'd like to share?"
+        type: textarea
+        required: false
+
+      - id: lobbying
+        label: "Will your project involve any lobbying or political activity?"
+        type: textarea
+        required: false
+
+      - id: grant_or_prize
+        label: "Is this a grant or a prize?"
+        type: radiogroup
+        options: ["Grant", "Prize"]
+
+      - id: under_18
+        label: "Are you under 18?"
+        type: radiogroup
+        options: ["Yes", "No"]
+
+      - id: china_india
+        label: "Are you a citizen of or currently based in China or India?"
+        type: radiogroup
+        options: ["Yes", "No"]
+
+      - id: references
+        label: "References"
+        type: textarea
+        required: false
+        hint: "Names and contact details of 2-3 people who can speak to your work."
+
+      - id: org_leadership
+        label: "Organisational leadership"
+        type: textarea
+        required: false
+        hint: "Names and roles of key members of your organization's leadership team."
+
+  # ─── 6. Submission & Network ────────────────────────────────────────────
+  - id: submission
+    title: "Submission & Network"
+    fields:
+      - id: referral_to_funders
+        label: "Would you like us to share your application with other funders?"
+        type: radiogroup
+        options: ["Yes", "No"]
+        default: "Yes"
+
+      - id: how_heard
+        label: "How did you hear about EA Funds?"
+        type: text
+        required: false
+
+      - id: public_reporting
+        label: "Public reporting preference"
+        type: radiogroup
+        required: true
+        options: ["PUBLIC", "ANONYMIZED", "PRIVATE"]
+        default: "PUBLIC"
+
+      - id: network_sharing
+        label: "Would you like us to share your application information with our network for job opportunities etc.?"
+        type: radiogroup
+        options: ["Yes", "No"]

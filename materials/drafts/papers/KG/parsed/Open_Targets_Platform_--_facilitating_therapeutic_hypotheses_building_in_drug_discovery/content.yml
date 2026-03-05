@@ -1,0 +1,536 @@
+# Extracted content — auto-generated
+# Source: /home/mohammadi/repos/cytognosis/agents/materials/drafts/papers/KG/Open Targets Platform -- facilitating therapeutic hypotheses building in drug discovery.pdf
+
+identifiers:
+  doi: 10.1093/nar/gkae1128
+  pmid: '39657122'
+citation:
+  title: 'Open Targets Platfor m: f acilitating therapeutic hypotheses building in drug disco v ery'
+  year: '2025'
+  journal: Nucleic Acids Research
+  volume: '53'
+  pages: D1467-D1475
+  publisher: Oxford University Press (OUP)
+  authors: Annalisa Buniello, Daniel Suveges, Carlos Cruz-Castillo, Manuel Bernal Llinares, Helena Cornu, Irene Lopez, Kirill
+    Tsukanov, Juan María Roldán-Romero, Chintan Mehta, Luca Fumis, Graham McNeill, James D Hayhurst, Ricardo Esteban Martinez Osorio,
+    Ehsan Barkhordari, Javier Ferrer, Miguel Carmona, Prashant Uniyal, Maria J Falaguera, Polina Rusina, Ines Smit, Jeremy
+    Schwartzentruber, Tobi Alegbe, Vivien W Ho, Daniel Considine, Xiangyu Ge, Szymon Szyszkowski, Yakov Tsepilov, Maya Ghoussaini,
+    Ian Dunham, David G Hulcoop, Ellen M McDonagh, David Ochoa
+content:
+  abstract: 'The Open Targets Platform ( https://platform.opentargets.org ) is a unique, open-source, publicly-available knowledge
+    base providing data and
+
+    tooling for systematic drug target identification, annotation, and prioritisation. Since our last report, we have expanded
+    the scope of the Platform
+
+    through a number of significant enhancements and data updates, with the aim to enable our users to formulate more flexible
+    and impactful
+
+    therapeutic hypotheses. In this context, we have completely revamped our target–disease associations page with more interactive
+    facets and
+
+    built-in functionalities to empo w er users with additional control o v er their e xperience using the Platf orm, and
+    added a ne w Target P rioritisation
+
+    vie w. T his enables users to prioritise targets based upon clinical precedence, tract abilit y, doabilit y and safet
+    y attributes. We ha v e also imple-
+
+    mented a direction of effect assessment for eight sources of target–disease association e vidence, sho wing the effect
+    of genetic variation on
+
+    the function of a target is associated with risk or protection for a trait to inform on potential mechanisms of modulation
+    suitable for disease
+
+    treatment. These enhancements and the introduction of new back and front-end technologies to support them ha v e increased
+    the impact and
+
+    usability of our resource within the drug disco v ery community.
+
+    Gr aphical abstr act
+
+    Received: September 13, 2024. Revised: October 23, 2024. Editorial Decision: October 24, 2024. Accepted: October 30, 2024
+
+    © The Author(s) 2024. Published by Oxford University Press on behalf of Nucleic Acids Research.
+
+    This is an Open Access article distributed under the terms of the Creative Commons Attribution License (https: // creativecommons.org
+    / licenses / by / 4.0 / ),
+
+    which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly
+    cited.
+
+    Downloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960 by guest on 04 March 2026'
+  sections: "[\n  {\n    \"name\": \"Open Targets, Wellcome Genome Campus, Hinxton, Cambridgeshire CB10 1SD, UK\",\n    \"\
+    text\": \"2 European Molecular Biology Laboratory, European Bioinformatics Institute (EMBL-EBI), Wellcome Genome Campus,\
+    \ Hinxton,\\nCambridgeshire CB10 1SD, UK\"\n  },\n  {\n    \"name\": \"AstraZeneca UK Limited\",\n    \"text\": \"4 Wellcome\
+    \ Sanger Institute, Wellcome Genome Campus, Hinxton, Cambridgeshire CB10 1SA, UK\\n* To whom correspondence should be\
+    \ addressed. Tel: +44 1223 494330; Email: emcdonagh@ebi.ac.uk\\nCorrespondence may also be addressed to David Ochoa. Tel:\
+    \ +44 1223 494330; Email: ochoa@ebi.ac.uk\\nPresent address: Ellen M. McDonagh and David Ochoa, Open Targets and European\
+    \ Molecular Biology Laboratory \\u2013 European Bioinformatics Institute\\n(EMBL-EBI), Wellcome Genome Campus, Hinxton,\
+    \ Cambridgeshire CB10 1SD, UK.\"\n  },\n  {\n    \"name\": \"D 1468\",\n    \"text\": \"Nucleic Acids Research , 2025,\
+    \ Vol. 53, Database issue\"\n  },\n  {\n    \"name\": \"Introduction\",\n    \"text\": \"Despite many advances in drug\
+    \ discovery and development,\\nour collective ability to develop safe and effective medicines\\nis still limited by an\
+    \ incomplete understanding of disease bi-\\nology. For every 10 drugs that enter clinical trials, only one\\nwill reach\
+    \ regulatory approval ( 1 ), with 79% of the programs\\nclosing due to efficacy or safety concerns ( 2 ). Studies indicate\\\
+    nthat an enhanced understanding of the disease-causal mecha-\\nnisms at the target discovery stage can double the success\
+    \ rate\\nand halve the early stoppage of clinical studies ( 3 ,4 ). How-\\never, the information required to formulate\
+    \ precise therapeu-\\ntic hypotheses is still sparse, or we lack the understanding to\\nconvert the data into the knowledge\
+    \ necessary to inform deci-\\nsions ( 5 ). In recent times, several resources have attempted to\\nconsolidate the publicly\
+    \ available information into web ser-\\nvices aimed to assist the identification of drug targets using\\na diverse set\
+    \ of sources for one or several therapeutic areas\\n( 6\\u20139 ).\\nOpen Targets ( https:// www.opentargets.org/ ) is\
+    \ a pre-\\ncompetitive partnership combining expertise from academia\\nand the pharmaceutical industry to support the\
+    \ systematic\\nidentification and prioritisation of drug targets. One axis of\\nthe consortium\\u2019s research programme\
+    \ provides open-source\\ndata and informatics tools for the global scientific community,\\nwith the Open Targets Platform\
+    \ ( https://platform.opentargets.\\norg/) as its flagship resource ( 10 ). In our last NAR update,\\nwe described how\
+    \ the Platform was undergoing a complete\\nrebuild, aiming to streamline data integration and harmoni-\\nsation, expand\
+    \ users\\u2019 data exploration, and improve the user\\nexperience ( 10 ). This enabled us to develop features for users\\\
+    nto more dynamically prioritise targets and build therapeutic\\nhypotheses beyond the evidence for target\\u2013disease\
+    \ associa-\\ntion to progressability factors. Here, we describe the signifi-\\ncant changes and improvements we have implemented\
+    \ in the\\nOpen Targets Platform since our last database update, cov-\\nering data updates, frontend tools, backend technologies\
+    \ and\\nusability enhancements.\\nEnhancing the ability to identify, explore and\\npr ior itise target\\u2013disease associations\\\
+    nEstablishing a causal link between the drug target and the\\nindication constitutes a fundamental step in drug discov-\\\
+    nery. The Open Targets Platform aims to contextualise the\\navailable evidence by describing the relationship between\
+    \ tar-\\ngets and diseases carefully curated in 23 independent pub-\\nlic sources ( 11 ). These sources cover different\
+    \ angles of our\\nunderstanding of disease biology, spanning germline or so-\\nmatic variation, perturbation experiments\
+    \ in cellular or ani-\\nmal models, affected pathways, known drugs or clinical can-\\ndidates, and information extracted\
+    \ from literature mining.\\nTargets and diseases are mapped to Ensembl gene identi-\\nfiers ( 12 ) and Experimental Factor\
+    \ Ontology terms ( 13 ), re-\\nspectively, and evidence is scored and aggregated to build\\na ranked list of associations\
+    \ summarising our confidence\\nin the causal relationship between both entities ( 11 ,14 ). In\\nFigure 1 , we provide\
+    \ an overview of new sources of evi-\\ndence and annotation integrated into the Platform since our\\nlast update, which\
+    \ contribute to this causal and support-\\ning evidence for target\\u2013disease associations. Complementary\\nto this,\
+    \ Supplementary Table S1 provides a more quanti-\\ntative view of the Platform data expansion since the last\\nreport.\\\
+    nEnhancing common and rare variation evidence for\\ntarget\\u2013disease associations\\nDistinctive genetic variations\
+    \ associated with a given disease\\nor phenotype can be leveraged to establish a likely causal\\nmechanism leading to\
+    \ the identification of novel drug targets\\n( 15 ). Retrospective analysis indicates that genetic evidence can\\nbe found\
+    \ for up to two-thirds of FDA approvals ( 16 ). Thus,\\nthe Platform aims to systematically integrate publicly avail-\\\
+    nable human germline and somatic genetic variation associ-\\nated with diseases or traits, centralising evidence of varying\\\
+    nallelic frequencies reported in different resources for target\\nprioritisation.\\nSince the last update, we have expanded\
+    \ our understanding\\nof common disease genetics by including the latest Open Tar-\\ngets Genetics post-genome-wide association\
+    \ studies (GWAS)\\nanalysis data release ( 17 ). This iteration analyses 6591 addi-\\ntional GWAS Catalog studies from\
+    \ 70 publications, as well\\nas summary statistics and credible sets from 2861 endpoints\\nphenotyped across 260 000 individuals\
+    \ in the FinnGen data\\nfreeze 6 ( 18 ). Moreover, we expanded the GWAS / molecular\\ntrait colocalisation results by\
+    \ including splicing QTLs from\\nGTEx version 8 ( 19 ), increasing our power to nominate likely\\ncausal genes through\
+    \ the Locus2Gene (L2G) machine learning\\nmethod ( 20 ).\\nInterpreting rare protein-coding events through gene-level\\\
+    nanalysis complements the ability of GWAS to depict the ge-\\nnetic architecture of common conditions. Recently, we ex-\\\
+    npanded our curation of Gene Burden results to include a se-\\nlection of large scale cohort studies. For example, we\
+    \ up-\\ndated the gene-level analysis from AstraZeneca\\u2019s PheWAS\\nPortal to version 5, enhancing the collapsing\
+    \ analysis de-\\nrived from 470 000 individuals in the UKBiobank ( 21 ).\\nOther updates to our Gene Burden evidence include\
+    \ evi-\\ndence informing about circulating metabolic biomarkers for\\ncardiovascular disease from the INTERVAL cohort\
+    \ ( 22 ),\\nschizophrenia from the SCHEMA consortium ( 23 ), Parkin-\\nson\\u2019s disease from AMP-PD ( 24 ), ancestry-specific\
+    \ evidence\\nfor prostate cancer in Black South African men ( 25 ) and\\nthe new FinnGen R11 dataset ( 18 ). In total,\
+    \ our Gene Bur-\\nden data updates resulted in 2584 new gene-disease associ-\\nations not previously covered by our gene\
+    \ burden or GWAS\"\n  },\n  {\n    \"name\": \"results\",\n    \"text\": \"By definition, rare diseases occur in fewer\
+    \ than 1 in 2000\\nindividuals and are often driven by rare genetic variants;\\ntherefore, dedicated resources aim to\
+    \ capture the genes in-\\nvolved in clinically characterised diseases, preserving the pri-\\nvacy of individual genotypes.\
+    \ Among other updates since the\\nlast NAR report, the Platform now includes 173 signed-off\\npanels related to genomic\
+    \ tests listed in the NHS National\\nGenomic Test Directory, as reported by Genomics England\\nPanelApp ( 26 ). Updates\
+    \ from Gene2Phenotype now include\\nclinical curation of musculoskeletal panels, bringing the list\\nof curated gene-disease\
+    \ pairs to 2697 ( 27 ). Further improve-\\nments to the ClinVar ingestion pipeline throughout this period\\nresulted in\
+    \ the swift integration of germline and somatic vari-\\nation submissions fully mapped to EFO ( 28 ,29 ). Additional\\\
+    ndisease-causing somatic variation was expanded to cover ad-\\nditional curation by the Cancer Gene Census and cancer\
+    \ driver\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960 by guest on 04 March 2026\\n\\nNucleic\
+    \ Acids Research , 2025, Vol. 53, Database issue\"\n  },\n  {\n    \"name\": \"D 1469\",\n    \"text\": \"Figure 1. The\
+    \ Open Targets Platform integrates data informing multiple steps in the target identification and prioritisation process,\
+    \ from assessing the\\ncausal and supporting evidence of a target\\u2019s role in disease through target prioritisation\
+    \ to therapeutic hypothesis generation. Here, we show where we\\nha v e updated and integrated data along this journey.\
+    \ * indicates new data or features.\\ngene predictions derived from 48 new cohorts performed by\\nIntOGen ( 30 ,31 ).\\\
+    nUnderstanding disease-associated genes using\\ncellular perturbation screenings\\nExperimental perturbation of genes\
+    \ in cellular models through\\ntechniques like CRISPR can provide a complementary readout\\nto the effect of natural variation\
+    \ from population genetics. Per-\\nturbation of a gene / protein can inform on its function and its\\nrole in disease\
+    \ mechanism, providing evidence for whether and\\nhow to potentially modulate it for the treatment of a disease.\\nSince\
+    \ the last update, we have incorporated the second gener-\\nation of Project Score, a map of cancer dependencies derived\\\
+    nfrom the combination of multi-omic data, molecular markers\\nand dependencies observed in 771 cancer cell lines ( 32\
+    \ ). This\\nstudy expands upon the original observation that synthetic-\\nlethality can be used to nominate cancer dependencies,\
+    \ and a\\nkey finding from the Project Score project revealed WRN he-\\nlicase as a potential target in microsatellite\
+    \ unstable tumours\\n( 11 ,32 ). Additionally, we also included 23 survival and prolif-\\neration screens from CRISPRbrain\
+    \ ( 33 ), an open-access plat-\\nform harmonising functional genomics screens in iPSC differ-\\nentiated into neuronal\
+    \ cells. The phenotypic readouts from\\nthese models constitute relevant evidence for 7 unique diseases\\nin the ontology.\
+    \ 33 579 (73.7%) of the 45 507 indirect gene-\\ndisease associations derived from CRISPRbrain represent new\\nassociations\
+    \ not reported by any germline data sources, and\\n15 243 of them (33.5%) are entirely novel associations, not\\nsupported\
+    \ by any other data source, demonstrating the poten-\\ntial value of orthogonal information informing the effects of\\\
+    ngene modulation.\\nIntroducing a better understanding of the effect of\\nmodulation and direction of disease-causing\\\
+    nmechanisms\\nUnderstanding the extent and direction in which a gene or\\nprotein modulation affects the disease or phenotype\
+    \ is es-\\nsential in formulating therapeutic hypotheses. For example,\\nwhere a reduction in protein activity confers\
+    \ protection for a\\ndisease, an inhibitor drug may benefit the patient population.\\nConversely, where an increase in\
+    \ protein activity confers pro-\\ntection for a disease, an agonist might represent a more suit-\\nable hypothesis. Since\
+    \ the last update, we have assessed all of\\nour current sources that might inform the direction-of-effect\\nto assist\
+    \ in this decision. In every evidence widget with avail-\\nable assessments, we now present an indicative suggestion\\\
+    non the likely directionality of the effect on the gene / protein\\nexpression / function; gain-of-function, loss-of-function,\
+    \ or in-\\nconclusive, as well as of the likely impact on the trait due to\\nthis effect; protect, risk or inconclusive\
+    \ (Figure 2 A). A total\\nof 2.3 million assessments corresponding to 865, 816 unique\\ntarget\\u2013disease pairs were\
+    \ performed across eight different data\\nsources to interpret the nature of the evidence in terms of its\\nimpact on\
+    \ gene / protein function (gain-of-function / Loss-of-\\nfunction) and disease impact (protective / risk). For example,\\\
+    nall evidence derived from IMPC mouse knockouts ( 34 ) was\\nconsidered loss-of-function-risk, while an inhibitor drug\
+    \ that\\nhas passed through clinical evaluation would be regarded as\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960\
+    \ by guest on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 1470\",\n    \"text\": \"Nucleic Acids Research , 2025, Vol.\
+    \ 53, Database issue\\nFigure 2. Summary panel of Associations on the Fly user interface and Target Prioritisation View.\
+    \ ( A ) Example Associations on the Fly view for\\nAlzheimer\\u2019s Disease [ https:// platform.opentargets.org/ disease/\
+    \ MONDO _ 0 0 04975/associations ], showing all targets associated with the disease, sorted\\nby decreasing association\
+    \ score (from darker to lighter blue). All the main features are labelled, including direction of effect and variant consequence\\\
+    ninformation that provide a more mechanistic context to target\\u2013disease associations. ( B ) Example target prioritisation\
+    \ view \\u2018traffic light\\u2019 system for target\\nprioritisation factors [ https:// platform.opentargets.org/ disease/\
+    \ MONDO _ 0 0 04975/associations?t able=prioritisations ], with darker green as the most\\nf a v ourable mo ving through\
+    \ to deeper red as the least f a v ourable (with annotation bars). As highlighted in the te xt, a target located in the\
+    \ cell membrane\\nor plasma membrane will be green in this view as it is likely to be more accessible to a drug and thus\
+    \ favourable (GRIN1 example).\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960 by guest on 04\
+    \ March 2026\\n\\nNucleic Acids Research , 2025, Vol. 53, Database issue\"\n  },\n  {\n    \"name\": \"D 1471\",\n   \
+    \ \"text\": \"loss-of-function-protective. A full description of the rules used\\nto perform each assessment is available\
+    \ in the Platform docu-\\nmentation [ https:// platform-docs.opentargets.org/ evidence ].\\nTo better understand the effect\
+    \ of coding variation on pro-\\ntein function, we have also incorporated a link to EMBL-EBI\\nProtVar in all evidence\
+    \ widgets, which contain genetic vari-\\nants. This new resource, funded through an Open Targets\\nproject ( 35 ) (Figure\
+    \ 2 A), includes predicted effects of missense\\nvariation based on AlphaMissense ( 36 ), interaction interfaces\\nderived\
+    \ from AlphaFold ( 37 ) and protein abundance and sta-\\nbility based on protein structures using FoldX ( 38 ). This anno-\\\
+    ntation complements the Ensembl VEP annotations previously\\ndisplayed on all our variant-based evidence ( 27 ). A better\
+    \ un-\\nderstanding of the variant effect on genes and proteins and\\nits directional effect on gene function and trait\
+    \ expands our\\nknowledge of the target\\u2013disease relationship, offering new av-\\nenues to think about therapeutic\
+    \ intervention.\\nExtracting biomedical knowledge from the\\nscientific literature\\nA large fraction of the knowledge\
+    \ that can help nominate drug\\ntargets for particular indications remains in unstructured text.\\nThe Platform has continued\
+    \ to expand its capacity to extract\\ninformation from text resources by starting to mine preprints\\nand patents included\
+    \ in the EuropePMC corpus ( 39 ). En-\\nhancements to our natural entity recognition and normalisa-\\ntion pipelines have\
+    \ resulted in extraction of 440 million recog-\\nnised entities from over 14.7 million publications (Tirunagari\\nS, Saha\
+    \ S, Venkatesan A, Suveges D, Buniello A, Ochoa D, et al.\\nLit-OTAR Framework for Extracting Biological Evidences\\nfrom\
+    \ Literature. bioRxiv. 2024. p. 2024.03.06.583722). Addi-\\ntionally, we continue to report and score 73.6 million target\\\
+    u2013\\ndisease co-occurrences, building additional evidence to sup-\\nport target nomination. To enhance how users digest\
+    \ this\\nvast amount of information, we have developed new features\\nwithin the Bibliography widget, such as filtering\
+    \ the mined lit-\\nerature by date.\\nFurther, the Platform now leverages OpenAI\\u2019s \\u2018GPT4o-\\nmini\\u2019 model\
+    \ to summarise target\\u2013disease evidence from all\\ndata sources when a full-text article is available ( 40 ). In\
+    \ detail,\\nthe Platform creates a chain of queries to the Open AI API us-\\ning Langchain, providing the publication\
+    \ content as context.\\nThe relationship between a target and a disease is summarised\\nwith the following prompt: \\\
+    u2018Can you provide a concise sum-\\nmary about the relationship between [target] and [disease] ac-\\ncording to this\
+    \ study?\\u2019. The resulting text is presented to the\\nuser. For example, when a user browses through literature ev-\\\
+    nidence for association between CFTR and cystic fibrosis, this\\nnew feature can summarise the gene-disease relationship,\
+    \ pro-\\nviding context beyond the scope of an abstract by utilising the\\nfull-text article when available (see also\
+    \ our dedicated docu-\\nmentation page). This feature is also accessible through the\\nAPI. When we initially developed\
+    \ the tool we chose to adopt\\nGPT-3.5 due to the easy integration of the OpenAI API, which\\nalso provided accurate results\
+    \ based on empirical quality con-\\ntrol at a relatively low cost. As part of our benchmarking ef-\\nfort, we have migrated\
+    \ to GPT-4o-mini mainly due to better\\nperformance from the larger LLM context window.\\nAssociations on the Fly\\nDesigned\
+    \ and built upon extensive user experience, the new\\n\\u2018Associations on the Fly\\u2019 dashboard allows the Platform\
+    \ user\\nto customise our disease and target association views to help\\nanswer more advanced therapeutic hypotheses queries\
+    \ (Fig-\\nure 2 ). In the recently introduced data source-based heatmap,\\nthe user can alter the relative weight of individual\
+    \ evidence\\nsources ( 11 ) based on their relevance to the specific user ques-\\ntion (evidence with expected weaker\
+    \ causal links are down-\\nweighted by default). This results in dynamically generated\\nassociation scores that update\
+    \ the ranked lists. For example,\\nusers can require evidence from particular data sources, such\\nas OT Genetics (Figure\
+    \ 2 A). They can also exclude known\\ndrugs or clinical candidates in ChEMBL ( 41 ) to rank associ-\\nations that ignore\
+    \ previous drug development efforts (Figure\"\n  },\n  {\n    \"name\": \"A). Moreover, the user can now click on the\
+    \ computed asso-\",\n    \"text\": \"ciations to immediately view and understand the underlying\\nevidence from the primary\
+    \ source, such as the sample size of\\na GWAS Catalog study ( 42 ) (Figure 2 A). As additional cus-\\ntomisations, users\
+    \ can pin targets / diseases from the ranked\\nassociations to move them to the top of the list for review.\\nThen, to\
+    \ allow users to start their journey with a predefined\\nlist of targets or diseases of interest, the associations page\
+    \ al-\\nlows the upload of a list of entities in multiple compatible\\nidentifiers, including Ensembl, Uniprot, HGNC or\
+    \ Experimen-\\ntal Factor Ontology (7,8,43,42) (Figure 2 A). Moreover, en-\\nhanced data-sharing capabilities through\
+    \ URL, text-file down-\\nload, and API playground support the redesigned associations\\ndashboard (Figure 2 A).\\nProgressing\
+    \ therapeutic hypothesis through\\ntarget pr ior itisation\\nWhile many targets can present compelling evidence of asso-\\\
+    nciation with a given disease, not all are equally amenable to\\ntherapeutic intervention. Potential drug targets initially\
+    \ iden-\\ntified through causal evidence or analogous hypothesis build-\\ning require additional prioritisation for drug\
+    \ discovery based\\non their suitability for drug discovery pipelines. Evaluating the\\nunfavourable and favourable factors\
+    \ for drug discovery is crit-\\nical to understanding the risk-benefit of a given therapeutic\\nstrategy.\\nTarget prioritisation\\\
+    nThe Platform recently introduced a Target Prioritisation view\\nto complement the target\\u2013disease association view.\
+    \ Using a\\ntraffic light colouring schema, this heatmap captures pre-\\ncomputed target-specific properties that could\
+    \ favour or dis-\\nfavour drug development (Figure 2 B). The target properties\\nare classified based on whether the target\
+    \ has been drugged\\nbefore (clinical precedence), information that might influence\\nthe selection of a specific modality\
+    \ (tractability), whether there\\nare models, tools and / or reagents that allow target assess-\\nment in preclinical\
+    \ settings to enable exploration of a given\\ntarget (doability), and whether there are likely risks to mod-\\nulating\
+    \ a target (safety) ( 5 ). Each factor in each category is\\nevaluated individually. For example, a target could be con-\\\
+    nsidered unfavourable if highly constrained in human popula-\\ntions according to gnomAD ( 44 ), if it presents dependencies\\\
+    nacross all CancerDepMap cell lines ( 32 ) or if it has poor tissue\\nexpression selectivity according to Expression Atlas\
+    \ and Hu-\\nman Proteome Atlas ( 45 ,46 ). Conversely, a molecule targeted\\nwith previously approved drugs for any indication,\
+    \ presenting\\nhigh-quality predicted pockets or selectively expressed in the\\ncell membrane (Figure 2 B), will be regarded\
+    \ as a favourable\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960 by guest on 04 March 2026\"\
+    \n  },\n  {\n    \"name\": \"D 1472\",\n    \"text\": \"Nucleic Acids Research , 2025, Vol. 53, Database issue\\nchoice\
+    \ as a drug target ( 41 , 43 , 46 ). While none of these factors\\nwould discard a therapeutic hypothesis alone, understanding\\\
+    nthe risks derived from otherwise disparate information helps\\nto contextualise drug discovery decision-making.\\nHypothesis-building\
+    \ using clinical candidates and\\napproved drugs\\nSelecting new strategies to discover safe and effective drug tar-\\\
+    ngets requires a comprehensive understanding of prior clinical\\nefforts. Since the last update, the Platform has promptly\
+    \ re-\\nflected every drug or clinical candidate reported by all releases\\nof the ChEMBL database, including updates\
+    \ in the mecha-\\nnisms of action, black-box warnings or withdrawn status ( 47 ).\\nAll chemical probes in ChEMBL\\u2014as\
+    \ reported in Probes &\\nDrugs Portal\\u2014qualify for inclusion in the Platform, raising\\nthe availability of potent\
+    \ and selective tool molecules for as-\\nsay consideration ( 48 ). The curation of antibody-drug conju-\\ngates as a distinct\
+    \ modality has also enhanced the cellular con-\\ntext of the drug modulation. Additionally, the clinical indica-\\ntions\
+    \ sourced from ChEMBL now incorporate drug approvals\\nfrom the European Medicines Agency, reporting 49 drugs ex-\\nclusively\
+    \ authorised in Europe. Further enhancements of the\\nclinical study information capture Early Phase I trials as a dis-\\\
+    ntinct category complementing ongoing efforts such as classify-\\ning clinical trial stop reasons retrieved from ClinicalTrials.gov.\\\
+    nOverall, drug and clinical candidate annotation, their indica-\\ntions and side effects represent the closest information\
+    \ to the\\ntherapeutic context, potentially informing about all stages of\\nour target prioritisation framework: precedence,\
+    \ tractability,\\ndoability , and safety .\\nDrug responses and toxicity using\\npharmacogenetics\\nSince the last update,\
+    \ we have also introduced pharmacoge-\\nnetic (PGx) evidence from PharmGKB, capturing the conse-\\nquences of genetic\
+    \ variation on drug efficacy, dosing and ad-\\nverse events ( 49 ). PharmGKB manually curates the evidence\\nfor a given\
+    \ variant and drug response, providing annotation\\nfor each patient genotype and an overarching level of evidence\\nbased\
+    \ on published literature and clinical guidelines. The Plat-\\nform further enriches the PGx data by including Ensembl\
+    \ vari-\\nant effect predictions, extracting drug response from the phe-\\nnotype description, drug information, and whether\
+    \ the vari-\\nation occurs in the direct drug target ( 12 ,27 ). The PGx data\\nwidget appears on drug and target pages\
+    \ to inform patients\\nabout stratification, responses, and toxicity. They also con-\\ntribute to our target prioritisation\
+    \ view by informing the safety\\nattributes (Figure 2 B).\\nMulti-modal target safety assessment\\nNominating drug targets\
+    \ with lower risks of target safety can\\nsignificantly impact portfolio management. The Platform col-\\nlates several\
+    \ data sources informing about the possible safety\\nconsequences of target modulation. For example, we kept\\nexpanding\
+    \ the list of targets with well-characterised safety\\nevents. Well-characterised safety events are presented in the\\\
+    nSafety widget, to which we added curated (experimentally val-\\nidated) evidence from Adverse Outcome Pathways (Society\\\
+    nfor Advancement of A OPs, A OP-Wiki 2023). Available from\\naopwiki.org, a relevant publication including a list of com-\\\
+    nmonly screened targets for secondary pharmacology ( 50 ), as\\nwell as genes in which variation causes increased toxicity\
+    \ ac-\\ncording to PGx evidence. While the strength of evidence of\\nthe various data sources incorporated into the Safety\
+    \ widget\\nvaries, the 941 targets currently covered by the Safety widget\\ncompromise a set of targets with known safety\
+    \ events, mak-\\ning them unfavourable for pipeline progression. This dataset\\nis available for download at https://platform.opentargets.org/\\\
+    ndownloads through our \\u2018target\\u2019 object.\\nIn addition to the known safety events, the Target Priori-\\ntisation\
+    \ view presents a range of in vitro and in vivo fea-\\ntures for ranking target safety. To better understand cellu-\\\
+    nlar gene essentiality, we have incorporated fitness dependen-\\ncies exhibited when performing CRISPR-Cas9 genome-wide\\\
+    nknock-out screenings on 900 cell lines, as reported by the Can-\\ncer DepMap ( 32 ). Targets catalogued as \\u2018Core\
+    \ Essential\\u2019 due\\nto their pan-cancer dependencies are flagged as unfavourable\\ntargets in the Target Prioritisation\
+    \ view (Figure 2 B). To com-\\nplement this information with in vivo assays, we developed a\\nscore for the severity of\
+    \ observed phenotypes in mouse knock-\\nouts ( 51 ). In addition, target RNA expression is ranked based\\non tissue distribution\
+    \ and specificity, further enabling targets\\nto be flagged as unfavourable for safety.\\nTo w ar ds a more FAIR platform\\\
+    nBuilt upon FAIR principles ( 52 ), the Open Targets Platform\\ncontinues to adhere to its foundational open-source practices.\\\
+    nSince the last update, we have updated the licence to CC0\\nv1.0, allowing unlimited access to our data ( 53 ). The Platform\\\
+    nhas now been included as a Microsoft Azure Open Dataset,\\nfurther expanding Cloud accessibility for our data. The data\\\
+    npipelines and services have been consolidated, and technolo-\\ngies have been updated to minimise adoption restrictions,\
+    \ such\\nas our recent migration to OpenSearch. Moreover, we have\\nsimplified the method for creating a standalone deployment,\\\
+    nproviding more accessible protocols for users generating their\\nown version of the Open Targets Platform. To maximise\
+    \ con-\\ntributions from the open-source community, standards have\\nbeen raised across all Github repositories, allowing\
+    \ the devel-\\nopment of third-party applications such as wrappers around\\nour GraphQL APIs ( 54 ). Feedback on the infrastructure\
+    \ and\\nbusiness logic has been incorporated into data, backend, and\\nfrontend applications, the latter benefiting from\
+    \ extensive UX\\nsessions. One example of a UX-driven feature is the redesigned\\nPlatform search, which now features\
+    \ entity descriptions, can\\nbe accessed through a keyboard shortcut, and provides a his-\\ntory of recent searches to\
+    \ assist users.\\nEngaging the Open Targets community\\nThe Open Targets Platform is dedicated to deepening our\\ncollective\
+    \ understanding of target identification and priori-\\ntisation by leveraging the expertise of our partner institu-\\\
+    ntions and the increasingly collaborative community of users.\\nAlways supported by our extensive documentation ( https:\\\
+    n//platform-docs.opentargets.org ), we have continued to pro-\\nmote user engagement through outreach activities, up-to-\\\
+    ndate training materials, and the development of fora to col-\\nlect user feedback. The Open Targets Community ( https://\\\
+    ncommunity.opentargets.org ) has grown in users and function-\\nalities and now includes a dedicated feature requests\
+    \ section.\\nFor each release, new Platform features and data have been de-\\nscribed on our blog ( https:// blog.opentargets.org/\
+    \ ) and com-\\nplemented with regular deep dives on significant topics, in-\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960\
+    \ by guest on 04 March 2026\\n\\nNucleic Acids Research , 2025, Vol. 53, Database issue\"\n  },\n  {\n    \"name\": \"\
+    D 1473\",\n    \"text\": \"cluding gene burden analyses, pharmacogenetics, provenance\\nmetadata, and standalone deployment,\
+    \ as well as case stud-\\nies to showcase how Platform data and code can be built\\non. Lastly, we have expanded our use\
+    \ of video tutorials to\\nguide users through new functionalities, trying to maximise\\nthe accessibility and training\
+    \ experience for users with differ-\\nent backgrounds.\"\n  },\n  {\n    \"name\": \"Discussion and future plans\",\n\
+    \    \"text\": \"As the wealth of data grows in different domains to enhance\\nour understanding of disease biology, there\
+    \ continues to be a\\nneed to integrate and evaluate the evidence that can identify\\npromising drug targets and prioritise\
+    \ therapeutic hypotheses\\nthat will lead to new safe and effective medicines. Through-\\nout the last two years, the\
+    \ Open Targets Platform has con-\\ntinued to progress its capabilities to provide a more complete\\nand user-friendly\
+    \ view of the evidence that associates target to\\ndisease and the evidence that can be used for target prioritisa-\\\
+    ntion. New experimental data \\u2013 such as the updated Project\\nScore ( 55 ) or AstraZeneca\\u2019s gene burden tests\
+    \ on 470k in-\\ndividuals ( 21 ) \\u2013 have been rapidly integrated and presented\\nfor the immediate benefit of the\
+    \ global community. As new\\ndata modalities emerge, such as single-cell transcriptomics, the\\nPlatform has served as\
+    \ a gold standard for understanding the\\nimpact of additional layers of information on drug discovery\\nand development\
+    \ (Dann E, Teeple E, Elmentaite R, Meyer KB,\\nGaglia G, Nestle F, et al. Single-cell RNA sequencing of hu-\\nman tissue\
+    \ supports successful drug targets. medRxiv. 2024.\\np. 2024.04.04.24305313). The overall harmonised data con-\\ntinues\
+    \ to be a public reference, enabling multiple retrospec-\\ntive studies on the value of human genetics for drug discov-\\\
+    nery ( 3 , 15 , 16 , 56 ). Several examples have also demonstrated the\\nvalue of the Platform data in building more specialised\
+    \ appli-\\ncations or AI solutions ( 57 ,58 ). Ultimately, publicly available,\\nstructured datasets such as those offered\
+    \ by the Platform, can\\ncatalyse the development of further AI applications for early\\ndiscovery ( 59 ).\\nThe Platform\\\
+    u2019s ability to rapidly assist hypotheses through\\nthe dynamic web interface enables a broad community of\\nusers to\
+    \ work on both broad and very specific questions.\\nThe Platform is often referenced as a gold-standard resource\\nto\
+    \ help pinpoint previously identified genetic associations,\\nknown drugs, or clinical candidates and understand novel\\\
+    nfindings ( 60 ,61 ). The ability to address systematic queries\\nand simultaneously enable more detailed, bespoke queries\\\
+    nhas been the focus of new feature development, resulting in\\nthe Associations on the Fly and Target Prioritisation views.\\\
+    nOpen Targets intention is to continue the development of\\nthese recently introduced frameworks, allow more tailored\\\
+    nand context-specific queries, to expand on the availability of\\ncausal evidence and develop further refinements to showcase\\\
+    nthe factors that influence the prioritisation of drug targets for\\nprogression. One of the most significant upcoming\
+    \ efforts in\\nthis regard will be the tighter integration of Open Targets Ge-\\nnetics ( 17 ) to provide a more integrated,\
+    \ comprehensive view\\nof common disease genetics within Open Targets Platform.\"\n  },\n  {\n    \"name\": \"Data availability\"\
+    ,\n    \"text\": \"All data is publicly available for download here:\\n[ https:// platform.opentargets.org/ downloads\
+    \ ]\\nand\\nfrom\\nthe\"\n  },\n  {\n    \"name\": \"EMBL-EBI\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"FTP:\"\
+    ,\n    \"text\": \"[ https:// ftp.ebi.ac.uk/ pub/\\ndatabases/ opentargets/ platform/ ]. All code is available\\nin GitHub\
+    \ ( https:// github.com/ opentargets ) and Zenodo\\n( https:// doi.org/ 10.5281/ zenodo.14002231 ).\"\n  },\n  {\n   \
+    \ \"name\": \"Supplementary data\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Supplementary Data are available at\
+    \ NAR Online\",\n    \"text\": \"A c kno wledg ements\\nThe authors would like to thank the Platform users, data\\nproviders\
+    \ and open-source contributors to the codebase. We\\nalso thank our Partners (Wellcome Sanger Institute, EMBL-\\nEBI,\
+    \ Bristol Myers Squibb, Genentech, GSK, MSD, Sanofi\\nand Pfizer) and our Scientific Advisory Board for the crucial\\\
+    nstrategy discussions. For Open Access, the authors have ap-\\nplied a CC-BY public copyright licence to any author-accepted\\\
+    nmanuscript version arising from this submission.\"\n  },\n  {\n    \"name\": \"Funding\",\n    \"text\": \"Wellcome Trust\
+    \ [206194]; Open Targets. Funding for open\\naccess charge: Open Targets.\\nConflict of interest statement\\nNone declared.\"\
+    \n  },\n  {\n    \"name\": \"References\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Sun, D. , Gao, W. , Hu, H.\
+    \ and Zhou, S. (2022) Why 90% of clinical\",\n    \"text\": \"drug development fails and how to improve it? Acta Pharm\
+    \ Sin B ,\\n12 , 3049\\u20133062.\"\n  },\n  {\n    \"name\": \"Dowden, H. and Munro, J. (2019) Trends in clinical success\
+    \ rates\",\n    \"text\": \"and therapeutic focus. Nat. Rev. Drug Discov., 18 , 495\\u2013496.\"\n  },\n  {\n    \"name\"\
+    : \"Minikel, E.V. , Painter, J.L. , Dong, C.C. and Nelson, M.R. (2024)\",\n    \"text\": \"Refining the impact of genetic\
+    \ evidence on clinical success. Nature ,\\n629 , 624\\u2013629.\"\n  },\n  {\n    \"name\": \"Razuvayevskaya, O. , Lopez,\
+    \ I. , Dunham, I. and Ochoa, D. (2024)\",\n    \"text\": \"Genetic factors associated with reasons for clinical trial\
+    \ stoppage.\\nNat. Genet., 56 , 1862\\u20131867.\"\n  },\n  {\n    \"name\": \"McDonagh, E.M. , Trynka, G. , McCarthy,\
+    \ M. , Holzinger, E.R. ,\",\n    \"text\": \"Khader, S. , Nakic, N. , Hu, X. , Cornu, H. , Dunham, I. and Hulcoop, D.\\\
+    n(2024) Human Genetics and Genomics for Drug Target\\nIdentification and Prioritization: Open Targets\\u2019 Perspective.\
+    \ Annu\\nRev Biomed Data Sci , 7 , 59\\u201381.\"\n  },\n  {\n    \"name\": \"Pi\\u00f1ero, J. , Ram\\u00edrez-Anguita,\
+    \ J.M. , Sa\\u00fcch-Pitarch, J. , Ronzano, F. ,\",\n    \"text\": \"Centeno, E. , Sanz, F. and Furlong, L.I. (2020) The\
+    \ DisGeNET\\nknowledge platform for disease genomics: 2019 update. Nucleic\\nAcids Res., 48 , D845\\u2013D855.\"\n  },\n\
+    \  {\n    \"name\": \"Fang, H. and Knight, J.C. (2022) Priority index: database of genetic\",\n    \"text\": \"targets\
+    \ in immune-mediated disease. Nucleic Acids Res., 50 ,\"\n  },\n  {\n    \"name\": \"D1358\\u2013D1367\",\n    \"text\"\
+    : \"8. di Micco, P. , Antolin, A.A. , Mitsopoulos, C. ,\\nV illasclaras-Fernandez, E. , Sanfelice, D. , Dolciami, D. ,\
+    \ Ramagiri, P. ,\\nMica, I.L. , Tym, J.E. , Gingrich, P .W . , et al. 2023) canSAR: update to\\nthe cancer translational\
+    \ research and drug discovery\\nknowledgebase. Nucleic Acids Res. , 51 , D1212\\u2013D1219.\"\n  },\n  {\n    \"name\"\
+    : \"De Cesco, S. , Davis, J.B. and Brennan, P.E. (2020) TargetDB: A\",\n    \"text\": \"target information aggregation\
+    \ tool and tractability predictor.\\nPLoS One , 15 , e0232644.\"\n  },\n  {\n    \"name\": \"Ochoa, D. , Hercules, A.\
+    \ , Carmona, M. , Suveges, D. , Baker, J. ,\",\n    \"text\": \"Malangone, C. , Lopez, I. , Miranda, A. , Cruz-Castillo,\
+    \ C. , Fumis, L. ,\\net al.2023) The next-generation Open Targets Platform:\\nreimagined, redesigned, rebuilt. Nucleic\
+    \ Acids Res., 51 ,\"\n  },\n  {\n    \"name\": \"D1353\\u2013D1359\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"\
+    Koscielny, G. , An, P. , Carvalho-Silva, D. , Cham, J.A. , Fumis, L. ,\",\n    \"text\": \"Gasparyan, R. , Hasan, S. ,\
+    \ Karamanis, N. , Maguire, M. , Papa, E. ,\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960\
+    \ by guest on 04 March 2026\"\n  },\n  {\n    \"name\": \"D 1474\",\n    \"text\": \"Nucleic Acids Research , 2025, Vol.\
+    \ 53, Database issue\\net al.2017) Open Targets: a platform for therapeutic target\\nidentification and validation. Nucleic\
+    \ Acids Res. , 45 , D985\\u2013D994.\"\n  },\n  {\n    \"name\": \"Harrison,P .W ., Amode,M.R., Austine-Orimoloye,O.,\
+    \ Azov,A.G.,\",\n    \"text\": \"Barba, M. , Barnes, I. , Becker, A. , Bennett, R. , Berry, A. , Bhai, J. ,\\net al.2024)\
+    \ Ensembl 2024. Nucleic Acids Res., 52 , D891\\u2013D899.\"\n  },\n  {\n    \"name\": \"Malone, J. , Holloway, E. , Adamusiak,\
+    \ T. , Kapushesky, M. , Zheng, J. ,\",\n    \"text\": \"Kolesnikov, N. , Zhukova, A. , Brazma, A. and Parkinson, H. (2010)\\\
+    nModeling sample variables with an Experimental Factor\\nOntology. Bioinformatics , 26 , 1112\\u20131118.\"\n  },\n  {\n\
+    \    \"name\": \"Carvalho-Silva, D. , Pierleoni, A. , Pignatelli, M. , Ong, C. , Fumis, L. ,\",\n    \"text\": \"Karamanis,\
+    \ N. , Carmona, M. , Faulconbridge, A. , Hercules, A. ,\\nMcAuley, E. , et al. 2019) Open Targets Platform: new developments\\\
+    nand updates two years on. Nucleic Acids Res. , 47 , D1056\\u2013D1065.\"\n  },\n  {\n    \"name\": \"Trajanoska, K. ,\
+    \ Bh\\u00e9rer, C. , Taliun, D. , Zhou, S. , Richards, J.B. and\",\n    \"text\": \"Mooser,V. (2023) From target discovery\
+    \ to clinical drug\\ndevelopment with human genetics. Nature , 620 , 737\\u2013745.\"\n  },\n  {\n    \"name\": \"Ochoa,\
+    \ D. , Karim, M. , Ghoussaini, M. , Hulcoop, D.G. ,\",\n    \"text\": \"McDonagh, E.M. and Dunham, I. (2022) Human genetics\
+    \ evidence\\nsupports two-thirds of the 2021 FDA-approved drugs. Nat. Rev.\\nDrug Discov., 21 , 551.\"\n  },\n  {\n  \
+    \  \"name\": \"Ghoussaini, M. , Mountjoy, E. , Carmona, M. , Peat, G. , Schmidt, E.M. ,\",\n    \"text\": \"Hercules,\
+    \ A. , Fumis, L. , Miranda, A. , Carvalho-Silva, D. , Buniello, A. ,\\net al.2021) Open Targets Genetics: systematic identification\
+    \ of\\ntrait-associated genes using large-scale genetics and functional\\ngenomics. Nucleic Acids Res. , 49 , D1311\\\
+    u2013D1320.\\n18. Kurki, M.I. , Karjalainen, J. , Palta, P. , Sipil\\u00e4, T.P. , Kristiansson, K. ,\\nDonner, K.M. ,\
+    \ Reeve, M.P. , Laivuori, H. , Aavikko, M. ,\\nKaunisto, M.A. , et al. 2023) FinnGen provides genetic insights from\\\
+    na well-phenotyped isolated population. Nature , 613 , 508\\u2013518.\"\n  },\n  {\n    \"name\": \"GTEx Consortium (2020)\
+    \ The GTEx Consortium atlas of genetic\",\n    \"text\": \"regulatory effects across human tissues. Science , 369 , 1318\\\
+    u20131330.\"\n  },\n  {\n    \"name\": \"Mountjoy, E. , Schmidt, E.M. , Carmona, M. , Schwartzentruber, J. ,\",\n    \"\
+    text\": \"Peat, G. , Miranda, A. , Fumis, L. , Hayhurst, J. , Buniello, A. ,\\nKarim, M.A. , et al. 2021) An open approach\
+    \ to systematically\\nprioritize causal variants and genes at all published human GWAS\\ntrait-associated loci. Nat. Genet.,\
+    \ 53 , 1527\\u20131533.\"\n  },\n  {\n    \"name\": \"Wang, Q. , Dhindsa, R.S. , Carss, K. , Harper, A.R. , Nag, A. ,\"\
+    ,\n    \"text\": \"Tachmazidou, I. , V itsios, D. , Deevi, S.V .V . , Mackay, A. , Muthas, D. ,\\net al.2021) Rare variant\
+    \ contribution to human disease in 281,104\\nUK Biobank exomes. Nature , 597 , 527\\u2013532.\"\n  },\n  {\n    \"name\"\
+    : \"Riveros-Mckay, F. , Oliver-Williams, C. , Karthikeyan, S. , Walter, K. ,\",\n    \"text\": \"Kundu, K. , Ouwehand,\
+    \ W.H. , Roberts, D. , Di Angelantonio, E. ,\\nSoranzo, N. , Danesh, J. , et al. 2020) The influence of rare variants\
+    \ in\\ncirculating metabolic biomarkers. PLoS Genet. , 16 , e1008605.\\n23. Singh, T. , Poterba, T. , Curtis, D. , Akil,\
+    \ H. , Al Eissa, M. , Barchas, J.D. ,\\nBass, N. , Bigdeli, T.B. , Breen, G. , Bromet, E.J. , et al. 2022) Rare\\ncoding\
+    \ variants in ten genes confer substantial risk for\\nschizophrenia. Nature , 604 , 509\\u2013516.\"\n  },\n  {\n    \"\
+    name\": \"Makarious, M.B. , Lake, J. , Pitz, V. , Ye Fu, A. , Guidubaldi, J.L. ,\",\n    \"text\": \"Solsberg, C.W. ,\
+    \ Bandres-Ciga, S. , Leonard, H.L. , Kim, J .J .,\\nBillingsley, K.J. , et al. 2023) Large-scale rare variant burden testing\\\
+    nin Parkinson\\u2019s disease. Brain , 146 , 4622\\u20134632.\"\n  },\n  {\n    \"name\": \"Soh,P .X.Y ., Mmekwa,N., Petersen,D.C.,\
+    \ Gheybi,K., van Zyl,S.,\",\n    \"text\": \"Jiang, J. , Patrick, S.M. , Campbell, R. , Jaratlerdseri, W. ,\\nMutambirwa,\
+    \ S.B.A. , et al. 2023) Prostate cancer genetic risk and\\nassociated aggressive disease in men of African ancestry. Nat.\\\
+    nCommun., 14 , 8037.\"\n  },\n  {\n    \"name\": \"Martin, A.R. , Williams, E. , Foulger, R.E. , Leigh, S. , Daugherty,\
+    \ L.C. ,\",\n    \"text\": \"Niblock, O. , Leong, I.U.S. , Smith, K.R. , Gerasimenko, O. ,\\nHaraldsdottir, E. , et al.\
+    \ 2019) PanelApp crowdsources expert\\nknowledge to establish consensus diagnostic gene panels. Nat.\\nGenet., 51 , 1560\\\
+    u20131565.\"\n  },\n  {\n    \"name\": \"Thormann, A. , Halachev, M. , McLaren, W. , Moore, D.J. , Svinti, V. ,\",\n \
+    \   \"text\": \"Campbell, A. , Kerr, S.M. , T ischkowitz, M. , Hunt, S.E. , Dunlop, M.G. ,\\net al.2019) Flexible and\
+    \ scalable diagnostic filtering of genomic\\nvariants using G2P with Ensembl VEP. Nat. Commun., 10 , 2373.\"\n  },\n \
+    \ {\n    \"name\": \"Shen, A. , Barbero, M.C. , Koylass, B. , Tsukanov, K. , Cezard, T. and\",\n    \"text\": \"Keane,T.M.\
+    \ (2024) CMAT: ClinVar Mapping and Annotation\\nToolkit. Bioinform Adv , 4 , vbae018.\"\n  },\n  {\n    \"name\": \"Landrum,\
+    \ M.J. , Chitipiralla, S. , Brown, G.R. , Chen, C. , Gu, B. ,\",\n    \"text\": \"Hart, J. , Hoffman, D. , Jang, W. ,\
+    \ Kaur, K. , Liu, C. , et al. 2020) ClinVar:\\nimprovements to accessing data. Nucleic Acids Res., 48 ,\"\n  },\n  {\n\
+    \    \"name\": \"D835\\u2013D844\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Sondka, Z. , Dhir, N.B. , Carvalho-Silva,\
+    \ D. , Jupe, S. and\",\n    \"text\": \"MadhumitaMadhumita, McLaren, K. , Starkey, M. , Ward, S. ,\\nWilding, J. , Ahmed,\
+    \ M. , et al. 2024) COSMIC: a curated database of\\nsomatic variants and clinical data for cancer. Nucleic Acids Res.,\"\
+    \n  },\n  {\n    \"name\": \", D1210\\u2013D1217\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Mart\\u00ednez-Jim\\\
+    u00e9nez, F. , Mui\\u00f1os, F. , Sent\\u00eds, I. , Deu-Pons, J. ,\",\n    \"text\": \"Reyes-Salazar, I. , Arnedo-Pac,\
+    \ C. , Mularoni, L. , Pich, O. , Bonet, J. ,\\nKranas, H. , et al. 2020) A compendium of mutational cancer driver\\ngenes.\
+    \ Nat. Rev. Cancer , 20 , 555\\u2013572.\"\n  },\n  {\n    \"name\": \"Pacini, C. , Duncan, E. , Gon\\u00e7alves, E. ,\
+    \ Gilbert, J. , Bhosle, S. ,\",\n    \"text\": \"Horswell, S. , Karakoc, E. , Lightfoot, H. , Curry, E. , Muyas, F. ,\\\
+    net al.2024) A comprehensive clinically informed map of\\ndependencies in cancer cells and framework for target\\nprioritization.\
+    \ Cancer Cell , 42 , 301\\u2013316.\\n33. T ian, R. , Abarientos, A. , Hong, J. , Hashemi, S.H. , Yan, R. , Dr\\u00e4ger,\
+    \ N. ,\\nLeng, K. , Nalls, M.A. , Singleton, A.B. , Xu, K. , et al. 2021)\\nGenome-wide CRISPRi / a screens in human neurons\
+    \ link\\nlysosomal failure to ferroptosis. Nat. Neurosci., 24 , 1020\\u20131034.\"\n  },\n  {\n    \"name\": \"Groza,\
+    \ T. , Gomez, F.L. , Mashhadi, H.H. , Mu\\u00f1oz-Fuentes, V. ,\",\n    \"text\": \"Gunes, O. , Wilson, R. , Cacheiro,\
+    \ P. , Frost, A. , Keskivali-Bond, P. ,\\nVardal, B. , et al. 2023) The International Mouse Phenotyping\\nConsortium:\
+    \ comprehensive knockout phenotyping underpinning\\nthe study of human disease. Nucleic Acids Res., 51 ,\"\n  },\n  {\n\
+    \    \"name\": \"D1038\\u2013D1045\",\n    \"text\": \"\"\n  },\n  {\n    \"name\": \"Stephenson, J.D. , Totoo, P. , Burke,\
+    \ D.F. , J\\u00e4nes, J. , Beltrao, P. and\",\n    \"text\": \"Martin,M.J. (2024) ProtVar: mapping and contextualizing\
+    \ human\\nmissense variation. Nucleic Acids Res. , 52 , W140\\u2013W147.\"\n  },\n  {\n    \"name\": \"Cheng, J. , Novati,\
+    \ G. , Pan, J. , Bycroft, C. , \\u017demgulyt \\u02d9e, A. ,\",\n    \"text\": \"Applebaum, T. , Pritzel, A. , Wong, L.H.\
+    \ , Zielinski, M. , Sargeant, T. ,\\net al.2023) Accurate proteome-wide missense variant effect\\nprediction with AlphaMissense.\
+    \ Science , 381 , eadg7492.\"\n  },\n  {\n    \"name\": \"Varadi, M. , Anyango, S. , Deshpande, M. , Nair, S. , Natassia,\
+    \ C. ,\",\n    \"text\": \"Yordanova, G. , Yuan, D. , Stroe, O. , Wood, G. , Laydon, A. , et al. 2022)\\nAlphaFold Protein\
+    \ Structure Database: massively expanding the\\nstructural coverage of protein-sequence space with high-accuracy\\nmodels.\
+    \ Nucleic Acids Res. , 50 , D439\\u2013D444.\"\n  },\n  {\n    \"name\": \"Schymkowitz, J. , Borg, J. , Stricher, F. ,\
+    \ Nys, R. , Rousseau, F. and\",\n    \"text\": \"Serrano,L. (2005) The FoldX web server: an online force field.\\nNucleic\
+    \ Acids Res., 33 , W382\\u20138.\\n39. Ferguson, C. , Ara\\u00fajo, D. , Faulk, L. , Gou, Y. , Hamelers, A. , Huang, Z.\
+    \ ,\\nIde-Smith, M. , Levchenko, M. , Marinos, N. , Nambiar, R. , et al. 2021)\\nEurope PMC in 2020. Nucleic Acids Res.\
+    \ , 49 , D1507\\u2013D1514.\"\n  },\n  {\n    \"name\": \"Vaswani, A. , Shazeer, N. , Parmar, N. , Uszkoreit, J. , Jones,\
+    \ L. ,\",\n    \"text\": \"Gomez, A.N. , Kaiser, \\u0141. and Polosukhin, I. (2017) Attention is all\\nyou need. In: Proceedings\
+    \ of the 31st International Conference on\\nNeural Information Processing Systems, NIPS\\u201917 . Curran\\nAssociates\
+    \ Inc., Red Hook, NY, USA, pp. 6000\\u20136010.\"\n  },\n  {\n    \"name\": \"Mendez, D. , Gaulton, A. , Bento, A.P. ,\
+    \ Chambers, J. , De Veij, M. ,\",\n    \"text\": \"F\\u00e9lix, E. , Magari\\u00f1os, M.P. , Mosquera, J.F. , Mutowo,\
+    \ P. , Nowotka, M. ,\\net al.2019) ChEMBL: towards direct deposition of bioassay data.\\nNucleic Acids Res., 47 , D930\\\
+    u2013D940.\"\n  },\n  {\n    \"name\": \"Sollis, E. , Mosaku, A. , Abid, A. , Buniello, A. , Cerezo, M. , Gil, L. ,\"\
+    ,\n    \"text\": \"Groza, T. , G\\u00fcne \\u00b8s , O. , Hall, P. , Hayhurst, J. , et al. 2023) The\\nNHGRI-EBI GWAS\
+    \ Catalog: knowledgebase and deposition\\nresource. Nucleic Acids Res. , 51 , D977\\u2013D985.\"\n  },\n  {\n    \"name\"\
+    : \"UniProt Consortium, The, Bateman, A. , Martin, M.-J. , Orchard, S. ,\",\n    \"text\": \"Magrane, M. , Ahmad, S. ,\
+    \ Alpi, E. , Bowler-Barnett, E.H. , Britto, R. ,\\nBye-A-Jee, H. , et al. 2022) UniProt: the Universal Protein\\nKnowledgebase\
+    \ in 2023. Nucleic Acids Res. , 51 , D523\\u2013D531.\\n44. Karczewski, K.J. , Francioli, L.C. , T iao, G. , Cummings,\
+    \ B.B. , Alf\\u00f6ldi, J. ,\\nWang, Q. , Collins, R.L. , Laricchia, K.M. , Ganna, A. , Birnbaum, D.P. ,\\net al.2020)\
+    \ The mutational constraint spectrum quantified from\\nvariation in 141,456 humans. Nature , 581 , 434\\u2013443.\\n45.\
+    \ George, N. , Fexova, S. , Fuentes, A.M. , Madrigal, P. , Bi, Y. , Iqbal, H. ,\\nKumbham, U. , Nolte, N.F. , Zhao, L.\
+    \ , Thanki, A.S. , et al. 2024)\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960 by guest on\
+    \ 04 March 2026\\n\\nNucleic Acids Research , 2025, Vol. 53, Database issue\"\n  },\n  {\n    \"name\": \"D 1475\",\n\
+    \    \"text\": \"Expression Atlas update: insights from sequencing data at both\\nbulk and single cell level. Nucleic\
+    \ Acids Res. , 52 , D107\\u2013D114.\"\n  },\n  {\n    \"name\": \"Sj\\u00f6stedt, E. , Zhong, W. , Fagerberg, L. , Karlsson,\
+    \ M. , Mitsios, N. ,\",\n    \"text\": \"Adori, C. , Oksvold, P. , Edfors, F. , Limiszewska, A. , Hikmet, F. ,\\net al.2020)\
+    \ An atlas of the protein-coding genes in the human, pig,\\nand mouse brain. Science , 367 , eaay5947.\"\n  },\n  {\n\
+    \    \"name\": \"Hunter, F.M.I. , Bento, A.P. , Bosc, N. , Gaulton, A. , Hersey, A. and\",\n    \"text\": \"Leach,A.R.\
+    \ (2021) Drug Safety Data Curation and Modeling in\\nChEMBL: Boxed Warnings and Withdrawn Drugs. Chem. Res.\\nToxicol.,\
+    \ 34 , 385\\u2013395.\"\n  },\n  {\n    \"name\": \"Skuta, C. , Popr, M. , Muller, T. , Jindrich, J. , Kahle, M. , Sedlak,\
+    \ D. ,\",\n    \"text\": \"Svozil, D. and Bartunek, P. (2017) Probes &Drugs portal: an\\ninteractive, open data resource\
+    \ for chemical biology. Nat.\"\n  },\n  {\n    \"name\": \"Methods , 14 , 759\\u2013760\",\n    \"text\": \"\"\n  },\n\
+    \  {\n    \"name\": \"Whirl-Carrillo, M. , Huddart, R. , Gong, L. , Sangkuhl, K. , Thorn, C.F. ,\",\n    \"text\": \"\
+    Whaley, R. and Klein, T.E. (2021) An Evidence-Based Framework\\nfor Evaluating Pharmacogenomics Knowledge for Personalized\\\
+    nMedicine. Clin. Pharmacol. Ther., 110 , 563\\u2013572.\"\n  },\n  {\n    \"name\": \"Brennan, R.J. , Jenkinson, S. ,\
+    \ Brown, A. , Delaunois, A. , Dumotier, B. ,\",\n    \"text\": \"Pannirselvam, M. , Rao, M. , Ribeiro, L.R. , Schmidt,\
+    \ F. , Sibony, A. ,\\net al.2024) The state of the art in secondary pharmacology and its\\nimpact on the safety of new\
+    \ medicines. Nat. Rev. Drug Discov., 23 ,\\n525\\u2013545.\"\n  },\n  {\n    \"name\": \"Baldarelli, R.M. , Smith, C.L.\
+    \ , Ringwald, M. , Richardson, J.E. ,\",\n    \"text\": \"Bult, C.J. and Mouse, Genome Informatics Group (2024) Mouse\\\
+    nGenome Informatics: an integrated knowledgebase system for the\\nlaboratory mouse. Genetics , 227 , iyae031\"\n  },\n\
+    \  {\n    \"name\": \"Wilkinson, M.D. , Dumontier, M. , Aalbersberg, I.J .J . , Appleton, G. ,\",\n    \"text\": \"Axton,\
+    \ M. , Baak, A. , Blomberg, N. , Boiten, J.-W. , da Silva\\nSantos, L.B. , Bourne, P.E. , et al. 2016) The FAIR Guiding\
+    \ Principles\\nfor scientific data management and stewardship. Sci Data , 3 ,\\n160018.\"\n  },\n  {\n    \"name\": \"\
+    Margoni, T. and Peters, D. (2016) Creative Commons Licenses:\",\n    \"text\": \"Empowering Open Access. 10.2139 / ssrn.2746044.\"\
+    \n  },\n  {\n    \"name\": \"Feizi, A. and Ray, K. (2023) otargen: GraphQL-based R package\",\n    \"text\": \"for tidy\
+    \ data accessing and processing from Open Targets\\nGenetics. Bioinformatics , 39 , btad441.\"\n  },\n  {\n    \"name\"\
+    : \"Dwane, L. , Behan, F.M. , Gon\\u00e7alves, E. , Lightfoot, H. , Yang, W. , van\",\n    \"text\": \"der Meer, D. ,\
+    \ Shepherd, R. , Pignatelli, M. , Iorio, F. and Garnett, M.J.\\n(2020) Project Score database: a resource for investigating\
+    \ cancer\\ncell dependencies and prioritizing therapeutic targets. Nucleic\\nAcids Res., 49 , D1365\\u2013D1372.\"\n \
+    \ },\n  {\n    \"name\": \"Rusina,P .V ., Falaguera,M.J., Romero,J.M.R., McDonagh,E.M.,\",\n    \"text\": \"Dunham, I.\
+    \ and Ochoa, D. (2023) Genetic support for\\nFDA-approved drugs over the past decade. Nat. Rev . Drug Discov .,\\n22 ,\
+    \ 864.\"\n  },\n  {\n    \"name\": \"Zhou, Y. , Zhang, Y. , Zhao, D. , Yu, X. , Shen, X. , Zhou, Y. , Wang, S. ,\",\n\
+    \    \"text\": \"Qiu, Y. , Chen, Y. and Zhu, F. (2024) TTD: Therapeutic Target\\nDatabase describing target druggability\
+    \ information. Nucleic\\nAcids Res., 52 , D1465\\u2013D1477.\"\n  },\n  {\n    \"name\": \"Raies, A. , Tulodziecka, E.\
+    \ , Stainer, J. , Middleton, L. , Dhindsa, R.S. ,\",\n    \"text\": \"Hill, P. , Engkvist, O. , Harper, A.R. , Petrovski,\
+    \ S. and V itsios, D.\\n(2022) DrugnomeAI is an ensemble machine-learning framework\\nfor predicting druggability of candidate\
+    \ drug targets.\\nCommunications Biology , 5 , 1\\u201316.\"\n  },\n  {\n    \"name\": \"Hasselgren, C. and Oprea, T.I.\
+    \ (2024) Artificial Intelligence for\",\n    \"text\": \"Drug Discovery: Are We There Yet? Annu. Rev. Pharmacol.\\nToxicol.,\
+    \ 64 , 527\\u2013550.\"\n  },\n  {\n    \"name\": \"Bjornsdottir, G. , Chalmer, M.A. , Stefansdottir, L. , Skuladottir,\
+    \ A.T. ,\",\n    \"text\": \"Einarsson, G. , Andresdottir, M. , Beyter, D. , Ferkingstad, E. ,\\nGretarsdottir, S. , Halldorsson,\
+    \ B.V. , et al. 2023) Rare variants with\\nlarge effects provide functional insights into the pathology of\\nmigraine\
+    \ subtypes, with and without aura. Nat. Genet., 55 ,\\n1843\\u20131853.\"\n  },\n  {\n    \"name\": \"Zhou, H. , Kember,\
+    \ R.L. , Deak, J. , Xu, H. , Toikumo, S. , Yuan, K. ,\",\n    \"text\": \"Lind, P.A. , Farajzadeh, L. , Wang, L. , Hatoum,\
+    \ A.S. , et al. 2023)\\nMulti-ancestry study of the genetics of problematic alcohol use in\\nover 1 million individuals.\
+    \ Nat. Med., 29 , 3184\\u20133192.\\nReceived: September 13, 2024. Revised: October 23, 2024. Editorial Decision: October\
+    \ 24, 2024. Accepted: October 30, 2024\\n\\u00a9 The Author(s) 2024. Published by Oxford University Press on behalf of\
+    \ Nucleic Acids Research.\\nThis is an Open Access article distributed under the terms of the Creative Commons Attribution\
+    \ License (https: // creativecommons.org / licenses / by / 4.0 / ), which permits unrestricted reuse,\\ndistribution,\
+    \ and reproduction in any medium, provided the original work is properly cited.\\nDownloaded from https://academic.oup.com/nar/article/53/D1/D1467/7917960\
+    \ by guest on 04 March 2026\"\n  }\n]"
+  funding: 'Wellcome Trust [206194]; Open Targets. Funding for open
+
+    access charge: Open Targets.
+
+    Conflict of interest statement
+
+    None declared.'
+figures:
+  figure_list: "[\n  {\n    \"id\": \"fig_p4_1\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_1.png\",\n    \"\
+    page\": 4\n  },\n  {\n    \"id\": \"fig_p4_2\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_2.png\",\n   \
+    \ \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_3\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_3.png\",\n\
+    \    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_4\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_4.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_5\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_5.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_6\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_6.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_7\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_7.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_8\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_8.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_9\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_9.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_10\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_10.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_11\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_11.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_12\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_12.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_13\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_13.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_14\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_14.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_15\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_15.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_16\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_16.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_17\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_17.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_18\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_18.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_19\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_19.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_20\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_20.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_21\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_21.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_22\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_22.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_23\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_23.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_24\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_24.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_25\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_25.png\"\
+    ,\n    \"page\": 4\n  },\n  {\n    \"id\": \"fig_p4_26\",\n    \"caption\": \"\",\n    \"path\": \"figures/fig_p4_26.png\"\
+    ,\n    \"page\": 4\n  }\n]"

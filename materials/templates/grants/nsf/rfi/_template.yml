@@ -1,0 +1,116 @@
+# NSF Request for Information (RFI) — Template Specification
+#
+# Defines the general structure of an NSF TIP RFI document.
+# This template is based on the NSF Tech Labs RFI.
+#
+# Schema Version: 1.0
+# Source: NSF TIP Tech Labs RFI (SAM.gov)
+
+template:
+  name: "NSF Request for Information (RFI)"
+  version: "1.0"
+  description: "Request for Information from NSF TIP directorate"
+  output_formats: [html, pdf]
+
+sections:
+  # ─── Document Metadata ──────────────────────────────────────────────────
+  - id: metadata
+    title: "RFI Metadata"
+    fields:
+      - id: rfi_title
+        label: "RFI Title"
+        type: text
+        required: true
+
+      - id: directorate
+        label: "NSF Directorate"
+        type: text
+        required: true
+        hint: "e.g., Directorate for Technology, Innovation and Partnerships (TIP)"
+
+      - id: sam_gov_url
+        label: "SAM.gov Listing URL"
+        type: url
+        required: false
+
+      - id: response_required
+        label: "Is response required for future proposals?"
+        type: boolean
+        required: false
+        hint: "Typically No — RFI response is not required to submit future proposals"
+
+  # ─── Program Description ────────────────────────────────────────────────
+  - id: program_description
+    title: "Program Description"
+    note: "Section I — Core description of the program/initiative"
+    fields:
+      - id: summary
+        label: "Summary"
+        type: section
+        required: true
+
+      - id: rationale
+        label: "Rationale"
+        type: section
+        required: true
+        hint: "Why this program is needed and what gaps it fills"
+
+      - id: strategic_objectives
+        label: "Strategic Objectives"
+        type: section
+        required: true
+        hint: "List of strategic objectives the program aims to achieve"
+
+      - id: program_design
+        label: "Program Design and Structure"
+        type: section
+        required: true
+        hint: "Phases, timelines, team selection process, milestones"
+
+      - id: topics
+        label: "Program Topics or Focus Areas"
+        type: section
+        required: false
+
+      - id: funding_mechanism
+        label: "Funding Mechanism"
+        type: section
+        required: true
+        hint: "e.g., Other Transaction (OT), cooperative agreement, grant"
+
+  # ─── RFI Questions ──────────────────────────────────────────────────────
+  - id: rfi_questions
+    title: "RFI Questions"
+    note: "Section II — Specific questions the NSF is seeking input on"
+    fields:
+      - id: questions_list
+        label: "Questions for Public Input"
+        type: section
+        required: true
+        hint: "Numbered or lettered list of specific questions"
+
+  # ─── Response Instructions ──────────────────────────────────────────────
+  - id: response_instructions
+    title: "Response Instructions"
+    note: "Section III — How to submit responses"
+    fields:
+      - id: submission_method
+        label: "Submission Method"
+        type: section
+        required: true
+
+      - id: deadline
+        label: "Response Deadline"
+        type: date
+        required: true
+
+      - id: format_requirements
+        label: "Format Requirements"
+        type: section
+        required: false
+        hint: "Page limits, file format, etc."
+
+      - id: contact
+        label: "Contact Information"
+        type: textarea
+        required: false
