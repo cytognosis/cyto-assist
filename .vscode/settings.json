@@ -1,0 +1,75 @@
+{
+  "python.defaultInterpreterPath": ".venv/bin/python",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.rulers": [
+    120
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.venv": true,
+    "**/.nox": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.ruff_cache": true,
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/site-packages": true,
+    "**/build": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.venv/**": true,
+    "**/.nox/**": true,
+    "**/experiments/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.venv": true,
+    "**/.nox": true,
+    "**/experiments/**/logs": true,
+    "**/experiments/**/checkpoints": true
+  },
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+  "ruff.interpreter": [".venv/bin/python"],
+  "mypy-type-checker.interpreter": [".venv/bin/python"],
+  "mypy-type-checker.args": [
+    "--config-file=${workspaceFolder}/.mypy.ini"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#13131F",
+    "titleBar.activeBackground": "#13131F",
+    "sideBar.background": "#1C1C2E",
+    "statusBar.background": "#8B3FC7",
+    "statusBar.noFolderBackground": "#13131F",
+    "statusBarItem.remoteBackground": "#E0309E",
+    "editor.background": "#13131F"
+  }
+}

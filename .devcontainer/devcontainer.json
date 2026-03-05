@@ -1,0 +1,71 @@
+{
+    "name": "cyto-assist Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "target": "dev",
+        "args": {
+            "IMG": "cyto-assist",
+            "REMOTE_USER": "${localEnv:USER}",
+            "REMOTE_UID": "${localEnv:REMOTE_UID:1000}",
+            "REMOTE_GID": "${localEnv:REMOTE_GID:1000}"
+        }
+    },
+    "remoteUser": "${localEnv:USER}",
+    "updateRemoteUserUID": true,
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.terminal.activateEnvInCurrentTerminal": true,
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true,
+                "formatFiles.runOrganizeImports": true,
+                "editor.tabSize": 4,
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": "explicit"
+                },
+                "python.defaultInterpreterPath": ".venv/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "njpwerner.autodocstring",
+                "charliermarsh.ruff",
+                "ms-python.mypy-type-checker",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.jupyter-renderers",
+                "ms-azuretools.vscode-docker",
+                "ms-vscode-remote.remote-containers",
+                "redhat.vscode-yaml",
+                "tamasfe.even-better-toml"
+            ]
+        }
+    },
+    "forwardPorts": [
+        8888,
+        8000
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "moby": true
+        },
+        "ghcr.io/astral-sh/devcontainers-features/uv:1": {}
+    },
+    "remoteEnv": {
+        "PYTHONPATH": "/workspace/src:${PYTHONPATH}"
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind",
+        "source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,readonly,consistency=cached,type=bind"
+    ],
+    "postCreateCommand": "sudo chown ${localEnv:USER} . && uv sync",
+    "runArgs": [
+        "--gpus",
+        "all"
+    ]
+}

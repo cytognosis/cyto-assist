@@ -1,0 +1,96 @@
+# Pre-commit configuration for automated code quality checks
+# See https://pre-commit.com for more information
+
+exclude: |
+  ^repos/|
+  ^experiments/.*/(logs|results|checkpoints|data|artifacts|outputs|wandb|.cache)/|
+  ^public/.doctrees/
+repos:
+  # Only keep hooks that CANNOT be replicated with nox/tools
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Git/Repository specific (cannot be replicated)
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-vcs-permalinks
+
+      # Security/System specific (cannot be replicated)
+      - id: check-executables-have-shebangs
+      - id: check-symlinks  
+      - id: check-added-large-files
+        args: ['--maxkb=25000']
+
+      # File system specific (cannot be replicated)
+      - id: check-byte-order-marker
+
+  # Nox-based hooks for everything else
+  - repo: local
+    hooks:
+      # Block giant files (>25MB) unless explicitly allowlisted
+      - id: block-giant-files
+        name: block-giant-files (>25MB)
+        entry: scripts/hooks/block_giant_files.sh
+        language: system
+        pass_filenames: false
+      # File validation
+      - id: file-validation
+        name: file-validation
+        entry: nox -s lint
+        language: system
+        types: [json, yaml, toml, python]
+        require_serial: false
+        pass_filenames: false
+
+      # Formatting check
+      - id: formatting-check
+        name: formatting-check
+        entry: nox -s format_check
+        language: system
+        types: [python]
+        require_serial: false
+        pass_filenames: false
+
+      # Linting check
+      - id: linting-check
+        name: linting-check
+        entry: nox -s lint_check
+        language: system
+        types: [python]
+        require_serial: false
+        pass_filenames: false
+
+      # Typing check
+      - id: typing-check
+        name: typing-check
+        entry: nox -s typing
+        language: system
+        types: [python]
+        require_serial: true
+        pass_filenames: false
+
+      # Tesing check
+      - id: test-check
+        name: test-check
+        entry: nox -s test
+        language: system
+        types: [python]
+        pass_filenames: false
+
+# Configuration
+default_language_version:
+  python: python3.12
+
+fail_fast: true
+
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+
+    For more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false

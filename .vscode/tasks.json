@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Initialize Project",
+      "type": "shell",
+      "command": "nox -s init_project",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Tests",
+      "type": "shell",
+      "command": "nox -s test",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Format Code",
+      "type": "shell",
+      "command": "nox -s format",
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint Code",
+      "type": "shell",
+      "command": "nox -s lint",
+      "problemMatcher": "$nuthought-python"
+    },
+    {
+      "label": "Type Check",
+      "type": "shell",
+      "command": "nox -s typing",
+      "problemMatcher": "$python"
+    },
+    {
+      "label": "Security Scan",
+      "type": "shell",
+      "command": "nox -s security",
+      "problemMatcher": []
+    },
+    {
+      "label": "Jupyter Lab",
+      "type": "shell",
+      "command": "nox -s jupyter_lab",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Build Docs",
+      "type": "shell",
+      "command": "nox -s docs_build",
+      "problemMatcher": []
+    }
+  ]
+}

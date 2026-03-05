@@ -1,0 +1,27 @@
+# Exclude build artifacts and caches
+.nox/
+.tox/
+.venv/
+build/
+dist/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Exclude large data and notebooks outputs
+experments/**/logs/
+experiments/**/checkpoints/
+experiments/**/wandb/
+**/.ipynb_checkpoints/
+*.h5
+*.pkl
+*.pt
+*.parquet
+
+# Exclude git
+.git/
+
+# Tools
+.cursor/

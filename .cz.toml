@@ -1,0 +1,27 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
+
+[tool.commitizen.settings]
+# Conventional commit types for cyto-assist
+allowed_types = [
+    "feat",     # New features
+    "fix",      # Bug fixes
+    "docs",     # Documentation changes
+    "style",    # Code style changes (formatting, etc.)
+    "refactor", # Code refactoring
+    "test",     # Adding or updating tests
+    "chore",    # Maintenance tasks
+"security", # Security improvements (important for healthcare)
+    "compliance", # Regulatory compliance updates
+"model",    # ML model updates
+    "data",     # Data processing changes
+    "exp",      # Experiment updates
+"ci",       # CI/CD changes
+    "build",    # Build system changes
+    "perf",     # Performance improvements
+]

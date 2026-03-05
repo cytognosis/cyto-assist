@@ -1,0 +1,32 @@
+# Exclude large binary files from indexing
+*.h5
+*.h5ad
+*.h5mu
+*.parquet
+*.pkl
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.so
+*.dylib
+*.dll
+*.exe
+*.bin
+*.dat
+
+# Exclude large images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.tiff
+*.bmp
+
+# Exclude documentation builds
+docs/_build/
+site/
+
+# Exclude coverage reports
+htmlcov/

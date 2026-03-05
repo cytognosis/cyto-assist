@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Python: Module (cyto_assist)",
+      "type": "python",
+      "request": "launch",
+      "module": "cyto_assist",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Tests (pytest)",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": [
+        "${file}"
+      ],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: GPU Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": [
+        "-m",
+        "gpu"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}

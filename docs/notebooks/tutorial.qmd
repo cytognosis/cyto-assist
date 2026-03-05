@@ -1,0 +1,61 @@
+---
+title: "cyto-assist Tutorial"
+author: "Cytognosis Team"
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+      dark: [darkly, custom.scss]
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    smooth-scroll: true
+jupyter: python3
+---
+
+# Introduction
+
+Welcome to the interactive cyto-assist tutorial.
+This document highlights the *Cytognosis* methodology, mapping high-dimensional health datasets leveraging rocm scale compute.
+
+```{python}
+import cyto_assist as pkg
+
+# Check version mapping
+print(f"Running cyto-assist version {pkg.__version__}")
+```
+
+## System Requirements
+
+This execution relies on the prelocked PyTorch bindings injected heavily by the underlying `uv` environment mapping.
+
+```{python}
+#| message: false
+#| warning: false
+import numpy as np
+import pandas as pd
+import torch
+
+print(f"PyTorch Version: {torch.__version__}")
+print(f"Is CUDA/ROCm available? {torch.cuda.is_available()}")
+```
+
+## The Insight
+
+Instead of analyzing biological noise univariately, we build cellular intelligence platforms resolving holistic patterns.
+
+```{python}
+# Create benchmark synthetic data
+shape_size = 1000
+data = np.random.randn(shape_size, shape_size)
+
+# Basic matrix validation
+res = data @ data.T
+print(f"Computed reference projection of shape {res.shape}")
+```
+
+## Conclusion
+
+This Quarto template natively adapts to Cytognosis branding elements and is evaluated during the `nox -s quarto_build` pipeline.
+> "Before diagnosis. Before symptoms. There's Cytognosis."

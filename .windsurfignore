@@ -1,0 +1,81 @@
+# Windsurf Ignore File for cyto-assist
+# Excludes files from Windsurf's context and indexing
+
+# Build artifacts and distributions
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache directories
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.*cache/
+scratch/cache/
+scratch/temp/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+.pixi/
+
+# Node modules and dependencies
+node_modules/
+.npm/
+
+# Coverage and test reports
+.coverage*
+htmlcov/
+coverage.xml
+test-reports/
+
+# Documentation builds
+docs/_build/
+docs/generated/
+site/
+
+# Experiment artifacts (keep configs but exclude large files)
+experiments/**/logs/
+experiments/**/checkpoints/
+experiments/**/data/
+experiments/**/results/
+experiments/**/wandb/
+experiments/**/*.ckpt
+experiments/**/*.pkl
+experiments/**/*.h5
+experiments/**/*.hdf5
+# Jupyter notebook checkpoints and outputs
+.ipynb_checkpoints/
+notebooks/figures/
+notebooks/output/
+# Large data files
+*.csv
+*.tsv
+*.parquet
+*.h5ad
+*.h5mu
+*.zarr/
+
+# Temporary and log files
+*.log
+*.tmp
+*.temp
+.DS_Store
+.nfs*
+
+# IDE specific (exclude only certain files, not entire directories)
+.idea/
+
+# Git internals
+.git/
+.gitmodules
+
+# System files
+Thumbs.db
+desktop.ini

@@ -1,0 +1,41 @@
+# Agent Configuration
+# This file configures agent behavior across all tools
+
+project:
+  name: "cyto-assist"
+  package: "cyto_assist"
+  type: "research"
+  language: "python"
+
+# Default skills to load (from .agents/skills/ or modules/skills/)
+skills:
+  defaults:
+    - environment-setup
+    - cytognosis-python-standards
+    - python-dev
+    - testing
+    - healthcare-ai
+    - scientific-workflow
+  optional:
+    - data-pipeline
+    - deployment
+    - documentation
+
+# Agent behavior preferences
+preferences:
+  auto_format: true
+  auto_lint: true
+  test_on_save: false
+  commit_style: "conventional"  # conventional, semantic, or free-form
+  branch_format: "feat/{description}"
+
+# Tool-specific overrides
+tools:
+  cursor:
+    rules_dir: ".agents/plugins/cursor"
+  windsurf:
+    rules_dir: ".agents/plugins/windsurf"
+  claude:
+    instructions: ".agents/plugins/claude/instructions.md"
+  gemini:
+    config_dir: ".agents"

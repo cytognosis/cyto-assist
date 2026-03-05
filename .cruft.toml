@@ -1,0 +1,21 @@
+# Cruft Configuration for cyto-assist
+# Cruft is used to keep projects in sync with the cookiecutter template
+# https://cruft.github.io/cruft/
+#
+# Note: Cruft will look for this configuration in pyproject.toml under [tool.cruft]
+# or in .cruft.json. This file provides a cleaner separation of concerns.
+# If cruft doesn't automatically detect this file, you can reference it via:
+# cruft update --config-file .cruft.toml
+
+[tool.cruft]
+# Files and directories to skip when updating from the template
+skip = [
+  "tests",
+  "src/**/__init__.py",
+  "src/**/basic.py",
+  "docs/api.md",
+  "docs/changelog.md",
+  "docs/references.bib",
+  "docs/references.md",
+  "docs/notebooks/example.ipynb",
+]

@@ -1,0 +1,133 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Healthcare Industry",
+  "Intended Audience :: Science/Research",
+"Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+"Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+"License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+  # Core scientific computing
+  "numpy>=1.24.0",
+  "pandas>=2.0.0",
+  "scipy>=1.10.0",
+# Deep learning framework
+  "torch>=2.0.0",
+  "torchvision>=0.15.0",
+"pytorch-lightning>=2.0.0",
+"anndata>=0.9.0",
+"scanpy>=1.9.0",
+"session-info",
+"rich>=13.0.0",  # Beautiful terminal output
+"typer>=0.9.0",  # CLI framework
+"loguru>=0.7.0",
+]
+
+name = "cyto-assist"
+version = "0.0.1"
+description = "Personal assistant and AI scientist project"
+readme = "README.md"
+license = { file = "LICENSE" }
+maintainers = [
+  { name = "Cytognosis Team", email = "dev@cytognosis.org" },
+]
+authors = [{ name = "Cytognosis Team" }]
+requires-python = ">=3.11, <3.14"
+
+[project.optional-dependencies]
+# Code Quality
+lint = ["ruff>=0.8.0"]
+typing = ["mypy>=1.0.0", "pyright>=1.1.0"]
+
+# Testing
+test = [
+  "pytest>=7.0.0",
+  "pytest-cov>=4.0.0",
+  "pytest-xdist",
+  "pytest-mock",
+  "coverage[toml]",
+]
+
+docs = [
+  "sphinx>=7.0",
+  "sphinx-book-theme>=1.0",
+  "myst-nb>=1.0",
+  "sphinx-autodoc-typehints",
+  "sphinx-copybutton",
+  "sphinxcontrib-bibtex",
+  "sphinxext-opengraph",
+  "sphinx-design",
+"nbsphinx",
+  "pandoc",
+]# Documentation
+
+# Notebooks & Interactive
+notebooks = ["jupyterlab>=4.0.0", "ipykernel", "ipywidgets", "marimo>=0.10.0"]
+
+mlops = [
+"wandb>=0.16.0",
+"hydra-core>=1.3.0",
+  "omegaconf>=2.3.0",
+  "mlflow>=2.0.0",
+]# MLOps & Experiments
+
+# Build & Release
+build = ["build", "twine"]
+
+dev = [
+  "pre-commit",
+  "cyto_assist[lint]",
+  "cyto_assist[typing]",
+  "cyto_assist[test]",
+  "cyto_assist[docs]",
+  "cyto_assist[build]",
+"cyto_assist[notebooks]",
+]# Development Environment (Collection of all dev/test tools)
+
+[project.urls]
+Documentation = "https://cyto-assist.readthedocs.io/"
+Homepage = "https://github.com/cytognosis/cyto-assist"
+Source = "https://github.com/cytognosis/cyto-assist"
+
+[tool.uv]
+managed = true
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm6.1"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-rocm" }
+torchvision = { index = "pytorch-rocm" }
+torchaudio = { index = "pytorch-rocm" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cyto_assist"]
+
+[tool.hatch.envs.default]
+installer = "uv"
+features = ["dev"]
+
+[tool.hatch.envs.docs]
+features = ["docs"]
+scripts.build = "sphinx-build -M html docs docs/_build -W {args}"
+scripts.open = "python -m webbrowser -t docs/_build/html/index.html"
+scripts.clean = "git clean -fdX -- {args:docs}"
+
+[tool.hatch.envs.hatch-test]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
