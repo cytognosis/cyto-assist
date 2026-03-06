@@ -15,7 +15,7 @@
       "project_type": "research",
       "project_language": "python",
       "dependency_manager": "uv",
-      "environment_strategy": "prelocked",
+      "environment_strategy": "empty",
       "environment_name": "ml",
       "compute_backend": "rocm",
       "use_cytoskeleton": true,
