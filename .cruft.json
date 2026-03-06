@@ -1,0 +1,63 @@
+{
+  "template": "/home/mohammadi/repos/cytognosis/cookiecutter",
+  "commit": "0f13a00df77d6ca2b95cc3dab96da413a6307642",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "cyto-assist",
+      "package_name": "cyto_assist",
+      "project_description": "Personal assistant and AI scientist project",
+      "author_full_name": "Cytognosis Team",
+      "author_email": "dev@cytognosis.org",
+      "github_user": "cytognosis",
+      "github_repo": "cyto-assist",
+      "license": "MIT License",
+      "project_type": "research",
+      "project_language": "python",
+      "dependency_manager": "uv",
+      "environment_strategy": "prelocked",
+      "environment_name": "ml",
+      "compute_backend": "rocm",
+      "use_cytoskeleton": true,
+      "use_pytorch": true,
+      "use_lightning": true,
+      "use_wandb": true,
+      "use_docker": true,
+      "use_kubernetes": false,
+      "include_notebooks": true,
+      "include_experiments": true,
+      "use_agents": true,
+      "cytognosis_branding": true,
+      "ide_integration": true,
+      "docker_base_image": "ubuntu:24.04",
+      "project_directories": "data,logs,configs,scripts,models,results",
+      "experiment_directories": "logs,configs,scripts,models,results,data",
+      "source_modules": "data,features,models,modules,executors,app,utils",
+      "_copy_without_render": [
+        ".github/workflows/build.yaml",
+        ".github/workflows/test.yaml",
+        "docs/_templates/autosummary/**.rst"
+      ],
+      "_exclude_on_template_update": [
+        "CHANGELOG.md",
+        "LICENSE",
+        "README.md",
+        "docs/api.md",
+        "docs/index.md",
+        "docs/notebooks/example.ipynb",
+        "docs/references.bib",
+        "docs/references.md",
+        "src/**",
+        "tests/**"
+      ],
+      "_render_devdocs": false,
+      "_jinja2_env_vars": {
+        "lstrip_blocks": true,
+        "trim_blocks": true
+      },
+      "_template": "/home/mohammadi/repos/cytognosis/cookiecutter",
+      "_commit": "0f13a00df77d6ca2b95cc3dab96da413a6307642"
+    }
+  },
+  "directory": null
+}
