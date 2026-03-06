@@ -1,7 +1,7 @@
 {
   "template": "/home/mohammadi/repos/cytognosis/cookiecutter",
-  "commit": "0f13a00df77d6ca2b95cc3dab96da413a6307642",
-  "checkout": null,
+  "commit": "7edc1e451681bf42ecfcd6c9c18878e11b9eacd0",
+  "checkout": "main",
   "context": {
     "cookiecutter": {
       "project_name": "cyto-assist",
@@ -56,7 +56,7 @@
         "trim_blocks": true
       },
       "_template": "/home/mohammadi/repos/cytognosis/cookiecutter",
-      "_commit": "0f13a00df77d6ca2b95cc3dab96da413a6307642"
+      "_commit": "7edc1e451681bf42ecfcd6c9c18878e11b9eacd0"
     }
   },
   "directory": null
