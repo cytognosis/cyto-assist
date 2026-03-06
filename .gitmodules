@@ -1,6 +1,0 @@
-[submodule "modules/cytoskeleton"]
-	path = modules/cytoskeleton
-	url = git@github.com:cytognosis/cytoskeleton.git
-[submodule "modules/agents"]
-	path = modules/agents
-	url = git@github.com:cytognosis/agents.git

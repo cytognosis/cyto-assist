@@ -1,16 +1,8 @@
 {
     "name": "cyto-assist Dev Container",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "..",
-        "target": "dev",
-        "args": {
-            "IMG": "cyto-assist",
-            "REMOTE_USER": "${localEnv:USER}",
-            "REMOTE_UID": "${localEnv:REMOTE_UID:1000}",
-            "REMOTE_GID": "${localEnv:REMOTE_GID:1000}"
-        }
-    },
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/app",
     "remoteUser": "${localEnv:USER}",
     "updateRemoteUserUID": true,
     "customizations": {

@@ -109,6 +109,7 @@ experiments/**/.ipynb_checkpoints/**
 .marimo/
 .pixi/
 wandb/
+mlruns/
 
 # Documentation build artifacts
 docs/_build/
