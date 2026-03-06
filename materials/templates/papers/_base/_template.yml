@@ -139,6 +139,22 @@ sections:
         required: false
         hint: "e.g., smith2024deep"
 
+      - id: cited_count
+        label: "Citation Count"
+        type: number
+        required: false
+        hint: "Total citations (PKG 2.0)"
+
+      - id: is_clinical_article
+        label: "Is Clinical Article"
+        type: boolean
+        required: false
+
+      - id: is_research_article
+        label: "Is Research Article"
+        type: boolean
+        required: false
+
   # ─── Content ─────────────────────────────────────────────────────────────
   - id: content
     title: "Paper Content"
