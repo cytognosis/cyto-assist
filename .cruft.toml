@@ -18,4 +18,14 @@ skip = [
   "docs/references.bib",
   "docs/references.md",
   "docs/notebooks/example.ipynb",
+  ".venv",
+  "mlruns",
+  "__pycache__",
+  ".ruff_cache",
+  ".pytest_cache",
+  "uv.lock",
+  "data",
+  "results",
+  "models",
+  "experiments"
 ]
