@@ -27,6 +27,8 @@ This project is part of the [Cytognosis Foundation](https://cytognosis.org) init
 
 This template is proudly powered by state-of-the-art open source infrastructure:
 
+- **[Cytognosis Cookiecutter](https://cytognosis.github.io/cookiecutter/)**: The underlying architectural template
+- **[Cytoskeleton](https://cytognosis.github.io/cytoskeleton/)**: Component-based dependency injection framework
 - **[Astral `uv`](https://github.com/astral-sh/uv)**: Blazing fast Python packaging and resolution
 - **[Nox](https://nox.thea.codes/)**: Flexible test and interactive session orchestration
 - **[Cruft](https://cruft.github.io/cruft/)**: Automated template synchronization and delta tracking
@@ -124,9 +126,11 @@ HSA_OVERRIDE_GFX_VERSION=10.3.0 nox -s jupyter_lab
 
 - **`test_clinical`** - Run clinical compliance tests
 - **`test_hipaa`** - Run HIPAA compliance validation tests
+
 #### ML/AI Development
 
 - **`test_gpu`** - Run GPU-accelerated tests (requires CUDA)
+
 #### Documentation
 
 - **`docs`** - Build documentation with Sphinx
@@ -242,5 +246,4 @@ This project is developed with support from the Cytognosis Foundation and contri
 [documentation]: https://cyto-assist.readthedocs.io
 [changelog]: https://cyto-assist.readthedocs.io/en/latest/changelog.html
 [api documentation]: https://cyto-assist.readthedocs.io/en/latest/api.html
-[pypi]: https://pypi.org/project/cyto-assist
 [license]: https://github.com/cytognosis/cyto-assist/blob/main/LICENSE
